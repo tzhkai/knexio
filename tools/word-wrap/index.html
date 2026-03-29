@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Word Wrap Tool – Wrap Text to Any Width | Knexio</title>
+<meta name="description" content="Free word wrap tool to wrap or unwrap text to custom character width. Perfect for code comments, emails, and terminal formatting.">
+<link rel="canonical" href="https://knexio.xyz/tools/word-wrap/">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Word Wrap Tool – Wrap Text to Any Width">
+<meta property="og:description" content="Wrap or unwrap text to a custom character width. Perfect for code comments, emails, and terminal formatting.">
+<meta property="og:url" content="https://knexio.xyz/tools/word-wrap/">
+<meta property="og:type" content="WebApplication">
+<meta property="og:site_name" content="Knexio">
+<meta property="og:image" content="https://knexio.xyz/og-image.png">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I wrap text?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Enter your text, set the character width, and click 'Wrap Text'. The tool will break lines at the specified width."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I unwrap text?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, click 'Unwrap Text' to remove all line breaks and join text into a single paragraph."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the maximum width I can set?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can set any width from 1 to 9999 characters, depending on your needs."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+:root {
+  --bg: #0b1220;
+  --card: #111a2e;
+  --border: rgba(255,255,255,0.08);
+  --text: #fff;
+  --sub: #aab3c5;
+  --accent: #4f8cff;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+.container { max-width: 900px; margin: 0 auto; padding: 50px 16px; }
+
+/* Back Button */
+.back {
+  display: inline-block;
+  color: var(--sub);
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 24px;
+  transition: color 0.2s;
+}
+.back:hover { color: var(--accent); }
+
+h1 { font-size: 32px; margin-bottom: 8px; font-weight: 700; }
+h2 { font-size: 22px; margin-top: 40px; margin-bottom: 16px; font-weight: 600; }
+h3 { font-size: 16px; margin-bottom: 10px; font-weight: 600; }
+.subtitle { color: var(--sub); margin-bottom: 24px; font-size: 16px; }
+
+/* Card */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+/* Textarea */
+
+textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+/* Toolbar */
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  gap: 16px;
+}
+
+/* Input Group */
+.input-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.input-group label {
+  font-size: 13px;
+  color: var(--sub);
+}
+.input-group input {
+  width: 80px;
+  padding: 8px 12px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 14px;
+}
+.input-group input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+/* Button Row */
+
+
+.btn:hover {
+  background: #3a7bff;
+  transform: translateY(-1px);
+}
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn.secondary:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Stats */
+
+
+
+.stat-label {
+  font-size: 12px;
+  color: var(--sub);
+  margin-top: 4px;
+}
+
+/* Step Blocks */
+
+
+
+
+/* FAQ */
+
+
+
+
+/* Related Tools */
+.tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+.tools a {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  color: var(--sub);
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+.tools a:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Ad Banner */
+.ad-banner {
+  margin: 32px 0;
+  text-align: center;
+}
+
+/* Footer */
+footer {
+  margin-top: 40px;
+  text-align: center;
+  color: var(--sub);
+  font-size: 13px;
+  padding-top: 30px;
+  border-top: 1px solid var(--border);
+}
+footer p {
+  margin-bottom: 8px;
+}
+footer a {
+  color: var(--sub);
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color 0.2s;
+}
+footer a:hover {
+  color: var(--accent);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  
+  
+}
+textarea,.text-area{width:100%;min-height:180px;background:var(--bg);border:1px solid var(--border);border-radius:12px;color:var(--text);padding:14px;font-size:15px;resize:vertical;box-sizing:border-box}
+textarea:focus,.text-area:focus{outline:none;border-color:var(--accent)}
+.btn-row{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+button,.btn,.btn-row button{flex:1;padding:10px;border-radius:10px;border:none;background:var(--accent);color:#fff;cursor:pointer;font-size:14px;transition:opacity 0.2s;box-sizing:border-box}
+button:hover,.btn:hover{opacity:0.9}
+button.secondary,.btn.secondary,.btn-outline,.btn-row button.secondary{background:transparent;border:1px solid var(--border);color:var(--sub)}
+button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.stat{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center}
+.stat span,.stat-value,.result-value,.age-value{font-size:24px;font-weight:700;color:var(--accent);display:block}
+.stat label,.stat-label,.result-label,.age-label{font-size:12px;color:var(--sub);display:block}
+.result-box{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;margin-top:16px;min-height:100px;white-space:pre-wrap;word-break:break-all;font-size:15px;line-height:1.7;box-sizing:border-box}
+@media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.btn-row{flex-direction:column}}
+  </style>
+</head>
+
+<body>
+<div class="container">
+
+<a class="back" href="../index.html">← Back to Tools</a>
+
+<h1>Word Wrap Tool</h1>
+<p class="subtitle">Wrap or unwrap text to a custom character width. Perfect for code comments, emails, and terminal formatting.</p>
+
+<div class="ad-banner">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="5794572171"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<div class="card">
+  <div class="toolbar">
+    <div class="input-group">
+      <label>Width:</label>
+      <input type="number" id="charWidth" value="80" min="1" max="9999">
+      <label>characters</label>
+    </div>
+    <div class="btn-row">
+      <button class="btn" onclick="wrapText()">Wrap Text</button>
+      <button class="btn secondary" onclick="unwrapText()">Unwrap Text</button>
+      <button class="btn secondary" onclick="copyText()">Copy</button>
+      <button class="btn secondary" onclick="clearText()">Clear</button>
+    </div>
+  </div>
+
+  <textarea id="textInput" placeholder="Enter your text here...
+
+Example:
+This is a long line of text that needs to be wrapped to a specific character width. You can use this tool to format code comments, emails, or any text that needs to fit within a certain width."></textarea>
+
+  <div class="stats">
+    <div class="stat"><span id="charCount">0</span><label>Characters</label></div>
+    <div class="stat"><span id="lineCount">0</span><label>Lines</label></div>
+    <div class="stat"><span id="maxLineLength">0</span><label>Max Line Length</label></div>
+  </div>
+</div>
+
+<h2>How to Use Word Wrap Tool</h2>
+
+
+
+
+<h2>Related Tools</h2>
+<div class="tools">
+  <a href="../word-counter/">Word Counter</a>
+  <a href="../character-counter/">Character Counter</a>
+  <a href="../text-to-binary/">Text to Binary</a>
+</div>
+
+<div class="ad-banner">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="9504968504"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<footer>
+    <p>Free online tools for developers, designers, and everyone.</p>
+    <p>
+      <a href="/about/" style="color:var(--accent);text-decoration:none;margin:0 8px;">About</a>
+      <a href="/privacy/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Privacy</a>
+      <a href="/terms/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Terms</a>
+      <a href="/contact/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Contact</a>
+    </p>
+    <p>© 2026 Knexio. All rights reserved.</p>
+  </footer>
+
+</div>
+
+<script>
+const textInput = document.getElementById('textInput');
+const charWidth = document.getElementById('charWidth');
+
+textInput.addEventListener('input', updateStats);
+
+function updateStats() {
+  const text = textInput.value;
+  const lines = text.split('\n');
+  
+  document.getElementById('charCount').textContent = text.length;
+  document.getElementById('lineCount').textContent = lines.length;
+  
+  let maxLen = 0;
+  lines.forEach(line => {
+    if (line.length > maxLen) maxLen = line.length;
+  });
+  document.getElementById('maxLineLength').textContent = maxLen;
+}
+
+function wrapText() {
+  const width = parseInt(charWidth.value) || 80;
+  let text = textInput.value;
+  
+  // Split into paragraphs
+  const paragraphs = text.split(/\n\n+/);
+  
+  const wrappedParagraphs = paragraphs.map(para => {
+    // Split words
+    const words = para.split(/\s+/);
+    let result = '';
+    let currentLine = '';
+    
+    words.forEach(word => {
+      if (!word.trim()) return;
+      
+      if (currentLine.length === 0) {
+        currentLine = word;
+      } else if (currentLine.length + 1 + word.length <= width) {
+        currentLine += ' ' + word;
+      } else {
+        result += currentLine + '\n';
+        currentLine = word;
+      }
+    });
+    
+    if (currentLine) {
+      result += currentLine;
+    }
+    
+    return result;
+  });
+  
+  textInput.value = wrappedParagraphs.join('\n\n');
+  updateStats();
+}
+
+function unwrapText() {
+  const text = textInput.value;
+  // Remove all line breaks but preserve paragraph breaks
+  const unwrapped = text.replace(/([^\n])\n(?=[^\n])/g, '$1 ');
+  textInput.value = unwrapped;
+  updateStats();
+}
+
+function copyText() {
+  navigator.clipboard.writeText(textInput.value).then(() => {
+    alert('Text copied to clipboard!');
+  }).catch(err => {
+    alert('Failed to copy text.');
+  });
+}
+
+function clearText() {
+  textInput.value = '';
+  updateStats();
+}
+
+// Initialize stats
+updateStats();
+
+</script>
+<script src="/knexio-bundle.js"></script>
+<script src="../../cookie-consent.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Days Between Dates – Calculate Date Difference | Knexio</title>
+<meta name="description" content="Free online days between dates calculator. Calculate number of days, weeks, months, and years between two dates. Perfect for planning, deadlines, and age calculation.">
+<link rel="canonical" href="https://knexio.xyz/tools/days-between-dates/">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Days Between Dates Calculator">
+<meta property="og:description" content="Calculate days, weeks, months between two dates. Free online tool.">
+<meta property="og:url" content="https://knexio.xyz/tools/days-between-dates/">
+<meta property="og:type" content="WebApplication">
+<meta property="og:site_name" content="Knexio">
+<meta property="og:image" content="https://knexio.xyz/og-image.png">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Days Between Dates Calculator",
+  "url": "https://knexio.xyz/tools/days-between-dates/",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "All",
+  "description": "Free online days between dates calculator. Calculate number of days, weeks, months, and years between two dates."
+}
+</script>
+
+<style>
+:root{
+  --bg:#0b1220;
+  --card:#111a2e;
+  --border:rgba(255,255,255,.08);
+  --text:#fff;
+  --sub:#aab3c5;
+  --accent:#4f8cff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:system-ui,-apple-system;
+  background:var(--bg);
+  color:var(--text);
+}
+.container{max-width:900px;margin:auto;padding:50px 16px}
+
+/* 统一的返回按钮样式 */
+.back {
+  display: inline-block;
+  color: var(--sub);
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 24px;
+  transition: color 0.2s;
+}
+.back:hover {
+  color: var(--accent);
+}
+
+h1{font-size:32px;margin-bottom:8px}
+h2{font-size:22px;margin-top:30px;margin-bottom:10px}
+h3{font-size:18px;margin-bottom:8px}
+.subtitle{color:var(--sub);margin-bottom:24px}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:20px;
+  margin-bottom:20px;
+}
+
+label {
+  display: block;
+  color: var(--sub);
+  font-size: 13px;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+input[type="date"] {
+  width: 100%;
+  padding: 12px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  font-size: 15px;
+  margin-bottom: 12px;
+}
+input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+.result-main {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.result-sub {
+  font-size: 13px;
+  color: var(--sub);
+}
+
+
+
+
+
+
+
+
+
+
+button:hover { opacity: 0.9; }
+
+
+
+.section p{
+  color:var(--sub);
+  line-height:1.7;
+  margin-bottom:10px;
+}
+
+.seo-section {
+  margin-top: 30px;
+}
+
+
+
+.tools a{
+  display:inline-block;
+  margin:6px;
+  padding:8px 14px;
+  border-radius:8px;
+  border:1px solid var(--border);
+  color:var(--sub);
+  text-decoration:none;
+}
+.tools a:hover{
+  border-color:var(--accent);
+  color:var(--accent);
+}
+
+/* 广告样式 */
+.ad-banner {
+  margin: 32px 0;
+  text-align: center;
+}
+
+/* 统一的 Footer 样式 */
+footer {
+  margin-top: 40px;
+  text-align: center;
+  color: var(--sub);
+  font-size: 13px;
+}
+footer p {
+  margin-bottom: 8px;
+}
+footer a {
+  color: var(--sub);
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color 0.2s;
+}
+footer a:hover {
+  color: var(--accent);
+}
+
+@media(max-width:768px){
+  .form-grid{grid-template-columns:1fr}
+  .result-main{font-size:24px}
+  
+}
+textarea,.text-area{width:100%;min-height:180px;background:var(--bg);border:1px solid var(--border);border-radius:12px;color:var(--text);padding:14px;font-size:15px;resize:vertical;box-sizing:border-box}
+textarea:focus,.text-area:focus{outline:none;border-color:var(--accent)}
+.btn-row{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+button,.btn,.btn-row button{flex:1;padding:10px;border-radius:10px;border:none;background:var(--accent);color:#fff;cursor:pointer;font-size:14px;transition:opacity 0.2s;box-sizing:border-box}
+button:hover,.btn:hover{opacity:0.9}
+button.secondary,.btn.secondary,.btn-outline,.btn-row button.secondary{background:transparent;border:1px solid var(--border);color:var(--sub)}
+button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.stat{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center}
+.stat span,.stat-value,.result-value,.age-value{font-size:24px;font-weight:700;color:var(--accent);display:block}
+.stat label,.stat-label,.result-label,.age-label{font-size:12px;color:var(--sub);display:block}
+.result-box{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;margin-top:16px;min-height:100px;white-space:pre-wrap;word-break:break-all;font-size:15px;line-height:1.7;box-sizing:border-box}
+@media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.btn-row{flex-direction:column}}
+  </style>
+</head>
+
+<body><div class="container">
+
+<a class="back" href="../index.html">← Back to Tools</a>
+
+<h1>Days Between Dates Calculator</h1>
+<p class="subtitle">Calculate the number of days, weeks, months, and years between any two dates. Perfect for planning events, calculating ages, or tracking deadlines.</p>
+
+<div class="ad-banner">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="5794572171"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<div class="card">
+  <div class="form-grid">
+    <div class="field">
+      <label>Start Date</label>
+      <input type="date" id="startDate">
+    </div>
+    <div class="field">
+      <label>End Date</label>
+      <input type="date" id="endDate">
+    </div>
+  </div>
+  
+  <div class="btn-row">
+    <button onclick="calculateDifference()">Calculate Difference</button>
+    <button class="secondary" onclick="resetDates()">Reset</button>
+  </div>
+  
+  <div class="result-box" id="resultBox" style="display:none">
+    <div class="result-main" id="daysResult">0 days</div>
+    <div class="result-sub" id="datesRange">Between date and date</div>
+  </div>
+  
+  <div class="stats" id="statsBox" style="display:none">
+    <div class="stat">
+      <span id="daysCount">0</span>
+      <label>Days</label>
+    </div>
+    <div class="stat">
+      <span id="weeksCount">0</span>
+      <label>Weeks</label>
+    </div>
+    <div class="stat">
+      <span id="monthsCount">0</span>
+      <label>Months</label>
+    </div>
+    <div class="stat">
+      <span id="yearsCount">0</span>
+      <label>Years</label>
+    </div>
+    <div class="stat">
+      <span id="weekdaysCount">0</span>
+      <label>Weekdays</label>
+    </div>
+    <div class="stat">
+      <span id="totalHours">0</span>
+      <label>Hours</label>
+    </div>
+  </div>
+</div>
+
+<h2>How to Use</h2>
+<div class="section">
+<p>Select or type the start date in the first date picker, then select or type the end date in the second date picker. Click "Calculate Difference" to see the exact number of days, weeks, months, and years between the two dates.</p>
+</div>
+
+<h2>How It Works</h2>
+<div class="section">
+<p>This calculator calculates the difference between two calendar dates by counting the number of days between them, then converts that number into weeks, months, and years for easier understanding. It also calculates weekdays and total hours for additional context.</p>
+<p>The calculation includes the start date but excludes the end date (similar to how age is calculated). For example, the difference between January 1 and January 2 is 1 day.</p>
+</div>
+
+
+<h2>Related Tools</h2>
+<div class="tools">
+<a href="/tools/age-calculator/">Age Calculator</a>
+<a href="/tools/time-difference/">Time Difference Calculator</a>
+<a href="/tools/date-calculator/">Date Calculator</a>
+</div>
+
+<div class="ad-banner" style="margin-top:40px">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="9504968504"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<footer>
+  <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
+  <p>
+    <a href="/about/" style="color:var(--accent);text-decoration:none;margin:0 8px;">About</a>
+    <a href="/privacy/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Privacy</a>
+    <a href="/terms/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Terms</a>
+    <a href="/contact/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Contact</a>
+  </p>
+  <p>© 2026 Knexio. All rights reserved.</p>
+</footer>
+
+</div>
+
+<script>
+// Set default dates
+const today = new Date();
+const yesterday = new Date(today);
+yesterday.setDate(yesterday.getDate() - 30);
+
+document.getElementById('startDate').value = formatDate(yesterday);
+document.getElementById('endDate').value = formatDate(today);
+
+function formatDate(date) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+}
+
+function calculateDifference() {
+  const startDate = new Date(document.getElementById('startDate').value);
+  const endDate = new Date(document.getElementById('endDate').value);
+  
+  if (isNaN(startDate.getTime()) || isNaN(endDate.getTime())) {
+    alert('Please select valid start and end dates');
+    return;
+  }
+  
+  if (startDate > endDate) {
+    alert('Start date must be before end date');
+    return;
+  }
+  
+  const diffTime = Math.abs(endDate - startDate);
+  const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+  const diffWeeks = Math.floor(diffDays / 7);
+  const diffMonths = Math.floor(diffDays / 30.44);
+  const diffYears = Math.floor(diffDays / 365.25);
+  const totalHours = Math.floor(diffTime / (1000 * 60 * 60));
+  
+  // Calculate weekdays (excluding Saturday and Sunday)
+  let weekdays = 0;
+  let currentDate = new Date(startDate);
+  while (currentDate <= endDate) {
+    const dayOfWeek = currentDate.getDay();
+    if (dayOfWeek !== 0 && dayOfWeek !== 6) { // Not Sunday (0) or Saturday (6)
+      weekdays++;
+    }
+    currentDate.setDate(currentDate.getDate() + 1);
+  }
+  
+  document.getElementById('daysResult').textContent = diffDays + ' days';
+  document.getElementById('datesRange').textContent = `Between ${formatDate(startDate)} and ${formatDate(endDate)}`;
+  
+  document.getElementById('daysCount').textContent = diffDays;
+  document.getElementById('weeksCount').textContent = diffWeeks;
+  document.getElementById('monthsCount').textContent = diffMonths;
+  document.getElementById('yearsCount').textContent = diffYears;
+  document.getElementById('weekdaysCount').textContent = weekdays;
+  document.getElementById('totalHours').textContent = totalHours;
+  
+  document.getElementById('resultBox').style.display = 'block';
+  document.getElementById('statsBox').style.display = 'grid';
+}
+
+function resetDates() {
+  const yesterday = new Date();
+  yesterday.setDate(yesterday.getDate() - 30);
+  document.getElementById('startDate').value = formatDate(yesterday);
+  document.getElementById('endDate').value = formatDate(new Date());
+  document.getElementById('resultBox').style.display = 'none';
+  document.getElementById('statsBox').style.display = 'none';
+}
+</script>
+
+<script src="/knexio-bundle.js"></script>
+</body>
+</html>

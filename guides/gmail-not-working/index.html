@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Gmail Not Working? How to Fix Gmail Problems (2026)</title>
+  <meta name="description" content="Gmail not loading, emails not sending, or notifications not working? Step-by-step fixes for Gmail on iPhone, Android, Chrome, and the web. Covers sync, login, storage, filters, and IMAP settings." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="canonical" href="https://knexio.xyz/guides/gmail-not-working/" />
+  <meta property="og:title" content="Gmail Not Working? How to Fix It (2026)" />
+  <meta property="og:description" content="Gmail not loading, can't send emails, notifications missing? Complete Gmail troubleshooting guide for all platforms." />
+  <meta property="og:url" content="https://knexio.xyz/guides/gmail-not-working/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Knexio" />
+  <meta name="robots" content="index, follow" />
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Gmail Not Working – How to Fix It","description":"Complete troubleshooting guide for Gmail not loading, emails not sending, and sync issues.","author":{"@type":"Organization","name":"Knexio"},"publisher":{"@type":"Organization","name":"Knexio"},"datePublished":"2026-03-19","dateModified":"2026-03-22","mainEntityOfPage":{"@type":"WebPage","@id":"https://knexio.xyz/guides/gmail-not-working/"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why is Gmail not loading?","acceptedAnswer":{"@type":"Answer","text":"Gmail may fail to load due to Google server issues, poor internet connection, full storage quota (15 GB free limit), or browser cache problems. Check Google Workspace Status Dashboard to see if Gmail is experiencing an outage."}},{"@type":"Question","name":"Why are my Gmail emails not sending?","acceptedAnswer":{"@type":"Answer","text":"Emails stuck in the outbox are usually caused by poor connectivity, attachment size exceeding 25 MB, or an account authentication issue. Try refreshing, checking your internet connection, or reducing the attachment size."}},{"@type":"Question","name":"Why am I not getting Gmail notifications?","acceptedAnswer":{"@type":"Answer","text":"Gmail notification issues are typically caused by disabled notifications in device settings, battery optimization blocking background sync, or incorrect Gmail notification settings within the app."}},{"@type":"Question","name":"How do I fix Gmail storage full?","acceptedAnswer":{"@type":"Answer","text":"Google gives 15 GB of free storage shared across Gmail, Drive, and Photos. To free space: delete large emails with attachments (search 'has:attachment larger:10m'), empty Spam and Trash folders, or upgrade to Google One."}},{"@type":"Question","name":"How do I configure Gmail IMAP settings?","acceptedAnswer":{"@type":"Answer","text":"For IMAP access: IMAP server is imap.gmail.com, port 993 with SSL. SMTP server is smtp.gmail.com, port 465 or 587. Enable 2-Step Verification and create an App Password for third-party email clients."}},{"@type":"Question","name":"Why are my Gmail filters not working?","acceptedAnswer":{"@type":"Answer","text":"Gmail filters may stop working if labels are nested too deep, actions conflict with other filters, or the filter was created on a different account. Check Settings → Filters to verify your filters are active."}}]}</script>
+<style>
+
+    :root{--bg:#0b1220;--bg2:#070d1a;--panel:#111a2e;--border:rgba(255,255,255,0.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:linear-gradient(180deg,var(--bg),var(--bg2));color:var(--text);min-height:100vh;line-height:1.7}
+    a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+    .wrap{max-width:860px;margin:0 auto;padding:32px 20px 80px}
+    .back{display:inline-block;margin-bottom:24px;color:var(--sub);font-size:14px}
+    h1{font-size:36px;margin-bottom:12px;line-height:1.25}
+    .meta{color:var(--sub);font-size:14px;margin-bottom:28px}
+    .ad-slot{margin:24px 0;text-align:center}
+    .summary-box{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:22px 24px;margin-bottom:32px}
+    .summary-box h2{font-size:16px;margin-bottom:12px;color:var(--sub)}
+    .summary-box ul{padding-left:18px;color:var(--sub);font-size:14px}
+    .summary-box li{margin-bottom:6px}
+    .summary-box a{color:var(--accent)}
+    h2{font-size:24px;margin:40px 0 14px;padding-top:8px;border-top:1px solid var(--border)}
+    h3{font-size:18px;margin:28px 0 10px;color:#7dd3fc}
+    p{color:var(--sub);margin-bottom:14px;font-size:15px}
+    ol,ul{color:var(--sub);font-size:15px;padding-left:22px;margin-bottom:16px}
+    li{margin-bottom:8px}
+    .step-box{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:22px 24px;margin:20px 0}
+    .step-box h3{margin-top:0;font-size:17px;color:var(--text)}
+    .step-box ol{margin-bottom:0}
+    .tip{background:rgba(79,140,255,.08);border:1px solid rgba(79,140,255,.25);border-radius:10px;padding:14px 18px;font-size:14px;color:var(--sub);margin:18px 0}
+    .tip strong{color:var(--accent)}
+    .warning{background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.25);border-radius:10px;padding:14px 18px;font-size:14px;color:var(--sub);margin:18px 0}
+    .warning strong{color:#f87171}
+    .related{margin-top:60px;background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:22px 24px}
+    .related h2{border:none;margin:0 0 14px;font-size:18px}
+    .related ul{margin:0;padding-left:18px}
+    footer{margin-top:80px;text-align:center;font-size:13px;color:var(--sub)}
+    code{background:rgba(255,255,255,0.08);padding:2px 8px;border-radius:5px;font-family:"Courier New",monospace;font-size:13px;}
+  .ad-banner{margin:24px 0;text-align:center;min-height:90px}
+
+    /* ==================== 移动端优化 ==================== */
+
+    /* 平板和手机 (≤768px) */
+    @media (max-width: 768px) {
+      /* 容器布局优化 */
+      .container, .wrap {
+        padding: 40px 15px 80px !important;
+        max-width: 100% !important;
+      }
+
+      /* 标题字体优化 */
+      h1 {
+        font-size: 28px !important;
+        line-height: 1.3 !important;
+      }
+
+      h2 {
+        font-size: 20px !important;
+        margin-top: 36px !important;
+        margin-bottom: 10px !important;
+      }
+
+      h3 {
+        font-size: 17px !important;
+      }
+
+      /* 正文内容优化 */
+      p, li, .intro, .subtitle {
+        font-size: 14px !important;
+        line-height: 1.7 !important;
+      }
+
+      /* 段落间距优化 */
+      p, ul, ol {
+        margin-bottom: 16px !important;
+      }
+
+      /* 列表优化 */
+      ul, ol {
+        padding-left: 18px !important;
+      }
+
+      li {
+        margin-bottom: 6px !important;
+      }
+
+      /* 内容块优化 */
+      .main-panel, .step-block, .notice, .extra-info {
+        padding: 16px !important;
+        border-radius: 12px !important;
+        margin: 16px 0 !important;
+      }
+
+      /* 按钮和输入框优化 */
+      .btn {
+        padding: 14px !important;
+        font-size: 15px !important;
+        min-height: 48px !important;
+      }
+
+      .input-group input {
+        padding: 12px !important;
+        font-size: 15px !important;
+      }
+
+      /* 网格系统优化 */
+      .age-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px !important;
+      }
+
+      /* 广告位优化 */
+      .ad-banner {
+        margin: 16px 0 !important;
+        min-height: 50px !important;
+      }
+
+      /* 游戏页面优化 */
+      .grid-container {
+        padding: 8px !important;
+      }
+
+      .grid {
+        gap: 8px !important;
+      }
+
+      .cell {
+        font-size: 20px !important;
+        border-radius: 6px !important;
+      }
+
+      .score-box {
+        min-width: 70px !important;
+        padding: 6px 12px !important;
+      }
+
+      .score-val {
+        font-size: 18px !important;
+      }
+
+      /* 工具页面优化 */
+      .age-main {
+        font-size: 36px !important;
+      }
+
+      .age-value {
+        font-size: 24px !important;
+      }
+
+      .age-label {
+        font-size: 11px !important;
+      }
+
+      /* 引导页面优化 */
+      .intro {
+        border-left-width: 2px !important;
+        padding-left: 12px !important;
+        margin-bottom: 32px !important;
+      }
+
+      .faq-item {
+        margin-bottom: 20px !important;
+      }
+
+      .faq-item strong {
+        font-size: 15px !important;
+      }
+    }
+
+    /* 小手机优化 (≤480px) */
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 24px !important;
+      }
+
+      h2 {
+        font-size: 18px !important;
+      }
+
+      .container, .wrap {
+        padding: 32px 12px 60px !important;
+      }
+
+      .main-panel, .step-block, .notice {
+        padding: 14px !important;
+      }
+
+      .btn {
+        padding: 12px !important;
+        font-size: 14px !important;
+      }
+
+      .age-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
+    /* 触摸设备优化 */
+    @media (hover: none) and (pointer: coarse) {
+      button, .btn, a[onclick], .cell {
+        min-height: 44px !important;
+        min-width: 44px !important;
+      }
+
+      input, select, textarea {
+        font-size: 16px !important;
+      }
+        }
+
+</style>
+</head>
+<body><a href="../../cdn-cgi/content-34efMkshkFnifVTwZqu4EFgzpWL2Fh_cOe0PbRngKS4.html" aria-hidden="true" rel="nofollow noopener" style="display: none !important; visibility: hidden !important"></a>
+<div class="wrap">
+  <a class="back" href="../index.html">← Back to Guides</a>
+  <h1>Gmail Not Working? How to Fix Common Gmail Problems</h1>
+  <div class="meta">Updated March 2026 · 14 min read</div>
+
+  <div class="summary-box">
+    <h2>Quick Navigation</h2>
+
+  <ul>
+      <li><a href="index.html#login">Login & Authentication Issues</a></li>
+      <li><a href="index.html#not-loading">Gmail Not Loading</a></li>
+      <li><a href="index.html#not-sending">Emails Not Sending</a></li>
+      <li><a href="index.html#notifications">Notifications Not Working</a></li>
+      <li><a href="index.html#sync">Gmail Not Syncing</a></li>
+      <li><a href="index.html#storage">Storage Full</a></li>
+      <li><a href="index.html#filters">Filter & Rule Problems</a></li>
+      <li><a href="index.html#mobile">iPhone & Android Fixes</a></li>
+      <li><a href="index.html#browser">Browser Fixes</a></li>
+      <li><a href="index.html#imap">IMAP & POP Settings</a></li>
+    </ul>
+  </div>
+
+  <p>Gmail is used by over 1.8 billion people, and even small disruptions affect millions of users. This guide covers every major Gmail issue — from login problems and emails stuck in outbox to notification failures, sync problems, filter issues, and IMAP configuration.</p>
+
+  <h2 id="login">1. Gmail Login & Authentication Issues</h2>
+  <p>If you cannot sign in to your Gmail account or are repeatedly asked for a password:</p>
+  <div class="step-box">
+    <h3>How to Fix Login Problems</h3>
+    <ol>
+      <li><strong>Check your username carefully</strong> — Make sure you're entering the correct email address (e.g., <a href="https://knexio.xyz/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ee97819bae89838f8782c08d8183">[email&#160;protected]</a>, not just "you").</li>
+      <li><strong>Use the correct password</strong> — Visit <a href="https://accounts.google.com/signin/recovery" target="_blank" rel="noopener">accounts.google.com/signin/recovery</a> to reset your password if forgotten.</li>
+      <li><strong>Enable 2-Step Verification</strong> — If you have it enabled, you'll need your phone or backup codes to sign in.</li>
+      <li><strong>Check if the account was deleted</strong> — Google deletes accounts inactive for 2 years. Deleted accounts cannot be recovered.</li>
+      <li><strong>Clear browser cookies</strong> — Old session cookies can cause "wrong password" errors even with the correct credentials.</li>
+      <li><strong>Check for a work/school account</strong> — If using a Google Workspace account, login may be controlled by your organization. Contact your admin.</li>
+      <li><strong>Try a different device</strong> — If 2FA is causing issues, try signing in on a trusted device that was previously logged in.</li>
+    </ol>
+  </div>
+  <div class="warning"><strong>Security Alert:</strong> If you see "Suspicious sign-in prevented," Google blocked a login attempt. Change your password immediately and enable 2-Step Verification. Visit <a href="https://myaccount.google.com/security" target="_blank" rel="noopener">myaccount.google.com/security</a>.</div>
+
+    <!-- AdSense – in-article (auto-inserted) -->
+    <div style="margin: 32px 0; text-align: center;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2596567349043393"
+           data-ad-slot="9350673807"
+           data-ad-format="fluid"
+           data-ad-layout="in-article"></ins>
+    </div>
+
+
+
+  <h2 id="not-loading">2. Gmail Not Loading</h2>
+  <p>First, confirm whether this is a Gmail-wide outage or an issue on your device only:</p>
+  <ul>
+    <li>Visit the <a href="https://www.google.com/appsstatus" target="_blank" rel="noopener">Google Workspace Status Dashboard</a>.</li>
+    <li>Check <a href="https://downdetector.com/status/gmail/" target="_blank" rel="noopener">Downdetector</a> for user reports.</li>
+  </ul>
+  <p>If Gmail is fine globally, the issue is local. Try these quick fixes:</p>
+  <div class="step-box">
+    <h3>Quick Fixes</h3>
+    <ol>
+      <li>Refresh the Gmail page (F5 or Ctrl+R).</li>
+      <li>Check your internet connection by opening another website.</li>
+      <li>Clear your browser cache and cookies.</li>
+      <li>Try Gmail in an incognito or private browsing window.</li>
+      <li>Disable browser extensions (especially ad blockers).</li>
+      <li>Try a different browser or device.</li>
+    </ol>
+  </div>
+
+  <h2 id="not-sending">3. Emails Not Sending</h2>
+  <p>If emails are stuck in the Outbox or show a "send" error:</p>
+  <ol>
+    <li><strong>Check file attachment size</strong> – Gmail has a 25 MB attachment limit. Use Google Drive to share larger files.</li>
+    <li><strong>Verify recipient address</strong> – A typo in the email address causes a delivery failure. Double-check it.</li>
+    <li><strong>Check internet connection</strong> – A dropped connection mid-send leaves emails in Outbox.</li>
+    <li><strong>Refresh the page</strong> – In the Gmail web app, try Ctrl+Shift+U to reload without cache.</li>
+    <li><strong>Sign out and back in</strong> – Authentication tokens can expire. Sign out completely and sign back in.</li>
+    <li><strong>Check if you're over the sending limit</strong> – Free accounts can send ~500 emails per day; Google Workspace has higher limits.</li>
+    <li><strong>Verify the recipient's email server isn't blocking you</strong> – Large attachments or flagged content can trigger spam filters on the recipient's end.</li>
+  </ol>
+  <div class="warning"><strong>Note:</strong> If your Gmail shows "Sending limit exceeded," Google has temporarily blocked outgoing mail. Wait 24-48 hours, or upgrade to Google Workspace for higher limits.</div>
+
+  <h2 id="notifications">4. Gmail Notifications Not Working</h2>
+  <h3>On Android</h3>
+  <ol>
+    <li>Settings → Apps → Gmail → Notifications → make sure "Allow Notifications" is on.</li>
+    <li>Settings → Battery → Battery Optimization → find Gmail → set to "Don't optimize".</li>
+    <li>In Gmail app: Menu (☰) → Settings → your account → Notifications → set to "All".</li>
+    <li>Check that Do Not Disturb mode is off or Gmail is allowed through it.</li>
+  </ol>
+  <h3>On iPhone</h3>
+  <ol>
+    <li>Settings → Notifications → Gmail → Allow Notifications → turn on.</li>
+    <li>Settings → Gmail → Background App Refresh → turn on.</li>
+    <li>In Gmail app: tap your avatar → Manage your Google Account → Security → check no "Do Not Disturb" is set.</li>
+    <li>Check Focus/DND settings: if iPhone Focus mode is on, it may block Gmail notifications.</li>
+  </ol>
+
+  <h2 id="sync">5. Gmail Not Syncing</h2>
+  <p>If new emails don't appear on your device:</p>
+  <ol>
+    <li><strong>Force a manual sync</strong> – In the Gmail app, pull down to refresh.</li>
+    <li><strong>Check sync settings</strong> – Gmail app → Menu → Settings → your account → Days of mail to sync → increase the number.</li>
+    <li>On Android: Settings → Accounts → Google → your account → make sure "Gmail" is checked under account sync.</li>
+    <li>Make sure Background App Refresh (iOS) or Background Data (Android) is enabled for Gmail.</li>
+    <li>If using a VPN, try disabling it — some VPNs block Google services.</li>
+    <li><strong>Check for conflicts</strong> — If you have Gmail set up both via the Gmail app and via iOS Mail, they may conflict. Remove one.</li>
+    <li><strong>Check the sync direction</strong> — In Settings → See all settings → Forwarding and POP/IMAP → IMAP, ensure the correct folders are set to sync.</li>
+  </ol>
+
+  <h2 id="storage">6. Gmail Storage Full</h2>
+  <p>Google provides 15 GB of free storage shared between Gmail, Drive, and Photos. When full, you cannot receive new emails. To free up space:</p>
+  <ol>
+    <li>In Gmail search: <code>has:attachment larger:5m</code> — find and delete large emails.</li>
+    <li>In Gmail search: <code>older_than:1y</code> — find old emails you no longer need.</li>
+    <li>Empty your Trash folder: Settings → Trash → Empty Trash now.</li>
+    <li>Empty Spam: Settings → Spam → Delete all spam messages.</li>
+    <li>Delete old automated emails from services like newsletters, order confirmations, etc.</li>
+    <li>Check Google Drive and Google Photos for large unused files at <a href="https://one.google.com/storage" target="_blank" rel="noopener">one.google.com/storage</a>.</li>
+    <li><strong>Unsubscribe from newsletters</strong> — Search <code>unsubscribe</code> in Gmail to find marketing emails and unsubscribe in bulk.</li>
+  </ol>
+  <div class="tip"><strong>Tip:</strong> Use <a href="https://one.google.com" target="_blank" rel="noopener">Google One</a> to upgrade to 100 GB storage for $1.99/month if you regularly hit the free limit. Your storage is shared across Gmail, Drive, and Photos.</div>
+  <div class="warning"><strong>Warning:</strong> Deleting emails from Gmail permanently removes them from all synced devices. Make sure you don't need an email before deleting it.</div>
+
+  <h2 id="filters">7. Gmail Filter & Rule Problems</h2>
+  <p>If your Gmail filters (also called "rules") are not working correctly:</p>
+  <h3>Common Filter Issues and Fixes</h3>
+  <ol>
+    <li><strong>Filter not applying to existing emails</strong> — Filters only apply to NEW emails by default. To apply to existing emails, edit the filter and check "Also apply filter to matching conversations."</li>
+    <li><strong>Filter conflicts</strong> — If two filters contradict each other, the most recently created one wins. Review all filters for conflicts.</li>
+    <li><strong>Nested label actions may fail</strong> — If your filter applies a nested label (e.g., Work/Clients), try using a top-level label instead.</li>
+    <li><strong>Too many filters</strong> — Gmail has a limit of ~1,000 filters per account. Having hundreds of filters can slow processing.</li>
+    <li><strong>Filter action "Skip Inbox" not working</strong> — Check if another filter with higher priority is archiving or moving the same emails.</li>
+    <li><strong>Auto-forwarding stopped</strong> — If emails are no longer being forwarded, verify the forwarding address is still verified in Settings → Forwarding and POP/IMAP.</li>
+  </ol>
+  <div class="step-box">
+    <h3>How to Check and Edit Your Filters</h3>
+    <ol>
+      <li>Open Gmail → click the Settings gear icon → See all settings.</li>
+      <li>Go to the <strong>Filters</strong> tab at the top.</li>
+      <li>Review all active filters. Click "Edit" or "Delete" next to any filter.</li>
+      <li>Make sure the filter criteria match the emails you're trying to process.</li>
+      <li>Click "Validate" or manually apply the filter by selecting matching emails and choosing "Filter messages like these."</li>
+    </ol>
+  </div>
+  <div class="tip"><strong>Tip:</strong> To find emails that aren't being filtered correctly, use Gmail search with the criteria your filter uses. This shows you if matching emails exist and where they're ending up.</div>
+
+  <h2 id="mobile">8. Gmail Not Working on iPhone or Android</h2>
+  <div class="step-box">
+    <h3>iPhone Fixes</h3>
+    <ol>
+      <li>Force-close Gmail and reopen.</li>
+      <li>Update Gmail from the App Store.</li>
+      <li>Update iOS: Settings → General → Software Update.</li>
+      <li>Delete and reinstall Gmail.</li>
+      <li>Re-add your Google account: Settings → Mail (or Passwords & Accounts) → remove Gmail → add again.</li>
+      <li><strong>Check Screen Time restrictions</strong> — Settings → Screen Time → Content & Privacy Restrictions → ensure Gmail is allowed.</li>
+      <li><strong>Reset notifications</strong> — Settings → Notifications → Gmail → Reset Notifications.</li>
+    </ol>
+  </div>
+  <div class="step-box">
+    <h3>Android Fixes</h3>
+    <ol>
+      <li>Clear Gmail cache: Settings → Apps → Gmail → Storage → Clear Cache.</li>
+      <li>Clear data (this signs you out): Settings → Apps → Gmail → Storage → Clear Data → then sign back in.</li>
+      <li>Update Gmail from Google Play.</li>
+      <li>Check Google Play Services is up to date (required for Gmail sync).</li>
+      <li>Uninstall Gmail updates and reinstall (Gmail is a system app on most Android devices).</li>
+      <li><strong>Check app permissions</strong> — Settings → Apps → Gmail → Permissions → ensure Storage, SMS, and Notifications are allowed.</li>
+    </ol>
+  </div>
+
+  <h2 id="browser">9. Gmail Not Working in Browser</h2>
+  <ol>
+    <li>Use <strong>Basic HTML view</strong> if Gmail fails to load: scroll to the bottom of the Gmail login page and click "Load basic HTML".</li>
+    <li>Clear cache: Chrome → Ctrl+Shift+Delete → check "Cached images and files" → Clear data.</li>
+    <li>Disable extensions: try Chrome Incognito mode (Ctrl+Shift+N).</li>
+    <li>Change DNS to 8.8.8.8 (Google DNS) or 1.1.1.1 (Cloudflare).</li>
+    <li>Use the <a href="https://mail.google.com" target="_blank" rel="noopener">Gmail web app</a> instead of a desktop email client if the client fails to connect.</li>
+    <li>Check firewall/proxy settings — corporate networks often block Gmail.</li>
+  </ol>
+
+  <h2 id="imap">10. Gmail IMAP & POP Settings</h2>
+  <p>If you're setting up Gmail in a third-party email client (Apple Mail, Outlook, Thunderbird, etc.):</p>
+  <div class="step-box">
+    <h3>IMAP Settings (Recommended)</h3>
+    <ul>
+      <li><strong>IMAP Server:</strong> <code>imap.gmail.com</code></li>
+      <li><strong>Port:</strong> <code>993</code> (SSL required)</li>
+      <li><strong>Username:</strong> Your full Gmail address (<a href="https://knexio.xyz/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="71081e0431161c10181d5f121e1c">[email&#160;protected]</a>)</li>
+      <li><strong>Password:</strong> Your Gmail password OR an <a href="https://support.google.com/accounts/answer/185833" target="_blank" rel="noopener">App Password</a> (required if 2FA is on)</li>
+    </ul>
+  </div>
+  <div class="step-box">
+    <h3>POP Settings</h3>
+    <ul>
+      <li><strong>POP Server:</strong> <code>pop.gmail.com</code></li>
+      <li><strong>Port:</strong> <code>995</code> (SSL required)</li>
+      <li><strong>Username:</strong> Your full Gmail address</li>
+      <li><strong>Password:</strong> Your Gmail password OR an App Password</li>
+      <li><strong>POP download:</strong> Choose "All Mail" or "Mail from now on" depending on your needs.</li>
+    </ul>
+  </div>
+  <div class="step-box">
+    <h3>SMTP Settings (for sending)</h3>
+    <ul>
+      <li><strong>SMTP Server:</strong> <code>smtp.gmail.com</code></li>
+      <li><strong>Port:</strong> <code>587</code> (TLS/STARTTLS) or <code>465</code> (SSL)</li>
+      <li><strong>Username:</strong> Your full Gmail address</li>
+      <li><strong>Password:</strong> App Password (required if 2FA is on)</li>
+    </ul>
+  </div>
+  <div class="tip"><strong>Important:</strong> Before using IMAP/POP, enable access in Gmail: Settings → See all settings → Forwarding and POP/IMAP → Enable IMAP or Enable POP.</div>
+  <div class="step-box">
+    <h3>How to Enable 2FA and Get an App Password</h3>
+    <ol>
+      <li>Go to <a href="https://myaccount.google.com/security" target="_blank" rel="noopener">myaccount.google.com/security</a>.</li>
+      <li>Click <strong>2-Step Verification</strong> → follow the prompts to enable it.</li>
+      <li>Once 2FA is enabled, go to <strong>App passwords</strong>.</li>
+      <li>Select "Mail" and your device type → click Generate.</li>
+      <li>Copy the 16-character password and use it in your email client's SMTP/IMAP settings.</li>
+    </ol>
+
+  </div>
+
+  <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="5794572171" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+      <footer>
+      <p>Helpful guides and tutorials for games, apps, and digital tools. Solve your problems step by step.</p>
+            <p style="margin: 8px 0; font-size: 13px;">
+        <a href="/about/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">About</a>
+        <a href="/privacy/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Privacy</a>
+        <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
+        <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
+      </p>
+      <p>© 2026 Knexio. All rights reserved.</p>
+    </footer>
+</div>
+  <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script src="/knexio-bundle.js"></script>
+  <script src="../../cookie-consent.js"></script>
+  <!-- 中间广告 -->
+  <div class="ad-banner">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  </div>
+</body>
+</html>

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PIN Code Generator - Generate Secure PIN Numbers</title>
+<link rel="canonical" href="https://knexio.xyz/tools/pin-code-generator/">
+
+  <meta name="description" content="Generate random and secure PIN codes online. Create numeric PINs of any length for your security needs.">
+  <link rel="stylesheet" href="../global.css">
+  <style>
+    :root {
+      --bg: #0b1220;
+      --card: #111a2e;
+      --border: rgba(255,255,255,0.08);
+      --text: #fff;
+      --sub: #aab3c5;
+      --accent: #4f8cff;
+    }
+    
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      margin: 0;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    .back {
+      display: inline-block;
+      color: var(--sub);
+      text-decoration: none;
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+    
+    .back:hover {
+      color: var(--accent);
+    }
+    
+    h1 {
+      font-size: 32px;
+      margin: 0 0 10px 0;
+      color: var(--text);
+    }
+    
+    .subtitle {
+      color: var(--sub);
+      font-size: 18px;
+      margin: 0 0 30px 0;
+    }
+    
+    .card {
+      background: var(--card);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      padding: 30px;
+      margin-bottom: 30px;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--text);
+      font-weight: 500;
+    }
+    
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    
+    input[type="number"] {
+      width: 100%;
+      padding: 12px 16px;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      font-size: 15px;
+      box-sizing: border-box;
+      font-family: inherit;
+    }
+    
+    input[type="number"]:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+    
+    
+    
+    
+    
+    .btn:hover {
+      background: #3a7ae6;
+      transform: translateY(-1px);
+    }
+    
+    .btn-secondary {
+      background: rgba(255,255,255,0.1);
+      color: var(--text);
+    }
+    
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.15);
+    }
+    
+    
+    
+    .result-box.show {
+      display: block;
+    }
+    
+    .pin-display {
+      font-size: 28px;
+      font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+      letter-spacing: 8px;
+      text-align: center;
+      padding: 30px;
+      background: rgba(0,0,0,0.3);
+      border-radius: 8px;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 20px;
+      word-break: break-all;
+    }
+    
+    .history {
+      background: rgba(0,0,0,0.2);
+      border-radius: 8px;
+      padding: 20px;
+      margin-top: 20px;
+    }
+    
+    .history h3 {
+      margin: 0 0 15px 0;
+      color: var(--text);
+      font-size: 16px;
+    }
+    
+    .history-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 10px;
+    }
+    
+    .history-item {
+      font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+      font-size: 16px;
+      letter-spacing: 4px;
+      text-align: center;
+      padding: 10px;
+      background: rgba(79,140,255,0.1);
+      border-radius: 6px;
+      color: var(--accent);
+    }
+    
+    .section {
+      margin-bottom: 30px;
+    }
+    
+    .section h2 {
+      font-size: 22px;
+      margin: 0 0 15px 0;
+      color: var(--text);
+    }
+    
+    .section p {
+      color: var(--sub);
+      line-height: 1.7;
+      margin: 0 0 15px 0;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    .tools {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .tools a {
+      display: block;
+      padding: 15px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--sub);
+      text-decoration: none;
+      text-align: center;
+      transition: all 0.2s;
+      font-size: 14px;
+    }
+    
+    .tools a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+    
+    footer {
+      margin-top: 40px;
+      padding-top: 30px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--sub);
+      font-size: 14px;
+    }
+    
+    footer a {
+      color: var(--sub);
+      text-decoration: none;
+      margin: 0 10px;
+    }
+    
+    footer a:hover {
+      color: var(--accent);
+    }
+textarea,.text-area{width:100%;min-height:180px;background:var(--bg);border:1px solid var(--border);border-radius:12px;color:var(--text);padding:14px;font-size:15px;resize:vertical;box-sizing:border-box}
+textarea:focus,.text-area:focus{outline:none;border-color:var(--accent)}
+.btn-row{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+button,.btn,.btn-row button{flex:1;padding:10px;border-radius:10px;border:none;background:var(--accent);color:#fff;cursor:pointer;font-size:14px;transition:opacity 0.2s;box-sizing:border-box}
+button:hover,.btn:hover{opacity:0.9}
+button.secondary,.btn.secondary,.btn-outline,.btn-row button.secondary{background:transparent;border:1px solid var(--border);color:var(--sub)}
+button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.stat{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center}
+.stat span,.stat-value,.result-value,.age-value{font-size:24px;font-weight:700;color:var(--accent);display:block}
+.stat label,.stat-label,.result-label,.age-label{font-size:12px;color:var(--sub);display:block}
+.result-box{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;margin-top:16px;min-height:100px;white-space:pre-wrap;word-break:break-all;font-size:15px;line-height:1.7;box-sizing:border-box}
+@media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.btn-row{flex-direction:column}}
+  </style>
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "PIN Code Generator - Generate Secure PIN Numbers",
+  "description": "Generate random and secure PIN codes online. Create numeric PINs of any length for your security needs.",
+  "url": "https://knexio.xyz/tools/pin-code-generator/",
+  "publisher": {"@type": "Organization", "name": "Knexio", "url": "https://knexio.xyz"}
+}
+</script>
+
+</head>
+<body>
+  <div class="container">
+    <a class="back" href="../index.html">← Back to Tools</a>
+    
+    <h1>PIN Code Generator</h1>
+    <p class="subtitle">Generate secure random PIN numbers for your security needs</p>
+
+  <div class="ad-banner">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="5794572171" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  </div>
+
+</p>
+    
+    <div class="card">
+      <div class="form-grid">
+        <div>
+          <label for="length">PIN Length</label>
+          <input type="number" id="length" value="4" min="4" max="12">
+        </div>
+        
+        <div>
+          <label for="quantity">Quantity</label>
+          <input type="number" id="quantity" value="1" min="1" max="100">
+        </div>
+      </div>
+      
+      <div class="btn-row">
+        <button class="btn" onclick="generatePIN()">Generate PIN</button>
+        <button class="btn btn-secondary" onclick="clearAll()">Clear</button>
+      </div>
+      
+      <div class="result-box" id="resultBox">
+        <div class="pin-display" id="pinDisplay"></div>
+        <div class="btn-row">
+          <button class="btn btn-secondary" onclick="copyPIN()">Copy PIN</button>
+        </div>
+        
+        <div class="history" id="history" style="display:none;">
+          <h3>Generated PINs</h3>
+          <div class="history-list" id="historyList"></div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="section">
+      <h2>How to Use</h2>
+      <p>Our PIN code generator creates random, secure PIN numbers for any purpose. All generation happens locally in your browser.</p>
+      
+      
+      
+      
+      
+      
+    </div>
+    
+    <div class="section">
+      <h2>Related Tools</h2>
+      <div class="tools">
+        <a href="../password-generator/">Password Generator</a>
+        <a href="../random-string-generator/">Random String Generator</a>
+        <a href="../password-strength-checker/">Password Strength Checker</a>
+      </div>
+    </div>
+    
+      <div class="ad-banner">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  </div>
+
+  <footer>
+      <a href="/about/" style="color:var(--accent);text-decoration:none;margin:0 8px;">About</a>
+      <a href="/privacy/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Privacy</a>
+      <a href="/terms/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Terms</a>
+      <a href="/contact/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Contact</a>
+      <br><br>
+      © 2026 Knexio. All rights reserved.
+    </footer>
+  </div>
+  
+  <script>
+    let generatedPINs = [];
+    
+    function generatePIN() {
+      const length = parseInt(document.getElementById('length').value) || 4;
+      const quantity = parseInt(document.getElementById('quantity').value) || 1;
+      const resultBox = document.getElementById('resultBox');
+      const pinDisplay = document.getElementById('pinDisplay');
+      const history = document.getElementById('history');
+      const historyList = document.getElementById('historyList');
+      
+      if (length < 4 || length > 12) {
+        alert('PIN length must be between 4 and 12');
+        return;
+      }
+      
+      if (quantity < 1 || quantity > 100) {
+        alert('Quantity must be between 1 and 100');
+        return;
+      }
+      
+      generatedPINs = [];
+      
+      for (let i = 0; i < quantity; i++) {
+        let pin = '';
+        for (let j = 0; j < length; j++) {
+          pin += Math.floor(Math.random() * 10);
+        }
+        generatedPINs.push(pin);
+      }
+      
+      pinDisplay.textContent = generatedPINs.join('\n');
+      resultBox.classList.add('show');
+      
+      if (quantity > 1) {
+        history.style.display = 'block';
+        historyList.innerHTML = generatedPINs.map(pin => `<div class="history-item">${pin}</div>`).join('');
+      } else {
+        history.style.display = 'none';
+      }
+    }
+    
+    function copyPIN() {
+      const pinText = generatedPINs.join('\n');
+      navigator.clipboard.writeText(pinText).then(() => {
+        alert('PIN(s) copied to clipboard!');
+      });
+    }
+    
+    function clearAll() {
+      document.getElementById('length').value = 4;
+      document.getElementById('quantity').value = 1;
+      document.getElementById('resultBox').classList.remove('show');
+      document.getElementById('pinDisplay').textContent = '';
+      document.getElementById('history').style.display = 'none';
+      document.getElementById('historyList').innerHTML = '';
+      generatedPINs = [];
+    }
+  
+// AdSense initialization
+</script>
+<script src="/knexio-bundle.js"></script>
+</body>
+</html>

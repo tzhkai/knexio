@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Color Picker – HEX, RGB, HSL Converter | Knexio</title>
+<meta name="description" content="Convert between HEX, RGB, and HSL color formats. Pick colors visually, generate palettes, and copy CSS. Free online tool.">
+
+<link rel="canonical" href="https://knexio.xyz/tools/color-picker/">
+
+<meta property="og:title" content="Color Picker">
+<meta property="og:description" content="Convert between HEX, RGB, and HSL color formats. Pick colors and generate palettes.">
+<meta property="og:url" content="https://knexio.xyz/tools/color-picker/">
+<meta property="og:type" content="WebApplication">
+<meta property="og:site_name" content="Knexio">
+<meta property="og:image" content="https://knexio.xyz/og-image.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Color Picker",
+  "url": "https://knexio.xyz/tools/color-picker/",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "All",
+  "description": "Free online color picker. Convert between HEX, RGB, and HSL formats with visual color selection.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+
+<style>
+:root{
+  --bg:#0b1220;
+  --card:#111a2e;
+  --border:rgba(255,255,255,.08);
+  --text:#fff;
+  --sub:#aab3c5;
+  --accent:#4f8cff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:system-ui,-apple-system;
+  background:var(--bg);
+  color:var(--text);
+}
+.container{max-width:900px;margin:auto;padding:50px 16px}
+
+.back{
+  display:inline-block;
+  color:var(--sub);
+  text-decoration:none;
+  font-size:14px;
+  margin-bottom:24px;
+  transition:color 0.2s;
+}
+.back:hover{color:var(--accent)}
+
+h1{font-size:32px;margin-bottom:8px}
+h2{font-size:22px;margin-top:30px;margin-bottom:10px}
+.subtitle{color:var(--sub);margin-bottom:24px}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:20px;
+  margin-bottom:20px;
+}
+
+input[type="text"]{width:100%;padding:12px 16px;background:var(--bg);border:1px solid var(--border);border-radius:12px;color:var(--text);font-size:15px;box-sizing:border-box;font-family:inherit}
+input[type="text"]:focus{outline:none;border-color:var(--accent)}
+input[type="text"][readonly]{background:rgba(255,255,255,.05)}
+
+.color-preview{width:100%;height:200px;border-radius:12px;margin-bottom:20px;border:2px solid var(--border)}
+
+.input-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px}
+.input-group{display:flex;flex-direction:column}
+.input-group label{display:block;font-size:13px;color:var(--sub);margin-bottom:8px}
+
+.sliders{margin-bottom:20px}
+.slider-row{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.slider-row label{width:30px;margin-bottom:0;font-size:14px;color:var(--text)}
+.slider-row input[type="range"]{flex:1;cursor:pointer}
+.slider-row span{width:50px;text-align:right;color:var(--sub);font-size:14px}
+
+.btn-row{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+button,.btn,.btn-row button{flex:1;padding:10px;border-radius:10px;border:none;background:var(--accent);color:#fff;cursor:pointer;font-size:14px;transition:opacity 0.2s;box-sizing:border-box}
+button:hover,.btn:hover{opacity:0.9}
+button.secondary,.btn.secondary,.btn-outline,.btn-row button.secondary{background:transparent;border:1px solid var(--border);color:var(--sub)}
+button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+
+.palette{display:grid;grid-template-columns:repeat(10,1fr);gap:8px;margin-top:20px}
+.palette-color{width:100%;padding-bottom:100%;border-radius:8px;cursor:pointer;transition:transform 0.2s}
+.palette-color:hover{transform:scale(1.1)}
+
+.section p{color:var(--sub);line-height:1.7;margin-bottom:10px}
+
+.tools a{
+  display:inline-block;
+  margin:6px;
+  padding:8px 14px;
+  border-radius:8px;
+  border:1px solid var(--border);
+  color:var(--sub);
+  text-decoration:none;
+}
+.tools a:hover{border-color:var(--accent);color:var(--accent)}
+
+.ad-banner{margin:32px 0;text-align:center}
+
+.faq-item{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:20px;
+  margin-bottom:12px;
+}
+.faq-item h3{font-size:16px;margin-bottom:8px;color:var(--text)}
+.faq-item p{color:var(--sub);font-size:14px;line-height:1.7;margin:0}
+
+footer{
+  margin-top:40px;
+  text-align:center;
+  color:var(--sub);
+  font-size:13px;
+}
+footer p{margin-bottom:8px}
+footer a{
+  color:var(--sub);
+  text-decoration:none;
+  margin:0 10px;
+  transition:color 0.2s;
+}
+footer a:hover{color:var(--accent)}
+
+@media(max-width:600px){
+  .input-grid{grid-template-columns:1fr}
+  .palette{grid-template-columns:repeat(5,1fr)}
+  .btn-row{flex-direction:column}
+}
+</style>
+</head>
+
+<body><div class="container">
+
+<a class="back" href="../index.html">← Back to Tools</a>
+
+<h1>Color Picker</h1>
+<p class="subtitle">Convert between HEX, RGB, and HSL color formats. Pick colors visually and generate palettes.</p>
+
+<div class="ad-banner">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="5794572171"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<div class="card">
+  <div class="color-preview" id="colorPreview"></div>
+
+  <div class="input-grid">
+    <div class="input-group">
+      <label>HEX</label>
+      <input type="text" id="hexInput" value="#4f8cff" maxlength="7">
+    </div>
+    <div class="input-group">
+      <label>RGB</label>
+      <input type="text" id="rgbInput" value="rgb(79, 140, 255)" readonly>
+    </div>
+    <div class="input-group">
+      <label>HSL</label>
+      <input type="text" id="hslInput" value="hsl(217, 100%, 65%)" readonly>
+    </div>
+  </div>
+
+  <div class="sliders">
+    <div class="slider-row">
+      <label>H</label>
+      <input type="range" id="hueSlider" min="0" max="360" value="217">
+      <span id="hueValue">217°</span>
+    </div>
+    <div class="slider-row">
+      <label>S</label>
+      <input type="range" id="satSlider" min="0" max="100" value="100">
+      <span id="satValue">100%</span>
+    </div>
+    <div class="slider-row">
+      <label>L</label>
+      <input type="range" id="lightSlider" min="0" max="100" value="65">
+      <span id="lightValue">65%</span>
+    </div>
+  </div>
+
+  <div class="btn-row">
+    <button onclick="randomColor()">🎲 Random Color</button>
+    <button class="secondary" onclick="copyCSS()">📋 Copy CSS</button>
+  </div>
+
+  <div class="palette" id="palette"></div>
+</div>
+
+<h2>Free Online Color Picker</h2>
+<div class="section">
+<p>This color picker helps you explore and convert colors between different formats. Adjust hue, saturation, and lightness with sliders, or enter a HEX code directly. Generate color palettes and copy CSS code instantly.</p>
+<p>Perfect for web designers, developers, and anyone working with colors. All conversions happen instantly in your browser.</p>
+</div>
+
+<h2>How It Works</h2>
+<div class="section">
+<p>The color picker uses HSL (Hue, Saturation, Lightness) as its primary color model. Adjust the sliders to change the hue (0-360°), saturation (0-100%), and lightness (0-100%). The tool automatically converts the color to HEX and RGB formats.</p>
+<p>Click on any color in the palette to quickly select different shades. Use the Random Color button to explore new color combinations. Copy the CSS code with one click to use in your projects.</p>
+</div>
+
+<h2>Frequently Asked Questions</h2>
+
+<div class="faq-item">
+  <h3>What are HEX, RGB, and HSL?</h3>
+  <p>HEX is a hexadecimal color code (e.g., #4f8cff). RGB uses red, green, and blue values from 0-255. HSL uses hue (0-360°), saturation (0-100%), and lightness (0-100%). All three represent the same color in different formats.</p>
+</div>
+
+<div class="faq-item">
+  <h3>How do I pick a color?</h3>
+  <p>Use the HSL sliders to adjust the color visually. The hue slider changes the color, the saturation slider controls color intensity, and the lightness slider adjusts brightness. Alternatively, type a HEX code directly.</p>
+</div>
+
+<div class="faq-item">
+  <h3>What is the color palette?</h3>
+  <p>The palette shows 10 different shades of your selected color, ranging from dark (10% lightness) to light (90% lightness). Click any shade to select it instantly.</p>
+</div>
+
+<div class="faq-item">
+  <h3>How do I copy the color code?</h3>
+  <p>Click the "Copy CSS" button to copy the color code in CSS format (e.g., background-color: #4f8cff;). The code is copied to your clipboard and ready to paste into your project.</p>
+</div>
+
+<div class="faq-item">
+  <h3>Is this color picker free to use?</h3>
+  <p>Yes, this color picker is completely free. No registration or signup is required. Just open the page and start exploring colors.</p>
+</div>
+
+<div class="faq-item">
+  <h3>Are my color choices saved or stored anywhere?</h3>
+  <p>No. All color selections and conversions happen entirely in your browser. No data is sent to any server or stored anywhere.</p>
+</div>
+
+<h2>Related Tools</h2>
+<div class="tools">
+<a href="/tools/hex-to-rgb/">HEX to RGB</a>
+<a href="/tools/gradient-generator/">Gradient Generator</a>
+<a href="/tools/hsl-to-rgb-converter/">HSL to RGB</a>
+</div>
+
+<div class="ad-banner" style="margin-top:40px">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="9504968504"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<footer>
+  <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
+  <p style="margin: 8px 0; font-size: 13px;">
+    <a href="/about/" style="color:var(--accent);text-decoration:none;margin:0 8px;">About</a>
+    <a href="/privacy/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Privacy</a>
+    <a href="/terms/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Terms</a>
+    <a href="/contact/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Contact</a>
+  </p>
+  <p>© 2026 Knexio. All rights reserved.</p>
+</footer>
+
+</div>
+
+<script>
+let currentH = 217, currentS = 100, currentL = 65;
+
+function hslToRgb(h, s, l) {
+  s /= 100;
+  l /= 100;
+  const k = n => (n + h / 30) % 12;
+  const a = s * Math.min(l, 1 - l);
+  const f = n => l - a * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1)));
+  return [Math.round(f(0) * 255), Math.round(f(8) * 255), Math.round(f(4) * 255)];
+}
+
+function rgbToHex(r, g, b) {
+  return '#' + [r, g, b].map(x => x.toString(16).padStart(2, '0')).join('');
+}
+
+function updateColor() {
+  const [r, g, b] = hslToRgb(currentH, currentS, currentL);
+  const hex = rgbToHex(r, g, b);
+  document.getElementById('colorPreview').style.background = hex;
+  document.getElementById('hexInput').value = hex;
+  document.getElementById('rgbInput').value = `rgb(${r}, ${g}, ${b})`;
+  document.getElementById('hslInput').value = `hsl(${currentH}, ${currentS}%, ${currentL}%)`;
+  generatePalette();
+}
+
+function generatePalette() {
+  const palette = document.getElementById('palette');
+  palette.innerHTML = '';
+  for (let i = 0; i < 10; i++) {
+    const div = document.createElement('div');
+    div.className = 'palette-color';
+    div.style.background = `hsl(${currentH}, ${currentS}%, ${10 + i * 8}%)`;
+    div.onclick = () => {
+      currentL = 10 + i * 8;
+      document.getElementById('lightSlider').value = currentL;
+      document.getElementById('lightValue').textContent = currentL + '%';
+      updateColor();
+    };
+    palette.appendChild(div);
+  }
+}
+
+document.getElementById('hueSlider').oninput = function() {
+  currentH = parseInt(this.value);
+  document.getElementById('hueValue').textContent = currentH + '°';
+  updateColor();
+};
+
+document.getElementById('satSlider').oninput = function() {
+  currentS = parseInt(this.value);
+  document.getElementById('satValue').textContent = currentS + '%';
+  updateColor();
+};
+
+document.getElementById('lightSlider').oninput = function() {
+  currentL = parseInt(this.value);
+  document.getElementById('lightValue').textContent = currentL + '%';
+  updateColor();
+};
+
+document.getElementById('hexInput').onchange = function() {
+  const hex = this.value;
+  if (!/^#[0-9A-Fa-f]{6}$/.test(hex)) return;
+  const r = parseInt(hex.slice(1, 3), 16);
+  const g = parseInt(hex.slice(3, 5), 16);
+  const b = parseInt(hex.slice(5, 7), 16);
+
+  const [h, s, l] = rgbToHsl(r, g, b);
+  currentH = h;
+  currentS = s;
+  currentL = l;
+  document.getElementById('hueSlider').value = h;
+  document.getElementById('satSlider').value = s;
+  document.getElementById('lightSlider').value = l;
+  document.getElementById('hueValue').textContent = h + '°';
+  document.getElementById('satValue').textContent = s + '%';
+  document.getElementById('lightValue').textContent = l + '%';
+  updateColor();
+};
+
+function rgbToHsl(r, g, b) {
+  r /= 255;
+  g /= 255;
+  b /= 255;
+  const max = Math.max(r, g, b);
+  const min = Math.min(r, g, b);
+  let h, s, l = (max + min) / 2;
+
+  if (max === min) {
+    h = s = 0;
+  } else {
+    const d = max - min;
+    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+    switch (max) {
+      case r: h = ((g - b) / d + (g < b ? 6 : 0)) / 6; break;
+      case g: h = ((b - r) / d + 2) / 6; break;
+      case b: h = ((r - g) / d + 4) / 6; break;
+    }
+  }
+  return [Math.round(h * 360), Math.round(s * 100), Math.round(l * 100)];
+}
+
+function randomColor() {
+  currentH = Math.floor(Math.random() * 360);
+  currentS = Math.floor(Math.random() * 50) + 50;
+  currentL = Math.floor(Math.random() * 40) + 30;
+  document.getElementById('hueSlider').value = currentH;
+  document.getElementById('satSlider').value = currentS;
+  document.getElementById('lightSlider').value = currentL;
+  document.getElementById('hueValue').textContent = currentH + '°';
+  document.getElementById('satValue').textContent = currentS + '%';
+  document.getElementById('lightValue').textContent = currentL + '%';
+  updateColor();
+}
+
+function copyCSS() {
+  const css = `background-color: ${document.getElementById('hexInput').value};`;
+  navigator.clipboard.writeText(css);
+  alert('CSS copied to clipboard!');
+}
+
+updateColor();
+</script>
+<script src="/knexio-bundle.js"></script>
+</body>
+</html>

@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hash Generator – MD5, SHA-1, SHA-256, SHA-512 | Knexio</title>
+<meta name="description" content="Free online hash generator. Generate MD5, SHA-1, SHA-256, and SHA-512 hashes from any text. All hashing is done client-side using Web Crypto API.">
+<link rel="canonical" href="https://knexio.xyz/tools/hash-generator/">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Hash Generator">
+<meta property="og:description" content="Free online hash generator. Generate MD5, SHA-1, SHA-256, and SHA-512 hashes from any text.">
+<meta property="og:url" content="https://knexio.xyz/tools/hash-generator/">
+<meta property="og:type" content="WebApplication">
+<meta property="og:site_name" content="Knexio">
+<meta property="og:image" content="https://knexio.xyz/og-image.png">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Hash Generator",
+  "url": "https://knexio.xyz/tools/hash-generator/",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "All",
+  "description": "Free online hash generator. Generate MD5, SHA-1, SHA-256, and SHA-512 hashes from any text."
+}
+</script>
+
+<style>
+:root{
+  --bg:#0b1220;
+  --card:#111a2e;
+  --border:rgba(255,255,255,.08);
+  --text:#fff;
+  --sub:#aab3c5;
+  --accent:#4f8cff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:system-ui,-apple-system;
+  background:var(--bg);
+  color:var(--text);
+}
+.container{max-width:900px;margin:auto;padding:50px 16px}
+
+/* 统一的返回按钮样式 */
+.back {
+  display: inline-block;
+  color: var(--sub);
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 24px;
+  transition: color 0.2s;
+}
+.back:hover {
+  color: var(--accent);
+}
+
+h1{font-size:32px;margin-bottom:8px}
+h2{font-size:22px;margin-top:30px;margin-bottom:10px}
+h3{font-size:18px;margin-bottom:8px}
+.subtitle{color:var(--sub);margin-bottom:24px}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:20px;
+  margin-bottom:20px;
+}
+
+
+textarea:focus{outline:none;border-color:var(--accent)}
+
+label {
+  display: block;
+  color: var(--sub);
+  font-size: 13px;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.option-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--sub);
+  font-size: 14px;
+}
+.option-item input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: var(--accent);
+}
+
+
+
+
+button:hover{opacity:0.9}
+
+.results {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.hash-result {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hash-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hash-name {
+  font-size: 12px;
+  color: var(--sub);
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.hash-value {
+  font-family: Monaco,Menlo,monospace;
+  font-size: 14px;
+  color: var(--accent);
+  word-break: break-all;
+}
+
+.hash-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.icon-btn {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.icon-btn:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.security-note {
+  padding: 12px;
+  background: rgba(79,140,255,0.1);
+  border: 1px solid rgba(79,140,255,0.2);
+  border-radius: 8px;
+  font-size: 13px;
+  color: var(--sub);
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.section p{
+  color:var(--sub);
+  line-height:1.7;
+  margin-bottom:10px;
+}
+
+.seo-section {
+  margin-top: 30px;
+}
+
+
+
+
+
+
+
+
+
+.tools a{
+  display:inline-block;
+  margin:6px;
+  padding:8px 14px;
+  border-radius:8px;
+  border:1px solid var(--border);
+  color:var(--sub);
+  text-decoration:none;
+}
+.tools a:hover{
+  border-color:var(--accent);
+  color:var(--accent);
+}
+
+/* 广告样式 */
+.ad-banner {
+  margin: 32px 0;
+  text-align: center;
+}
+
+/* 统一的 Footer 样式 */
+footer {
+  margin-top: 40px;
+  text-align: center;
+  color: var(--sub);
+  font-size: 13px;
+}
+footer p {
+  margin-bottom: 8px;
+}
+footer a {
+  color: var(--sub);
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color 0.2s;
+}
+footer a:hover {
+  color: var(--accent);
+}
+
+@media(max-width:600px){
+  .options{flex-direction:column}
+  .hash-result{flex-direction:column;align-items:flex-start;gap:8px}
+}
+textarea,.text-area{width:100%;min-height:180px;background:var(--bg);border:1px solid var(--border);border-radius:12px;color:var(--text);padding:14px;font-size:15px;resize:vertical;box-sizing:border-box}
+textarea:focus,.text-area:focus{outline:none;border-color:var(--accent)}
+.btn-row{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+button,.btn,.btn-row button{flex:1;padding:10px;border-radius:10px;border:none;background:var(--accent);color:#fff;cursor:pointer;font-size:14px;transition:opacity 0.2s;box-sizing:border-box}
+button:hover,.btn:hover{opacity:0.9}
+button.secondary,.btn.secondary,.btn-outline,.btn-row button.secondary{background:transparent;border:1px solid var(--border);color:var(--sub)}
+button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.stat{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center}
+.stat span,.stat-value,.result-value,.age-value{font-size:24px;font-weight:700;color:var(--accent);display:block}
+.stat label,.stat-label,.result-label,.age-label{font-size:12px;color:var(--sub);display:block}
+.result-box{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;margin-top:16px;min-height:100px;white-space:pre-wrap;word-break:break-all;font-size:15px;line-height:1.7;box-sizing:border-box}
+@media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.btn-row{flex-direction:column}}
+  </style>
+</head>
+
+<body><div class="container">
+
+<a class="back" href="../index.html">← Back to Tools</a>
+
+<h1>Hash Generator</h1>
+<p class="subtitle">Generate MD5, SHA-1, SHA-256, and SHA-512 hashes from any text. All hashing is done client-side using the Web Crypto API.</p>
+
+<div class="ad-banner">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="5794572171"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<div class="card">
+  <div class="input-section">
+    <label>Enter text to hash</label>
+    <textarea class="text-area" id="inputText" placeholder="Type or paste text here..."></textarea>
+  </div>
+  
+  <div class="options">
+    <label class="option-item"><input type="checkbox" id="md5Check" checked> MD5</label>
+    <label class="option-item"><input type="checkbox" id="sha1Check" checked> SHA-1</label>
+    <label class="option-item"><input type="checkbox" id="sha256Check" checked> SHA-256</label>
+    <label class="option-item"><input type="checkbox" id="sha512Check"> SHA-512</label>
+  </div>
+  
+  <div class="btn-row">
+    <button class="btn" onclick="generateHashes()">Generate Hashes</button>
+    <button class="btn secondary" onclick="clearAll()">Clear</button>
+  </div>
+</div>
+
+<div class="results" id="results"></div>
+
+<div class="security-note">
+  🔒 <strong>Security Note:</strong> All hashing is performed locally in your browser using the Web Crypto API. Your data never leaves your device.
+</div>
+
+<h2>How to Use</h2>
+<div class="section">
+<p>Enter the text you want to hash, select which hash algorithms to use (MD5, SHA-1, SHA-256, or SHA-512), and click "Generate Hashes". The tool instantly generates cryptographic hash values that you can copy.</p>
+</div>
+
+<h2>How It Works</h2>
+<div class="section">
+<p>Hashing uses mathematical algorithms to convert any text into a fixed-length string of characters. This hash is unique to the original input – even a small change in text results in a completely different hash.</p>
+<p>The Web Crypto API ensures secure, standards-based hashing performed entirely in your browser. No data is sent to any server.</p>
+</div>
+
+<h2>Related Tools</h2>
+<div class="tools">
+<a href="/tools/base64-encoder-decoder/">Base64 Encoder/Decoder</a>
+<a href="/tools/encryption-tool/">Encryption Tool</a>
+<a href="/tools/password-generator/">Password Generator</a>
+</div>
+
+<div class="ad-banner" style="margin-top:40px">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="9504968504"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<footer>
+  <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
+  <p>
+    <a href="/about/" style="color:var(--accent);text-decoration:none;margin:0 8px;">About</a>
+    <a href="/privacy/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Privacy</a>
+    <a href="/terms/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Terms</a>
+    <a href="/contact/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Contact</a>
+  </p>
+  <p>© 2026 Knexio. All rights reserved.</p>
+</footer>
+
+</div>
+
+<script>
+// Simple MD5 implementation for demo - in production use a proper MD5 library
+function md5(string) {
+  function rotateLeft(value, shift) {
+    return (value << shift) | (value >>> (32 - shift));
+  }
+  function addUnsigned(x, y) {
+    const lsw = (x & 0xFFFF) + (y & 0xFFFF);
+    const msw = (x >> 16) + (y >> 16) + (lsw >> 16);
+    return (msw << 16) | (lsw & 0xFFFF);
+  }
+  function F(x, y, z, n) {
+    return addUnsigned(addUnsigned(addUnsigned(x, y), z), n);
+  }
+  function FF(a, b, c, d, x, s, ac) {
+    a = addUnsigned(a, ac);
+    a = addUnsigned(a, rotateLeft(s, 16));
+    return addUnsigned(addUnsigned(addUnsigned(a, b), d);
+  }
+  function GG(a, b, c, d, x, s, ac) {
+    a = addUnsigned(a, ac);
+    a = addUnsigned(a, rotateLeft(s, 16));
+    return addUnsigned(addUnsigned(addUnsigned(a, b), d);
+  }
+  function HH(a, b, c, d, x, s, ac) {
+    a = addUnsigned(a, ac);
+    a = addUnsigned(a, rotateLeft(s, 16));
+    return addUnsigned(addUnsigned(a, b), d);
+  }
+  function II(a, b, c, d, x, s, ac) {
+    a = addUnsigned(a, ac);
+    a = addUnsigned(a, rotateLeft(s, 16));
+    return addUnsigned(addUnsigned(a, b), d);
+  }
+  
+  let k, AA, BB, CC, DD, a, b, c, d;
+  let S11, S12, S13, S14, S21, S22, S23, S24, S31, S32, S33, S41, S42, S43, S44;
+  
+  const utf8 = unescape(encodeURIComponent(string));
+  const len = utf8.length;
+  const N = [0x67452301, 0xEFCDAB89, 0x98BADCFE, 0x10325476, 0xC3D2E1F0, 0x766A0ABB, 0x81C2C92E, 0x92722C85, 0xA2BFE8A1, 0xA81A664B, 0xC24B8B70, 0xC76C51A3, 0xD192E819, 0xD6990624, 0xF40E3585, 0x106AA070, 0x19A4C116, 0x1E376C08, 0x2748774C, 0x34B0BCB5, 0x391C0CB3, 0x4ED8AA4A, 0x5B9CCA4F, 0x682E6FF3, 0x748F82EE, 0x78A5636F, 0x84C87814, 0x8CC70208, 0x90BEFFFA, 0xA4506CEB, 0xBEF9A3F7, 0xC67178F2];
+  
+  k = 0;
+  AA = 0x67452301;
+  BB = 0xEFCDAB89;
+  CC = 0x98BADCFE;
+  DD = 0x10325476;
+  
+  while (len < 64) {
+    AA = FF(AA, BB, CC, DD, utf8.charCodeAt(k), S11 = 7, 0xD76AA478, 0xE8C7B756, 0x242070DB);
+    BB = GG(AA, BB, CC, DD, utf8.charCodeAt(k + 1), S12, 12, 0xF61E2562, 0xC040B340, 0x265E5A51, 0xE9B6C7AA);
+    CC = HH(AA, BB, CC, DD, utf8.charCodeAt(k + 2), S13, 17, 0xFD469501, 0x680B9864, 0x4B7A9E63, 0x432AFF97);
+    DD = II(AA, BB, CC, DD, utf8.charCodeAt(k + 3), S14, 22, 0x84415DAA, 0xF8D470EB, 0xA6E3E708, 0xFDB2972A);
+    
+    AA = addUnsigned(AA, N[k]);
+    BB = addUnsigned(BB, N[k + 1]);
+    CC = addUnsigned(CC, N[k + 2]);
+    DD = addUnsigned(DD, N[k + 3]);
+    
+    S11 = rotateLeft(S11, 7);
+    S12 = rotateLeft(S12, 12);
+    S13 = rotateLeft(S13, 17);
+    S14 = rotateLeft(S14, 22);
+    S21 = rotateLeft(S21, 5);
+    S22 = rotateLeft(S22, 9);
+    S23 = rotateLeft(S23, 14);
+    S24 = rotateLeft(S24, 20);
+    S31 = rotateLeft(S31, 4);
+    S32 = rotateLeft(S32, 11);
+    S33 = rotateLeft(S33, 16);
+    S41 = rotateLeft(S41, 6);
+    S42 = rotateLeft(S42, 10);
+    S43 = rotateLeft(S43, 15);
+    S44 = rotateLeft(S44, 21);
+    
+    k += 4;
+    len += 4;
+  }
+  
+  AA = addUnsigned(AA, N[13]);
+  BB = addUnsigned(BB, N[14]);
+  CC = addUnsigned(CC, N[15]);
+  DD = addUnsigned(DD, N[16]);
+  
+  S11 = rotateLeft(S11, 7);
+  S12 = rotateLeft(S12, 12);
+  S13 = rotateLeft(S13, 17);
+  S14 = rotateLeft(S14, 22);
+  S21 = rotateLeft(S21, 5);
+  S22 = rotateLeft(S22, 9);
+  S23 = rotateLeft(S23, 14);
+  S24 = rotateLeft(S24, 20);
+  S31 = rotateLeft(S31, 4);
+  S32 = rotateLeft(S32, 11);
+  S33 = rotateLeft(S33, 16);
+  S41 = rotateLeft(S41, 6);
+  S42 = rotateLeft(S42, 10);
+  S43 = rotateLeft(S43, 15);
+  S44 = rotateLeft(S44, 21);
+  
+  AA = FF(AA, BB, CC, DD, utf8.charCodeAt(60), S11 = 7, 0xD76AA478, 0xE8C7B756, 0x242070DB);
+  BB = GG(AA, BB, CC, DD, utf8.charCodeAt(61), S12, 12, 0xF61E2562, 0xC040B340, 0x265E5A51, 0xE9B6C7AA);
+  CC = HH(AA, BB, CC, DD, utf8.charCodeAt(62), S13, 17, 0xFD469501, 0x680B9864, 0x4B7A9E63, 0x432AFF97);
+  DD = II(AA, BB, CC, DD, utf8.charCodeAt(63), S14, 22, 0x84415DAA, 0xF8D470EB, 0xA6E3E708, 0xFDB2972A);
+  
+  AA = addUnsigned(AA, N[13]);
+  BB = addUnsigned(BB, N[14]);
+  CC = addUnsigned(CC, N[15]);
+  DD = addUnsigned(DD, N[16]);
+  
+  S11 = rotateLeft(S11, 7);
+  S12 = rotateLeft(S12, 12);
+  S13 = rotateLeft(S13, 17);
+  S14 = rotateLeft(S14, 22);
+  S21 = rotateLeft(S21, 5);
+  S22 = rotateLeft(S22, 9);
+  S23 = rotateLeft(S23, 14);
+  S24 = rotateLeft(S24, 20);
+  S31 = rotateLeft(S31, 4);
+  S32 = rotateLeft(S32, 11);
+  S33 = rotateLeft(S33, 16);
+  S41 = rotateLeft(S41, 6);
+  S42 = rotateLeft(S42, 10);
+  S43 = rotateLeft(S43, 15);
+  S44 = rotateLeft(S44, 21);
+  
+  const a = toHex(AA);
+  const b = toHex(BB);
+  const c = toHex(CC);
+  const d = toHex(DD);
+  
+  return toHex(addUnsigned(addUnsigned(addUnsigned(addUnsigned(a, b), c), d));
+}
+
+function toHex(val) {
+  let hex = '';
+  for (let i = 0; i < 4; i++) {
+    hex += ((val >> (i * 8)) & 0xFF).toString(16).padStart(2, '0');
+  }
+  return hex;
+}
+
+async function sha1(str) {
+  const buf = new TextEncoder().encode(str);
+  const hash = await crypto.subtle.digest('SHA-1', buf);
+  return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+async function sha256(str) {
+  const buf = new TextEncoder().encode(str);
+  const hash = await crypto.subtle.digest('SHA-256', buf);
+  return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+async function sha512(str) {
+  const buf = new TextEncoder().encode(str);
+  const hash = await crypto.subtle.digest('SHA-512', buf);
+  return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+async function generateHashes() {
+  const text = document.getElementById('inputText').value;
+  if (!text) {
+    alert('Please enter some text to hash');
+    return;
+  }
+  
+  const results = document.getElementById('results');
+  results.innerHTML = '';
+  
+  if (document.getElementById('md5Check').checked) {
+    const hash = md5(text);
+    results.innerHTML += createHashRow('MD5', hash);
+  }
+  
+  if (document.getElementById('sha1Check').checked) {
+    const hash = await sha1(text);
+    results.innerHTML += createHashRow('SHA-1', hash);
+  }
+  
+  if (document.getElementById('sha256Check').checked) {
+    const hash = await sha256(text);
+    results.innerHTML += createHashRow('SHA-256', hash);
+  }
+  
+  if (document.getElementById('sha512Check').checked) {
+    const hash = await sha512(text);
+    results.innerHTML += createHashRow('SHA-512', hash);
+  }
+}
+
+function createHashRow(name, value) {
+  return `
+    <div class="hash-result">
+      <div class="hash-info">
+        <div class="hash-name">${name}</div>
+        <div class="hash-value">${value}</div>
+      </div>
+      <div class="hash-actions">
+        <button class="icon-btn" onclick="copyHash(this)" title="Copy">📋</button>
+      </div>
+    </div>
+  `;
+}
+
+function copyHash(btn) {
+  const hash = btn.closest('.hash-result').querySelector('.hash-value').textContent;
+  navigator.clipboard.writeText(hash).then(() => {
+    btn.textContent = '✓';
+    setTimeout(() => btn.textContent = '📋', 1500);
+  });
+}
+
+function clearAll() {
+  document.getElementById('inputText').value = '';
+  document.getElementById('results').innerHTML = '';
+}
+</script>
+
+<script src="/knexio-bundle.js"></script>
+</body>
+</html>

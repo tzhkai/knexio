@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tic Tac Toe - Free Online Game | Play Now | Knexio</title>
+  <meta name="description" content="Play Tic Tac Toe free online. Tic Tac Toe is a fun browser game that you can play for free. Enjoy this entertaining game with simple controls and enga... No download required. Works on all devices." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="canonical" href="https://knexio.xyz/games/tic-tac-toe/" />
+  <meta property="og:title" content="Play Tic Tac Toe Free Online" />
+  <meta property="og:description" content="Tic Tac Toe is a fun browser game that you can play for free. Enjoy this entertaining game with simp..." />
+  <meta property="og:url" content="https://knexio.xyz/games/tic-tac-toe/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Knexio" />
+  <meta name="robots" content="index, follow" />
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Game","name":"Tic-Tac-Toe","description":"Classic 3-in-a-row strategy game vs AI or 2 players","url":"https://knexio.xyz/games/tic-tac-toe/","gamePlatform":"Browser","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can I play Tic-Tac-Toe against the computer?","acceptedAnswer":{"@type":"Answer","text":"Yes. The AI uses the minimax algorithm making it unbeatable on Hard mode. Easy mode picks randomly so you can win."}},{"@type":"Question","name":"Can two players use the same device?","acceptedAnswer":{"@type":"Answer","text":"Yes! Switch to 2-Player mode and take turns clicking on the board."}},{"@type":"Question","name":"Is Tic-Tac-Toe always a draw against a perfect player?","acceptedAnswer":{"@type":"Answer","text":"Yes, with optimal play from both sides, Tic-Tac-Toe always ends in a draw. Our Hard AI plays optimally, so try to draw against it!"}}]}</script>
+<style>
+
+    :root{--bg:#0b1220;--bg2:#070d1a;--panel:#111a2e;--border:rgba(255,255,255,0.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff;--green:#34d399;--red:#f87171;--orange:#f97316;--purple:#a78bfa}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:linear-gradient(180deg,var(--bg),var(--bg2));color:var(--text);min-height:100vh}
+    a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+    .wrap{width:fit-content;margin:0 auto;padding:28px 16px 80px;text-align:center}
+    .back{display:inline-block;margin-bottom:20px;color:var(--sub);font-size:14px;float:left}
+    .clearfix::after{content:'';display:table;clear:both}
+    h1{font-size:30px;margin-bottom:6px}
+    .subtitle{color:var(--sub);font-size:14px;margin-bottom:20px}
+    .ad-banner{margin:16px 0}
+    .mode-row{display:flex;gap:10px;justify-content:center;margin-bottom:16px;flex-wrap:wrap}
+    .mode-btn{padding:7px 18px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--sub);font-size:13px;cursor:pointer;transition:all 0.15s}
+    .mode-btn.active{background:var(--accent);border-color:var(--accent);color:#fff}
+    .diff-row{display:flex;gap:8px;justify-content:center;margin-bottom:20px}
+    .diff-btn{padding:5px 14px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--sub);font-size:12px;cursor:pointer;transition:all 0.15s}
+    .diff-btn.active{background:var(--purple);border-color:var(--purple);color:#fff}
+    .stats{display:flex;justify-content:center;gap:20px;margin-bottom:20px}
+    .stat-item{text-align:center}
+    .stat-val{font-size:22px;font-weight:700}
+    .stat-label{font-size:11px;color:var(--sub);text-transform:uppercase;letter-spacing:0.05em}
+    .board{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;width:fit-content;margin:0 auto 20px}
+    div.cell{width:80px;height:80px}.cell{aspect-ratio:1;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:12px;font-size:48px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background 0.15s;user-select:none}
+    .cell:hover:not(.taken){background:rgba(79,140,255,0.12)}
+    .cell.taken{cursor:default}
+    .cell.x{color:var(--accent)}
+    .cell.o{color:var(--orange)}
+    .cell.win-cell{background:rgba(52,211,153,0.15);border-color:var(--green)}
+    .status-text{font-size:17px;font-weight:600;min-height:26px;margin-bottom:14px}
+    .status-win{color:var(--green)} .status-lose{color:var(--red)} .status-draw{color:var(--orange)}
+    .btn{padding:9px 26px;background:var(--accent);color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;transition:opacity 0.15s}
+    .btn:hover{opacity:0.85}
+    .seo{margin-top:60px;text-align:left}
+    .seo h2{font-size:22px;margin-bottom:10px}
+    .seo p{font-size:14px;color:var(--sub);line-height:1.8;margin-bottom:12px}
+    footer{margin-top:60px;font-size:13px;color:var(--sub)}footer a{color:var(--accent)}
+
+    /* ==================== 移动端优化 ==================== */
+
+    /* 平板和手机 (≤768px) */
+    @media (max-width: 768px) {
+      /* 容器布局优化 */
+      .container, .wrap {
+        padding: 40px 15px 80px !important;
+        max-width: 100% !important;
+      }
+
+      /* 标题字体优化 */
+      h1 {
+        font-size: 28px !important;
+        line-height: 1.3 !important;
+      }
+
+      h2 {
+        font-size: 20px !important;
+        margin-top: 36px !important;
+        margin-bottom: 10px !important;
+      }
+
+      h3 {
+        font-size: 17px !important;
+      }
+
+      /* 正文内容优化 */
+      p, li, .intro, .subtitle {
+        font-size: 14px !important;
+        line-height: 1.7 !important;
+      }
+
+      /* 段落间距优化 */
+      p, ul, ol {
+        margin-bottom: 16px !important;
+      }
+
+      /* 列表优化 */
+      ul, ol {
+        padding-left: 18px !important;
+      }
+
+      li {
+        margin-bottom: 6px !important;
+      }
+
+      /* 内容块优化 */
+      .main-panel, .step-block, .notice, .extra-info {
+        padding: 16px !important;
+        border-radius: 12px !important;
+        margin: 16px 0 !important;
+      }
+
+      /* 按钮和输入框优化 */
+      .btn {
+        padding: 14px !important;
+        font-size: 15px !important;
+        min-height: 48px !important;
+      }
+
+      .input-group input {
+        padding: 12px !important;
+        font-size: 15px !important;
+      }
+
+      /* 网格系统优化 */
+      .age-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px !important;
+      }
+
+      /* 广告位优化 */
+      .ad-banner {
+        margin: 16px 0 !important;
+        min-height: 50px !important;
+      }
+
+      /* 游戏页面优化 */
+      .grid-container {
+        padding: 8px !important;
+      }
+
+      .grid { margin: 0 auto;
+        gap: 8px !important;
+      }
+
+      .cell {
+        font-size: 20px !important;
+        border-radius: 6px !important;
+      }
+
+      .score-box {
+        min-width: 70px !important;
+        padding: 6px 12px !important;
+      }
+
+      .score-val {
+        font-size: 18px !important;
+      }
+
+      /* 工具页面优化 */
+      .age-main {
+        font-size: 36px !important;
+      }
+
+      .age-value {
+        font-size: 24px !important;
+      }
+
+      .age-label {
+        font-size: 11px !important;
+      }
+
+      /* 引导页面优化 */
+      .intro {
+        border-left-width: 2px !important;
+        padding-left: 12px !important;
+        margin-bottom: 32px !important;
+      }
+
+      .faq-item {
+        margin-bottom: 20px !important;
+      }
+
+      .faq-item strong {
+        font-size: 15px !important;
+      }
+    }
+
+    /* 小手机优化 (≤480px) */
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 24px !important;
+      }
+
+      h2 {
+        font-size: 18px !important;
+      }
+
+      .container, .wrap {
+        padding: 32px 12px 60px !important;
+      }
+
+      .main-panel, .step-block, .notice {
+        padding: 14px !important;
+      }
+
+      .btn {
+        padding: 12px !important;
+        font-size: 14px !important;
+      }
+
+      .age-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
+    /* 触摸设备优化 */
+    @media (hover: none) and (pointer: coarse) {
+      button, .btn, a[onclick], .cell {
+        min-height: 44px !important;
+        min-width: 44px !important;
+      }
+
+      input, select, textarea {
+        font-size: 16px !important;
+      }
+        }
+
+</style>
+  <meta name="keywords" content="tic tac toe game, free online game, browser game, play online, casual game" /></head>
+<body><a href="../../cdn-cgi/content-EJdOJq0Rs9swxTNrv0NMgjO2iVAqh8U8K09Y_ghwfN8.html" aria-hidden="true" rel="nofollow noopener" style="display: none !important; visibility: hidden !important"></a>
+<div class="wrap">
+  <div class="clearfix"><a class="back" href="../index.html">← Back to Games</a></div>
+  <h1>Tic-Tac-Toe</h1>
+  <div class="subtitle">Get three in a row to win!</div>
+
+  <div class="mode-row">
+    <button class="mode-btn active" id="modeVsAI" onclick="setMode('ai')">vs Computer</button>
+    <button class="mode-btn" id="mode2P" onclick="setMode('2p')">2 Players</button>
+  </div>
+  <div class="diff-row" id="diffRow">
+    <button class="diff-btn active" id="diffEasy" onclick="setDiff('easy')">Easy</button>
+    <button class="diff-btn" id="diffHard" onclick="setDiff('hard')">Hard (Minimax)</button>
+  </div>
+
+  <div class="stats">
+    <div class="stat-item"><div class="stat-val" id="xWins" style="color:var(--accent)">0</div><div class="stat-label">X Wins</div></div>
+    <div class="stat-item"><div class="stat-val" id="draws" style="color:var(--orange)">0</div><div class="stat-label">Draws</div></div>
+    <div class="stat-item"><div class="stat-val" id="oWins" style="color:var(--orange)">0</div><div class="stat-label">O Wins</div></div>
+  </div>
+
+  <div class="status-text" id="statusText">Your turn (X)</div>
+  <div class="board" id="board"><div class="cell" data-i="0"></div><div class="cell" data-i="1"></div><div class="cell" data-i="2"></div><div class="cell" data-i="3"></div><div class="cell" data-i="4"></div><div class="cell" data-i="5"></div><div class="cell" data-i="6"></div><div class="cell" data-i="7"></div><div class="cell" data-i="8"></div>
+  </div>
+
+  <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="5794572171" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+<!-- ==================== 游戏玩法说明 - SEO优化内容 ==================== -->
+<div class="gameplay-section" style="margin: 60px auto 0; max-width: 800px; padding: 32px 24px; background: var(--panel); border-radius: 18px; border: 1px solid var(--border);">
+    <h2 style="font-size: 28px; margin-bottom: 30px; color: var(--text-main); display: flex; align-items: center;">
+        <span style="background: var(--accent); color: white; width: 36px; height: 36px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 15px; font-size: 18px;">🎮</span>
+        How to Play Tic Tac Toe
+    </h2>
+
+    <div style="margin-bottom: 30px;">
+        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--text-main);">Game Description</h3>
+        <p style="font-size: 15px; color: var(--text-sub); line-height: 1.7; margin-bottom: 20px;">
+            Tic Tac Toe is a fun browser game that you can play for free. Enjoy this entertaining game with simple controls and engaging gameplay.
+        </p>
+    </div>
+
+    <div style="margin-bottom: 30px;">
+        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--text-main);">Basic Rules & Controls</h3>
+        <ol style="font-size: 15px; color: var(--text-sub); line-height: 1.7; padding-left: 25px; margin-bottom: 20px;">
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">Use your mouse, keyboard, or touch controls to play</strong>
+            </li>
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">Follow the on-screen instructions</strong>
+            </li>
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">Try to achieve the highest score possible</strong>
+            </li>
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">The game may have different modes or difficulty levels</strong>
+            </li>
+
+        </ol>
+    </div>
+
+    <div style="margin-bottom: 30px;">
+        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--text-main);">Pro Tips & Strategies</h3>
+        <ul style="font-size: 15px; color: var(--text-sub); line-height: 1.7; padding-left: 25px; margin-bottom: 20px;">
+
+            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;">
+                <span style="position: absolute; left: -15px; color: var(--accent);">✓</span>
+                Read the instructions carefully before playing
+            </li>
+
+            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;">
+                <span style="position: absolute; left: -15px; color: var(--accent);">✓</span>
+                Practice to improve your skills
+            </li>
+
+            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;">
+                <span style="position: absolute; left: -15px; color: var(--accent);">✓</span>
+                Take breaks if you get frustrated
+            </li>
+
+            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;">
+                <span style="position: absolute; left: -15px; color: var(--accent);">✓</span>
+                Try different strategies to find what works best
+            </li>
+
+        </ul>
+    </div>
+
+    <div style="background: rgba(79, 140, 255, 0.1); padding: 20px; border-radius: 12px; border-left: 4px solid var(--accent);">
+        <p style="font-size: 15px; color: var(--text-sub); margin: 0;">
+            <strong style="color: var(--accent);">💡 Quick Start:</strong> Just click/tap to begin! No registration required. 
+            All Knexio games work directly in your browser with no downloads needed.
+        </p>
+    </div>
+</div>
+
+<!-- ==================== 广告位优化 ==================== -->
+<div class="ad-section" style="margin-top: 40px; text-align: center;">
+    <ins class="adsbygoogle" 
+         style="display:block; background: var(--panel); border-radius: 12px; padding: 15px;"
+         data-ad-client="ca-pub-2596567349043393" 
+         data-ad-slot="9504968504" 
+         data-ad-format="auto" 
+         data-full-width-responsive="true">
+    </ins>
+    <p style="font-size: 12px; color: var(--text-sub); margin-top: 8px; opacity: 0.7;">
+        Advertisement supports free games development
+    </p>
+</div>
+
+<!-- ==================== 游戏常见问题 (FAQ) ==================== -->
+<div class="faq-section" style="margin: 60px auto 0; max-width: 800px; padding: 32px 24px; background: var(--panel); border-radius: 18px;">
+    <h2 style="font-size: 28px; margin-bottom: 30px; color: var(--text-main);">Frequently Asked Questions</h2>
+
+    <div class="faq-list">
+        <div class="faq-item" style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid var(--border);">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                Is this game free to play?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                Yes, all games on Knexio are completely free to play. There are no hidden charges, subscription fees, or in-app purchases. We support our games through non-intrusive advertisements.
+            </p>
+        </div>
+
+        <div class="faq-item" style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid var(--border);">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                Do I need to download anything to play?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                No downloads required! All our games run directly in your web browser. They work on desktop computers, laptops, tablets, and smartphones. Just visit the page and start playing.
+            </p>
+        </div>
+
+        <div class="faq-item" style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid var(--border);">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                How do I save my game progress?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                Most games automatically save your high scores and progress in your browser's local storage. Your best scores will be remembered even if you close the browser, as long as you don't clear your browsing data.
+            </p>
+        </div>
+
+        <div class="faq-item" style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid var(--border);">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                Can I play on mobile devices?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                Absolutely! All Knexio games are fully responsive and optimized for mobile devices. Touch controls are implemented for games that require precise input. The interface automatically adapts to your screen size.
+            </p>
+        </div>
+
+        <div class="faq-item" style="margin-bottom: 25px;">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                Is there sound in the games?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                Most games include optional sound effects. Look for a sound/mute button in the game interface. You can enable or disable sound based on your preference. We keep sound subtle and non-intrusive.
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== 结构化数据 (Schema.org) ==================== -->
+<script type="application/ld+json">
+{{
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "{game_display_name}",
+    "description": "{template['description'][:150]}...",
+    "applicationCategory": "GameApplication",
+    "gamePlatform": "Web Browser",
+    "operatingSystem": "All",
+    "url": "https://knexio.xyz/games/{game_name}/",
+    "genre": "Browser Game",
+    "playMode": "SinglePlayer",
+    "publisher": {{
+        "@type": "Organization",
+        "name": "Knexio",
+        "url": "https://knexio.xyz"
+    }},
+    "offers": {{
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+    }},
+    "keywords": "{', '.join(template['keywords'])}"
+}}
+</script>
+
+<script type="application/ld+json">
+{{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {{
+            "@type": "Question",
+            "name": "Is this game free to play?",
+            "acceptedAnswer": {{
+                "@type": "Answer",
+                "text": "Yes, all games on Knexio are completely free to play. There are no hidden charges, subscription fees, or in-app purchases. We support our games through non-intrusive advertisements."
+            }}
+        }},
+        {{
+            "@type": "Question",
+            "name": "Do I need to download anything to play?",
+            "acceptedAnswer": {{
+                "@type": "Answer",
+                "text": "No downloads required! All our games run directly in your web browser. They work on desktop computers, laptops, tablets, and smartphones. Just visit the page and start playing."
+            }}
+        }},
+        {{
+            "@type": "Question",
+            "name": "How do I save my game progress?",
+            "acceptedAnswer": {{
+                "@type": "Answer",
+                "text": "Most games automatically save your high scores and progress in your browser's local storage. Your best scores will be remembered even if you close the browser, as long as you don't clear your browsing data."
+            }}
+        }}
+    ]
+}}
+</script>
+
+<!-- ==================== 相关游戏推荐 ==================== -->
+<div class="related-games" style="margin: 60px auto 0; max-width: 800px; padding: 32px 24px;">
+    <h2 style="font-size: 24px; margin-bottom: 20px; color: var(--text-main);">More Fun Games to Try</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+        <a href="../snake/index.html" style="display: block; background: var(--panel); border-radius: 12px; padding: 20px; text-decoration: none; color: var(--text-main); border: 1px solid var(--border); transition: all 0.2s;">
+            <div style="font-weight: bold; margin-bottom: 8px;">🐍 Snake</div>
+            <div style="font-size: 13px; color: var(--text-sub);">Classic arcade game with growing snake</div>
+        </a>
+        <a href="../tetris/index.html" style="display: block; background: var(--panel); border-radius: 12px; padding: 20px; text-decoration: none; color: var(--text-main); border: 1px solid var(--border); transition: all 0.2s;">
+            <div style="font-weight: bold; margin-bottom: 8px;">🧱 Tetris</div>
+            <div style="font-size: 13px; color: var(--text-sub);">Iconic block-stacking puzzle game</div>
+        </a>
+        <a href="../wordle/index.html" style="display: block; background: var(--panel); border-radius: 12px; padding: 20px; text-decoration: none; color: var(--text-main); border: 1px solid var(--border); transition: all 0.2s;">
+            <div style="font-weight: bold; margin-bottom: 8px;">🔤 Wordle</div>
+            <div style="font-size: 13px; color: var(--text-sub);">Popular word guessing puzzle</div>
+        </a>
+        <a href="../index.html" style="display: block; background: var(--panel); border-radius: 12px; padding: 20px; text-decoration: none; color: var(--text-main); border: 1px solid var(--border); transition: all 0.2s; text-align: center;">
+            <div style="font-weight: bold;">🎮 View All Games →</div>
+        </a>
+    </div>
+</div>
+    <footer>
+      <p>Free online games to play anytime. Enjoy classic games, puzzles, and entertainment.</p>
+            <p style="margin: 8px 0; font-size: 13px;">
+        <a href="/about/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">About</a>
+        <a href="/privacy/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Privacy</a>
+        <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
+        <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
+      </p>
+      <p>© 2026 Knexio. All rights reserved.</p>
+    </footer>
+</div>
+
+<script>
+let board=Array(9).fill(null), current='X', mode='ai', diff='easy', xW=0, oW=0, dr=0, gameOver=false;
+const WINS=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+
+function setMode(m){mode=m;document.getElementById('modeVsAI').className='mode-btn'+(m==='ai'?' active':'');document.getElementById('mode2P').className='mode-btn'+(m==='2p'?' active':'');document.getElementById('diffRow').style.display=m==='ai'?'flex':'none';resetGame();}
+function setDiff(d){diff=d;document.getElementById('diffEasy').className='diff-btn'+(d==='easy'?' active':'');document.getElementById('diffHard').className='diff-btn'+(d==='hard'?' active':'');resetGame();}
+
+function resetGame(){board=Array(9).fill(null);current='X';gameOver=false;setStatus('Your turn (X)','');render();}
+
+function setStatus(t,cls){const el=document.getElementById('statusText');el.textContent=t;el.className='status-text '+cls;}
+
+function checkWin(b,p){return WINS.find(([a,bb,c])=>b[a]===p&&b[bb]===p&&b[c]===p)||null;}
+
+function render(){
+  const boardEl=document.getElementById('board');
+  const winLine=checkWin(board,'X')||checkWin(board,'O');
+  boardEl.innerHTML=board.map((v,i)=>{
+    let cls='cell'+(v?' taken':'');
+    if(v==='X')cls='cell taken x';if(v==='O')cls='cell taken o';
+    const isWinCell=winLine&&winLine.includes(i);
+    if(isWinCell)cls+=' win-cell';
+    return '<div class="'+cls+'" data-i="'+i+'">'+(v||'')+'</div>';
+  }).join('');
+}
+
+// 事件委托方式，更可靠
+document.getElementById('board').addEventListener('click',function(e){
+  const cell=e.target.closest('[data-i]');
+  if(!cell)return;
+  const i=parseInt(cell.dataset.i);
+  if(gameOver||board[i])return;
+  board[i]=current;
+  if(checkResult())return;
+  current=current==='X'?'O':'X';
+  render();
+  if(mode==='ai'&&current==='O'&&!gameOver)setTimeout(aiMove,350);
+  else updateStatus();
+});
+
+function updateStatus(){
+  if(!gameOver)setStatus(`${current}'s turn`,'');
+}
+
+function checkResult(){
+  render();
+  const win=checkWin(board,'X')||checkWin(board,'O');
+  if(win){
+    gameOver=true;
+    const p=board[win[0]];
+    if(p==='X'){xW++;document.getElementById('xWins').textContent=xW;setStatus(mode==='ai'?'🎉 You win!':'🎉 X wins!','status-win');}
+    else{oW++;document.getElementById('oWins').textContent=oW;setStatus(mode==='ai'?'😞 Computer wins!':'🎉 O wins!','status-lose');}
+    return true;
+  }
+  if(board.every(c=>c)){gameOver=true;dr++;document.getElementById('draws').textContent=dr;setStatus("It's a draw!",'status-draw');return true;}
+  return false;
+}
+
+function aiMove(){
+  if(diff==='easy'){
+    const empty=board.map((v,i)=>v?null:i).filter(i=>i!==null);
+    board[empty[Math.floor(Math.random()*empty.length)]]='O';
+  } else {
+    let best=-Infinity,bestIdx=0;
+    board.forEach((v,i)=>{if(!v){board[i]='O';const s=minimax(board,0,false);board[i]=null;if(s>best){best=s;bestIdx=i;}}});
+    board[bestIdx]='O';
+  }
+  if(!checkResult()){current='X';render();setStatus('Your turn (X)','');}
+}
+
+function minimax(b,depth,isMax){
+  if(checkWin(b,'O'))return 10-depth;
+  if(checkWin(b,'X'))return depth-10;
+  if(b.every(c=>c))return 0;
+  if(isMax){let best=-Infinity;b.forEach((v,i)=>{if(!v){b[i]='O';best=Math.max(best,minimax(b,depth+1,false));b[i]=null;}});return best;}
+  else{let best=Infinity;b.forEach((v,i)=>{if(!v){b[i]='X';best=Math.min(best,minimax(b,depth+1,true));b[i]=null;}});return best;}
+}
+
+resetGame();
+</script>
+<script src="/knexio-bundle.js"></script>
+</body>
+</html>

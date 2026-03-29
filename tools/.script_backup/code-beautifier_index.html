@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>✨ Code Beautifier & Formatter</title>
+<meta name="description" content="">
+
+<link rel="canonical" href="">
+
+<!-- Open Graph -->
+<meta property="og:title" content="✨ Code Beautifier & Formatter">
+<meta property="og:description" content="">
+<meta property="og:url" content="">
+<meta property="og:type" content="WebApplication">
+<meta property="og:site_name" content="Knexio">
+<meta property="og:image" content="https://knexio.xyz/og-image.png">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is this tool for?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "This is a free online tool for [purpose]. It helps you [function] quickly and easily."
+        }
+      }
+    ]
+  }
+  
+</script>
+
+<style>
+
+:root{
+  --bg:#0b1220;
+  --card:#111a2e;
+  --border:rgba(255,255,255,.08);
+  --text:#fff;
+  --sub:#aab3c5;
+  --accent:#4f8cff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:system-ui,-apple-system;
+  background:var(--bg);
+  color:var(--text);
+}
+.container{max-width:900px;margin:auto;padding:50px 16px}
+
+/* 统一的返回按钮样式 */
+.back {
+  display: inline-block;
+  color: var(--sub);
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 24px;
+  transition: color 0.2s;
+}
+.back:hover {
+  color: var(--accent);
+}
+
+h1{font-size:32px;margin-bottom:8px}
+h2{font-size:22px;margin-top:30px;margin-bottom:10px}
+.subtitle{color:var(--sub);margin-bottom:24px}
+
+.badge{
+  display:inline-block;
+  padding:4px 10px;
+  border-radius:20px;
+  background:rgba(79,140,255,.15);
+  color:var(--accent);
+  font-size:12px;
+  margin-bottom:10px;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:20px;
+  margin-bottom:20px;
+}
+
+textarea{
+  width:100%;
+  min-height:180px;
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:12px;
+  color:var(--text);
+  padding:14px;
+  font-size:15px;
+}
+textarea:focus{outline:none;border-color:var(--accent)}
+
+.btn-row{display:flex;gap:10px;margin-top:12px}
+button{
+  flex:1;
+  padding:10px;
+  border-radius:10px;
+  border:none;
+  background:var(--accent);
+  color:#fff;
+  cursor:pointer;
+}
+button.secondary{
+  background:transparent;
+  border:1px solid var(--border);
+  color:var(--sub);
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-top:16px;
+}
+.stat{
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:16px;
+  text-align:center;
+}
+.stat span{
+  font-size:24px;
+  font-weight:700;
+  color:var(--accent);
+}
+.stat label{
+  display:block;
+  font-size:12px;
+  color:var(--sub);
+}
+
+.tip{
+  font-size:13px;
+  color:var(--sub);
+  margin-top:10px;
+}
+
+.section p{
+  color:var(--sub);
+  line-height:1.7;
+  margin-bottom:10px;
+}
+
+.tools a{
+  display:inline-block;
+  margin:6px;
+  padding:8px 14px;
+  border-radius:8px;
+  border:1px solid var(--border);
+  color:var(--sub);
+  text-decoration:none;
+}
+.tools a:hover{
+  border-color:var(--accent);
+  color:var(--accent);
+}
+
+/* 广告样式 */
+.ad-banner {
+  margin: 32px 0;
+  text-align: center;
+}
+
+/* 统一的 Footer 样式 */
+footer {
+  margin-top: 40px;
+  text-align: center;
+  color: var(--sub);
+  font-size: 13px;
+}
+footer p {
+  margin-bottom: 8px;
+}
+footer a {
+  color: var(--sub);
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color 0.2s;
+}
+footer a:hover {
+  color: var(--accent);
+}
+
+@media(max-width:600px){
+  .stats{grid-template-columns:1fr 1fr}
+}
+
+</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2596567349043393" crossorigin="anonymous"></script>
+</head>
+
+<body><div class="container">
+
+<a class="back" href="../index.html">← Back to Tools</a>
+
+<h1>✨ Code Beautifier & Formatter</h1>
+<p class="subtitle">Paste minified or messy code and get clean, properly indented output. Supports JavaScript, JSON, CSS, HTML, and SQL. 100% browser-based — nothing is sent to any server.</p>
+
+<div class="ad-banner">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="3153457922"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<div class="container">
+  <a class="back" href="../index.html">← Back to Tools</a>
+  <h1>✨ Code Beautifier & Formatter</h1>
+  <p class="subtitle">Paste minified or messy code and get clean, properly indented output. Supports JavaScript, JSON, CSS, HTML, and SQL. 100% browser-based — nothing is sent to any server.</p>
+
+  <!-- Ad Slot 1: Top -->
+
+  <div class="lang-row">
+    <div class="btn-row">
+      <button class="btn lang-btn active" onclick="setLang('json')">JSON</button>
+    <button class="btn lang-btn" onclick="setLang('js')">JavaScript</button>
+    <button class="btn lang-btn" onclick="setLang('css')">CSS</button>
+    <button class="btn lang-btn" onclick="setLang('html')">HTML</button>
+    <button class="btn lang-btn" onclick="setLang('sql')">SQL</button>
+    </div></div>
+
+  <div class="options-row">
+    <span class="opt-label">Indent Size:</span>
+    <select id="indentSize" onchange="beautify()">
+      <option value="2" selected>2 spaces</option>
+      <option value="4">4 spaces</option>
+      <option value="tab">Tab</option>
+    </select>
+    <span class="opt-label" id="sortKeysWrap">Sort Keys (JSON):</span>
+    <input type="checkbox" id="sortKeys" onchange="beautify()" style="margin-right:4px;" />
+    <span class="opt-label">Minify:</span>
+    <input type="checkbox" id="minifyMode" onchange="beautify()" style="margin-right:4px;" />
+  </div>
+
+  <div class="editor-grid">
+    <div class="editor-pane">
+      <div class="pane-header">
+        <span class="pane-label">Input</span>
+        <div class="pane-actions">
+          </div>
+      </div>
+      <textarea class="text-area" id="inputCode" placeholder="Paste your code here..." oninput="beautify()"></textarea>
+      <div class="stat-row" id="inputStats"></div>
+    </div>
+    <div class="editor-pane">
+      <div class="pane-header">
+        <span class="pane-label">Beautified Output</span>
+        <div class="pane-actions">
+          </div>
+      </div>
+      <textarea class="text-area" id="outputCode" readonly placeholder="Formatted code will appear here..."></textarea>
+      <div id="errorMsg" style="display:none;" class="error"></div>
+      <div class="stat-row" id="outputStats"></div>
+    </div>
+  </div>
+
+  <div class="center-btn-row">
+    </div>
+
+  <!-- Ad Slot 2: Mid -->
+
+  <h2>Supported Languages</h2>
+  <div class="feat-grid">
+    <div class="feat-card">
+      <h3>JSON</h3>
+      <p>Parse and pretty-print JSON with configurable indent. Detects syntax errors with line references. Optional key sorting for stable diffs.</p>
+    </div>
+    <div class="feat-card">
+      <h3>JavaScript</h3>
+      <p>Re-indent JS code using brace-based heuristics. Handles arrow functions, object literals, and nested blocks. Also minifies by removing whitespace/comments.</p>
+    </div>
+    <div class="feat-card">
+      <h3>CSS</h3>
+      <p>Format CSS rules with one property per line. Adds spacing after colons and around braces. Great for debugging minified stylesheets.</p>
+    </div>
+    <div class="feat-card">
+      <h3>HTML</h3>
+      <p>Indent HTML tags with proper nesting. Handles void elements, inline vs block elements, and nested attributes cleanly.</p>
+    </div>
+    <div class="feat-card">
+      <h3>SQL</h3>
+      <p>Uppercase SQL keywords (SELECT, FROM, WHERE…), indent subqueries, and add newlines after major clauses for readability.</p>
+    </div>
+
+  </div>
+
+  <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3153457922" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+<script>
+  let currentLang = 'json';
+
+  function setLang(lang) {
+    currentLang = lang;
+    document.querySelectorAll('.lang-btn').forEach((b,i) => b.classList.toggle('active', ['json','js','css','html','sql'][i] === lang));
+    beautify();
+  }
+
+  function getIndent() {
+    const v = document.getElementById('indentSize').value;
+    return v === 'tab' ? '\t' : ' '.repeat(+v);
+  }
+
+  function beautify() {
+    const input = document.getElementById('inputCode').value;
+    const errEl = document.getElementById('errorMsg');
+    errEl.style.display = 'none';
+    if (!input.trim()) { document.getElementById('outputCode').value = ''; updateStats('',''); return; }
+
+    const minify = document.getElementById('minifyMode').checked;
+    let output = '';
+
+    try {
+      if (currentLang === 'json') output = beautifyJSON(input, minify);
+      else if (currentLang === 'js') output = beautifyJS(input, minify);
+      else if (currentLang === 'css') output = beautifyCSS(input, minify);
+      else if (currentLang === 'html') output = beautifyHTML(input, minify);
+      else if (currentLang === 'sql') output = beautifySQL(input, minify);
+    } catch(e) {
+      errEl.textContent = '⚠️ ' + e.message;
+      errEl.style.display = 'block';
+      output = input;
+    }
+
+    document.getElementById('outputCode').value = output;
+    updateStats(input, output);
+  }
+
+  function beautifyJSON(input, minify) {
+    const parsed = JSON.parse(input);
+    if (document.getElementById('sortKeys').checked) sortObj(parsed);
+    return minify ? JSON.stringify(parsed) : JSON.stringify(parsed, null, getIndent());
+  }
+
+  function sortObj(obj) {
+    if (Array.isArray(obj)) { obj.forEach(sortObj); return; }
+    if (obj && typeof obj === 'object') {
+      const keys = Object.keys(obj).sort();
+      keys.forEach(k => { const v = obj[k]; delete obj[k]; obj[k] = v; sortObj(v); });
+    }
+  }
+
+  function beautifyJS(input, minify) {
+    if (minify) return input.replace(/\/\*[\s\S]*?\*\/|\/\/.*/g,'').replace(/\s+/g,' ').trim();
+    const ind = getIndent();
+    let level = 0, out = '', inStr = false, strChar = '';
+    for (let i = 0; i < input.length; i++) {
+      const c = input[i];
+      if (inStr) { out += c; if (c === strChar && input[i-1] !== '\\') inStr = false; continue; }
+      if (c === '"' || c === "'" || c === '`') { inStr = true; strChar = c; out += c; continue; }
+      if (c === '{' || c === '[') { out += c + '\n' + ind.repeat(++level); }
+      else if (c === '}' || c === ']') { out = out.replace(/[\s]+$/, ''); out += '\n' + ind.repeat(--level) + c; }
+      else if (c === ';') { out += c + '\n' + ind.repeat(level); }
+      else if (c === ',') { out += c + '\n' + ind.repeat(level); }
+      else if (c === '\n') { continue; }
+      else { out += c; }
+    }
+    return out.replace(/\n\s*\n/g,'\n').trim();
+  }
+
+  function beautifyCSS(input, minify) {
+    if (minify) return input.replace(/\/\*[\s\S]*?\*\//g,'').replace(/\s+/g,' ').replace(/\s*([{}:;,>~+])\s*/g,'$1').trim();
+    const ind = getIndent();
+    return input
+      .replace(/\s+/g,' ')
+      .replace(/\{\s*/g,' {\n' + ind)
+      .replace(/;\s*/g, ';\n' + ind)
+      .replace(/\s*\}/g, '\n}\n')
+      .replace(/,\s*/g, ',\n')
+      .replace(/\n\s*\n/g,'\n')
+      .trim();
+  }
+
+  function beautifyHTML(input, minify) {
+    if (minify) return input.replace(/\s+/g,' ').replace(/>\s+</g,'><').trim();
+    const ind = getIndent();
+    const VOID = new Set(['area','base','br','col','embed','hr','img','input','link','meta','param','source','track','wbr']);
+    let out = ''; let level = 0;
+    input.replace(/<!--[\s\S]*?-->|<\/?[a-z][^>]*>|[^<]+/gi, m => {
+      if (m.startsWith('</')) {
+        level = Math.max(0, level-1);
+        out += ind.repeat(level) + m.trim() + '\n';
+      } else if (m.startsWith('<')) {
+        const tag = (m.match(/<([a-z]+)/i)||[])[1]?.toLowerCase();
+        out += ind.repeat(level) + m.trim() + '\n';
+        if (tag && !VOID.has(tag) && !m.endsWith('/>')) level++;
+      } else if (m.trim()) {
+        out += ind.repeat(level) + m.trim() + '\n';
+      }
+    });
+    return out.trim();
+  }
+
+  function beautifySQL(input, minify) {
+    if (minify) return input.replace(/\s+/g,' ').trim().toUpperCase().replace(/ (FROM|WHERE|JOIN|ON|GROUP BY|ORDER BY|HAVING|LIMIT|UNION|INSERT|UPDATE|DELETE|SET|VALUES) /g, '\n$1\n');
+    const keywords = ['SELECT','FROM','WHERE','AND','OR','JOIN','LEFT JOIN','RIGHT JOIN','INNER JOIN','OUTER JOIN','ON','GROUP BY','ORDER BY','HAVING','LIMIT','UNION','UNION ALL','INSERT INTO','UPDATE','DELETE FROM','SET','VALUES','AS','DISTINCT','COUNT','SUM','AVG','MAX','MIN'];
+    let sql = input.replace(/\s+/g, ' ');
+    keywords.forEach(kw => { sql = sql.replace(new RegExp('\\b' + kw + '\\b', 'gi'), '\n' + kw); });
+    return sql.trim().replace(/\n\s*\n/g,'\n');
+  }
+
+  function updateStats(inp, out) {
+    const lines = s => s ? s.split('\n').length : 0;
+    const bytes = s => new Blob([s]).size;
+    const fmt = n => n >= 1024 ? (n/1024).toFixed(1)+' KB' : n+' B';
+    document.getElementById('inputStats').innerHTML = inp ? `<span class="stat"><b>${lines(inp)}</b> lines</span><span class="stat"><b>${inp.length}</b> chars</span><span class="stat"><b>${fmt(bytes(inp))}</b></span>` : '';
+    document.getElementById('outputStats').innerHTML = out ? `<span class="stat"><b>${lines(out)}</b> lines</span><span class="stat"><b>${out.length}</b> chars</span><span class="stat"><b>${fmt(bytes(out))}</b></span>` : '';
+  }
+
+  function copyOutput() {
+    const text = document.getElementById('outputCode').value;
+    if (!text) return;
+    navigator.clipboard.writeText(text).then(() => {
+      const btn = document.getElementById('copyOutBtn');
+      btn.textContent = '✅ Copied!';
+      btn.style.color = '#22c55e';
+      setTimeout(() => { btn.textContent = '📋 Copy'; btn.style.color = ''; }, 2000);
+    });
+  }
+
+  function swapCode() {
+    const a = document.getElementById('inputCode').value;
+    const b = document.getElementById('outputCode').value;
+    document.getElementById('inputCode').value = b;
+    beautify();
+  }
+
+  function clearAll() {
+    document.getElementById('inputCode').value = '';
+    document.getElementById('outputCode').value = '';
+    document.getElementById('inputStats').innerHTML = '';
+    document.getElementById('outputStats').innerHTML = '';
+    document.getElementById('errorMsg').style.display = 'none';
+  }
+
+  async function pasteClipboard() {
+    try {
+      const t = await navigator.clipboard.readText();
+      document.getElementById('inputCode').value = t;
+      beautify();
+    } catch(e) { alert('Clipboard access denied. Please paste manually (Ctrl+V / Cmd+V).'); }
+  }
+</script>
+  <script src="../../knexio-bundle.js"></script>
+  <script src="../../cookie-consent.js"></script>
+  <!-- Schema: FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is this tool for?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "This is a free online tool for [purpose]. It helps you [function] quickly and easily."
+        }
+      }
+    ]
+  }
+  </script>
+  </div>
+
+  
+  <div class="seo-section">
+    <h2>How to Use the Code Beautifier</h2>
+    <div class="step-block">
+      <h3>Step 1: Paste your code</h3>
+      <p>Paste minified or messy HTML, CSS, JavaScript, or JSON into the input box.</p>
+    </div>
+    <div class="step-block">
+      <h3>Step 2: Select language</h3>
+      <p>Choose the programming language from the dropdown menu.</p>
+    </div>
+    <div class="step-block">
+      <h3>Step 3: Click Beautify</h3>
+      <p>The tool formats and indents your code for better readability.</p>
+    </div>
+    <div class="step-block">
+      <h3>Step 4: Copy the result</h3>
+      <p>Use the Copy button to copy the formatted code to your clipboard.</p>
+    </div>
+
+<div class="ad-banner" style="margin-top:40px">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="3153457922"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<footer>
+  <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
+  <p>
+    <a href="/about/">About</a> •
+    <a href="/privacy/">Privacy Policy</a> •
+    <a href="/terms/">Terms of Service</a>
+  </p>
+</footer>
+
+</div>
+
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</body>
+</html>

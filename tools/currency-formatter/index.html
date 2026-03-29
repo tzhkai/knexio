@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Currency Formatter – Format Numbers as Currency | Knexio</title>
+<meta name="description" content="Free online currency formatter. Format any number as USD, EUR, GBP, JPY, CNY and 20+ currencies. Customize decimal places, separators, and symbol position.">
+<link rel="canonical" href="https://knexio.xyz/tools/currency-formatter/">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Currency Formatter">
+<meta property="og:description" content="Free online currency formatter. Format numbers as USD, EUR, GBP, and more.">
+<meta property="og:url" content="https://knexio.xyz/tools/currency-formatter/">
+<meta property="og:type" content="WebApplication">
+<meta property="og:site_name" content="Knexio">
+<meta property="og:image" content="https://knexio.xyz/og-image.png">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Currency Formatter",
+  "url": "https://knexio.xyz/tools/currency-formatter/",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "All",
+  "description": "Free online currency formatter tool. Format numbers as USD, EUR, GBP, and more."
+}
+</script>
+
+<style>
+:root{
+  --bg:#0b1220;
+  --card:#111a2e;
+  --border:rgba(255,255,255,.08);
+  --text:#fff;
+  --sub:#aab3c5;
+  --accent:#4f8cff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:system-ui,-apple-system;
+  background:var(--bg);
+  color:var(--text);
+}
+.container{max-width:900px;margin:auto;padding:50px 16px}
+
+.back {
+  display: inline-block;
+  color: var(--sub);
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 24px;
+  transition: color 0.2s;
+}
+.back:hover {
+  color: var(--accent);
+}
+
+h1{font-size:32px;margin-bottom:8px}
+h2{font-size:22px;margin-top:30px;margin-bottom:10px}
+h3{font-size:18px;margin-bottom:8px}
+.subtitle{color:var(--sub);margin-bottom:24px}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:20px;
+  margin-bottom:20px;
+}
+
+label {
+  display: block;
+  color: var(--sub);
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+input[type="number"],
+input[type="text"],
+select {
+  width: 100%;
+  padding: 12px 16px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: var(--text);
+  font-size: 15px;
+}
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+select {
+  cursor: pointer;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+.result-box {
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:16px;
+  margin-top:16px;
+  min-height:100px;
+}
+
+.result-main {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.result-sub {
+  font-size: 13px;
+  color: var(--sub);
+}
+
+.btn-row {
+  display:flex;
+  gap:10px;
+  margin-top:12px;
+  flex-wrap:wrap
+}
+
+button{
+  padding:10px;
+  border-radius:10px;
+  border:none;
+  background:var(--accent);
+  color:#fff;
+  cursor:pointer;
+  font-size:14px;
+  transition:opacity 0.2s;
+  box-sizing:border-box
+}
+button:hover{opacity:0.9}
+button.secondary{
+  background:transparent;
+  border:1px solid var(--border);
+  color:var(--sub)
+}
+button.secondary:hover{
+  border-color:var(--accent);
+  color:var(--accent)
+}
+
+.cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.col-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--sub);
+  margin-bottom: 8px;
+}
+
+.currencies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.cur-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.cur-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.cur-symbol {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+
+.cur-name {
+  font-size: 13px;
+  color: var(--sub);
+  margin-bottom: 4px;
+}
+
+.cur-code {
+  font-size: 11px;
+  color: var(--accent);
+  font-weight: 600;
+  background: rgba(79,140,255,0.15);
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.section p{
+  color:var(--sub);
+  line-height:1.7;
+  margin-bottom:10px;
+}
+
+.faq-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 12px;
+}
+
+.faq-item h3 {
+  font-size: 16px;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.faq-item p {
+  color: var(--sub);
+  line-height: 1.7;
+  font-size: 14px;
+}
+
+.tools a{
+  display:inline-block;
+  margin:6px;
+  padding:8px 14px;
+  border-radius:8px;
+  border:1px solid var(--border);
+  color:var(--sub);
+  text-decoration:none;
+}
+.tools a:hover{
+  border-color:var(--accent);
+  color:var(--accent);
+}
+
+.ad-banner {
+  margin: 32px 0;
+  text-align: center;
+}
+
+footer {
+  margin-top: 40px;
+  text-align: center;
+  color: var(--sub);
+  font-size: 13px;
+}
+footer p {
+  margin-bottom: 8px;
+}
+footer a {
+  color: var(--sub);
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color 0.2s;
+}
+footer a:hover {
+  color: var(--accent);
+}
+
+@media(max-width:768px){
+  .form-grid{grid-template-columns:1fr}
+  .cols{grid-template-columns:1fr}
+  .result-main{font-size:24px}
+  .currencies-grid{grid-template-columns:repeat(auto-fill, minmax(120px, 1fr))}
+}
+textarea{
+  width:100%;
+  min-height:180px;
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:12px;
+  color:var(--text);
+  padding:14px;
+  font-size:15px;
+  resize:vertical;
+  box-sizing:border-box
+}
+textarea:focus{outline:none;border-color:var(--accent)}
+</style>
+</head>
+
+<body><div class="container">
+
+<a class="back" href="../index.html">← Back to Tools</a>
+
+<h1>Currency Formatter</h1>
+<p class="subtitle">Format any number as a currency string in USD, EUR, GBP, JPY, CNY, and 20+ currencies. Customize decimal places, separators, and symbol position.</p>
+
+<div class="ad-banner">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="5794572171"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<h2>Free Online Currency Formatter</h2>
+<div class="section">
+<p>This free online currency formatter instantly converts any number into a properly formatted currency string. Simply enter your number, select a currency and locale, and see the result instantly. Perfect for invoices, financial reports, price lists, and any application requiring professional currency display.</p>
+<p>The formatter supports 25+ major world currencies including USD, EUR, GBP, JPY, CNY, and more. You can customize decimal places, choose different locale formats (US, UK, European, Asian), and process multiple numbers in bulk. All processing happens in your browser for complete privacy.</p>
+</div>
+
+<div class="card">
+  <div class="form-grid">
+    <div class="field">
+      <label>Number</label>
+      <input type="number" id="numInput" value="1234567.89" step="any" oninput="formatSingle()">
+    </div>
+    <div class="field">
+      <label>Currency</label>
+      <select id="currSelect" onchange="formatSingle()">
+        <option value="USD">USD – US Dollar</option>
+        <option value="EUR">EUR – Euro</option>
+        <option value="GBP">GBP – British Pound</option>
+        <option value="JPY">JPY – Japanese Yen</option>
+        <option value="CNY">CNY – Chinese Yuan</option>
+        <option value="CAD">CAD – Canadian Dollar</option>
+        <option value="AUD">AUD – Australian Dollar</option>
+        <option value="CHF">CHF – Swiss Franc</option>
+        <option value="INR">INR – Indian Rupee</option>
+        <option value="BRL">BRL – Brazilian Real</option>
+        <option value="MXN">MXN – Mexican Peso</option>
+        <option value="KRW">KRW – South Korean Won</option>
+        <option value="RUB">RUB – Russian Ruble</option>
+        <option value="SGD">SGD – Singapore Dollar</option>
+        <option value="HKD">HKD – Hong Kong Dollar</option>
+        <option value="NOK">NOK – Norwegian Krone</option>
+        <option value="SEK">SEK – Swedish Krona</option>
+        <option value="DKK">DKK – Danish Krone</option>
+        <option value="PLN">PLN – Polish Zloty</option>
+        <option value="THB">THB – Thai Baht</option>
+        <option value="TRY">TRY – Turkish Lira</option>
+        <option value="SAR">SAR – Saudi Riyal</option>
+        <option value="ZAR">ZAR – South African Rand</option>
+        <option value="AED">AED – UAE Dirham</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Locale</label>
+      <select id="localeSelect" onchange="formatSingle()">
+        <option value="en-US">en-US (1,234,567.89)</option>
+        <option value="en-GB">en-GB (1,234,567.89)</option>
+        <option value="de-DE">de-DE (1.234.567,89)</option>
+        <option value="fr-FR">fr-FR (1 234 567,89)</option>
+        <option value="ja-JP">ja-JP</option>
+        <option value="zh-CN">zh-CN</option>
+        <option value="ko-KR">ko-KR</option>
+        <option value="ar-SA">ar-SA</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Decimal Places</label>
+      <select id="decimals" onchange="formatSingle()">
+        <option value="auto">Auto (currency default)</option>
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2" selected>2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select>
+    </div>
+  </div>
+  <div class="result-box">
+    <div class="result-main" id="singleResult">$1,234,567.89</div>
+    <div class="result-sub" id="singleLabel">USD · en-US locale · 2 decimal places</div>
+  </div>
+  <div class="btn-row">
+    <button onclick="formatSingle()">Format</button>
+    <button class="secondary" onclick="copyResult()">Copy Result</button>
+  </div>
+</div>
+
+<div class="card">
+  <div style="font-size:16px;font-weight:600;margin-bottom:20px;">Bulk Number Formatter</div>
+  <div class="cols">
+    <div>
+      <div class="col-label">Input (one number per line)</div>
+      <textarea id="bulkIn" placeholder="1234.5&#10;9999999&#10;0.5&#10;42000" oninput="formatBulk()"></textarea>
+    </div>
+    <div>
+      <div class="col-label">Formatted Output</div>
+      <textarea id="bulkOut" readonly></textarea>
+    </div>
+  </div>
+  <div class="btn-row" style="margin-top:12px">
+    <button onclick="copyBulkOutput()">Copy All</button>
+    <button class="secondary" onclick="clearBulk()">Clear</button>
+  </div>
+</div>
+
+<h2>Quick Currency Reference</h2>
+<div class="currencies-grid" id="currGrid"></div>
+
+<h2>How It Works</h2>
+<div class="section">
+<p>This currency formatter uses the browser's built-in Intl.NumberFormat API to format numbers according to international standards. Each currency has its own default decimal places and symbol placement rules, which the tool respects automatically for accurate results.</p>
+<p>You can customize the output by selecting different currencies, locales, and decimal places. The locale determines how thousands and decimal separators appear (e.g., comma vs. dot vs. space). The bulk formatter processes multiple numbers simultaneously, perfect for generating price lists or financial data in one go.</p>
+</div>
+
+<h2>Frequently Asked Questions</h2>
+
+<div class="faq-item">
+  <h3>What currencies are supported?</h3>
+  <p>The formatter supports 25+ major world currencies including USD, EUR, GBP, JPY, CNY, CAD, AUD, CHF, INR, BRL, MXN, KRW, RUB, SGD, HKD, NOK, SEK, DKK, PLN, THB, TRY, SAR, ZAR, and AED. Click any currency card in the reference grid to quickly select it.</p>
+</div>
+
+<div class="faq-item">
+  <h3>What does the locale setting do?</h3>
+  <p>The locale determines how numbers are formatted according to regional conventions. For example, en-US uses commas for thousands and dots for decimals (1,234.56), while de-DE uses dots for thousands and commas for decimals (1.234,56). Choose the locale that matches your audience.</p>
+</div>
+
+<div class="faq-item">
+  <h3>Can I control decimal places?</h3>
+  <p>Yes! You can set decimal places to 0, 1, 2, 3, or 4, or choose "Auto" to use the currency's default. For example, JPY typically uses 0 decimal places, while most other currencies use 2. This lets you customize the display for your needs.</p>
+</div>
+
+<div class="faq-item">
+  <h3>How does bulk formatting work?</h3>
+  <p>Enter multiple numbers (one per line) in the bulk input area. The tool formats each number using your selected currency, locale, and decimal settings, then displays all results in the output area. Perfect for creating price lists or financial reports.</p>
+</div>
+
+<div class="faq-item">
+  <h3>Is my financial data secure?</h3>
+  <p>Absolutely. All formatting happens entirely in your browser using JavaScript. Your numbers are never sent to any server, ensuring complete privacy and security for your financial data. This makes it safe to use for invoices, quotes, and sensitive calculations.</p>
+</div>
+
+<div class="faq-item">
+  <h3>Can I copy formatted results?</h3>
+  <p>Yes! Click "Copy Result" to copy the single formatted number, or use "Copy All" in the bulk section to copy all formatted numbers at once. The results are ready to paste into documents, spreadsheets, or any application.</p>
+</div>
+
+<h2>Related Tools</h2>
+<div class="tools">
+<a href="/tools/currency-converter/">Currency Converter</a>
+<a href="/tools/exchange-rate/">Exchange Rate</a>
+<a href="/tools/number-formatter/">Number Formatter</a>
+</div>
+
+<div class="ad-banner" style="margin-top:40px">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="9504968504"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<footer>
+  <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
+  <p>
+    <a href="/about/" style="color:var(--accent);text-decoration:none;margin:0 8px;">About</a>
+    <a href="/privacy/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Privacy</a>
+    <a href="/terms/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Terms</a>
+    <a href="/contact/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Contact</a>
+  </p>
+  <p>© 2026 Knexio. All rights reserved.</p>
+</footer>
+
+</div>
+
+<script>
+const CURRENCIES = [
+  {code:'USD',symbol:'$',name:'US Dollar'},
+  {code:'EUR',symbol:'€',name:'Euro'},
+  {code:'GBP',symbol:'£',name:'British Pound'},
+  {code:'JPY',symbol:'¥',name:'Japanese Yen'},
+  {code:'CNY',symbol:'¥',name:'Chinese Yuan'},
+  {code:'CAD',symbol:'C$',name:'Canadian Dollar'},
+  {code:'AUD',symbol:'A$',name:'Australian Dollar'},
+  {code:'CHF',symbol:'Fr',name:'Swiss Franc'},
+  {code:'INR',symbol:'₹',name:'Indian Rupee'},
+  {code:'BRL',symbol:'R$',name:'Brazilian Real'},
+  {code:'MXN',symbol:'MX$',name:'Mexican Peso'},
+  {code:'KRW',symbol:'₩',name:'Korean Won'},
+];
+
+function fmt(num, curr, locale, dec) {
+  const opts = {style:'currency', currency:curr};
+  if (dec !== 'auto') { opts.minimumFractionDigits = parseInt(dec); opts.maximumFractionDigits = parseInt(dec); }
+  try { return new Intl.NumberFormat(locale, opts).format(num); }
+  catch(e) { return num.toLocaleString(); }
+}
+
+function formatSingle() {
+  const num = parseFloat(document.getElementById('numInput').value);
+  const curr = document.getElementById('currSelect').value;
+  const locale = document.getElementById('localeSelect').value;
+  const dec = document.getElementById('decimals').value;
+  if (isNaN(num)) { document.getElementById('singleResult').textContent = '—'; return; }
+  document.getElementById('singleResult').textContent = fmt(num, curr, locale, dec);
+  document.getElementById('singleLabel').textContent = `${curr} · ${locale} locale · ${dec === 'auto' ? 'auto' : dec} decimal places`;
+  formatBulk();
+}
+
+function formatBulk() {
+  const lines = document.getElementById('bulkIn').value.split('\n');
+  const curr = document.getElementById('currSelect').value;
+  const locale = document.getElementById('localeSelect').value;
+  const dec = document.getElementById('decimals').value;
+  const out = lines.map(l => {
+    const n = parseFloat(l.trim());
+    return isNaN(n) ? l : fmt(n, curr, locale, dec);
+  }).join('\n');
+  document.getElementById('bulkOut').value = out;
+}
+
+function copyResult() {
+  const result = document.getElementById('singleResult').textContent;
+  if (result === '—') return;
+  navigator.clipboard.writeText(result).then(() => {
+    alert('Result copied!');
+  });
+}
+
+function copyBulkOutput() {
+  const out = document.getElementById('bulkOut').value;
+  if (!out) return;
+  navigator.clipboard.writeText(out).then(() => {
+    alert('All formatted numbers copied!');
+  });
+}
+
+function clearBulk() {
+  document.getElementById('bulkIn').value = '';
+  document.getElementById('bulkOut').value = '';
+}
+
+function buildCurrGrid() {
+  const grid = document.getElementById('currGrid');
+  CURRENCIES.forEach(c => {
+    const div = document.createElement('div');
+    div.className = 'cur-card';
+    div.innerHTML = `<div class="cur-symbol">${c.symbol}</div><div class="cur-name">${c.name}</div><div class="cur-code">${c.code}</div>`;
+    div.onclick = () => {
+      document.getElementById('currSelect').value = c.code;
+      formatSingle();
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    };
+    grid.appendChild(div);
+  });
+}
+
+buildCurrGrid();
+formatSingle();
+</script>
+
+<script src="/knexio-bundle.js"></script>
+</body>
+</html>

@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Midjourney Prompt Generator – Create AI Art Prompts Online</title>
+
+  <meta name="description" content="Free Midjourney Prompt Generator to create detailed, effective prompts for stunning AI-generated images. Perfect for artists, designers, and creators." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://knexio.xyz/ai-tools/midjourney-prompt-generator/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Midjourney Prompt Generator – Create AI Art Prompts" />
+  <meta property="og:description" content="Free Midjourney Prompt Generator to create detailed prompts for stunning AI-generated images." />
+  <meta property="og:url" content="https://knexio.xyz/ai-tools/midjourney-prompt-generator/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Knexio" />
+
+  <!-- Schema: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Midjourney Prompt Generator",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "url": "https://knexio.xyz/ai-tools/midjourney-prompt-generator/",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+
+  <!-- Schema: FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is Midjourney prompt generator?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A Midjourney prompt generator helps you create detailed, effective prompts for generating AI art using Midjourney."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I create good Midjourney prompts?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Use descriptive adjectives, specify art styles, include lighting and composition details, and be specific about the subject matter."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What art styles can I choose from?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You can select from photorealistic, digital art, oil painting, watercolor, anime style, 3D render, and pencil sketch styles."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What lighting options are available?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Options include golden hour, soft natural light, dramatic lighting, neon lights, moonlight, and studio lighting."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I customize composition settings?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Choose from centered, rule of thirds, wide angle, close-up, bird's eye view, and low angle compositions."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this tool free to use?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The tool is completely free and works directly in your browser without registration."
+        }
+      }
+    ]
+  }
+  </script>
+<style>
+
+    :root {
+      --bg: #0b1220;
+      --card: #111a2e;
+      --border: rgba(255,255,255,0.08);
+      --text: #ffffff;
+      --sub: #aab3c5;
+      --accent: #4f8cff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
+      background: linear-gradient(180deg, #0b1220, #070d1a);
+      color: var(--text);
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+
+    .container {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 60px 20px 100px;
+    }
+
+    .back {
+      display: inline-block;
+      margin-bottom: 24px;
+      color: var(--sub);
+      font-size: 14px;
+    }
+
+    h1 { font-size: 34px; margin: 0 0 10px; }
+
+    .subtitle {
+      color: var(--sub);
+      font-size: 15px;
+      margin-bottom: 24px;
+    }
+
+    .ad-banner { margin: 24px 0; text-align: center; min-height: 90px }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+    }
+
+    .input-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 14px;
+      color: var(--sub);
+    }
+
+    input[type="text"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: #fff;
+      font-size: 15px;
+    }
+
+    input::placeholder,
+    textarea::placeholder { color: #7f8aa3; }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 10px;
+      border-radius: 10px;
+      border: none;
+      background: var(--accent);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn:hover {
+      background: #3a7be0;
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: var(--card);
+      border: 1px solid var(--border);
+      margin-top: 12px;
+    }
+
+    .btn-secondary:hover {
+      background: #1a263d;
+      border-color: var(--accent);
+    }
+
+    .result-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      min-height: 200px;
+      margin-top: 20px;
+    }
+
+    .result-label {
+      font-size: 13px;
+      color: var(--sub);
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .result-content {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--text);
+    }
+
+    .section { margin-top: 60px; }
+    .section h2 { font-size: 24px; margin-bottom: 12px; }
+    .section p { color: var(--sub); line-height: 1.75; font-size: 15px; }
+
+    .faq { margin-top: 60px; }
+    .faq h2 { font-size: 24px; margin-bottom: 20px; }
+    .faq-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .faq-item h3 { font-size: 16px; margin: 0 0 8px; }
+    .faq-item p { color: var(--sub); font-size: 14px; line-height: 1.7; margin: 0; }
+
+    .tools a {
+      display: inline-block;
+      margin-right: 16px;
+      margin-top: 8px;
+      font-size: 14px;
+    }
+
+    footer {
+      margin-top: 80px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--sub);
+    }
+
+    /* 移动端优化 */
+    @media (max-width: 768px) {
+      .container {
+        padding: 40px 15px 80px !important;
+        max-width: 100% !important;
+      }
+
+      h1 {
+        font-size: 28px !important;
+        line-height: 1.3 !important;
+      }
+
+      h2 {
+        font-size: 20px !important;
+        margin-top: 36px !important;
+        margin-bottom: 10px !important;
+      }
+
+      .btn {
+        padding: 14px !important;
+        font-size: 15px !important;
+        min-height: 48px !important;
+      }
+
+      input, select, textarea {
+        padding: 12px !important;
+        font-size: 15px !important;
+      }
+
+      .ad-banner {
+        margin: 16px 0 !important;
+        min-height: 50px !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 24px !important;
+      }
+
+      h2 {
+        font-size: 18px !important;
+      }
+
+      .container {
+        padding: 32px 12px 60px !important;
+      }
+
+      .btn {
+        padding: 12px !important;
+        font-size: 14px !important;
+      }
+    }
+
+</style>
+</head>
+
+<body>
+  <div class="container">
+    <a class="back" href="../index.html">← Back to AI Tools</a>
+
+    <h1>Midjourney Prompt Generator</h1>
+
+    <div class="subtitle">
+      Create detailed prompts for stunning AI-generated images.
+    </div>
+
+    <div class="ad-banner">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="5794572171" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+    <div class="card">
+      <div class="input-group">
+        <label>Subject / Main Idea</label>
+        <input type="text" id="subject" placeholder="A serene mountain landscape">
+      </div>
+
+      <div class="input-group">
+        <label>Art Style</label>
+        <select id="style">
+          <option value="photorealistic">Photorealistic</option>
+          <option value="digital art">Digital Art</option>
+          <option value="oil painting">Oil Painting</option>
+          <option value="watercolor">Watercolor</option>
+          <option value="anime style">Anime Style</option>
+          <option value="3D render">3D Render</option>
+          <option value="pencil sketch">Pencil Sketch</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label>Lighting</label>
+        <select id="lighting">
+          <option value="golden hour">Golden Hour</option>
+          <option value="soft natural light">Soft Natural Light</option>
+          <option value="dramatic lighting">Dramatic Lighting</option>
+          <option value="neon lights">Neon Lights</option>
+          <option value="moonlight">Moonlight</option>
+          <option value="studio lighting">Studio Lighting</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label>Composition</label>
+        <select id="composition">
+          <option value="centered">Centered</option>
+          <option value="rule of thirds">Rule of Thirds</option>
+          <option value="wide angle">Wide Angle</option>
+          <option value="close-up">Close-up</option>
+          <option value="bird's eye view">Bird's Eye View</option>
+          <option value="low angle">Low Angle</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label>Additional Details</label>
+        <textarea id="details" rows="3" placeholder="Misty clouds, vibrant autumn colors, tranquil atmosphere..."></textarea>
+      </div>
+
+      <button class="btn" onclick="generate()">Generate Prompt</button>
+
+      <div class="result-box">
+        <div class="result-label">Generated Midjourney Prompt:</div>
+        <div class="result-content" id="result">Your prompt will appear here...</div>
+      </div>
+
+      <button class="btn btn-secondary" onclick="copyPrompt()">Copy Prompt</button>
+    </div>
+
+    <div class="section">
+      <h2>Free Online Midjourney Prompt Generator</h2>
+      <p>
+        Create detailed, effective prompts for Midjourney AI art with our free online generator. Simply describe your subject, choose an art style, set the lighting and composition, and get a polished prompt ready to use. Whether you're creating photorealistic landscapes, anime characters, or abstract art, this tool helps you craft prompts that generate stunning AI-generated images.
+      </p>
+      <p>
+        No registration required, no data storage—just instant prompt generation right in your browser. Perfect for artists, designers, content creators, and anyone using Midjourney to create AI art.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>How It Works</h2>
+      <p>
+        Our Midjourney prompt generator combines essential visual elements to create comprehensive prompts. Start with your subject—the main focus of your image. Be descriptive and specific to guide the AI's interpretation. Choose an art style that matches your vision: photorealistic for lifelike images, digital art for modern graphics, oil painting for classic artistry, watercolor for soft aesthetics, anime style for Japanese animation, 3D render for dimensional depth, or pencil sketch for hand-drawn textures.
+      </p>
+      <p>
+        Select lighting to set the mood and atmosphere. Golden hour creates warm, nostalgic tones; soft natural light provides even illumination; dramatic lighting adds contrast and intensity; neon lights bring vibrant energy; moonlight creates mysterious nighttime scenes; studio lighting offers controlled professional results. Composition determines how elements are arranged in the frame—centered for focus, rule of thirds for balanced interest, wide angle for expansive scenes, close-up for detail, bird's eye view for overhead perspective, or low angle for dramatic impact.
+      </p>
+      <p>
+        Add any additional details to refine your vision—colors, textures, emotions, or atmospheric elements. Click generate and copy your prompt directly to Midjourney. The prompt includes the standard Midjourney command format with aspect ratio (--ar 16:9) and version (--v 6) parameters for optimal results.
+      </p>
+    </div>
+
+    <div class="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <h3>What is Midjourney prompt generator?</h3>
+        <p>A Midjourney prompt generator helps you create detailed, effective prompts for generating AI art using Midjourney. It combines subject, style, lighting, and composition into a comprehensive prompt structure.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How do I create good Midjourney prompts?</h3>
+        <p>Use descriptive adjectives, specify art styles, include lighting and composition details, and be specific about the subject matter. The more details you provide, the better the AI understands your vision.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What art styles can I choose from?</h3>
+        <p>You can select from photorealistic, digital art, oil painting, watercolor, anime style, 3D render, and pencil sketch styles. Each style is optimized for different aesthetic outcomes and artistic preferences.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What lighting options are available?</h3>
+        <p>Options include golden hour, soft natural light, dramatic lighting, neon lights, moonlight, and studio lighting. Lighting choices dramatically affect the mood, atmosphere, and visual impact of your generated images.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Can I customize composition settings?</h3>
+        <p>Yes. Choose from centered, rule of thirds, wide angle, close-up, bird's eye view, and low angle compositions. Composition determines how elements are arranged and influences visual interest and storytelling.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Is this tool free to use?</h3>
+        <p>Yes. The tool is completely free and works directly in your browser without registration or sign-up required. Use it as often as you need to create prompts for your AI art projects.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Related AI Tools</h2>
+      <div class="tools">
+        <a href="../chatgpt-prompt-generator/index.html">ChatGPT Prompt Generator</a>
+        <a href="../ai-image-prompt-builder/index.html">AI Image Prompt Builder</a>
+        <a href="../prompt-library/index.html">Prompt Library</a>
+        <a href="../prompt-optimizer/index.html">Prompt Optimizer</a>
+      </div>
+    </div>
+
+    <div class="ad-banner" style="margin-top: 40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+  </div>
+
+  <script>
+    function generate() {
+      const subject = document.getElementById('subject').value || 'beautiful landscape';
+      const style = document.getElementById('style').value;
+      const lighting = document.getElementById('lighting').value;
+      const composition = document.getElementById('composition').value;
+      const details = document.getElementById('details').value;
+
+      let prompt = `/imagine prompt: ${subject}, ${style}, ${lighting}, ${composition}`;
+
+      if (details.trim()) {
+        prompt += `, ${details}`;
+      }
+
+      prompt += ` --ar 16:9 --v 6`;
+
+      document.getElementById('result').textContent = prompt;
+    }
+
+    function copyPrompt() {
+      const prompt = document.getElementById('result').textContent;
+      if (prompt === 'Your prompt will appear here...') {
+        return;
+      }
+      navigator.clipboard.writeText(prompt).then(() => {
+        const btn = event.target;
+        const originalText = btn.textContent;
+        btn.textContent = '✓ Copied!';
+        setTimeout(() => {
+          btn.textContent = originalText;
+        }, 2000);
+      });
+    }
+  </script>
+
+  <script src="/knexio-bundle.js"></script>
+  <script src="../../cookie-consent.js"></script>
+
+      <footer>
+      <p>AI-powered tools and prompt generators for ChatGPT, Midjourney, and more. Boost your AI productivity.</p>
+            <p style="margin: 8px 0; font-size: 13px;">
+        <a href="/about/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">About</a>
+        <a href="/privacy/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Privacy</a>
+        <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
+        <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
+      </p>
+      <p>© 2026 Knexio. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

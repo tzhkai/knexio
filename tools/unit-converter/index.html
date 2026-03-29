@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit Converter – Convert Length, Weight, Temperature | Knexio</title>
+<meta name="description" content="Free unit converter tool to convert between 500+ units across multiple categories. Fast, accurate conversions for length, weight, temperature, volume and more.">
+<link rel="canonical" href="https://knexio.xyz/tools/unit-converter/">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Unit Converter – Convert Length, Weight, Temperature">
+<meta property="og:description" content="Convert between 500+ units across multiple categories. Fast, accurate conversions for length, weight, temperature, volume and more.">
+<meta property="og:url" content="https://knexio.xyz/tools/unit-converter/">
+<meta property="og:type" content="WebApplication">
+<meta property="og:site_name" content="Knexio">
+<meta property="og:image" content="https://knexio.xyz/og-image.png">
+
+
+<style>
+:root {
+  --bg: #0b1220;
+  --card: #111a2e;
+  --border: rgba(255,255,255,0.08);
+  --text: #fff;
+  --sub: #aab3c5;
+  --accent: #4f8cff;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+.container { max-width: 900px; margin: 0 auto; padding: 50px 16px; }
+
+/* Back Button */
+.back {
+  display: inline-block;
+  color: var(--sub);
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 24px;
+  transition: color 0.2s;
+}
+.back:hover { color: var(--accent); }
+
+h1 { font-size: 32px; margin-bottom: 8px; font-weight: 700; }
+h2 { font-size: 22px; margin-top: 40px; margin-bottom: 16px; font-weight: 600; }
+h3 { font-size: 16px; margin-bottom: 10px; font-weight: 600; }
+.subtitle { color: var(--sub); margin-bottom: 24px; font-size: 16px; }
+
+/* Card */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+/* Category Tabs */
+.category-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+.tab {
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--sub);
+  cursor: pointer;
+  font-size: 14px;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+.tab:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.tab.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+/* Form Group */
+.form-group {
+  margin-bottom: 16px;
+}
+.form-group label {
+  display: block;
+  font-size: 13px;
+  color: var(--sub);
+  margin-bottom: 8px;
+}
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 12px 14px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  font-size: 14px;
+}
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+/* Converter Layout */
+.converter {
+  margin-bottom: 20px;
+}
+.input-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+  align-items: center;
+}
+
+/* Swap Button */
+.swap-btn {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--sub);
+  cursor: pointer;
+  font-size: 16px;
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+.swap-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Result Display */
+.result-display {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 16px;
+}
+.result-value {
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.formula {
+  font-size: 14px;
+  color: var(--sub);
+}
+
+/* Quick Conversions */
+.quick-conversions {
+  margin-top: 16px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+}
+.quick-conversions h3 {
+  font-size: 14px;
+  color: var(--sub);
+  margin-bottom: 10px;
+}
+.quick-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 8px;
+}
+.quick-item {
+  padding: 8px 12px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--sub);
+  text-align: center;
+  transition: all 0.2s;
+}
+.quick-item:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+
+
+/* Related Tools */
+.tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+.tools a {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  color: var(--sub);
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+.tools a:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Ad Banner */
+.ad-banner {
+  margin: 32px 0;
+  text-align: center;
+}
+
+/* Footer */
+footer {
+  margin-top: 40px;
+  text-align: center;
+  color: var(--sub);
+  font-size: 13px;
+  padding-top: 30px;
+  border-top: 1px solid var(--border);
+}
+footer p {
+  margin-bottom: 8px;
+}
+footer a {
+  color: var(--sub);
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color 0.2s;
+}
+footer a:hover {
+  color: var(--accent);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .input-row {
+    flex-direction: column;
+  }
+  .swap-btn {
+    transform: rotate(90deg);
+    align-self: center;
+  }
+}
+textarea,.text-area{width:100%;min-height:180px;background:var(--bg);border:1px solid var(--border);border-radius:12px;color:var(--text);padding:14px;font-size:15px;resize:vertical;box-sizing:border-box}
+textarea:focus,.text-area:focus{outline:none;border-color:var(--accent)}
+.btn-row{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+button,.btn,.btn-row button{flex:1;padding:10px;border-radius:10px;border:none;background:var(--accent);color:#fff;cursor:pointer;font-size:14px;transition:opacity 0.2s;box-sizing:border-box}
+button:hover,.btn:hover{opacity:0.9}
+button.secondary,.btn.secondary,.btn-outline,.btn-row button.secondary{background:transparent;border:1px solid var(--border);color:var(--sub)}
+button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.stat{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center}
+.stat span,.stat-value,.result-value,.age-value{font-size:24px;font-weight:700;color:var(--accent);display:block}
+.stat label,.stat-label,.result-label,.age-label{font-size:12px;color:var(--sub);display:block}
+.result-box{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;margin-top:16px;min-height:100px;white-space:pre-wrap;word-break:break-all;font-size:15px;line-height:1.7;box-sizing:border-box}
+@media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.btn-row{flex-direction:column}}
+  </style>
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Unit Converter – Convert Length, Weight, Temperature | Knexio",
+  "description": "Free unit converter tool to convert between 500+ units across multiple categories. Fast, accurate conversions for length, weight, temperature, volume and more.",
+  "url": "https://knexio.xyz/tools/unit-converter/",
+  "publisher": {"@type": "Organization", "name": "Knexio", "url": "https://knexio.xyz"}
+}
+</script>
+
+</head>
+
+<body>
+<div class="container">
+
+<a class="back" href="../index.html">← Back to Tools</a>
+
+<h1>Unit Converter</h1>
+<p class="subtitle">Convert between 500+ units across multiple categories. Fast, accurate conversions for length, weight, temperature, volume and more.</p>
+
+<div class="ad-banner">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="5794572171"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<div class="card">
+  <div class="category-tabs">
+    <button class="tab active" onclick="switchCategory('length')">Length</button>
+    <button class="tab" onclick="switchCategory('weight')">Weight</button>
+    <button class="tab" onclick="switchCategory('temperature')">Temperature</button>
+    <button class="tab" onclick="switchCategory('volume')">Volume</button>
+    <button class="tab" onclick="switchCategory('area')">Area</button>
+    <button class="tab" onclick="switchCategory('speed')">Speed</button>
+  </div>
+
+  <div class="converter">
+    <div class="form-group">
+      <label>Value</label>
+      <input type="number" id="inputValue" placeholder="Enter value" step="any">
+    </div>
+
+    <div class="input-row">
+      <div class="form-group" style="flex: 1;">
+        <label>From</label>
+        <select id="fromUnit"></select>
+      </div>
+      
+      <button class="swap-btn" onclick="swapUnits()">⇄</button>
+      
+      <div class="form-group" style="flex: 1;">
+        <label>To</label>
+        <select id="toUnit"></select>
+      </div>
+    </div>
+
+    <div class="result-display">
+      <div class="result-value" id="resultValue">--</div>
+      <div class="formula" id="formulaDisplay"></div>
+    </div>
+
+    <div class="quick-conversions">
+      <h3>Quick Conversions</h3>
+      <div class="quick-grid" id="quickGrid"></div>
+    </div>
+  </div>
+</div>
+
+<h2>How It Works</h2>
+<div class="section">
+  <p>Select a category (length, weight, temperature, etc.), enter a value, and choose the source and target units. The converter calculates the result instantly using precise conversion factors. For temperature conversions, it applies specific formulas (Celsius-Fahrenheit-Kelvin). Quick conversions provide common unit pairs for fast reference.</p>
+</div>
+
+<h2>Related Tools</h2>
+<div class="tools">
+  <a href="../percentage-calculator/">Percentage Calculator</a>
+  <a href="../temperature-converter/">Temperature Converter</a>
+  <a href="../currency-formatter/">Currency Formatter</a>
+</div>
+
+<div class="ad-banner">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="9504968504"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<footer>
+  <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
+  <p>
+    <a href="/about/" style="color:var(--accent);text-decoration:none;margin:0 8px;">About</a>
+    <a href="/privacy/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Privacy</a>
+    <a href="/terms/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Terms</a>
+    <a href="/contact/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Contact</a>
+  </p>
+  <p>© 2026 Knexio. All rights reserved.</p>
+</footer>
+
+</div>
+
+<script>
+const unitData = {
+  length: {
+    units: ['Meter', 'Kilometer', 'Centimeter', 'Millimeter', 'Mile', 'Yard', 'Foot', 'Inch'],
+    toBase: [1, 1000, 0.01, 0.001, 1609.344, 0.9144, 0.3048, 0.0254],
+    quick: [
+      { from: 'Meter', to: 'Kilometer', value: 1000 },
+      { from: 'Kilometer', to: 'Mile', value: 1 },
+      { from: 'Foot', to: 'Meter', value: 1 },
+      { from: 'Inch', to: 'Centimeter', value: 1 }
+    ]
+  },
+  weight: {
+    units: ['Kilogram', 'Gram', 'Milligram', 'Pound', 'Ounce', 'Ton', 'Stone'],
+    toBase: [1, 0.001, 0.000001, 0.453592, 0.0283495, 1000, 6.35029],
+    quick: [
+      { from: 'Kilogram', to: 'Pound', value: 1 },
+      { from: 'Pound', to: 'Kilogram', value: 1 },
+      { from: 'Kilogram', to: 'Gram', value: 1 },
+      { from: 'Ounce', to: 'Gram', value: 1 }
+    ]
+  },
+  temperature: {
+    units: ['Celsius', 'Fahrenheit', 'Kelvin'],
+    quick: [
+      { from: 'Celsius', to: 'Fahrenheit', value: 0 },
+      { from: 'Celsius', to: 'Fahrenheit', value: 100 },
+      { from: 'Fahrenheit', to: 'Celsius', value: 32 },
+      { from: 'Kelvin', to: 'Celsius', value: 273.15 }
+    ]
+  },
+  volume: {
+    units: ['Liter', 'Milliliter', 'Gallon (US)', 'Gallon (UK)', 'Cubic Meter', 'Cubic Foot'],
+    toBase: [1, 0.001, 3.78541, 4.54609, 1000, 28.3168],
+    quick: [
+      { from: 'Liter', to: 'Milliliter', value: 1 },
+      { from: 'Gallon (US)', to: 'Liter', value: 1 },
+      { from: 'Cubic Meter', to: 'Liter', value: 1 },
+      { from: 'Liter', to: 'Cubic Foot', value: 1 }
+    ]
+  },
+  area: {
+    units: ['Square Meter', 'Square Kilometer', 'Square Foot', 'Acre', 'Hectare', 'Square Mile'],
+    toBase: [1, 1000000, 0.092903, 4046.86, 10000, 2589988],
+    quick: [
+      { from: 'Square Meter', to: 'Square Foot', value: 1 },
+      { from: 'Acre', to: 'Square Meter', value: 1 },
+      { from: 'Hectare', to: 'Square Meter', value: 1 },
+      { from: 'Square Kilometer', to: 'Hectare', value: 1 }
+    ]
+  },
+  speed: {
+    units: ['Meter/Second', 'Kilometer/Hour', 'Mile/Hour', 'Foot/Second', 'Knot'],
+    toBase: [1, 0.277778, 0.44704, 0.3048, 0.514444],
+    quick: [
+      { from: 'Kilometer/Hour', to: 'Meter/Second', value: 100 },
+      { from: 'Mile/Hour', to: 'Kilometer/Hour', value: 60 },
+      { from: 'Knot', to: 'Kilometer/Hour', value: 1 },
+      { from: 'Meter/Second', to: 'Kilometer/Hour', value: 1 }
+    ]
+  }
+};
+
+let currentCategory = 'length';
+
+function switchCategory(category) {
+  currentCategory = category;
+  
+  document.querySelectorAll('.tab').forEach(tab => {
+    tab.classList.remove('active');
+    if (tab.textContent.toLowerCase().includes(category) || 
+        (category === 'temperature' && tab.textContent === 'Temperature')) {
+      tab.classList.add('active');
+    }
+  });
+  
+  populateUnits();
+  convert();
+  updateQuickConversions();
+}
+
+function populateUnits() {
+  const fromSelect = document.getElementById('fromUnit');
+  const toSelect = document.getElementById('toUnit');
+  const data = unitData[currentCategory];
+  
+  fromSelect.innerHTML = data.units.map((unit, i) => 
+    `<option value="${i}">${unit}</option>`
+  ).join('');
+  
+  toSelect.innerHTML = data.units.map((unit, i) => 
+    `<option value="${i}">${unit}</option>`
+  ).join('');
+  
+  if (currentCategory !== 'temperature') {
+    toSelect.selectedIndex = 1;
+  }
+}
+
+function convert() {
+  const value = parseFloat(document.getElementById('inputValue').value);
+  const fromIndex = parseInt(document.getElementById('fromUnit').value);
+  const toIndex = parseInt(document.getElementById('toUnit').value);
+  
+  if (isNaN(value)) {
+    document.getElementById('resultValue').textContent = '--';
+    document.getElementById('formulaDisplay').textContent = '';
+    return;
+  }
+  
+  let result;
+  const fromUnit = unitData[currentCategory].units[fromIndex];
+  const toUnit = unitData[currentCategory].units[toIndex];
+  
+  if (currentCategory === 'temperature') {
+    result = convertTemperature(value, fromIndex, toIndex);
+  } else {
+    const toBase = unitData[currentCategory].toBase;
+    const baseValue = value * toBase[fromIndex];
+    result = baseValue / toBase[toIndex];
+  }
+  
+  document.getElementById('resultValue').textContent = 
+    result.toFixed(6).replace(/\.?0+$/, '');
+  document.getElementById('formulaDisplay').textContent = 
+    `${value} ${fromUnit} = ${document.getElementById('resultValue').textContent} ${toUnit}`;
+}
+
+function convertTemperature(value, from, to) {
+  if (from === to) return value;
+  
+  let celsius;
+  if (from === 0) celsius = value;
+  else if (from === 1) celsius = (value - 32) * 5 / 9;
+  else celsius = value - 273.15;
+  
+  if (to === 0) return celsius;
+  else if (to === 1) return (celsius * 9 / 5) + 32;
+  else return celsius + 273.15;
+}
+
+function swapUnits() {
+  const fromSelect = document.getElementById('fromUnit');
+  const toSelect = document.getElementById('toUnit');
+  const temp = fromSelect.value;
+  fromSelect.value = toSelect.value;
+  toSelect.value = temp;
+  convert();
+}
+
+function updateQuickConversions() {
+  const quickGrid = document.getElementById('quickGrid');
+  const quick = unitData[currentCategory].quick;
+  
+  quickGrid.innerHTML = quick.map((item, i) => `
+    <div class="quick-item" onclick="quickConvert(${i})">
+      ${item.value} ${item.from}
+    </div>
+  `).join('');
+}
+
+function quickConvert(index) {
+  const quick = unitData[currentCategory].quick[index];
+  const fromUnit = unitData[currentCategory].units.indexOf(quick.from);
+  const toUnit = unitData[currentCategory].units.indexOf(quick.to);
+  
+  document.getElementById('inputValue').value = quick.value;
+  document.getElementById('fromUnit').value = fromUnit;
+  document.getElementById('toUnit').value = toUnit;
+  convert();
+}
+
+// Event Listeners
+document.getElementById('inputValue').addEventListener('input', convert);
+document.getElementById('fromUnit').addEventListener('change', convert);
+document.getElementById('toUnit').addEventListener('change', convert);
+
+// Initialize
+populateUnits();
+convert();
+updateQuickConversions();
+
+</script>
+<script src="/knexio-bundle.js"></script>
+<script src="../../cookie-consent.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>What Is My IP Address – IP Lookup Tool | Knexio</title>
+<meta name="description" content="">
+
+<link rel="canonical" href="">
+
+<!-- Open Graph -->
+<meta property="og:title" content="What Is My IP Address?">
+<meta property="og:description" content="">
+<meta property="og:url" content="">
+<meta property="og:type" content="WebApplication">
+<meta property="og:site_name" content="Knexio">
+<meta property="og:image" content="https://knexio.xyz/og-image.png">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "IP Address Lookup",
+    "url": "https://knexio.xyz/tools/ip-address-lookup/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+    "description": "Find your public IP address, location, ISP, and browser details instantly."
+  }
+  
+</script>
+
+<style>
+
+:root{
+  --bg:#0b1220;
+  --card:#111a2e;
+  --border:rgba(255,255,255,.08);
+  --text:#fff;
+  --sub:#aab3c5;
+  --accent:#4f8cff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:system-ui,-apple-system;
+  background:var(--bg);
+  color:var(--text);
+}
+.container{max-width:900px;margin:auto;padding:50px 16px}
+
+/* 统一的返回按钮样式 */
+.back {
+  display: inline-block;
+  color: var(--sub);
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 24px;
+  transition: color 0.2s;
+}
+.back:hover {
+  color: var(--accent);
+}
+
+h1{font-size:32px;margin-bottom:8px}
+h2{font-size:22px;margin-top:30px;margin-bottom:10px}
+.subtitle{color:var(--sub);margin-bottom:24px}
+
+.badge{
+  display:inline-block;
+  padding:4px 10px;
+  border-radius:20px;
+  background:rgba(79,140,255,.15);
+  color:var(--accent);
+  font-size:12px;
+  margin-bottom:10px;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:20px;
+  margin-bottom:20px;
+}
+
+textarea{
+  width:100%;
+  min-height:180px;
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:12px;
+  color:var(--text);
+  padding:14px;
+  font-size:15px;
+}
+textarea:focus{outline:none;border-color:var(--accent)}
+
+.btn-row{display:flex;gap:10px;margin-top:12px}
+button{
+  flex:1;
+  padding:10px;
+  border-radius:10px;
+  border:none;
+  background:var(--accent);
+  color:#fff;
+  cursor:pointer;
+}
+button.secondary{
+  background:transparent;
+  border:1px solid var(--border);
+  color:var(--sub);
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-top:16px;
+}
+.stat{
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:16px;
+  text-align:center;
+}
+.stat span{
+  font-size:24px;
+  font-weight:700;
+  color:var(--accent);
+}
+.stat label{
+  display:block;
+  font-size:12px;
+  color:var(--sub);
+}
+
+.tip{
+  font-size:13px;
+  color:var(--sub);
+  margin-top:10px;
+}
+
+.section p{
+  color:var(--sub);
+  line-height:1.7;
+  margin-bottom:10px;
+}
+
+.tools a{
+  display:inline-block;
+  margin:6px;
+  padding:8px 14px;
+  border-radius:8px;
+  border:1px solid var(--border);
+  color:var(--sub);
+  text-decoration:none;
+}
+.tools a:hover{
+  border-color:var(--accent);
+  color:var(--accent);
+}
+
+/* 广告样式 */
+.ad-banner {
+  margin: 32px 0;
+  text-align: center;
+}
+
+/* 统一的 Footer 样式 */
+footer {
+  margin-top: 40px;
+  text-align: center;
+  color: var(--sub);
+  font-size: 13px;
+}
+footer p {
+  margin-bottom: 8px;
+}
+footer a {
+  color: var(--sub);
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color 0.2s;
+}
+footer a:hover {
+  color: var(--accent);
+}
+
+@media(max-width:600px){
+  .stats{grid-template-columns:1fr 1fr}
+}
+
+</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2596567349043393" crossorigin="anonymous"></script>
+</head>
+
+<body><div class="container">
+
+<a class="back" href="../index.html">← Back to Tools</a>
+
+<h1>What Is My IP Address?</h1>
+<p class="subtitle">Your public IP address, location, ISP, and browser details — displayed instantly, no sign-up required.</p>
+
+<div class="ad-banner">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="3153457922"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<div class="container">
+  <a class="back" href="../index.html">← Back to Tools</a>
+  <h1>What Is My IP Address?</h1>
+      <p class="subtitle">Your public IP address, location, ISP, and browser details — displayed instantly, no sign-up required.</p>
+
+  <div class="seo-section">
+    <h2>How to Use This Tool</h2>
+    <div class="step-block">
+      <h3>Step 1: Enter your input</h3>
+      <p>Type or paste your data into the input field.</p>
+    </div>
+    <div class="step-block">
+      <h3>Step 2: Click the action button</h3>
+      <p>Press the main action button to process your input.</p>
+    </div>
+    <div class="step-block">
+      <h3>Step 3: Copy or download results</h3>
+      <p>Use the Copy button to copy results, or Download to save.</p>
+    </div>
+  </div>
+
+  <div class="ip-hero">
+    <div class="ip-label">Your Public IP Address</div>
+    <div class="ip-value" id="ip-val"><span class="ip-loading">Detecting...</span></div>
+    <button class="copy-btn" onclick="copyIP()">Copy IP</button>
+  </div>
+
+  <div class="info-grid" id="info-grid">
+    <div class="info-card"><div class="info-title">Location</div><div class="info-value" id="loc-val">—</div></div>
+    <div class="info-card"><div class="info-title">ISP / Organization</div><div class="info-value" id="isp-val">—</div></div>
+    <div class="info-card"><div class="info-title">Timezone</div><div class="info-value" id="tz-val">—</div></div>
+    <div class="info-card"><div class="info-title">Coordinates</div><div class="info-value" id="coord-val">—</div></div>
+  </div>
+
+  <div class="browser-section">
+    <h2>Browser & Device Info</h2>
+    <div class="browser-row"><span class="browser-key">Browser</span><span class="browser-val" id="b-browser">—</span></div>
+    <div class="browser-row"><span class="browser-key">Platform</span><span class="browser-val" id="b-platform">—</span></div>
+    <div class="browser-row"><span class="browser-key">Screen Resolution</span><span class="browser-val" id="b-screen">—</span></div>
+    <div class="browser-row"><span class="browser-key">Viewport</span><span class="browser-val" id="b-viewport">—</span></div>
+    <div class="browser-row"><span class="browser-key">Language</span><span class="browser-val" id="b-lang">—</span></div>
+    <div class="browser-row"><span class="browser-key">Connection</span><span class="browser-val" id="b-conn">—</span></div>
+    <div class="browser-row"><span class="browser-key">Color Depth</span><span class="browser-val" id="b-color">—</span></div>
+    <div class="browser-row"><span class="browser-key">Cookies Enabled</span><span class="browser-val" id="b-cookie">—</span></div>
+  </div>
+
+  <div style="margin-top:60px;text-align:center;">
+
+  </div>
+    <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3153457922" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+  <div class="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">What is an IP address?</div>
+      <div class="faq-a">An IP (Internet Protocol) address is a unique numeric label assigned to every device on a network. Your public IP is assigned by your ISP and is visible to websites you visit. Your private IP is used within your home or office network.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What is the difference between IPv4 and IPv6?</div>
+      <div class="faq-a">IPv4 uses 32-bit addresses (e.g. 203.0.113.45), allowing about 4.3 billion unique addresses. IPv6 uses 128-bit addresses (e.g. 2001:0db8::1), supporting a virtually unlimited number of devices — necessary as the internet continues to grow.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can websites see my IP address?</div>
+      <div class="faq-a">Yes. Every time you visit a website, your browser sends your public IP address as part of the HTTP request. Using a VPN or proxy changes the IP address that websites see.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is my IP address location accurate?</div>
+      <div class="faq-a">The city-level location shown is based on IP geolocation databases, which are accurate to within 25–75 miles for most users. ISPs often assign IP ranges to their headquarters city, not your exact location.</div>
+    </div>
+
+  </div>
+
+  <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3153457922" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+  <section class="seo-section">
+    <h2>How to Use the IP Address Lookup</h2>
+      <div class="step-block">
+        <h3>Step 1: Enter an IP Address</h3>
+        <p>Type any IPv4 or IPv6 address, or leave blank to look up your own.</p>
+      </div>
+      <div class="step-block">
+        <h3>Step 2: Click Look Up</h3>
+        <p>The tool queries a geolocation database and returns results.</p>
+      </div>
+      <div class="step-block">
+        <h3>Step 3: Review the Details</h3>
+        <p>See country, region, city, ISP, and timezone information.</p>
+      </div>
+
+    <h2>What Is a IP Address Lookup?</h2>
+    <p>An IP address lookup tool reveals the geographic location, ISP, and other details associated with any IPv4 or IPv6 address — useful for network troubleshooting and security research.</p>
+
+    <h2>Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <h3>Is IP geolocation always accurate?</h3>
+        <p>City-level accuracy is typically 50–75%. Country-level accuracy is above 95%.</p>
+      </div>
+  </section>
+
+<div class="ad-banner" style="margin-top:40px">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="3153457922"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<footer>
+  <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
+  <p>
+    <a href="/about/">About</a> •
+    <a href="/privacy/">Privacy Policy</a> •
+    <a href="/terms/">Terms of Service</a>
+  </p>
+</footer>
+
+</div>
+
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</body>
+</html>

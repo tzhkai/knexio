@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Credit Card Validator</title>
+<meta name="description" content="">
+
+<link rel="canonical" href="">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Credit Card Validator">
+<meta property="og:description" content="">
+<meta property="og:url" content="">
+<meta property="og:type" content="WebApplication">
+<meta property="og:site_name" content="Knexio">
+<meta property="og:image" content="https://knexio.xyz/og-image.png">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is this tool for?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "This is a free online tool for [purpose]. It helps you [function] quickly and easily."
+        }
+      }
+    ]
+  }
+  
+</script>
+
+<style>
+
+:root{
+  --bg:#0b1220;
+  --card:#111a2e;
+  --border:rgba(255,255,255,.08);
+  --text:#fff;
+  --sub:#aab3c5;
+  --accent:#4f8cff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:system-ui,-apple-system;
+  background:var(--bg);
+  color:var(--text);
+}
+.container{max-width:900px;margin:auto;padding:50px 16px}
+
+/* 统一的返回按钮样式 */
+.back {
+  display: inline-block;
+  color: var(--sub);
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 24px;
+  transition: color 0.2s;
+}
+.back:hover {
+  color: var(--accent);
+}
+
+h1{font-size:32px;margin-bottom:8px}
+h2{font-size:22px;margin-top:30px;margin-bottom:10px}
+.subtitle{color:var(--sub);margin-bottom:24px}
+
+.badge{
+  display:inline-block;
+  padding:4px 10px;
+  border-radius:20px;
+  background:rgba(79,140,255,.15);
+  color:var(--accent);
+  font-size:12px;
+  margin-bottom:10px;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:20px;
+  margin-bottom:20px;
+}
+
+textarea{
+  width:100%;
+  min-height:180px;
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:12px;
+  color:var(--text);
+  padding:14px;
+  font-size:15px;
+}
+textarea:focus{outline:none;border-color:var(--accent)}
+
+.btn-row{display:flex;gap:10px;margin-top:12px}
+button{
+  flex:1;
+  padding:10px;
+  border-radius:10px;
+  border:none;
+  background:var(--accent);
+  color:#fff;
+  cursor:pointer;
+}
+button.secondary{
+  background:transparent;
+  border:1px solid var(--border);
+  color:var(--sub);
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-top:16px;
+}
+.stat{
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:16px;
+  text-align:center;
+}
+.stat span{
+  font-size:24px;
+  font-weight:700;
+  color:var(--accent);
+}
+.stat label{
+  display:block;
+  font-size:12px;
+  color:var(--sub);
+}
+
+.tip{
+  font-size:13px;
+  color:var(--sub);
+  margin-top:10px;
+}
+
+.section p{
+  color:var(--sub);
+  line-height:1.7;
+  margin-bottom:10px;
+}
+
+.tools a{
+  display:inline-block;
+  margin:6px;
+  padding:8px 14px;
+  border-radius:8px;
+  border:1px solid var(--border);
+  color:var(--sub);
+  text-decoration:none;
+}
+.tools a:hover{
+  border-color:var(--accent);
+  color:var(--accent);
+}
+
+/* 广告样式 */
+.ad-banner {
+  margin: 32px 0;
+  text-align: center;
+}
+
+/* 统一的 Footer 样式 */
+footer {
+  margin-top: 40px;
+  text-align: center;
+  color: var(--sub);
+  font-size: 13px;
+}
+footer p {
+  margin-bottom: 8px;
+}
+footer a {
+  color: var(--sub);
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color 0.2s;
+}
+footer a:hover {
+  color: var(--accent);
+}
+
+@media(max-width:600px){
+  .stats{grid-template-columns:1fr 1fr}
+}
+
+</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2596567349043393" crossorigin="anonymous"></script>
+</head>
+
+<body><div class="container">
+
+<a class="back" href="../index.html">← Back to Tools</a>
+
+<h1>Credit Card Validator</h1>
+<p class="subtitle">Validate any credit card number using the Luhn algorithm. Detects card type and shows the step-by-step Luhn check. 100% client-side — no data is sent anywhere.</p>
+
+<div class="ad-banner">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="3153457922"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<div class="container">
+  <a class="back" href="../index.html">← Back to Tools</a>
+  <h1>Credit Card Validator</h1>
+  <p class="subtitle">Validate any credit card number using the Luhn algorithm. Detects card type and shows the step-by-step Luhn check. 100% client-side — no data is sent anywhere.</p>
+
+  <!-- Ad Slot 1: Top -->
+
+  <div class="card-box">
+    <div class="privacy-note"><span>🔒</span> This tool runs entirely in your browser. Card numbers are never sent to any server.</div>
+
+    <div class="card-input-wrap">
+      <input type="text" id="cardInput" placeholder="4111 1111 1111 1111" maxlength="23" oninput="handleInput(this)" autocomplete="off" />
+      <div class="card-type-badge" id="typeBadge">?</div>
+    </div>
+
+    <div class="result-row">
+      <div class="result-pill"><div class="label">Validity</div><div class="value" id="validResult">—</div></div>
+      <div class="result-pill"><div class="label">Card Type</div><div class="value value-neutral" id="typeResult">—</div></div>
+      <div class="result-pill"><div class="label">Length</div><div class="value value-neutral" id="lengthResult">—</div></div>
+      <div class="result-pill"><div class="label">Luhn Sum</div><div class="value value-neutral" id="luhnResult">—</div></div>
+    </div>
+
+    <div class="luhn-steps" id="luhnSteps" style="display:none;">
+      <div class="luhn-title">Luhn Algorithm Steps</div>
+      <div class="luhn-grid" id="luhnGrid"></div>
+      <div class="luhn-sum-row" id="luhnSumRow"></div>
+    </div>
+
+    <div class="test-numbers">
+      <div class="test-title">Test with a valid test number (these are not real cards):</div>
+      <div class="test-grid">
+        <div class="test-card" onclick="setCard('4111111111111111')"><div class="test-icon">💳</div><div class="test-info"><div class="test-name">Visa</div><div class="test-num">4111 1111 1111 1111</div></div></div>
+        <div class="test-card" onclick="setCard('5500005555555559')"><div class="test-icon">💳</div><div class="test-info"><div class="test-name">Mastercard</div><div class="test-num">5500 0055 5555 5559</div></div></div>
+        <div class="test-card" onclick="setCard('371449635398431')"><div class="test-icon">💳</div><div class="test-info"><div class="test-name">Amex</div><div class="test-num">3714 496353 98431</div></div></div>
+        <div class="test-card" onclick="setCard('6011111111111117')"><div class="test-icon">💳</div><div class="test-info"><div class="test-name">Discover</div><div class="test-num">6011 1111 1111 1117</div></div></div>
+        <div class="test-card" onclick="setCard('3530111333300000')"><div class="test-icon">💳</div><div class="test-info"><div class="test-name">JCB</div><div class="test-num">3530 1113 3330 0000</div></div></div>
+        <div class="test-card" onclick="setCard('6200000000000005')"><div class="test-icon">💳</div><div class="test-info"><div class="test-name">UnionPay</div><div class="test-num">6200 0000 0000 0005</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ad Slot 2: In-content -->
+
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-item">
+    <div class="faq-q">What is the Luhn algorithm?</div>
+    <div class="faq-a">The Luhn algorithm (also called "modulus 10") is a simple checksum formula used to validate credit card numbers, IMEI numbers, and other identification numbers. It works by doubling every second digit from the right, summing all digits, and checking if the total is divisible by 10. A valid card number passes the Luhn check.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Does passing the Luhn check mean a card is active?</div>
+    <div class="faq-a">No. Luhn validation only checks the mathematical format of the number. A number can pass the Luhn check but still be expired, cancelled, or not a real card. To verify an actual card, a payment processor must be contacted.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Is it safe to enter my card number here?</div>
+    <div class="faq-a">This tool runs entirely in your browser using JavaScript. No data is ever sent to a server. However, as a general rule, avoid entering real card numbers in any third-party tool. Use the test numbers provided above to explore the tool.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">How does card type detection work?</div>
+    <div class="faq-a">Card networks use specific prefixes (IINs/BINs) and lengths: Visa starts with 4 (13 or 16 digits), Mastercard starts with 51–55 or 2221–2720 (16 digits), Amex starts with 34 or 37 (15 digits), Discover starts with 6011 or 65 (16 digits), and so on.</div>
+
+  </div>
+
+  <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3153457922" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+<script>
+  function handleInput(el) {
+    let raw = el.value.replace(/\D/g,'');
+    // Format with spaces every 4
+    el.value = raw.match(/.{1,4}/g)?.join(' ') || raw;
+    validate(raw);
+  }
+
+  function setCard(num) {
+    const el = document.getElementById('cardInput');
+    el.value = num.match(/.{1,4}/g).join(' ');
+    validate(num);
+  }
+
+  function luhn(num) {
+    let sum = 0;
+    let alternate = false;
+    const digits = [];
+    for (let i = num.length - 1; i >= 0; i--) {
+      let n = parseInt(num[i]);
+      const doubled = alternate;
+      if (alternate) {
+        n *= 2;
+        if (n > 9) n -= 9;
+      }
+      digits.unshift({orig: parseInt(num[i]), doubled, final: n});
+      sum += n;
+      alternate = !alternate;
+    }
+    return {valid: sum % 10 === 0, sum, digits};
+  }
+
+  function detectType(num) {
+    if (/^4/.test(num) && (num.length === 13 || num.length === 16)) return {name:'Visa', icon:'💳'};
+    if (/^(5[1-5]|2(2[2-9][1-9]|[3-6]\d{2}|7[01]\d|720))/.test(num) && num.length === 16) return {name:'Mastercard', icon:'💳'};
+    if (/^3[47]/.test(num) && num.length === 15) return {name:'Amex', icon:'💳'};
+    if (/^(6011|65|64[4-9])/.test(num) && num.length === 16) return {name:'Discover', icon:'💳'};
+    if (/^35(2[89]|[3-8])/.test(num) && num.length === 16) return {name:'JCB', icon:'💳'};
+    if (/^62/.test(num)) return {name:'UnionPay', icon:'💳'};
+    if (/^(300|301|302|303|36|38)/.test(num) && num.length === 14) return {name:"Diners Club", icon:'💳'};
+    if (/^(636)/.test(num)) return {name:'Maestro', icon:'💳'};
+    return null;
+  }
+
+  function validate(raw) {
+    if (!raw) {
+      resetUI(); return;
+    }
+    const inp = document.getElementById('cardInput');
+    const l = raw.length;
+    const type = detectType(raw);
+    const {valid, sum, digits} = luhn(raw);
+
+    // Update inputs
+    inp.className = valid ? 'valid' : (l >= 13 ? 'invalid' : '');
+    document.getElementById('typeBadge').textContent = type ? type.name : '?';
+    document.getElementById('validResult').textContent = valid ? '✓ Valid' : '✗ Invalid';
+    document.getElementById('validResult').className = 'value ' + (valid ? 'value-valid' : 'value-invalid');
+    document.getElementById('typeResult').textContent = type ? type.name : 'Unknown';
+    document.getElementById('lengthResult').textContent = l + ' digits';
+    document.getElementById('luhnResult').textContent = sum + ' (mod 10 = ' + (sum % 10) + ')';
+
+    // Luhn steps
+    const stepsEl = document.getElementById('luhnSteps');
+    stepsEl.style.display = l >= 8 ? 'block' : 'none';
+    if (l >= 8) {
+      document.getElementById('luhnGrid').innerHTML = digits.map(d => `
+        <div class="luhn-cell ${d.doubled ? 'doubled' : ''}">
+          <div class="luhn-orig">${d.orig}</div>
+          <div class="luhn-doubled">${d.doubled ? (d.orig*2 > 9 ? d.orig*2+'-9' : (d.orig===0?'—':'×2='+d.orig*2)) : '—'}</div>
+        </div>`).join('');
+      document.getElementById('luhnSumRow').innerHTML = `Total sum: <strong>${sum}</strong> → ${sum} ÷ 10 remainder <strong>${sum%10}</strong> → ${valid ? '<span style="color:#22c55e">✓ Valid (remainder = 0)</span>' : '<span style="color:#ef4444">✗ Invalid (remainder ≠ 0)</span>'}`;
+    }
+  }
+
+  function resetUI() {
+    document.getElementById('validResult').textContent = '—';
+    document.getElementById('validResult').className = 'value';
+    document.getElementById('typeResult').textContent = '—';
+    document.getElementById('lengthResult').textContent = '—';
+    document.getElementById('luhnResult').textContent = '—';
+    document.getElementById('typeBadge').textContent = '?';
+    document.getElementById('luhnSteps').style.display = 'none';
+  }
+</script>
+  <script src="../../knexio-bundle.js"></script>
+  <script src="../../cookie-consent.js"></script>
+  <!-- Schema: FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is this tool for?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "This is a free online tool for [purpose]. It helps you [function] quickly and easily."
+        }
+      }
+    ]
+  }
+  </script>
+  </div>
+
+  
+  <div class="seo-section">
+    <h2>How to Use the Credit Card Validator</h2>
+    <div class="step-block">
+      <h3>Step 1: Enter a card number</h3>
+      <p>Type or paste a credit card number into the input field.</p>
+    </div>
+    <div class="step-block">
+      <h3>Step 2: Validate with Luhn algorithm</h3>
+      <p>The tool runs a Luhn check to confirm if the number is mathematically valid.</p>
+    </div>
+    <div class="step-block">
+      <h3>Step 3: View card type</h3>
+      <p>The validator detects the card brand (Visa, Mastercard, Amex, Discover, etc.) automatically.</p>
+    </div>
+
+<div class="ad-banner" style="margin-top:40px">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="3153457922"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<footer>
+  <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
+  <p>
+    <a href="/about/">About</a> •
+    <a href="/privacy/">Privacy Policy</a> •
+    <a href="/terms/">Terms of Service</a>
+  </p>
+</footer>
+
+</div>
+
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</body>
+</html>

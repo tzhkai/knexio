@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Text to Speech – Free Online TTS Converter | Knexio</title>
+<meta name="description" content="Free online text to speech converter with natural voices and multiple language support. Convert any text to audio instantly in your browser.">
+
+<link rel="canonical" href="https://knexio.xyz/tools/text-to-speech/">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Text to Speech">
+<meta property="og:description" content="Convert text to natural-sounding speech instantly. Free online TTS with multiple languages and voices.">
+<meta property="og:url" content="https://knexio.xyz/tools/text-to-speech/">
+<meta property="og:type" content="WebApplication">
+<meta property="og:site_name" content="Knexio">
+<meta property="og:image" content="https://knexio.xyz/og-image.png">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Text to Speech Converter",
+  "url": "https://knexio.xyz/tools/text-to-speech/",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "All",
+  "description": "Free online text to speech converter with natural voices and multiple language support."
+}
+</script>
+
+<style>
+:root{
+  --bg:#0b1220;
+  --card:#111a2e;
+  --border:rgba(255,255,255,.08);
+  --text:#fff;
+  --sub:#aab3c5;
+  --accent:#4f8cff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:system-ui,-apple-system;
+  background:var(--bg);
+  color:var(--text);
+}
+.container{max-width:900px;margin:auto;padding:50px 16px}
+
+/* 统一的返回按钮样式 */
+.back {
+  display: inline-block;
+  color: var(--sub);
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 24px;
+  transition: color 0.2s;
+}
+.back:hover {
+  color: var(--accent);
+}
+
+h1{font-size:32px;margin-bottom:8px}
+h2{font-size:22px;margin-top:30px;margin-bottom:10px}
+h3{font-size:18px;margin-bottom:8px}
+.subtitle{color:var(--sub);margin-bottom:24px}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:20px;
+  margin-bottom:20px;
+}
+
+
+textarea:focus{outline:none;border-color:var(--accent)}
+
+
+
+
+button:disabled{
+  opacity:0.5;
+  cursor:not-allowed;
+}
+
+.controls{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:16px;
+  margin-bottom:16px;
+}
+.control-group{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+label{
+  font-size:14px;
+  color:var(--sub);
+}
+select{
+  padding:10px;
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:8px;
+  color:var(--text);
+  cursor:pointer;
+}
+select:focus{outline:none;border-color:var(--accent)}
+input[type="range"]{
+  width:100%;
+  cursor:pointer;
+}
+
+.char-count{
+  text-align:right;
+  font-size:13px;
+  color:var(--sub);
+  margin-bottom:8px;
+}
+
+.status{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:12px;
+  background:var(--bg);
+  border-radius:10px;
+  margin-top:12px;
+}
+.status-icon{
+  font-size:20px;
+}
+.status-text{
+  flex:1;
+  font-size:14px;
+  color:var(--sub);
+}
+
+.features{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:16px;
+  margin-top:20px;
+}
+.feature{
+  padding:16px;
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:10px;
+  text-align:center;
+}
+.feature-icon{
+  font-size:32px;
+  margin-bottom:12px;
+}
+.feature h3{
+  color:var(--text);
+  margin-bottom:8px;
+}
+.feature p{
+  font-size:14px;
+  color:var(--sub);
+  line-height:1.6;
+}
+
+.section p{
+  color:var(--sub);
+  line-height:1.7;
+  margin-bottom:10px;
+}
+
+
+
+
+
+
+
+
+
+.tools a{
+  display:inline-block;
+  margin:6px;
+  padding:8px 14px;
+  border-radius:8px;
+  border:1px solid var(--border);
+  color:var(--sub);
+  text-decoration:none;
+}
+.tools a:hover{
+  border-color:var(--accent);
+  color:var(--accent);
+}
+
+/* 广告样式 */
+.ad-banner {
+  margin: 32px 0;
+  text-align: center;
+}
+
+/* 统一的 Footer 样式 */
+footer {
+  margin-top: 40px;
+  text-align: center;
+  color: var(--sub);
+  font-size: 13px;
+}
+footer p {
+  margin-bottom: 8px;
+}
+footer a {
+  color: var(--sub);
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color 0.2s;
+}
+footer a:hover {
+  color: var(--accent);
+}
+
+@media(max-width:600px){
+  .controls{grid-template-columns:1fr}
+  .features{grid-template-columns:1fr}
+}
+textarea,.text-area{width:100%;min-height:180px;background:var(--bg);border:1px solid var(--border);border-radius:12px;color:var(--text);padding:14px;font-size:15px;resize:vertical;box-sizing:border-box}
+textarea:focus,.text-area:focus{outline:none;border-color:var(--accent)}
+.btn-row{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+button,.btn,.btn-row button{flex:1;padding:10px;border-radius:10px;border:none;background:var(--accent);color:#fff;cursor:pointer;font-size:14px;transition:opacity 0.2s;box-sizing:border-box}
+button:hover,.btn:hover{opacity:0.9}
+button.secondary,.btn.secondary,.btn-outline,.btn-row button.secondary{background:transparent;border:1px solid var(--border);color:var(--sub)}
+button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.stat{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center}
+.stat span,.stat-value,.result-value,.age-value{font-size:24px;font-weight:700;color:var(--accent);display:block}
+.stat label,.stat-label,.result-label,.age-label{font-size:12px;color:var(--sub);display:block}
+.result-box{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;margin-top:16px;min-height:100px;white-space:pre-wrap;word-break:break-all;font-size:15px;line-height:1.7;box-sizing:border-box}
+@media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.btn-row{flex-direction:column}}
+  </style>
+</head>
+
+<body><div class="container">
+
+<a class="back" href="../index.html">← Back to Tools</a>
+
+<h1>Text to Speech</h1>
+<p class="subtitle">Convert text to natural-sounding speech instantly. Free online TTS with multiple languages and voices.</p>
+
+<div class="ad-banner">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="5794572171"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<div class="card">
+  <div class="controls">
+    <div class="control-group">
+      <label>Language</label>
+      <select id="languageSelect">
+        <option value="en-US">English (US)</option>
+        <option value="en-GB">English (UK)</option>
+        <option value="es-ES">Spanish</option>
+        <option value="fr-FR">French</option>
+        <option value="de-DE">German</option>
+        <option value="it-IT">Italian</option>
+        <option value="pt-BR">Portuguese</option>
+        <option value="ru-RU">Russian</option>
+        <option value="ja-JP">Japanese</option>
+        <option value="ko-KR">Korean</option>
+        <option value="zh-CN">Chinese (Simplified)</option>
+        <option value="zh-TW">Chinese (Traditional)</option>
+        <option value="ar-SA">Arabic</option>
+        <option value="hi-IN">Hindi</option>
+        <option value="nl-NL">Dutch</option>
+        <option value="pl-PL">Polish</option>
+        <option value="tr-TR">Turkish</option>
+        <option value="vi-VN">Vietnamese</option>
+      </select>
+    </div>
+    <div class="control-group">
+      <label>Voice</label>
+      <select id="voiceSelect">
+        <option value="">Default</option>
+      </select>
+    </div>
+    <div class="control-group">
+      <label>Speed: <span id="rateValue">1.0</span>x</label>
+      <input type="range" id="rateSlider" min="0.5" max="2" step="0.1" value="1" oninput="updateRate()">
+    </div>
+  </div>
+
+  <textarea id="textInput" placeholder="Enter or paste your text here to convert to speech...&#10;&#10;Example: Hello! This is a text to speech converter. You can type anything here and I'll read it aloud for you." oninput="updateCharCount()"></textarea>
+
+  <div class="char-count"><span id="charCount">0</span> / 5000 characters</div>
+
+  <div class="btn-row">
+    <button onclick="speak()">▶ Speak</button>
+    <button class="secondary" onclick="pauseResume()" id="pauseBtn" disabled>⏸ Pause</button>
+    <button class="secondary" onclick="stop()" id="stopBtn" disabled>⏹ Stop</button>
+  </div>
+
+  <div class="status" id="statusBox" style="display:none">
+    <span class="status-icon">🔊</span>
+    <span class="status-text" id="statusText">Ready to speak</span>
+  </div>
+</div>
+
+<div class="features">
+  <div class="feature">
+    <div class="feature-icon">🌍</div>
+    <h3>18+ Languages</h3>
+    <p>Support for major world languages including English, Spanish, French, Chinese, Japanese, and more.</p>
+  </div>
+  <div class="feature">
+    <div class="feature-icon">🎙️</div>
+    <h3>Natural Voices</h3>
+    <p>High-quality, natural-sounding speech synthesis powered by your browser's native TTS engine.</p>
+  </div>
+  <div class="feature">
+    <div class="feature-icon">⚡</div>
+    <h3>Instant & Free</h3>
+    <p>No registration required. Convert text to speech instantly in your browser at no cost.</p>
+  </div>
+</div>
+
+<h2>How to Use</h2>
+<div class="section">
+
+
+
+</div>
+
+<h2>What Is Text to Speech?</h2>
+<div class="section">
+<p>A text-to-speech tool converts written text into spoken audio using your browser's built-in speech synthesis engine — useful for proofreading, accessibility, and language learning.</p>
+<p>This tool works entirely in your browser, so your text is never sent to any server.</p>
+</div>
+
+<h2>Related Tools</h2>
+<div class="tools">
+<a href="/tools/word-counter/">Word Counter</a>
+<a href="/tools/text-case-counter/">Text Case Counter</a>
+<a href="/tools/case-converter/">Case Converter</a>
+</div>
+
+<div class="ad-banner" style="margin-top:40px">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="9504968504"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<footer>
+  <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
+  <p>
+    <a href="/about/" style="color:var(--accent);text-decoration:none;margin:0 8px;">About</a>
+    <a href="/privacy/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Privacy</a>
+    <a href="/terms/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Terms</a>
+    <a href="/contact/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Contact</a>
+  </p>
+  <p>© 2026 Knexio. All rights reserved.</p>
+</footer>
+
+</div>
+
+<script>
+let synthesis = window.speechSynthesis;
+let utterance = null;
+let isPaused = false;
+
+// Initialize voices
+function loadVoices(){
+  const voices = synthesis.getVoices();
+  const voiceSelect = document.getElementById('voiceSelect');
+  const language = document.getElementById('languageSelect').value;
+  
+  voiceSelect.innerHTML = '<option value="">Default</option>';
+  
+  voices.filter(v => v.lang.startsWith(language.split('-')[0])).forEach((voice, index) => {
+    const option = document.createElement('option');
+    option.value = index;
+    option.textContent = `${voice.name} (${voice.lang})`;
+    voiceSelect.appendChild(option);
+  });
+}
+
+synthesis.onvoiceschanged = loadVoices;
+document.getElementById('languageSelect').addEventListener('change', loadVoices);
+
+function updateRate(){
+  const value = document.getElementById('rateSlider').value;
+  document.getElementById('rateValue').textContent = parseFloat(value).toFixed(1);
+}
+
+function updateCharCount(){
+  const text = document.getElementById('textInput').value;
+  const count = text.length;
+  document.getElementById('charCount').textContent = count;
+  
+  if(count > 5000){
+    document.getElementById('textInput').value = text.substring(0, 5000);
+  }
+}
+
+function showStatus(text, icon = '🔊'){
+  const box = document.getElementById('statusBox');
+  document.getElementById('statusText').textContent = text;
+  document.getElementById('statusIcon').textContent = icon;
+  box.style.display = 'flex';
+}
+
+function speak(){
+  const text = document.getElementById('textInput').value.trim();
+  if(!text){
+    showStatus('Please enter some text', '⚠️');
+    return;
+  }
+  
+  synthesis.cancel();
+  
+  utterance = new SpeechSynthesisUtterance(text);
+  utterance.rate = parseFloat(document.getElementById('rateSlider').value);
+  utterance.lang = document.getElementById('languageSelect').value;
+  
+  const voiceIndex = document.getElementById('voiceSelect').value;
+  if(voiceIndex !== ''){
+    const voices = synthesis.getVoices();
+    const filteredVoices = voices.filter(v => v.lang.startsWith(utterance.lang.split('-')[0]));
+    if(filteredVoices[voiceIndex]){
+      utterance.voice = filteredVoices[voiceIndex];
+    }
+  }
+  
+  utterance.onstart = () => {
+    document.getElementById('pauseBtn').disabled = false;
+    document.getElementById('stopBtn').disabled = false;
+    showStatus('Speaking...', '🔊');
+  };
+  
+  utterance.onend = () => {
+    document.getElementById('pauseBtn').disabled = true;
+    document.getElementById('stopBtn').disabled = true;
+    isPaused = false;
+    document.getElementById('pauseBtn').textContent = '⏸ Pause';
+    showStatus('Finished', '✅');
+  };
+  
+  utterance.onerror = () => {
+    document.getElementById('pauseBtn').disabled = true;
+    document.getElementById('stopBtn').disabled = true;
+    isPaused = false;
+    document.getElementById('pauseBtn').textContent = '⏸ Pause';
+    showStatus('Error occurred', '❌');
+  };
+  
+  synthesis.speak(utterance);
+}
+
+function pauseResume(){
+  if(isPaused){
+    synthesis.resume();
+    isPaused = false;
+    document.getElementById('pauseBtn').textContent = '⏸ Pause';
+    showStatus('Speaking...', '🔊');
+  } else {
+    synthesis.pause();
+    isPaused = true;
+    document.getElementById('pauseBtn').textContent = '▶ Resume';
+    showStatus('Paused', '⏸️');
+  }
+}
+
+function stop(){
+  synthesis.cancel();
+  document.getElementById('pauseBtn').disabled = true;
+  document.getElementById('stopBtn').disabled = true;
+  isPaused = false;
+  document.getElementById('pauseBtn').textContent = '⏸ Pause';
+  showStatus('Stopped', '⏹️');
+}
+</script>
+
+<script>
+</script>
+<script src="/knexio-bundle.js"></script>
+</body>
+</html>

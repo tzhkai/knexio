@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>🌍 Time Zone Converter</title>
+<meta name="description" content="">
+
+<link rel="canonical" href="">
+
+<!-- Open Graph -->
+<meta property="og:title" content="🌍 Time Zone Converter">
+<meta property="og:description" content="">
+<meta property="og:url" content="">
+<meta property="og:type" content="WebApplication">
+<meta property="og:site_name" content="Knexio">
+<meta property="og:image" content="https://knexio.xyz/og-image.png">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is this tool for?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "This is a free online tool for [purpose]. It helps you [function] quickly and easily."
+        }
+      }
+    ]
+  }
+  
+</script>
+
+<style>
+
+:root{
+  --bg:#0b1220;
+  --card:#111a2e;
+  --border:rgba(255,255,255,.08);
+  --text:#fff;
+  --sub:#aab3c5;
+  --accent:#4f8cff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:system-ui,-apple-system;
+  background:var(--bg);
+  color:var(--text);
+}
+.container{max-width:900px;margin:auto;padding:50px 16px}
+
+/* 统一的返回按钮样式 */
+.back {
+  display: inline-block;
+  color: var(--sub);
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 24px;
+  transition: color 0.2s;
+}
+.back:hover {
+  color: var(--accent);
+}
+
+h1{font-size:32px;margin-bottom:8px}
+h2{font-size:22px;margin-top:30px;margin-bottom:10px}
+.subtitle{color:var(--sub);margin-bottom:24px}
+
+.badge{
+  display:inline-block;
+  padding:4px 10px;
+  border-radius:20px;
+  background:rgba(79,140,255,.15);
+  color:var(--accent);
+  font-size:12px;
+  margin-bottom:10px;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:20px;
+  margin-bottom:20px;
+}
+
+textarea{
+  width:100%;
+  min-height:180px;
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:12px;
+  color:var(--text);
+  padding:14px;
+  font-size:15px;
+}
+textarea:focus{outline:none;border-color:var(--accent)}
+
+.btn-row{display:flex;gap:10px;margin-top:12px}
+button{
+  flex:1;
+  padding:10px;
+  border-radius:10px;
+  border:none;
+  background:var(--accent);
+  color:#fff;
+  cursor:pointer;
+}
+button.secondary{
+  background:transparent;
+  border:1px solid var(--border);
+  color:var(--sub);
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-top:16px;
+}
+.stat{
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:16px;
+  text-align:center;
+}
+.stat span{
+  font-size:24px;
+  font-weight:700;
+  color:var(--accent);
+}
+.stat label{
+  display:block;
+  font-size:12px;
+  color:var(--sub);
+}
+
+.tip{
+  font-size:13px;
+  color:var(--sub);
+  margin-top:10px;
+}
+
+.section p{
+  color:var(--sub);
+  line-height:1.7;
+  margin-bottom:10px;
+}
+
+.tools a{
+  display:inline-block;
+  margin:6px;
+  padding:8px 14px;
+  border-radius:8px;
+  border:1px solid var(--border);
+  color:var(--sub);
+  text-decoration:none;
+}
+.tools a:hover{
+  border-color:var(--accent);
+  color:var(--accent);
+}
+
+/* 广告样式 */
+.ad-banner {
+  margin: 32px 0;
+  text-align: center;
+}
+
+/* 统一的 Footer 样式 */
+footer {
+  margin-top: 40px;
+  text-align: center;
+  color: var(--sub);
+  font-size: 13px;
+}
+footer p {
+  margin-bottom: 8px;
+}
+footer a {
+  color: var(--sub);
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color 0.2s;
+}
+footer a:hover {
+  color: var(--accent);
+}
+
+@media(max-width:600px){
+  .stats{grid-template-columns:1fr 1fr}
+}
+
+</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2596567349043393" crossorigin="anonymous"></script>
+</head>
+
+<body><div class="container">
+
+<a class="back" href="../index.html">← Back to Tools</a>
+
+<h1>🌍 Time Zone Converter</h1>
+<p class="subtitle">Convert times between any two time zones in seconds. Includes a live world clock for 20+ cities and a meeting planner to find overlap hours across multiple zones.</p>
+
+<div class="ad-banner">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="3153457922"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<div class="container">
+  <a class="back" href="../index.html">← Back to Tools</a>
+  <h1>🌍 Time Zone Converter</h1>
+  <p class="subtitle">Convert times between any two time zones in seconds. Includes a live world clock for 20+ cities and a meeting planner to find overlap hours across multiple zones.</p>
+
+  <!-- Ad Slot 1: Top -->
+
+  <div class="tabs">
+    <div class="btn-row">
+      <button class="tab-btn active" onclick="switchTab('converter')">Converter</button>
+    <button class="tab-btn" onclick="switchTab('worldclock')">World Clock</button>
+    <button class="tab-btn" onclick="switchTab('meeting')">Meeting Planner</button>
+    </div></div>
+
+  <!-- Converter Tab -->
+  <div class="tab-panel active" id="tab-converter">
+    <div class="conv-box">
+      <div class="conv-grid">
+        <div class="form-group">
+          <label>Date & Time</label>
+          <input type="datetime-local" id="sourceTime" />
+        </div>
+        <button class="arrow-btn" title="Swap zones" onclick="swapZones()">⇄</button>
+        <div></div>
+      </div>
+      <div class="conv-grid">
+        <div class="form-group">
+          <label>From Time Zone</label>
+          <select id="fromZone"></select>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:center;padding-bottom:8px;">→</div>
+        <div class="form-group">
+          <label>To Time Zone</label>
+          <select id="toZone"></select>
+        </div>
+      </div>
+      <div class="result-block" id="convResult">
+        <div class="result-time" id="resultTime">--:--</div>
+        <div class="result-date" id="resultDate"></div>
+        <div class="result-offset" id="resultOffset"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- World Clock Tab -->
+  <div class="tab-panel" id="tab-worldclock">
+    <div class="clock-grid" id="clockGrid"></div>
+  </div>
+
+  <!-- Meeting Planner Tab -->
+  <div class="tab-panel" id="tab-meeting">
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:18px;padding:24px;">
+      <div class="meeting-zones" id="meetingZones"></div>
+      <button class="add-zone" onclick="addMeetingZone()">+ Add Time Zone</button>
+      <div class="hour-grid" id="hourGrid"></div>
+    </div>
+  </div>
+
+  <!-- Ad Slot 2: Mid -->
+
+  <h2>About Time Zones</h2>
+  <div class="info-grid">
+    <div class="info-card">
+      <h3>UTC vs GMT</h3>
+      <p>UTC (Coordinated Universal Time) is the world's primary time standard. GMT is historically Greenwich Mean Time — they differ by less than 1 second and are used interchangeably for most purposes.</p>
+    </div>
+    <div class="info-card">
+      <h3>Daylight Saving Time</h3>
+      <p>DST shifts clocks +1 hour in spring and −1 hour in autumn. Not all countries observe DST — notably China, Japan, and most of Africa do not change clocks.</p>
+    </div>
+    <div class="info-card">
+      <h3>IANA Timezone Names</h3>
+      <p>Standard timezone IDs like "America/New_York" or "Asia/Tokyo" come from the IANA tz database and uniquely identify every zone including historical DST rules.</p>
+    </div>
+    <div class="info-card">
+      <h3>Remote Work Tip</h3>
+      <p>For global teams, aim for a 2–3 hour overlap window. UTC 13–16 (1–4 PM) typically covers US morning (EST), US afternoon (PST), EU end of day, and early Asia morning.</p>
+    </div>
+
+  </div>
+
+  <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3153457922" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+<script>
+  const ZONES = [
+    {label:'UTC',tz:'UTC'},
+    {label:'New York (EST/EDT)',tz:'America/New_York'},
+    {label:'Los Angeles (PST/PDT)',tz:'America/Los_Angeles'},
+    {label:'Chicago (CST/CDT)',tz:'America/Chicago'},
+    {label:'Denver (MST/MDT)',tz:'America/Denver'},
+    {label:'São Paulo',tz:'America/Sao_Paulo'},
+    {label:'London (GMT/BST)',tz:'Europe/London'},
+    {label:'Paris (CET/CEST)',tz:'Europe/Paris'},
+    {label:'Berlin',tz:'Europe/Berlin'},
+    {label:'Moscow',tz:'Europe/Moscow'},
+    {label:'Dubai',tz:'Asia/Dubai'},
+    {label:'Mumbai',tz:'Asia/Kolkata'},
+    {label:'Bangkok',tz:'Asia/Bangkok'},
+    {label:'Singapore',tz:'Asia/Singapore'},
+    {label:'Shanghai/Beijing',tz:'Asia/Shanghai'},
+    {label:'Tokyo',tz:'Asia/Tokyo'},
+    {label:'Seoul',tz:'Asia/Seoul'},
+    {label:'Sydney',tz:'Australia/Sydney'},
+    {label:'Auckland',tz:'Pacific/Auckland'},
+    {label:'Honolulu',tz:'Pacific/Honolulu'},
+  ];
+
+  const WORLD_CITIES = [
+    {city:'New York',flag:'🇺🇸',tz:'America/New_York'},
+    {city:'Los Angeles',flag:'🇺🇸',tz:'America/Los_Angeles'},
+    {city:'London',flag:'🇬🇧',tz:'Europe/London'},
+    {city:'Paris',flag:'🇫🇷',tz:'Europe/Paris'},
+    {city:'Berlin',flag:'🇩🇪',tz:'Europe/Berlin'},
+    {city:'Moscow',flag:'🇷🇺',tz:'Europe/Moscow'},
+    {city:'Dubai',flag:'🇦🇪',tz:'Asia/Dubai'},
+    {city:'Mumbai',flag:'🇮🇳',tz:'Asia/Kolkata'},
+    {city:'Bangkok',flag:'🇹🇭',tz:'Asia/Bangkok'},
+    {city:'Singapore',flag:'🇸🇬',tz:'Asia/Singapore'},
+    {city:'Shanghai',flag:'🇨🇳',tz:'Asia/Shanghai'},
+    {city:'Tokyo',flag:'🇯🇵',tz:'Asia/Tokyo'},
+    {city:'Seoul',flag:'🇰🇷',tz:'Asia/Seoul'},
+    {city:'Sydney',flag:'🇦🇺',tz:'Australia/Sydney'},
+    {city:'Auckland',flag:'🇳🇿',tz:'Pacific/Auckland'},
+    {city:'São Paulo',flag:'🇧🇷',tz:'America/Sao_Paulo'},
+    {city:'Chicago',flag:'🇺🇸',tz:'America/Chicago'},
+    {city:'Toronto',flag:'🇨🇦',tz:'America/Toronto'},
+    {city:'Mexico City',flag:'🇲🇽',tz:'America/Mexico_City'},
+    {city:'UTC',flag:'🌐',tz:'UTC'},
+  ];
+
+  let meetingZoneList = ['America/New_York','Europe/London','Asia/Shanghai'];
+
+  function populateSelects() {
+    ['fromZone','toZone'].forEach(id => {
+      const sel = document.getElementById(id);
+      ZONES.forEach(z => {
+        const opt = document.createElement('option');
+        opt.value = z.tz; opt.textContent = z.label; sel.appendChild(opt);
+      });
+    });
+    document.getElementById('fromZone').value = Intl.DateTimeFormat().resolvedOptions().timeZone || 'America/New_York';
+    document.getElementById('toZone').value = 'UTC';
+    const now = new Date();
+    const pad = n => String(n).padStart(2,'0');
+    document.getElementById('sourceTime').value = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())}T${pad(now.getHours())}:${pad(now.getMinutes())}`;
+    ['fromZone','toZone','sourceTime'].forEach(id => document.getElementById(id).addEventListener('change', convertTime));
+    convertTime();
+  }
+
+  function convertTime() {
+    const srcVal = document.getElementById('sourceTime').value;
+    const fromTz = document.getElementById('fromZone').value;
+    const toTz = document.getElementById('toZone').value;
+    if (!srcVal) return;
+    try {
+      const dt = new Date(srcVal);
+      const fromOffset = getTzOffset(dt, fromTz);
+      const toOffset = getTzOffset(dt, toTz);
+      const adjusted = new Date(dt.getTime() - fromOffset + toOffset);
+      const fmtTime = new Intl.DateTimeFormat('en-US', {hour:'2-digit',minute:'2-digit',second:'2-digit',timeZone:toTz,hour12:false}).format(dt);
+      const fmtDate = new Intl.DateTimeFormat('en-US', {weekday:'long',year:'numeric',month:'long',day:'numeric',timeZone:toTz}).format(dt);
+      const diffH = Math.round((toOffset - fromOffset) / 60000 / 60 * 10) / 10;
+      document.getElementById('resultTime').textContent = fmtTime;
+      document.getElementById('resultDate').textContent = fmtDate;
+      document.getElementById('resultOffset').textContent = `Time difference: ${diffH >= 0 ? '+' : ''}${diffH} hours`;
+    } catch(e) {}
+  }
+
+  function getTzOffset(date, tz) {
+    try {
+      const s = date.toLocaleString('en-US', {timeZone: tz, timeZoneName:'short'});
+      return -new Date(date.toLocaleString('en-US', {timeZone: tz})).getTime() + date.getTime();
+    } catch(e) { return 0; }
+  }
+
+  function swapZones() {
+    const a = document.getElementById('fromZone').value;
+    const b = document.getElementById('toZone').value;
+    document.getElementById('fromZone').value = b;
+    document.getElementById('toZone').value = a;
+    convertTime();
+  }
+
+  function renderWorldClock() {
+    const grid = document.getElementById('clockGrid');
+    grid.innerHTML = '';
+    const now = new Date();
+    WORLD_CITIES.forEach(c => {
+      const timeFmt = new Intl.DateTimeFormat('en-US', {hour:'2-digit',minute:'2-digit',second:'2-digit',timeZone:c.tz,hour12:false});
+      const dateFmt = new Intl.DateTimeFormat('en-US', {weekday:'short',month:'short',day:'numeric',timeZone:c.tz});
+      const card = document.createElement('div');
+      card.className = 'clock-card';
+      card.innerHTML = `<div class="city">${c.flag} ${c.city}</div><div class="time" id="clock-${c.tz.replace('/','_')}">${timeFmt.format(now)}</div><div class="date">${dateFmt.format(now)}</div>`;
+      grid.appendChild(card);
+    });
+  }
+
+  function tickClocks() {
+    const now = new Date();
+    WORLD_CITIES.forEach(c => {
+      const el = document.getElementById('clock-' + c.tz.replace('/','_'));
+      if (el) el.textContent = new Intl.DateTimeFormat('en-US',{hour:'2-digit',minute:'2-digit',second:'2-digit',timeZone:c.tz,hour12:false}).format(now);
+    });
+  }
+
+  function renderMeetingPlanner() {
+    const zonesDiv = document.getElementById('meetingZones');
+    zonesDiv.innerHTML = '';
+    meetingZoneList.forEach((tz, i) => {
+      const row = document.createElement('div');
+      row.className = 'zone-row';
+      const sel = document.createElement('select');
+      ZONES.forEach(z => {
+        const opt = document.createElement('option');
+        opt.value = z.tz; opt.textContent = z.label; sel.appendChild(opt);
+      });
+      sel.value = tz;
+      sel.onchange = () => { meetingZoneList[i] = sel.value; renderHourGrid(); };
+      const removeBtn = document.createElement('button');
+      removeBtn.textContent = '✕';
+      removeBtn.onclick = () => { meetingZoneList.splice(i, 1); renderMeetingPlanner(); };
+      row.appendChild(sel);
+      if (meetingZoneList.length > 2) row.appendChild(removeBtn);
+      zonesDiv.appendChild(row);
+    });
+    renderHourGrid();
+  }
+
+  function addMeetingZone() {
+    meetingZoneList.push('Asia/Tokyo');
+    renderMeetingPlanner();
+  }
+
+  function renderHourGrid() {
+    const grid = document.getElementById('hourGrid');
+    grid.innerHTML = '';
+    const table = document.createElement('table');
+    table.className = 'hour-table';
+    const headerRow = document.createElement('tr');
+    const thUTC = document.createElement('th');
+    thUTC.textContent = 'UTC Hour'; headerRow.appendChild(thUTC);
+    meetingZoneList.forEach(tz => {
+      const th = document.createElement('th');
+      th.textContent = tz.split('/').pop().replace('_',' ');
+      headerRow.appendChild(th);
+    });
+    table.appendChild(headerRow);
+    for (let h = 0; h < 24; h++) {
+      const tr = document.createElement('tr');
+      const tdUTC = document.createElement('td');
+      tdUTC.textContent = String(h).padStart(2,'0') + ':00';
+      tr.appendChild(tdUTC);
+      meetingZoneList.forEach(tz => {
+        const d = new Date(Date.UTC(2026, 0, 5, h, 0, 0));
+        const localH = +new Intl.DateTimeFormat('en-US',{hour:'numeric',hour12:false,timeZone:tz}).format(d);
+        const td = document.createElement('td');
+        td.textContent = String(localH).padStart(2,'0') + ':00';
+        td.className = (localH >= 9 && localH <= 18) ? 'work' : 'off';
+        tr.appendChild(td);
+      });
+      table.appendChild(tr);
+    }
+    grid.appendChild(table);
+  }
+
+  function switchTab(name) {
+    const tabs = ['converter','worldclock','meeting'];
+    document.querySelectorAll('.tab-btn').forEach((b,i) => b.classList.toggle('active', tabs[i] === name));
+    tabs.forEach(t => document.getElementById('tab-'+t).classList.toggle('active', t === name));
+    if (name === 'worldclock') renderWorldClock();
+    if (name === 'meeting') renderMeetingPlanner();
+  }
+
+  populateSelects();
+  setInterval(tickClocks, 1000);
+</script>
+  <script src="../../knexio-bundle.js"></script>
+  <script src="../../cookie-consent.js"></script>
+  <!-- Schema: FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is this tool for?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "This is a free online tool for [purpose]. It helps you [function] quickly and easily."
+        }
+      }
+    ]
+  }
+  </script>
+  </div>
+
+  
+  <div class="seo-section">
+    <h2>How to Use the Time Zone Converter</h2>
+    <div class="step-block">
+      <h3>Step 1: Enter a date and time</h3>
+      <p>Type or select the date and time you want to convert.</p>
+    </div>
+    <div class="step-block">
+      <h3>Step 2: Choose source time zone</h3>
+      <p>Select the time zone the original time belongs to.</p>
+    </div>
+    <div class="step-block">
+      <h3>Step 3: Select target time zone</h3>
+      <p>Pick the time zone you want to convert to.</p>
+    </div>
+    <div class="step-block">
+      <h3>Step 4: View converted time</h3>
+      <p>The equivalent time in the target time zone is shown instantly.</p>
+    </div>
+
+<div class="ad-banner" style="margin-top:40px">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="3153457922"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<footer>
+  <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
+  <p>
+    <a href="/about/">About</a> •
+    <a href="/privacy/">Privacy Policy</a> •
+    <a href="/terms/">Terms of Service</a>
+  </p>
+</footer>
+
+</div>
+
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</body>
+</html>

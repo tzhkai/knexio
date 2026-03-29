@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Finance Calculators – Free Online Financial Tools | Knexio</title>
+  <meta name="description" content="Free online finance calculators for mortgages, loans, investments, retirement, and debt payoff. Plan your financial future with our easy-to-use tools." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="canonical" href="https://knexio.xyz/finance/" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="author" content="Knexio">
+  <meta property="og:title" content="Finance Calculators – Free Online Financial Tools | Knexio" />
+  <meta property="og:description" content="Free online finance calculators for mortgages, loans, investments, retirement, and debt payoff. Plan your financial future with our easy-to-use tools." />
+  <meta property="og:url" content="https://knexio.xyz/finance/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Knexio" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Finance Calculators – Free Online Financial Tools | Knexio",
+    "url": "https://knexio.xyz/finance/",
+    "description": "Free online finance calculators for mortgages, loans, investments, retirement, and debt payoff. Plan your financial future with our easy-to-use tools.",
+    "publisher": { "@type": "Organization", "name": "Knexio", "url": "https://knexio.xyz" }
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg-dark: #0b1220;
+      --bg-dark-2: #070d1a;
+      --panel: #111a2e;
+      --border: rgba(255,255,255,0.08);
+      --text-main: #fff;
+      --text-sub: #aab3c5;
+      --accent: #4f8cff;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(180deg, var(--bg-dark), var(--bg-dark-2));
+      color: var(--text-main);
+      min-height: 100vh;
+    }
+    a { text-decoration: none; color: inherit; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 60px 24px 100px; }
+    .back { display: inline-block; color: var(--text-sub); font-size: 14px; margin-bottom: 32px; transition: color 0.2s; }
+    .back:hover { color: var(--accent); }
+    h1 { font-size: 38px; font-weight: 700; margin-bottom: 12px; }
+    .subtitle { font-size: 16px; color: var(--text-sub); margin-bottom: 40px; max-width: 680px; line-height: 1.6; }
+
+    /* Ad banner */
+    .ad-banner, .ad-mid { margin: 32px 0; text-align: center; }
+
+    /* Section label */
+    .section-label {
+      font-size: 13px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--text-sub);
+      margin: 48px 0 20px; padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    /* Card */
+    .card {
+      display: flex; flex-direction: column;
+      background: var(--panel); border: 1px solid var(--border);
+      border-radius: 14px; padding: 22px 20px 18px;
+      transition: border-color 0.2s, transform 0.15s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+    .card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(79,140,255,0.12);
+    }
+    .card h2 {
+      font-size: 16px; font-weight: 600;
+      margin: 10px 0 8px; color: var(--text-main);
+    }
+    .card p {
+      font-size: 13px; color: var(--text-sub);
+      line-height: 1.55; flex: 1; margin-bottom: 16px;
+    }
+    .card .btn {
+      display: inline-block; align-self: flex-start;
+      padding: 7px 16px; border-radius: 8px;
+      background: rgba(79,140,255,0.12); color: var(--accent);
+      font-size: 13px; font-weight: 600; transition: background 0.2s;
+    }
+    .card:hover .btn { background: var(--accent); color: #fff; }
+
+    /* Tags */
+    .tag {
+      display: inline-block; padding: 3px 10px;
+      border-radius: 20px; font-size: 11px; font-weight: 600;
+      background: rgba(79,140,255,0.15); color: var(--accent);
+    }
+    .tag.green { background: rgba(52,211,153,0.15); color: #34d399; }
+    .tag.orange { background: rgba(251,146,60,0.15); color: #fb923c; }
+    .tag.teal { background: rgba(0,212,170,0.15); color: #00d4aa; }
+
+    /* SEO section */
+    .seo-section {
+      background: var(--panel); border: 1px solid var(--border);
+      border-radius: 14px; padding: 36px; margin: 48px 0 32px;
+    }
+    .seo-section h2 { font-size: 22px; margin-bottom: 14px; }
+    .seo-section p { color: var(--text-sub); font-size: 15px; line-height: 1.75; margin-bottom: 14px; }
+
+    /* Footer */
+    footer {
+      text-align: center; padding: 40px 20px;
+      border-top: 1px solid var(--border); margin-top: 20px;
+      color: var(--text-sub); font-size: 14px;
+    }
+    footer a { color: var(--text-sub); margin: 0 10px; transition: color 0.2s; }
+    footer a:hover { color: var(--accent); }
+    footer p { margin-bottom: 8px; }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .grid { grid-template-columns: repeat(2, 1fr); }
+      h1 { font-size: 30px; }
+    }
+    @media (max-width: 560px) {
+      .grid { grid-template-columns: 1fr; }
+      .container { padding: 40px 16px 80px; }
+      h1 { font-size: 26px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <a href="/" class="back">← Back to Home</a>
+    <h1>Finance Calculators</h1>
+    <p class="subtitle">Free online financial calculators for mortgages, loans, investments, retirement, and budgeting. Plan your financial future with our easy-to-use tools.</p>
+
+    <div class="ad-banner">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="5794572171" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+    <!-- Loan & Debt -->
+    <div class="section-label">Loan & Debt</div>
+    <div class="grid">
+      <a class="card" href="mortgage-calculator/">
+        <span class="tag">Loan</span>
+        <h2>Mortgage Calculator</h2>
+        <p>Calculate monthly mortgage payments, total interest, and amortization schedule for home loans.</p>
+        <span class="btn">Open Tool</span>
+      </a>
+      <a class="card" href="auto-loan-calculator/">
+        <span class="tag">Loan</span>
+        <h2>Auto Loan Calculator</h2>
+        <p>Estimate car loan payments with down payment, trade-in value, and interest rate options.</p>
+        <span class="btn">Open Tool</span>
+      </a>
+      <a class="card" href="student-loan-calculator/">
+        <span class="tag">Loan</span>
+        <h2>Student Loan Calculator</h2>
+        <p>Plan your student loan repayment with multiple payment scenarios and interest savings.</p>
+        <span class="btn">Open Tool</span>
+      </a>
+      <a class="card" href="debt-payoff-calculator/">
+        <span class="tag orange">Debt</span>
+        <h2>Debt Payoff Calculator</h2>
+        <p>Create a debt elimination plan with avalanche or snowball method to become debt-free faster.</p>
+        <span class="btn">Open Tool</span>
+      </a>
+      <a class="card" href="credit-card-payoff/">
+        <span class="tag orange">Debt</span>
+        <h2>Credit Card Payoff</h2>
+        <p>Calculate how long to pay off credit card debt and how much interest you'll pay.</p>
+        <span class="btn">Open Tool</span>
+      </a>
+    </div>
+
+    <!-- Savings & Investment -->
+    <div class="section-label">Savings & Investment</div>
+    <div class="grid">
+      <a class="card" href="savings-goal-calculator/">
+        <span class="tag green">Savings</span>
+        <h2>Savings Goal Calculator</h2>
+        <p>Determine how much to save monthly to reach your financial goals on time.</p>
+        <span class="btn">Open Tool</span>
+      </a>
+      <a class="card" href="investment-return-calculator/">
+        <span class="tag teal">Investment</span>
+        <h2>Investment Return Calculator</h2>
+        <p>Calculate compound returns on stocks, mutual funds, and other investments.</p>
+        <span class="btn">Open Tool</span>
+      </a>
+      <a class="card" href="retirement-planner/">
+        <span class="tag teal">Investment</span>
+        <h2>Retirement Planner</h2>
+        <p>Estimate how much you need to save for retirement and if you're on track.</p>
+        <span class="btn">Open Tool</span>
+      </a>
+      <a class="card" href="stock-profit-calculator/">
+        <span class="tag teal">Investment</span>
+        <h2>Stock Profit Calculator</h2>
+        <p>Calculate stock profits, losses, and returns including trading fees.</p>
+        <span class="btn">Open Tool</span>
+      </a>
+    </div>
+
+    <!-- Income & Budget -->
+    <div class="section-label">Income & Budget</div>
+    <div class="grid">
+      <a class="card" href="salary-calculator/">
+        <span class="tag">Income</span>
+        <h2>Salary Calculator</h2>
+        <p>Convert between hourly, monthly, and annual salary with tax estimates.</p>
+        <span class="btn">Open Tool</span>
+      </a>
+      <a class="card" href="budget-planner/">
+        <span class="tag orange">Budget</span>
+        <h2>Budget Planner</h2>
+        <p>Create a monthly budget with the 50/30/20 rule and track your spending categories.</p>
+        <span class="btn">Open Tool</span>
+      </a>
+      <a class="card" href="tax-calculator/">
+        <span class="tag orange">Tax</span>
+        <h2>Tax Calculator</h2>
+        <p>Estimate your income tax liability and take-home pay after deductions.</p>
+        <span class="btn">Open Tool</span>
+      </a>
+    </div>
+
+    <div class="ad-mid">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+    <div class="seo-section">
+      <h2>About Knexio Finance Calculators</h2>
+      <p>Our free financial calculators help you make informed decisions about loans, investments, savings, and budgeting. All calculations happen in your browser — no data is sent to our servers.</p>
+      <h2>Why Use Our Calculators?</h2>
+      <p><strong>100% Free:</strong> No hidden fees or premium features. All calculators are completely free to use.</p>
+      <p><strong>Privacy First:</strong> Your financial data stays on your device. We don't store or track your inputs.</p>
+      <p><strong>Accurate Results:</strong> Our calculators use standard financial formulas for reliable projections.</p>
+      <p><strong>Mobile Friendly:</strong> Use on any device — desktop, tablet, or smartphone.</p>
+    </div>
+
+    <footer>
+      <p>Free financial calculators for mortgages, loans, investments, and budgeting. Plan your finances with ease.</p>
+      <p style="margin: 8px 0; font-size: 13px;">
+        <a href="/about/">About</a>
+        <a href="/privacy/">Privacy</a>
+        <a href="/terms/">Terms</a>
+        <a href="/contact/">Contact</a>
+      </p>
+      <p>© 2026 Knexio. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script src="/knexio-bundle.js"></script>
+</body>
+</html>

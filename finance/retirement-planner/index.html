@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Retirement Planner – Savings Projection & Income | Knexio</title>
+  <meta name="description" content="Free retirement planner to estimate savings at retirement, income gap, and required contributions. Plan for financial independence.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://knexio.xyz/finance/retirement-planner/">
+  <meta property="og:title" content="Retirement Planner – Savings Projection & Income">
+  <meta property="og:description" content="Free retirement planner to estimate how much you need to save and if you're on track.">
+  <meta property="og:url" content="https://knexio.xyz/finance/retirement-planner/">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"Retirement Planner","url":"https://knexio.xyz/finance/retirement-planner/","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  </script>
+  <style>
+    :root{--bg:#0b1220;--card:#111a2e;--text:#fff;--sub:#aab3c5;--accent:#4f8cff;--border:rgba(255,255,255,0.08)}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh}
+    a{color:var(--accent);text-decoration:none}
+    .container{max-width:920px;margin:0 auto;padding:60px 20px 100px}
+    .back{display:inline-block;color:var(--sub);font-size:14px;margin-bottom:28px;transition:color 0.2s}
+    .back:hover{color:var(--accent)}
+    h1{font-size:34px;font-weight:700;margin-bottom:8px}
+    .subtitle{font-size:15px;color:var(--sub);margin-bottom:32px}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px;margin-bottom:24px}
+    .card-title{font-size:16px;font-weight:600;color:var(--accent);margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+    .form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    .form-field{display:flex;flex-direction:column}
+    .form-field.full-width{grid-column:1/-1}
+    label{font-size:13px;color:var(--sub);margin-bottom:6px;font-weight:500}
+    input,select{width:100%;padding:12px 16px;background:var(--bg);border:1px solid var(--border);border-radius:12px;color:var(--text);font-size:15px;font-family:inherit;transition:border-color 0.2s}
+    input:focus,select:focus{outline:none;border-color:var(--accent)}
+    .btn-row{display:flex;gap:12px;margin-top:20px}
+    .btn-primary{padding:12px 28px;border:none;border-radius:10px;background:var(--accent);color:#fff;font-size:15px;font-weight:600;cursor:pointer;transition:background 0.2s;flex:1}
+    .btn-primary:hover{background:#3d7de0}
+    .btn-secondary{padding:12px 20px;border:1px solid var(--border);border-radius:10px;background:transparent;color:var(--sub);font-size:15px;font-weight:500;cursor:pointer;transition:all 0.2s}
+    .btn-secondary:hover{border-color:var(--accent);color:var(--accent)}
+    .results{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px;margin-bottom:24px;min-height:120px}
+    .result-header{font-size:16px;font-weight:600;color:var(--accent);margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+    .result-highlight{text-align:center;padding:24px;margin-bottom:20px}
+    .result-big{font-size:48px;font-weight:800;color:var(--accent);line-height:1}
+    .result-big-label{font-size:14px;color:var(--sub);margin-top:8px}
+    .result-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);font-size:14px}
+    .result-row:last-child{border-bottom:none}
+    .result-label{color:var(--sub)}
+    .result-value{font-weight:600;color:var(--text)}
+    .result-value.accent{color:var(--accent)}
+    .result-value.green{color:#00d4aa}
+    .result-value.red{color:#f87171}
+    .result-placeholder{text-align:center;padding:40px 0;color:var(--sub);font-size:15px}
+    .progress-bar-wrap{margin:16px 0;background:var(--bg);border-radius:8px;overflow:hidden;height:16px}
+    .progress-bar{height:16px;background:linear-gradient(90deg,#00d4aa,var(--accent));border-radius:8px;transition:width 0.4s}
+    .ad-banner{margin:32px 0;text-align:center}
+    .section{margin-bottom:32px}
+    h2{font-size:22px;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+    p{color:var(--sub);font-size:15px;line-height:1.75;margin-bottom:14px}
+    .faq-item{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;margin-bottom:16px}
+    .faq-item h3{font-size:16px;font-weight:600;color:var(--text);margin-bottom:8px}
+    .faq-item p{font-size:14px;color:var(--sub);margin-bottom:0;line-height:1.6}
+    footer{text-align:center;padding:40px 20px;border-top:1px solid var(--border);margin-top:60px;color:var(--sub);font-size:14px}
+    footer p{margin-bottom:8px}
+    footer a{color:var(--accent);transition:color 0.2s}
+    footer a:hover{color:#3d7de0}
+    @media(max-width:680px){.form-grid{grid-template-columns:1fr}.container{padding:40px 16px 80px}h1{font-size:28px}.btn-row{flex-direction:column}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a class="back" href="../index.html">← Back to Finance</a>
+    <h1>Retirement Planner</h1>
+    <p class="subtitle">Plan your retirement savings and calculate your future income needs</p>
+
+    <div class="ad-banner">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="5794572171" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Retirement Details</div>
+      <div class="form-grid">
+        <div class="form-field">
+          <label for="currentAge">Current Age</label>
+          <input type="number" id="currentAge" value="35" min="18" max="80">
+        </div>
+        <div class="form-field">
+          <label for="retirementAge">Retirement Age</label>
+          <input type="number" id="retirementAge" value="65" min="50" max="100">
+        </div>
+        <div class="form-field">
+          <label for="currentSavings">Current Retirement Savings ($)</label>
+          <input type="number" id="currentSavings" value="50000" min="0" step="1000">
+        </div>
+        <div class="form-field">
+          <label for="annualContribution">Annual Contribution ($)</label>
+          <input type="number" id="annualContribution" value="12000" min="0" step="1000">
+        </div>
+        <div class="form-field">
+          <label for="annualReturn">Expected Annual Return (%)</label>
+          <input type="number" id="annualReturn" value="7" min="0" max="15" step="0.1">
+        </div>
+        <div class="form-field">
+          <label for="monthlyIncome">Desired Monthly Income ($)</label>
+          <input type="number" id="monthlyIncome" value="5000" min="0" step="500">
+        </div>
+        <div class="form-field">
+          <label for="socialSecurity">Social Security ($/month)</label>
+          <input type="number" id="socialSecurity" value="2000" min="0" step="100">
+        </div>
+        <div class="form-field">
+          <label for="pension">Pension ($/month)</label>
+          <input type="number" id="pension" value="0" min="0" step="100">
+        </div>
+        <div class="form-field full-width">
+          <label for="withdrawalRate">Safe Withdrawal Rate (%)</label>
+          <input type="number" id="withdrawalRate" value="4" min="1" max="10" step="0.1">
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="calculate()">Calculate</button>
+        <button class="btn-secondary" onclick="clearForm()">Reset</button>
+      </div>
+    </div>
+
+    <div class="results" id="results">
+      <div class="result-placeholder">Enter your retirement details and click <strong>Calculate</strong> to see projections</div>
+    </div>
+
+    <div class="section">
+      <h2>Free Online Retirement Planner</h2>
+      <p>Take control of your financial future with our free retirement planner. Whether you're just starting your career or approaching retirement, planning early and consistently is key to achieving financial independence. This tool helps you estimate whether your current savings rate will provide the retirement income you need.</p>
+      <p>Enter your current age, retirement age, existing savings, and annual contributions. The calculator projects your retirement savings based on expected investment returns. It then compares your projected retirement income from savings, Social Security, and pensions against your desired monthly income to determine if you're on track or need to adjust your plan.</p>
+    </div>
+
+    <div class="section">
+      <h2>How It Works</h2>
+      <p>The retirement planner calculates your projected savings at retirement age using compound growth on your current savings and annual contributions. Enter your expected annual return rate based on your investment allocation – conservative portfolios might expect 5-7%, while balanced portfolios might target 7-9%. Your savings grow tax-deferred in retirement accounts like 401(k)s and IRAs.</p>
+      <p>The safe withdrawal rate determines how much annual income your retirement savings can generate. The widely-used 4% rule suggests you can withdraw 4% of your savings annually without depleting your principal over a 30-year retirement. This means if you have $1 million saved, you could generate $40,000 in annual income. You can adjust this rate based on your personal comfort level and expected market conditions.</p>
+      <p>Your total retirement income combines withdrawals from your savings (calculated using the safe withdrawal rate) with expected Social Security payments and any pension income. The calculator compares this total to your desired monthly income and shows your progress as a percentage. If there's an income gap, you can adjust your savings rate, retirement age, or expected returns to close the gap and get on track for the retirement you envision.</p>
+    </div>
+
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>How much should I save for retirement?</h3>
+      <p>Financial experts often recommend saving 10-15% of your income throughout your career, including any employer matching. A common rule of thumb is to aim for 10-12 times your annual income saved by retirement. However, your specific needs depend on your lifestyle, healthcare costs, retirement age, and expected lifespan. Use this calculator to see if you're on track.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What is the 4% safe withdrawal rule?</h3>
+      <p>The 4% rule states that you can withdraw 4% of your retirement savings annually in the first year of retirement, then adjust that amount for inflation each year, without likely running out of money over a 30-year retirement. This rule is based on historical market returns and provides a conservative starting point. Your actual rate may vary based on market conditions and your personal timeline.</p>
+    </div>
+    <div class="faq-item">
+      <h3>When should I start saving for retirement?</h3>
+      <p>The earlier you start, the better, thanks to compound growth. Starting in your 20s gives your investments decades to grow. Even small contributions early on can grow significantly by retirement. However, it's never too late to start. If you're starting later, you may need to save a higher percentage of your income or work longer to reach your retirement goals.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How do I estimate Social Security benefits?</h3>
+      <p>Your Social Security benefit depends on your highest 35 years of earnings and the age you start claiming. You can create an account at ssa.gov to see your estimated benefits. Generally, claiming at full retirement age (66-67) gives you your full benefit, while claiming earlier reduces it and delaying past full retirement age increases it. Use conservative estimates in your planning.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What if I have an income gap in retirement?</h3>
+      <p>If the calculator shows an income gap, you have several options: increase your annual contributions, delay retirement to give your investments more time to grow, aim for higher investment returns by adjusting your asset allocation, or reduce your desired retirement income. Small increases in savings now can have a big impact due to compound growth over many years.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Is this retirement planner free to use?</h3>
+      <p>Yes, this retirement planner is completely free to use with no registration required. You can run unlimited calculations to explore different retirement scenarios, savings rates, and retirement ages to find the plan that works best for your financial situation and retirement goals.</p>
+    </div>
+
+    <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+    <footer>
+      <p>Free financial calculators for mortgages, loans, investments, and budgeting. Plan your finances with ease.</p>
+      <p style="margin:8px 0;font-size:13px">
+        <a href="/about/" style="color:var(--accent)">About</a><a href="/privacy/" style="color:var(--accent)">Privacy</a><a href="/terms/" style="color:var(--accent)">Terms</a><a href="/contact/" style="color:var(--accent)">Contact</a>
+      </p>
+      <p>© 2026 Knexio. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    function fmt(n){return n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}
+
+    function calculate() {
+      const currentAge = parseInt(document.getElementById('currentAge').value);
+      const retirementAge = parseInt(document.getElementById('retirementAge').value);
+      const currentSavings = parseFloat(document.getElementById('currentSavings').value) || 0;
+      const annualContribution = parseFloat(document.getElementById('annualContribution').value) || 0;
+      const annualReturn = parseFloat(document.getElementById('annualReturn').value) / 100;
+      const monthlyIncome = parseFloat(document.getElementById('monthlyIncome').value) || 0;
+      const socialSecurity = parseFloat(document.getElementById('socialSecurity').value) || 0;
+      const pension = parseFloat(document.getElementById('pension').value) || 0;
+      const withdrawalRate = parseFloat(document.getElementById('withdrawalRate').value) / 100;
+
+      if (currentAge >= retirementAge) { alert('Retirement age must be greater than current age.'); return; }
+
+      const years = retirementAge - currentAge;
+      let projectedSavings = currentSavings;
+      let totalContributions = currentSavings;
+
+      for (let i = 0; i < years; i++) {
+        projectedSavings = projectedSavings * (1 + annualReturn) + annualContribution;
+        totalContributions += annualContribution;
+      }
+
+      const investmentEarnings = projectedSavings - totalContributions;
+      const annualIncomeNeeded = monthlyIncome * 12;
+      const annualFromSavings = projectedSavings * withdrawalRate;
+      const annualSS = socialSecurity * 12;
+      const annualPension = pension * 12;
+      const totalAnnualIncome = annualFromSavings + annualSS + annualPension;
+      const incomeGap = Math.max(0, annualIncomeNeeded - totalAnnualIncome);
+      const progressPct = annualIncomeNeeded > 0 ? Math.min(100, (totalAnnualIncome / annualIncomeNeeded) * 100) : 100;
+      const onTrack = incomeGap === 0;
+
+      document.getElementById('results').innerHTML = `
+        <div class="result-header">Retirement Projections</div>
+        <div class="result-highlight">
+          <div class="result-big">$${fmt(projectedSavings)}</div>
+          <div class="result-big-label">Projected Savings at Age ${retirementAge}</div>
+        </div>
+        <div class="result-row"><span class="result-label">Years to retirement</span><span class="result-value">${years} years</span></div>
+        <div class="result-row"><span class="result-label">Total contributions</span><span class="result-value">$${fmt(totalContributions)}</span></div>
+        <div class="result-row"><span class="result-label">Investment earnings</span><span class="result-value green">$${fmt(investmentEarnings)}</span></div>
+        <div class="result-row"><span class="result-label">Projected savings</span><span class="result-value accent">$${fmt(projectedSavings)}</span></div>
+        <div class="result-header" style="margin-top:20px">Retirement Income</div>
+        <div class="result-row"><span class="result-label">Desired annual income</span><span class="result-value">$${fmt(annualIncomeNeeded)}</span></div>
+        <div class="result-row"><span class="result-label">Income from savings (${(withdrawalRate*100).toFixed(1)}%)</span><span class="result-value">$${fmt(annualFromSavings)}</span></div>
+        <div class="result-row"><span class="result-label">Social Security</span><span class="result-value">$${fmt(annualSS)}</span></div>
+        <div class="result-row"><span class="result-label">Pension</span><span class="result-value">$${fmt(annualPension)}</span></div>
+        <div class="result-row"><span class="result-label">Total projected income</span><span class="result-value ${onTrack?'green':'red'}">$${fmt(totalAnnualIncome)}</span></div>
+        <div class="result-row"><span class="result-label">Income coverage</span><span class="result-value ${onTrack?'green':'red'}">${progressPct.toFixed(1)}% ${onTrack?'✓ On Track':'⚠️ Gap'}</span></div>
+        ${incomeGap > 0 ? `<div class="result-row"><span class="result-label">Annual income gap</span><span class="result-value red">$${fmt(incomeGap)}</span></div>` : ''}
+        <div style="margin-top:16px"><div style="font-size:13px;color:var(--sub);margin-bottom:8px">Income Coverage: ${progressPct.toFixed(1)}%</div>
+          <div class="progress-bar-wrap"><div class="progress-bar" style="width:${progressPct}%"></div></div>
+        </div>
+      `;
+    }
+
+    function clearForm() {
+      document.getElementById('currentAge').value = '35';
+      document.getElementById('retirementAge').value = '65';
+      document.getElementById('currentSavings').value = '50000';
+      document.getElementById('annualContribution').value = '12000';
+      document.getElementById('annualReturn').value = '7';
+      document.getElementById('monthlyIncome').value = '5000';
+      document.getElementById('socialSecurity').value = '2000';
+      document.getElementById('pension').value = '0';
+      document.getElementById('withdrawalRate').value = '4';
+      document.getElementById('results').innerHTML = '<div class="result-placeholder">Enter your retirement details and click <strong>Calculate</strong> to see projections</div>';
+    }
+  </script>
+  <script src="/knexio-bundle.js"></script>
+</body>
+</html>

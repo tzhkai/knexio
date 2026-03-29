@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Word Counter – Count Words, Characters & Sentences Online</title>
+<meta name="description" content="Free word counter tool to count words, characters (with or without spaces), sentences, paragraphs, and reading time instantly. Works in your browser.">
+
+<link rel="canonical" href="https://knexio.xyz/tools/word-counter/">
+
+<meta property="og:title" content="Word Counter Tool">
+<meta property="og:description" content="Count words, characters, sentences, and paragraphs instantly.">
+<meta property="og:url" content="https://knexio.xyz/tools/word-counter/">
+<meta property="og:type" content="WebApplication">
+<meta property="og:site_name" content="Knexio">
+<meta property="og:image" content="https://knexio.xyz/og-image.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Word Counter",
+  "url": "https://knexio.xyz/tools/word-counter/",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "All",
+  "description": "Free online word counter. Count words, characters, sentences, paragraphs, and reading time instantly in your browser.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+
+<style>
+:root{
+  --bg:#0b1220;
+  --card:#111a2e;
+  --border:rgba(255,255,255,.08);
+  --text:#fff;
+  --sub:#aab3c5;
+  --accent:#4f8cff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:system-ui,-apple-system;
+  background:var(--bg);
+  color:var(--text);
+}
+.container{max-width:900px;margin:auto;padding:50px 16px}
+
+.back{
+  display:inline-block;
+  color:var(--sub);
+  text-decoration:none;
+  font-size:14px;
+  margin-bottom:24px;
+  transition:color 0.2s;
+}
+.back:hover{color:var(--accent)}
+
+h1{font-size:32px;margin-bottom:8px}
+h2{font-size:22px;margin-top:30px;margin-bottom:10px}
+.subtitle{color:var(--sub);margin-bottom:24px}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:20px;
+  margin-bottom:20px;
+}
+
+
+textarea:focus{outline:none;border-color:var(--accent)}
+
+
+
+
+
+
+
+
+
+
+.tip{font-size:13px;color:var(--sub);margin-top:10px}
+
+.section p{color:var(--sub);line-height:1.7;margin-bottom:10px}
+
+.tools a{
+  display:inline-block;
+  margin:6px;
+  padding:8px 14px;
+  border-radius:8px;
+  border:1px solid var(--border);
+  color:var(--sub);
+  text-decoration:none;
+}
+.tools a:hover{border-color:var(--accent);color:var(--accent)}
+
+.ad-banner{margin:32px 0;text-align:center}
+
+.faq-item{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:20px;
+  margin-bottom:12px;
+}
+.faq-item h3{font-size:16px;margin-bottom:8px;color:var(--text)}
+.faq-item p{color:var(--sub);font-size:14px;line-height:1.7;margin:0}
+
+footer{
+  margin-top:40px;
+  text-align:center;
+  color:var(--sub);
+  font-size:13px;
+}
+footer p{margin-bottom:8px}
+footer a{
+  color:var(--sub);
+  text-decoration:none;
+  margin:0 10px;
+  transition:color 0.2s;
+}
+footer a:hover{color:var(--accent)}
+
+@media(max-width:600px){
+  
+}
+textarea,.text-area{width:100%;min-height:180px;background:var(--bg);border:1px solid var(--border);border-radius:12px;color:var(--text);padding:14px;font-size:15px;resize:vertical;box-sizing:border-box}
+textarea:focus,.text-area:focus{outline:none;border-color:var(--accent)}
+.btn-row{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+button,.btn,.btn-row button{flex:1;padding:10px;border-radius:10px;border:none;background:var(--accent);color:#fff;cursor:pointer;font-size:14px;transition:opacity 0.2s;box-sizing:border-box}
+button:hover,.btn:hover{opacity:0.9}
+button.secondary,.btn.secondary,.btn-outline,.btn-row button.secondary{background:transparent;border:1px solid var(--border);color:var(--sub)}
+button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.stat{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center}
+.stat span,.stat-value,.result-value,.age-value{font-size:24px;font-weight:700;color:var(--accent);display:block}
+.stat label,.stat-label,.result-label,.age-label{font-size:12px;color:var(--sub);display:block}
+.result-box{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;margin-top:16px;min-height:100px;white-space:pre-wrap;word-break:break-all;font-size:15px;line-height:1.7;box-sizing:border-box}
+@media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.btn-row{flex-direction:column}}
+  </style>
+</head>
+
+<body><div class="container">
+
+<a class="back" href="../index.html">← Back to Tools</a>
+
+<h1>Word Counter</h1>
+<p class="subtitle">Count words, characters, sentences, paragraphs, and reading time instantly.</p>
+
+<div class="ad-banner">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="5794572171"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<div class="card">
+<textarea id="input" placeholder="Paste or type your text here..."></textarea>
+
+<div class="btn-row">
+<button onclick="clearText()">Clear</button>
+<button class="secondary" onclick="copyText()">Copy</button>
+</div>
+
+<div class="stats">
+  <div class="stat"><span id="words">0</span><label>Words</label></div>
+  <div class="stat"><span id="chars">0</span><label>Characters</label></div>
+  <div class="stat"><span id="charsNo">0</span><label>No Spaces</label></div>
+  <div class="stat"><span id="sentences">0</span><label>Sentences</label></div>
+  <div class="stat"><span id="paragraphs">0</span><label>Paragraphs</label></div>
+  <div class="stat"><span id="time">0</span><label>Reading (min)</label></div>
+</div>
+
+<div class="tip" id="tip"></div>
+</div>
+
+<h2>Free Online Word Counter</h2>
+<div class="section">
+<p>This word counter instantly calculates words, characters, sentences, and paragraphs. Perfect for essays, blogs, and SEO writing.</p>
+<p>Use it to meet word limits, improve readability, and structure your content effectively.</p>
+</div>
+
+<h2>How It Works</h2>
+<div class="section">
+<p>The tool processes your text in real time as you type or paste. It splits words by whitespace, sentences by punctuation marks (. ! ?), and paragraphs by line breaks.</p>
+<p>Reading time is calculated at an average speed of 200 words per minute, which is the typical reading pace for adults.</p>
+</div>
+
+<h2>Frequently Asked Questions</h2>
+
+<div class="faq-item">
+  <h3>How does a word counter work?</h3>
+  <p>A word counter splits your text by spaces and line breaks to count individual words. It counts characters including and excluding spaces, identifies sentences by punctuation marks, and detects paragraphs by double line breaks. All calculations happen instantly as you type.</p>
+</div>
+
+<div class="faq-item">
+  <h3>Is this word counter free to use?</h3>
+  <p>Yes, this word counter is completely free. No registration or signup is required. Just open the page and start typing or pasting your text.</p>
+</div>
+
+<div class="faq-item">
+  <h3>Is my text saved or stored anywhere?</h3>
+  <p>No. All processing happens entirely in your browser. Your text never leaves your device and is not sent to any server.</p>
+</div>
+
+<div class="faq-item">
+  <h3>What reading speed is used for the reading time estimate?</h3>
+  <p>The reading time is based on 200 words per minute, which is the average adult reading speed. You can use this to estimate how long it takes to read an article or essay.</p>
+</div>
+
+<div class="faq-item">
+  <h3>Can I count words in a PDF or Word document?</h3>
+  <p>Simply copy the text from your PDF or Word document and paste it into the word counter. The tool will count all the pasted content instantly.</p>
+</div>
+
+<div class="faq-item">
+  <h3>How accurate is the sentence counter?</h3>
+  <p>The sentence counter uses standard punctuation marks (. ! ?) to identify sentences. It ignores trailing punctuation and empty strings for accuracy. Note that abbreviations (like e.g.) and decimals may occasionally be counted as separate sentences.</p>
+</div>
+
+<h2>Related Tools</h2>
+<div class="tools">
+<a href="/tools/sentence-counter/">Sentence Counter</a>
+<a href="/tools/character-counter/">Character Counter</a>
+<a href="/tools/reading-time/">Reading Time Calculator</a>
+</div>
+
+<div class="ad-banner" style="margin-top:40px">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="9504968504"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<footer>
+  <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
+  <p style="margin: 8px 0; font-size: 13px;">
+    <a href="/about/" style="color:var(--accent);text-decoration:none;margin:0 8px;">About</a>
+    <a href="/privacy/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Privacy</a>
+    <a href="/terms/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Terms</a>
+    <a href="/contact/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Contact</a>
+  </p>
+  <p>© 2026 Knexio. All rights reserved.</p>
+</footer>
+
+</div>
+
+<script>
+const input = document.getElementById("input");
+input.addEventListener("input", update);
+
+function update(){
+  const text = input.value;
+  const words = text.trim()?text.trim().split(/\s+/).length:0;
+  const chars = text.length;
+  const charsNo = text.replace(/\s+/g,"").length;
+  const sentences = text.split(/[.!?]+/).filter(s=>s.trim()).length;
+  const paragraphs = text.split(/\n+/).filter(p=>p.trim()).length;
+  const reading = Math.ceil(words / 200);
+  document.getElementById("words").textContent = words;
+  document.getElementById("chars").textContent = chars;
+  document.getElementById("charsNo").textContent = charsNo;
+  document.getElementById("sentences").textContent = sentences;
+  document.getElementById("paragraphs").textContent = paragraphs;
+  document.getElementById("time").textContent = reading;
+  if(words>0){
+    const avg = Math.round(words / (sentences || 1));
+    document.getElementById("tip").innerText = "Avg sentence length: " + avg + " words";
+  } else {
+    document.getElementById("tip").innerText = "";
+  }
+}
+
+function clearText(){ input.value=""; update(); }
+function copyText(){ navigator.clipboard.writeText(input.value); alert("Copied!"); }
+</script>
+<script src="/knexio-bundle.js"></script>
+</body>
+</html>

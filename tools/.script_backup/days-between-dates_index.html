@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>日期间隔计算器</title>
+<meta name="description" content="">
+
+<link rel="canonical" href="">
+
+<!-- Open Graph -->
+<meta property="og:title" content="日期间隔计算器">
+<meta property="og:description" content="">
+<meta property="og:url" content="">
+<meta property="og:type" content="WebApplication">
+<meta property="og:site_name" content="Knexio">
+<meta property="og:image" content="https://knexio.xyz/og-image.png">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "日期间隔计算器",
+    "description": "Free online days between dates calculator. Calculate the number of days, weeks, months, and years between two dates. Perfect for planning, deadlines, and age calculation.",
+    "url": "https://knexio.xyz/tools/days-between-dates/",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Knexio",
+      "url": "https://knexio.xyz"
+    }
+  }
+  
+</script>
+
+<style>
+
+:root{
+  --bg:#0b1220;
+  --card:#111a2e;
+  --border:rgba(255,255,255,.08);
+  --text:#fff;
+  --sub:#aab3c5;
+  --accent:#4f8cff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:system-ui,-apple-system;
+  background:var(--bg);
+  color:var(--text);
+}
+.container{max-width:900px;margin:auto;padding:50px 16px}
+
+/* 统一的返回按钮样式 */
+.back {
+  display: inline-block;
+  color: var(--sub);
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 24px;
+  transition: color 0.2s;
+}
+.back:hover {
+  color: var(--accent);
+}
+
+h1{font-size:32px;margin-bottom:8px}
+h2{font-size:22px;margin-top:30px;margin-bottom:10px}
+.subtitle{color:var(--sub);margin-bottom:24px}
+
+.badge{
+  display:inline-block;
+  padding:4px 10px;
+  border-radius:20px;
+  background:rgba(79,140,255,.15);
+  color:var(--accent);
+  font-size:12px;
+  margin-bottom:10px;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:20px;
+  margin-bottom:20px;
+}
+
+textarea{
+  width:100%;
+  min-height:180px;
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:12px;
+  color:var(--text);
+  padding:14px;
+  font-size:15px;
+}
+textarea:focus{outline:none;border-color:var(--accent)}
+
+.btn-row{display:flex;gap:10px;margin-top:12px}
+button{
+  flex:1;
+  padding:10px;
+  border-radius:10px;
+  border:none;
+  background:var(--accent);
+  color:#fff;
+  cursor:pointer;
+}
+button.secondary{
+  background:transparent;
+  border:1px solid var(--border);
+  color:var(--sub);
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-top:16px;
+}
+.stat{
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:16px;
+  text-align:center;
+}
+.stat span{
+  font-size:24px;
+  font-weight:700;
+  color:var(--accent);
+}
+.stat label{
+  display:block;
+  font-size:12px;
+  color:var(--sub);
+}
+
+.tip{
+  font-size:13px;
+  color:var(--sub);
+  margin-top:10px;
+}
+
+.section p{
+  color:var(--sub);
+  line-height:1.7;
+  margin-bottom:10px;
+}
+
+.tools a{
+  display:inline-block;
+  margin:6px;
+  padding:8px 14px;
+  border-radius:8px;
+  border:1px solid var(--border);
+  color:var(--sub);
+  text-decoration:none;
+}
+.tools a:hover{
+  border-color:var(--accent);
+  color:var(--accent);
+}
+
+/* 广告样式 */
+.ad-banner {
+  margin: 32px 0;
+  text-align: center;
+}
+
+/* 统一的 Footer 样式 */
+footer {
+  margin-top: 40px;
+  text-align: center;
+  color: var(--sub);
+  font-size: 13px;
+}
+footer p {
+  margin-bottom: 8px;
+}
+footer a {
+  color: var(--sub);
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color 0.2s;
+}
+footer a:hover {
+  color: var(--accent);
+}
+
+@media(max-width:600px){
+  .stats{grid-template-columns:1fr 1fr}
+}
+
+</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2596567349043393" crossorigin="anonymous"></script>
+</head>
+
+<body><div class="container">
+
+<a class="back" href="../index.html">← Back to Tools</a>
+
+<h1>日期间隔计算器</h1>
+<p class="subtitle">Instantly count words, characters, sentences, paragraphs, and reading time in your text.</p>
+
+<div class="ad-banner">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="3153457922"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<div class="container">
+    <a class="back" href="../index.html">← Back to Tools</a>
+
+    <h1>日期间隔计算器</h1>
+  <div class="ad-banner">
+    <ins class="adsbygoogle" style="display:block"
+         data-ad-client="ca-pub-2596567349043393"
+         data-ad-slot="3153457922"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+  </div>
+
+        <p class="subtitle">Instantly count words, characters, sentences, paragraphs, and reading time in your text.</p>
+
+  <div class="seo-section">
+    <h2>How to Use This Tool</h2>
+    <div class="step-block">
+      <h3>Step 1: Select start date</h3>
+      <p>Pick or type the first date using the date picker.</p>
+    </div>
+    <div class="step-block">
+      <h3>Step 2: Select end date</h3>
+      <p>Pick or type the second date.</p>
+    </div>
+    <div class="step-block">
+      <h3>Step 3: View the difference</h3>
+      <p>See the exact number of days, weeks, and months between the dates.</p>
+    </div>
+  </div>
+  <div class="step-block">
+    <h3>Step 2: Adjust settings</h3>
+    <p>Use the available options to customize the processing.</p>
+  </div>
+  <div class="step-block">
+    <h3>Step 3: Get results</h3>
+    <p>View the processed output in the result area.</p>
+  </div>
+</div>
+
+    <!-- AdSense top -->
+
+    
+    <div class="stats" style="margin-bottom:16px;">
+      <div class="stat" style="padding:10px 12px;"><span id="words" style="font-size:20px;">0</span><label>Words</label></div>
+
+    <div class="btn-row">
+      <button class="btn" onclick="document.getElementById('textInput').value=''; updateStats();">Clear</button>
+      <button class="btn" onclick="navigator.clipboard.writeText(document.getElementById('textInput').value)">Copy Text</button>
+    </div>
+    <textarea class="text-area" id="textInput" placeholder="Select start and end dates"></textarea>
+
+    
+
+    
+      <div class="stat"><span id="characters">0</span><label>Characters</label></div>
+      <div class="stat"><span id="charactersNoSpace">0</span><label>Characters (no spaces)</label></div>
+      <div class="stat"><span id="sentences">0</span><label>Sentences</label></div>
+      <div class="stat"><span id="paragraphs">0</span><label>Paragraphs</label></div>
+      <div class="stat"><span id="readingTime">0 min</span><label>Reading Time</label></div>
+    </div>
+
+    <!-- AdSense mid -->
+
+    <div class="section">
+      <h2>What Is a Word Counter?</h2>
+      <p>
+        A word counter is a writing utility that measures the length and structure of a text.
+        It helps writers, students, and professionals track word limits, sentence counts, and paragraph structure
+        when creating essays, articles, academic papers, or SEO content.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>Who Should Use This Tool?</h2>
+      <p>
+        This word counter is designed for students working on essays, writers editing articles,
+        marketers preparing SEO content, and anyone who needs accurate word and character counts.
+      </p>
+    </div>
+
+    <div class="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <h3>What is a word counter?</h3>
+        <p>A word counter is an online tool that counts the number of words, characters, sentences, and paragraphs in a given text.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Does this word counter count characters without spaces?</h3>
+        <p>Yes. This word counter shows both total characters and characters without spaces.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Is this word counter suitable for essays and academic writing?</h3>
+        <p>Yes. Students and researchers can use this tool to meet word and sentence limits for essays and assignments.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Is the word counter free to use?</h3>
+        <p>Yes. The tool is completely free and works directly in your browser.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Related Writing Tools</h2>
+      <div class="tools">
+        <a href="../sentence-counter/index.html">Sentence Counter</a>
+        <a href="../character-counter/index.html">Character Counter</a>
+        <a href="../reading-time/index.html">Reading Time Calculator</a>
+        <a href="../case-converter/index.html">Case Converter</a>
+      </div>  </div>
+
+  <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3153457922" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+  </div>
+
+  <script>
+    const input = document.getElementById("textInput");
+
+    function updateStats() {
+      const text = input.value;
+      const wordCount = text.trim() ? text.trim().split(/\s+/).length : 0;
+
+      document.getElementById("words").textContent = wordCount;
+      document.getElementById("characters").textContent = text.length;
+      document.getElementById("charactersNoSpace").textContent = text.replace(/\s+/g, "").length;
+      document.getElementById("sentences").textContent = text.split(/[.!?]+/).filter(s => s.trim()).length;
+      document.getElementById("paragraphs").textContent = text.split(/\n+/).filter(p => p.trim()).length;
+
+      const mins = Math.round(wordCount / 200) || 0;
+      document.getElementById("readingTime").textContent = mins < 1 ? "< 1 min" : mins + " min";
+    }
+
+    input.addEventListener("input", updateStats);
+  </script>
+  <script src="../../knexio-bundle.js"></script>
+  <script src="../../cookie-consent.js"></script>
+
+<div class="ad-banner" style="margin-top:40px">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="3153457922"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<footer>
+  <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
+  <p>
+    <a href="/about/">About</a> •
+    <a href="/privacy/">Privacy Policy</a> •
+    <a href="/terms/">Terms of Service</a>
+  </p>
+</footer>
+
+</div>
+
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</body>
+</html>

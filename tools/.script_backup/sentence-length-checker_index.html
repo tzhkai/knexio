@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sentence Length Checker</title>
+<meta name="description" content="">
+
+<link rel="canonical" href="">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Sentence Length Checker">
+<meta property="og:description" content="">
+<meta property="og:url" content="">
+<meta property="og:type" content="WebApplication">
+<meta property="og:site_name" content="Knexio">
+<meta property="og:image" content="https://knexio.xyz/og-image.png">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Sentence Length Checker",
+    "description": "Free sentence length checker. Calculate average sentence length, total sentences, words per sentence, and readability score instantly.",
+    "url": "https://knexio.xyz/tools/sentence-length-checker/",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Knexio",
+      "url": "https://knexio.xyz"
+    }
+  }
+  
+</script>
+
+<style>
+
+:root{
+  --bg:#0b1220;
+  --card:#111a2e;
+  --border:rgba(255,255,255,.08);
+  --text:#fff;
+  --sub:#aab3c5;
+  --accent:#4f8cff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:system-ui,-apple-system;
+  background:var(--bg);
+  color:var(--text);
+}
+.container{max-width:900px;margin:auto;padding:50px 16px}
+
+/* 统一的返回按钮样式 */
+.back {
+  display: inline-block;
+  color: var(--sub);
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 24px;
+  transition: color 0.2s;
+}
+.back:hover {
+  color: var(--accent);
+}
+
+h1{font-size:32px;margin-bottom:8px}
+h2{font-size:22px;margin-top:30px;margin-bottom:10px}
+.subtitle{color:var(--sub);margin-bottom:24px}
+
+.badge{
+  display:inline-block;
+  padding:4px 10px;
+  border-radius:20px;
+  background:rgba(79,140,255,.15);
+  color:var(--accent);
+  font-size:12px;
+  margin-bottom:10px;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:20px;
+  margin-bottom:20px;
+}
+
+textarea{
+  width:100%;
+  min-height:180px;
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:12px;
+  color:var(--text);
+  padding:14px;
+  font-size:15px;
+}
+textarea:focus{outline:none;border-color:var(--accent)}
+
+.btn-row{display:flex;gap:10px;margin-top:12px}
+button{
+  flex:1;
+  padding:10px;
+  border-radius:10px;
+  border:none;
+  background:var(--accent);
+  color:#fff;
+  cursor:pointer;
+}
+button.secondary{
+  background:transparent;
+  border:1px solid var(--border);
+  color:var(--sub);
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-top:16px;
+}
+.stat{
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:16px;
+  text-align:center;
+}
+.stat span{
+  font-size:24px;
+  font-weight:700;
+  color:var(--accent);
+}
+.stat label{
+  display:block;
+  font-size:12px;
+  color:var(--sub);
+}
+
+.tip{
+  font-size:13px;
+  color:var(--sub);
+  margin-top:10px;
+}
+
+.section p{
+  color:var(--sub);
+  line-height:1.7;
+  margin-bottom:10px;
+}
+
+.tools a{
+  display:inline-block;
+  margin:6px;
+  padding:8px 14px;
+  border-radius:8px;
+  border:1px solid var(--border);
+  color:var(--sub);
+  text-decoration:none;
+}
+.tools a:hover{
+  border-color:var(--accent);
+  color:var(--accent);
+}
+
+/* 广告样式 */
+.ad-banner {
+  margin: 32px 0;
+  text-align: center;
+}
+
+/* 统一的 Footer 样式 */
+footer {
+  margin-top: 40px;
+  text-align: center;
+  color: var(--sub);
+  font-size: 13px;
+}
+footer p {
+  margin-bottom: 8px;
+}
+footer a {
+  color: var(--sub);
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color 0.2s;
+}
+footer a:hover {
+  color: var(--accent);
+}
+
+@media(max-width:600px){
+  .stats{grid-template-columns:1fr 1fr}
+}
+
+</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2596567349043393" crossorigin="anonymous"></script>
+</head>
+
+<body><div class="container">
+
+<a class="back" href="../index.html">← Back to Tools</a>
+
+<h1>Sentence Length Checker</h1>
+<p class="subtitle">Calculate average sentence length and words per sentence to improve your writing clarity.</p>
+
+<div class="ad-banner">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="3153457922"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<div class="container">
+    <a class="back" href="../index.html">← Back to Tools</a>
+
+    <h1>Sentence Length Checker</h1>
+  <div class="ad-banner">
+    <ins class="adsbygoogle" style="display:block"
+         data-ad-client="ca-pub-2596567349043393"
+         data-ad-slot="3153457922"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+  </div>
+
+        <p class="subtitle">Calculate average sentence length and words per sentence to improve your writing clarity.</p>
+
+  <div class="seo-section">
+    <h2>How to Use This Tool</h2>
+    <div class="step-block">
+      <h3>Step 1: Paste your text</h3>
+      <p>Enter your text in the input area.</p>
+    </div>
+    <div class="step-block">
+      <h3>Step 2: Check average sentence length</h3>
+      <p>See the average word count per sentence and identify long sentences.</p>
+    </div>
+    <div class="step-block">
+      <h3>Step 3: Improve readability</h3>
+      <p>Aim for 15–20 words per sentence for optimal readability.</p>
+    </div>
+  </div>
+  <div class="step-block">
+    <h3>Step 2: Adjust settings</h3>
+    <p>Use the available options to customize the processing.</p>
+  </div>
+  <div class="step-block">
+    <h3>Step 3: Get results</h3>
+    <p>View the processed output in the result area.</p>
+  </div>
+</div>
+
+    <!-- AdSense top -->
+
+    
+    <div class="stats" style="margin-bottom:16px;">
+      <div class="stat" style="padding:10px 12px;"><span id="sentenceCount" style="font-size:20px;">0</span><label>Sentences</label></div>
+
+    <div class="btn-row">
+      <button class="btn" onclick="clearText()">Clear</button>
+      <button class="btn" onclick="navigator.clipboard.writeText(document.getElementById('textInput').value)">Copy Text</button>
+    </div>
+    <textarea class="text-area" id="textInput" placeholder="Paste or type your text here..."></textarea>
+
+    
+
+    
+      <div class="stat"><span id="wordCount">0</span><label>Total Words</label></div>
+      <div class="stat"><span id="avgLength">0</span><label>Avg Words / Sentence</label></div>
+    </div>
+
+    <div class="readability" id="readabilityNote" style="display:none;">
+      Readability: <strong id="readabilityText">—</strong>
+    </div>
+
+    <!-- AdSense mid -->
+
+    <div class="section">
+      <h2>What is a Sentence Length Checker?</h2>
+      <p>
+        A sentence length checker measures how long your sentences are by calculating
+        the average number of words per sentence. It is commonly used to improve
+        readability, academic writing quality, and content clarity.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>Why Does Sentence Length Matter?</h2>
+      <p>
+        Sentence length affects readability and comprehension. Short sentences improve
+        clarity, while overly long sentences may reduce engagement. Academic and ESL
+        writing often follow recommended average sentence lengths of 15–20 words.
+      </p>
+    </div>
+
+    <div class="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <h3>What is a sentence length checker?</h3>
+        <p>A sentence length checker calculates the average number of words per sentence to help writers evaluate the readability of their text.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What is the ideal average sentence length?</h3>
+        <p>For most writing, an average of 15 to 20 words per sentence is considered clear and readable. Academic writing may use slightly longer sentences.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Is this sentence length checker free?</h3>
+        <p>Yes. This tool is completely free and works directly in your browser.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Related Tools</h2>
+      <div class="tools">
+        <a href="../sentence-counter/index.html">Sentence Counter</a>
+        <a href="../word-counter/index.html">Word Counter</a>
+        <a href="../sentence-counter-online/index.html">Sentence Counter Online</a>
+      </div>  </div>
+
+  <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3153457922" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+  </div>
+
+  <script>
+    const input = document.getElementById("textInput");
+
+    function updateStats() {
+      const text = input.value.trim();
+
+      if (!text) {
+        document.getElementById("sentenceCount").textContent = 0;
+        document.getElementById("wordCount").textContent = 0;
+        document.getElementById("avgLength").textContent = 0;
+        document.getElementById("readabilityNote").style.display = "none";
+        return;
+      }
+
+      const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 0);
+      const words = text.split(/\s+/).length;
+      const avg = sentences.length ? (words / sentences.length).toFixed(1) : 0;
+
+      document.getElementById("sentenceCount").textContent = sentences.length;
+      document.getElementById("wordCount").textContent = words;
+      document.getElementById("avgLength").textContent = avg;
+
+      // Readability feedback
+      const noteEl = document.getElementById("readabilityNote");
+      const textEl = document.getElementById("readabilityText");
+      noteEl.style.display = "block";
+
+      const a = parseFloat(avg);
+      if (a <= 15) {
+        textEl.textContent = "Very readable — sentences are concise and clear.";
+        textEl.style.color = "#34d399";
+      } else if (a <= 20) {
+        textEl.textContent = "Good — average sentence length is within recommended range.";
+        textEl.style.color = "#34d399";
+      } else if (a <= 28) {
+        textEl.textContent = "Moderate — consider breaking up some longer sentences.";
+        textEl.style.color = "#fbbf24";
+      } else {
+        textEl.textContent = "Complex — sentences are quite long; readability may suffer.";
+        textEl.style.color = "#f87171";
+      }
+    }
+
+    function clearText() {
+      input.value = "";
+      updateStats();
+    }
+
+    input.addEventListener("input", updateStats);
+  </script>
+  <script src="../../knexio-bundle.js"></script>
+  <script src="../../cookie-consent.js"></script>
+
+<div class="ad-banner" style="margin-top:40px">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="3153457922"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<footer>
+  <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
+  <p>
+    <a href="/about/">About</a> •
+    <a href="/privacy/">Privacy Policy</a> •
+    <a href="/terms/">Terms of Service</a>
+  </p>
+</footer>
+
+</div>
+
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</body>
+</html>

@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Unix Timestamp Converter – Epoch Time Converter | Knexio</title>
+<meta name="description" content="">
+
+<link rel="canonical" href="">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Unix Timestamp Converter">
+<meta property="og:description" content="">
+<meta property="og:url" content="">
+<meta property="og:type" content="WebApplication">
+<meta property="og:site_name" content="Knexio">
+<meta property="og:image" content="https://knexio.xyz/og-image.png">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is this tool for?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "This is a free online tool for [purpose]. It helps you [function] quickly and easily."
+        }
+      }
+    ]
+  }
+  
+</script>
+
+<style>
+
+:root{
+  --bg:#0b1220;
+  --card:#111a2e;
+  --border:rgba(255,255,255,.08);
+  --text:#fff;
+  --sub:#aab3c5;
+  --accent:#4f8cff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:system-ui,-apple-system;
+  background:var(--bg);
+  color:var(--text);
+}
+.container{max-width:900px;margin:auto;padding:50px 16px}
+
+/* 统一的返回按钮样式 */
+.back {
+  display: inline-block;
+  color: var(--sub);
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 24px;
+  transition: color 0.2s;
+}
+.back:hover {
+  color: var(--accent);
+}
+
+h1{font-size:32px;margin-bottom:8px}
+h2{font-size:22px;margin-top:30px;margin-bottom:10px}
+.subtitle{color:var(--sub);margin-bottom:24px}
+
+.badge{
+  display:inline-block;
+  padding:4px 10px;
+  border-radius:20px;
+  background:rgba(79,140,255,.15);
+  color:var(--accent);
+  font-size:12px;
+  margin-bottom:10px;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:20px;
+  margin-bottom:20px;
+}
+
+textarea{
+  width:100%;
+  min-height:180px;
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:12px;
+  color:var(--text);
+  padding:14px;
+  font-size:15px;
+}
+textarea:focus{outline:none;border-color:var(--accent)}
+
+.btn-row{display:flex;gap:10px;margin-top:12px}
+button{
+  flex:1;
+  padding:10px;
+  border-radius:10px;
+  border:none;
+  background:var(--accent);
+  color:#fff;
+  cursor:pointer;
+}
+button.secondary{
+  background:transparent;
+  border:1px solid var(--border);
+  color:var(--sub);
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-top:16px;
+}
+.stat{
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:16px;
+  text-align:center;
+}
+.stat span{
+  font-size:24px;
+  font-weight:700;
+  color:var(--accent);
+}
+.stat label{
+  display:block;
+  font-size:12px;
+  color:var(--sub);
+}
+
+.tip{
+  font-size:13px;
+  color:var(--sub);
+  margin-top:10px;
+}
+
+.section p{
+  color:var(--sub);
+  line-height:1.7;
+  margin-bottom:10px;
+}
+
+.tools a{
+  display:inline-block;
+  margin:6px;
+  padding:8px 14px;
+  border-radius:8px;
+  border:1px solid var(--border);
+  color:var(--sub);
+  text-decoration:none;
+}
+.tools a:hover{
+  border-color:var(--accent);
+  color:var(--accent);
+}
+
+/* 广告样式 */
+.ad-banner {
+  margin: 32px 0;
+  text-align: center;
+}
+
+/* 统一的 Footer 样式 */
+footer {
+  margin-top: 40px;
+  text-align: center;
+  color: var(--sub);
+  font-size: 13px;
+}
+footer p {
+  margin-bottom: 8px;
+}
+footer a {
+  color: var(--sub);
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color 0.2s;
+}
+footer a:hover {
+  color: var(--accent);
+}
+
+@media(max-width:600px){
+  .stats{grid-template-columns:1fr 1fr}
+}
+
+</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2596567349043393" crossorigin="anonymous"></script>
+</head>
+
+<body><div class="container">
+
+<a class="back" href="../index.html">← Back to Tools</a>
+
+<h1>Unix Timestamp Converter</h1>
+<p class="subtitle">Convert between Unix timestamps and human-readable dates. Supports seconds and milliseconds timestamps.</p>
+
+<div class="ad-banner">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="3153457922"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<div class="container">
+  <a class="back" href="../index.html">← Back to Tools</a>
+  <h1>Unix Timestamp Converter</h1>
+      <p class="subtitle">Convert between Unix timestamps and human-readable dates. Supports seconds and milliseconds timestamps.</p>
+
+  <div class="seo-section">
+    <h2>How to Use This Tool</h2>
+    <div class="step-block">
+      <h3>Step 1: Enter your input</h3>
+      <p>Type or paste your data into the input field.</p>
+    </div>
+    <div class="step-block">
+      <h3>Step 2: Click the action button</h3>
+      <p>Press the main action button to process your input.</p>
+    </div>
+    <div class="step-block">
+      <h3>Step 3: Copy or download results</h3>
+      <p>Use the Copy button to copy results, or Download to save.</p>
+    </div>
+  </div>
+
+  <div class="main-panel">
+    <div class="current-time">
+      <div class="time-big" id="currentTimestamp">0</div>
+      <div class="time-label">Current Unix Timestamp (seconds)</div>
+    </div>
+
+    <div class="converter-grid">
+      <div class="converter-box">
+        <h3>➡️ Timestamp to Date</h3>
+        <div class="input-group">
+          <label>Unix Timestamp</label>
+          <input type="number" id="timestampInput" placeholder="1711400000">
+        </div>
+        <button class="btn" onclick="timestampToDate()">Convert to Date</button>
+        <div class="result" id="dateResult">Enter a timestamp to convert</div>
+      </div>
+
+      <div class="converter-box">
+        <h3>⬅️ Date to Timestamp</h3>
+        <div class="input-group">
+          <label>Date & Time</label>
+          <input type="datetime-local" id="dateInput">
+        </div>
+        <button class="btn" onclick="dateToTimestamp()">Convert to Timestamp</button>
+        <div class="result" id="timestampResult">Select a date to convert</div>
+      </div>
+    </div>
+
+    <h3 style="font-size:14px;color:var(--sub);margin-bottom:12px">Quick Reference</h3>
+    <div class="quick-times">
+      <div class="quick-time-btn" onclick="setTimestamp('now')">
+        <div class="label">Now</div>
+        <div>Current</div>
+      </div>
+      <div class="quick-time-btn" onclick="setTimestamp('+1h')">
+        <div class="label">+1 Hour</div>
+        <div>3600s</div>
+      </div>
+      <div class="quick-time-btn" onclick="setTimestamp('+1d')">
+        <div class="label">+1 Day</div>
+        <div>86400s</div>
+      </div>
+      <div class="quick-time-btn" onclick="setTimestamp('+1w')">
+        <div class="label">+1 Week</div>
+        <div>604800s</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3153457922" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+</div>
+
+<script>
+function updateCurrentTime() {
+  const now = Math.floor(Date.now() / 1000);
+  document.getElementById('currentTimestamp').textContent = now.toLocaleString();
+}
+
+function timestampToDate() {
+  const ts = document.getElementById('timestampInput').value;
+  if (!ts) return;
+
+  let timestamp = parseInt(ts);
+  // Detect if milliseconds
+  if (timestamp > 1000000000000) {
+    timestamp = Math.floor(timestamp / 1000);
+  }
+
+  const date = new Date(timestamp * 1000);
+  const result = date.toUTCString() + '\n' + date.toLocaleString();
+  document.getElementById('dateResult').textContent = result;
+}
+
+function dateToTimestamp() {
+  const dateStr = document.getElementById('dateInput').value;
+  if (!dateStr) return;
+
+  const date = new Date(dateStr);
+  const timestamp = Math.floor(date.getTime() / 1000);
+  document.getElementById('timestampResult').textContent = timestamp + ' (seconds)\n' + (timestamp * 1000) + ' (milliseconds)';
+}
+
+function setTimestamp(type) {
+  const now = Math.floor(Date.now() / 1000);
+  let ts = now;
+
+  switch(type) {
+    case '+1h': ts += 3600; break;
+    case '+1d': ts += 86400; break;
+    case '+1w': ts += 604800; break;
+  }
+
+  document.getElementById('timestampInput').value = ts;
+  timestampToDate();
+}
+
+setInterval(updateCurrentTime, 1000);
+updateCurrentTime();
+</script>
+<script src="../../knexio-bundle.js"></script>
+  <script src="../../cookie-consent.js"></script>
+  <!-- Schema: FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is this tool for?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "This is a free online tool for [purpose]. It helps you [function] quickly and easily."
+        }
+      }
+    ]
+  }
+  </script>
+
+
+  <section class="seo-section">
+    <h2>How to Use the Unix Timestamp Converter</h2>
+      <div class="step-block">
+        <h3>Step 1: Enter a Timestamp or Date</h3>
+        <p>Paste a Unix timestamp to convert to a date, or enter a date to get its timestamp.</p>
+      </div>
+      <div class="step-block">
+        <h3>Step 2: Select Timezone</h3>
+        <p>Choose your local timezone for accurate conversion.</p>
+      </div>
+      <div class="step-block">
+        <h3>Step 3: Copy the Result</h3>
+        <p>Click Copy to use the value in your code or query.</p>
+      </div>
+
+    <h2>What Is a Unix Timestamp Converter?</h2>
+    <p>A Unix timestamp converter translates between Unix epoch time (seconds since 1 January 1970) and human-readable date/time — essential for developers working with APIs and databases.</p>
+
+    <h2>Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <h3>What is the maximum Unix timestamp?</h3>
+        <p>On 32-bit systems, the maximum is 2,147,483,647 (19 January 2038) — known as the Year 2038 problem.</p>
+
+<div class="ad-banner" style="margin-top:40px">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="3153457922"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<footer>
+  <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
+  <p>
+    <a href="/about/">About</a> •
+    <a href="/privacy/">Privacy Policy</a> •
+    <a href="/terms/">Terms of Service</a>
+  </p>
+</footer>
+
+</div>
+
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</body>
+</html>

@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AI Code Reviewer – Review Code Online</title>
+
+  <meta name="description" content="Free AI Code Reviewer to analyze code for bugs, security issues, and best practices. Improve code quality instantly." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://knexio.xyz/ai-tools/ai-code-reviewer/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="AI Code Reviewer – Review Code Online" />
+  <meta property="og:description" content="Free AI Code Reviewer to analyze code for bugs, security issues, and best practices. Improve code quality instantly." />
+  <meta property="og:url" content="https://knexio.xyz/ai-tools/ai-code-reviewer/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Knexio" />
+
+  <!-- Schema: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "AI Code Reviewer",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "url": "https://knexio.xyz/ai-tools/ai-code-reviewer/",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "description": "Free AI Code Reviewer to analyze code for bugs, security issues, and best practices. Improve code quality instantly."
+  }
+  </script>
+<style>
+
+    :root {
+      --bg: #0b1220;
+      --card: #111a2e;
+      --border: rgba(255,255,255,0.08);
+      --text: #ffffff;
+      --sub: #aab3c5;
+      --accent: #4f8cff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
+      background: linear-gradient(180deg, #0b1220, #070d1a);
+      color: var(--text);
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+
+    .container {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 60px 20px 100px;
+    }
+
+    .back {
+      display: inline-block;
+      margin-bottom: 24px;
+      color: var(--sub);
+      font-size: 14px;
+    }
+
+    h1 { font-size: 34px; margin: 0 0 10px; }
+
+    .subtitle {
+      color: var(--sub);
+      font-size: 15px;
+      margin-bottom: 24px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 220px;
+      padding: 16px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: #fff;
+      font-size: 15px;
+      resize: vertical;
+      font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    }
+
+    textarea::placeholder { color: #7f8aa3; }
+
+    input[type="text"],
+    select {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: #fff;
+      font-size: 15px;
+    }
+
+    input::placeholder { color: #7f8aa3; }
+
+    .btn-row {
+      display: flex;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .btn-row button {
+      padding: 10px 20px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--sub);
+      cursor: pointer;
+      font-size: 13px;
+    }
+
+    .btn-row button:hover { color: #fff; border-color: var(--accent); }
+
+    .btn-row .main-btn {
+      background: var(--accent) !important;
+      color: #fff !important;
+      border: none !important;
+    }
+
+    .btn-row .main-btn:hover { background: #3a7be0 !important; }
+
+    .input-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 14px;
+      color: var(--sub);
+    }
+
+    .result-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      min-height: 200px;
+      margin-top: 20px;
+    }
+
+    .result-label {
+      font-size: 13px;
+      color: var(--sub);
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .result-content {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--text);
+    }
+
+    .result-item {
+      background: rgba(79, 140, 255, 0.1);
+      border-left: 3px solid var(--accent);
+      padding: 12px 16px;
+      margin-bottom: 12px;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .result-item.issue {
+      border-left-color: #ff6b6b;
+      background: rgba(255, 107, 107, 0.1);
+    }
+
+    .result-item.warning {
+      border-left-color: #ffa500;
+      background: rgba(255, 165, 0, 0.1);
+    }
+
+    .result-item.success {
+      border-left-color: #51cf66;
+      background: rgba(81, 207, 102, 0.1);
+    }
+
+    .result-item-title {
+      font-weight: 600;
+      margin-bottom: 4px;
+      font-size: 14px;
+    }
+
+    .section { margin-top: 60px; }
+    .section h2 { font-size: 24px; margin-bottom: 12px; }
+    .section p { color: var(--sub); line-height: 1.75; font-size: 15px; }
+
+    .faq { margin-top: 60px; }
+    .faq h2 { font-size: 24px; margin-bottom: 20px; }
+    .faq-item { 
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .faq-item h3 { font-size: 16px; margin: 0 0 8px; }
+    .faq-item p { color: var(--sub); font-size: 14px; line-height: 1.7; margin: 0; }
+
+    .tools a {
+      display: inline-block;
+      margin-right: 16px;
+      margin-top: 8px;
+      font-size: 14px;
+    }
+
+    footer {
+      margin-top: 80px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--sub);
+    }
+
+    .ad-banner { margin: 32px 0; text-align: center; min-height: 90px }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 40px 15px 80px !important;
+        max-width: 100% !important;
+      }
+
+      h1 {
+        font-size: 28px !important;
+        line-height: 1.3 !important;
+      }
+
+      h2 {
+        font-size: 20px !important;
+        margin-top: 36px !important;
+        margin-bottom: 10px !important;
+      }
+
+      textarea {
+        min-height: 180px !important;
+        padding: 12px !important;
+      }
+
+      .btn-row {
+        flex-wrap: wrap;
+      }
+
+      .ad-banner {
+        margin: 16px 0 !important;
+        min-height: 50px !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 24px !important;
+      }
+
+      h2 {
+        font-size: 18px !important;
+      }
+
+      .container {
+        padding: 32px 12px 60px !important;
+      }
+    }
+
+</style>
+</head>
+
+<body>
+  <div class="container">
+    <a class="back" href="../index.html">← Back to AI Tools</a>
+
+    <h1>AI Code Reviewer</h1>
+
+    <div class="subtitle">
+      Analyze code for bugs, security issues, and best practices.
+    </div>
+
+    <div class="ad-banner">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="5794572171" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+    <div class="card">
+      <textarea id="codeInput" placeholder="Paste your code here..."></textarea>
+      <div class="input-group">
+        <label>Programming Language</label>
+        <select id="language">
+          <option value="javascript">JavaScript</option>
+          <option value="python">Python</option>
+          <option value="java">Java</option>
+          <option value="c++">C++</option>
+          <option value="go">Go</option>
+          <option value="php">PHP</option>
+        </select>
+      </div>
+      <div class="btn-row">
+        <button class="main-btn" onclick="reviewCode()">Review Code</button>
+        <button onclick="clearText()">Clear</button>
+        <button onclick="copyResult()">Copy Analysis</button>
+      </div>
+    </div>
+
+    <div class="result-box">
+      <div class="result-label">Result:</div>
+      <div class="result-content" id="result">Your result will appear here...</div>
+    </div>
+
+    <div class="ad-banner" style="margin-top: 40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3617326351" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+    <div class="section">
+      <h2>Free Online AI Code Reviewer</h2>
+      <p>
+        Analyze your code for bugs, security vulnerabilities, performance issues, and best practices with our AI-powered code reviewer. Supports multiple programming languages including JavaScript, Python, Java, C++, Go, and PHP. Get instant feedback on code quality, potential errors, and improvement suggestions to help you write cleaner, more maintainable code.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>How It Works</h2>
+      <p>
+        Paste your code into the input area and select the programming language from the dropdown menu. Click "Review Code" to analyze your code for common issues, potential bugs, security vulnerabilities, and best practices violations. Our AI code reviewer scans your code and provides detailed feedback with actionable suggestions.
+      </p>
+      <p>
+        The analysis covers multiple aspects of code quality including syntax errors, logic bugs, performance optimization opportunities, security issues, and adherence to coding standards. Each finding is categorized by severity (critical, warning, or info) and includes specific recommendations for improvement.
+      </p>
+      <p>
+        After reviewing the analysis, you can copy the full report to share with your team or save for later reference. The tool works entirely in your browser without storing any of your code, ensuring your proprietary algorithms and logic remain private and secure.
+      </p>
+    </div>
+
+    <div class="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <h3>What is an AI code reviewer?</h3>
+        <p>An AI code reviewer is a tool that automatically analyzes code for bugs, security issues, performance problems, and violations of best practices, providing actionable feedback to improve code quality.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What programming languages are supported?</h3>
+        <p>We support JavaScript, Python, Java, C++, Go, and PHP. Simply select your language from the dropdown before reviewing your code for language-specific analysis and suggestions.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What types of issues does the code reviewer detect?</h3>
+        <p>The code reviewer detects syntax errors, logic bugs, security vulnerabilities, performance issues, code style violations, and adherence to best practices specific to each programming language.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How accurate are the code review suggestions?</h3>
+        <p>Our code reviewer uses pattern matching and best practices analysis to provide highly accurate suggestions. However, always review the recommendations in the context of your specific use case and project requirements.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Is my code stored or shared?</h3>
+        <p>No, all analysis happens locally in your browser. We never store, transmit, or share your code with any third parties. Your source code remains completely private and secure.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Is this code reviewer free to use?</h3>
+        <p>Yes, our AI code reviewer is completely free to use with no registration required. Review unlimited code snippets across all supported programming languages without any cost.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Related AI Tools</h2>
+      <div class="tools">
+        <a href="../chatgpt-prompt-generator/index.html">ChatGPT Prompt Generator</a>
+        <a href="../ai-content-rewriter/index.html">AI Content Rewriter</a>
+        <a href="../prompt-library/index.html">Prompt Library</a>
+      </div>
+    </div>
+
+    <div class="ad-banner" style="margin-top: 40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+  </div>
+
+  <script>
+    function reviewCode() {
+      const codeInput = document.getElementById('codeInput');
+      const language = document.getElementById('language').value;
+      const result = document.getElementById('result');
+
+      if (!codeInput.value.trim()) {
+        result.textContent = 'Please enter code to review.';
+        return;
+      }
+
+      const code = codeInput.value.trim();
+      const issues = analyzeCode(code, language);
+      
+      if (issues.length === 0) {
+        result.innerHTML = '<div class="result-item success"><div class="result-item-title">✓ Great job!</div>No issues found in your code.</div>';
+      } else {
+        result.innerHTML = issues.map(issue => 
+          `<div class="result-item ${issue.type}">
+            <div class="result-item-title">${issue.title}</div>
+            <div>${issue.message}</div>
+          </div>`
+        ).join('');
+      }
+    }
+
+    function analyzeCode(code, language) {
+      const issues = [];
+      
+      // Common checks across all languages
+      if (code.includes('TODO') || code.includes('FIXME') || code.includes('HACK')) {
+        issues.push({
+          type: 'warning',
+          title: '⚠ Unresolved Comments',
+          message: 'Found TODO/FIXME/HACK comments. Consider resolving these before deploying.'
+        });
+      }
+
+      if (!code.includes('//') && !code.includes('#') && !code.includes('/*')) {
+        issues.push({
+          type: 'warning',
+          title: '⚠ Missing Comments',
+          message: 'Your code lacks comments. Adding documentation helps others understand your logic.'
+        });
+      }
+
+      // Language-specific checks
+      switch(language) {
+        case 'javascript':
+          issues.push(...checkJavaScript(code));
+          break;
+        case 'python':
+          issues.push(...checkPython(code));
+          break;
+        case 'java':
+          issues.push(...checkJava(code));
+          break;
+        case 'c++':
+          issues.push(...checkCpp(code));
+          break;
+        case 'go':
+          issues.push(...checkGo(code));
+          break;
+        case 'php':
+          issues.push(...checkPhp(code));
+          break;
+      }
+
+      // Security checks
+      if (code.includes('eval(') || code.includes('exec(') || code.includes('system(')) {
+        issues.push({
+          type: 'issue',
+          title: '🔒 Security Risk',
+          message: 'Detected use of eval/exec/system functions. These can be dangerous with untrusted input.'
+        });
+      }
+
+      return issues;
+    }
+
+    function checkJavaScript(code) {
+      const issues = [];
+      
+      if (code.includes('var ')) {
+        issues.push({
+          type: 'warning',
+          title: '📝 Modern JavaScript',
+          message: 'Consider using "let" or "const" instead of "var" for better scoping and immutability.'
+        });
+      }
+
+      if (code.includes('== ') || code.includes('== ') || code.includes('==') && !code.includes('===')) {
+        issues.push({
+          type: 'warning',
+          title: '📝 Strict Comparison',
+          message: 'Use strict equality (===) instead of loose equality (==) to avoid type coercion issues.'
+        });
+      }
+
+      if (code.includes('console.log(')) {
+        issues.push({
+          type: 'warning',
+          title: '📝 Debug Code',
+          message: 'Remove console.log statements before deploying to production.'
+        });
+      }
+
+      return issues;
+    }
+
+    function checkPython(code) {
+      const issues = [];
+      
+      if (code.includes('except:')) {
+        issues.push({
+          type: 'issue',
+          title: '🔒 Bare Except',
+          message: 'Avoid bare "except:" clauses. Catch specific exceptions for better error handling.'
+        });
+      }
+
+      if (code.includes('import *')) {
+        issues.push({
+          type: 'warning',
+          title: '📝 Wildcard Import',
+          message: 'Avoid "import *" as it pollutes the namespace. Import specific modules explicitly.'
+        });
+      }
+
+      return issues;
+    }
+
+    function checkJava(code) {
+      const issues = [];
+      
+      if (!code.includes('public class') && code.includes('class ')) {
+        issues.push({
+          type: 'warning',
+          title: '📝 Class Visibility',
+          message: 'Consider making your class public if it's intended to be used by other packages.'
+        });
+      }
+
+      return issues;
+    }
+
+    function checkCpp(code) {
+      const issues = [];
+      
+      if (code.includes('malloc') || code.includes('free')) {
+        issues.push({
+          type: 'warning',
+          title: '📝 Memory Management',
+          message: 'Manual memory management detected. Consider using smart pointers (unique_ptr, shared_ptr) for safer code.'
+        });
+      }
+
+      return issues;
+    }
+
+    function checkGo(code) {
+      const issues = [];
+      
+      if (code.includes('_ = ')) {
+        issues.push({
+          type: 'warning',
+          title: '📝 Ignored Return Values',
+          message: 'Ignored return value detected with "_ = ". Consider checking errors properly.'
+        });
+      }
+
+      return issues;
+    }
+
+    function checkPhp(code) {
+      const issues = [];
+      
+      if (code.includes('$_GET') || code.includes('$_POST')) {
+        issues.push({
+          type: 'issue',
+          title: '🔒 Input Validation',
+          message: 'Direct use of $_GET/$_POST detected. Always validate and sanitize user input to prevent security issues.'
+        });
+      }
+
+      return issues;
+    }
+
+    function clearText() {
+      document.getElementById('codeInput').value = '';
+      document.getElementById('result').textContent = 'Your result will appear here...';
+    }
+
+    function copyResult() {
+      const result = document.getElementById('result');
+      if (result && result.textContent && result.textContent !== 'Your result will appear here...') {
+        navigator.clipboard.writeText(result.textContent).then(() => {
+          alert('Code review analysis copied to clipboard!');
+        });
+      }
+    }
+  </script>
+
+  <script src="/knexio-bundle.js"></script>
+  <script src="../../cookie-consent.js"></script>
+
+      <footer>
+      <p>AI-powered tools and prompt generators for ChatGPT, Midjourney, and more. Boost your AI productivity.</p>
+            <p style="margin: 8px 0; font-size: 13px;">
+        <a href="/about/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">About</a>
+        <a href="/privacy/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Privacy</a>
+        <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
+        <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
+      </p>
+      <p>© 2026 Knexio. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

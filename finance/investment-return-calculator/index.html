@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Investment Return Calculator – Compound Growth | Knexio</title>
+  <meta name="description" content="Free investment return calculator with compound interest. Calculate future value of stocks, funds, and investments.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://knexio.xyz/finance/investment-return-calculator/">
+  <meta property="og:title" content="Investment Return Calculator – Compound Growth | Knexio">
+  <meta property="og:description" content="Free investment return calculator with compound interest. Calculate future value of stocks, funds, and investments.">
+  <meta property="og:url" content="https://knexio.xyz/finance/investment-return-calculator/">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"Investment Return Calculator","url":"https://knexio.xyz/finance/investment-return-calculator/","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  </script>
+  <style>
+    :root{--bg:#0b1220;--card:#111a2e;--text:#fff;--sub:#aab3c5;--accent:#4f8cff;--border:rgba(255,255,255,0.08)}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh}
+    a{color:var(--accent);text-decoration:none}
+    .container{max-width:920px;margin:0 auto;padding:60px 20px 100px}
+    .back{display:inline-block;color:var(--sub);font-size:14px;margin-bottom:28px;transition:color 0.2s}
+    .back:hover{color:var(--accent)}
+    h1{font-size:34px;font-weight:700;margin-bottom:8px}
+    .subtitle{font-size:15px;color:var(--sub);margin-bottom:32px}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px;margin-bottom:24px}
+    .card-title{font-size:16px;font-weight:600;color:var(--accent);margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+    .form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    .form-field{display:flex;flex-direction:column}
+    .form-field.full-width{grid-column:1/-1}
+    label{font-size:13px;color:var(--sub);margin-bottom:6px;font-weight:500}
+    input,select{width:100%;padding:12px 16px;background:var(--bg);border:1px solid var(--border);border-radius:12px;color:var(--text);font-size:15px;font-family:inherit;transition:border-color 0.2s}
+    input:focus,select:focus{outline:none;border-color:var(--accent)}
+    .btn-row{display:flex;gap:12px;margin-top:20px}
+    .btn-primary{padding:12px 28px;border:none;border-radius:10px;background:var(--accent);color:#fff;font-size:15px;font-weight:600;cursor:pointer;transition:background 0.2s;flex:1}
+    .btn-primary:hover{background:#3d7de0}
+    .btn-secondary{padding:12px 20px;border:1px solid var(--border);border-radius:10px;background:transparent;color:var(--sub);font-size:15px;font-weight:500;cursor:pointer;transition:all 0.2s}
+    .btn-secondary:hover{border-color:var(--accent);color:var(--accent)}
+    .results{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px;margin-bottom:24px;min-height:120px}
+    .result-header{font-size:16px;font-weight:600;color:var(--accent);margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+    .result-highlight{text-align:center;padding:24px;margin-bottom:20px}
+    .result-big{font-size:48px;font-weight:800;color:var(--accent);line-height:1}
+    .result-big-label{font-size:14px;color:var(--sub);margin-top:8px}
+    .result-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);font-size:14px}
+    .result-row:last-child{border-bottom:none}
+    .result-label{color:var(--sub)}
+    .result-value{font-weight:600;color:var(--text)}
+    .result-value.accent{color:var(--accent)}
+    .result-value.green{color:#00d4aa}
+    .result-value.red{color:#f87171}
+    .result-placeholder{text-align:center;padding:40px 0;color:var(--sub);font-size:15px}
+    .ad-banner{margin:32px 0;text-align:center}
+    .section{margin-bottom:32px}
+    h2{font-size:22px;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+    p{color:var(--sub);font-size:15px;line-height:1.75;margin-bottom:14px}
+    .faq-item{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;margin-bottom:16px}
+    .faq-item h3{font-size:16px;font-weight:600;color:var(--text);margin-bottom:8px}
+    .faq-item p{font-size:14px;color:var(--sub);margin-bottom:0;line-height:1.6}
+    footer{text-align:center;padding:40px 20px;border-top:1px solid var(--border);margin-top:60px;color:var(--sub);font-size:14px}
+    footer p{margin-bottom:8px}
+    footer a{color:var(--accent);transition:color 0.2s}
+    footer a:hover{color:#3d7de0}
+    @media(max-width:680px){.form-grid{grid-template-columns:1fr}.container{padding:40px 16px 80px}h1{font-size:28px}.btn-row{flex-direction:column}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a class="back" href="../index.html">← Back to Finance</a>
+    <h1>Investment Return Calculator</h1>
+    <p class="subtitle">Calculate compound returns and future value of your investments</p>
+
+    <div class="ad-banner">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="5794572171" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Calculator</div>
+      <div class="form-grid">
+        <div class="form-field">
+          <label for="initialInvestment">Initial Investment ($)</label>
+          <input type="number" id="initialInvestment" value="10000" min="0" step="1000">
+        </div>
+        <div class="form-field">
+          <label for="monthlyContribution">Monthly Contribution ($)</label>
+          <input type="number" id="monthlyContribution" value="500" min="0" step="100">
+        </div>
+        <div class="form-field">
+          <label for="annualReturn">Expected Annual Return (%)</label>
+          <input type="number" id="annualReturn" value="8" min="0" max="30" step="0.1">
+        </div>
+        <div class="form-field">
+          <label for="years">Investment Period (years)</label>
+          <input type="number" id="years" value="20" min="1" max="50" step="1">
+        </div>
+        <div class="form-field">
+          <label for="inflationRate">Inflation Rate (%)</label>
+          <input type="number" id="inflationRate" value="2.5" min="0" max="10" step="0.1">
+        </div>
+        <div class="form-field">
+          <label for="taxRate">Tax Rate on Gains (%)</label>
+          <input type="number" id="taxRate" value="15" min="0" max="40" step="1">
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="calculate()">Calculate</button>
+        <button class="btn-secondary" onclick="clearForm()">Reset</button>
+      </div>
+    </div>
+
+    <div class="results" id="results">
+      <div class="result-placeholder">Enter your details and click <strong>Calculate</strong> to see results</div>
+    </div>
+
+    <div class="section">
+      <h2>Free Online Investment Return Calculator</h2>
+      <p>Project the future value of your investments with our free compound interest calculator. Whether you're investing in stocks, bonds, mutual funds, or retirement accounts, understanding the power of compound growth is essential for building long-term wealth. This calculator helps you visualize how your money can grow over time.</p>
+      <p>Enter your initial investment amount, expected monthly contributions, anticipated annual return rate, and investment timeframe. The calculator then applies compound interest formulas to show your future portfolio value. You can also factor in inflation to see the real purchasing power of your future wealth and estimate taxes on your investment gains.</p>
+    </div>
+
+    <div class="section">
+      <h2>How It Works</h2>
+      <p>The investment return calculator uses the compound interest formula to project your investment growth. First, enter your initial investment or starting principal. Then, specify any regular monthly contributions you plan to make. The calculator applies your expected annual return rate, compounded monthly, to both your initial investment and ongoing contributions throughout your investment period.</p>
+      <p>For the most accurate projection, consider using realistic return expectations based on your investment allocation. Conservative investors might expect 4-6% returns, while aggressive investors might target 8-10% or higher. Remember that past performance doesn't guarantee future results, and investment returns can vary significantly from year to year.</p>
+      <p>The calculator also accounts for inflation by adjusting your future value to today's purchasing power and estimates taxes on your investment gains based on your tax rate. This gives you a realistic view of your after-tax, inflation-adjusted returns, helping you plan more effectively for long-term financial goals like retirement.</p>
+    </div>
+
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>What is compound interest and why does it matter?</h3>
+      <p>Compound interest is interest calculated on both your initial principal and accumulated interest from previous periods. This creates exponential growth over time, especially with regular contributions. The longer your investment timeline, the more powerful compound growth becomes, making it a key factor in building long-term wealth.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What annual return rate should I expect?</h3>
+      <p>Historical stock market returns average around 7-10% annually before inflation. Bonds typically return 2-5%. Your expected return depends on your asset allocation. Conservative portfolios might expect 4-6%, while aggressive portfolios might target 8-10%. Use realistic expectations based on your investments and risk tolerance.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How does inflation affect my investment returns?</h3>
+      <p>Inflation reduces the purchasing power of money over time. A 10% return with 3% inflation means your real return is only 7%. The calculator shows both your nominal future value and your inflation-adjusted real value, helping you understand what your future wealth will actually buy in today's dollars.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Should I include taxes in my investment planning?</h3>
+      <p>Yes, taxes significantly impact your actual investment returns. Different investment types are taxed differently – qualified dividends and long-term capital gains are typically taxed at lower rates than short-term gains or ordinary income. The calculator lets you specify your tax rate to estimate your after-tax investment value.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How much should I contribute monthly?</h3>
+      <p>Start with what you can comfortably afford and increase contributions over time as your income grows. Financial experts often recommend saving 10-20% of your income for retirement, including any employer match. Use this calculator to see how different contribution amounts affect your long-term investment growth.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Is this investment return calculator free to use?</h3>
+      <p>Yes, this investment return calculator is completely free to use with no registration required. You can run unlimited calculations to explore different investment scenarios, timeframes, and contribution amounts to find the strategy that works best for your financial goals and timeline.</p>
+    </div>
+
+    <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+    <footer>
+      <p>Free financial calculators for mortgages, loans, investments, and budgeting. Plan your finances with ease.</p>
+      <p style="margin:8px 0;font-size:13px">
+        <a href="/about/" style="color:var(--accent)">About</a><a href="/privacy/" style="color:var(--accent)">Privacy</a><a href="/terms/" style="color:var(--accent)">Terms</a><a href="/contact/" style="color:var(--accent)">Contact</a>
+      </p>
+      <p>© 2026 Knexio. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    function fmt(n){return n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}
+    function calculate(){
+      const initial=parseFloat(document.getElementById('initialInvestment').value)||0;
+      const monthly=parseFloat(document.getElementById('monthlyContribution').value)||0;
+      const annualReturn=parseFloat(document.getElementById('annualReturn').value)||0;
+      const years=parseInt(document.getElementById('years').value)||1;
+      const inflation=parseFloat(document.getElementById('inflationRate').value)||0;
+      const taxRate=parseFloat(document.getElementById('taxRate').value)||0;
+      const monthlyRate=annualReturn/100/12;
+      const months=years*12;
+      const fvInitial=initial*Math.pow(1+monthlyRate,months);
+      let fvContrib=0;
+      if(monthlyRate===0){fvContrib=monthly*months;}
+      else{fvContrib=monthly*(Math.pow(1+monthlyRate,months)-1)/monthlyRate;}
+      const futureValue=fvInitial+fvContrib;
+      const totalContributions=initial+monthly*months;
+      const totalGains=futureValue-totalContributions;
+      const taxOnGains=totalGains*taxRate/100;
+      const afterTaxValue=futureValue-taxOnGains;
+      const inflationFactor=Math.pow(1+inflation/100,years);
+      const realValue=afterTaxValue/inflationFactor;
+      document.getElementById('results').innerHTML=`
+        <div class="result-header">Investment Projection</div>
+        <div class="result-highlight">
+          <div class="result-big">$${fmt(futureValue)}</div>
+          <div class="result-big-label">Future Value (before tax)</div>
+        </div>
+        <div class="result-row"><span class="result-label">Total contributions</span><span class="result-value">$${fmt(totalContributions)}</span></div>
+        <div class="result-row"><span class="result-label">Total investment gains</span><span class="result-value green">$${fmt(totalGains)}</span></div>
+        <div class="result-row"><span class="result-label">Future value (before tax)</span><span class="result-value accent">$${fmt(futureValue)}</span></div>
+        <div class="result-row"><span class="result-label">Estimated tax on gains</span><span class="result-value">$${fmt(taxOnGains)}</span></div>
+        <div class="result-row"><span class="result-label">After-tax value</span><span class="result-value accent">$${fmt(afterTaxValue)}</span></div>
+        <div class="result-row"><span class="result-label">Real value (inflation-adjusted)</span><span class="result-value green">$${fmt(realValue)}</span></div>
+        <div class="result-row"><span class="result-label">Total return</span><span class="result-value green">${((totalGains/totalContributions)*100).toFixed(1)}%</span></div>
+      `;
+    }
+    function clearForm(){
+      document.getElementById('initialInvestment').value='10000';
+      document.getElementById('monthlyContribution').value='500';
+      document.getElementById('annualReturn').value='8';
+      document.getElementById('years').value='20';
+      document.getElementById('inflationRate').value='2.5';
+      document.getElementById('taxRate').value='15';
+      document.getElementById('results').innerHTML='<div class="result-placeholder">Enter your details and click <strong>Calculate</strong> to see results</div>';
+    }
+  </script>
+  <script src="/knexio-bundle.js"></script>
+</body>
+</html>

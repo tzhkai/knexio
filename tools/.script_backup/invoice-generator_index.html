@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Free Invoice Generator – Create Professional Invoices</title>
+<meta name="description" content="">
+
+<link rel="canonical" href="">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Invoice Generator">
+<meta property="og:description" content="">
+<meta property="og:url" content="">
+<meta property="og:type" content="WebApplication">
+<meta property="og:site_name" content="Knexio">
+<meta property="og:image" content="https://knexio.xyz/og-image.png">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Invoice Generator",
+    "url": "https://knexio.xyz/tools/invoice-generator/",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "All",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "description": "Free online invoice generator. Create professional invoices with custom branding."
+  }
+  
+</script>
+
+<style>
+
+:root{
+  --bg:#0b1220;
+  --card:#111a2e;
+  --border:rgba(255,255,255,.08);
+  --text:#fff;
+  --sub:#aab3c5;
+  --accent:#4f8cff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:system-ui,-apple-system;
+  background:var(--bg);
+  color:var(--text);
+}
+.container{max-width:900px;margin:auto;padding:50px 16px}
+
+/* 统一的返回按钮样式 */
+.back {
+  display: inline-block;
+  color: var(--sub);
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 24px;
+  transition: color 0.2s;
+}
+.back:hover {
+  color: var(--accent);
+}
+
+h1{font-size:32px;margin-bottom:8px}
+h2{font-size:22px;margin-top:30px;margin-bottom:10px}
+.subtitle{color:var(--sub);margin-bottom:24px}
+
+.badge{
+  display:inline-block;
+  padding:4px 10px;
+  border-radius:20px;
+  background:rgba(79,140,255,.15);
+  color:var(--accent);
+  font-size:12px;
+  margin-bottom:10px;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:20px;
+  margin-bottom:20px;
+}
+
+textarea{
+  width:100%;
+  min-height:180px;
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:12px;
+  color:var(--text);
+  padding:14px;
+  font-size:15px;
+}
+textarea:focus{outline:none;border-color:var(--accent)}
+
+.btn-row{display:flex;gap:10px;margin-top:12px}
+button{
+  flex:1;
+  padding:10px;
+  border-radius:10px;
+  border:none;
+  background:var(--accent);
+  color:#fff;
+  cursor:pointer;
+}
+button.secondary{
+  background:transparent;
+  border:1px solid var(--border);
+  color:var(--sub);
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-top:16px;
+}
+.stat{
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:16px;
+  text-align:center;
+}
+.stat span{
+  font-size:24px;
+  font-weight:700;
+  color:var(--accent);
+}
+.stat label{
+  display:block;
+  font-size:12px;
+  color:var(--sub);
+}
+
+.tip{
+  font-size:13px;
+  color:var(--sub);
+  margin-top:10px;
+}
+
+.section p{
+  color:var(--sub);
+  line-height:1.7;
+  margin-bottom:10px;
+}
+
+.tools a{
+  display:inline-block;
+  margin:6px;
+  padding:8px 14px;
+  border-radius:8px;
+  border:1px solid var(--border);
+  color:var(--sub);
+  text-decoration:none;
+}
+.tools a:hover{
+  border-color:var(--accent);
+  color:var(--accent);
+}
+
+/* 广告样式 */
+.ad-banner {
+  margin: 32px 0;
+  text-align: center;
+}
+
+/* 统一的 Footer 样式 */
+footer {
+  margin-top: 40px;
+  text-align: center;
+  color: var(--sub);
+  font-size: 13px;
+}
+footer p {
+  margin-bottom: 8px;
+}
+footer a {
+  color: var(--sub);
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color 0.2s;
+}
+footer a:hover {
+  color: var(--accent);
+}
+
+@media(max-width:600px){
+  .stats{grid-template-columns:1fr 1fr}
+}
+
+</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2596567349043393" crossorigin="anonymous"></script>
+</head>
+
+<body><div class="container">
+
+<a class="back" href="../index.html">← Back to Tools</a>
+
+<h1>Invoice Generator</h1>
+<p class="subtitle">Free online invoice generator tool. No signup required, works in your browser.</p>
+
+<div class="ad-banner">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="3153457922"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<div class="container">
+    <a class="back" href="../index.html">← Back to Tools</a>
+    <h1>Invoice Generator</h1>
+    <p class="subtitle">Free online invoice generator tool. No signup required, works in your browser.</p>
+    <div class="intro">Create professional invoices instantly. Add your details, items, and download or print.
+  <h2>How to Use This Tool</h2>
+  <div class="step-block">
+    <h3>Step 1: Enter your input</h3>
+    <p>Type or paste your content into the input field above.</p>
+  </div>
+  <div class="step-block">
+    <h3>Step 2: Adjust settings</h3>
+    <p>Use the available options to customize the processing.</p>
+  </div>
+  <div class="step-block">
+    <h3>Step 3: Get results</h3>
+    <p>View the processed output in the result area.</p>
+  </div>
+</div>
+
+    </div>
+    <div class="main-grid">
+      <div class="panel">
+        <h2>Invoice Details</h2>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Invoice #</label>
+            <input type="text" id="invoiceNum" value="INV-001" oninput="updatePreview()" />
+          </div>
+          <div class="form-group">
+            <label>Date</label>
+            <input type="date" id="invoiceDate" oninput="updatePreview()" />
+          </div>
+        </div>
+        <h3 style="font-size: 16px; color: var(--accent); margin: 24px 0 16px;">From</h3>
+        <div class="form-group">
+          <label>Your Company</label>
+          <input type="text" id="fromName" placeholder="Your Company Name" oninput="updatePreview()" />
+        </div>
+        <div class="form-group">
+          <label>Address</label>
+          <textarea class="text-area" id="fromAddress" placeholder="Your address..." oninput="updatePreview()"></textarea>
+        </div>
+        <h3 style="font-size: 16px; color: var(--accent); margin: 24px 0 16px;">Bill To</h3>
+        <div class="form-group">
+          <label>Client Name</label>
+          <input type="text" id="toName" placeholder="Client Name" oninput="updatePreview()" />
+        </div>
+        <div class="form-group">
+          <label>Client Address</label>
+          <textarea class="text-area" id="toAddress" placeholder="Client address..." oninput="updatePreview()"></textarea>
+        </div>
+        <h3 style="font-size: 16px; color: var(--accent); margin: 24px 0 16px;">Items</h3>
+        <div id="itemsContainer"></div>
+        <button class="btn btn-outline" onclick="addItem()" style="width: 100%; margin-top: 12px;">+ Add Item</button>
+        <div class="form-row" style="margin-top: 16px;">
+          <div class="form-group">
+            <label>Tax Rate (%)</label>
+            <input type="number" id="taxRate" value="0" oninput="updatePreview()" />
+          </div>
+          <div class="form-group">
+            <label>Currency</label>
+            <select id="currency" onchange="updatePreview()" style="width: 100%; padding: 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; color: var(--text);">
+              <option value="$">USD ($)</option>
+              <option value="€">EUR (€)</option>
+              <option value="£">GBP (£)</option>
+              <option value="¥">JPY (¥)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="panel">
+        <h2>Preview</h2>
+        <div class="invoice-preview" id="invoicePreview"></div>
+        <div class="btn-row">
+          <button class="btn" onclick="window.print()">Print / PDF</button>
+          <button class="btn btn-outline" onclick="clearInvoice()">Clear</button>
+        </div>
+
+  </div>
+
+  <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3153457922" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+  </div>
+  <script>
+    let items = [{description: '', quantity: 1, price: 0}];
+    document.getElementById('invoiceDate').valueAsDate = new Date();
+    function renderItems() {
+      const container = document.getElementById('itemsContainer');
+      container.innerHTML = items.map((item, index) => `
+        <div class="item-row">
+          <input type="text" placeholder="Description" value="${item.description}" oninput="updateItem(${index}, 'description', this.value)" />
+          <input type="number" placeholder="Qty" value="${item.quantity}" oninput="updateItem(${index}, 'quantity', this.value)" />
+          <input type="number" placeholder="Price" value="${item.price}" oninput="updateItem(${index}, 'price', this.value)" />
+          <input type="text" value="${(item.quantity * item.price).toFixed(2)}" readonly style="background: var(--card);" />
+          <button class="remove-btn" onclick="removeItem(${index})">×</button>
+        </div>
+      `).join('');
+    }
+    function addItem() {
+      items.push({description: '', quantity: 1, price: 0});
+      renderItems();
+      updatePreview();
+    }
+    function removeItem(index) {
+      if(items.length > 1) {
+        items.splice(index, 1);
+        renderItems();
+        updatePreview();
+      }
+    }
+    function updateItem(index, field, value) {
+      items[index][field] = field === 'description' ? value : parseFloat(value) || 0;
+      renderItems();
+      updatePreview();
+    }
+    function updatePreview() {
+      const currency = document.getElementById('currency').value;
+      const subtotal = items.reduce((sum, item) => sum + (item.quantity * item.price), 0);
+      const taxRate = parseFloat(document.getElementById('taxRate').value) || 0;
+      const tax = subtotal * (taxRate / 100);
+      const total = subtotal + tax;
+      document.getElementById('invoicePreview').innerHTML = `
+        <div class="invoice-header">
+          <div class="invoice-title">INVOICE</div>
+          <div style="text-align: right;">
+            <div style="font-size: 14px; color: #666;">#${document.getElementById('invoiceNum').value}</div>
+            <div style="font-size: 14px; color: #666;">${document.getElementById('invoiceDate').value}</div>
+          </div>
+        </div>
+        <div style="display: flex; gap: 60px; margin-bottom: 40px;">
+          <div class="invoice-details" style="flex: 1;">
+            <h3>From</h3>
+            <p><strong>${document.getElementById('fromName').value || 'Your Company'}</strong></p>
+            <p style="white-space: pre-line;">${document.getElementById('fromAddress').value}</p>
+          </div>
+          <div class="invoice-details" style="flex: 1;">
+            <h3>Bill To</h3>
+            <p><strong>${document.getElementById('toName').value || 'Client Name'}</strong></p>
+            <p style="white-space: pre-line;">${document.getElementById('toAddress').value}</p>
+          </div>
+        </div>
+        <table class="invoice-table">
+          <thead>
+            <tr>
+              <th>Description</th>
+              <th>Quantity</th>
+              <th>Price</th>
+              <th style="text-align: right;">Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${items.map(item => `
+              <tr>
+                <td>${item.description || 'Item'}</td>
+                <td>${item.quantity}</td>
+                <td>${currency}${item.price.toFixed(2)}</td>
+                <td style="text-align: right;">${currency}${(item.quantity * item.price).toFixed(2)}</td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+        <div class="invoice-totals">
+          <div class="row">
+            <span>Subtotal:</span>
+            <span>${currency}${subtotal.toFixed(2)}</span>
+          </div>
+          ${taxRate > 0 ? `
+          <div class="row">
+            <span>Tax (${taxRate}%):</span>
+            <span>${currency}${tax.toFixed(2)}</span>
+          </div>
+          ` : ''}
+          <div class="row total">
+            <span>Total:</span>
+            <span>${currency}${total.toFixed(2)}</span>
+          </div>
+
+<div class="ad-banner" style="margin-top:40px">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="3153457922"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<footer>
+  <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
+  <p>
+    <a href="/about/">About</a> •
+    <a href="/privacy/">Privacy Policy</a> •
+    <a href="/terms/">Terms of Service</a>
+  </p>
+</footer>
+
+</div>
+
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</body>
+</html>

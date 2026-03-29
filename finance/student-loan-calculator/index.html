@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Loan Calculator – Repayment & Payoff | Knexio</title>
+  <meta name="description" content="Free student loan calculator for monthly payments, total interest, and payoff timeline. Federal and private loan support.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://knexio.xyz/finance/student-loan-calculator/">
+  <meta property="og:title" content="Student Loan Calculator – Repayment & Payoff | Knexio">
+  <meta property="og:description" content="Free student loan calculator for monthly payments, total interest, and payoff timeline. Federal and private loan support.">
+  <meta property="og:url" content="https://knexio.xyz/finance/student-loan-calculator/">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"Student Loan Calculator","url":"https://knexio.xyz/finance/student-loan-calculator/","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Free student loan calculator for monthly payments, total interest, and payoff timeline."}
+  </script>
+  <style>
+    :root{--bg:#0b1220;--card:#111a2e;--border:rgba(255,255,255,0.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:linear-gradient(180deg,#0b1220,#070d1a);color:var(--text);line-height:1.6;min-height:100vh}
+    a{color:var(--accent);text-decoration:none}
+    .container{max-width:920px;margin:0 auto;padding:60px 20px 100px}
+    .back{display:inline-block;color:var(--sub);font-size:14px;margin-bottom:28px;transition:color 0.2s}
+    .back:hover{color:var(--accent)}
+    h1{font-size:34px;font-weight:700;margin-bottom:8px}
+    .subtitle{font-size:15px;color:var(--sub);margin-bottom:32px}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px;margin-bottom:24px}
+    .panel-title{font-size:16px;font-weight:600;color:var(--accent);margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+    .form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    .form-field{display:flex;flex-direction:column}
+    label{font-size:13px;color:var(--sub);margin-bottom:6px;font-weight:500}
+    input,select{width:100%;padding:12px 16px;background:var(--bg);border:1px solid var(--border);border-radius:12px;color:var(--text);font-size:15px;font-family:inherit;transition:border-color 0.2s}
+    input:focus,select:focus{outline:none;border-color:var(--accent)}
+    .btn-row{display:flex;gap:12px;margin-top:20px}
+    .btn-primary{padding:12px 28px;border:none;border-radius:10px;background:var(--accent);color:#fff;font-size:15px;font-weight:600;cursor:pointer;transition:background 0.2s;flex:1}
+    .btn-primary:hover{background:#3d7de0}
+    .btn-secondary{padding:12px 20px;border:1px solid var(--border);border-radius:10px;background:transparent;color:var(--sub);font-size:15px;font-weight:500;cursor:pointer;transition:all 0.2s}
+    .btn-secondary:hover{border-color:var(--accent);color:var(--accent)}
+    .results{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px;margin-bottom:24px;min-height:120px}
+    .result-header{font-size:16px;font-weight:600;color:var(--accent);margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+    .result-highlight{text-align:center;padding:24px;margin-bottom:20px}
+    .result-big{font-size:48px;font-weight:800;color:var(--accent);line-height:1}
+    .result-big-label{font-size:14px;color:var(--sub);margin-top:8px}
+    .result-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);font-size:14px}
+    .result-row:last-child{border-bottom:none}
+    .result-label{color:var(--sub)}
+    .result-value{font-weight:600;color:var(--text)}
+    .result-value.accent{color:var(--accent)}
+    .result-value.green{color:#51cf66}
+    .result-placeholder{text-align:center;padding:40px 0;color:var(--sub);font-size:15px}
+    .ad-banner{margin:32px 0;text-align:center}
+    .section{margin-top:60px}
+    .section h2{font-size:24px;margin-bottom:12px}
+    .section p{color:var(--sub);line-height:1.75;font-size:15px}
+    .faq{margin-top:60px}
+    .faq h2{font-size:24px;margin-bottom:20px}
+    .faq-item{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;margin-bottom:20px}
+    .faq-item h3{font-size:16px;margin:0 0 8px}
+    .faq-item p{color:var(--sub);font-size:14px;line-height:1.7;margin:0}
+    footer{text-align:center;padding:40px 20px;border-top:1px solid var(--border);margin-top:20px;color:var(--sub);font-size:14px}
+    footer a{color:var(--sub);margin:0 10px;transition:color 0.2s}
+    footer a:hover{color:var(--accent)}
+    footer p{margin-bottom:8px}
+    @media(max-width:680px){.form-grid{grid-template-columns:1fr}.container{padding:40px 16px 80px}h1{font-size:28px}.btn-row{flex-direction:column}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a class="back" href="../">← Back to Finance</a>
+    <h1>Student Loan Calculator</h1>
+    <p class="subtitle">Plan your student loan repayment and explore different payoff scenarios</p>
+
+    <div class="ad-banner">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="5794572171" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+    <div class="card">
+      <div class="panel-title">Calculator</div>
+      <div class="form-grid">
+        <div class="form-field">
+          <label for="loanAmount">Total Loan Amount ($)</label>
+          <input type="number" id="loanAmount" value="50000" min="0" step="1000">
+        </div>
+        <div class="form-field">
+          <label for="interestRate">Interest Rate (%)</label>
+          <input type="number" id="interestRate" value="5.5" min="0" max="15" step="0.1">
+        </div>
+        <div class="form-field">
+          <label for="loanTerm">Repayment Period</label>
+          <select id="loanTerm">
+            <option value="10">10 years (Standard)</option>
+            <option value="15">15 years</option>
+            <option value="20">20 years (Extended)</option>
+            <option value="25">25 years</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="extraPayment">Extra Monthly Payment ($)</label>
+          <input type="number" id="extraPayment" value="0" min="0" step="50">
+        </div>
+        <div class="form-field">
+          <label for="gracePeriod">Grace Period (months)</label>
+          <input type="number" id="gracePeriod" value="6" min="0" max="12" step="1">
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="calculate()">Calculate</button>
+        <button class="btn-secondary" onclick="clearForm()">Reset</button>
+      </div>
+    </div>
+
+    <div class="results" id="results">
+      <div class="result-placeholder">Enter your details and click <strong>Calculate</strong> to see results</div>
+    </div>
+
+    <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+    <div class="section">
+      <h2>Free Online Student Loan Calculator</h2>
+      <p>Plan your student loan repayment strategy. Compare standard and extended repayment plans, and see how extra monthly payments can save you money and shorten your loan term. Our calculator works for both federal and private student loans, helping you understand your repayment options and find the best strategy for your financial situation.</p>
+    </div>
+
+    <div class="section">
+      <h2>How It Works</h2>
+      <p>Enter your total loan amount, interest rate, repayment period, and optional extra monthly payment. The calculator uses the standard amortization formula to determine your base monthly payment. If you add extra payments, it calculates how much faster you'll pay off your loan and how much interest you'll save over time.</p>
+      <p>The results show your base monthly payment, total monthly payment including extra payments, total interest under the standard repayment plan, and if applicable, how much time and interest you'll save by making extra payments. You can also see interest accrued during the grace period, which is important for understanding the true cost of your loans.</p>
+      <p>Use this calculator to compare different repayment scenarios. For example, see how paying an extra $100 or $200 per month can significantly reduce your total interest and payoff time. You can also compare standard 10-year repayment to extended 20 or 25-year plans to understand the tradeoff between lower monthly payments and higher total interest.</p>
+    </div>
+
+    <div class="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <h3>What is a student loan calculator?</h3>
+        <p>A student loan calculator helps you estimate monthly payments, total interest, and payoff timeline for student loans. It can show how extra payments save money and compare different repayment plan options.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How do extra payments affect my student loans?</h3>
+        <p>Extra payments go directly toward reducing your principal balance, which decreases the amount of interest that accrues over time. This can save thousands of dollars in interest and shorten your repayment period significantly.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What repayment plans are available?</h3>
+        <p>Federal loans offer standard (10 years), graduated, extended (up to 25 years), income-driven, and consolidation plans. Private lenders typically offer terms from 5 to 20 years. Compare options to find what fits your budget and goals.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Should I refinance my student loans?</h3>
+        <p>Consider refinancing if you can get a lower interest rate, which reduces total interest paid. However, refinancing federal loans into private loans means losing federal benefits like income-driven repayment and loan forgiveness options.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What is a grace period?</h3>
+        <p>A grace period is a time after graduation or leaving school when you don't have to make payments. However, interest may still accrue on unsubsidized loans during this time, adding to your total loan balance.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Is this student loan calculator free to use?</h3>
+        <p>Yes, our student loan calculator is completely free to use with no registration required. Calculate unlimited repayment scenarios to help you plan your student loan repayment strategy.</p>
+      </div>
+    </div>
+
+    <footer>
+      <p>Free financial calculators for mortgages, loans, investments, and budgeting. Plan your finances with ease.</p>
+      <p style="margin:8px 0;font-size:13px">
+        <a href="/about/" style="color:var(--accent)">About</a>
+        <a href="/privacy/" style="color:var(--accent)">Privacy</a>
+        <a href="/terms/" style="color:var(--accent)">Terms</a>
+        <a href="/contact/" style="color:var(--accent)">Contact</a>
+      </p>
+      <p>© 2026 Knexio. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    function fmt(n){return n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}
+    function calculate(){
+      const principal=parseFloat(document.getElementById('loanAmount').value)||0;
+      const annualRate=parseFloat(document.getElementById('interestRate').value)||0;
+      const years=parseInt(document.getElementById('loanTerm').value);
+      const extra=parseFloat(document.getElementById('extraPayment').value)||0;
+      const grace=parseInt(document.getElementById('gracePeriod').value)||0;
+      if(principal<=0){alert('Please enter a valid loan amount.');return;}
+      const monthlyRate=annualRate/100/12;
+      const n=years*12;
+      let pi=monthlyRate===0?principal/n:principal*(monthlyRate*Math.pow(1+monthlyRate,n))/(Math.pow(1+monthlyRate,n)-1);
+      const totalMonthly=pi+extra;
+      const totalInterestStd=pi*n-principal;
+      // Calculate payoff with extra payment
+      let bal=principal,months=0,totalInterestExtra=0;
+      while(bal>0&&months<n*2){
+        const interest=bal*monthlyRate;
+        totalInterestExtra+=interest;
+        const princPay=Math.min(bal,totalMonthly-interest);
+        bal-=princPay;
+        months++;
+        if(totalMonthly<=interest&&extra===0){months=n;break;}
+      }
+      const savedInterest=totalInterestStd-totalInterestExtra;
+      const savedMonths=n-months;
+      document.getElementById('results').innerHTML=`
+        <div class="result-header">Loan Summary</div>
+        <div class="result-highlight">
+          <div class="result-big">$${fmt(pi)}</div>
+          <div class="result-big-label">Base Monthly Payment</div>
+        </div>
+        <div class="result-row"><span class="result-label">Monthly Payment (base)</span><span class="result-value accent">$${fmt(pi)}</span></div>
+        <div class="result-row"><span class="result-label">Total Monthly Payment</span><span class="result-value accent">$${fmt(totalMonthly)}</span></div>
+        <div class="result-row"><span class="result-label">Total Interest (standard)</span><span class="result-value">$${fmt(totalInterestStd)}</span></div>
+        ${extra>0?`<div class="result-row"><span class="result-label">Payoff Time (with extra)</span><span class="result-value green">${months} months (${(months/12).toFixed(1)} yrs)</span></div>
+        <div class="result-row"><span class="result-label">Interest Saved</span><span class="result-value green">$${fmt(savedInterest)}</span></div>
+        <div class="result-row"><span class="result-label">Months Saved</span><span class="result-value green">${savedMonths} months</span></div>`:''}
+        <div class="result-row"><span class="result-label">Total Amount Paid</span><span class="result-value">$${fmt(pi*n+extra*(extra>0?months:0))}</span></div>
+        ${grace>0?`<div class="result-row"><span class="result-label">Interest during grace period</span><span class="result-value">$${fmt(principal*monthlyRate*grace)}</span></div>`:''}
+      `;
+    }
+    function clearForm(){
+      document.getElementById('loanAmount').value='50000';
+      document.getElementById('interestRate').value='5.5';
+      document.getElementById('loanTerm').value='10';
+      document.getElementById('extraPayment').value='0';
+      document.getElementById('gracePeriod').value='6';
+      document.getElementById('results').innerHTML='<div class="result-placeholder">Enter your details and click <strong>Calculate</strong> to see results</div>';
+    }
+  </script>
+  <script src="/knexio-bundle.js"></script>
+</body>
+</html>

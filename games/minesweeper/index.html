@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Minesweeper</title>
+  <meta name="description" content="Minesweeper - Free online tool on Knexio" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="canonical" href="https://knexio.xyz/games/minesweeper/" />
+  <meta property="og:title" content="Minesweeper" />
+  <meta property="og:description" content="Minesweeper - Free online tool on Knexio" />
+  <meta property="og:url" content="https://knexio.xyz/games/minesweeper/" />
+  <meta property="og:type" content="Game" />
+  <meta property="og:site_name" content="Knexio" />
+  <meta property="og:image" content="https://knexio.xyz/og-image.png" />
+<style>
+    :root {
+      --bg-dark: #0b1220;
+      --bg-dark-2: #070d1a;
+      --panel: #111a2e;
+      --border: rgba(255,255,255,0.08);
+      --text-main: #ffffff;
+      --text-sub: #aab3c5;
+      --accent: #4f8cff;
+      --cell-bg: #1a2335;
+      --cell-hover: #233448;
+      --cell-revealed: #0d1321;
+      --cell-mine: #dc2626;
+
+    * { box-sizing: border-box; user-select: none; -webkit-user-select: none; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
+      background: linear-gradient(180deg, var(--bg-dark), var(--bg-dark-2));
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container {
+      flex: 1;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+    }
+
+    .back { font-size: 14px; color: var(--text-sub); margin-bottom: 20px; display: inline-block; }
+
+    h1 { font-size: 32px; margin: 0 0 24px; text-align: center; }
+
+    .intro {
+      font-size: 16px; color: var(--text-sub); line-height: 1.7; margin-bottom: 32px;
+      text-align: center;
+    }
+
+    .controls {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text-main);
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn:hover { border-color: var(--accent); color: var(--accent); }
+    .btn.primary {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+    .btn.primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(79,140,255,0.3);
+    }
+
+    .info-bar {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      margin-bottom: 20px;
+      font-size: 18px;
+    }
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .info-item span {
+      color: var(--text-sub);
+      font-size: 14px;
+    }
+    .info-value {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .game-board { margin: 0 auto;
+      display: inline-grid;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      margin: 0 auto;
+    }
+
+    .cell {
+      width: 32px;
+      height: 32px;
+      background: var(--cell-bg);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .cell:hover { background: var(--cell-hover); }
+    .cell.revealed { background: var(--cell-revealed); cursor: default; }
+    .cell.flagged { color: #ef4444; }
+    .cell.mine { background: var(--cell-mine); color: #fff; }
+    .cell.safe-1 { color: #3b82f6; }
+    .cell.safe-2 { color: #10b981; }
+    .cell.safe-3 { color: #f59e0b; }
+    .cell.safe-4 { color: #ef4444; }
+    .cell.safe-5 { color: #8b5cf6; }
+    .cell.safe-6 { color: #ec4899; }
+    .cell.safe-7 { color: #6366f1; }
+    .cell.safe-8 { color: #1f2937; }
+
+    @media (max-width: 600px) {
+      .cell { width: 28px; height: 28px; font-size: 16px; }
+      .game-board { margin: 0 auto; padding: 12px; }
+    }
+
+    .ad-top { margin: 0 0 32px; text-align: center; min-height: 90px; }
+    .ad-mid  { margin: 40px 0; text-align: center; min-height: 250px; }
+
+    footer {
+      font-size: 13px; text-align: center;
+      color: var(--text-sub); border-top: 1px solid var(--border); padding-top: 30px;
+    }
+    footer a { color: var(--accent); }
+  .ad-banner{margin:24px 0;text-align:center;min-height:90px}
+  
+    /* ==================== 移动端优化 ==================== */
+    
+    /* 平板和手机 (≤768px) */
+    @media (max-width: 768px) {
+      /* 容器布局优化 */
+      .container, .wrap {
+        padding: 40px 15px 80px !important;
+        max-width: 100% !important;
+      }
+      
+      /* 标题字体优化 */
+      h1 {
+        font-size: 28px !important;
+        line-height: 1.3 !important;
+      }
+      
+      h2 {
+        font-size: 20px !important;
+        margin-top: 36px !important;
+        margin-bottom: 10px !important;
+      }
+      
+      h3 {
+        font-size: 17px !important;
+      }
+      
+      /* 正文内容优化 */
+      p, li, .intro, .subtitle {
+        font-size: 14px !important;
+        line-height: 1.7 !important;
+      }
+      
+      /* 段落间距优化 */
+      p, ul, ol {
+        margin-bottom: 16px !important;
+      }
+      
+      /* 列表优化 */
+      ul, ol {
+        padding-left: 18px !important;
+      }
+      
+      li {
+        margin-bottom: 6px !important;
+      }
+      
+      /* 内容块优化 */
+      .main-panel, .step-block, .notice, .extra-info {
+        padding: 16px !important;
+        border-radius: 12px !important;
+        margin: 16px 0 !important;
+      }
+      
+      /* 按钮和输入框优化 */
+      .btn {
+        padding: 14px !important;
+        font-size: 15px !important;
+        min-height: 48px !important;
+      }
+      
+      .input-group input {
+        padding: 12px !important;
+        font-size: 15px !important;
+      }
+      
+      /* 网格系统优化 */
+      .age-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px !important;
+      }
+      
+      /* 广告位优化 */
+      .ad-banner {
+        margin: 16px 0 !important;
+        min-height: 50px !important;
+      }
+      
+      /* 游戏页面优化 */
+      .grid-container {
+        padding: 8px !important;
+      }
+      
+      .grid { margin: 0 auto;
+        gap: 8px !important;
+      }
+      
+      .cell {
+        font-size: 20px !important;
+        border-radius: 6px !important;
+      }
+      
+      .score-box {
+        min-width: 70px !important;
+        padding: 6px 12px !important;
+      }
+      
+      .score-val {
+        font-size: 18px !important;
+      }
+      
+      /* 工具页面优化 */
+      .age-main {
+        font-size: 36px !important;
+      }
+      
+      .age-value {
+        font-size: 24px !important;
+      }
+      
+      .age-label {
+        font-size: 11px !important;
+      }
+      
+      /* 引导页面优化 */
+      .intro {
+        border-left-width: 2px !important;
+        padding-left: 12px !important;
+        margin-bottom: 32px !important;
+      }
+      
+      .faq-item {
+        margin-bottom: 20px !important;
+      }
+      
+      .faq-item strong {
+        font-size: 15px !important;
+      }
+    }
+    
+    /* 小手机优化 (≤480px) */
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 24px !important;
+      }
+      
+      h2 {
+        font-size: 18px !important;
+      }
+      
+      .container, .wrap {
+        padding: 32px 12px 60px !important;
+      }
+      
+      .main-panel, .step-block, .notice {
+        padding: 14px !important;
+      }
+      
+      .btn {
+        padding: 12px !important;
+        font-size: 14px !important;
+      }
+      
+      .age-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
+    
+    /* 触摸设备优化 */
+    @media (hover: none) and (pointer: coarse) {
+      button, .btn, a[onclick], .cell {
+        min-height: 44px !important;
+        min-width: 44px !important;
+      }
+      
+      input, select, textarea {
+        font-size: 16px !important;
+      }
+    }      .container { padding: 40px 15px 80px; }
+    }
+    </style>
+</head>
+<body><a href="../../cdn-cgi/content-QLSZ61UQWtxgzksjv_52HE6aq8w3sApXLGWVsRNDQVk.html" aria-hidden="true" rel="nofollow noopener" style="display: none !important; visibility: hidden !important"></a>
+  <div class="container">
+    <a class="back" href="../index.html">← Back to Games</a>
+
+    <h1>Minesweeper</h1>
+
+    <div class="intro">
+      Find all mines without detonating any. Left-click to reveal, right-click (or long-press) to flag.
+    </div>
+
+    <div class="controls">
+      <button class="btn" onclick="setDifficulty('easy')">Easy (9×9)</button>
+      <button class="btn" onclick="setDifficulty('medium')">Medium (16×16)</button>
+      <button class="btn" onclick="setDifficulty('hard')">Hard (16×30)</button>
+      <button class="btn" onclick="setDifficulty('expert')">Expert (30×16)</button>
+    </div>
+
+    <div class="info-bar">
+      <div class="info-item">
+        💣 <span>Mines:</span> <span class="info-value" id="mineCount">—</span>
+      </div>
+      <div class="info-item">
+        ⏱️ <span>Time:</span> <span class="info-value" id="timer">00:00</span>
+      </div>
+      <div class="info-item">
+        🚩 <span>Flags:</span> <span class="info-value" id="flagCount">0</span>
+      </div>
+      <button class="btn primary" onclick="initGame()">New Game</button>
+    </div>
+
+    <div id="board" style="display:grid;grid-template-columns:repeat(9,1fr);gap:4px;padding:20px;background:var(--bg-dark-2);border-radius:8px;margin:20px auto;width:fit-content;"></div>
+
+    </div>
+    <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="5794572171" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+<!-- ==================== 游戏玩法说明 - SEO优化内容 ==================== -->
+<div class="gameplay-section" style="margin: 60px auto 0; max-width: 800px; padding: 32px 24px; background: var(--panel); border-radius: 18px; border: 1px solid var(--border);">
+    <h2 style="font-size: 28px; margin-bottom: 30px; color: var(--text-main); display: flex; align-items: center;">
+        <span style="background: var(--accent); color: white; width: 36px; height: 36px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 15px; font-size: 18px;">🎮</span>
+        How to Play Minesweeper
+    </h2>
+
+    <div style="margin-bottom: 30px;">
+        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--text-main);">Game Description</h3>
+        <p style="font-size: 15px; color: var(--text-sub); line-height: 1.7; margin-bottom: 20px;">
+            Minesweeper is a fun browser game that you can play for free. Enjoy this entertaining game with simple controls and engaging gameplay.
+        </p>
+    </div>
+
+    <div style="margin-bottom: 30px;">
+        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--text-main);">Basic Rules & Controls</h3>
+        <ol style="font-size: 15px; color: var(--text-sub); line-height: 1.7; padding-left: 25px; margin-bottom: 20px;">
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">Use your mouse, keyboard, or touch controls to play</strong>
+            </li>
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">Follow the on-screen instructions</strong>
+            </li>
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">Try to achieve the highest score possible</strong>
+            </li>
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">The game may have different modes or difficulty levels</strong>
+            </li>
+
+        </ol>
+    </div>
+
+    <div style="margin-bottom: 30px;">
+        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--text-main);">Pro Tips & Strategies</h3>
+        <ul style="font-size: 15px; color: var(--text-sub); line-height: 1.7; padding-left: 25px; margin-bottom: 20px;">
+
+            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;">
+                <span style="position: absolute; left: -15px; color: var(--accent);">✓</span>
+                Read the instructions carefully before playing
+            </li>
+
+            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;">
+                <span style="position: absolute; left: -15px; color: var(--accent);">✓</span>
+                Practice to improve your skills
+            </li>
+
+            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;">
+                <span style="position: absolute; left: -15px; color: var(--accent);">✓</span>
+                Take breaks if you get frustrated
+            </li>
+
+            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;">
+                <span style="position: absolute; left: -15px; color: var(--accent);">✓</span>
+                Try different strategies to find what works best
+            </li>
+
+        </ul>
+    </div>
+
+    <div style="background: rgba(79, 140, 255, 0.1); padding: 20px; border-radius: 12px; border-left: 4px solid var(--accent);">
+        <p style="font-size: 15px; color: var(--text-sub); margin: 0;">
+            <strong style="color: var(--accent);">💡 Quick Start:</strong> Just click/tap to begin! No registration required. 
+            All Knexio games work directly in your browser with no downloads needed.
+        </p>
+    </div>
+</div>
+
+<!-- ==================== 广告位优化 ==================== -->
+<div class="ad-section" style="margin-top: 40px; text-align: center;">
+    <ins class="adsbygoogle" 
+         style="display:block; background: var(--panel); border-radius: 12px; padding: 15px;"
+         data-ad-client="ca-pub-2596567349043393" 
+         data-ad-slot="9504968504" 
+         data-ad-format="auto" 
+         data-full-width-responsive="true">
+    </ins>
+    <p style="font-size: 12px; color: var(--text-sub); margin-top: 8px; opacity: 0.7;">
+        Advertisement supports free games development
+    </p>
+</div>
+
+<!-- ==================== 游戏常见问题 (FAQ) ==================== -->
+<div class="faq-section" style="margin: 60px auto 0; max-width: 800px; padding: 32px 24px; background: var(--panel); border-radius: 18px;">
+    <h2 style="font-size: 28px; margin-bottom: 30px; color: var(--text-main);">Frequently Asked Questions</h2>
+
+    <div class="faq-list">
+        <div class="faq-item" style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid var(--border);">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                Is this game free to play?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                Yes, all games on Knexio are completely free to play. There are no hidden charges, subscription fees, or in-app purchases. We support our games through non-intrusive advertisements.
+            </p>
+        </div>
+
+        <div class="faq-item" style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid var(--border);">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                Do I need to download anything to play?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                No downloads required! All our games run directly in your web browser. They work on desktop computers, laptops, tablets, and smartphones. Just visit the page and start playing.
+            </p>
+        </div>
+
+        <div class="faq-item" style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid var(--border);">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                How do I save my game progress?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                Most games automatically save your high scores and progress in your browser's local storage. Your best scores will be remembered even if you close the browser, as long as you don't clear your browsing data.
+            </p>
+        </div>
+
+        <div class="faq-item" style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid var(--border);">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                Can I play on mobile devices?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                Absolutely! All Knexio games are fully responsive and optimized for mobile devices. Touch controls are implemented for games that require precise input. The interface automatically adapts to your screen size.
+            </p>
+        </div>
+
+        <div class="faq-item" style="margin-bottom: 25px;">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                Is there sound in the games?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                Most games include optional sound effects. Look for a sound/mute button in the game interface. You can enable or disable sound based on your preference. We keep sound subtle and non-intrusive.
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== 结构化数据 (Schema.org) ==================== -->
+<script type="application/ld+json">
+{{
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "{game_display_name}",
+    "description": "{template['description'][:150]}...",
+    "applicationCategory": "GameApplication",
+    "gamePlatform": "Web Browser",
+    "operatingSystem": "All",
+    "url": "https://knexio.xyz/games/{game_name}/",
+    "genre": "Browser Game",
+    "playMode": "SinglePlayer",
+    "publisher": {{
+        "@type": "Organization",
+        "name": "Knexio",
+        "url": "https://knexio.xyz"
+    }},
+    "offers": {{
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+    }},
+    "keywords": "{', '.join(template['keywords'])}"
+}}
+</script>
+
+<script type="application/ld+json">
+{{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {{
+            "@type": "Question",
+            "name": "Is this game free to play?",
+            "acceptedAnswer": {{
+                "@type": "Answer",
+                "text": "Yes, all games on Knexio are completely free to play. There are no hidden charges, subscription fees, or in-app purchases. We support our games through non-intrusive advertisements."
+            }}
+        }},
+        {{
+            "@type": "Question",
+            "name": "Do I need to download anything to play?",
+            "acceptedAnswer": {{
+                "@type": "Answer",
+                "text": "No downloads required! All our games run directly in your web browser. They work on desktop computers, laptops, tablets, and smartphones. Just visit the page and start playing."
+            }}
+        }},
+        {{
+            "@type": "Question",
+            "name": "How do I save my game progress?",
+            "acceptedAnswer": {{
+                "@type": "Answer",
+                "text": "Most games automatically save your high scores and progress in your browser's local storage. Your best scores will be remembered even if you close the browser, as long as you don't clear your browsing data."
+            }}
+        }}
+    ]
+}}
+</script>
+
+<!-- ==================== 相关游戏推荐 ==================== -->
+<div class="related-games" style="margin: 60px auto 0; max-width: 800px; padding: 32px 24px;">
+    <h2 style="font-size: 24px; margin-bottom: 20px; color: var(--text-main);">More Fun Games to Try</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+        <a href="../snake/index.html" style="display: block; background: var(--panel); border-radius: 12px; padding: 20px; text-decoration: none; color: var(--text-main); border: 1px solid var(--border); transition: all 0.2s;">
+            <div style="font-weight: bold; margin-bottom: 8px;">🐍 Snake</div>
+            <div style="font-size: 13px; color: var(--text-sub);">Classic arcade game with growing snake</div>
+        </a>
+        <a href="../tetris/index.html" style="display: block; background: var(--panel); border-radius: 12px; padding: 20px; text-decoration: none; color: var(--text-main); border: 1px solid var(--border); transition: all 0.2s;">
+            <div style="font-weight: bold; margin-bottom: 8px;">🧱 Tetris</div>
+            <div style="font-size: 13px; color: var(--text-sub);">Iconic block-stacking puzzle game</div>
+        </a>
+        <a href="../wordle/index.html" style="display: block; background: var(--panel); border-radius: 12px; padding: 20px; text-decoration: none; color: var(--text-main); border: 1px solid var(--border); transition: all 0.2s;">
+            <div style="font-weight: bold; margin-bottom: 8px;">🔤 Wordle</div>
+            <div style="font-size: 13px; color: var(--text-sub);">Popular word guessing puzzle</div>
+        </a>
+        <a href="../index.html" style="display: block; background: var(--panel); border-radius: 12px; padding: 20px; text-decoration: none; color: var(--text-main); border: 1px solid var(--border); transition: all 0.2s; text-align: center;">
+            <div style="font-weight: bold;">🎮 View All Games →</div>
+        </a>
+    </div>
+</div>
+    <footer>
+      <p>Free online games to play anytime. Enjoy classic games, puzzles, and entertainment.</p>
+            <p style="margin: 8px 0; font-size: 13px;">
+        <a href="/about/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">About</a>
+        <a href="/privacy/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Privacy</a>
+        <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
+        <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
+      </p>
+      <p>© 2026 Knexio. All rights reserved.</p>
+    </footer>
+
+  <script>
+    const DIFFICULTIES = {
+      easy: { rows: 9, cols: 9, mines: 10 },
+      medium: { rows: 16, cols: 16, mines: 40 },
+      hard: { rows: 16, cols: 30, mines: 99 },
+      expert: { rows: 30, cols: 16, mines: 99 }
+    };
+
+    let currentDifficulty = 'medium';
+    let board = [];
+    let revealed = [];
+    let flagged = [];
+    let gameOver = false;
+    let won = false;
+    let timer = 0;
+    let timerInterval = null;
+    let flagCount = 0;
+
+    function setDifficulty(level) {
+      currentDifficulty = level;
+      initGame();
+    }
+
+    function initGame() {
+      const { rows, cols, mines } = DIFFICULTIES[currentDifficulty];
+
+      board = [];
+      revealed = [];
+      flagged = [];
+
+      for (let r = 0; r < rows; r++) {
+        board[r] = [];
+        revealed[r] = [];
+        flagged[r] = [];
+        for (let c = 0; c < cols; c++) {
+          board[r][c] = 0;
+          revealed[r][c] = false;
+          flagged[r][c] = false;
+        }
+      }
+
+      let placedMines = 0;
+      while (placedMines < mines) {
+        const r = Math.floor(Math.random() * rows);
+        const c = Math.floor(Math.random() * cols);
+        if (board[r][c] !== -1) {
+          board[r][c] = -1;
+          placedMines++;
+        }
+      }
+
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          if (board[r][c] === -1) continue;
+          board[r][c] = countMines(r, c);
+        }
+      }
+
+      gameOver = false;
+      won = false;
+      timer = 0;
+      flagCount = 0;
+
+      if (timerInterval) clearInterval(timerInterval);
+      timerInterval = null;
+
+      updateTimer();
+      updateMineCount();
+      updateFlagCount();
+      renderBoard();
+    }
+
+    function countMines(row, col) {
+      const { rows, cols } = DIFFICULTIES[currentDifficulty];
+      let count = 0;
+      for (let dr = -1; dr <= 1; dr++) {
+        for (let dc = -1; dc <= 1; dc++) {
+          if (dr === 0 && dc === 0) continue;
+          const nr = row + dr;
+          const nc = col + dc;
+          if (nr >= 0 && nr < rows && nc >= 0 && nc < cols) {
+            if (board[nr][nc] === -1) count++;
+          }
+        }
+      }
+      return count;
+    }
+
+    function renderBoard() {
+      const { rows, cols } = DIFFICULTIES[currentDifficulty];
+      const boardEl = document.getElementById('board');
+      boardEl.style.gridTemplateColumns = `repeat(${cols}, 32px)`;
+      boardEl.innerHTML = '';
+
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          const cell = document.createElement('div');
+          cell.className = 'cell';
+          cell.dataset.row = r;
+          cell.dataset.col = c;
+
+          if (revealed[r][c]) {
+            cell.classList.add('revealed');
+            if (board[r][c] === -1) {
+              cell.classList.add('mine');
+              cell.textContent = '💣';
+            } else if (board[r][c] > 0) {
+              cell.textContent = board[r][c];
+              cell.classList.add(`safe-${board[r][c]}`);
+            }
+          } else if (flagged[r][c]) {
+            cell.classList.add('flagged');
+            cell.textContent = '🚩';
+          }
+
+          cell.addEventListener('click', () => handleClick(r, c));
+          cell.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+            handleRightClick(r, c);
+          
+          cell.addEventListener('touchstart', (e) => handleTouchStart(e, r, c), { passive: false 
+          cell.addEventListener('touchend', (e) => handleTouchEnd(e), { passive: false 
+
+          boardEl.appendChild(cell);
+        }
+      }
+    }
+
+    let touchTimer = null;
+    function handleTouchStart(e, row, col) {
+      if (touchTimer) clearTimeout(touchTimer);
+      touchTimer = setTimeout(() => handleRightClick(row, col), 500);
+      e.preventDefault();
+    }
+
+    function handleTouchEnd(e) {
+      if (touchTimer) {
+        clearTimeout(touchTimer);
+        touchTimer = null;
+      }
+    }
+
+    function handleClick(row, col) {
+      if (gameOver || flagged[row][col]) return;
+      startTimer();
+      revealCell(row, col);
+    }
+
+    function handleRightClick(row, col) {
+      if (gameOver || revealed[row][col]) return;
+      flagged[row][col] = !flagged[row][col];
+      flagCount += flagged[row][col] ? 1 : -1;
+      updateFlagCount();
+      renderBoard();
+    }
+
+    function revealCell(row, col) {
+      const { rows, cols, mines } = DIFFICULTIES[currentDifficulty];
+
+      if (row < 0 || row >= rows || col < 0 || col >= cols) return;
+      if (revealed[row][col] || flagged[row][col]) return;
+
+      revealed[row][col] = true;
+
+      if (board[row][col] === -1) {
+        gameOver = true;
+        won = false;
+        revealAllMines();
+        if (timerInterval) clearInterval(timerInterval);
+        alert('💥 Game Over! You hit a mine.');
+      } else {
+        if (board[row][col] === 0) {
+          for (let dr = -1; dr <= 1; dr++) {
+            for (let dc = -1; dc <= 1; dc++) {
+              if (dr === 0 && dc === 0) continue;
+              revealCell(row + dr, col + dc);
+            }
+          }
+        }
+      }
+
+      renderBoard();
+      checkWin();
+    }
+
+    function revealAllMines() {
+      const { rows, cols } = DIFFICULTIES[currentDifficulty];
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          if (board[r][c] === -1) {
+            revealed[r][c] = true;
+          }
+        }
+      }
+      renderBoard();
+    }
+
+    function checkWin() {
+      const { rows, cols, mines } = DIFFICULTIES[currentDifficulty];
+      let revealedSafe = 0;
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          if (revealed[r][c] && board[r][c] !== -1) {
+            revealedSafe++;
+          }
+        }
+      }
+      if (revealedSafe === (rows * cols - mines) && !gameOver) {
+        gameOver = true;
+        won = true;
+        if (timerInterval) clearInterval(timerInterval);
+        alert('🎉 You Won! Time: ' + formatTime(timer));
+      }
+    }
+
+    function startTimer() {
+      if (!timerInterval && !gameOver) {
+        timerInterval = setInterval(() => {
+          timer++;
+          updateTimer();
+        }, 1000);
+      }
+    }
+
+    function updateTimer() {
+      document.getElementById('timer').textContent = formatTime(timer);
+    }
+
+    function formatTime(seconds) {
+      const m = Math.floor(seconds / 60).toString().padStart(2, '0');
+      const s = (seconds % 60).toString().padStart(2, '0');
+      return `${m}:${s}`;
+    }
+
+    function updateMineCount() {
+      const { mines } = DIFFICULTIES[currentDifficulty];
+      document.getElementById('mineCount').textContent = mines;
+    }
+
+    function updateFlagCount() {
+      document.getElementById('flagCount').textContent = flagCount;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initGame();
+    
+  </script>
+  <script src="/knexio-bundle.js"></script>
+  <script src="../../cookie-consent.js"></script>
+</body>
+

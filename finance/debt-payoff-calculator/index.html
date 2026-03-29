@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Debt Payoff Calculator – Snowball & Avalanche | Knexio</title>
+  <meta name="description" content="Free debt payoff calculator using avalanche and snowball methods. See how fast you can become debt-free.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://knexio.xyz/finance/debt-payoff-calculator/">
+  <meta property="og:title" content="Debt Payoff Calculator – Snowball & Avalanche | Knexio">
+  <meta property="og:description" content="Free debt payoff calculator using avalanche and snowball methods. See how fast you can become debt-free.">
+  <meta property="og:url" content="https://knexio.xyz/finance/debt-payoff-calculator/">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"Debt Payoff Calculator","url":"https://knexio.xyz/finance/debt-payoff-calculator/","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  </script>
+  <style>
+    :root{--bg:#0b1220;--card:#111a2e;--text:#fff;--sub:#aab3c5;--accent:#4f8cff;--border:rgba(255,255,255,0.08)}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh}
+    a{color:var(--accent);text-decoration:none}
+    .container{max-width:920px;margin:0 auto;padding:60px 20px 100px}
+    .back{display:inline-block;color:var(--sub);font-size:14px;margin-bottom:28px;transition:color 0.2s}
+    .back:hover{color:var(--accent)}
+    h1{font-size:34px;font-weight:700;margin-bottom:8px}
+    .subtitle{font-size:15px;color:var(--sub);margin-bottom:32px}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px;margin-bottom:24px}
+    .card-title{font-size:16px;font-weight:600;color:var(--accent);margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+    .form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    .form-field{display:flex;flex-direction:column}
+    .form-field.full-width{grid-column:1/-1}
+    label{font-size:13px;color:var(--sub);margin-bottom:6px;font-weight:500}
+    input,select{width:100%;padding:12px 16px;background:var(--bg);border:1px solid var(--border);border-radius:12px;color:var(--text);font-size:15px;font-family:inherit;transition:border-color 0.2s}
+    input:focus,select:focus{outline:none;border-color:var(--accent)}
+    .btn-row{display:flex;gap:12px;margin-top:20px}
+    .btn-primary{padding:12px 28px;border:none;border-radius:10px;background:var(--accent);color:#fff;font-size:15px;font-weight:600;cursor:pointer;transition:background 0.2s;flex:1}
+    .btn-primary:hover{background:#3d7de0}
+    .btn-secondary{padding:12px 20px;border:1px solid var(--border);border-radius:10px;background:transparent;color:var(--sub);font-size:15px;font-weight:500;cursor:pointer;transition:all 0.2s}
+    .btn-secondary:hover{border-color:var(--accent);color:var(--accent)}
+    .results{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px;margin-bottom:24px;min-height:120px}
+    .result-header{font-size:16px;font-weight:600;color:var(--accent);margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+    .result-highlight{text-align:center;padding:24px;margin-bottom:20px}
+    .result-big{font-size:48px;font-weight:800;color:var(--accent);line-height:1}
+    .result-big-label{font-size:14px;color:var(--sub);margin-top:8px}
+    .result-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);font-size:14px}
+    .result-row:last-child{border-bottom:none}
+    .result-label{color:var(--sub)}
+    .result-value{font-weight:600;color:var(--text)}
+    .result-value.accent{color:var(--accent)}
+    .result-value.green{color:#00d4aa}
+    .result-value.red{color:#f87171}
+    .result-placeholder{text-align:center;padding:40px 0;color:var(--sub);font-size:15px}
+    .ad-banner{margin:32px 0;text-align:center}
+    .section{margin-bottom:32px}
+    h2{font-size:22px;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+    p{color:var(--sub);font-size:15px;line-height:1.75;margin-bottom:14px}
+    .faq-item{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;margin-bottom:16px}
+    .faq-item h3{font-size:16px;font-weight:600;color:var(--text);margin-bottom:8px}
+    .faq-item p{font-size:14px;color:var(--sub);margin-bottom:0;line-height:1.6}
+    footer{text-align:center;padding:40px 20px;border-top:1px solid var(--border);margin-top:60px;color:var(--sub);font-size:14px}
+    footer p{margin-bottom:8px}
+    footer a{color:var(--accent);transition:color 0.2s}
+    footer a:hover{color:#3d7de0}
+    @media(max-width:680px){.form-grid{grid-template-columns:1fr}.container{padding:40px 16px 80px}h1{font-size:28px}.btn-row{flex-direction:column}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a class="back" href="../index.html">← Back to Finance</a>
+    <h1>Debt Payoff Calculator</h1>
+    <p class="subtitle">Calculate your debt-free date and compare payoff strategies</p>
+
+    <div class="ad-banner">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="5794572171" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Calculator</div>
+      <div class="form-grid">
+        <div class="form-field">
+          <label for="totalDebt">Total Debt Amount ($)</label>
+          <input type="number" id="totalDebt" value="25000" min="0" step="500">
+        </div>
+        <div class="form-field">
+          <label for="averageInterest">Average Interest Rate (%)</label>
+          <input type="number" id="averageInterest" value="18" min="0" max="35" step="0.1">
+        </div>
+        <div class="form-field">
+          <label for="monthlyPayment">Monthly Payment ($)</label>
+          <input type="number" id="monthlyPayment" value="600" min="0" step="50">
+        </div>
+        <div class="form-field">
+          <label for="extraPayment">Extra Monthly Payment ($)</label>
+          <input type="number" id="extraPayment" value="0" min="0" step="50">
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="calculate()">Calculate</button>
+        <button class="btn-secondary" onclick="clearForm()">Reset</button>
+      </div>
+    </div>
+
+    <div class="results" id="results">
+      <div class="result-placeholder">Enter your details and click <strong>Calculate</strong> to see results</div>
+    </div>
+
+    <div class="section">
+      <h2>Free Online Debt Payoff Calculator</h2>
+      <p>Take control of your financial future with our free debt payoff calculator. Whether you're dealing with credit card debt, personal loans, or a combination of debts, this tool helps you visualize your path to becoming debt-free. Simply enter your total debt amount, average interest rate, and monthly payment to see your estimated payoff timeline and total interest costs.</p>
+      <p>Our calculator also lets you experiment with extra payments to see how accelerating your payoff can save you money and time. By making small additional payments each month, you could potentially save thousands in interest and become debt-free years sooner than expected.</p>
+    </div>
+
+    <div class="section">
+      <h2>How It Works</h2>
+      <p>The debt payoff calculator uses a straightforward approach to estimate your journey to financial freedom. First, enter your total debt amount across all accounts. Then, input the average interest rate you're paying – if you have different rates, you can calculate a weighted average. Finally, specify your monthly payment amount, which is the total you can afford to pay toward debt each month.</p>
+      <p>The calculator then simulates your payoff progress month by month, applying interest to your remaining balance and subtracting your payment. It calculates both a standard payoff scenario and an accelerated scenario if you add extra payments. You'll see side-by-side comparisons of payoff timelines and interest costs, making it easy to understand the impact of different payment strategies.</p>
+      <p>One powerful feature is the ability to compare standard payments versus accelerated payments with extra contributions. This helps you understand how even modest extra payments can significantly reduce both the time to debt freedom and the total interest paid. The calculator shows you exactly how many months and how much money you could save by increasing your monthly payment amount.</p>
+    </div>
+
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>What is a debt payoff calculator?</h3>
+      <p>A debt payoff calculator helps you estimate how long it will take to become debt-free and how much total interest you'll pay based on your current debt amount, interest rate, and monthly payment. It's an essential tool for creating a realistic debt elimination plan and understanding the impact of different payment strategies.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How do I use this debt payoff calculator?</h3>
+      <p>Enter your total debt amount across all accounts, the average interest rate you're paying, and your planned monthly payment. The calculator will instantly show you your estimated payoff timeline and total interest cost. Try adding extra payments to see how accelerating your payoff can save you money and time.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What is the snowball vs. avalanche method?</h3>
+      <p>The snowball method focuses on paying off smallest debts first to build momentum, while the avalanche method prioritizes highest interest rate debts to minimize total interest paid. This calculator helps you understand how extra payments work with either strategy by showing the impact of accelerated payments on your overall debt payoff.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How much extra should I pay toward my debt?</h3>
+      <p>Even small extra payments can make a significant difference. Try starting with an extra $50-100 per month and see the impact. As your budget allows, increase your extra payments to accelerate your debt payoff. The calculator will show you exactly how many months and how much interest you'll save with different extra payment amounts.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What if my monthly payment is too low?</h3>
+      <p>If your monthly payment doesn't cover the accruing interest, your debt will never be paid off. The calculator will alert you if your payment is insufficient. In this case, you'll need to increase your monthly payment amount, reduce your debt through other means, or consider debt consolidation options.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Is this debt payoff calculator free to use?</h3>
+      <p>Yes, this debt payoff calculator is completely free to use with no registration required. You can run unlimited calculations to explore different payoff scenarios and find the strategy that works best for your financial situation and goals.</p>
+    </div>
+
+    <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+    <footer>
+      <p>Free financial calculators for mortgages, loans, investments, and budgeting. Plan your finances with ease.</p>
+      <p style="margin:8px 0;font-size:13px">
+        <a href="/about/" style="color:var(--accent)">About</a><a href="/privacy/" style="color:var(--accent)">Privacy</a><a href="/terms/" style="color:var(--accent)">Terms</a><a href="/contact/" style="color:var(--accent)">Contact</a>
+      </p>
+      <p>© 2026 Knexio. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    function fmt(n){return n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}
+    function calculate(){
+      const debt=parseFloat(document.getElementById('totalDebt').value)||0;
+      const rate=parseFloat(document.getElementById('averageInterest').value)||0;
+      const payment=parseFloat(document.getElementById('monthlyPayment').value)||0;
+      const extra=parseFloat(document.getElementById('extraPayment').value)||0;
+      if(debt<=0){alert('Please enter a valid debt amount.');return;}
+      const monthlyRate=rate/100/12;
+      const minInterest=debt*monthlyRate;
+      if(payment<=minInterest&&extra===0){
+        document.getElementById('results').innerHTML='<div class="result-placeholder" style="color:#f87171">Your monthly payment is too low to cover interest. Please increase it.</div>';
+        return;
+      }
+      let bal1=debt,months1=0,totalInt1=0;
+      while(bal1>0.01&&months1<600){
+        const interest=bal1*monthlyRate;
+        totalInt1+=interest;
+        bal1-=Math.max(0,payment-interest);
+        months1++;
+      }
+      let bal2=debt,months2=0,totalInt2=0;
+      const totalPayment=payment+extra;
+      while(bal2>0.01&&months2<600){
+        const interest=bal2*monthlyRate;
+        totalInt2+=interest;
+        bal2-=Math.max(0,totalPayment-interest);
+        months2++;
+      }
+      const saved=totalInt1-totalInt2;
+      const savedMonths=months1-months2;
+      document.getElementById('results').innerHTML=`
+        <div class="result-header">Debt Payoff Plan</div>
+        <div class="result-highlight">
+          <div class="result-big">${months1} mo</div>
+          <div class="result-big-label">Months to Debt-Free</div>
+        </div>
+        <div class="result-row"><span class="result-label">Payoff time (standard)</span><span class="result-value">${months1} months (${(months1/12).toFixed(1)} yrs)</span></div>
+        <div class="result-row"><span class="result-label">Total interest (standard)</span><span class="result-value">$${fmt(totalInt1)}</span></div>
+        <div class="result-row"><span class="result-label">Total paid (standard)</span><span class="result-value">$${fmt(debt+totalInt1)}</span></div>
+        ${extra>0?`
+        <div class="result-row"><span class="result-label">Payoff time (+$${fmt(extra)}/mo)</span><span class="result-value green">${months2} months (${(months2/12).toFixed(1)} yrs)</span></div>
+        <div class="result-row"><span class="result-label">Total interest (accelerated)</span><span class="result-value green">$${fmt(totalInt2)}</span></div>
+        <div class="result-row"><span class="result-label">Interest saved</span><span class="result-value green">$${fmt(saved)}</span></div>
+        <div class="result-row"><span class="result-label">Months saved</span><span class="result-value green">${savedMonths} months</span></div>
+        `:''}
+      `;
+    }
+    function clearForm(){
+      document.getElementById('totalDebt').value='25000';
+      document.getElementById('averageInterest').value='18';
+      document.getElementById('monthlyPayment').value='600';
+      document.getElementById('extraPayment').value='0';
+      document.getElementById('results').innerHTML='<div class="result-placeholder">Enter your details and click <strong>Calculate</strong> to see results</div>';
+    }
+  </script>
+  <script src="/knexio-bundle.js"></script>
+</body>
+</html>

@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Image Compressor – Compress JPG, PNG, WebP Online | Knexio</title>
+<meta name="description" content="">
+
+<link rel="canonical" href="">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Image Compressor">
+<meta property="og:description" content="">
+<meta property="og:url" content="">
+<meta property="og:type" content="WebApplication">
+<meta property="og:site_name" content="Knexio">
+<meta property="og:image" content="https://knexio.xyz/og-image.png">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is this tool for?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "This is a free online tool for [purpose]. It helps you [function] quickly and easily."
+        }
+      }
+    ]
+  }
+  
+</script>
+
+<style>
+
+:root{
+  --bg:#0b1220;
+  --card:#111a2e;
+  --border:rgba(255,255,255,.08);
+  --text:#fff;
+  --sub:#aab3c5;
+  --accent:#4f8cff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:system-ui,-apple-system;
+  background:var(--bg);
+  color:var(--text);
+}
+.container{max-width:900px;margin:auto;padding:50px 16px}
+
+/* 统一的返回按钮样式 */
+.back {
+  display: inline-block;
+  color: var(--sub);
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 24px;
+  transition: color 0.2s;
+}
+.back:hover {
+  color: var(--accent);
+}
+
+h1{font-size:32px;margin-bottom:8px}
+h2{font-size:22px;margin-top:30px;margin-bottom:10px}
+.subtitle{color:var(--sub);margin-bottom:24px}
+
+.badge{
+  display:inline-block;
+  padding:4px 10px;
+  border-radius:20px;
+  background:rgba(79,140,255,.15);
+  color:var(--accent);
+  font-size:12px;
+  margin-bottom:10px;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:20px;
+  margin-bottom:20px;
+}
+
+textarea{
+  width:100%;
+  min-height:180px;
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:12px;
+  color:var(--text);
+  padding:14px;
+  font-size:15px;
+}
+textarea:focus{outline:none;border-color:var(--accent)}
+
+.btn-row{display:flex;gap:10px;margin-top:12px}
+button{
+  flex:1;
+  padding:10px;
+  border-radius:10px;
+  border:none;
+  background:var(--accent);
+  color:#fff;
+  cursor:pointer;
+}
+button.secondary{
+  background:transparent;
+  border:1px solid var(--border);
+  color:var(--sub);
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-top:16px;
+}
+.stat{
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:16px;
+  text-align:center;
+}
+.stat span{
+  font-size:24px;
+  font-weight:700;
+  color:var(--accent);
+}
+.stat label{
+  display:block;
+  font-size:12px;
+  color:var(--sub);
+}
+
+.tip{
+  font-size:13px;
+  color:var(--sub);
+  margin-top:10px;
+}
+
+.section p{
+  color:var(--sub);
+  line-height:1.7;
+  margin-bottom:10px;
+}
+
+.tools a{
+  display:inline-block;
+  margin:6px;
+  padding:8px 14px;
+  border-radius:8px;
+  border:1px solid var(--border);
+  color:var(--sub);
+  text-decoration:none;
+}
+.tools a:hover{
+  border-color:var(--accent);
+  color:var(--accent);
+}
+
+/* 广告样式 */
+.ad-banner {
+  margin: 32px 0;
+  text-align: center;
+}
+
+/* 统一的 Footer 样式 */
+footer {
+  margin-top: 40px;
+  text-align: center;
+  color: var(--sub);
+  font-size: 13px;
+}
+footer p {
+  margin-bottom: 8px;
+}
+footer a {
+  color: var(--sub);
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color 0.2s;
+}
+footer a:hover {
+  color: var(--accent);
+}
+
+@media(max-width:600px){
+  .stats{grid-template-columns:1fr 1fr}
+}
+
+</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2596567349043393" crossorigin="anonymous"></script>
+</head>
+
+<body><div class="container">
+
+<a class="back" href="../index.html">← Back to Tools</a>
+
+<h1>Image Compressor</h1>
+<p class="subtitle">Compress JPG, PNG, and WebP images while maintaining quality. All processing happens in your browser - no upload required.</p>
+
+<div class="ad-banner">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="3153457922"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<div class="container">
+  <a class="back" href="../index.html">← Back to Tools</a>
+  <h1>Image Compressor</h1>
+      <p class="subtitle">Compress JPG, PNG, and WebP images while maintaining quality. All processing happens in your browser - no upload required.</p>
+
+  <div class="seo-section">
+    <h2>How to Use This Tool</h2>
+    <div class="step-block">
+      <h3>Step 1: Enter your input</h3>
+      <p>Type or paste your data into the input field.</p>
+    </div>
+    <div class="step-block">
+      <h3>Step 2: Click the action button</h3>
+      <p>Press the main action button to process your input.</p>
+    </div>
+    <div class="step-block">
+      <h3>Step 3: Copy or download results</h3>
+      <p>Use the Copy button to copy results, or Download to save.</p>
+    </div>
+  </div>
+
+  <div class="main-panel">
+    <div class="upload-area" id="uploadArea" onclick="document.getElementById('fileInput').click()">
+      <div class="upload-icon">📁</div>
+      <div class="upload-text">Drop your image here or click to browse</div>
+      <div class="upload-hint">Supports JPG, PNG, WebP (Max 10MB)</div>
+    </div>
+    <input type="file" id="fileInput" accept="image/*">
+
+    <div class="controls" id="controls">
+      <div class="quality-control">
+        <label>Compression Quality</label>
+        <input type="range" class="quality-slider" id="qualitySlider" min="1" max="100" value="80">
+        <div class="quality-value" id="qualityValue">80%</div>
+      </div>
+
+      <div class="compare">
+        <div class="compare-box">
+          <h4>Original</h4>
+          <img id="originalImg" src="index.html" alt="Original">
+          <div class="file-info" id="originalInfo"></div>
+        </div>
+        <div class="compare-box">
+          <h4>Compressed</h4>
+          <img id="compressedImg" src="index.html" alt="Compressed">
+          <div class="file-info" id="compressedInfo"></div>
+        </div>
+      </div>
+
+      <button class="btn" id="downloadBtn" onclick="downloadCompressed()">Download Compressed Image</button>
+    </div>
+
+  </div>
+
+  <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3153457922" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+</div>
+
+<script>
+let originalFile = null;
+let compressedBlob = null;
+
+const uploadArea = document.getElementById('uploadArea');
+const fileInput = document.getElementById('fileInput');
+const qualitySlider = document.getElementById('qualitySlider');
+const qualityValue = document.getElementById('qualityValue');
+
+uploadArea.addEventListener('dragover', (e) => {
+  e.preventDefault();
+  uploadArea.classList.add('dragover');
+});
+
+uploadArea.addEventListener('dragleave', () => {
+  uploadArea.classList.remove('dragover');
+});
+
+uploadArea.addEventListener('drop', (e) => {
+  e.preventDefault();
+  uploadArea.classList.remove('dragover');
+  const file = e.dataTransfer.files[0];
+  if (file && file.type.startsWith('image/')) {
+    handleFile(file);
+  }
+});
+
+fileInput.addEventListener('change', (e) => {
+  const file = e.target.files[0];
+  if (file) handleFile(file);
+});
+
+qualitySlider.addEventListener('input', (e) => {
+  qualityValue.textContent = e.target.value + '%';
+  if (originalFile) compressImage();
+});
+
+function handleFile(file) {
+  if (file.size > 10 * 1024 * 1024) {
+    alert('File too large. Max size is 10MB.');
+    return;
+  }
+  originalFile = file;
+
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    document.getElementById('originalImg').src = e.target.result;
+    document.getElementById('originalInfo').textContent = 
+      `${file.name} • ${(file.size / 1024).toFixed(1)} KB`;
+    document.getElementById('controls').style.display = 'block';
+    compressImage();
+  };
+  reader.readAsDataURL(file);
+}
+
+function compressImage() {
+  const img = new Image();
+  img.onload = () => {
+    const canvas = document.createElement('canvas');
+    canvas.width = img.width;
+    canvas.height = img.height;
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(img, 0, 0);
+
+    const quality = qualitySlider.value / 100;
+    const mimeType = originalFile.type === 'image/png' ? 'image/jpeg' : originalFile.type;
+
+    canvas.toBlob((blob) => {
+      compressedBlob = blob;
+      const url = URL.createObjectURL(blob);
+      document.getElementById('compressedImg').src = url;
+
+      const savings = ((originalFile.size - blob.size) / originalFile.size * 100).toFixed(1);
+      document.getElementById('compressedInfo').innerHTML = 
+        `${(blob.size / 1024).toFixed(1)} KB • <span class="savings">-${savings}%</span>`;
+    }, mimeType, quality);
+  };
+  img.src = document.getElementById('originalImg').src;
+}
+
+function downloadCompressed() {
+  if (!compressedBlob) return;
+  const url = URL.createObjectURL(compressedBlob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'compressed_' + originalFile.name;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+</script>
+<script src="../../knexio-bundle.js"></script>
+  <script src="../../cookie-consent.js"></script>
+  <!-- Schema: FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is this tool for?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "This is a free online tool for [purpose]. It helps you [function] quickly and easily."
+        }
+      }
+    ]
+  }
+  </script>
+
+
+  <section class="seo-section">
+    <h2>How to Use the Image Compressor</h2>
+      <div class="step-block">
+        <h3>Step 1: Upload Your Image</h3>
+        <p>Click the upload area or drag and drop a JPEG or PNG file.</p>
+      </div>
+      <div class="step-block">
+        <h3>Step 2: Adjust Quality</h3>
+        <p>Use the quality slider to balance file size and visual quality.</p>
+      </div>
+      <div class="step-block">
+        <h3>Step 3: Download the Result</h3>
+        <p>Click Download to save the compressed image to your device.</p>
+      </div>
+
+    <h2>What Is a Image Compressor?</h2>
+    <p>An image compressor reduces the file size of JPEG and PNG images without significant quality loss, helping your website load faster and saving storage space.</p>
+
+    <h2>Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <h3>Will compression make my image blurry?</h3>
+        <p>At quality settings above 70%, the difference is barely visible to the human eye.</p>
+
+<div class="ad-banner" style="margin-top:40px">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="3153457922"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<footer>
+  <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
+  <p>
+    <a href="/about/">About</a> •
+    <a href="/privacy/">Privacy Policy</a> •
+    <a href="/terms/">Terms of Service</a>
+  </p>
+</footer>
+
+</div>
+
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</body>
+</html>

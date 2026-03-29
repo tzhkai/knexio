@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Screen Resolution Detector – Check Your Screen Size & DPI | Knexio</title>
+<meta name="description" content="">
+
+<link rel="canonical" href="">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Screen Resolution Detector">
+<meta property="og:description" content="">
+<meta property="og:url" content="">
+<meta property="og:type" content="WebApplication">
+<meta property="og:site_name" content="Knexio">
+<meta property="og:image" content="https://knexio.xyz/og-image.png">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Screen Resolution Detector","applicationCategory":"UtilityApplication","operatingSystem":"All","url":"https://knexio.xyz/tools/screen-resolution/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+
+<style>
+
+:root{
+  --bg:#0b1220;
+  --card:#111a2e;
+  --border:rgba(255,255,255,.08);
+  --text:#fff;
+  --sub:#aab3c5;
+  --accent:#4f8cff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:system-ui,-apple-system;
+  background:var(--bg);
+  color:var(--text);
+}
+.container{max-width:900px;margin:auto;padding:50px 16px}
+
+/* 统一的返回按钮样式 */
+.back {
+  display: inline-block;
+  color: var(--sub);
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 24px;
+  transition: color 0.2s;
+}
+.back:hover {
+  color: var(--accent);
+}
+
+h1{font-size:32px;margin-bottom:8px}
+h2{font-size:22px;margin-top:30px;margin-bottom:10px}
+.subtitle{color:var(--sub);margin-bottom:24px}
+
+.badge{
+  display:inline-block;
+  padding:4px 10px;
+  border-radius:20px;
+  background:rgba(79,140,255,.15);
+  color:var(--accent);
+  font-size:12px;
+  margin-bottom:10px;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:20px;
+  margin-bottom:20px;
+}
+
+textarea{
+  width:100%;
+  min-height:180px;
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:12px;
+  color:var(--text);
+  padding:14px;
+  font-size:15px;
+}
+textarea:focus{outline:none;border-color:var(--accent)}
+
+.btn-row{display:flex;gap:10px;margin-top:12px}
+button{
+  flex:1;
+  padding:10px;
+  border-radius:10px;
+  border:none;
+  background:var(--accent);
+  color:#fff;
+  cursor:pointer;
+}
+button.secondary{
+  background:transparent;
+  border:1px solid var(--border);
+  color:var(--sub);
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-top:16px;
+}
+.stat{
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:16px;
+  text-align:center;
+}
+.stat span{
+  font-size:24px;
+  font-weight:700;
+  color:var(--accent);
+}
+.stat label{
+  display:block;
+  font-size:12px;
+  color:var(--sub);
+}
+
+.tip{
+  font-size:13px;
+  color:var(--sub);
+  margin-top:10px;
+}
+
+.section p{
+  color:var(--sub);
+  line-height:1.7;
+  margin-bottom:10px;
+}
+
+.tools a{
+  display:inline-block;
+  margin:6px;
+  padding:8px 14px;
+  border-radius:8px;
+  border:1px solid var(--border);
+  color:var(--sub);
+  text-decoration:none;
+}
+.tools a:hover{
+  border-color:var(--accent);
+  color:var(--accent);
+}
+
+/* 广告样式 */
+.ad-banner {
+  margin: 32px 0;
+  text-align: center;
+}
+
+/* 统一的 Footer 样式 */
+footer {
+  margin-top: 40px;
+  text-align: center;
+  color: var(--sub);
+  font-size: 13px;
+}
+footer p {
+  margin-bottom: 8px;
+}
+footer a {
+  color: var(--sub);
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color 0.2s;
+}
+footer a:hover {
+  color: var(--accent);
+}
+
+@media(max-width:600px){
+  .stats{grid-template-columns:1fr 1fr}
+}
+
+</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2596567349043393" crossorigin="anonymous"></script>
+</head>
+
+<body><div class="container">
+
+<a class="back" href="../index.html">← Back to Tools</a>
+
+<h1>Screen Resolution Detector</h1>
+<p class="subtitle">Instantly detect your screen resolution, viewport dimensions, device pixel ratio, and more. Updates live when you resize the browser.</p>
+
+<div class="ad-banner">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="3153457922"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+    <div class="card">
+      <div class="card-label">Viewport Width</div>
+      <div class="card-value" id="vw">—</div>
+      <div class="card-unit">CSS pixels (current browser window)</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Viewport Height</div>
+      <div class="card-value" id="vh">—</div>
+      <div class="card-unit">CSS pixels (current browser window)</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Device Pixel Ratio</div>
+      <div class="card-value" id="dpr">—</div>
+      <div class="card-unit">Physical px ÷ CSS px (Retina = 2×)</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Estimated DPI / PPI</div>
+      <div class="card-value" id="dpi">—</div>
+      <div class="card-unit">Approx. pixels per inch</div>
+    </div>
+  </div>
+
+  <div class="info-grid">
+    <div class="info-row"><div class="info-key">Screen Width (px)</div><div class="info-val" id="sw">—</div></div>
+    <div class="info-row"><div class="info-key">Screen Height (px)</div><div class="info-val" id="sh">—</div></div>
+    <div class="info-row"><div class="info-key">Available Width (px)</div><div class="info-val" id="aw">—</div></div>
+    <div class="info-row"><div class="info-key">Available Height (px)</div><div class="info-val" id="ah">—</div></div>
+    <div class="info-row"><div class="info-key">Color Depth</div><div class="info-val" id="cd">—</div></div>
+    <div class="info-row"><div class="info-key">Orientation</div><div class="info-val" id="ori">—</div></div>
+    <div class="info-row"><div class="info-key">Touch Points</div><div class="info-val" id="tp">—</div></div>
+    <div class="info-row"><div class="info-key">Platform</div><div class="info-val" id="plat">—</div></div>
+  </div>
+
+  <div class="update-note"><span class="live-badge"></span>Viewport values update automatically when you resize the window.
+  </div>
+
+  <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3153457922" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+  <section class="seo-section">
+    <h2>How to Use the Screen Resolution Checker</h2>
+      <div class="step-block">
+        <h3>Step 1: Open the Tool</h3>
+        <p>Your screen information is detected and displayed automatically.</p>
+      </div>
+      <div class="step-block">
+        <h3>Step 2: Resize the Window</h3>
+        <p>Drag your browser window to see viewport dimensions update in real time.</p>
+      </div>
+      <div class="step-block">
+        <h3>Step 3: Copy the Values</h3>
+        <p>Click any value to copy it for use in your CSS or design specs.</p>
+      </div>
+
+    <h2>What Is a Screen Resolution Checker?</h2>
+    <p>A screen resolution checker instantly displays your current screen width, height, device pixel ratio, and viewport size — useful for web developers and designers testing responsive layouts.</p>
+
+    <h2>Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <h3>What is the difference between screen resolution and viewport size?</h3>
+        <p>Screen resolution is the physical pixel count of your display. Viewport size is the visible area inside your browser window.</p>
+      </div>
+  </section>
+
+<div class="ad-banner" style="margin-top:40px">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="3153457922"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<footer>
+  <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
+  <p>
+    <a href="/about/">About</a> •
+    <a href="/privacy/">Privacy Policy</a> •
+    <a href="/terms/">Terms of Service</a>
+  </p>
+</footer>
+
+</div>
+
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</body>
+</html>

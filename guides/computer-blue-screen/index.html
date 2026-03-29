@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Blue Screen of Death (BSOD) Fix: Windows Crash Solutions</title>
+  <meta name="description" content="Encountering the dreaded blue screen? Our comprehensive guide will help you diagnose and fix Windows blue screen errors step by step." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="canonical" href="https://knexio.xyz/guides/computer-blue-screen/" />
+  <meta property="og:title" content="Blue Screen of Death (BSOD) Fix: Windows Crash Solutions" />
+  <meta property="og:description" content="Encountering the dreaded blue screen? Our comprehensive guide will help you diagnose and fix Windows blue screen errors step by step." />
+  <meta property="og:url" content="https://knexio.xyz/guides/computer-blue-screen/" />
+  <meta property="og:type" content="Article" />
+  <meta property="og:site_name" content="Knexio" />
+  <meta property="og:image" content="https://knexio.xyz/og-image.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "name": "Blue Screen of Death (BSOD) Fix: Windows Crash Solutions",
+    "description": "Encountering the dreaded blue screen? Our comprehensive guide will help you diagnose and fix Windows blue screen errors step by step.",
+    "url": "https://knexio.xyz/guides/computer-blue-screen/",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Knexio",
+      "url": "https://knexio.xyz"
+    }
+  }
+  </script>
+<style>
+    :root{--bg:#0b1220;--bg2:#070d1a;--panel:#111a2e;--border:rgba(255,255,255,0.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff;--success:#22c55e;--warning:#f97316;--danger:#ef4444;}
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:linear-gradient(180deg,var(--bg),var(--bg2));color:var(--text);min-height:100vh;line-height:1.7;}
+    a{text-decoration:none;color:var(--accent);}
+    a:hover{text-decoration:underline;}
+    .wrap{max-width:800px;margin:0 auto;padding:40px 20px 80px;}
+    .back{display:inline-block;margin-bottom:20px;font-size:14px;color:var(--sub);}
+    h1{font-size:32px;margin-bottom:15px;line-height:1.3;}
+    .subtitle{font-size:17px;color:var(--sub);margin-bottom:30px;}
+    .meta{display:flex;gap:20px;font-size:13px;color:var(--sub);margin-bottom:30px;flex-wrap:wrap;}
+    .ad-banner{margin:25px 0;text-align:center;}
+    .toc{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:25px;margin-bottom:30px;}
+    .toc h2{font-size:18px;margin-bottom:15px;}
+    .toc ul{margin-left:20px;}
+    .toc li{margin-bottom:8px;}
+    .toc a{color:var(--sub);}
+    .toc a:hover{color:var(--accent);}
+    h2{font-size:24px;margin:40px 0 20px;color:var(--text);}
+    h3{font-size:20px;margin:30px 0 15px;color:var(--sub);}
+    p{margin-bottom:20px;color:var(--sub);}
+    ul,ol{margin-left:25px;margin-bottom:20px;color:var(--sub);}
+    li{margin-bottom:12px;}
+    .step-box{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:25px;margin:25px 0;}
+    .step-box h3{margin-top:0;color:var(--accent);}
+    .step-num{display:inline-block;width:28px;height:28px;background:var(--accent);color:#fff;border-radius:50%;text-align:center;line-height:28px;font-weight:600;margin-right:10px;font-size:14px;}
+    .warning-box{background:rgba(249,115,22,0.1);border-left:4px solid var(--warning);padding:20px;margin:25px 0;border-radius:0 8px 8px 0;}
+    .warning-box strong{color:var(--warning);}
+    .success-box{background:rgba(34,197,94,0.1);border-left:4px solid var(--success);padding:20px;margin:25px 0;border-radius:0 8px 8px 0;}
+    .success-box strong{color:var(--success);}
+    .danger-box{background:rgba(239,68,68,0.1);border-left:4px solid var(--danger);padding:20px;margin:25px 0;border-radius:0 8px 8px 0;}
+    .danger-box strong{color:var(--danger);}
+    .tip-box{background:var(--panel);border-left:4px solid var(--accent);padding:20px;margin:25px 0;border-radius:0 8px 8px 0;}
+    .tip-box strong{color:var(--accent);}
+    .code-box{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:15px;font-family:monospace;font-size:14px;color:var(--sub);overflow-x:auto;margin:15px 0;}
+    table{width:100%;border-collapse:collapse;margin:25px 0;background:var(--panel);border-radius:8px;overflow:hidden;}
+    th,td{padding:15px;text-align:left;border-bottom:1px solid var(--border);}
+    th{background:var(--bg2);font-weight:600;color:var(--text);}
+    td{color:var(--sub);}
+    tr:last-child td{border-bottom:none;}
+    .related{margin-top:50px;padding-top:30px;border-top:1px solid var(--border);}
+    .related h2{font-size:20px;margin-bottom:20px;}
+    .related-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px;}
+    .related a{display:block;padding:15px;background:var(--panel);border:1px solid var(--border);border-radius:8px;color:var(--sub);transition:all 0.2s;}
+    .related a:hover{border-color:var(--accent);color:var(--text);text-decoration:none;}
+    footer{margin-top:60px;text-align:center;font-size:13px;color:var(--sub);}
+    @media(max-width:600px){.related-grid{grid-template-columns:1fr;}h1{font-size:26px;}}
+  
+    
+    /* ==================== 移动端优化 ==================== */
+    
+    /* 平板和手机 (≤768px) */
+    @media (max-width: 768px) {
+      /* 容器布局优化 */
+      .container, .wrap {
+        padding: 40px 15px 80px !important;
+        max-width: 100% !important;
+      
+      /* 标题字体优化 */
+      h1 {
+        font-size: 28px !important;
+        line-height: 1.3 !important;
+      }
+      
+      h2 {
+        font-size: 20px !important;
+        margin-top: 36px !important;
+        margin-bottom: 10px !important;
+      }
+      
+      h3 {
+        font-size: 17px !important;
+      }
+      
+      /* 正文内容优化 */
+      p, li, .intro, .subtitle {
+        font-size: 14px !important;
+        line-height: 1.7 !important;
+      }
+      
+      /* 段落间距优化 */
+      p, ul, ol {
+        margin-bottom: 16px !important;
+      }
+      
+      /* 列表优化 */
+      ul, ol {
+        padding-left: 18px !important;
+      }
+      
+      li {
+        margin-bottom: 6px !important;
+      }
+      
+      /* 内容块优化 */
+      .main-panel, .step-block, .notice, .extra-info {
+        padding: 16px !important;
+        border-radius: 12px !important;
+        margin: 16px 0 !important;
+      }
+      
+      /* 按钮和输入框优化 */
+      .btn {
+        padding: 14px !important;
+        font-size: 15px !important;
+        min-height: 48px !important;
+      }
+      
+      .input-group input {
+        padding: 12px !important;
+        font-size: 15px !important;
+      }
+      
+      /* 网格系统优化 */
+      .age-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px !important;
+      }
+      
+      /* 广告位优化 */
+      .ad-banner {
+        margin: 16px 0 !important;
+        min-height: 50px !important;
+      }
+      
+      /* 游戏页面优化 */
+      .grid-container {
+        padding: 8px !important;
+      }
+      
+      .grid {
+        gap: 8px !important;
+      }
+      
+      .cell {
+        font-size: 20px !important;
+        border-radius: 6px !important;
+      }
+      
+      .score-box {
+        min-width: 70px !important;
+        padding: 6px 12px !important;
+      }
+      
+      .score-val {
+        font-size: 18px !important;
+      }
+      
+      /* 工具页面优化 */
+      .age-main {
+        font-size: 36px !important;
+      }
+      
+      .age-value {
+        font-size: 24px !important;
+      }
+      
+      .age-label {
+        font-size: 11px !important;
+      }
+      
+      /* 引导页面优化 */
+      .intro {
+        border-left-width: 2px !important;
+        padding-left: 12px !important;
+        margin-bottom: 32px !important;
+      }
+      
+      .faq-item {
+        margin-bottom: 20px !important;
+      }
+      
+      .faq-item strong {
+        font-size: 15px !important;
+      }
+    }
+    
+    /* 小手机优化 (≤480px) */
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 24px !important;
+      }
+      
+      h2 {
+        font-size: 18px !important;
+      }
+      
+      .container, .wrap {
+        padding: 32px 12px 60px !important;
+      }
+      
+      .main-panel, .step-block, .notice {
+        padding: 14px !important;
+      }
+      
+      .btn {
+        padding: 12px !important;
+        font-size: 14px !important;
+      }
+      
+      .age-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
+    
+    /* 触摸设备优化 */
+    @media (hover: none) and (pointer: coarse) {
+      button, .btn, a[onclick], .cell {
+        min-height: 44px !important;
+        min-width: 44px !important;
+      }
+      
+      input, select, textarea {
+        font-size: 16px !important;
+      }
+    }      .container { padding: 40px 15px 80px; }
+    }
+    </style>
+</head>
+<body><a href="../../cdn-cgi/content-dydbShihsBEArZxMosaA3wQAjpTDoVoMeOrRqUY_dhc.html" aria-hidden="true" rel="nofollow noopener" style="display: none !important; visibility: hidden !important"></a>
+<div class="wrap">
+  <a class="back" href="../index.html">← Back to Guides</a>
+
+  <h1>Blue Screen of Death (BSOD) Fix: Windows Crash Solutions</h1>
+  <p class="subtitle">Encountering the dreaded blue screen? Our comprehensive guide will help you diagnose and fix Windows blue screen errors step by step.</p>
+
+  <div class="meta">
+    <span>📅 Updated: March 20, 2026</span>
+    <span>⏱️ Reading time: 12 minutes</span>
+    <span>💻 Works for: Windows 11, 10, 8, 7</span>
+  </div>
+
+  <div class="toc">
+    <h2>Table of Contents</h2>
+
+  <ul>
+      <li><a href="index.html#what">What is the Blue Screen of Death?</a></li>
+      <li><a href="index.html#common">Common BSOD Error Codes</a></li>
+      <li><a href="index.html#safe">Boot into Safe Mode</a></li>
+      <li><a href="index.html#drivers">Fix 1: Update/Rollback Drivers</a></li>
+      <li><a href="index.html#windows">Fix 2: Windows Updates</a></li>
+      <li><a href="index.html#registry">Fix 3: Registry Fixes</a></li>
+      <li><a href="index.html#memory">Fix 4: Check RAM</a></li>
+      <li><a href="index.html#disk">Fix 5: Disk Check</a></li>
+      <li><a href="index.html#restore">Fix 6: System Restore</a></li>
+      <li><a href="index.html#hardware">Hardware Issues</a></li>
+      <li><a href="index.html#reset">When to Reset/Reinstall Windows</a></li>
+      <li><a href="index.html#prevent">Prevention Tips</a></li>
+    </ul>
+  </div>
+
+    <!-- AdSense – in-article (auto-inserted) -->
+    <div style="margin: 32px 0; text-align: center;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2596567349043393"
+           data-ad-slot="9350673807"
+           data-ad-format="fluid"
+           data-ad-layout="in-article"></ins>
+    </div>
+
+
+
+  <h2 id="what">What is the Blue Screen of Death?</h2>
+  <p>The Blue Screen of Death (BSOD), officially called a Stop Error, occurs when Windows encounters a critical system error it cannot recover from. The system stops to prevent damage and displays a blue screen with error information.</p>
+
+  <h3>Common Causes of BSOD:</h3>
+  <ul>
+    <li><strong>Driver issues:</strong> Outdated, corrupted, or incompatible drivers</li>
+    <li><strong>Hardware failures:</strong> Failing RAM, hard drive, or other components</li>
+    <li><strong>Overheating:</strong> CPU or GPU running too hot</li>
+    <li><strong>Software conflicts:</strong> Incompatible programs or malware</li>
+    <li><strong>Windows updates:</strong> Corrupted or failed system updates</li>
+    <li><strong>Overclocking:</strong> Unstable CPU/GPU overclock settings</li>
+  </ul>
+
+  <h2 id="common">Common BSOD Error Codes</h2>
+  <p>Understanding your error code helps identify the root cause:</p>
+
+  <table>
+    <tr>
+      <th>Error Code</th>
+      <th>Meaning</th>
+      <th>Likely Cause</th>
+    </tr>
+    <tr>
+      <td>CRITICAL_PROCESS_DIED</td>
+      <td>Critical system process stopped</td>
+      <td>Corrupted system files, driver issues</td>
+    </tr>
+    <tr>
+      <td>IRQL_NOT_LESS_OR_EQUAL</td>
+      <td>Memory access violation</td>
+      <td>Faulty RAM, bad drivers</td>
+    </tr>
+    <tr>
+      <td>PAGE_FAULT_IN_NONPAGED_AREA</td>
+      <td>Memory page fault</td>
+      <td>RAM issues, corrupted pagefile</td>
+    </tr>
+    <tr>
+      <td>SYSTEM_THREAD_EXCEPTION</td>
+      <td>System thread error</td>
+      <td>Graphics driver, incompatible software</td>
+    </tr>
+    <tr>
+      <td>KMODE_EXCEPTION</td>
+      <td>Kernel mode exception</td>
+      <td>Driver conflict, hardware failure</td>
+    </tr>
+    <tr>
+      <td>NTFS_FILE_SYSTEM</td>
+      <td>File system error</td>
+      <td>Hard drive corruption, bad sectors</td>
+    </tr>
+    <tr>
+      <td>UNMOUNTABLE_BOOT_VOLUME</td>
+      <td>Cannot access boot drive</td>
+      <td>Hard drive failure, corrupted boot</td>
+    </tr>
+  </table>
+
+  <h2 id="safe">First Step: Boot into Safe Mode</h2>
+  <p>Safe Mode loads Windows with minimal drivers and services, making it easier to troubleshoot.</p>
+
+  <div class="step-box">
+    <h3>Enter Safe Mode (Windows 10/11):</h3>
+    <ol>
+      <li>Hold Shift and click Restart from the login screen</li>
+      <li>Or: Force shutdown 3 times during boot to enter Recovery</li>
+      <li>Select Troubleshoot → Advanced options → Startup Settings</li>
+      <li>Click Restart, then press 4 or F4 for Safe Mode</li>
+      <li>Press 5 or F5 for Safe Mode with Networking</li>
+    </ol>
+    <p><strong>Command Line Methods (if system boots):</strong></p>
+    <pre># Enable Safe Boot (requires restart)
+bcdedit /set {default} safeboot minimal
+
+# Enable Safe Boot with Networking
+bcdedit /set {default} safeboot network
+
+# Disable Safe Boot after fixing
+bcdedit /deletevalue {default} safeboot
+
+# One-time Safe Mode boot
+bcdedit /set {current} safeboot minimal
+shutdown /r /t 0</pre>
+    <p><strong>Windows Recovery Environment (WinRE) Commands:</strong></p>
+    <pre># Access WinRE from command line
+reagentc /boottore
+
+# List WinRE status
+reagentc /info
+
+# Enable/disable WinRE
+reagentc /enable
+reagentc /disable</pre>
+  </div>
+
+  <div class="success-box">
+    <strong>✅ If Windows works in Safe Mode:</strong> The problem is likely a driver or startup program. Use the fixes below to identify and resolve the issue.
+  </div>
+
+  <h2 id="drivers">Fix 1: Update or Rollback Drivers</h2>
+  <p>Faulty drivers are the most common cause of BSOD.</p>
+
+  <div class="step-box">
+    <h3>Update Drivers:</h3>
+    <ol>
+      <li>Boot into Safe Mode</li>
+      <li>Press Windows + X, select Device Manager</li>
+      <li>Expand categories and look for yellow warning icons</li>
+      <li>Right-click problematic device → Update driver</li>
+      <li>Select "Search automatically for drivers"</li>
+    </ol>
+    <p><strong>Command Line Driver Management:</strong></p>
+    <pre># List all drivers with details
+driverquery /v /fo csv > drivers.csv
+
+# Export driver list to file
+driverquery /si > drivers.txt
+
+# Check for problematic drivers
+pnputil /enum-drivers
+
+# Update specific driver
+pnputil /add-driver "driver.inf" /install
+
+# Rollback driver
+pnputil /rollback-driver "DeviceID"
+
+# Force Windows Update to check for driver updates
+usoclient StartScan</pre>
+  </div>
+
+  <div class="step-box">
+    <h3>Rollback Recent Driver Updates:</h3>
+    <p>If BSOD started after a driver update:</p>
+    <ol>
+      <li>Device Manager → Right-click device → Properties</li>
+      <li>Driver tab → Roll Back Driver</li>
+      <li>Follow prompts and restart</li>
+    </ol>
+    <p><strong>Command Line Rollback:</strong></p>
+    <pre># Find device instance ID
+wmic path win32_pnpentity get caption,deviceid
+
+# Rollback specific driver
+devcon rollback "PCI\VEN_10DE&DEV_1C03&SUBSYS_..."
+
+# Disable problematic driver
+devcon disable "PCI\VEN_10DE&DEV_1C03&SUBSYS_..."
+
+# Enable driver
+devcon enable "PCI\VEN_10DE&DEV_1C03&SUBSYS_..."</pre>
+  </div>
+
+  <div class="tip-box">
+    <strong>💡 Priority Drivers to Check:</strong> Graphics card (NVIDIA/AMD/Intel), network adapters, storage controllers, and USB controllers.
+    <p><strong>Driver-Specific Commands:</strong></p>
+    <ul>
+      <li><strong>NVIDIA:</strong> Download DDU (Display Driver Uninstaller) for clean removal</li>
+      <li><strong>AMD:</strong> Use AMD Cleanup Utility before installing new drivers</li>
+      <li><strong>Intel:</strong> Run Intel Driver & Support Assistant for updates</li>
+    </ul>
+  </div>
+
+  <h2 id="windows">Fix 2: Install Windows Updates</h2>
+  <p>Microsoft regularly releases patches that fix BSOD-causing bugs.</p>
+
+  <div class="step-box">
+    <h3>Check for Updates:</h3>
+    <ol>
+      <li>Settings → Windows Update (Windows 11) or Update & Security (Windows 10)</li>
+      <li>Click "Check for updates"</li>
+      <li>Install all available updates</li>
+      <li>Restart when prompted</li>
+    </ol>
+    <p><strong>Command Line Update Management:</strong></p>
+    <pre># Check for updates
+usoclient StartScan
+
+# Check update history
+wmic qfe list brief /format:table
+
+# Uninstall specific update
+wusa /uninstall /kb:5005565 /quiet /norestart
+
+# Force Windows Update service reset
+net stop wuauserv
+net stop bits
+del /q /s C:\Windows\SoftwareDistribution\Download\*
+net start wuauserv
+net start bits</pre>
+  </div>
+
+  <div class="warning-box">
+    <strong>⚠️ If BSOD started after an update:</strong> Go to Settings → Windows Update → Update history → Uninstall updates. Remove the most recent quality or feature update.
+  </div>
+
+  <h2 id="registry">Fix 3: Registry Fixes for BSOD Issues</h2>
+  <div class="step-box">
+    <h3>Critical Registry Tweaks for Stability</h3>
+    <p><strong>Warning: Always backup registry first: <code>reg export HKLM\SYSTEM\CurrentControlSet\Services C:\regbackup.reg</code></strong></p>
+    <pre># Increase crash dump settings
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\CrashControl" /v Overwrite /t REG_DWORD /d 1 /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "%SystemRoot%\MEMORY.DMP" /f
+
+# Disable driver signature enforcement (temporary troubleshooting)
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Configuration Manager" /v EnableSafeMode /t REG_DWORD /d 1 /f
+
+# Increase timeout for hung services
+reg add "HKLM\SYSTEM\CurrentControlSet\Control" /v ServicesPipeTimeout /t REG_DWORD /d 60000 /f
+
+# Disable Windows Error Reporting if causing issues
+reg add "HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting" /v Disabled /t REG_DWORD /d 1 /f</pre>
+    <p><strong>Windows 10/11 Specific Registry Fixes:</strong></p>
+    <pre># Windows 10 - Disable Fast Startup (can cause driver issues)
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Power" /v HiberbootEnabled /t REG_DWORD /d 0 /f
+
+# Windows 11 - Disable virtualization-based security if causing conflicts
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\DeviceGuard" /v EnableVirtualizationBasedSecurity /t REG_DWORD /d 0 /f
+
+# Both - Increase paging file size for memory-related BSOD
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v PagingFiles /t REG_MULTI_SZ /d "C:\pagefile.sys 4000 8000" /f</pre>
+  </div>
+
+  <!-- Ad Slot -->
+
+  <h2 id="memory">Fix 4: Check Your RAM</h2>
+  <p>Faulty RAM is a common BSOD culprit. Windows has a built-in memory diagnostic tool.</p>
+
+  <div class="step-box">
+    <h3>Run Windows Memory Diagnostic:</h3>
+    <ol>
+      <li>Press Windows + R, type <span class="code-box" style="display:inline;padding:3px 8px;">mdsched.exe</span> and press Enter</li>
+      <li>Choose "Restart now and check for problems"</li>
+      <li>Your PC will restart and run the memory test</li>
+      <li>Wait for completion (15-30 minutes)</li>
+      <li>Check results in Event Viewer after boot</li>
+    </ol>
+    <p><strong>Advanced Memory Testing Commands:</strong></p>
+    <pre># Schedule memory test (next reboot)
+mdsched.exe /schedule
+
+# Check memory test results
+wevtutil qe System /q:"*[System[Provider[@Name='Microsoft-Windows-MemoryDiagnostics-Results']]]" /c:5 /rd:true /f:text
+
+# Check Windows reliability history for memory errors
+Get-WinEvent -FilterHashtable @{LogName='System'; ID='2001'} | Select-Object -First 10
+
+# Use Windows Performance Recorder for memory analysis
+wpr -start GeneralProfile -filemode</pre>
+    <p><strong>Third-Party RAM Testing Tools (bootable):</strong></p>
+    <ul>
+      <li><strong>MemTest86:</strong> Free, boots from USB, tests RAM thoroughly</li>
+      <li><strong>HCI MemTest:</strong> Tests RAM while Windows is running</li>
+      <li><strong>Prime95:</strong> Stress test that reveals memory instability</li>
+    </ul>
+  </div>
+
+  <div class="danger-box">
+    <strong>🚨 If errors are found:</strong> Your RAM may be faulty. Try reseating RAM sticks, testing one stick at a time, or replacing defective modules. 
+    <p><strong>Command Line Memory Info:</strong></p>
+    <pre># Get detailed RAM information
+wmic memorychip get BankLabel, Capacity, Speed, MemoryType
+
+# Check current memory usage
+wmic OS get FreePhysicalMemory,TotalVisibleMemorySize /Value
+
+# Check pagefile usage
+wmic pagefile get Name, CurrentUsage, PeakUsage, AllocatedBaseSize</pre>
+  </div>
+
+  <h2 id="disk">Fix 5: Check Disk for Errors</h2>
+  <p>File system corruption can cause BSOD. Use CHKDSK to scan and repair.</p>
+
+  <div class="step-box">
+    <h3>Run CHKDSK:</h3>
+    <ol>
+      <li>Press Windows + X, select Terminal (Admin) or Command Prompt (Admin)</li>
+      <li>Type: <div class="code-box">chkdsk C: /f /r</div></li>
+      <li>Press Enter and type Y when prompted</li>
+      <li>Restart your computer</li>
+      <li>The scan will run before Windows loads</li>
+    </ol>
+  </div>
+
+  <h2 id="restore">Fix 6: System Restore</h2>
+  <p>If BSOD started recently, restore Windows to a working state.</p>
+
+  <div class="step-box">
+    <h3>Perform System Restore:</h3>
+    <ol>
+      <li>Search for "Create a restore point" and open it</li>
+      <li>Click "System Restore"</li>
+      <li>Choose "Recommended restore" or select a different point</li>
+      <li>Pick a date before the BSOD started</li>
+      <li>Follow prompts and restart</li>
+    </ol>
+  </div>
+
+  <div class="warning-box">
+    <strong>⚠️ Note:</strong> System Restore won't affect personal files but may remove recently installed programs and drivers.
+  </div>
+
+  <h2 id="hardware">Hardware Issues</h2>
+  <p>If software fixes don't resolve BSOD, check your hardware:</p>
+
+  <h3>Common Hardware Culprits:</h3>
+  <ul>
+    <li><strong>Overheating:</strong> Clean dust from fans, replace thermal paste</li>
+    <li><strong>Failing hard drive:</strong> Listen for clicking sounds, check SMART status</li>
+    <li><strong>Loose connections:</strong> Reseat RAM, graphics card, and cables</li>
+    <li><strong>Power supply:</strong> Insufficient or failing PSU can cause crashes</li>
+    <li><strong>Overclocking:</strong> Reset BIOS to default if you've overclocked</li>
+  </ul>
+
+  <h3>Check System Temperature:</h3>
+  <p>Download HWMonitor or Core Temp. If CPU exceeds 85°C or GPU exceeds 90°C under load, overheating may be the cause.</p>
+
+  <h2 id="reset">Fix 7: When to Reset or Reinstall Windows</h2>
+  <div class="step-box">
+    <h3>Consider Windows Reset/Reinstall When:</h3>
+    <ul>
+      <li>BSOD occurs randomly with different error codes</li>
+      <li>System files are corrupted beyond SFC/DISM repair</li>
+      <li>Malware infection suspected as root cause</li>
+      <li>Hardware tests pass but BSOD persists</li>
+      <li>Multiple drivers fail consistently</li>
+      <li>Windows becomes unstable after major update</li>
+    </ul>
+    <h3>Reset Options (Windows 10/11):</h3>
+    <ol>
+      <li><strong>Keep my files:</strong> Settings → System → Recovery → Reset this PC</li>
+      <li><strong>Remove everything:</strong> Clean install, backup data first</li>
+      <li><strong>Cloud reinstall:</strong> Downloads fresh Windows from Microsoft servers</li>
+      <li><strong>Local reinstall:</strong> Uses existing Windows installation files</li>
+    </ol>
+    <h3>Command Line Reset Methods:</h3>
+    <pre># Windows 10/11 Reset command
+systemreset --factoryreset
+
+# Access Windows Recovery Environment
+reagentc /boottore
+
+# Create recovery drive
+reagentc /setreimage /path "D:\Recovery\WindowsRE"
+
+# Check if system can be reset
+systemreset --? | findstr "factoryreset"</pre>
+    <h3>Complete Clean Install (Advanced):</h3>
+    <ul>
+      <li>Create Windows installation media (USB/DVD)</li>
+      <li>Backup personal files, drivers, activation key</li>
+      <li>Boot from installation media</li>
+      <li>Custom install → Format system drive</li>
+      <li>Install fresh Windows and drivers</li>
+    </ul>
+  </div>
+
+  <h2 id="prevent">Prevention Tips</h2>
+  <ul>
+    <li><strong>Keep Windows updated:</strong> Install security and driver updates promptly</li>
+    <li><strong>Use reliable antivirus:</strong> Malware can corrupt system files</li>
+    <li><strong>Monitor temperatures:</strong> Keep your PC cool and clean</li>
+    <li><strong>Avoid sketchy software:</strong> Only download from trusted sources</li>
+    <li><strong>Don't ignore warnings:</strong> Address system errors before they escalate</li>
+    <li><strong>Regular backups:</strong> Use File History or third-party backup software</li>
+    <li><strong>Test hardware periodically:</strong> Run memory and disk checks monthly</li>
+    <li><strong>Create system restore points:</strong> Before major changes or updates</li>
+    <li><strong>Monitor system logs:</strong> Check Event Viewer for warnings/errors</li>
+    <li><strong>Use driver verification:</strong> <code>verifier.exe</code> to check for problematic drivers</li>
+  </ul>
+  <div class="tip-box">
+    <strong>💡 Proactive BSOD Prevention Commands:</strong>
+    <pre># Schedule weekly system file check
+schtasks /create /tn "WeeklySFC" /tr "sfc /scannow" /sc weekly /d SUN /st 02:00
+
+# Schedule monthly disk check
+schtasks /create /tn "MonthlyCHKDSK" /tr "chkdsk C: /f" /sc monthly /d 1 /st 03:00
+
+# Export BSOD minidumps automatically
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\CrashControl" /v MinidumpDir /t REG_EXPAND_SZ /d "C:\BSOD_Dumps" /f</pre>
+  </div>
+
+  <div class="related">
+    <h2>Related Guides</h2>
+    <div class="related-grid">
+      <a href="../fix-app-not-responding-windows/index.html">Fix App Not Responding</a>
+      <a href="../windows-update-stuck/index.html">Windows Update Stuck Fix</a>
+      <a href="../laptop-overheating/index.html">Laptop Overheating Solutions</a>
+      <a href="../bluetooth-not-working/index.html">Bluetooth Not Working Fix</a>
+
+  </div>
+
+  <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="5794572171" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+      <footer>
+      <p>Helpful guides and tutorials for games, apps, and digital tools. Solve your problems step by step.</p>
+            <p style="margin: 8px 0; font-size: 13px;">
+        <a href="/about/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">About</a>
+        <a href="/privacy/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Privacy</a>
+        <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
+        <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
+      </p>
+      <p>© 2026 Knexio. All rights reserved.</p>
+    </footer>
+</div>
+  <script src="/knexio-bundle.js"></script>
+  <script src="../../cookie-consent.js"></script>
+  <!-- 中间广告 -->
+  <div class="ad-banner">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  </div>
+  </div>
+</body>

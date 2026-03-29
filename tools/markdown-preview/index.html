@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Markdown Preview – Instantly Render Markdown</title>
+  <link rel="canonical" href="https://knexio.xyz/tools/markdown-preview/">
+  <meta name="description" content="Free Markdown preview tool. Paste your Markdown and see the rendered HTML instantly. Supports tables, code blocks, and images.">
+  
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  
+  <style>
+    :root {
+      --bg: #0b1220;
+      --card: #111a2e;
+      --border: rgba(255,255,255,0.08);
+      --text: #fff;
+      --sub: #aab3c5;
+      --accent: #4f8cff;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    .back {
+      display: inline-block;
+      color: var(--sub);
+      text-decoration: none;
+      margin-bottom: 24px;
+      font-size: 14px;
+    }
+    
+    .back:hover {
+      color: var(--accent);
+    }
+    
+    h1 {
+      font-size: 32px;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+    
+    .subtitle {
+      color: var(--sub);
+      font-size: 18px;
+      margin-bottom: 24px;
+    }
+    
+    h2 {
+      font-size: 22px;
+      margin-top: 30px;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+    
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    
+    label {
+      display: block;
+      color: var(--text);
+      font-size: 14px;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+    
+    textarea {
+      width: 100%;
+      min-height: 180px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: var(--text);
+      padding: 14px;
+      font-size: 15px;
+      resize: vertical;
+      box-sizing: border-box;
+      font-family: 'Courier New', monospace;
+    }
+    
+    textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+    
+    .btn-row {
+      display: flex;
+      gap: 10px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+    
+    button, .btn, .btn-row button {
+      flex: 1;
+      padding: 10px;
+      border-radius: 10px;
+      border: none;
+      background: var(--accent);
+      color: #fff;
+      cursor: pointer;
+      font-size: 14px;
+      transition: opacity 0.2s;
+      box-sizing: border-box;
+    }
+    
+    button:hover, .btn:hover {
+      opacity: 0.9;
+    }
+    
+    button.secondary, .btn-secondary, .btn-row button.secondary {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--sub);
+    }
+    
+    button.secondary:hover, .btn-secondary:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    
+    .preview-pane {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      min-height: 250px;
+      overflow: auto;
+    }
+    
+    .preview-pane h1, .preview-pane h2, .preview-pane h3 {
+      margin-top: 16px;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+    
+    .preview-pane p {
+      margin-bottom: 12px;
+      color: var(--sub);
+      line-height: 1.6;
+    }
+    
+    .preview-pane code {
+      background: rgba(79, 140, 255, 0.1);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 13px;
+    }
+    
+    .preview-pane pre {
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 8px;
+      padding: 12px;
+      overflow-x: auto;
+      margin-bottom: 12px;
+    }
+    
+    .preview-pane pre code {
+      background: transparent;
+      padding: 0;
+    }
+    
+    .preview-pane a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    
+    .preview-pane a:hover {
+      text-decoration: underline;
+    }
+    
+    .preview-pane ul, .preview-pane ol {
+      padding-left: 20px;
+      margin-bottom: 12px;
+    }
+    
+    .preview-pane li {
+      margin-bottom: 4px;
+    }
+    
+    .preview-pane blockquote {
+      border-left: 3px solid var(--accent);
+      padding-left: 12px;
+      margin: 12px 0;
+      color: var(--sub);
+      font-style: italic;
+    }
+    
+    .preview-pane table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 12px;
+    }
+    
+    .preview-pane th, .preview-pane td {
+      border: 1px solid var(--border);
+      padding: 8px 12px;
+      text-align: left;
+    }
+    
+    .preview-pane th {
+      background: rgba(79, 140, 255, 0.1);
+    }
+    
+    .section {
+      margin-bottom: 20px;
+    }
+    
+    .section p {
+      color: var(--sub);
+      line-height: 1.7;
+      margin-bottom: 10px;
+    }
+    
+    .faq-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+    
+    .faq-item h3 {
+      margin: 0 0 12px 0;
+      font-size: 16px;
+      color: var(--text);
+    }
+    
+    .faq-item p {
+      margin: 0;
+      color: var(--sub);
+      line-height: 1.6;
+    }
+    
+    .tools {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .tools a {
+      display: block;
+      padding: 15px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--sub);
+      text-decoration: none;
+      text-align: center;
+      transition: all 0.2s;
+      font-size: 14px;
+    }
+    
+    .tools a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+    
+    .ad-banner {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      margin: 32px 0;
+      text-align: center;
+      min-height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--sub);
+      font-size: 14px;
+    }
+    
+    footer {
+      margin-top: 40px;
+      padding-top: 30px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--sub);
+      font-size: 14px;
+    }
+    
+    footer p {
+      margin: 0 0 10px 0;
+    }
+    
+    @media(max-width: 600px) {
+      .preview-pane {
+        min-height: 180px;
+      }
+    }
+  </style>
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Markdown Preview – Instantly Render Markdown",
+    "description": "Free Markdown preview tool. Paste your Markdown and see the rendered HTML instantly. Supports tables, code blocks, and images.",
+    "url": "https://knexio.xyz/tools/markdown-preview/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "publisher": {"@type": "Organization", "name": "Knexio", "url": "https://knexio.xyz"}
+  }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <a class="back" href="../index.html">← Back to Tools</a>
+    
+    <h1>Markdown Preview</h1>
+    <p class="subtitle">Paste your Markdown and see the rendered HTML instantly. Supports tables, code blocks, and images.</p>
+    
+    <div class="ad-banner">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2596567349043393"
+           data-ad-slot="5794572171"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+    </div>
+    
+    <div class="card">
+      <label>Paste your Markdown</label>
+      <textarea id="markdownInput" placeholder="# Heading 1
+
+## Heading 2
+
+This is **bold** and this is *italic*.
+
+- List item 1
+- List item 2
+
+| Column 1 | Column 2 |
+|-----------|-----------|
+| Cell 1    | Cell 2    |
+
+```javascript
+const greeting = 'Hello World';
+console.log(greeting);
+```"></textarea>
+      
+      <div class="btn-row">
+        <button onclick="copyMarkdown()">Copy Markdown</button>
+        <button class="secondary" onclick="copyHTML()">Copy HTML</button>
+        <button class="secondary" onclick="clearAll()">Clear</button>
+      </div>
+    </div>
+    
+    <div class="card">
+      <label>Live Preview</label>
+      <div id="previewPane" class="preview-pane">
+        <p style="color:var(--sub);font-style:italic;">Paste Markdown above to see preview...</p>
+      </div>
+    </div>
+    
+    <div class="section">
+      <p><strong>Free Online Markdown Preview</strong> - Instantly convert Markdown syntax to beautifully formatted HTML. Perfect for writers, developers, and content creators who want to preview their Markdown before publishing. Supports headings, bold, italic, lists, tables, code blocks, blockquotes, links, and more. All rendering happens locally in your browser - no server required.</p>
+    </div>
+    
+    <div class="section">
+      <p><strong>How It Works</strong> - Simply paste or type your Markdown in the text area above. The preview updates in real-time as you type, showing exactly how your content will look when rendered. We use the Marked.js library for accurate and fast Markdown parsing. Copy the original Markdown or the rendered HTML to your clipboard with one click. The tool supports CommonMark and GitHub Flavored Markdown (GFM) syntax, making it compatible with most platforms.</p>
+    </div>
+    
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>What Markdown syntax is supported?</h3>
+      <p>We support CommonMark and GitHub Flavored Markdown, including headings, bold, italic, links, images, lists (ordered and unordered), tables, code blocks with syntax highlighting, blockquotes, horizontal rules, and more. Check the preview pane to see how your syntax renders.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Is my Markdown data sent to a server?</h3>
+      <p>No. All Markdown parsing and HTML rendering happens locally in your browser using JavaScript. Your content never leaves your device, ensuring complete privacy and security for your documents.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Can I export the rendered HTML?</h3>
+      <p>Yes! Click the "Copy HTML" button to copy the rendered HTML code to your clipboard. You can then paste it into any HTML editor, content management system, or website. The HTML includes inline styles for basic formatting.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Does this support syntax highlighting for code blocks?</h3>
+      <p>Basic code blocks are supported with monospace font and background styling. While this tool doesn't include full syntax highlighting libraries, you can wrap your code in triple backticks with a language identifier (e.g., ```javascript) and it will display properly in a code block.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Can I use this for previewing README files?</h3>
+      <p>Absolutely! This tool is perfect for previewing GitHub README files, documentation, blog posts, and any Markdown content. Copy your README content here, see how it looks, then copy the HTML for use elsewhere or paste the Markdown back.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Is this tool free to use?</h3>
+      <p>Yes, the Markdown preview tool is completely free to use with no registration required. There's no limit on the amount of text you can preview or how many times you can use it. Works on any modern browser.</p>
+    </div>
+    
+    <h2>Related Tools</h2>
+    <div class="tools">
+      <a href="../markdown-editor/">Markdown Editor</a>
+      <a href="../code-beautifier/">Code Beautifier</a>
+      <a href="../text-editor/">Text Editor</a>
+      <a href="../json-formatter/">JSON Formatter</a>
+    </div>
+    
+    <div class="ad-banner">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+    
+    <footer>
+      <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
+      <p>
+        <a href="/about/" style="color:var(--accent);text-decoration:none;margin:0 8px;">About</a>
+        <a href="/privacy/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Privacy</a>
+        <a href="/terms/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Terms</a>
+        <a href="/contact/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Contact</a>
+      </p>
+      <p>© 2026 Knexio. All rights reserved.</p>
+    </footer>
+  </div>
+  
+  <script>
+    const markdownInput = document.getElementById('markdownInput');
+    const previewPane = document.getElementById('previewPane');
+    
+    function updatePreview() {
+      const markdown = markdownInput.value;
+      if (!markdown.trim()) {
+        previewPane.innerHTML = '<p style="color:var(--sub);font-style:italic;">Paste Markdown above to see preview...</p>';
+        return;
+      }
+      const html = marked.parse(markdown);
+      previewPane.innerHTML = html;
+    }
+    
+    markdownInput.addEventListener('input', updatePreview);
+    
+    function copyMarkdown() {
+      const text = markdownInput.value;
+      if (!text.trim()) {
+        alert('Nothing to copy!');
+        return;
+      }
+      navigator.clipboard.writeText(text).then(() => {
+        alert('Markdown copied to clipboard!');
+      });
+    }
+    
+    function copyHTML() {
+      const html = previewPane.innerHTML;
+      if (!previewPane.querySelector('p') || previewPane.textContent.trim() === 'Paste Markdown above to see preview...') {
+        alert('Nothing to copy!');
+        return;
+      }
+      navigator.clipboard.writeText(html).then(() => {
+        alert('HTML copied to clipboard!');
+      });
+    }
+    
+    function clearAll() {
+      markdownInput.value = '';
+      updatePreview();
+    }
+  </script>
+  
+  <script src="/knexio-bundle.js"></script>
+</body>
+</html>

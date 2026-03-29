@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Word Frequency Counter – Analyze Word Frequency in Text Online | Knexio</title>
+<meta name="description" content="">
+
+<link rel="canonical" href="">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Word Frequency Counter">
+<meta property="og:description" content="">
+<meta property="og:url" content="">
+<meta property="og:type" content="WebApplication">
+<meta property="og:site_name" content="Knexio">
+<meta property="og:image" content="https://knexio.xyz/og-image.png">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Word Frequency Counter","applicationCategory":"UtilitiesApplication","operatingSystem":"All","url":"https://knexio.xyz/tools/word-frequency/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+
+<style>
+
+:root{
+  --bg:#0b1220;
+  --card:#111a2e;
+  --border:rgba(255,255,255,.08);
+  --text:#fff;
+  --sub:#aab3c5;
+  --accent:#4f8cff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:system-ui,-apple-system;
+  background:var(--bg);
+  color:var(--text);
+}
+.container{max-width:900px;margin:auto;padding:50px 16px}
+
+/* 统一的返回按钮样式 */
+.back {
+  display: inline-block;
+  color: var(--sub);
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 24px;
+  transition: color 0.2s;
+}
+.back:hover {
+  color: var(--accent);
+}
+
+h1{font-size:32px;margin-bottom:8px}
+h2{font-size:22px;margin-top:30px;margin-bottom:10px}
+.subtitle{color:var(--sub);margin-bottom:24px}
+
+.badge{
+  display:inline-block;
+  padding:4px 10px;
+  border-radius:20px;
+  background:rgba(79,140,255,.15);
+  color:var(--accent);
+  font-size:12px;
+  margin-bottom:10px;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:20px;
+  margin-bottom:20px;
+}
+
+textarea{
+  width:100%;
+  min-height:180px;
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:12px;
+  color:var(--text);
+  padding:14px;
+  font-size:15px;
+}
+textarea:focus{outline:none;border-color:var(--accent)}
+
+.btn-row{display:flex;gap:10px;margin-top:12px}
+button{
+  flex:1;
+  padding:10px;
+  border-radius:10px;
+  border:none;
+  background:var(--accent);
+  color:#fff;
+  cursor:pointer;
+}
+button.secondary{
+  background:transparent;
+  border:1px solid var(--border);
+  color:var(--sub);
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-top:16px;
+}
+.stat{
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:16px;
+  text-align:center;
+}
+.stat span{
+  font-size:24px;
+  font-weight:700;
+  color:var(--accent);
+}
+.stat label{
+  display:block;
+  font-size:12px;
+  color:var(--sub);
+}
+
+.tip{
+  font-size:13px;
+  color:var(--sub);
+  margin-top:10px;
+}
+
+.section p{
+  color:var(--sub);
+  line-height:1.7;
+  margin-bottom:10px;
+}
+
+.tools a{
+  display:inline-block;
+  margin:6px;
+  padding:8px 14px;
+  border-radius:8px;
+  border:1px solid var(--border);
+  color:var(--sub);
+  text-decoration:none;
+}
+.tools a:hover{
+  border-color:var(--accent);
+  color:var(--accent);
+}
+
+/* 广告样式 */
+.ad-banner {
+  margin: 32px 0;
+  text-align: center;
+}
+
+/* 统一的 Footer 样式 */
+footer {
+  margin-top: 40px;
+  text-align: center;
+  color: var(--sub);
+  font-size: 13px;
+}
+footer p {
+  margin-bottom: 8px;
+}
+footer a {
+  color: var(--sub);
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color 0.2s;
+}
+footer a:hover {
+  color: var(--accent);
+}
+
+@media(max-width:600px){
+  .stats{grid-template-columns:1fr 1fr}
+}
+
+</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2596567349043393" crossorigin="anonymous"></script>
+</head>
+
+<body><div class="container">
+
+<a class="back" href="../index.html">← Back to Tools</a>
+
+<h1>Word Frequency Counter</h1>
+<p class="subtitle">Paste any text to see how often each word appears. Sort by frequency or alphabetically. Optionally filter out common stop words to focus on meaningful content.</p>
+
+<div class="ad-banner">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="3153457922"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<div class="container">
+  <a class="back" href="../index.html">← Back to Tools</a>
+  <h1>Word Frequency Counter</h1>
+      <p class="subtitle">Paste any text to see how often each word appears. Sort by frequency or alphabetically. Optionally filter out common stop words to focus on meaningful content.</p>
+
+  <div class="seo-section">
+    <h2>How to Use This Tool</h2>
+    <div class="step-block">
+      <h3>Step 1: Enter your input</h3>
+      <p>Type or paste your data into the input field.</p>
+    </div>
+    <div class="step-block">
+      <h3>Step 2: Click the action button</h3>
+      <p>Press the main action button to process your input.</p>
+    </div>
+    <div class="step-block">
+      <h3>Step 3: Copy or download results</h3>
+      <p>Use the Copy button to copy results, or Download to save.</p>
+    </div>
+  </div>
+
+  <textarea class="text-area" id="input" placeholder="Paste your text here and click Analyze..." oninput="autoAnalyze()"></textarea>
+
+  <div class="toolbar" style="margin-top:12px">
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="analyze()">Analyze</button>
+    <button class="btn btn-outline" onclick="clearAll()">Clear</button>
+    </div><label class="opt-label">Sort:
+      <select id="sortSel" onchange="renderResults()">
+        <option value="freq">By Frequency</option>
+        <option value="alpha">Alphabetically</option>
+      </select>
+    </label>
+    <label class="opt-label">Show:
+      <select id="limitSel" onchange="renderResults()">
+        <option value="50">Top 50</option>
+        <option value="100">Top 100</option>
+        <option value="0">All</option>
+      </select>
+    </label>
+    <label class="check-label">
+      <input type="checkbox" id="stopChk" onchange="renderResults()" /> Filter stop words
+    </label>
+    <label class="check-label">
+      <input type="checkbox" id="caseChk" onchange="analyze()" checked /> Case-insensitive
+    </label>
+  </div>
+
+  <div class="stats-row" id="statsRow" style="display:none">
+    <div class="stat-chip"><span class="sv" id="sTotalWords">0</span>Total Words</div>
+    <div class="stat-chip"><span class="sv" id="sUniqueWords">0</span>Unique Words</div>
+    <div class="stat-chip"><span class="sv" id="sSentences">0</span>Sentences</div>
+    <div class="stat-chip"><span class="sv" id="sTopWord">—</span>Top Word</div>
+  </div>
+
+  <div class="layout" id="resultsArea" style="display:none">
+    <div class="freq-table-wrap">
+      <table>
+        <thead><tr><th>#</th><th>Word</th><th>Count</th><th class="bar-cell">Frequency</th></tr></thead>
+        <tbody id="freqBody"></tbody>
+      </table>
+    </div>
+    <div class="chart-box">
+      <h3>Top 20 Words</h3>
+      <div id="chartArea"></div>
+    </div>
+
+  </div>
+
+  <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3153457922" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+  <section class="seo-section">
+    <h2>How to Use the Word Frequency Counter</h2>
+      <div class="step-block">
+        <h3>Step 1: Paste Your Text</h3>
+        <p>Copy and paste the content you want to analyse.</p>
+      </div>
+      <div class="step-block">
+        <h3>Step 2: Click Analyse</h3>
+        <p>The tool counts every word and ranks them by frequency.</p>
+      </div>
+      <div class="step-block">
+        <h3>Step 3: Review the Results</h3>
+        <p>See a sortable table of words and their occurrence counts.</p>
+      </div>
+
+    <h2>What Is a Word Frequency Counter?</h2>
+    <p>A word frequency counter analyses a block of text and shows how often each word appears, sorted by frequency — useful for SEO keyword analysis, writing style checks, and text research.</p>
+
+    <h2>Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <h3>Does it ignore common words like "the" and "a"?</h3>
+        <p>Yes. Toggle the "Ignore stop words" option to filter out common English function words.</p>
+      </div>
+  </section>
+</div>
+
+<script>
+const STOP_WORDS = new Set(['a','an','the','and','or','but','in','on','at','to','for','of','with','by','from','is','was','are','were','be','been','being','have','has','had','do','does','did','will','would','could','should','may','might','shall','can','i','you','he','she','it','we','they','me','him','her','us','them','my','your','his','its','our','their','this','that','these','those','what','which','who','whom','when','where','why','how','if','then','so','as','not','no','nor','up','out','about','into','through','during','before','after','above','below','between','each','more','also','just','than','too','very','here','there','all','any','both','few','most','other','some','such','only','own','same','than','because','while','although']);
+
+let freqMap = new Map();
+
+let analyzeTimer = null;
+function autoAnalyze(){ clearTimeout(analyzeTimer); analyzeTimer = setTimeout(analyze, 400); }
+
+function analyze(){
+  const text = document.getElementById('input').value;
+  const ci = document.getElementById('caseChk').checked;
+  const words = (ci ? text.toLowerCase() : text).match(/\b[a-zA-Z']{2,}\b/g) || [];
+  const sentences = (text.match(/[^.!?]+[.!?]+/g) || []).length;
+
+  freqMap = new Map();
+  words.forEach(w => { const key = w.replace(/^'+|'+$/g,''); if(key.length>1) freqMap.set(key, (freqMap.get(key)||0)+1); });
+
+  if(freqMap.size === 0){ document.getElementById('statsRow').style.display='none'; document.getElementById('resultsArea').style.display='none'; return; }
+
+  const sorted = [...freqMap.entries()].sort((a,b)=>b[1]-a[1]);
+  const topWord = sorted[0]?.[0] || '—';
+
+  document.getElementById('sTotalWords').textContent = words.length.toLocaleString();
+  document.getElementById('sUniqueWords').textContent = freqMap.size.toLocaleString();
+  document.getElementById('sSentences').textContent = sentences.toLocaleString();
+  document.getElementById('sTopWord').textContent = topWord;
+  document.getElementById('statsRow').style.display = 'flex';
+
+  renderResults();
+}
+
+function renderResults(){
+  if(freqMap.size === 0) return;
+  const filterStop = document.getElementById('stopChk').checked;
+  const sortMode = document.getElementById('sortSel').value;
+  const limit = parseInt(document.getElementById('limitSel').value) || Infinity;
+
+  let entries = [...freqMap.entries()];
+  if(filterStop) entries = entries.filter(([w]) => !STOP_WORDS.has(w));
+  if(sortMode === 'freq') entries.sort((a,b)=>b[1]-a[1]);
+  else entries.sort((a,b)=>a[0].localeCompare(b[0]));
+
+  const shown = limit === Infinity ? entries : entries.slice(0, limit);
+  const maxCount = shown[0] ? Math.max(...shown.map(e=>e[1])) : 1;
+
+  const tbody = document.getElementById('freqBody');
+  tbody.innerHTML = '';
+  shown.forEach(([w,c], i) => {
+    const pct = Math.round(c/maxCount*100);
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td>${i+1}</td><td>${w}</td><td>${c}</td><td class="bar-cell"><div class="bar-bg"><div class="bar-fill" style="width:${pct}%"></div></div></td>`;
+    tbody.appendChild(tr);
+  });
+
+  // Chart: top 20 by freq
+  const top20 = [...freqMap.entries()].filter(([w])=>!filterStop||!STOP_WORDS.has(w)).sort((a,b)=>b[1]-a[1]).slice(0,20);
+  const chartMax = top20[0]?.[1] || 1;
+  document.getElementById('chartArea').innerHTML = top20.map(([w,c])=>`
+    <div class="chart-bar-row">
+      <div class="chart-word">${w}</div>
+      <div class="chart-bar-wrap"><div class="chart-bar-fill" style="width:${Math.round(c/chartMax*100)}%"></div></div>
+      <div class="chart-count">${c}</div>
+
+<div class="ad-banner" style="margin-top:40px">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="3153457922"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<footer>
+  <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
+  <p>
+    <a href="/about/">About</a> •
+    <a href="/privacy/">Privacy Policy</a> •
+    <a href="/terms/">Terms of Service</a>
+  </p>
+</footer>
+
+</div>
+
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</body>
+</html>

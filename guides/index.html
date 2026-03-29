@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Guides & Tutorials – Fix Software & App Problems | Knexio</title>
+  <meta name="description" content="Step-by-step guides to fix common software and app problems. Troubleshoot ChatGPT, Instagram, Windows, iPhone, and more. Clear, fast, no-fluff solutions." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="canonical" href="https://knexio.xyz/guides/" />
+  <meta property="og:title" content="Guides & Tutorials – Fix Software & App Problems | Knexio" />
+  <meta property="og:description" content="Step-by-step guides to fix common software and app problems. Troubleshoot ChatGPT, Instagram, Windows, iPhone, and more." />
+  <meta property="og:url" content="https://knexio.xyz/guides/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Knexio" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Knexio Guides & Tutorials",
+    "url": "https://knexio.xyz/guides/",
+    "description": "Step-by-step guides to fix common software and app problems.",
+    "publisher": { "@type": "Organization", "name": "Knexio", "url": "https://knexio.xyz" }
+  }
+  </script>
+<style>
+
+    :root {
+      --bg-dark: #0b1220;
+      --bg-dark-2: #070d1a;
+      --panel: #111a2e;
+      --border: rgba(255,255,255,0.08);
+      --text-main: #ffffff;
+      --text-sub: #aab3c5;
+      --accent: #4f8cff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
+      background: linear-gradient(180deg, var(--bg-dark), var(--bg-dark-2));
+      color: var(--text-main);
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 70px 20px 100px;
+    }
+
+    .back {
+      display: inline-block;
+      margin-bottom: 28px;
+      font-size: 14px;
+      color: var(--text-sub);
+    }
+    .back:hover { color: var(--accent); }
+
+    h1 { font-size: 38px; margin-bottom: 12px; }
+
+    .subtitle {
+      font-size: 17px;
+      color: var(--text-sub);
+      max-width: 820px;
+      line-height: 1.6;
+      margin-bottom: 50px;
+    }
+
+    .ad-banner {
+      margin: 0 0 50px;
+      text-align: center;
+      min-height: 90px;
+    }
+
+    .ad-mid {
+      margin: 60px 0 50px;
+      text-align: center;
+      min-height: 90px;
+    }
+
+    .section-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+      margin-top: 50px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 26px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 22px 26px 24px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      min-height: 172px;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 40px rgba(0,0,0,0.35);
+    }
+
+    .card .tag {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(79,140,255,0.12);
+      border-radius: 6px;
+      padding: 2px 8px;
+      margin-bottom: 6px;
+    }
+
+    .card .tag.green  { color: #22c55e; background: rgba(34,197,94,0.12); }
+    .card .tag.orange { color: #ff8800; background: rgba(255,136,0,0.12); }
+    .card .tag.purple { color: #a78bfa; background: rgba(167,139,250,0.12); }
+    .card .tag.red    { color: #f87171; background: rgba(248,113,113,0.12); }
+
+    .card h2 {
+      font-size: 17px;
+      margin: 0 0 8px;
+      line-height: 1.35;
+    }
+
+    .card p {
+      font-size: 13px;
+      color: var(--text-sub);
+      line-height: 1.55;
+      margin-bottom: 16px;
+      flex: 1;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .card .btn {
+      display: inline-block;
+      padding: 10px 22px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 500;
+      transition: background 0.18s;
+      align-self: flex-start;
+    }
+
+    .card .btn:hover { background: #3a74e8; }
+
+    .seo-section {
+      margin-top: 80px;
+      max-width: 860px;
+    }
+
+    .seo-section h2 { font-size: 26px; margin-bottom: 14px; }
+
+    .seo-section p {
+      font-size: 15px;
+      color: var(--text-sub);
+      line-height: 1.8;
+    }
+
+    footer {
+      margin-top: 100px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-sub);
+      border-top: 1px solid var(--border);
+      padding-top: 30px;
+    }
+
+    footer a { color: var(--accent); }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 28px; }
+      .grid { grid-template-columns: repeat(3, 1fr); gap: 14px; }
+      .card { padding: 18px 16px 20px; min-height: 150px; }
+    }
+
+    @media (max-width: 480px) {
+      h1 { font-size: 24px; }
+      .grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+</style>
+</head>
+
+<body>
+  <div class="container">
+    <a class="back" href="../index.html">← Back to Home</a>
+
+    <h1>Guides & Tutorials</h1>
+    <p class="subtitle">Practical step-by-step guides to fix software and app issues. Clear solutions for the most common tech problems — no fluff, just fixes.</p>
+
+    <div class="ad-banner">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="5794572171" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+    <!-- AI Tools -->
+    <div class="section-label">AI Tools</div>
+    <div class="grid">
+      <a class="card" href="chatgpt-not-working/">
+        <span class="tag purple">ChatGPT</span>
+        <h2>ChatGPT Not Working? Try These Fixes</h2>
+        <p>Loading forever, blank screen, or showing errors? Get ChatGPT working again quickly.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="chatgpt-too-many-requests/">
+        <span class="tag purple">ChatGPT</span>
+        <h2>ChatGPT "Too Many Requests" – How to Fix</h2>
+        <p>Hitting the 429 rate limit? Learn why it happens and what to do while you wait.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="claude-ai-not-working/">
+        <span class="tag purple">Claude AI</span>
+        <h2>Claude AI Not Working? Try These Fixes</h2>
+        <p>Claude not loading or not responding? Fastest fixes for desktop and mobile.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="gemini-ai-not-working/">
+        <span class="tag purple">Gemini</span>
+        <h2>Gemini AI Not Working? How to Fix</h2>
+        <p>Google Gemini blank screen or errors? Fix loading and regional availability issues.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="midjourney-not-working/">
+        <span class="tag purple">Midjourney</span>
+        <h2>Midjourney Not Working? Try These Fixes</h2>
+        <p>Bot not responding or images not generating? Fixes for Discord and the web app.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+    </div>
+
+    <!-- Social Media -->
+    <div class="section-label">Social Media</div>
+    <div class="grid">
+      <a class="card" href="instagram-account-restricted/">
+        <span class="tag orange">Instagram</span>
+        <h2>Instagram Account Restricted? What to Do</h2>
+        <p>Understand why Instagram restricts accounts and how to lift the restriction.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="instagram-not-loading/">
+        <span class="tag orange">Instagram</span>
+        <h2>Instagram Not Loading? How to Fix</h2>
+        <p>Feed blank or posts not loading? Fixes for iPhone, Android, and web.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="instagram-not-opening/">
+        <span class="tag orange">Instagram</span>
+        <h2>Instagram Not Opening? How to Fix</h2>
+        <p>App won't open or keeps crashing on iPhone or Android? Step-by-step fixes.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="tiktok-not-working/">
+        <span class="tag orange">TikTok</span>
+        <h2>TikTok Not Working? How to Fix</h2>
+        <p>Black screen, no sound, or login failures? Fixes for iPhone and Android.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="tiktok-account-banned/">
+        <span class="tag red">TikTok</span>
+        <h2>TikTok Account Banned? What to Do</h2>
+        <p>Account permanently banned or suspended? Learn how to appeal and recover.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="twitter-not-working/">
+        <span class="tag orange">Twitter / X</span>
+        <h2>Twitter / X Not Working? How to Fix</h2>
+        <p>Feed stuck, DMs not sending, or app crashing? Complete fix guide.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="twitter-account-suspended/">
+        <span class="tag red">Twitter / X</span>
+        <h2>Twitter Account Suspended? What to Do</h2>
+        <p>Account suspended or locked? Learn the appeal process and recovery steps.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="facebook-not-working/">
+        <span class="tag orange">Facebook</span>
+        <h2>Facebook Not Working? How to Fix</h2>
+        <p>Not loading, feed stuck, or login errors? Complete fix guide for all devices.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+    </div>
+
+    <div class="ad-mid">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+    <!-- Messaging Apps -->
+    <div class="section-label">Messaging Apps</div>
+    <div class="grid">
+      <a class="card" href="whatsapp-code-not-received/">
+        <span class="tag green">WhatsApp</span>
+        <h2>WhatsApp Verification Code Not Received?</h2>
+        <p>Not getting your SMS or call code? Most reliable fixes to try right now.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="whatsapp-web-not-working/">
+        <span class="tag green">WhatsApp</span>
+        <h2>WhatsApp Web Not Working? How to Fix</h2>
+        <p>QR code looping or messages not sending? Browser-specific fixes included.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="telegram-not-working/">
+        <span class="tag green">Telegram</span>
+        <h2>Telegram Not Working? How to Fix</h2>
+        <p>Not connecting or messages not sending? Step-by-step fixes for all platforms.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="wechat-not-working/">
+        <span class="tag green">WeChat</span>
+        <h2>WeChat Not Working? How to Fix</h2>
+        <p>Messages failing or login issues? Complete WeChat troubleshooting guide.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="discord-not-opening/">
+        <span class="tag green">Discord</span>
+        <h2>Discord Not Opening? How to Fix</h2>
+        <p>Won't launch or shows black screen? Clear cache and fix launch issues.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="discord-mic-not-working/">
+        <span class="tag green">Discord</span>
+        <h2>Discord Mic Not Working? How to Fix</h2>
+        <p>Others can't hear you? Fix input settings, permissions, and driver issues.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="slack-not-working/">
+        <span class="tag green">Slack</span>
+        <h2>Slack Not Working? How to Fix</h2>
+        <p>Not loading or notifications broken? Fixes for desktop, browser, and mobile.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="signal-not-working/">
+        <span class="tag green">Signal</span>
+        <h2>Signal Not Working? How to Fix</h2>
+        <p>Messages not sending or calls failing? Troubleshooting guide for Signal.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+    </div>
+
+    <!-- Video & Media -->
+    <div class="section-label">Video & Media</div>
+    <div class="grid">
+      <a class="card" href="youtube-not-loading/">
+        <span class="tag red">YouTube</span>
+        <h2>YouTube Not Loading? How to Fix</h2>
+        <p>Videos not playing or black screen? Fixes for Chrome, iOS, and Android.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="youtube-not-working/">
+        <span class="tag red">YouTube</span>
+        <h2>YouTube Not Working? How to Fix</h2>
+        <p>Buffering or playback issues? Fixes for browser, mobile, and smart TV.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="netflix-not-working/">
+        <span class="tag red">Netflix</span>
+        <h2>Netflix Not Working? How to Fix</h2>
+        <p>Not playing or showing error codes? Fix guide for TV, PC, and mobile.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="spotify-not-playing/">
+        <span class="tag green">Spotify</span>
+        <h2>Spotify Not Playing? How to Fix</h2>
+        <p>Skipping songs or won't open? Fix audio issues and playback errors.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="amazon-prime-not-working/">
+        <span class="tag orange">Amazon Prime</span>
+        <h2>Amazon Prime Not Working? How to Fix</h2>
+        <p>Video buffering or won't play? Fixes for TV, Firestick, and mobile.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="zoom-not-working/">
+        <span class="tag">Zoom</span>
+        <h2>Zoom Not Working? How to Fix</h2>
+        <p>Not connecting, audio failing, or camera not working? Fixes for all platforms.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="zoom-camera-not-working/">
+        <span class="tag">Zoom</span>
+        <h2>Zoom Camera Not Working? How to Fix</h2>
+        <p>Black video or camera in use error? Fix permissions and conflicts.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+    </div>
+
+    <!-- Browsers & Email -->
+    <div class="section-label">Browsers & Email</div>
+    <div class="grid">
+      <a class="card" href="google-chrome-not-opening/">
+        <span class="tag">Chrome</span>
+        <h2>Google Chrome Not Opening? How to Fix</h2>
+        <p>Chrome won't launch or crashes on startup? Fixes for Windows and Mac.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="chrome-crashing/">
+        <span class="tag">Chrome</span>
+        <h2>Chrome Crashing? How to Fix</h2>
+        <p>Keeps crashing or showing "Aw, Snap!" errors? Step-by-step fixes.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="firefox-not-loading/">
+        <span class="tag">Firefox</span>
+        <h2>Firefox Not Loading Pages? How to Fix</h2>
+        <p>Not loading websites or showing connection errors? Fixes for all platforms.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="safari-not-working/">
+        <span class="tag">Safari</span>
+        <h2>Safari Not Working? How to Fix</h2>
+        <p>Not loading pages or crashing on iPhone or Mac? Step-by-step fixes.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="edge-not-responding/">
+        <span class="tag">Edge</span>
+        <h2>Microsoft Edge Not Responding? How to Fix</h2>
+        <p>Edge freezing or crashing? Complete troubleshooting for Windows 10/11.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="gmail-not-working/">
+        <span class="tag orange">Gmail</span>
+        <h2>Gmail Not Working? How to Fix</h2>
+        <p>Emails not sending or sync broken? Fixes for iPhone, Android, and browser.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="outlook-not-working/">
+        <span class="tag orange">Outlook</span>
+        <h2>Outlook Not Working? How to Fix</h2>
+        <p>Showing Disconnected or emails not syncing? Covers safe mode and OST repair.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+    </div>
+
+    <!-- Windows & Mac -->
+    <div class="section-label">Windows & Mac</div>
+    <div class="grid">
+      <a class="card" href="fix-app-not-responding-windows/">
+        <span class="tag">Windows</span>
+        <h2>Fix "App Not Responding" on Windows</h2>
+        <p>Apps freeze or stop responding? Proven steps to fix the issue safely.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="windows-update-stuck/">
+        <span class="tag">Windows</span>
+        <h2>Windows Update Stuck? How to Fix</h2>
+        <p>Stuck at 0%, 35%, or 100%? Cache reset and component fix steps.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="windows-boot-loop/">
+        <span class="tag">Windows</span>
+        <h2>Windows Boot Loop? How to Fix</h2>
+        <p>Stuck in a restart loop? Step-by-step recovery for Windows 10 and 11.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="computer-blue-screen/">
+        <span class="tag red">Windows</span>
+        <h2>Computer Blue Screen (BSOD)? How to Fix</h2>
+        <p>Read error codes, boot into safe mode, and fix hardware or driver issues.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="computer-slow/">
+        <span class="tag">Performance</span>
+        <h2>Computer Running Slow? How to Fix</h2>
+        <p>PC or Mac lagging? Identify the bottleneck and speed up your computer.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="excel-not-opening/">
+        <span class="tag">Office</span>
+        <h2>Excel Not Opening? How to Fix</h2>
+        <p>Excel won't open or keeps crashing? Fixes for Windows and Mac.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="powerpoint-not-working/">
+        <span class="tag">Office</span>
+        <h2>PowerPoint Not Working? How to Fix</h2>
+        <p>Won't open or presentations won't save? Complete troubleshooting guide.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="steam-not-opening/">
+        <span class="tag green">Steam</span>
+        <h2>Steam Not Opening? How to Fix</h2>
+        <p>Won't launch or stuck on updating? Fixes for Windows and Mac.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+    </div>
+
+    <!-- iPhone & Apple -->
+    <div class="section-label">iPhone & Apple</div>
+    <div class="grid">
+      <a class="card" href="apple-id-verification-failed/">
+        <span class="tag">Apple ID</span>
+        <h2>Apple ID Verification Failed? How to Fix</h2>
+        <p>Fix verification errors during login or device setup on iPhone and Mac.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="iphone-black-screen/">
+        <span class="tag">iPhone</span>
+        <h2>iPhone Black Screen? How to Fix</h2>
+        <p>Screen is black but phone is on? Force restart and charging fixes.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="iphone-wont-turn-on/">
+        <span class="tag">iPhone</span>
+        <h2>iPhone Won't Turn On? How to Fix</h2>
+        <p>Completely unresponsive? Force restart and recovery mode steps.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="icloud-not-syncing/">
+        <span class="tag">iCloud</span>
+        <h2>iCloud Not Syncing? How to Fix</h2>
+        <p>Photos or contacts not syncing? Fixes for iPhone, Mac, and Windows.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="airpods-not-connecting/">
+        <span class="tag">AirPods</span>
+        <h2>AirPods Not Connecting? How to Fix</h2>
+        <p>Won't connect or keep disconnecting? Pairing and reset fixes.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="apple-watch-not-syncing/">
+        <span class="tag">Apple Watch</span>
+        <h2>Apple Watch Not Syncing? How to Fix</h2>
+        <p>Health data or messages not syncing? Bluetooth fixes and reset steps.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+    </div>
+
+    <!-- Android & Device Hardware -->
+    <div class="section-label">Android & Device Hardware</div>
+    <div class="grid">
+      <a class="card" href="google-play-payment-declined/">
+        <span class="tag green">Android</span>
+        <h2>Google Play Payment Declined? How to Fix</h2>
+        <p>Payment keeps failing? Proven fixes to restore billing in minutes.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="phone-overheating/">
+        <span class="tag red">Hardware</span>
+        <h2>Phone Overheating? How to Fix</h2>
+        <p>iPhone or Android getting too hot? Cool it down and prevent damage.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="phone-not-charging/">
+        <span class="tag red">Hardware</span>
+        <h2>Phone Not Charging? How to Fix</h2>
+        <p>Won't charge or charges slowly? Troubleshoot cable, port, and software.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="phone-water-damage/">
+        <span class="tag red">Emergency</span>
+        <h2>Phone Water Damage? Emergency Guide</h2>
+        <p>Dropped in water? Immediate steps to minimize damage and save your phone.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="battery-draining-fast/">
+        <span class="tag orange">Battery</span>
+        <h2>Battery Draining Fast? How to Fix</h2>
+        <p>Phone or laptop dying too quickly? Identify the drain and extend battery life.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="screen-cracked-what-to-do/">
+        <span class="tag red">Hardware</span>
+        <h2>Screen Cracked? What to Do</h2>
+        <p>Assess damage, stop it spreading, and compare repair options.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="camera-not-working/">
+        <span class="tag">Camera</span>
+        <h2>Camera Not Working? How to Fix</h2>
+        <p>Black screen or another app using it? Fixes for iPhone, Android, and Windows.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="bluetooth-not-working/">
+        <span class="tag">Connectivity</span>
+        <h2>Bluetooth Not Working? How to Fix</h2>
+        <p>Won't connect or keeps disconnecting? Fixes for all platforms.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="keyboard-not-working/">
+        <span class="tag">Hardware</span>
+        <h2>Keyboard Not Working? How to Fix</h2>
+        <p>Keys not responding? Fixes for Windows and Mac, USB and wireless.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="printer-not-working/">
+        <span class="tag">Hardware</span>
+        <h2>Printer Not Working? How to Fix</h2>
+        <p>Offline or not printing? Troubleshooting for USB and wireless printers.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="screen-flickering/">
+        <span class="tag">Display</span>
+        <h2>Screen Flickering? How to Fix</h2>
+        <p>Monitor flashing or blinking? Fix display driver and refresh rate issues.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="usb-not-recognized/">
+        <span class="tag">USB</span>
+        <h2>USB Not Recognized? How to Fix</h2>
+        <p>USB not showing up? Fix detection issues on Windows and Mac.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="laptop-overheating/">
+        <span class="tag red">Hardware</span>
+        <h2>Laptop Overheating? How to Fix</h2>
+        <p>Fan loud or laptop shutting down from heat? Cleaning and settings fixes.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="ssd-not-detected/">
+        <span class="tag">Storage</span>
+        <h2>SSD Not Detected? How to Fix</h2>
+        <p>SSD not showing in BIOS or Windows? Fix SATA, NVMe, and M.2 issues.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+    </div>
+
+    <!-- Network & Cloud -->
+    <div class="section-label">Network & Cloud</div>
+    <div class="grid">
+      <a class="card" href="wifi-connected-no-internet/">
+        <span class="tag">Network</span>
+        <h2>Wi-Fi Connected But No Internet – How to Fix</h2>
+        <p>Shows connected but nothing loads? Fix on Windows, Mac, iPhone, and Android.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="vpn-not-connecting/">
+        <span class="tag">VPN</span>
+        <h2>VPN Not Connecting? How to Fix</h2>
+        <p>Stuck on "Connecting" or blocked by ISP? Fixes for all major VPN apps.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="dropbox-not-syncing/">
+        <span class="tag">Cloud</span>
+        <h2>Dropbox Not Syncing? How to Fix</h2>
+        <p>Files stuck syncing or storage full? Restore Dropbox sync on Windows and Mac.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="google-maps-not-working/">
+        <span class="tag green">Maps</span>
+        <h2>Google Maps Not Working? How to Fix</h2>
+        <p>Blank map or location not found? Fixes for Android, iPhone, and browser.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="paypal-not-working/">
+        <span class="tag orange">PayPal</span>
+        <h2>PayPal Not Working? How to Fix</h2>
+        <p>Payment failing or account limited? Complete PayPal troubleshooting guide.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="forgot-password/">
+        <span class="tag">Account</span>
+        <h2>Forgot Password? Account Recovery Guide</h2>
+        <p>Locked out? Universal password recovery strategies for any online service.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="teams-not-working/">
+        <span class="tag">Teams</span>
+        <h2>Microsoft Teams Not Working? How to Fix</h2>
+        <p>Not opening or video not working? Fixes for Windows, Mac, and mobile.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+      <a class="card" href="skype-not-working/">
+        <span class="tag">Skype</span>
+        <h2>Skype Not Working? How to Fix</h2>
+        <p>Calls dropping or camera not working? Fix guide for desktop and mobile.</p>
+        <span class="btn">Read Guide</span>
+      </a>
+    </div>
+
+    <div class="seo-section">
+      <h2>Why Knexio Guides?</h2>
+      <p>Knexio guides focus on real problems people search for every day. Each tutorial is written in clear steps, designed to help you solve issues without unnecessary complexity. New guides are added regularly to cover popular software, apps, and digital tools.</p>
+    </div>
+
+    <footer>
+      <p>Helpful guides and tutorials for games, apps, and digital tools. Solve your problems step by step.</p>
+            <p style="margin: 8px 0; font-size: 13px;">
+        <a href="/about/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">About</a>
+        <a href="/privacy/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Privacy</a>
+        <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
+        <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
+      </p>
+      <p>© 2026 Knexio. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script src="/knexio-bundle.js"></script>
+</body>
+</html>

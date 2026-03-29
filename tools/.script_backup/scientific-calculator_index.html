@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Scientific Calculator Online – Free Advanced Calculator | Knexio</title>
+<meta name="description" content="">
+
+<link rel="canonical" href="">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Scientific Calculator">
+<meta property="og:description" content="">
+<meta property="og:url" content="">
+<meta property="og:type" content="WebApplication">
+<meta property="og:site_name" content="Knexio">
+<meta property="og:image" content="https://knexio.xyz/og-image.png">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Scientific Calculator",
+    "url": "https://knexio.xyz/tools/scientific-calculator/",
+    "description": "Free online scientific calculator with advanced math functions including trigonometry, logarithms, and exponents.",
+    "applicationCategory": "CalculatorApplication",
+    "operatingSystem": "Any",
+    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+  }
+  
+</script>
+
+<style>
+
+:root{
+  --bg:#0b1220;
+  --card:#111a2e;
+  --border:rgba(255,255,255,.08);
+  --text:#fff;
+  --sub:#aab3c5;
+  --accent:#4f8cff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:system-ui,-apple-system;
+  background:var(--bg);
+  color:var(--text);
+}
+.container{max-width:900px;margin:auto;padding:50px 16px}
+
+/* 统一的返回按钮样式 */
+.back {
+  display: inline-block;
+  color: var(--sub);
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 24px;
+  transition: color 0.2s;
+}
+.back:hover {
+  color: var(--accent);
+}
+
+h1{font-size:32px;margin-bottom:8px}
+h2{font-size:22px;margin-top:30px;margin-bottom:10px}
+.subtitle{color:var(--sub);margin-bottom:24px}
+
+.badge{
+  display:inline-block;
+  padding:4px 10px;
+  border-radius:20px;
+  background:rgba(79,140,255,.15);
+  color:var(--accent);
+  font-size:12px;
+  margin-bottom:10px;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:20px;
+  margin-bottom:20px;
+}
+
+textarea{
+  width:100%;
+  min-height:180px;
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:12px;
+  color:var(--text);
+  padding:14px;
+  font-size:15px;
+}
+textarea:focus{outline:none;border-color:var(--accent)}
+
+.btn-row{display:flex;gap:10px;margin-top:12px}
+button{
+  flex:1;
+  padding:10px;
+  border-radius:10px;
+  border:none;
+  background:var(--accent);
+  color:#fff;
+  cursor:pointer;
+}
+button.secondary{
+  background:transparent;
+  border:1px solid var(--border);
+  color:var(--sub);
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-top:16px;
+}
+.stat{
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:16px;
+  text-align:center;
+}
+.stat span{
+  font-size:24px;
+  font-weight:700;
+  color:var(--accent);
+}
+.stat label{
+  display:block;
+  font-size:12px;
+  color:var(--sub);
+}
+
+.tip{
+  font-size:13px;
+  color:var(--sub);
+  margin-top:10px;
+}
+
+.section p{
+  color:var(--sub);
+  line-height:1.7;
+  margin-bottom:10px;
+}
+
+.tools a{
+  display:inline-block;
+  margin:6px;
+  padding:8px 14px;
+  border-radius:8px;
+  border:1px solid var(--border);
+  color:var(--sub);
+  text-decoration:none;
+}
+.tools a:hover{
+  border-color:var(--accent);
+  color:var(--accent);
+}
+
+/* 广告样式 */
+.ad-banner {
+  margin: 32px 0;
+  text-align: center;
+}
+
+/* 统一的 Footer 样式 */
+footer {
+  margin-top: 40px;
+  text-align: center;
+  color: var(--sub);
+  font-size: 13px;
+}
+footer p {
+  margin-bottom: 8px;
+}
+footer a {
+  color: var(--sub);
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color 0.2s;
+}
+footer a:hover {
+  color: var(--accent);
+}
+
+@media(max-width:600px){
+  .stats{grid-template-columns:1fr 1fr}
+}
+
+</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2596567349043393" crossorigin="anonymous"></script>
+</head>
+
+<body><div class="container">
+
+<a class="back" href="../index.html">← Back to Tools</a>
+
+<h1>Scientific Calculator</h1>
+<p class="subtitle">Advanced online calculator with trigonometry, logarithms, exponents, and scientific functions.</p>
+
+<div class="ad-banner">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="3153457922"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<div class="container">
+  <a class="back" href="../index.html">← Back to Tools</a>
+  <h1>Scientific Calculator</h1>
+  <p class="subtitle">Advanced online calculator with trigonometry, logarithms, exponents, and scientific functions.</p>
+
+  <div class="calc-container">
+    <div class="display">
+      <div class="display-history" id="history"></div>
+      <div class="display-main" id="display">0</div>
+    </div>
+
+    <div class="mode-tabs">
+      <div class="btn-row">
+      <button class="btn mode-tab active" onclick="setMode('deg')">DEG</button>
+      <button class="btn mode-tab" onclick="setMode('rad')">RAD</button>
+    </div></div>
+
+    <div class="buttons">
+      </div>
+  </div>
+
+  <div class="history-section">
+    <h2>Calculation History</h2>
+    <div class="history-list" id="historyList"></div>
+
+  </div>
+
+  <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3153457922" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+</div>
+
+<script>
+let display = document.getElementById('display');
+let history = document.getElementById('history');
+let historyList = document.getElementById('historyList');
+let currentInput = '0';
+let calculationHistory = [];
+let isRadians = false;
+
+function updateDisplay() {
+  display.textContent = currentInput;
+}
+
+function insert(value) {
+  if (currentInput === '0' && !isOperator(value) && value !== '.') {
+    currentInput = value;
+  } else {
+    currentInput += value;
+  }
+  updateDisplay();
+}
+
+function insertFunction(func) {
+  if (currentInput === '0') currentInput = '';
+  currentInput += func + '(';
+  updateDisplay();
+}
+
+function isOperator(char) {
+  return ['+', '-', '*', '/', '^', '%'].includes(char);
+}
+
+function clearAll() {
+  currentInput = '0';
+  history.textContent = '';
+  updateDisplay();
+}
+
+function clearEntry() {
+  currentInput = '0';
+  updateDisplay();
+}
+
+function backspace() {
+  if (currentInput.length > 1) {
+    currentInput = currentInput.slice(0, -1);
+  } else {
+    currentInput = '0';
+  }
+  updateDisplay();
+}
+
+function setMode(mode) {
+  isRadians = mode === 'rad';
+  document.querySelectorAll('.mode-tab').forEach(tab => tab.classList.remove('active'));
+  event.target.classList.add('active');
+}
+
+function factorial(n) {
+  if (n < 0) return NaN;
+  if (n === 0 || n === 1) return 1;
+  let result = 1;
+  for (let i = 2; i <= n; i++) result *= i;
+  return result;
+}
+
+function evaluate(expr) {
+  // Replace math constants and functions
+  expr = expr.replace(/PI/g, 'Math.PI');
+  expr = expr.replace(/E/g, 'Math.E');
+
+  // Handle factorial
+  expr = expr.replace(/(\d+)!/g, (match, n) => factorial(parseInt(n)));
+
+  // Handle trigonometric functions with mode
+  const trigFuncs = ['sin', 'cos', 'tan'];
+  trigFuncs.forEach(func => {
+    const regex = new RegExp(`${func}\\(([^)]+)\\)`, 'g');
+    expr = expr.replace(regex, (match, arg) => {
+      const val = evaluate(arg);
+      const rad = isRadians ? val : val * Math.PI / 180;
+      return `Math.${func}(${rad})`;
+    });
+  });
+
+  // Other math functions
+  expr = expr.replace(/sqrt\(([^)]+)\)/g, 'Math.sqrt($1)');
+  expr = expr.replace(/log\(([^)]+)\)/g, 'Math.log10($1)');
+  expr = expr.replace(/ln\(([^)]+)\)/g, 'Math.log($1)');
+  expr = expr.replace(/abs\(([^)]+)\)/g, 'Math.abs($1)');
+  expr = expr.replace(/floor\(([^)]+)\)/g, 'Math.floor($1)');
+  expr = expr.replace(/ceil\(([^)]+)\)/g, 'Math.ceil($1)');
+  expr = expr.replace(/1\/\(([^)]+)\)/g, '1/($1)');
+
+  // Power operator
+  expr = expr.replace(/\^/g, '**');
+
+  // Percentage
+  expr = expr.replace(/(\d+)%/g, '($1/100)');
+
+  try {
+    return Function('"use strict"; return (' + expr + ')')();
+  } catch (e) {
+    return 'Error';
+  }
+}
+
+function calculate() {
+  const expression = currentInput;
+  const result = evaluate(expression);
+
+  history.textContent = expression + ' =';
+  currentInput = result.toString();
+  updateDisplay();
+
+  // Add to history
+  calculationHistory.unshift({expr: expression, result: result});
+  if (calculationHistory.length > 10) calculationHistory.pop();
+  updateHistoryList();
+}
+
+function updateHistoryList() {
+  historyList.innerHTML = calculationHistory.map(item => `
+    <div class="history-item">
+      <span class="history-expr">${item.expr}</span>
+      <span class="history-result">= ${item.result}</span>
+    </div>
+  `).join('');
+}
+
+// Keyboard support
+document.addEventListener('keydown', (e) => {
+  if (e.key >= '0' && e.key <= '9') insert(e.key);
+  else if (e.key === '.') insert('.');
+  else if (e.key === '+') insert('+');
+  else if (e.key === '-') insert('-');
+  else if (e.key === '*') insert('*');
+  else if (e.key === '/') insert('/');
+  else if (e.key === '^') insert('^');
+  else if (e.key === '(') insert('(');
+  else if (e.key === ')') insert(')');
+  else if (e.key === '%') insert('%');
+  else if (e.key === 'Enter' || e.key === '=') calculate();
+  else if (e.key === 'Escape') clearAll();
+  else if (e.key === 'Backspace') backspace();
+});
+</script>
+  <script src="../../knexio-bundle.js"></script>
+  <script src="../../cookie-consent.js"></script>
+  <!-- Schema: FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is this tool for?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "This is a free online tool for [purpose]. It helps you [function] quickly and easily."
+        }
+      }
+    ]
+  }
+  </script>
+  
+  <div class="seo-section">
+    <h2>How to Use the Scientific Calculator</h2>
+    <div class="step-block">
+      <h3>Step 1: Enter your expression</h3>
+      <p>Click the keypad buttons or type directly to build a math expression.</p>
+    </div>
+    <div class="step-block">
+      <h3>Step 2: Use scientific functions</h3>
+      <p>Access sin, cos, tan, log, ln, sqrt, powers, and more.</p>
+    </div>
+    <div class="step-block">
+      <h3>Step 3: Press = to calculate</h3>
+      <p>Hit the equals button or Enter key to get your result.</p>
+    </div>
+    <div class="step-block">
+      <h3>Step 4: Chain calculations</h3>
+      <p>Use the result as input for the next calculation seamlessly.</p>
+    </div>
+
+<div class="ad-banner" style="margin-top:40px">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="3153457922"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<footer>
+  <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
+  <p>
+    <a href="/about/">About</a> •
+    <a href="/privacy/">Privacy Policy</a> •
+    <a href="/terms/">Terms of Service</a>
+  </p>
+</footer>
+
+</div>
+
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</body>
+</html>

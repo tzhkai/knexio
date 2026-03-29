@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Compound Interest Calculator – Calculate Investment Growth | Knexio</title>
+<meta name="description" content="Free compound interest calculator. Calculate how much your money can grow with compound interest. Includes daily, monthly, quarterly, and annual compounding options.">
+
+<link rel="canonical" href="https://knexio.xyz/tools/compound-interest-calculator/">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Compound Interest Calculator – Calculate Investment Growth">
+<meta property="og:description" content="Free compound interest calculator with visual charts. See how your investments grow over time with daily, monthly, or annual compounding.">
+<meta property="og:url" content="https://knexio.xyz/tools/compound-interest-calculator/">
+<meta property="og:type" content="WebApplication">
+<meta property="og:site_name" content="Knexio">
+<meta property="og:image" content="https://knexio.xyz/og-image.png">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Compound Interest Calculator",
+    "description": "Calculate compound interest and investment growth with visual charts",
+    "url": "https://knexio.xyz/tools/compound-interest-calculator/",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Any",
+    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+  }
+  
+</script>
+
+<style>
+
+:root{
+  --bg:#0b1220;
+  --card:#111a2e;
+  --border:rgba(255,255,255,.08);
+  --text:#fff;
+  --sub:#aab3c5;
+  --accent:#4f8cff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:system-ui,-apple-system;
+  background:var(--bg);
+  color:var(--text);
+}
+.container{max-width:900px;margin:auto;padding:50px 16px}
+
+/* 统一的返回按钮样式 */
+.back {
+  display: inline-block;
+  color: var(--sub);
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 24px;
+  transition: color 0.2s;
+}
+.back:hover {
+  color: var(--accent);
+}
+
+h1{font-size:32px;margin-bottom:8px}
+h2{font-size:22px;margin-top:30px;margin-bottom:10px}
+.subtitle{color:var(--sub);margin-bottom:24px}
+
+.badge{
+  display:inline-block;
+  padding:4px 10px;
+  border-radius:20px;
+  background:rgba(79,140,255,.15);
+  color:var(--accent);
+  font-size:12px;
+  margin-bottom:10px;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:20px;
+  margin-bottom:20px;
+}
+
+textarea{
+  width:100%;
+  min-height:180px;
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:12px;
+  color:var(--text);
+  padding:14px;
+  font-size:15px;
+}
+textarea:focus{outline:none;border-color:var(--accent)}
+
+.btn-row{display:flex;gap:10px;margin-top:12px}
+button{
+  flex:1;
+  padding:10px;
+  border-radius:10px;
+  border:none;
+  background:var(--accent);
+  color:#fff;
+  cursor:pointer;
+}
+button.secondary{
+  background:transparent;
+  border:1px solid var(--border);
+  color:var(--sub);
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-top:16px;
+}
+.stat{
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:16px;
+  text-align:center;
+}
+.stat span{
+  font-size:24px;
+  font-weight:700;
+  color:var(--accent);
+}
+.stat label{
+  display:block;
+  font-size:12px;
+  color:var(--sub);
+}
+
+.tip{
+  font-size:13px;
+  color:var(--sub);
+  margin-top:10px;
+}
+
+.section p{
+  color:var(--sub);
+  line-height:1.7;
+  margin-bottom:10px;
+}
+
+.tools a{
+  display:inline-block;
+  margin:6px;
+  padding:8px 14px;
+  border-radius:8px;
+  border:1px solid var(--border);
+  color:var(--sub);
+  text-decoration:none;
+}
+.tools a:hover{
+  border-color:var(--accent);
+  color:var(--accent);
+}
+
+/* 广告样式 */
+.ad-banner {
+  margin: 32px 0;
+  text-align: center;
+}
+
+/* 统一的 Footer 样式 */
+footer {
+  margin-top: 40px;
+  text-align: center;
+  color: var(--sub);
+  font-size: 13px;
+}
+footer p {
+  margin-bottom: 8px;
+}
+footer a {
+  color: var(--sub);
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color 0.2s;
+}
+footer a:hover {
+  color: var(--accent);
+}
+
+@media(max-width:600px){
+  .stats{grid-template-columns:1fr 1fr}
+}
+
+</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2596567349043393" crossorigin="anonymous"></script>
+</head>
+
+<body><div class="container">
+
+<a class="back" href="../index.html">← Back to Tools</a>
+
+<h1>Compound Interest Calculator</h1>
+<p class="subtitle">See how your money grows with compound interest over time</p>
+
+<div class="ad-banner">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="3153457922"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<div class="container">
+    <header>
+      <a href="../../index.html" class="logo">Knexio</a>
+      <a class="back" href="../index.html">← Back to Tools</a>
+    </header>
+
+    <h1>Compound Interest Calculator</h1>
+    <p class="subtitle">See how your money grows with compound interest over time</p>
+
+      <div class="ad-banner">
+    <ins class="adsbygoogle" style="display:block"
+         data-ad-client="ca-pub-2596567349043393"
+         data-ad-slot="3153457922"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+  </div>
+  <div class="step-block">
+    <h3>Step 2: Adjust settings</h3>
+    <p>Use the available options to customize the processing.</p>
+  </div>
+  <div class="step-block">
+    <h3>Step 3: Get results</h3>
+    <p>View the processed output in the result area.</p>
+  </div>
+</div>
+
+    <div class="grid">
+      <div class="panel">
+        <h2>Investment Details</h2>
+        <div class="form-group">
+          <label>Initial Investment</label>
+          <input type="number" id="principal" placeholder="10000" value="10000">
+        </div>
+        <div class="form-group">
+          <label>Monthly Contribution</label>
+          <input type="number" id="monthly" placeholder="500" value="500">
+        </div>
+        <div class="input-row">
+          <div class="form-group">
+            <label>Interest Rate (%)</label>
+            <input type="number" id="rate" placeholder="7" value="7" step="0.1">
+          </div>
+          <div class="form-group">
+            <label>Years</label>
+            <input type="number" id="years" placeholder="20" value="20">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Compounding Frequency</label>
+          <select id="frequency">
+            <option value="365">Daily</option>
+            <option value="12" selected>Monthly</option>
+            <option value="4">Quarterly</option>
+            <option value="1">Annually</option>
+          </select>
+        </div>
+        <button class="btn" onclick="calculateCompound()">Calculate Growth</button>
+
+        <div class="info-box">
+          <h3>The Power of Compounding</h3>
+          <p>Compound interest is often called the "eighth wonder of the world." It means you earn interest not just on your initial investment, but also on the interest you've already earned. The earlier you start, the more powerful it becomes.</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>Growth Summary</h2>
+        <div class="result-box">
+          <div class="result-main" id="finalAmount">$0</div>
+          <div class="result-label">Final Amount</div>
+        </div>
+        <div class="result-grid">
+          <div class="result-item">
+            <div class="result-value" id="totalPrincipal">$0</div>
+            <div class="result-desc">Total Invested</div>
+          </div>
+          <div class="result-item">
+            <div class="result-value" id="totalInterest">$0</div>
+            <div class="result-desc">Interest Earned</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ad-mid">AdSense In-Content</div>
+
+    <div class="panel" style="margin-top:24px">
+      <h2>Year-by-Year Growth</h2>
+      <div id="chartContainer" style="display:flex;align-items:flex-end;justify-content:space-between;height:250px;padding:20px;background:var(--bg);border:1px solid var(--border);border-radius:8px;gap:4px;overflow-x:auto">
+        <div style="color:var(--muted);text-align:center;width:100%">Click Calculate to see growth chart</div>
+      </div>
+
+      <h2 style="margin-top:30px">Year-by-Year Breakdown</h2>
+      <table style="width:100%;border-collapse:collapse;margin-top:15px">
+        <thead>
+          <tr style="background:var(--card);border-bottom:1px solid var(--border)">
+            <th style="padding:10px;text-align:left">Year</th>
+            <th style="padding:10px;text-align:right">Principal</th>
+            <th style="padding:10px;text-align:right">Interest</th>
+            <th style="padding:10px;text-align:right">Total</th>
+          </tr>
+        </thead>
+        <tbody id="yearTableBody">
+          <tr><td colspan="4" style="padding:20px;text-align:center;color:var(--sub)">Click Calculate to see breakdown</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3153457922" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+  </div>
+
+  <script>
+    function formatCurrency(num) {
+      return '$' + Math.round(num).toLocaleString();
+    }
+
+    function calculateCompound() {
+      const principal = parseFloat(document.getElementById('principal').value) || 0;
+      const monthly = parseFloat(document.getElementById('monthly').value) || 0;
+      const rate = parseFloat(document.getElementById('rate').value) || 0;
+      const years = parseFloat(document.getElementById('years').value) || 0;
+      const frequency = parseInt(document.getElementById('frequency').value) || 12;
+
+      const r = rate / 100;
+      const n = frequency;
+      const t = years;
+      const P = principal;
+      const PMT = monthly * 12;
+
+      // Compound interest formula with contributions
+      const amount = P * Math.pow(1 + r/n, n*t) + (PMT/n) * ((Math.pow(1 + r/n, n*t) - 1) / (r/n));
+      const totalInvested = P + (monthly * 12 * t);
+      const interestEarned = amount - totalInvested;
+
+      document.getElementById('finalAmount').textContent = formatCurrency(amount);
+      document.getElementById('totalPrincipal').textContent = formatCurrency(totalInvested);
+      document.getElementById('totalInterest').textContent = formatCurrency(interestEarned);
+
+      // Generate year-by-year data
+      let chartHtml = '';
+      let tableHtml = '';
+      const maxBars = Math.min(years, 30);
+      const barWidth = Math.max(20, 100 / maxBars);
+
+      for (let year = 1; year <= years; year++) {
+        const yearAmount = P * Math.pow(1 + r/n, n*year) + (PMT/n) * ((Math.pow(1 + r/n, n*year) - 1) / (r/n));
+        const yearInvested = P + (monthly * 12 * year);
+        const yearInterest = yearAmount - yearInvested;
+
+        tableHtml += `<tr>
+          <td>Year ${year}</td>
+          <td>${formatCurrency(yearAmount)}</td>
+          <td>${formatCurrency(yearInvested)}</td>
+          <td>${formatCurrency(yearInterest)}</td>
+        </tr>`;
+
+        if (year <= maxBars) {
+          const height = Math.min(100, (yearAmount / amount) * 100);
+          chartHtml += `<div style="flex:1;display:flex;flex-direction:column;align-items:center;min-width:30px">
+            <div style="width:100%;height:${height}%;background:linear-gradient(to top,var(--accent),var(--accent-2));border-radius:4px 4px 0 0;min-height:20px"></div>
+            <div style="font-size:10px;color:var(--muted);margin-top:4px">Y${year}</div>
+          </div>`;
+        }
+      }
+
+      document.getElementById('yearTableBody').innerHTML = tableHtml;
+      document.getElementById('chartContainer').innerHTML = chartHtml;
+    }
+
+    // Calculate on load
+    calculateCompound();
+  </script>
+  <script src="../../knexio-bundle.js"></script>
+  <script src="../../cookie-consent.js"></script>
+  <!-- Schema: FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is this tool for?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "This is a free online tool for [purpose]. It helps you [function] quickly and easily."
+        }
+      }
+    ]
+  }
+  </script>
+
+  
+  <div class="seo-section">
+    <h2>How to Use the Compound Interest Calculator</h2>
+    <div class="step-block">
+      <h3>Step 1: Enter your principal amount</h3>
+      <p>Input the initial investment or deposit amount.</p>
+    </div>
+    <div class="step-block">
+      <h3>Step 2: Set interest rate and period</h3>
+      <p>Enter the annual interest rate and the investment duration in years.</p>
+    </div>
+    <div class="step-block">
+      <h3>Step 3: Choose compounding frequency</h3>
+      <p>Select daily, monthly, quarterly, or annual compounding.</p>
+    </div>
+    <div class="step-block">
+      <h3>Step 4: View growth results</h3>
+      <p>See the final balance, total interest earned, and a year-by-year breakdown.</p>
+    </div>
+
+<div class="ad-banner" style="margin-top:40px">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="3153457922"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<footer>
+  <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
+  <p>
+    <a href="/about/">About</a> •
+    <a href="/privacy/">Privacy Policy</a> •
+    <a href="/terms/">Terms of Service</a>
+  </p>
+</footer>
+
+</div>
+
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</body>
+</html>

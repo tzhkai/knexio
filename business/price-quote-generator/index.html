@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8">
+  <title>Price Quote Generator – Create professional price quotes for your services or products | Knexio</title>
+  <meta name="description" content="Create professional price quotes for your services or products">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://knexio.xyz/business/price-quote-generator/">
+  <meta property="og:title" content="Price Quote Generator">
+  <meta property="og:description" content="Create professional price quotes for your services or products">
+  <meta property="og:url" content="https://knexio.xyz/business/price-quote-generator/">
+  <meta property="og:type" content="website">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Price Quote Generator",
+    "description": "Create professional price quotes for your services or products",
+    "url": "https://knexio.xyz/business/price-quote-generator/",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Any",
+    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+  }
+  </script>
+<style>
+
+    :root {
+      --bg: #0b1220;
+      --card: #111a2e;
+      --border: rgba(255,255,255,0.08);
+      --text: #ffffff;
+      --sub: #aab3c5;
+      --accent: #4f8cff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+
+    .back {
+      display: inline-block;
+      color: var(--sub);
+      text-decoration: none;
+      font-size: 14px;
+      margin-bottom: 24px;
+      transition: color 0.2s;
+    }
+
+    .back:hover {
+      color: var(--accent);
+    }
+
+    h1 {
+      font-size: 34px;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .subtitle {
+      font-size: 15px;
+      color: var(--sub);
+      margin-bottom: 40px;
+    }
+
+    .tool-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+    }
+
+    .panel-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      color: var(--sub);
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="number"],
+    input[type="date"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 12px 16px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: var(--text);
+      font-size: 15px;
+      font-family: inherit;
+      transition: border-color 0.2s;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .btn {
+      flex: 1;
+      padding: 14px 24px;
+      border: none;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      background: #3d7de0;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--sub);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--sub);
+      color: var(--text);
+    }
+
+    .result-box {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px;
+      min-height: 300px;
+      max-height: 500px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+      color: var(--text);
+      line-height: 1.8;
+    }
+
+    .content {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px;
+      margin-bottom: 24px;margin-bottom: 40px;
+    }
+
+    .content h2 {
+      font-size: 24px;
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+
+    .content p {
+      color: var(--sub);
+      margin-bottom: 16px;
+      line-height: 1.7;
+    }
+
+    .content ul {
+      margin-left: 24px;
+      margin-bottom: 16px;
+      color: var(--sub);
+    }
+
+    .content li {
+      margin-bottom: 8px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      border-top: 1px solid var(--border);
+      margin-top: 60px;
+    }
+
+    footer a {
+      color: var(--sub);
+      text-decoration: none;
+      margin: 0 16px;
+      font-size: 14px;
+    }
+
+    footer a:hover {
+      color: var(--accent);
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 40px 16px 80px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      .tool-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .button-group {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 32px 12px 80px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      .panel {
+        padding: 20px;
+      }
+    }
+
+</style>
+</head>
+<body>
+  <div class="container">
+    <a href="/business/" class="back">← Back to Business</a>
+
+    <h1>Price Quote Generator</h1>
+    <p class="subtitle">Generate detailed price quotes for clients and customers</p>
+<div class="tool-layout">
+      <div class="panel">
+        <h2 class="panel-title">Input Details</h2>
+
+        <div class="form-group">
+          <label for="clientName">Client Name</label>
+          <input type="text" id="clientName" placeholder="ABC Company">
+        </div>
+        <div class="form-group">
+          <label for="quoteNumber">Quote Number</label>
+          <input type="text" id="quoteNumber" placeholder="Q-001">
+        </div>
+        <div class="form-group">
+          <label for="items">Items (one per line)</label>
+          <textarea id="items" placeholder="Web Design - $5000
+Logo Design - $1000
+Hosting - $500"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="taxRate">Tax Rate (%)</label>
+          <input type="text" id="taxRate" placeholder="10">
+        </div>
+        <div class="form-group">
+          <label for="validUntil">Valid Until</label>
+          <input type="text" id="validUntil" placeholder="2024-02-15">
+        </div>
+        <div class="button-group">
+          <button class="btn btn-primary" onclick="generateQuote()">Generate</button>
+          <button class="btn btn-secondary" onclick="clearForm()">Clear</button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2 class="panel-title">Result</h2>
+        <div class="result-box" id="result">
+          Your result will appear here...
+        </div>
+        <div class="button-group" style="margin-top: 16px;">
+          <button class="btn btn-primary" onclick="copyResult()">Copy Result</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="content">
+      <h2>How to Use</h2>
+      <p>Fill in the required information in the form above and click "Generate" to create your price quote generator. You can then copy the result and use it as needed.</p>
+
+      <h2>Features</h2>
+      <ul>
+        <li>Professional price quote generator templates</li>
+        <li>Easy to use interface</li>
+        <li>Customizable outputs</li>
+        <li>100% free to use</li>
+      </ul>
+    </div>
+<footer>
+      <p>Free business tools and generators for entrepreneurs and startups. Create professional documents in seconds.</p>
+            <p style="margin: 8px 0; font-size: 13px;">
+        <a href="/about/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">About</a>
+        <a href="/privacy/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Privacy</a>
+        <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
+        <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
+      </p>
+      <p>© 2026 Knexio. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    function clearForm() {
+      document.getElementById("clientName").value = '';
+      document.getElementById("quoteNumber").value = '';
+      document.getElementById("items").value = '';
+      document.getElementById("taxRate").value = '';
+      document.getElementById("validUntil").value = '';
+      document.getElementById("result").textContent = 'Your result will appear here...';
+    }}
+
+    function copyResult() {
+      const result = document.getElementById("result").textContent;
+      navigator.clipboard.writeText(result).then(() => {
+        alert("✓ Result copied to clipboard!");
+      });
+    }
+
+        function generateQuote() {
+      const clientName = document.getElementById("clientName").value;
+      const quoteNumber = document.getElementById("quoteNumber").value;
+      const items = document.getElementById("items").value;
+      const taxRate = document.getElementById("taxRate").value;
+      const validUntil = document.getElementById("validUntil").value;
+
+      const result = `Generated Result:
+
+      clientName: ${clientName}
+      quoteNumber: ${quoteNumber}
+      items: ${items}
+      taxRate: ${taxRate}
+      validUntil: ${validUntil}
+      `;
+
+      document.getElementById("result").textContent = result;
+    }
+  </script>
+<script src="/knexio-bundle.js"></script>
+</body>
+</html>

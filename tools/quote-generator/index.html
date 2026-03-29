@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quote Generator - Random Inspirational Quotes</title>
+<link rel="canonical" href="https://knexio.xyz/tools/quote-generator/">
+
+  <meta name="description" content="Generate random inspirational quotes, motivational sayings, and wisdom. Get inspired with our quote generator.">
+  <link rel="stylesheet" href="../global.css">
+  <style>
+    :root {
+      --bg: #0b1220;
+      --card: #111a2e;
+      --border: rgba(255,255,255,0.08);
+      --text: #fff;
+      --sub: #aab3c5;
+      --accent: #4f8cff;
+    }
+    
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      margin: 0;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    .back {
+      display: inline-block;
+      color: var(--sub);
+      text-decoration: none;
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+    
+    .back:hover {
+      color: var(--accent);
+    }
+    
+    h1 {
+      font-size: 32px;
+      margin: 0 0 10px 0;
+      color: var(--text);
+    }
+    
+    .subtitle {
+      color: var(--sub);
+      font-size: 18px;
+      margin: 0 0 30px 0;
+    }
+    
+    .card {
+      background: var(--card);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      padding: 30px;
+      margin-bottom: 30px;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--text);
+      font-weight: 500;
+    }
+    
+    select {
+      width: 100%;
+      padding: 12px 16px;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      font-size: 15px;
+      box-sizing: border-box;
+      font-family: inherit;
+    }
+    
+    select:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+    
+    
+    
+    
+    
+    .btn:hover {
+      background: #3a7ae6;
+      transform: translateY(-1px);
+    }
+    
+    .btn-secondary {
+      background: rgba(255,255,255,0.1);
+      color: var(--text);
+    }
+    
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.15);
+    }
+    
+    .quote-display {
+      text-align: center;
+      padding: 40px;
+      background: rgba(79,140,255,0.05);
+      border-radius: 12px;
+      margin-top: 30px;
+      border: 2px solid rgba(79,140,255,0.2);
+    }
+    
+    .quote-text {
+      font-size: 24px;
+      font-style: italic;
+      color: var(--text);
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+    
+    .quote-text::before {
+      content: '"';
+      font-size: 48px;
+      color: var(--accent);
+      opacity: 0.3;
+      display: block;
+      margin-bottom: -20px;
+    }
+    
+    .quote-author {
+      font-size: 16px;
+      color: var(--sub);
+      font-weight: 500;
+    }
+    
+    .quote-author::before {
+      content: '— ';
+    }
+    
+    .section {
+      margin-bottom: 30px;
+    }
+    
+    .section h2 {
+      font-size: 22px;
+      margin: 0 0 15px 0;
+      color: var(--text);
+    }
+    
+    .section p {
+      color: var(--sub);
+      line-height: 1.7;
+      margin: 0 0 15px 0;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    .tools {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .tools a {
+      display: block;
+      padding: 15px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--sub);
+      text-decoration: none;
+      text-align: center;
+      transition: all 0.2s;
+      font-size: 14px;
+    }
+    
+    .tools a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+    
+    footer {
+      margin-top: 40px;
+      padding-top: 30px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--sub);
+      font-size: 14px;
+    }
+    
+    footer a {
+      color: var(--sub);
+      text-decoration: none;
+      margin: 0 10px;
+    }
+    
+    footer a:hover {
+      color: var(--accent);
+    }
+textarea,.text-area{width:100%;min-height:180px;background:var(--bg);border:1px solid var(--border);border-radius:12px;color:var(--text);padding:14px;font-size:15px;resize:vertical;box-sizing:border-box}
+textarea:focus,.text-area:focus{outline:none;border-color:var(--accent)}
+.btn-row{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+button,.btn,.btn-row button{flex:1;padding:10px;border-radius:10px;border:none;background:var(--accent);color:#fff;cursor:pointer;font-size:14px;transition:opacity 0.2s;box-sizing:border-box}
+button:hover,.btn:hover{opacity:0.9}
+button.secondary,.btn.secondary,.btn-outline,.btn-row button.secondary{background:transparent;border:1px solid var(--border);color:var(--sub)}
+button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.stat{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center}
+.stat span,.stat-value,.result-value,.age-value{font-size:24px;font-weight:700;color:var(--accent);display:block}
+.stat label,.stat-label,.result-label,.age-label{font-size:12px;color:var(--sub);display:block}
+.result-box{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;margin-top:16px;min-height:100px;white-space:pre-wrap;word-break:break-all;font-size:15px;line-height:1.7;box-sizing:border-box}
+@media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.btn-row{flex-direction:column}}
+  </style>
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Quote Generator - Random Inspirational Quotes",
+  "description": "Generate random inspirational quotes, motivational sayings, and wisdom. Get inspired with our quote generator.",
+  "url": "https://knexio.xyz/tools/quote-generator/",
+  "publisher": {"@type": "Organization", "name": "Knexio", "url": "https://knexio.xyz"}
+}
+</script>
+
+</head>
+<body>
+  <div class="container">
+    <a class="back" href="../index.html">← Back to Tools</a>
+    
+    <h1>Quote Generator</h1>
+    <p class="subtitle">Get inspired with random quotes from famous thinkers and leaders</p>
+
+  <div class="ad-banner">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="5794572171" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  </div>
+
+</p>
+    
+    <div class="card">
+      <label for="category">Category</label>
+      <select id="category">
+        <option value="all">All Categories</option>
+        <option value="motivational">Motivational</option>
+        <option value="inspirational">Inspirational</option>
+        <option value="success">Success</option>
+        <option value="life">Life</option>
+        <option value="wisdom">Wisdom</option>
+        <option value="business">Business</option>
+      </select>
+      
+      <div class="btn-row">
+        <button class="btn" onclick="generateQuote()">Generate Quote</button>
+        <button class="btn btn-secondary" onclick="copyQuote()">Copy Quote</button>
+        <button class="btn btn-secondary" onclick="shareOnTwitter()">Share on Twitter</button>
+      </div>
+      
+      <div class="quote-display" id="quoteDisplay">
+        <div class="quote-text" id="quoteText"></div>
+        <div class="quote-author" id="quoteAuthor"></div>
+      </div>
+    </div>
+    
+    <div class="section">
+      <h2>How to Use</h2>
+      <p>Our quote generator provides inspiring quotes from history's greatest minds. Perfect for motivation, social media, or daily inspiration.</p>
+      
+      
+      
+      
+      
+      
+    </div>
+    
+    <div class="section">
+      <h2>Related Tools</h2>
+      <div class="tools">
+        <a href="../word-counter/">Word Counter</a>
+        <a href="../case-converter/">Case Converter</a>
+        <a href="../text-utilities/">Text Utilities</a>
+      </div>
+    </div>
+    
+      <div class="ad-banner">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  </div>
+
+  <footer>
+      <a href="/about/" style="color:var(--accent);text-decoration:none;margin:0 8px;">About</a>
+      <a href="/privacy/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Privacy</a>
+      <a href="/terms/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Terms</a>
+      <a href="/contact/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Contact</a>
+      <br><br>
+      © 2026 Knexio. All rights reserved.
+    </footer>
+  </div>
+  
+  <script>
+    const quotes = [
+      { text: "The only way to do great work is to love what you do.", author: "Steve Jobs", category: "motivational" },
+      { text: "Innovation distinguishes between a leader and a follower.", author: "Steve Jobs", category: "business" },
+      { text: "Stay hungry, stay foolish.", author: "Steve Jobs", category: "life" },
+      { text: "The future belongs to those who believe in the beauty of their dreams.", author: "Eleanor Roosevelt", category: "inspirational" },
+      { text: "It is during our darkest moments that we must focus to see the light.", author: "Aristotle", category: "life" },
+      { text: "Success is not final, failure is not fatal: it is the courage to continue that counts.", author: "Winston Churchill", category: "success" },
+      { text: "The best way to predict the future is to create it.", author: "Peter Drucker", category: "business" },
+      { text: "Life is what happens when you're busy making other plans.", author: "John Lennon", category: "life" },
+      { text: "The only thing we have to fear is fear itself.", author: "Franklin D. Roosevelt", category: "motivational" },
+      { text: "Be the change you wish to see in the world.", author: "Mahatma Gandhi", category: "inspirational" },
+      { text: "In the middle of every difficulty lies opportunity.", author: "Albert Einstein", category: "motivational" },
+      { text: "The greatest glory in living lies not in never falling, but in rising every time we fall.", author: "Nelson Mandela", category: "success" },
+      { text: "Your time is limited, don't waste it living someone else's life.", author: "Steve Jobs", category: "life" },
+      { text: "The mind is everything. What you think you become.", author: "Buddha", category: "wisdom" },
+      { text: "Believe you can and you're halfway there.", author: "Theodore Roosevelt", category: "motivational" },
+      { text: "The only impossible journey is the one you never begin.", author: "Tony Robbins", category: "inspirational" },
+      { text: "Success usually comes to those who are too busy to be looking for it.", author: "Henry David Thoreau", category: "success" },
+      { text: "Don't watch the clock; do what it does. Keep going.", author: "Sam Levenson", category: "motivational" },
+      { text: "The secret of getting ahead is getting started.", author: "Mark Twain", category: "success" },
+      { text: "Life is either a daring adventure or nothing at all.", author: "Helen Keller", category: "life" },
+      { text: "Education is the most powerful weapon which you can use to change the world.", author: "Nelson Mandela", category: "wisdom" },
+      { text: "The best way to find yourself is to lose yourself in the service of others.", author: "Mahatma Gandhi", category: "life" },
+      { text: "Do what you can, with what you have, where you are.", author: "Theodore Roosevelt", category: "motivational" },
+      { text: "The greatest wealth is to live content with little.", author: "Plato", category: "wisdom" },
+      { text: "A person who never made a mistake never tried anything new.", author: "Albert Einstein", category: "life" },
+      { text: "The only way to have a friend is to be one.", author: "Ralph Waldo Emerson", category: "life" },
+      { text: "Happiness depends upon ourselves.", author: "Aristotle", category: "life" },
+      { text: "Quality is not an act, it is a habit.", author: "Aristotle", category: "business" },
+      { text: "The customer is the most important visitor on our premises.", author: "Mahatma Gandhi", category: "business" },
+      { text: "In business, the competition will bite you if you keep running.", author: "Ray Kroc", category: "business" }
+    ];
+    
+    let currentQuote = null;
+    
+    function generateQuote() {
+      const category = document.getElementById('category').value;
+      let filteredQuotes = quotes;
+      
+      if (category !== 'all') {
+        filteredQuotes = quotes.filter(q => q.category === category);
+      }
+      
+      const randomIndex = Math.floor(Math.random() * filteredQuotes.length);
+      currentQuote = filteredQuotes[randomIndex];
+      
+      const quoteText = document.getElementById('quoteText');
+      const quoteAuthor = document.getElementById('quoteAuthor');
+      
+      quoteText.textContent = currentQuote.text;
+      quoteAuthor.textContent = currentQuote.author;
+    }
+    
+    function copyQuote() {
+      if (!currentQuote) {
+        alert('Please generate a quote first');
+        return;
+      }
+      
+      const text = `"${currentQuote.text}" — ${currentQuote.author}`;
+      navigator.clipboard.writeText(text).then(() => {
+        alert('Quote copied to clipboard!');
+      });
+    }
+    
+    function shareOnTwitter() {
+      if (!currentQuote) {
+        alert('Please generate a quote first');
+        return;
+      }
+      
+      const text = `"${currentQuote.text}" — ${currentQuote.author}`;
+      const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
+      window.open(twitterUrl, '_blank');
+    }
+    
+    // Generate initial quote
+    generateQuote();
+  
+// AdSense initialization
+</script>
+<script src="/knexio-bundle.js"></script>
+</body>
+</html>

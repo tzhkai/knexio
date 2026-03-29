@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unix Timestamp Converter – Epoch Time Converter | Knexio</title>
+<meta name="description" content="Free Unix timestamp converter. Convert between Unix epoch time (seconds/milliseconds) and human-readable dates. Real-time current timestamp display.">
+<link rel="canonical" href="https://knexio.xyz/tools/unix-timestamp/">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Unix Timestamp Converter – Epoch Time Converter">
+<meta property="og:description" content="Free Unix timestamp converter. Convert between Unix epoch time and human-readable dates.">
+<meta property="og:url" content="https://knexio.xyz/tools/unix-timestamp/">
+<meta property="og:type" content="WebApplication">
+<meta property="og:site_name" content="Knexio">
+<meta property="og:image" content="https://knexio.xyz/og-image.png">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is Unix timestamp?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Unix timestamp is the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC. It's also called epoch time or POSIX time."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I convert Unix timestamp to date?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Enter the Unix timestamp in the input field and click 'Convert to Date'. The tool will display both UTC and local time formats."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the Year 2038 problem?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Year 2038 problem is a time computing bug where 32-bit systems can't represent times after 03:14:07 UTC on January 19, 2038 (timestamp 2,147,483,647). Most modern systems use 64-bit timestamps to avoid this issue."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+:root {
+  --bg: #0b1220;
+  --card: #111a2e;
+  --border: rgba(255,255,255,0.08);
+  --text: #fff;
+  --sub: #aab3c5;
+  --accent: #4f8cff;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+.container { max-width: 900px; margin: 0 auto; padding: 50px 16px; }
+
+/* Back Button */
+.back {
+  display: inline-block;
+  color: var(--sub);
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 24px;
+  transition: color 0.2s;
+}
+.back:hover { color: var(--accent); }
+
+h1 { font-size: 32px; margin-bottom: 8px; font-weight: 700; }
+h2 { font-size: 22px; margin-top: 40px; margin-bottom: 16px; font-weight: 600; }
+h3 { font-size: 16px; margin-bottom: 10px; font-weight: 600; }
+.subtitle { color: var(--sub); margin-bottom: 24px; font-size: 16px; }
+
+/* Main Card */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+/* Current Time Display */
+.current-time {
+  text-align: center;
+  padding: 30px 20px;
+  margin-bottom: 24px;
+  background: linear-gradient(135deg, rgba(79,140,255,0.1), rgba(79,140,255,0.05));
+  border-radius: 12px;
+  border: 1px solid rgba(79,140,255,0.2);
+}
+.time-big {
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 8px;
+  font-family: 'Courier New', monospace;
+}
+.time-label {
+  color: var(--sub);
+  font-size: 14px;
+}
+
+/* Converter Grid */
+.converter-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.converter-box {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+}
+.converter-box h3 {
+  margin-bottom: 16px;
+  font-size: 15px;
+}
+
+/* Input Group */
+.input-group {
+  margin-bottom: 12px;
+}
+.input-group label {
+  display: block;
+  font-size: 13px;
+  color: var(--sub);
+  margin-bottom: 8px;
+}
+.input-group input {
+  width: 100%;
+  padding: 12px 14px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  font-size: 14px;
+}
+.input-group input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+/* Buttons */
+
+.btn:hover {
+  background: #3a7bff;
+  transform: translateY(-1px);
+}
+.btn:active {
+  transform: translateY(0);
+}
+
+/* Result Display */
+.result {
+  margin-top: 12px;
+  padding: 12px;
+  background: rgba(79,140,255,0.1);
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 13px;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  white-space: pre-line;
+}
+
+/* Quick Times */
+.quick-times {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-top: 20px;
+}
+.quick-time-btn {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.quick-time-btn:hover {
+  border-color: var(--accent);
+  background: rgba(79,140,255,0.1);
+}
+.quick-time-btn .label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+.quick-time-btn > div:last-child {
+  font-size: 11px;
+  color: var(--sub);
+}
+
+/* Step Blocks */
+
+
+
+
+/* FAQ */
+
+
+
+
+/* Related Tools */
+.tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+.tools a {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  color: var(--sub);
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+.tools a:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Ad Banner */
+.ad-banner {
+  margin: 32px 0;
+  text-align: center;
+}
+
+/* Footer */
+footer {
+  margin-top: 40px;
+  text-align: center;
+  color: var(--sub);
+  font-size: 13px;
+  padding-top: 30px;
+  border-top: 1px solid var(--border);
+}
+footer p {
+  margin-bottom: 8px;
+}
+footer a {
+  color: var(--sub);
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color 0.2s;
+}
+footer a:hover {
+  color: var(--accent);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .converter-grid {
+    grid-template-columns: 1fr;
+  }
+  .quick-times {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .time-big {
+    font-size: 36px;
+  }
+}
+textarea,.text-area{width:100%;min-height:180px;background:var(--bg);border:1px solid var(--border);border-radius:12px;color:var(--text);padding:14px;font-size:15px;resize:vertical;box-sizing:border-box}
+textarea:focus,.text-area:focus{outline:none;border-color:var(--accent)}
+.btn-row{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+button,.btn,.btn-row button{flex:1;padding:10px;border-radius:10px;border:none;background:var(--accent);color:#fff;cursor:pointer;font-size:14px;transition:opacity 0.2s;box-sizing:border-box}
+button:hover,.btn:hover{opacity:0.9}
+button.secondary,.btn.secondary,.btn-outline,.btn-row button.secondary{background:transparent;border:1px solid var(--border);color:var(--sub)}
+button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.stat{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center}
+.stat span,.stat-value,.result-value,.age-value{font-size:24px;font-weight:700;color:var(--accent);display:block}
+.stat label,.stat-label,.result-label,.age-label{font-size:12px;color:var(--sub);display:block}
+.result-box{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;margin-top:16px;min-height:100px;white-space:pre-wrap;word-break:break-all;font-size:15px;line-height:1.7;box-sizing:border-box}
+@media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.btn-row{flex-direction:column}}
+  </style>
+</head>
+
+<body>
+<div class="container">
+
+<a class="back" href="../index.html">← Back to Tools</a>
+
+<h1>Unix Timestamp Converter</h1>
+<p class="subtitle">Convert between Unix timestamps and human-readable dates. Supports seconds and milliseconds.</p>
+
+<div class="ad-banner">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="5794572171"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<div class="current-time">
+  <div class="time-big" id="currentTimestamp">0</div>
+  <div class="time-label">Current Unix Timestamp (seconds)</div>
+</div>
+
+<div class="card">
+  <div class="converter-grid">
+    <div class="converter-box">
+      <h3>➡️ Timestamp to Date</h3>
+      <div class="input-group">
+        <label>Unix Timestamp</label>
+        <input type="number" id="timestampInput" placeholder="1711400000">
+      </div>
+      <button class="btn" onclick="timestampToDate()">Convert to Date</button>
+      <div class="result" id="dateResult">Enter a timestamp to convert</div>
+    </div>
+
+    <div class="converter-box">
+      <h3>⬅️ Date to Timestamp</h3>
+      <div class="input-group">
+        <label>Date & Time</label>
+        <input type="datetime-local" id="dateInput">
+      </div>
+      <button class="btn" onclick="dateToTimestamp()">Convert to Timestamp</button>
+      <div class="result" id="timestampResult">Select a date to convert</div>
+    </div>
+  </div>
+
+  <h3 style="font-size: 14px; color: var(--sub); margin-bottom: 12px;">Quick Reference</h3>
+  <div class="quick-times">
+    <div class="quick-time-btn" onclick="setTimestamp('now')">
+      <div class="label">Now</div>
+      <div>Current</div>
+    </div>
+    <div class="quick-time-btn" onclick="setTimestamp('+1h')">
+      <div class="label">+1 Hour</div>
+      <div>3600s</div>
+    </div>
+    <div class="quick-time-btn" onclick="setTimestamp('+1d')">
+      <div class="label">+1 Day</div>
+      <div>86400s</div>
+    </div>
+    <div class="quick-time-btn" onclick="setTimestamp('+1w')">
+      <div class="label">+1 Week</div>
+      <div>604800s</div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>How to Use the Unix Timestamp Converter</h2>
+  <p>Enter a Unix timestamp to convert it to a human-readable date, or select a date to convert it to a Unix timestamp. Supports both seconds and milliseconds.</p>
+</div>
+
+
+
+<div class="section">
+  <h2>What Is Unix Timestamp?</h2>
+<p style="color: var(--sub); margin-bottom: 16px;">A Unix timestamp (also known as epoch time or POSIX time) represents the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC. This is a common way to store and exchange time data in computer systems, databases, and APIs.</p>
+
+</div>
+
+  <h2>Related Tools</h2>
+  <div class="tools">
+  <a href="../time-zone-converter/">Time Zone Converter</a>
+  <a href="../date-converter/">Date Converter</a>
+  <a href="../timer-stopwatch/">Timer & Stopwatch</a>
+</div>
+
+<div class="ad-banner">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="9504968504"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+  <footer>
+    <p>Free online tools for developers, designers, and everyone.</p>
+    <p>
+      <a href="/about/" style="color:var(--accent);text-decoration:none;margin:0 8px;">About</a>
+      <a href="/privacy/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Privacy</a>
+      <a href="/terms/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Terms</a>
+      <a href="/contact/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Contact</a>
+    </p>
+    <p>© 2026 Knexio. All rights reserved.</p>
+  </footer>
+
+</div>
+
+<script>
+function updateCurrentTime() {
+  const now = Math.floor(Date.now() / 1000);
+  document.getElementById('currentTimestamp').textContent = now.toLocaleString();
+}
+
+function timestampToDate() {
+  const ts = document.getElementById('timestampInput').value;
+  if (!ts) return;
+
+  let timestamp = parseInt(ts);
+  // Detect if milliseconds
+  if (timestamp > 1000000000000) {
+    timestamp = Math.floor(timestamp / 1000);
+  }
+
+  const date = new Date(timestamp * 1000);
+  const result = 'UTC: ' + date.toUTCString() + '\nLocal: ' + date.toLocaleString();
+  document.getElementById('dateResult').textContent = result;
+}
+
+function dateToTimestamp() {
+  const dateStr = document.getElementById('dateInput').value;
+  if (!dateStr) return;
+
+  const date = new Date(dateStr);
+  const timestamp = Math.floor(date.getTime() / 1000);
+  document.getElementById('timestampResult').textContent = 
+    'Seconds: ' + timestamp + '\nMilliseconds: ' + (timestamp * 1000);
+}
+
+function setTimestamp(type) {
+  const now = Math.floor(Date.now() / 1000);
+  let ts = now;
+
+  switch(type) {
+    case '+1h': ts += 3600; break;
+    case '+1d': ts += 86400; break;
+    case '+1w': ts += 604800; break;
+  }
+
+  document.getElementById('timestampInput').value = ts;
+  timestampToDate();
+}
+
+setInterval(updateCurrentTime, 1000);
+updateCurrentTime();
+
+</script>
+<script src="/knexio-bundle.js"></script>
+<script src="../../cookie-consent.js"></script>
+
+</body>
+</html>

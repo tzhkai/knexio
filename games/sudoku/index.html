@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sudoku - Free Online Game | Play Now | Knexio</title>
+  <meta name="description" content="Play Sudoku free online. Sudoku is a classic logic-based number placement puzzle. Fill the 9×9 grid so that each row, column, and each of the nin... No download required. Works on all devices." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="canonical" href="https://knexio.xyz/games/sudoku/" />
+  <meta property="og:title" content="Play Sudoku Free Online" />
+  <meta property="og:description" content="Sudoku is a classic logic-based number placement puzzle. Fill the 9×9 grid so that each row, column,..." />
+  <meta property="og:url" content="https://knexio.xyz/games/sudoku/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Knexio" />
+
+  <meta name="robots" content="index, follow" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Sudoku – Play Free Sudoku Online" />
+  <meta name="twitter:description" content="Play Sudoku in your browser. Easy, Medium, and Hard puzzles. Timer, hints, and conflict highlighting." />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Game","name":"Sudoku","description":"Classic Sudoku browser game with three difficulty levels","url":"https://knexio.xyz/games/sudoku/","gamePlatform":"Browser","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do you play Sudoku?","acceptedAnswer":{"@type":"Answer","text":"Fill the 9×9 grid so that every row, every column, and every 3×3 box contains the digits 1 through 9 exactly once. Gray numbers are pre-filled clues and cannot be changed."}},{"@type":"Question","name":"What does the hint button do?","acceptedAnswer":{"@type":"Answer","text":"The hint button fills in the correct number for the currently selected empty cell. You have 3 hints per puzzle."}},{"@type":"Question","name":"What is the difference between Easy, Medium, and Hard?","acceptedAnswer":{"@type":"Answer","text":"Easy puzzles have more pre-filled numbers, making them simpler to solve with basic elimination. Hard puzzles have fewer clues and require more advanced logic."}}]}</script>
+<style>
+
+    :root{--bg:#0b1220;--bg2:#070d1a;--panel:#111a2e;--border:rgba(255,255,255,0.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff;--green:#34d399;--red:#f87171;--given:#e2e8f0}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:linear-gradient(180deg,var(--bg),var(--bg2));color:var(--text);min-height:100vh}
+    a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+    .wrap{max-width:700px;margin:0 auto;padding:28px 16px 80px;text-align:center}
+    .back{display:inline-block;margin-bottom:20px;color:var(--sub);font-size:14px;float:left}
+    .clearfix::after{content:'';display:table;clear:both}
+    h1{font-size:30px;margin-bottom:6px}
+    .subtitle{color:var(--sub);font-size:14px;margin-bottom:18px}
+    .ad-slot{margin:14px 0}
+    .diff-row{display:flex;gap:10px;justify-content:center;margin-bottom:16px}
+    .diff-btn{padding:8px 20px;border-radius:9px;border:1px solid var(--border);background:transparent;color:var(--sub);cursor:pointer;font-size:13px;font-weight:600}
+    .diff-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+    .meta-bar{display:flex;justify-content:center;gap:24px;margin-bottom:16px}
+    .meta-item{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:8px 20px;font-size:13px}
+    .meta-item span{font-weight:700;color:var(--text)}
+    #timer{color:var(--yellow,#fbbf24)}
+    .board{display:inline-grid;grid-template-columns:repeat(9,1fr);gap:1px;background:#1a2a45;border:3px solid #2a3f60;border-radius:12px;overflow:hidden;margin-bottom:16px}
+    .cell{width:52px;height:52px;background:#111a2e;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:600;cursor:pointer;transition:background .1s;position:relative;border:none;outline:none}
+    .cell.given{color:var(--given)}
+    .cell.user{color:var(--accent)}
+    .cell.selected{background:rgba(79,140,255,.25)!important}
+    .cell.highlight{background:rgba(79,140,255,.08)}
+    .cell.conflict{color:var(--red)!important;background:rgba(248,113,113,.15)!important}
+    .cell.correct{color:var(--green)!important}
+    .cell.box-right{border-right:2px solid #2a3f60}
+    .cell.box-bottom{border-bottom:2px solid #2a3f60}
+    .numpad{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:16px}
+    .num-btn{width:50px;height:50px;background:var(--panel);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:18px;font-weight:700;cursor:pointer;transition:background .1s}
+    .num-btn:hover{background:rgba(79,140,255,.2)}
+    .num-btn.erase{font-size:14px;color:var(--sub)}
+    .action-row{display:flex;gap:10px;justify-content:center;margin-bottom:16px}
+    .btn{padding:10px 22px;border-radius:10px;border:none;cursor:pointer;font-size:13px;font-weight:700;background:var(--accent);color:#fff}
+    .btn:hover{opacity:.85}
+    .btn-outline{background:transparent;border:1px solid var(--border);color:var(--sub)}.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+    .hints-left{font-size:13px;color:var(--sub)}
+    .win-banner{background:var(--panel);border:1px solid rgba(52,211,153,.4);border-radius:14px;padding:28px;display:none;margin-bottom:16px}
+    .win-banner h2{font-size:24px;color:var(--green);margin-bottom:8px}
+    .win-banner p{color:var(--sub);margin-bottom:16px}
+    @media(max-width:520px){.cell{width:38px;height:38px;font-size:15px}.num-btn{width:38px;height:38px;font-size:15px}}
+    footer{margin-top:60px;font-size:13px;color:var(--sub)}
+  .ad-banner{margin:24px 0;text-align:center;min-height:90px}
+
+    /* ==================== 移动端优化 ==================== */
+
+    /* 平板和手机 (≤768px) */
+    @media (max-width: 768px) {
+      /* 容器布局优化 */
+      .container, .wrap {
+        padding: 40px 15px 80px !important;
+        max-width: 100% !important;
+      }
+
+      /* 标题字体优化 */
+      h1 {
+        font-size: 28px !important;
+        line-height: 1.3 !important;
+      }
+
+      h2 {
+        font-size: 20px !important;
+        margin-top: 36px !important;
+        margin-bottom: 10px !important;
+      }
+
+      h3 {
+        font-size: 17px !important;
+      }
+
+      /* 正文内容优化 */
+      p, li, .intro, .subtitle {
+        font-size: 14px !important;
+        line-height: 1.7 !important;
+      }
+
+      /* 段落间距优化 */
+      p, ul, ol {
+        margin-bottom: 16px !important;
+      }
+
+      /* 列表优化 */
+      ul, ol {
+        padding-left: 18px !important;
+      }
+
+      li {
+        margin-bottom: 6px !important;
+      }
+
+      /* 内容块优化 */
+      .main-panel, .step-block, .notice, .extra-info {
+        padding: 16px !important;
+        border-radius: 12px !important;
+        margin: 16px 0 !important;
+      }
+
+      /* 按钮和输入框优化 */
+      .btn {
+        padding: 14px !important;
+        font-size: 15px !important;
+        min-height: 48px !important;
+      }
+
+      .input-group input {
+        padding: 12px !important;
+        font-size: 15px !important;
+      }
+
+      /* 网格系统优化 */
+      .age-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px !important;
+      }
+
+      /* 广告位优化 */
+      .ad-banner {
+        margin: 16px 0 !important;
+        min-height: 50px !important;
+      }
+
+      /* 游戏页面优化 */
+      .grid-container {
+        padding: 8px !important;
+      }
+
+      .grid { margin: 0 auto;
+        gap: 8px !important;
+      }
+
+      .cell {
+        font-size: 20px !important;
+        border-radius: 6px !important;
+      }
+
+      .score-box {
+        min-width: 70px !important;
+        padding: 6px 12px !important;
+      }
+
+      .score-val {
+        font-size: 18px !important;
+      }
+
+      /* 工具页面优化 */
+      .age-main {
+        font-size: 36px !important;
+      }
+
+      .age-value {
+        font-size: 24px !important;
+      }
+
+      .age-label {
+        font-size: 11px !important;
+      }
+
+      /* 引导页面优化 */
+      .intro {
+        border-left-width: 2px !important;
+        padding-left: 12px !important;
+        margin-bottom: 32px !important;
+      }
+
+      .faq-item {
+        margin-bottom: 20px !important;
+      }
+
+      .faq-item strong {
+        font-size: 15px !important;
+      }
+    }
+
+    /* 小手机优化 (≤480px) */
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 24px !important;
+      }
+
+      h2 {
+        font-size: 18px !important;
+      }
+
+      .container, .wrap {
+        padding: 32px 12px 60px !important;
+      }
+
+      .main-panel, .step-block, .notice {
+        padding: 14px !important;
+      }
+
+      .btn {
+        padding: 12px !important;
+        font-size: 14px !important;
+      }
+
+      .age-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
+    /* 触摸设备优化 */
+    @media (hover: none) and (pointer: coarse) {
+      button, .btn, a[onclick], .cell {
+        min-height: 44px !important;
+        min-width: 44px !important;
+      }
+
+      input, select, textarea {
+        font-size: 16px !important;
+      }
+        }
+
+</style>
+  <meta name="keywords" content="sudoku puzzle, logic game, number puzzle, brain game, free sudoku online, 9x9 grid puzzle" /></head>
+<body><a href="../../cdn-cgi/content-ap2UW3wezSA9slkQOsnnI0UIZmUrm6uIQAaOgJRJdsA.html" aria-hidden="true" rel="nofollow noopener" style="display: none !important; visibility: hidden !important"></a>
+<div class="wrap">
+  <div class="clearfix">
+    <a class="back" href="../index.html">← Back to Games</a>
+  </div>
+  <h1>Sudoku</h1>
+  <div class="subtitle">Fill every row, column, and 3×3 box with digits 1–9</div>
+
+  <div class="diff-row">
+    <button class="diff-btn active" onclick="newGame('easy')">Easy</button>
+    <button class="diff-btn" onclick="newGame('medium')">Medium</button>
+    <button class="diff-btn" onclick="newGame('hard')">Hard</button>
+  </div>
+
+  <div class="meta-bar">
+    <div class="meta-item">Time: <span id="timerEl">0:00</span></div>
+    <div class="meta-item hints-left">Hints: <span id="hintsLeft">3</span></div>
+  </div>
+
+  <div class="win-banner" id="winBanner">
+    <h2>Puzzle Solved!</h2>
+    <p id="winMsg"></p>
+    <button class="btn" onclick="newGame(currentDiff)">New Puzzle</button>
+  </div>
+
+  <div class="board" id="board"></div>
+
+  <div class="numpad" id="numpad">
+    <button class="num-btn" onclick="inputNum(1)">1</button>
+    <button class="num-btn" onclick="inputNum(2)">2</button>
+    <button class="num-btn" onclick="inputNum(3)">3</button>
+    <button class="num-btn" onclick="inputNum(4)">4</button>
+    <button class="num-btn" onclick="inputNum(5)">5</button>
+    <button class="num-btn" onclick="inputNum(6)">6</button>
+    <button class="num-btn" onclick="inputNum(7)">7</button>
+    <button class="num-btn" onclick="inputNum(8)">8</button>
+    <button class="num-btn" onclick="inputNum(9)">9</button>
+    <button class="num-btn erase" onclick="inputNum(0)">Erase</button>
+
+  </div>
+
+  <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="5794572171" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+<!-- ==================== 游戏玩法说明 - SEO优化内容 ==================== -->
+<div class="gameplay-section" style="margin: 60px auto 0; max-width: 800px; padding: 32px 24px; background: var(--panel); border-radius: 18px; border: 1px solid var(--border);">
+    <h2 style="font-size: 28px; margin-bottom: 30px; color: var(--text-main); display: flex; align-items: center;">
+        <span style="background: var(--accent); color: white; width: 36px; height: 36px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 15px; font-size: 18px;">🎮</span>
+        How to Play Sudoku
+    </h2>
+
+    <div style="margin-bottom: 30px;">
+        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--text-main);">Game Description</h3>
+        <p style="font-size: 15px; color: var(--text-sub); line-height: 1.7; margin-bottom: 20px;">
+            Sudoku is a classic logic-based number placement puzzle. Fill the 9×9 grid so that each row, column, and each of the nine 3×3 subgrids contain all digits from 1 to 9 without repetition.
+        </p>
+    </div>
+
+    <div style="margin-bottom: 30px;">
+        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--text-main);">Basic Rules & Controls</h3>
+        <ol style="font-size: 15px; color: var(--text-sub); line-height: 1.7; padding-left: 25px; margin-bottom: 20px;">
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">Each puzzle starts with some numbers already filled in</strong>
+            </li>
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">Fill empty cells with digits 1-9 following these rules:</strong>
+            </li>
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">1. Each row must contain all digits 1-9 without repetition</strong>
+            </li>
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">2. Each column must contain all digits 1-9 without repetition</strong>
+            </li>
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">3. Each 3×3 box must contain all digits 1-9 without repetition</strong>
+            </li>
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">Use logic and elimination to determine the correct numbers</strong>
+            </li>
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">Click/tap a cell to select it, then choose a number from the number pad</strong>
+            </li>
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">Use pencil marks for notes to track possible numbers</strong>
+            </li>
+
+        </ol>
+    </div>
+
+    <div style="margin-bottom: 30px;">
+        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--text-main);">Pro Tips & Strategies</h3>
+        <ul style="font-size: 15px; color: var(--text-sub); line-height: 1.7; padding-left: 25px; margin-bottom: 20px;">
+
+            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;">
+                <span style="position: absolute; left: -15px; color: var(--accent);">✓</span>
+                Start with cells that have the fewest possibilities
+            </li>
+
+            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;">
+                <span style="position: absolute; left: -15px; color: var(--accent);">✓</span>
+                Look for 'naked singles' (cells with only one possible number)
+            </li>
+
+            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;">
+                <span style="position: absolute; left: -15px; color: var(--accent);">✓</span>
+                Use 'hidden singles' technique (a number that can only go in one cell in a row/column/box)
+            </li>
+
+            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;">
+                <span style="position: absolute; left: -15px; color: var(--accent);">✓</span>
+                Eliminate possibilities systematically
+            </li>
+
+            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;">
+                <span style="position: absolute; left: -15px; color: var(--accent);">✓</span>
+                Take breaks - fresh eyes often spot patterns more easily
+            </li>
+
+        </ul>
+    </div>
+
+    <div style="background: rgba(79, 140, 255, 0.1); padding: 20px; border-radius: 12px; border-left: 4px solid var(--accent);">
+        <p style="font-size: 15px; color: var(--text-sub); margin: 0;">
+            <strong style="color: var(--accent);">💡 Quick Start:</strong> Just click/tap to begin! No registration required. 
+            All Knexio games work directly in your browser with no downloads needed.
+        </p>
+    </div>
+</div>
+
+<!-- ==================== 广告位优化 ==================== -->
+<div class="ad-section" style="margin-top: 40px; text-align: center;">
+    <ins class="adsbygoogle" 
+         style="display:block; background: var(--panel); border-radius: 12px; padding: 15px;"
+         data-ad-client="ca-pub-2596567349043393" 
+         data-ad-slot="9504968504" 
+         data-ad-format="auto" 
+         data-full-width-responsive="true">
+    </ins>
+    <p style="font-size: 12px; color: var(--text-sub); margin-top: 8px; opacity: 0.7;">
+        Advertisement supports free games development
+    </p>
+</div>
+
+<!-- ==================== 游戏常见问题 (FAQ) ==================== -->
+<div class="faq-section" style="margin: 60px auto 0; max-width: 800px; padding: 32px 24px; background: var(--panel); border-radius: 18px;">
+    <h2 style="font-size: 28px; margin-bottom: 30px; color: var(--text-main);">Frequently Asked Questions</h2>
+
+    <div class="faq-list">
+        <div class="faq-item" style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid var(--border);">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                Is this game free to play?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                Yes, all games on Knexio are completely free to play. There are no hidden charges, subscription fees, or in-app purchases. We support our games through non-intrusive advertisements.
+            </p>
+        </div>
+
+        <div class="faq-item" style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid var(--border);">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                Do I need to download anything to play?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                No downloads required! All our games run directly in your web browser. They work on desktop computers, laptops, tablets, and smartphones. Just visit the page and start playing.
+            </p>
+        </div>
+
+        <div class="faq-item" style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid var(--border);">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                How do I save my game progress?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                Most games automatically save your high scores and progress in your browser's local storage. Your best scores will be remembered even if you close the browser, as long as you don't clear your browsing data.
+            </p>
+        </div>
+
+        <div class="faq-item" style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid var(--border);">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                Can I play on mobile devices?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                Absolutely! All Knexio games are fully responsive and optimized for mobile devices. Touch controls are implemented for games that require precise input. The interface automatically adapts to your screen size.
+            </p>
+        </div>
+
+        <div class="faq-item" style="margin-bottom: 25px;">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                Is there sound in the games?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                Most games include optional sound effects. Look for a sound/mute button in the game interface. You can enable or disable sound based on your preference. We keep sound subtle and non-intrusive.
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== 结构化数据 (Schema.org) ==================== -->
+<script type="application/ld+json">
+{{
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "{game_display_name}",
+    "description": "{template['description'][:150]}...",
+    "applicationCategory": "GameApplication",
+    "gamePlatform": "Web Browser",
+    "operatingSystem": "All",
+    "url": "https://knexio.xyz/games/{game_name}/",
+    "genre": "Browser Game",
+    "playMode": "SinglePlayer",
+    "publisher": {{
+        "@type": "Organization",
+        "name": "Knexio",
+        "url": "https://knexio.xyz"
+    }},
+    "offers": {{
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+    }},
+    "keywords": "{', '.join(template['keywords'])}"
+}}
+</script>
+
+<script type="application/ld+json">
+{{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {{
+            "@type": "Question",
+            "name": "Is this game free to play?",
+            "acceptedAnswer": {{
+                "@type": "Answer",
+                "text": "Yes, all games on Knexio are completely free to play. There are no hidden charges, subscription fees, or in-app purchases. We support our games through non-intrusive advertisements."
+            }}
+        }},
+        {{
+            "@type": "Question",
+            "name": "Do I need to download anything to play?",
+            "acceptedAnswer": {{
+                "@type": "Answer",
+                "text": "No downloads required! All our games run directly in your web browser. They work on desktop computers, laptops, tablets, and smartphones. Just visit the page and start playing."
+            }}
+        }},
+        {{
+            "@type": "Question",
+            "name": "How do I save my game progress?",
+            "acceptedAnswer": {{
+                "@type": "Answer",
+                "text": "Most games automatically save your high scores and progress in your browser's local storage. Your best scores will be remembered even if you close the browser, as long as you don't clear your browsing data."
+            }}
+        }}
+    ]
+}}
+</script>
+
+<!-- ==================== 相关游戏推荐 ==================== -->
+<div class="related-games" style="margin: 60px auto 0; max-width: 800px; padding: 32px 24px;">
+    <h2 style="font-size: 24px; margin-bottom: 20px; color: var(--text-main);">More Fun Games to Try</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+        <a href="../snake/index.html" style="display: block; background: var(--panel); border-radius: 12px; padding: 20px; text-decoration: none; color: var(--text-main); border: 1px solid var(--border); transition: all 0.2s;">
+            <div style="font-weight: bold; margin-bottom: 8px;">🐍 Snake</div>
+            <div style="font-size: 13px; color: var(--text-sub);">Classic arcade game with growing snake</div>
+        </a>
+        <a href="../tetris/index.html" style="display: block; background: var(--panel); border-radius: 12px; padding: 20px; text-decoration: none; color: var(--text-main); border: 1px solid var(--border); transition: all 0.2s;">
+            <div style="font-weight: bold; margin-bottom: 8px;">🧱 Tetris</div>
+            <div style="font-size: 13px; color: var(--text-sub);">Iconic block-stacking puzzle game</div>
+        </a>
+        <a href="../wordle/index.html" style="display: block; background: var(--panel); border-radius: 12px; padding: 20px; text-decoration: none; color: var(--text-main); border: 1px solid var(--border); transition: all 0.2s;">
+            <div style="font-weight: bold; margin-bottom: 8px;">🔤 Wordle</div>
+            <div style="font-size: 13px; color: var(--text-sub);">Popular word guessing puzzle</div>
+        </a>
+        <a href="../index.html" style="display: block; background: var(--panel); border-radius: 12px; padding: 20px; text-decoration: none; color: var(--text-main); border: 1px solid var(--border); transition: all 0.2s; text-align: center;">
+            <div style="font-weight: bold;">🎮 View All Games →</div>
+        </a>
+    </div>
+</div>
+    <footer>
+      <p>Free online games to play anytime. Enjoy classic games, puzzles, and entertainment.</p>
+            <p style="margin: 8px 0; font-size: 13px;">
+        <a href="/about/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">About</a>
+        <a href="/privacy/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Privacy</a>
+        <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
+        <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
+      </p>
+      <p>© 2026 Knexio. All rights reserved.</p>
+    </footer>
+</div>
+
+<script>// Game init //
+  // Sudoku puzzles library (given, solution)
+const PUZZLES = {
+  easy: [
+    {g:[5,3,0,0,7,0,0,0,0,6,0,0,1,9,5,0,0,0,0,9,8,0,0,0,0,6,0,8,0,0,0,6,0,0,0,3,4,0,0,8,0,3,0,0,1,7,0,0,0,2,0,0,0,6,0,6,0,0,0,0,2,8,0,0,0,0,4,1,9,0,0,5,0,0,0,0,8,0,0,7,9],
+     s:[5,3,4,6,7,8,9,1,2,6,7,2,1,9,5,3,4,8,1,9,8,3,4,2,5,6,7,8,5,9,7,6,1,4,2,3,4,2,6,8,5,3,7,9,1,7,1,3,9,2,4,8,5,6,9,6,1,5,3,7,2,8,4,2,8,7,4,1,9,6,3,5,3,4,5,2,8,6,1,7,9]},
+    {g:[0,0,0,2,6,0,7,0,1,6,8,0,0,7,0,0,9,0,1,9,0,0,0,4,5,0,0,8,2,0,1,0,0,0,4,0,0,0,4,6,0,2,9,0,0,0,5,0,0,0,3,0,2,8,0,0,9,3,0,0,0,7,4,0,4,0,0,5,0,0,3,6,7,0,3,0,1,8,0,0,0],
+     s:[4,3,5,2,6,9,7,8,1,6,8,2,5,7,1,4,9,3,1,9,7,8,3,4,5,6,2,8,2,6,1,9,5,3,4,7,3,7,4,6,8,2,9,1,5,9,5,1,7,4,3,6,2,8,5,1,9,3,2,6,8,7,4,2,4,8,9,5,7,1,3,6,7,6,3,4,1,8,2,5,9]},
+  ],
+  medium: [
+    {g:[0,0,0,0,0,0,2,0,0,0,8,0,0,0,7,0,9,0,6,0,2,0,0,0,5,0,0,0,7,0,0,6,0,0,0,0,0,0,8,2,0,4,6,0,0,0,0,0,0,1,0,0,4,0,0,0,6,0,0,0,3,0,8,0,4,0,6,0,0,0,7,0,0,0,9,0,0,0,0,0,0],
+     s:[4,3,5,6,9,1,2,8,7,1,8,6,5,4,7,3,9,2,6,9,2,8,3,5,5,1,4,5,7,1,4,6,8,9,2,3,3,6,8,2,5,4,6,1,9,2,5,4,9,1,3,7,4,6,9,1,7,2,4,3,8,5,8,8,4,3,6,2,5,1,7,1,7,2,9,3,8,4,5,6,5]},
+    {g:[0,0,3,0,2,0,6,0,0,9,0,0,3,0,5,0,0,1,0,0,1,8,0,6,4,0,0,0,0,8,1,0,2,9,0,0,7,0,0,0,0,0,0,0,8,0,0,6,7,0,8,2,0,0,0,0,2,6,0,9,5,0,0,8,0,0,2,0,3,0,0,9,0,0,5,0,1,0,3,0,0],
+     s:[4,8,3,9,2,1,6,5,7,9,6,7,3,4,5,8,2,1,2,5,1,8,7,6,4,9,3,5,4,8,1,3,2,9,7,6,7,2,9,5,6,4,1,3,8,1,3,6,7,9,8,2,4,5,3,7,2,6,8,9,5,1,4,8,1,4,2,5,3,7,6,9,6,9,5,4,1,7,3,8,2]},
+  ],
+  hard: [
+    {g:[8,0,0,0,0,0,0,0,0,0,0,3,6,0,0,0,0,0,0,7,0,0,9,0,2,0,0,0,5,0,0,0,7,0,0,0,0,0,0,0,4,5,7,0,0,0,0,0,1,0,0,0,3,0,0,0,1,0,0,0,0,6,8,0,0,8,5,0,0,0,1,0,0,9,0,0,0,0,4,0,0],
+     s:[8,1,2,7,5,3,6,4,9,9,4,3,6,8,2,1,7,5,6,7,5,4,9,1,2,8,3,1,5,4,2,3,7,8,9,6,3,6,9,8,4,5,7,2,1,2,8,7,1,6,9,5,3,4,5,2,1,9,7,4,3,6,8,4,3,8,5,2,6,9,1,7,7,9,6,3,1,8,4,5,2]},
+    {g:[0,0,9,0,0,0,0,5,0,0,0,0,9,0,0,4,0,0,0,6,0,0,0,5,0,0,0,0,0,0,0,8,0,0,9,0,0,0,0,0,1,0,0,0,0,0,0,4,0,7,0,0,0,0,0,0,0,6,0,0,0,2,0,0,0,3,0,0,4,0,0,0,0,2,0,0,0,0,1,0,0],
+     s:[3,4,9,1,6,7,2,5,8,2,5,1,9,3,8,4,7,6,7,6,8,2,4,5,9,3,1,5,1,2,3,8,6,7,9,4,6,9,7,4,1,2,8,3,5,8,3,4,5,7,9,6,1,2,1,7,5,6,9,3,3,2,4,9,8,3,7,2,4,5,6,1,4,2,6,8,5,1,1,4,7]},
+  ]
+};
+
+let board=[],given=[],solution=[],selected=null,hintsRemaining=3,currentDiff='easy',timerSec=0,timerInt=null;
+
+function newGame(diff){
+  currentDiff=diff;
+  document.querySelectorAll('.diff-btn').forEach(b=>b.classList.toggle('active',b.textContent.toLowerCase()===diff));
+  const pool=PUZZLES[diff];
+  const puzzle=pool[Math.floor(Math.random()*pool.length)];
+  given=[...puzzle.g];solution=[...puzzle.s];
+  board=given.map(v=>v);
+  selected=null;hintsRemaining=3;
+  document.getElementById('hintsLeft').textContent=3;
+  document.getElementById('winBanner').style.display='none';
+  clearInterval(timerInt);timerSec=0;updateTimer();
+  timerInt=setInterval(()=>{timerSec++;updateTimer()},1000);
+  renderBoard();
+}
+
+function updateTimer(){
+  const m=Math.floor(timerSec/60),s=timerSec%60;
+  document.getElementById('timerEl').textContent=m+':'+(s<10?'0':'')+s;
+}
+
+function renderBoard(){
+  const boardEl=document.getElementById('board');
+  boardEl.innerHTML='';
+  for(let i=0;i<81;i++){
+    const cell=document.createElement('div');
+    cell.className='cell'+(given[i]?' given':'')+(i===selected?' selected':'');
+    // box borders
+    const col=i%9,row=Math.floor(i/9);
+    if(col===2||col===5)cell.classList.add('box-right');
+    if(row===2||row===5)cell.classList.add('box-bottom');
+    // highlight same row/col/box
+    if(selected!==null&&selected!==i){
+      const sc=selected%9,sr=Math.floor(selected/9);
+      const bc=Math.floor(col/3),bsc=Math.floor(sc/3);
+      const br=Math.floor(row/3),bsr=Math.floor(sr/3);
+      if(col===sc||row===sr||(bc===bsc&&br===bsr))cell.classList.add('highlight');
+    }
+    // conflict check
+    if(board[i]&&!given[i]){
+      if(hasConflict(i,board[i]))cell.classList.add('conflict');
+      else if(board[i]===solution[i])cell.classList.add('correct');
+    }
+    if(board[i])cell.textContent=board[i];
+    cell.addEventListener('click',()=>{selected=i;renderBoard()});
+    boardEl.appendChild(cell);
+  }
+}
+
+function hasConflict(idx,val){
+  const row=Math.floor(idx/9),col=idx%9;
+  for(let i=0;i<9;i++){
+    if(i!==idx&&Math.floor(i/9)===row&&board[i]===val)return true;
+    const c=row*9+i;if(c!==idx&&board[c]===val&&Math.floor(c/9)===row){}
+    const ci=i*9+col;if(ci!==idx&&board[ci]===val)return true;
+  }
+  const br=Math.floor(row/3)*3,bc=Math.floor(col/3)*3;
+  for(let r=br;r<br+3;r++)for(let c=bc;c<bc+3;c++){const ci=r*9+c;if(ci!==idx&&board[ci]===val)return true}
+  return false;
+}
+
+function inputNum(n){
+  if(selected===null||given[selected])return;
+  board[selected]=n||0;
+  renderBoard();
+  checkWin();
+}
+
+function useHint(){
+  if(hintsRemaining<=0){alert('No hints left!');return}
+  if(selected===null){alert('Select a cell first.');return}
+  if(given[selected]){alert('That cell is already given.');return}
+  board[selected]=solution[selected];
+  hintsRemaining--;
+  document.getElementById('hintsLeft').textContent=hintsRemaining;
+  renderBoard();checkWin();
+}
+
+function checkWin(){
+  for(let i=0;i<81;i++){if(board[i]!==solution[i])return}
+  clearInterval(timerInt);
+  const m=Math.floor(timerSec/60),s=timerSec%60;
+  document.getElementById('winBanner').style.display='block';
+  document.getElementById('winMsg').textContent='Completed in '+m+'m '+s+'s with '+hintsRemaining+'/3 hints remaining!';
+}
+
+document.addEventListener('keydown',e=>{
+  if(selected===null)return;
+  const n=parseInt(e.key);
+  if(n>=1&&n<=9)inputNum(n);
+  else if(e.key==='Backspace'||e.key==='Delete'||e.key==='0')inputNum(0);
+  else if(e.key==='ArrowRight'){selected=Math.min(80,selected+1);renderBoard()}
+  else if(e.key==='ArrowLeft'){selected=Math.max(0,selected-1);renderBoard()}
+  else if(e.key==='ArrowDown'){selected=Math.min(80,selected+9);renderBoard()}
+  else if(e.key==='ArrowUp'){selected=Math.max(0,selected-9);renderBoard()}
+  if(['ArrowRight','ArrowLeft','ArrowUp','ArrowDown'].includes(e.key))e.preventDefault();
+});
+
+newGame('easy');</script>
+  <script src="/knexio-bundle.js"></script>
+  <script src="../../cookie-consent.js"></script>
+</body>
+</html>

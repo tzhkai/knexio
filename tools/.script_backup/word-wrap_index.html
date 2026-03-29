@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Word Wrap Tool – Wrap Text to Any Width | Knexio</title>
+<meta name="description" content="">
+
+<link rel="canonical" href="">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Word Wrap Tool">
+<meta property="og:description" content="">
+<meta property="og:url" content="">
+<meta property="og:type" content="WebApplication">
+<meta property="og:site_name" content="Knexio">
+<meta property="og:image" content="https://knexio.xyz/og-image.png">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Word Wrap Tool",
+    "url": "https://knexio.xyz/tools/word-wrap/",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Any",
+    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+    "description": "Wrap or unwrap text to a custom character width. Perfect for code comments, emails, and terminal formatting."
+  }
+  
+</script>
+
+<style>
+
+:root{
+  --bg:#0b1220;
+  --card:#111a2e;
+  --border:rgba(255,255,255,.08);
+  --text:#fff;
+  --sub:#aab3c5;
+  --accent:#4f8cff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:system-ui,-apple-system;
+  background:var(--bg);
+  color:var(--text);
+}
+.container{max-width:900px;margin:auto;padding:50px 16px}
+
+/* 统一的返回按钮样式 */
+.back {
+  display: inline-block;
+  color: var(--sub);
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 24px;
+  transition: color 0.2s;
+}
+.back:hover {
+  color: var(--accent);
+}
+
+h1{font-size:32px;margin-bottom:8px}
+h2{font-size:22px;margin-top:30px;margin-bottom:10px}
+.subtitle{color:var(--sub);margin-bottom:24px}
+
+.badge{
+  display:inline-block;
+  padding:4px 10px;
+  border-radius:20px;
+  background:rgba(79,140,255,.15);
+  color:var(--accent);
+  font-size:12px;
+  margin-bottom:10px;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:20px;
+  margin-bottom:20px;
+}
+
+textarea{
+  width:100%;
+  min-height:180px;
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:12px;
+  color:var(--text);
+  padding:14px;
+  font-size:15px;
+}
+textarea:focus{outline:none;border-color:var(--accent)}
+
+.btn-row{display:flex;gap:10px;margin-top:12px}
+button{
+  flex:1;
+  padding:10px;
+  border-radius:10px;
+  border:none;
+  background:var(--accent);
+  color:#fff;
+  cursor:pointer;
+}
+button.secondary{
+  background:transparent;
+  border:1px solid var(--border);
+  color:var(--sub);
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-top:16px;
+}
+.stat{
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:16px;
+  text-align:center;
+}
+.stat span{
+  font-size:24px;
+  font-weight:700;
+  color:var(--accent);
+}
+.stat label{
+  display:block;
+  font-size:12px;
+  color:var(--sub);
+}
+
+.tip{
+  font-size:13px;
+  color:var(--sub);
+  margin-top:10px;
+}
+
+.section p{
+  color:var(--sub);
+  line-height:1.7;
+  margin-bottom:10px;
+}
+
+.tools a{
+  display:inline-block;
+  margin:6px;
+  padding:8px 14px;
+  border-radius:8px;
+  border:1px solid var(--border);
+  color:var(--sub);
+  text-decoration:none;
+}
+.tools a:hover{
+  border-color:var(--accent);
+  color:var(--accent);
+}
+
+/* 广告样式 */
+.ad-banner {
+  margin: 32px 0;
+  text-align: center;
+}
+
+/* 统一的 Footer 样式 */
+footer {
+  margin-top: 40px;
+  text-align: center;
+  color: var(--sub);
+  font-size: 13px;
+}
+footer p {
+  margin-bottom: 8px;
+}
+footer a {
+  color: var(--sub);
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color 0.2s;
+}
+footer a:hover {
+  color: var(--accent);
+}
+
+@media(max-width:600px){
+  .stats{grid-template-columns:1fr 1fr}
+}
+
+</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2596567349043393" crossorigin="anonymous"></script>
+</head>
+
+<body><div class="container">
+
+<a class="back" href="../index.html">← Back to Tools</a>
+
+<h1>Word Wrap Tool</h1>
+<p class="subtitle">Wrap long lines to a fixed column width, unwrap paragraphs into single lines, or remove hard line breaks. Great for email clients, code review, and terminal output.</p>
+
+<div class="ad-banner">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="3153457922"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<div class="container">
+  <a class="back" href="../index.html">← Back to Tools</a>
+  <h1>Word Wrap Tool</h1>
+  <div class="ad-banner">
+    <ins class="adsbygoogle" style="display:block"
+         data-ad-client="ca-pub-2596567349043393"
+         data-ad-slot="3153457922"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+  </div>
+
+      <p class="subtitle">Wrap long lines to a fixed column width, unwrap paragraphs into single lines, or remove hard line breaks. Great for email clients, code review, and terminal output.</p>
+
+  <div class="seo-section">
+    <h2>How to Use This Tool</h2>
+    <div class="step-block">
+      <h3>Step 1: Enter your input</h3>
+      <p>Type or paste your data into the input field.</p>
+    </div>
+    <div class="step-block">
+      <h3>Step 2: Click the action button</h3>
+      <p>Press the main action button to process your input.</p>
+    </div>
+    <div class="step-block">
+      <h3>Step 3: Copy or download results</h3>
+      <p>Use the Copy button to copy results, or Download to save.</p>
+    </div>
+  </div>
+
+  <div class="options">
+    <div class="opt-group">
+      <span class="opt-label">Line Width</span>
+      <input class="opt-input" type="number" id="opt-width" value="80" min="10" max="1000" oninput="process()" />
+    </div>
+    <div class="opt-group">
+      <span class="opt-label">Mode</span>
+      <select class="opt-input" id="opt-mode" onchange="process()">
+        <option value="wrap">Wrap text</option>
+        <option value="unwrap">Unwrap (join lines)</option>
+        <option value="trim">Remove all line breaks</option>
+      </select>
+    </div>
+    <div class="opt-group">
+      <span class="opt-label">Line Ending</span>
+      <select class="opt-input" id="opt-le" onchange="process()">
+        <option value="lf">LF (Unix)</option>
+        <option value="crlf">CRLF (Windows)</option>
+      </select>
+    </div>
+    <label class="opt-check">
+      <input type="checkbox" id="opt-preserve" checked onchange="process()" />
+      <span>Preserve blank lines</span>
+    </label>
+  </div>
+
+  <div class="panes">
+    <div class="pane">
+      <div class="pane-label">Input</div>
+      
+    <div class="stats" id="input-stats">0 characters · 0 lines</div>
+
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="copyOutput()">Copy Output</button>
+    <button class="btn btn-secondary" onclick="clearAll()">Clear</button>
+    <button class="btn btn-secondary" onclick="swapIO()">⇄ Swap</button>
+    </div>
+    <textarea class="text-area" id="input-ta" placeholder="Paste text here to wrap or unwrap it..." oninput="process()"></textarea>
+      
+    </div>
+    <div class="pane">
+      <div class="pane-label">Output</div>
+      <textarea class="readonly-ta" id="output-ta" readonly placeholder="Output will appear here..."></textarea>
+      
+    </div>
+  </div>
+
+  <div class="actions">
+    </div>
+
+  <div style="margin-top:60px;text-align:center;">
+
+  </div>
+    <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3153457922" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+  <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3153457922" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+  <section class="seo-section">
+    <h2>How to Use the Word Wrap Tool</h2>
+      <div class="step-block">
+        <h3>Step 1: Paste Your Text</h3>
+        <p>Enter the long text or code you want to wrap.</p>
+      </div>
+      <div class="step-block">
+        <h3>Step 2: Set the Column Width</h3>
+        <p>Enter the maximum number of characters per line (default: 80).</p>
+      </div>
+      <div class="step-block">
+        <h3>Step 3: Copy the Wrapped Text</h3>
+        <p>Click Copy to grab the formatted output.</p>
+      </div>
+
+    <h2>What Is a Word Wrap Tool?</h2>
+    <p>A word wrap tool automatically inserts line breaks into long lines of text at a specified column width — useful for formatting code, emails, and terminal output.</p>
+
+    <h2>Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <h3>Does word wrap break words mid-character?</h3>
+        <p>No. It wraps at word boundaries to keep words intact.</p>
+      </div>
+  </section>
+
+<div class="ad-banner" style="margin-top:40px">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="3153457922"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<footer>
+  <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
+  <p>
+    <a href="/about/">About</a> •
+    <a href="/privacy/">Privacy Policy</a> •
+    <a href="/terms/">Terms of Service</a>
+  </p>
+</footer>
+
+</div>
+
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</body>
+</html>

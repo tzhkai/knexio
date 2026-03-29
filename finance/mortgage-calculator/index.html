@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mortgage Calculator – Monthly Home Loan Payment | Knexio</title>
+  <meta name="description" content="Free mortgage calculator to estimate monthly home loan payments, total interest, and amortization schedule. Includes property taxes, insurance, and PMI.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://knexio.xyz/finance/mortgage-calculator/">
+  <meta property="og:title" content="Mortgage Calculator – Monthly Home Loan Payment">
+  <meta property="og:description" content="Free mortgage calculator for monthly payments, total interest, and amortization schedule.">
+  <meta property="og:url" content="https://knexio.xyz/finance/mortgage-calculator/">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"Mortgage Calculator","url":"https://knexio.xyz/finance/mortgage-calculator/","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Free mortgage calculator to estimate monthly home loan payments, total interest, and amortization schedule."}
+  </script>
+  <style>
+    :root{--bg:#0b1220;--card:#111a2e;--border:rgba(255,255,255,0.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:linear-gradient(180deg,#0b1220,#070d1a);color:var(--text);line-height:1.6;min-height:100vh}
+    a{color:var(--accent);text-decoration:none}
+    .container{max-width:920px;margin:0 auto;padding:60px 20px 100px}
+    .back{display:inline-block;color:var(--sub);font-size:14px;margin-bottom:28px;transition:color 0.2s}
+    .back:hover{color:var(--accent)}
+    h1{font-size:34px;font-weight:700;margin-bottom:8px}
+    .subtitle{font-size:15px;color:var(--sub);margin-bottom:32px}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px;margin-bottom:24px}
+    .panel-title{font-size:16px;font-weight:600;color:var(--accent);margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+    .form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    .form-field{display:flex;flex-direction:column}
+    .form-field.full-width{grid-column:1/-1}
+    label{font-size:13px;color:var(--sub);margin-bottom:6px;font-weight:500}
+    input,select{width:100%;padding:12px 16px;background:var(--bg);border:1px solid var(--border);border-radius:12px;color:var(--text);font-size:15px;font-family:inherit;transition:border-color 0.2s}
+    input:focus,select:focus{outline:none;border-color:var(--accent)}
+    .btn-row{display:flex;gap:12px;margin-top:20px}
+    .btn-primary{padding:12px 28px;border:none;border-radius:10px;background:var(--accent);color:#fff;font-size:15px;font-weight:600;cursor:pointer;transition:background 0.2s;flex:1}
+    .btn-primary:hover{background:#3d7de0}
+    .btn-secondary{padding:12px 20px;border:1px solid var(--border);border-radius:10px;background:transparent;color:var(--sub);font-size:15px;font-weight:500;cursor:pointer;transition:all 0.2s}
+    .btn-secondary:hover{border-color:var(--accent);color:var(--accent)}
+    .results{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px;margin-bottom:24px;min-height:120px}
+    .result-header{font-size:16px;font-weight:600;color:var(--accent);margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+    .result-highlight{text-align:center;padding:24px;margin-bottom:20px}
+    .result-big{font-size:48px;font-weight:800;color:var(--accent);line-height:1}
+    .result-big-label{font-size:14px;color:var(--sub);margin-top:8px}
+    .result-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);font-size:14px}
+    .result-row:last-child{border-bottom:none}
+    .result-label{color:var(--sub)}
+    .result-value{font-weight:600;color:var(--text)}
+    .result-value.accent{color:var(--accent)}
+    .result-placeholder{text-align:center;padding:40px 0;color:var(--sub);font-size:15px}
+    .amortization-wrap{margin-top:20px;overflow-x:auto}
+    .amortization-table{width:100%;border-collapse:collapse;font-size:13px}
+    .amortization-table th{background:var(--bg);padding:10px 12px;text-align:left;color:var(--sub);font-weight:600;border-bottom:1px solid var(--border);white-space:nowrap}
+    .amortization-table td{padding:9px 12px;border-bottom:1px solid var(--border);color:var(--text)}
+    .amortization-table tr:hover td{background:rgba(255,255,255,0.02)}
+    .table-scroll{max-height:300px;overflow-y:auto}
+    .ad-banner{margin:32px 0;text-align:center}
+    .section{margin-top:60px}
+    .section h2{font-size:24px;margin-bottom:12px}
+    .section p{color:var(--sub);line-height:1.75;font-size:15px}
+    .faq{margin-top:60px}
+    .faq h2{font-size:24px;margin-bottom:20px}
+    .faq-item{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;margin-bottom:20px}
+    .faq-item h3{font-size:16px;margin:0 0 8px}
+    .faq-item p{color:var(--sub);font-size:14px;line-height:1.7;margin:0}
+    footer{text-align:center;padding:40px 20px;border-top:1px solid var(--border);margin-top:20px;color:var(--sub);font-size:14px}
+    footer a{color:var(--sub);margin:0 10px;transition:color 0.2s}
+    footer a:hover{color:var(--accent)}
+    footer p{margin-bottom:8px}
+    @media(max-width:680px){.form-grid{grid-template-columns:1fr}.container{padding:40px 16px 80px}h1{font-size:28px}.btn-row{flex-direction:column}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a class="back" href="../">← Back to Finance</a>
+    <h1>Mortgage Calculator</h1>
+    <p class="subtitle">Calculate your monthly mortgage payments with detailed amortization schedule</p>
+
+    <div class="ad-banner">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="5794572171" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+    <div class="card">
+      <div class="panel-title">Loan Details</div>
+      <div class="form-grid">
+        <div class="form-field">
+          <label for="homePrice">Home Price ($)</label>
+          <input type="number" id="homePrice" value="350000" min="0" step="1000">
+        </div>
+        <div class="form-field">
+          <label for="downPayment">Down Payment ($)</label>
+          <input type="number" id="downPayment" value="70000" min="0" step="1000">
+        </div>
+        <div class="form-field">
+          <label for="interestRate">Interest Rate (%)</label>
+          <input type="number" id="interestRate" value="6.5" min="0" max="20" step="0.1">
+        </div>
+        <div class="form-field">
+          <label for="loanTerm">Loan Term</label>
+          <select id="loanTerm">
+            <option value="10">10 years</option>
+            <option value="15">15 years</option>
+            <option value="20">20 years</option>
+            <option value="25">25 years</option>
+            <option value="30" selected>30 years</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="propertyTax">Property Tax ($/year)</label>
+          <input type="number" id="propertyTax" value="3600" min="0" step="100">
+        </div>
+        <div class="form-field">
+          <label for="insurance">Home Insurance ($/year)</label>
+          <input type="number" id="insurance" value="1200" min="0" step="100">
+        </div>
+        <div class="form-field">
+          <label for="pmi">PMI (%)</label>
+          <input type="number" id="pmi" value="0" min="0" max="2" step="0.1">
+        </div>
+        <div class="form-field">
+          <label for="startDate">Start Date</label>
+          <input type="date" id="startDate">
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="calculate()">Calculate</button>
+        <button class="btn-secondary" onclick="clearForm()">Reset</button>
+      </div>
+    </div>
+
+    <div class="results" id="results">
+      <div class="result-placeholder">Enter your loan details and click <strong>Calculate</strong> to see results</div>
+    </div>
+
+    <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+    <div class="section">
+      <h2>Free Online Mortgage Calculator</h2>
+      <p>Our mortgage calculator helps you estimate your monthly mortgage payments, including principal, interest, property taxes, insurance, and PMI. Use it to plan your home purchase and understand your total housing costs. Calculate monthly payments, total interest, and view a complete amortization schedule showing how each payment is applied to principal and interest over time.</p>
+    </div>
+
+    <div class="section">
+      <h2>How It Works</h2>
+      <p>Enter your home price and down payment to determine the loan amount. Add your interest rate, loan term, and optional costs like property taxes, insurance, and PMI. Click Calculate to see a full breakdown including an amortization schedule. The calculator uses the standard amortization formula to calculate your monthly principal and interest payment, then adds monthly property tax, insurance, and PMI to determine your total monthly payment.</p>
+      <p>The amortization schedule shows each payment over the life of your loan, breaking down how much goes toward principal and interest. You can see how your loan balance decreases over time and how much interest you'll pay in total. This helps you understand the true cost of your mortgage and plan your finances accordingly.</p>
+      <p>Our calculator includes support for PMI (Private Mortgage Insurance), which is typically required if your down payment is less than 20% of the home price. You can also enter property tax and insurance amounts to get a complete picture of your monthly housing costs. The calculator works for both fixed-rate mortgages and can help you compare different loan terms to find the best option for your budget.</p>
+    </div>
+
+    <div class="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <h3>What is a mortgage calculator?</h3>
+        <p>A mortgage calculator is a tool that helps you estimate your monthly mortgage payments based on loan amount, interest rate, loan term, and additional costs like taxes and insurance.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How do I use this mortgage calculator?</h3>
+        <p>Enter the home price, down payment, interest rate, loan term, and optional costs like property tax, insurance, and PMI. Click Calculate to see your monthly payment breakdown and amortization schedule.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What is PMI and when is it required?</h3>
+        <p>PMI (Private Mortgage Insurance) is typically required if your down payment is less than 20% of the home price. It protects the lender in case you default on the loan and usually costs 0.5-2% of the loan amount annually.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What is an amortization schedule?</h3>
+        <p>An amortization schedule shows each payment over the life of your loan, breaking down how much goes toward principal and interest. It helps you see how your loan balance decreases over time.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How accurate are mortgage calculator estimates?</h3>
+        <p>Mortgage calculator estimates are accurate for standard fixed-rate mortgages. However, actual payments may vary due to factors like rate changes, additional fees, or changes in property taxes and insurance.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Is this mortgage calculator free to use?</h3>
+        <p>Yes, our mortgage calculator is completely free to use with no registration required. Calculate unlimited scenarios to help you plan your home purchase.</p>
+      </div>
+    </div>
+
+    <footer>
+      <p>Free financial calculators for mortgages, loans, investments, and budgeting. Plan your finances with ease.</p>
+      <p style="margin:8px 0;font-size:13px">
+        <a href="/about/" style="color:var(--accent)">About</a>
+        <a href="/privacy/" style="color:var(--accent)">Privacy</a>
+        <a href="/terms/" style="color:var(--accent)">Terms</a>
+        <a href="/contact/" style="color:var(--accent)">Contact</a>
+      </p>
+      <p>© 2026 Knexio. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('startDate').valueAsDate = new Date();
+
+    function fmt(n) { return n.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}); }
+
+    function calculate() {
+      const homePrice = parseFloat(document.getElementById('homePrice').value) || 0;
+      const downPayment = parseFloat(document.getElementById('downPayment').value) || 0;
+      const annualRate = parseFloat(document.getElementById('interestRate').value) || 0;
+      const years = parseInt(document.getElementById('loanTerm').value);
+      const propTax = (parseFloat(document.getElementById('propertyTax').value) || 0) / 12;
+      const insur = (parseFloat(document.getElementById('insurance').value) || 0) / 12;
+      const pmiRate = (parseFloat(document.getElementById('pmi').value) || 0) / 100;
+
+      const principal = homePrice - downPayment;
+      if (principal <= 0) { alert('Home price must be greater than down payment.'); return; }
+
+      const monthlyRate = annualRate / 100 / 12;
+      const n = years * 12;
+      let pi = 0;
+      if (monthlyRate === 0) {
+        pi = principal / n;
+      } else {
+        pi = principal * (monthlyRate * Math.pow(1 + monthlyRate, n)) / (Math.pow(1 + monthlyRate, n) - 1);
+      }
+      const monthlyPMI = pmiRate * principal / 12;
+      const totalMonthly = pi + propTax + insur + monthlyPMI;
+      const totalPaid = pi * n + (propTax + insur + monthlyPMI) * n;
+      const totalInterest = (pi * n) - principal;
+
+      const html = `
+        <div class="result-header">Mortgage Summary</div>
+        <div class="result-highlight">
+          <div class="result-big">$${fmt(totalMonthly)}</div>
+          <div class="result-big-label">Total Monthly Payment</div>
+        </div>
+        <div class="result-row"><span class="result-label">Loan Amount</span><span class="result-value">$${fmt(principal)}</span></div>
+        <div class="result-row"><span class="result-label">Principal & Interest</span><span class="result-value accent">$${fmt(pi)}</span></div>
+        <div class="result-row"><span class="result-label">Property Tax (monthly)</span><span class="result-value">$${fmt(propTax)}</span></div>
+        <div class="result-row"><span class="result-label">Home Insurance (monthly)</span><span class="result-value">$${fmt(insur)}</span></div>
+        <div class="result-row"><span class="result-label">PMI (monthly)</span><span class="result-value">$${fmt(monthlyPMI)}</span></div>
+        <div class="result-row"><span class="result-label">Total Interest</span><span class="result-value">$${fmt(totalInterest)}</span></div>
+        <div class="result-row"><span class="result-label">Total Amount Paid</span><span class="result-value">$${fmt(totalPaid)}</span></div>
+        <div class="result-header" style="margin-top:24px">Amortization Schedule</div>
+        <div class="amortization-wrap"><div class="table-scroll">${buildAmortization(principal, monthlyRate, n, pi)}</div></div>
+      `;
+      document.getElementById('results').innerHTML = html;
+    }
+
+    function buildAmortization(principal, rate, n, pi) {
+      let bal = principal;
+      let rows = '';
+      for (let i = 1; i <= n; i++) {
+        const interest = bal * rate;
+        const princPay = pi - interest;
+        bal = Math.max(0, bal - princPay);
+        rows += `<tr><td>${i}</td><td>$${fmt(pi)}</td><td>$${fmt(Math.max(0,princPay))}</td><td>$${fmt(interest)}</td><td>$${fmt(bal)}</td></tr>`;
+      }
+      return `<table class="amortization-table"><thead><tr><th>Month</th><th>Payment</th><th>Principal</th><th>Interest</th><th>Balance</th></tr></thead><tbody>${rows}</tbody></table>`;
+    }
+
+    function clearForm() {
+      document.getElementById('homePrice').value = '350000';
+      document.getElementById('downPayment').value = '70000';
+      document.getElementById('interestRate').value = '6.5';
+      document.getElementById('loanTerm').value = '30';
+      document.getElementById('propertyTax').value = '3600';
+      document.getElementById('insurance').value = '1200';
+      document.getElementById('pmi').value = '0';
+      document.getElementById('startDate').valueAsDate = new Date();
+      document.getElementById('results').innerHTML = '<div class="result-placeholder">Enter your loan details and click <strong>Calculate</strong> to see results</div>';
+    }
+  </script>
+  <script src="/knexio-bundle.js"></script>
+</body>
+</html>

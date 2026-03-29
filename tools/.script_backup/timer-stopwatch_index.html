@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Online Timer & Stopwatch – Free Countdown Timer | Knexio</title>
+<meta name="description" content="">
+
+<link rel="canonical" href="">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Timer & Stopwatch">
+<meta property="og:description" content="">
+<meta property="og:url" content="">
+<meta property="og:type" content="WebApplication">
+<meta property="og:site_name" content="Knexio">
+<meta property="og:image" content="https://knexio.xyz/og-image.png">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Online Timer & Stopwatch",
+    "url": "https://knexio.xyz/tools/timer-stopwatch/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+    "description": "Free online countdown timer and stopwatch with lap recording and audio alerts."
+  }
+  
+</script>
+
+<style>
+
+:root{
+  --bg:#0b1220;
+  --card:#111a2e;
+  --border:rgba(255,255,255,.08);
+  --text:#fff;
+  --sub:#aab3c5;
+  --accent:#4f8cff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:system-ui,-apple-system;
+  background:var(--bg);
+  color:var(--text);
+}
+.container{max-width:900px;margin:auto;padding:50px 16px}
+
+/* 统一的返回按钮样式 */
+.back {
+  display: inline-block;
+  color: var(--sub);
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 24px;
+  transition: color 0.2s;
+}
+.back:hover {
+  color: var(--accent);
+}
+
+h1{font-size:32px;margin-bottom:8px}
+h2{font-size:22px;margin-top:30px;margin-bottom:10px}
+.subtitle{color:var(--sub);margin-bottom:24px}
+
+.badge{
+  display:inline-block;
+  padding:4px 10px;
+  border-radius:20px;
+  background:rgba(79,140,255,.15);
+  color:var(--accent);
+  font-size:12px;
+  margin-bottom:10px;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:20px;
+  margin-bottom:20px;
+}
+
+textarea{
+  width:100%;
+  min-height:180px;
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:12px;
+  color:var(--text);
+  padding:14px;
+  font-size:15px;
+}
+textarea:focus{outline:none;border-color:var(--accent)}
+
+.btn-row{display:flex;gap:10px;margin-top:12px}
+button{
+  flex:1;
+  padding:10px;
+  border-radius:10px;
+  border:none;
+  background:var(--accent);
+  color:#fff;
+  cursor:pointer;
+}
+button.secondary{
+  background:transparent;
+  border:1px solid var(--border);
+  color:var(--sub);
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-top:16px;
+}
+.stat{
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:16px;
+  text-align:center;
+}
+.stat span{
+  font-size:24px;
+  font-weight:700;
+  color:var(--accent);
+}
+.stat label{
+  display:block;
+  font-size:12px;
+  color:var(--sub);
+}
+
+.tip{
+  font-size:13px;
+  color:var(--sub);
+  margin-top:10px;
+}
+
+.section p{
+  color:var(--sub);
+  line-height:1.7;
+  margin-bottom:10px;
+}
+
+.tools a{
+  display:inline-block;
+  margin:6px;
+  padding:8px 14px;
+  border-radius:8px;
+  border:1px solid var(--border);
+  color:var(--sub);
+  text-decoration:none;
+}
+.tools a:hover{
+  border-color:var(--accent);
+  color:var(--accent);
+}
+
+/* 广告样式 */
+.ad-banner {
+  margin: 32px 0;
+  text-align: center;
+}
+
+/* 统一的 Footer 样式 */
+footer {
+  margin-top: 40px;
+  text-align: center;
+  color: var(--sub);
+  font-size: 13px;
+}
+footer p {
+  margin-bottom: 8px;
+}
+footer a {
+  color: var(--sub);
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color 0.2s;
+}
+footer a:hover {
+  color: var(--accent);
+}
+
+@media(max-width:600px){
+  .stats{grid-template-columns:1fr 1fr}
+}
+
+</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2596567349043393" crossorigin="anonymous"></script>
+</head>
+
+<body><div class="container">
+
+<a class="back" href="../index.html">← Back to Tools</a>
+
+<h1>Timer & Stopwatch</h1>
+<p class="subtitle">Free online countdown timer and stopwatch. Set a custom time, record laps, and get an audio alert when the countdown finishes.</p>
+
+<div class="ad-banner">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="3153457922"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<div class="container">
+  <a class="back" href="../index.html">← Back to Tools</a>
+  <h1>Timer & Stopwatch</h1>
+  <div class="ad-banner">
+    <ins class="adsbygoogle" style="display:block"
+         data-ad-client="ca-pub-2596567349043393"
+         data-ad-slot="3153457922"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+  </div>
+
+      <p class="subtitle">Free online countdown timer and stopwatch. Set a custom time, record laps, and get an audio alert when the countdown finishes.</p>
+
+  <div class="seo-section">
+    <h2>How to Use This Tool</h2>
+    <div class="step-block">
+      <h3>Step 1: Choose mode</h3>
+      <p>Switch between Stopwatch and Countdown Timer using the tabs.</p>
+    </div>
+    <div class="step-block">
+      <h3>Step 2: Start and stop</h3>
+      <p>Click Start to begin, Pause to pause, and Reset to clear.</p>
+    </div>
+    <div class="step-block">
+      <h3>Step 3: Lap times</h3>
+      <p>In stopwatch mode, click Lap to record split times.</p>
+    </div>
+  </div>
+
+  <!-- AdSense top -->
+
+  <div class="tabs">
+    <div class="btn-row">
+      <button class="btn tab-btn active" onclick="switchTab('timer')">⏱ Countdown Timer</button>
+    <button class="btn tab-btn" onclick="switchTab('stopwatch')">⏲ Stopwatch</button>
+    </div></div>
+
+  <!-- Timer Panel -->
+  <div class="tab-panel active" id="tab-timer">
+    <div class="timer-box">
+      <div class="time-display" id="timer-display">00:00:00</div>
+
+      <div class="inputs">
+        <div class="input-group">
+          <label>Hours</label>
+          <input class="time-input" type="number" id="t-h" value="0" min="0" max="23" />
+        </div>
+        <div class="input-group">
+          <label>Minutes</label>
+          <input class="time-input" type="number" id="t-m" value="5" min="0" max="59" />
+        </div>
+        <div class="input-group">
+          <label>Seconds</label>
+          <input class="time-input" type="number" id="t-s" value="0" min="0" max="59" />
+        </div>
+      </div>
+
+      <div class="presets">
+        <span class="preset" onclick="setPreset(0,1,0)">1 min</span>
+        <span class="preset" onclick="setPreset(0,3,0)">3 min</span>
+        <span class="preset" onclick="setPreset(0,5,0)">5 min</span>
+        <span class="preset" onclick="setPreset(0,10,0)">10 min</span>
+        <span class="preset" onclick="setPreset(0,15,0)">15 min</span>
+        <span class="preset" onclick="setPreset(0,25,0)">25 min</span>
+        <span class="preset" onclick="setPreset(0,30,0)">30 min</span>
+        <span class="preset" onclick="setPreset(1,0,0)">1 hr</span>
+      </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Stopwatch Panel -->
+  <div class="tab-panel" id="tab-stopwatch">
+    <div class="timer-box">
+      <div class="time-display" id="sw-display">00:00.000</div>
+      </div>
+      <div class="lap-list" id="lap-list"></div>
+    </div>
+
+  <!-- AdSense mid -->
+  <div style="margin-top:60px;text-align:center;">
+
+  </div>
+    <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3153457922" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+  <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3153457922" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+  <section class="seo-section">
+    <h2>How to Use the Timer & Stopwatch</h2>
+      <div class="step-block">
+        <h3>Step 1: Choose Timer or Stopwatch</h3>
+        <p>Switch between modes using the tabs at the top.</p>
+      </div>
+      <div class="step-block">
+        <h3>Step 2: Set the Time (Timer)</h3>
+        <p>Enter hours, minutes, and seconds, then click Start.</p>
+      </div>
+      <div class="step-block">
+        <h3>Step 3: Start / Lap / Reset (Stopwatch)</h3>
+        <p>Click Start to begin, Lap to record split times, and Reset to clear.</p>
+      </div>
+
+    <h2>What Is a Timer & Stopwatch?</h2>
+    <p>A combined timer and stopwatch tool for tracking time in the browser — useful for workouts, cooking, study sessions, and productivity techniques like the Pomodoro method.</p>
+
+    <h2>Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <h3>Will the timer work if I switch tabs?</h3>
+        <p>Yes. The timer continues running in the background and will alert you when it reaches zero.</p>
+
+<div class="ad-banner" style="margin-top:40px">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="3153457922"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<footer>
+  <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
+  <p>
+    <a href="/about/">About</a> •
+    <a href="/privacy/">Privacy Policy</a> •
+    <a href="/terms/">Terms of Service</a>
+  </p>
+</footer>
+
+</div>
+
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</body>
+</html>

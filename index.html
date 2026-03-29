@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Knexio – Free Tools & Practical Guides</title>
+
+  <meta name="description" content="Knexio offers free online tools, step-by-step guides, finance calculators, business tools, AI prompt generators, and browser games. Word counters, mortgage calculator, email signatures, and more." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://knexio.xyz/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Knexio – Free Tools & Practical Guides" />
+  <meta property="og:description" content="Free online tools and step-by-step guides for writing, productivity, and everyday software problems." />
+  <meta property="og:url" content="https://knexio.xyz/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Knexio" />
+  <meta property="og:image" content="https://knexio.xyz/og-image.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Knexio – Free Tools & Practical Guides" />
+  <meta name="twitter:description" content="Free online tools and step-by-step guides for writing, productivity, and everyday software problems." />
+
+  <!-- Google AdSense - 由 adsense-optimize.js 管理 -->
+  <!-- 不在这里加载，避免重复 -->
+
+  <!-- Schema: WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Knexio",
+    "url": "https://knexio.xyz/",
+    "description": "Free online tools and practical guides for writing, productivity, and everyday software problems.",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://knexio.xyz/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+  <!-- Schema: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Knexio",
+    "url": "https://knexio.xyz/",
+    "logo": "https://knexio.xyz/og-image.png"
+  }
+  </script>
+<style>
+
+    :root {
+      --bg-dark: #0b1220;
+      --bg-dark-2: #070d1a;
+      --panel: #111a2e;
+      --border: rgba(255,255,255,0.08);
+      --text-main: #ffffff;
+      --text-sub: #aab3c5;
+      --accent: #4f8cff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
+      background: linear-gradient(180deg, var(--bg-dark), var(--bg-dark-2));
+      color: var(--text-main);
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 100px 20px 120px;
+      text-align: center;
+    }
+
+    h1 { font-size: 42px; margin-bottom: 16px; }
+
+    .subtitle {
+      font-size: 18px;
+      color: var(--text-sub);
+      max-width: 720px;
+      margin: 0 auto 48px;
+      line-height: 1.6;
+    }
+
+    /* Ad banner */
+    .ad-banner {
+      margin: 0 auto 48px;
+      max-width: 728px;
+      text-align: center;
+    }
+
+    .nav-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .nav-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 40px 32px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      min-height: 280px;
+    }
+
+    .nav-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 40px rgba(0,0,0,0.35);
+    }
+
+    .nav-card h2 { font-size: 26px; margin-bottom: 14px; }
+
+    .nav-card p {
+      font-size: 15px;
+      color: var(--text-sub);
+      line-height: 1.7;
+      margin-bottom: 26px;
+      flex: 1;
+    }
+
+    .nav-card .btn {
+      display: inline-block;
+      padding: 12px 26px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    /* Featured links section */
+    .featured {
+      margin-top: 80px;
+      text-align: left;
+    }
+
+    .featured h2 {
+      font-size: 22px;
+      margin-bottom: 20px;
+      color: var(--text-main);
+    }
+
+    .link-group {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+
+    .link-group a {
+      display: block;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 14px;
+      color: var(--text-sub);
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    .link-group a:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .link-group a span {
+      display: block;
+      font-size: 11px;
+      color: #5a6a82;
+      margin-top: 3px;
+    }
+
+    .seo-section {
+      margin-top: 60px;
+      text-align: left;
+      max-width: 760px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .seo-section h2 { font-size: 24px; margin-bottom: 12px; }
+
+    .seo-section p {
+      color: var(--text-sub);
+      line-height: 1.8;
+      font-size: 15px;
+    }
+
+    footer {
+      margin-top: 100px;
+      font-size: 13px;
+      color: var(--text-sub);
+      text-align: center;
+    }
+
+    footer a { color: var(--accent); text-decoration: none; }
+
+    /* ==================== 移动端优化 ==================== */
+
+    /* 平板和手机 (≤768px) */
+    @media (max-width: 768px) {
+      .container {
+        padding: 60px 15px 80px !important;
+        max-width: 100% !important;
+      }
+
+      h1 {
+        font-size: 32px !important;
+        margin-bottom: 12px !important;
+      }
+
+      .subtitle {
+        font-size: 16px !important;
+        margin-bottom: 36px !important;
+        max-width: 100% !important;
+      }
+
+      .nav-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 20px !important;
+      }
+
+      .nav-card {
+        min-height: 260px !important;
+        padding: 32px 24px !important;
+      }
+
+      .nav-card h2 {
+        font-size: 22px !important;
+        margin-bottom: 12px !important;
+      }
+
+      .nav-card p {
+        font-size: 14px !important;
+        margin-bottom: 24px !important;
+      }
+
+      .nav-card .btn {
+        padding: 10px 22px !important;
+        font-size: 13px !important;
+      }
+
+      .featured {
+        margin-top: 60px !important;
+      }
+
+      .featured h2 {
+        font-size: 20px !important;
+        margin-bottom: 16px !important;
+      }
+
+      .link-group {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px !important;
+      }
+    }
+
+    /* 小手机 (≤480px) */
+    @media (max-width: 480px) {
+      .container {
+        padding: 40px 12px 60px !important;
+      }
+
+      h1 {
+        font-size: 28px !important;
+      }
+
+      .subtitle {
+        font-size: 15px !important;
+        margin-bottom: 32px !important;
+      }
+
+      .nav-grid {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+      }
+
+      .nav-card {
+        min-height: 240px !important;
+        padding: 28px 20px !important;
+      }
+
+      .nav-card h2 {
+        font-size: 20px !important;
+      }
+
+      .nav-card p {
+        font-size: 13.5px !important;
+        line-height: 1.6 !important;
+        margin-bottom: 22px !important;
+      }
+
+      .nav-card .btn {
+        padding: 9px 20px !important;
+        font-size: 12.5px !important;
+      }
+
+      .featured h2 {
+        font-size: 18px !important;
+      }
+
+      .link-group {
+        grid-template-columns: 1fr !important;
+      }
+
+      footer {
+        margin-top: 60px !important;
+        font-size: 12px !important;
+      }
+    }
+
+</style>
+</head>
+
+<body><a href="cdn-cgi/content-okyNH5dT2uSzFPotWVrzTkWBGA_I9CSDIExkGSj3dPE.html" aria-hidden="true" rel="nofollow noopener" style="display: none !important; visibility: hidden !important"></a>
+  <div class="container">
+    <h1>Knexio</h1>
+
+    <div class="subtitle">
+      A collection of free online tools and practical guides designed to help you
+      solve everyday software, app, and productivity problems.
+    </div>
+
+
+
+    <div class="nav-grid">
+      <div class="nav-card">
+        <h2>🛠 Tools</h2>
+        <p>
+          Fast, simple, and free online tools for writing, content creation,
+          and productivity.
+        </p>
+        <a class="btn" href="tools/index.html">Explore Tools</a>
+      </div>
+
+      <div class="nav-card">
+        <h2>📘 Guides</h2>
+        <p>
+          Clear, step-by-step tutorials that help you fix common issues
+          in popular software and apps.
+        </p>
+        <a class="btn" href="guides/index.html">Browse Guides</a>
+      </div>
+
+      <div class="nav-card">
+        <h2>🎮 Games</h2>
+        <p>
+          Play free mini-games directly in your browser. 2048, Word Guess, Memory Match,
+          Whack-a-Mole, and Reaction Speed Test — no download needed.
+        </p>
+        <a class="btn" href="games/index.html">Play Games</a>
+      </div>
+
+      <div class="nav-card">
+        <h2>💰 Finance</h2>
+        <p>
+          Free finance calculators for mortgages, loans, investments, retirement,
+          and debt payoff planning.
+        </p>
+        <a class="btn" href="finance/index.html">Calculate</a>
+      </div>
+
+      <div class="nav-card">
+        <h2>💼 Business</h2>
+        <p>
+          Professional business tools including email signatures, contract templates,
+          meeting agendas, and brand name generators.
+        </p>
+        <a class="btn" href="business/index.html">Explore</a>
+      </div>
+
+      <div class="nav-card">
+        <h2>🤖 AI Tools</h2>
+        <p>
+          AI-powered tools for prompt generation, content rewriting, and optimization.
+          ChatGPT, Midjourney, and more.
+        </p>
+        <a class="btn" href="ai-tools/index.html">Generate</a>
+      </div>
+    </div>
+
+    <div class="seo-section">
+      <h2>About Knexio</h2>
+      <p>
+        Knexio is a growing collection of free browser-based tools built for writers,
+        students, SEO professionals, and everyday users. No registration, no installation —
+        just fast, accurate tools that work directly in your browser.
+        From word counters to reading time calculators, every tool is designed to save
+        you time and help you work smarter.
+      </p>
+    </div>
+
+    <!-- Featured Pages – direct links for SEO crawlability -->
+    <div class="featured">
+      <h2>Popular Tools</h2>
+      <div class="link-group">
+        <a href="tools/word-counter/index.html">Word Counter<span>Count words instantly</span></a>
+        <a href="tools/sentence-counter/index.html">Sentence Counter<span>Count sentences in text</span></a>
+        <a href="tools/character-counter/index.html">Character Counter<span>Count characters &amp; spaces</span></a>
+        <a href="tools/reading-time/index.html">Reading Time Calculator<span>Estimate read time</span></a>
+        <a href="tools/case-converter/index.html">Case Converter<span>UPPER / lower / Title case</span></a>
+        <a href="tools/sentence-length-checker/index.html">Sentence Length Checker<span>Analyze sentence complexity</span></a>
+        <a href="tools/count-sentences-in-text/index.html">Count Sentences in Text<span>Detailed sentence analysis</span></a>
+        <a href="tools/sentence-counter-online/index.html">Sentence Counter Online<span>Fast online sentence tool</span></a>
+        <a href="tools/sentence-counter-for-essays/index.html">Essay Sentence Counter<span>Optimize essay structure</span></a>
+        <a href="tools/json-formatter/index.html">JSON Formatter<span>Beautify, minify & validate JSON</span></a>
+        <a href="tools/hash-generator/index.html">Hash Generator<span>MD5, SHA-256, SHA-512</span></a>
+        <a href="tools/number-base-converter/index.html">Number Base Converter<span>Binary, Octal, Hex, Decimal</span></a>
+        <a href="tools/remove-duplicate-lines/index.html">Remove Duplicate Lines<span>Deduplicate any text list</span></a>
+        <a href="tools/screen-resolution/index.html">Screen Resolution Detector<span>Check DPI & viewport size</span></a>
+        <a href="tools/regex-tester/index.html">Regex Tester<span>Test patterns in real time</span></a>
+        <a href="tools/json-to-csv/index.html">JSON to CSV Converter<span>Convert arrays to spreadsheet</span></a>
+        <a href="tools/word-frequency/index.html">Word Frequency Counter<span>Analyze keyword density</span></a>
+        <a href="tools/css-minifier/index.html">CSS Minifier<span>Compress CSS & save bandwidth</span></a>
+        <a href="tools/slug-generator/index.html">URL Slug Generator<span>SEO-friendly URL slugs</span></a>
+        <a href="tools/qr-code-generator/index.html">QR Code Generator<span>Generate QR codes online</span></a>
+        <a href="tools/image-compressor/index.html">Image Compressor<span>Reduce image file size</span></a>
+        <a href="tools/percentage-calculator/index.html">Percentage Calculator<span>Calculate discounts & tips</span></a>
+        <a href="tools/age-calculator/index.html">Age Calculator<span>Calculate exact age</span></a>
+        <a href="tools/html-entity-encoder/index.html">HTML Entity Encoder<span>Encode HTML entities</span></a>
+        <a href="tools/loan-calculator/index.html">Loan Calculator<span>Calculate loan payments & interest</span></a>
+        <a href="tools/compound-interest-calculator/index.html">Compound Interest Calculator<span>Investment growth calculator</span></a>
+        <a href="tools/tip-calculator/index.html">Tip Calculator<span>Split bills & calculate tips</span></a>
+        <a href="tools/random-number-generator/index.html">Random Number Generator<span>Generate random numbers</span></a>
+        <a href="tools/unit-converter/index.html">Unit Converter<span>Convert 500+ units</span></a>
+        <a href="tools/scientific-calculator/index.html">Scientific Calculator<span>Advanced math functions</span></a>
+        <a href="tools/password-strength-checker/index.html">Password Strength Checker<span>Test password security</span></a>
+        <a href="tools/text-to-speech/index.html">Text to Speech<span>Convert text to voice</span></a>
+      </div>
+
+      <h2>Popular Guides</h2>
+      <div class="link-group">
+        <a href="guides/chatgpt-not-working/index.html">ChatGPT Not Working?<span>Fix loading &amp; error issues</span></a>
+        <a href="guides/google-chrome-not-opening/index.html">Chrome Not Opening?<span>Fix startup crashes</span></a>
+        <a href="guides/fix-app-not-responding-windows/index.html">App Not Responding on Windows<span>Step-by-step fix</span></a>
+        <a href="guides/apple-id-verification-failed/index.html">Apple ID Verification Failed<span>Fix iPhone &amp; Mac errors</span></a>
+        <a href="guides/google-play-payment-declined/index.html">Google Play Payment Declined<span>Restore billing fast</span></a>
+        <a href="guides/instagram-account-restricted/index.html">Instagram Account Restricted<span>Remove restrictions</span></a>
+        <a href="guides/whatsapp-code-not-received/index.html">WhatsApp Code Not Received<span>Fix SMS verification</span></a>
+        <a href="guides/zoom-not-working/index.html">Zoom Not Working<span>Audio, video & connection fixes</span></a>
+        <a href="guides/youtube-not-loading/index.html">YouTube Not Loading<span>Fix buffering & black screen</span></a>
+        <a href="guides/spotify-not-playing/index.html">Spotify Not Playing<span>Fix playback & cache issues</span></a>
+        <a href="guides/tiktok-not-working/index.html">TikTok Not Working<span>Fix loading & sound issues</span></a>
+        <a href="guides/netflix-not-working/index.html">Netflix Not Working<span>Fix error codes & buffering</span></a>
+        <a href="guides/whatsapp-web-not-working/index.html">WhatsApp Web Not Working<span>Fix QR code & connection</span></a>
+        <a href="guides/amazon-prime-not-working/index.html">Amazon Prime Not Working<span>Fix video & playback issues</span></a>
+        <a href="guides/instagram-not-loading/index.html">Instagram Not Loading<span>Fix feed & story loading</span></a>
+        <a href="guides/instagram-not-opening/index.html">Instagram Not Opening<span>Fix app crash & launch</span></a>
+      </div>
+
+      <h2>Popular Games</h2>
+      <div class="link-group">
+        <a href="games/2048/index.html">2048<span>Slide tiles to reach 2048</span></a>
+        <a href="games/snake/index.html">Snake<span>Classic snake game</span></a>
+        <a href="games/sudoku/index.html">Sudoku<span>Easy / Medium / Hard</span></a>
+        <a href="games/tetris/index.html">Tetris<span>Stack tetrominoes & clear lines</span></a>
+        <a href="games/color-flood/index.html">Color Flood<span>Fill board in fewest moves</span></a>
+        <a href="games/minesweeper/index.html">Minesweeper<span>Find all mines safely</span></a>
+        <a href="games/memory-test/index.html">Memory Test<span>Test short-term memory</span></a>
+        <a href="games/typing-speed/index.html">Typing Speed Test<span>Measure your WPM</span></a>
+        <a href="games/word-guess/index.html">Word Guess<span>Wordle-style 5-letter game</span></a>
+        <a href="games/memory-match/index.html">Memory Match<span>Find matching emoji pairs</span></a>
+        <a href="games/solitaire/index.html">Solitaire<span>Classic card game</span></a>
+        <a href="games/chess/index.html">Chess<span>Play against AI</span></a>
+        <a href="games/checkers/index.html">Checkers<span>Classic board game</span></a>
+        <a href="games/sliding-puzzle/index.html">Sliding Puzzle<span>Classic tile puzzle</span></a>
+        <a href="games/gomoku/index.html">Gomoku<span>Five in a Row strategy</span></a>
+        <a href="games/tower-of-hanoi/index.html">Tower of Hanoi<span>Mathematical puzzle</span></a>
+      </div>
+    </div>
+
+    <!-- AdSense – in-article -->
+    <div class="ad-banner" style="margin-top:48px; min-height:100px; text-align:center;" id="bottom-banner">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2596567349043393"
+           data-ad-slot="9504968504"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+    </div>
+
+        <footer>
+      <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
+      <p style="margin: 12px 0;">
+        <a href="/about/" style="color: var(--accent); text-decoration: none; margin: 0 10px;">About</a>
+        <a href="/privacy/" style="color: var(--accent); text-decoration: none; margin: 0 10px;">Privacy Policy</a>
+        <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 10px;">Terms of Service</a>
+        <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 10px;">Contact</a>
+      </p>
+      <p>© 2026 Knexio. All rights reserved.</p>
+    </footer>
+  </div>
+  <script src="cookie-consent.js"></script>
+  <script src="/knexio-bundle.js"></script>
+</body>
+</html>

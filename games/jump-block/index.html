@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Jump Block - Free Online Game | Play Now | Knexio</title>
+  <meta name="description" content="Play Jump Block free online. Jump Block is a fun browser game that you can play for free. Enjoy this entertaining game with simple controls and engag... No download required. Works on all devices." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://knexio.xyz/games/jump-block/">
+  <meta property="og:title" content="Play Jump Block Free Online" />
+  <meta property="og:description" content="Jump Block is a fun browser game that you can play for free. Enjoy this entertaining game with simpl..." />
+  <meta property="og:url" content="https://knexio.xyz/games/jump-block/">
+  <meta property="og:type" content="website">
+<style>
+
+    :root {
+      --bg: #0b1220;
+      --panel: #111a2e;
+      --accent: #4f8cff;
+      --accent2: #ff6b6b;
+      --green: #4ecb71;
+      --text: #fff;
+      --sub: #aab3c5;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+    .container { max-width: 600px; margin: 0 auto; padding: 20px; text-align: center; }
+    .back { display: block; text-align: left; color: var(--sub); margin-bottom: 16px; text-decoration: none; font-size: 14px; }
+    .back:hover { color: var(--accent); }
+    h1 { font-size: 30px; font-weight: 800; margin-bottom: 6px; letter-spacing: 1px; }
+    .tagline { color: var(--sub); font-size: 14px; margin-bottom: 16px; }
+
+    .game-wrap {
+      background: var(--panel);
+      border-radius: 16px;
+      padding: 20px 20px 16px;
+      margin: 0 0 20px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+    }
+
+    .hud {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      font-size: 15px;
+      font-weight: 600;
+    }
+    .hud-score { color: var(--accent); }
+    .hud-best  { color: var(--sub); font-size: 13px; }
+    .hud-level { color: var(--green); }
+
+    canvas {
+      display: block;
+      border-radius: 12px;
+      max-width: 100%;
+      cursor: pointer;
+      touch-action: none;
+    }
+
+    .controls-hint {
+      margin-top: 10px;
+      font-size: 13px;
+      color: var(--sub);
+    }
+    .controls-hint kbd {
+      background: #1e2d4a;
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-size: 12px;
+      color: #fff;
+    }
+
+    .info-section {
+      background: var(--panel);
+      border-radius: 12px;
+      padding: 20px 24px;
+      text-align: left;
+      margin-bottom: 20px;
+    }
+    .info-section h2 { font-size: 18px; margin-bottom: 10px; color: var(--accent); }
+    .info-section p, .info-section li { color: var(--sub); font-size: 14px; line-height: 1.7; }
+    .info-section ul { margin-left: 18px; }
+
+    footer { margin-top: 30px; font-size: 13px; color: var(--sub); padding-bottom: 30px; }
+    footer a { color: var(--accent); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+  .ad-banner{margin:24px 0;text-align:center;min-height:90px}
+
+    /* ==================== 移动端优化 ==================== */
+
+    /* 平板和手机 (≤768px) */
+    @media (max-width: 768px) {
+      /* 容器布局优化 */
+      .container, .wrap {
+        padding: 40px 15px 80px !important;
+        max-width: 100% !important;
+      }
+
+      /* 标题字体优化 */
+      h1 {
+        font-size: 28px !important;
+        line-height: 1.3 !important;
+      }
+
+      h2 {
+        font-size: 20px !important;
+        margin-top: 36px !important;
+        margin-bottom: 10px !important;
+      }
+
+      h3 {
+        font-size: 17px !important;
+      }
+
+      /* 正文内容优化 */
+      p, li, .intro, .subtitle {
+        font-size: 14px !important;
+        line-height: 1.7 !important;
+      }
+
+      /* 段落间距优化 */
+      p, ul, ol {
+        margin-bottom: 16px !important;
+      }
+
+      /* 列表优化 */
+      ul, ol {
+        padding-left: 18px !important;
+      }
+
+      li {
+        margin-bottom: 6px !important;
+      }
+
+      /* 内容块优化 */
+      .main-panel, .step-block, .notice, .extra-info {
+        padding: 16px !important;
+        border-radius: 12px !important;
+        margin: 16px 0 !important;
+      }
+
+      /* 按钮和输入框优化 */
+      .btn {
+        padding: 14px !important;
+        font-size: 15px !important;
+        min-height: 48px !important;
+      }
+
+      .input-group input {
+        padding: 12px !important;
+        font-size: 15px !important;
+      }
+
+      /* 网格系统优化 */
+      .age-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px !important;
+      }
+
+      /* 广告位优化 */
+      .ad-banner {
+        margin: 16px 0 !important;
+        min-height: 50px !important;
+      }
+
+      /* 游戏页面优化 */
+      .grid-container {
+        padding: 8px !important;
+      }
+
+      .grid {
+        gap: 8px !important;
+      }
+
+      .cell {
+        font-size: 20px !important;
+        border-radius: 6px !important;
+      }
+
+      .score-box {
+        min-width: 70px !important;
+        padding: 6px 12px !important;
+      }
+
+      .score-val {
+        font-size: 18px !important;
+      }
+
+      /* 工具页面优化 */
+      .age-main {
+        font-size: 36px !important;
+      }
+
+      .age-value {
+        font-size: 24px !important;
+      }
+
+      .age-label {
+        font-size: 11px !important;
+      }
+
+      /* 引导页面优化 */
+      .intro {
+        border-left-width: 2px !important;
+        padding-left: 12px !important;
+        margin-bottom: 32px !important;
+      }
+
+      .faq-item {
+        margin-bottom: 20px !important;
+      }
+
+      .faq-item strong {
+        font-size: 15px !important;
+      }
+    }
+
+    /* 小手机优化 (≤480px) */
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 24px !important;
+      }
+
+      h2 {
+        font-size: 18px !important;
+      }
+
+      .container, .wrap {
+        padding: 32px 12px 60px !important;
+      }
+
+      .main-panel, .step-block, .notice {
+        padding: 14px !important;
+      }
+
+      .btn {
+        padding: 12px !important;
+        font-size: 14px !important;
+      }
+
+      .age-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
+    /* 触摸设备优化 */
+    @media (hover: none) and (pointer: coarse) {
+      button, .btn, a[onclick], .cell {
+        min-height: 44px !important;
+        min-width: 44px !important;
+      }
+
+      input, select, textarea {
+        font-size: 16px !important;
+      }
+        }
+
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Game","name":"Jump Block","description":"A block-jumping platformer — time your jumps to avoid obstacles and survive.","genre":"Platformer","gamePlatform":"Web Browser","url":"https://knexio.xyz/games/jump-block/","publisher":{"@type":"Organization","name":"Knexio"}}</script>
+
+  <meta name="keywords" content="jump block game, free online game, browser game, play online, casual game" /></head>
+<body><a href="../../cdn-cgi/content-qC11nYC5_T4Eje0596xYMD1dmtGtLXKp2_eZ02reWZs.html" aria-hidden="true" rel="nofollow noopener" style="display: none !important; visibility: hidden !important"></a>
+  <div class="container">
+    <a class="back" href="../index.html">← Back to Games</a>
+    <h1>Jump Block</h1>
+    <p class="tagline">Dodge obstacles — how long can you survive?</p>
+
+    <div class="game-wrap">
+      <div class="hud">
+        <span class="hud-score">Score: <span id="scoreDisplay">0</span></span>
+        <span class="hud-level">Level <span id="levelDisplay">1</span></span>
+        <span class="hud-best">Best: <span id="bestDisplay">0</span></span>
+      </div>
+      <canvas id="game" width="560" height="320"></canvas>
+      <div class="controls-hint">
+        <kbd>Space</kbd> / <kbd>↑</kbd> / Tap to jump &nbsp;·&nbsp; Double-jump supported!
+      </div>
+
+  </div>
+
+  <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="5794572171" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+<!-- ==================== 游戏玩法说明 - SEO优化内容 ==================== -->
+<div class="gameplay-section" style="margin: 60px auto 0; max-width: 800px; padding: 32px 24px; background: var(--panel); border-radius: 18px; border: 1px solid var(--border);">
+    <h2 style="font-size: 28px; margin-bottom: 30px; color: var(--text-main); display: flex; align-items: center;">
+        <span style="background: var(--accent); color: white; width: 36px; height: 36px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 15px; font-size: 18px;">🎮</span>
+        How to Play Jump Block
+    </h2>
+
+    <div style="margin-bottom: 30px;">
+        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--text-main);">Game Description</h3>
+        <p style="font-size: 15px; color: var(--text-sub); line-height: 1.7; margin-bottom: 20px;">
+            Jump Block is a fun browser game that you can play for free. Enjoy this entertaining game with simple controls and engaging gameplay.
+        </p>
+    </div>
+
+    <div style="margin-bottom: 30px;">
+        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--text-main);">Basic Rules & Controls</h3>
+        <ol style="font-size: 15px; color: var(--text-sub); line-height: 1.7; padding-left: 25px; margin-bottom: 20px;">
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">Use your mouse, keyboard, or touch controls to play</strong>
+            </li>
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">Follow the on-screen instructions</strong>
+            </li>
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">Try to achieve the highest score possible</strong>
+            </li>
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">The game may have different modes or difficulty levels</strong>
+            </li>
+
+        </ol>
+    </div>
+
+    <div style="margin-bottom: 30px;">
+        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--text-main);">Pro Tips & Strategies</h3>
+        <ul style="font-size: 15px; color: var(--text-sub); line-height: 1.7; padding-left: 25px; margin-bottom: 20px;">
+
+            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;">
+                <span style="position: absolute; left: -15px; color: var(--accent);">✓</span>
+                Read the instructions carefully before playing
+            </li>
+
+            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;">
+                <span style="position: absolute; left: -15px; color: var(--accent);">✓</span>
+                Practice to improve your skills
+            </li>
+
+            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;">
+                <span style="position: absolute; left: -15px; color: var(--accent);">✓</span>
+                Take breaks if you get frustrated
+            </li>
+
+            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;">
+                <span style="position: absolute; left: -15px; color: var(--accent);">✓</span>
+                Try different strategies to find what works best
+            </li>
+
+        </ul>
+    </div>
+
+    <div style="background: rgba(79, 140, 255, 0.1); padding: 20px; border-radius: 12px; border-left: 4px solid var(--accent);">
+        <p style="font-size: 15px; color: var(--text-sub); margin: 0;">
+            <strong style="color: var(--accent);">💡 Quick Start:</strong> Just click/tap to begin! No registration required. 
+            All Knexio games work directly in your browser with no downloads needed.
+        </p>
+    </div>
+</div>
+
+<!-- ==================== 广告位优化 ==================== -->
+<div class="ad-section" style="margin-top: 40px; text-align: center;">
+    <ins class="adsbygoogle" 
+         style="display:block; background: var(--panel); border-radius: 12px; padding: 15px;"
+         data-ad-client="ca-pub-2596567349043393" 
+         data-ad-slot="9504968504" 
+         data-ad-format="auto" 
+         data-full-width-responsive="true">
+    </ins>
+    <p style="font-size: 12px; color: var(--text-sub); margin-top: 8px; opacity: 0.7;">
+        Advertisement supports free games development
+    </p>
+</div>
+
+<!-- ==================== 游戏常见问题 (FAQ) ==================== -->
+<div class="faq-section" style="margin: 60px auto 0; max-width: 800px; padding: 32px 24px; background: var(--panel); border-radius: 18px;">
+    <h2 style="font-size: 28px; margin-bottom: 30px; color: var(--text-main);">Frequently Asked Questions</h2>
+
+    <div class="faq-list">
+        <div class="faq-item" style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid var(--border);">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                Is this game free to play?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                Yes, all games on Knexio are completely free to play. There are no hidden charges, subscription fees, or in-app purchases. We support our games through non-intrusive advertisements.
+            </p>
+        </div>
+
+        <div class="faq-item" style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid var(--border);">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                Do I need to download anything to play?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                No downloads required! All our games run directly in your web browser. They work on desktop computers, laptops, tablets, and smartphones. Just visit the page and start playing.
+            </p>
+        </div>
+
+        <div class="faq-item" style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid var(--border);">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                How do I save my game progress?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                Most games automatically save your high scores and progress in your browser's local storage. Your best scores will be remembered even if you close the browser, as long as you don't clear your browsing data.
+            </p>
+        </div>
+
+        <div class="faq-item" style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid var(--border);">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                Can I play on mobile devices?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                Absolutely! All Knexio games are fully responsive and optimized for mobile devices. Touch controls are implemented for games that require precise input. The interface automatically adapts to your screen size.
+            </p>
+        </div>
+
+        <div class="faq-item" style="margin-bottom: 25px;">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                Is there sound in the games?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                Most games include optional sound effects. Look for a sound/mute button in the game interface. You can enable or disable sound based on your preference. We keep sound subtle and non-intrusive.
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== 结构化数据 (Schema.org) ==================== -->
+<script type="application/ld+json">
+{{
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "{game_display_name}",
+    "description": "{template['description'][:150]}...",
+    "applicationCategory": "GameApplication",
+    "gamePlatform": "Web Browser",
+    "operatingSystem": "All",
+    "url": "https://knexio.xyz/games/{game_name}/",
+    "genre": "Browser Game",
+    "playMode": "SinglePlayer",
+    "publisher": {{
+        "@type": "Organization",
+        "name": "Knexio",
+        "url": "https://knexio.xyz"
+    }},
+    "offers": {{
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+    }},
+    "keywords": "{', '.join(template['keywords'])}"
+}}
+</script>
+
+<script type="application/ld+json">
+{{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {{
+            "@type": "Question",
+            "name": "Is this game free to play?",
+            "acceptedAnswer": {{
+                "@type": "Answer",
+                "text": "Yes, all games on Knexio are completely free to play. There are no hidden charges, subscription fees, or in-app purchases. We support our games through non-intrusive advertisements."
+            }}
+        }},
+        {{
+            "@type": "Question",
+            "name": "Do I need to download anything to play?",
+            "acceptedAnswer": {{
+                "@type": "Answer",
+                "text": "No downloads required! All our games run directly in your web browser. They work on desktop computers, laptops, tablets, and smartphones. Just visit the page and start playing."
+            }}
+        }},
+        {{
+            "@type": "Question",
+            "name": "How do I save my game progress?",
+            "acceptedAnswer": {{
+                "@type": "Answer",
+                "text": "Most games automatically save your high scores and progress in your browser's local storage. Your best scores will be remembered even if you close the browser, as long as you don't clear your browsing data."
+            }}
+        }}
+    ]
+}}
+</script>
+
+<!-- ==================== 相关游戏推荐 ==================== -->
+<div class="related-games" style="margin: 60px auto 0; max-width: 800px; padding: 32px 24px;">
+    <h2 style="font-size: 24px; margin-bottom: 20px; color: var(--text-main);">More Fun Games to Try</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+        <a href="../snake/index.html" style="display: block; background: var(--panel); border-radius: 12px; padding: 20px; text-decoration: none; color: var(--text-main); border: 1px solid var(--border); transition: all 0.2s;">
+            <div style="font-weight: bold; margin-bottom: 8px;">🐍 Snake</div>
+            <div style="font-size: 13px; color: var(--text-sub);">Classic arcade game with growing snake</div>
+        </a>
+        <a href="../tetris/index.html" style="display: block; background: var(--panel); border-radius: 12px; padding: 20px; text-decoration: none; color: var(--text-main); border: 1px solid var(--border); transition: all 0.2s;">
+            <div style="font-weight: bold; margin-bottom: 8px;">🧱 Tetris</div>
+            <div style="font-size: 13px; color: var(--text-sub);">Iconic block-stacking puzzle game</div>
+        </a>
+        <a href="../wordle/index.html" style="display: block; background: var(--panel); border-radius: 12px; padding: 20px; text-decoration: none; color: var(--text-main); border: 1px solid var(--border); transition: all 0.2s;">
+            <div style="font-weight: bold; margin-bottom: 8px;">🔤 Wordle</div>
+            <div style="font-size: 13px; color: var(--text-sub);">Popular word guessing puzzle</div>
+        </a>
+        <a href="../index.html" style="display: block; background: var(--panel); border-radius: 12px; padding: 20px; text-decoration: none; color: var(--text-main); border: 1px solid var(--border); transition: all 0.2s; text-align: center;">
+            <div style="font-weight: bold;">🎮 View All Games →</div>
+        </a>
+    </div>
+</div>
+    <footer>
+      <p>Free online games to play anytime. Enjoy classic games, puzzles, and entertainment.</p>
+            <p style="margin: 8px 0; font-size: 13px;">
+        <a href="/about/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">About</a>
+        <a href="/privacy/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Privacy</a>
+        <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
+        <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
+      </p>
+      <p>© 2026 Knexio. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+  (function() {
+    const canvas = document.getElementById('game');
+    const ctx    = canvas.getContext('2d');
+    const W = canvas.width;
+    const H = canvas.height;
+
+    // ── Constants ─────────────────────────────────────
+    const GROUND_Y    = H - 60;
+    const PLAYER_SIZE = 34;
+    const GRAVITY     = 0.55;
+    const JUMP_FORCE  = -13.5;
+    const MAX_JUMPS   = 2;
+
+    // Obstacle type definitions
+    const OBS_TYPES = [
+      { w: 24, h: 40, color: '#ff6b6b', label: 'spike' },
+      { w: 36, h: 28, color: '#ffa53d', label: 'box' },
+      { w: 20, h: 60, color: '#c678dd', label: 'tall' },
+      { w: 50, h: 20, color: '#ff6b6b', label: 'wide' },
+    ];
+
+    // ── State ──────────────────────────────────────────
+    let player, obstacles, particles;
+    let score, bestScore, level, gameState;
+    let speed, frameCount, nextObstacleIn;
+    let bgStars = [];
+
+    // Load best score
+    let storedBest = 0;
+    try { storedBest = parseInt(localStorage.getItem('jumpblock_best') || '0'); } catch(e){}
+
+    function init() {
+      player = {
+        x: 90,
+        y: GROUND_Y - PLAYER_SIZE,
+        vy: 0,
+        jumpsLeft: MAX_JUMPS,
+        onGround: true,
+        trail: [],
+        squish: 1,    // squish scale Y on land
+        rotation: 0,
+      };
+      obstacles   = [];
+      particles   = [];
+      score       = 0;
+      level       = 1;
+      speed       = 5;
+      frameCount  = 0;
+      nextObstacleIn = 90;
+      gameState   = 'idle'; // idle | playing | dead
+
+      // Generate background stars
+      bgStars = Array.from({ length: 60 }, () => ({
+        x: Math.random() * W,
+        y: Math.random() * GROUND_Y * 0.8,
+        r: Math.random() * 1.5 + 0.5,
+        alpha: Math.random() * 0.6 + 0.2,
+      }));
+
+      updateHUD();
+      render();
+    }
+
+    // ── Input ──────────────────────────────────────────
+    function jump() {
+      if (gameState === 'idle' || gameState === 'dead') {
+        startGame();
+        return;
+      }
+      if (gameState !== 'playing') return;
+      if (player.jumpsLeft > 0) {
+        player.vy = JUMP_FORCE * (player.jumpsLeft === MAX_JUMPS ? 1 : 0.85);
+        player.onGround = false;
+        player.jumpsLeft--;
+        player.squish = 0.7;
+        spawnJumpParticles();
+      }
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.code === 'Space' || e.code === 'ArrowUp') { e.preventDefault(); jump(); }
+    });
+    canvas.addEventListener('pointerdown', e => { e.preventDefault(); jump(); });
+
+    // ── Game lifecycle ─────────────────────────────────
+    function startGame() {
+      player.y = GROUND_Y - PLAYER_SIZE;
+      player.vy = 0;
+      player.jumpsLeft = MAX_JUMPS;
+      player.onGround = true;
+      obstacles   = [];
+      particles   = [];
+      score       = 0;
+      level       = 1;
+      speed       = 5;
+      frameCount  = 0;
+      nextObstacleIn = 90;
+      gameState   = 'playing';
+      loop();
+    }
+
+    function die() {
+      gameState = 'dead';
+      spawnDeathParticles();
+      if (score > storedBest) {
+        storedBest = score;
+        try { localStorage.setItem('jumpblock_best', storedBest); } catch(e){}
+      }
+      updateHUD();
+    }
+
+    // ── Main loop ──────────────────────────────────────
+    let rafId = null;
+    function loop() {
+      if (gameState !== 'playing') return;
+      update();
+      render();
+      rafId = requestAnimationFrame(loop);
+    }
+
+    function update() {
+      frameCount++;
+
+      // Score & speed ramp
+      if (frameCount % 6 === 0) {
+        score++;
+        if (score % 20 === 0) {
+          level = Math.floor(score / 20) + 1;
+          speed = Math.min(5 + level * 0.7, 16);
+        }
+        updateHUD();
+      }
+
+      // Player physics
+      if (!player.onGround) {
+        player.vy += GRAVITY;
+        player.rotation += 4; // spin when airborne
+      } else {
+        player.rotation = 0;
+      }
+      player.y += player.vy;
+
+      // Land on ground
+      if (player.y >= GROUND_Y - PLAYER_SIZE) {
+        player.y = GROUND_Y - PLAYER_SIZE;
+        player.vy = 0;
+        if (!player.onGround) {
+          player.squish = 1.35; // squash on landing
+          spawnLandParticles();
+        }
+        player.onGround = true;
+        player.jumpsLeft = MAX_JUMPS;
+      }
+
+      // Squish recovery
+      player.squish += (1 - player.squish) * 0.2;
+
+      // Player trail
+      player.trail.unshift({ x: player.x, y: player.y, squish: player.squish });
+      if (player.trail.length > 8) player.trail.pop();
+
+      // Spawn obstacles
+      nextObstacleIn--;
+      if (nextObstacleIn <= 0) {
+        const t = OBS_TYPES[Math.floor(Math.random() * OBS_TYPES.length)];
+        obstacles.push({
+          x: W + 10,
+          y: GROUND_Y - t.h,
+          w: t.w,
+          h: t.h,
+          color: t.color,
+        });
+        // Gap between obstacles gets smaller as level increases
+        nextObstacleIn = Math.max(45, 110 - level * 5) + Math.random() * 40;
+      }
+
+      // Move & cull obstacles
+      for (let i = obstacles.length - 1; i >= 0; i--) {
+        obstacles[i].x -= speed;
+        if (obstacles[i].x + obstacles[i].w < 0) obstacles.splice(i, 1);
+      }
+
+      // Collision (with 4px forgiveness margin)
+      const margin = 4;
+      const px = player.x + margin;
+      const py = player.y + margin;
+      const pw = PLAYER_SIZE - margin * 2;
+      const ph = PLAYER_SIZE * player.squish - margin;
+
+      for (const obs of obstacles) {
+        if (
+          px < obs.x + obs.w &&
+          px + pw > obs.x &&
+          py < obs.y + obs.h &&
+          py + ph > obs.y
+        ) {
+          die();
+          return;
+        }
+      }
+
+      // Particles
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.15;
+        p.life--;
+        if (p.life <= 0) particles.splice(i, 1);
+      }
+    }
+
+    // ── Particles ──────────────────────────────────────
+    function spawnJumpParticles() {
+      for (let i = 0; i < 6; i++) {
+        particles.push({
+          x: player.x + PLAYER_SIZE / 2,
+          y: player.y + PLAYER_SIZE,
+          vx: (Math.random() - 0.5) * 3,
+          vy: Math.random() * 2 + 1,
+          life: 20,
+          maxLife: 20,
+          color: '#4f8cff',
+          r: Math.random() * 4 + 2,
+        });
+      }
+    }
+
+    function spawnLandParticles() {
+      for (let i = 0; i < 8; i++) {
+        particles.push({
+          x: player.x + PLAYER_SIZE / 2 + (Math.random() - 0.5) * PLAYER_SIZE,
+          y: GROUND_Y,
+          vx: (Math.random() - 0.5) * 5,
+          vy: -(Math.random() * 3 + 1),
+          life: 18,
+          maxLife: 18,
+          color: '#4f8cff',
+          r: Math.random() * 3 + 1,
+        });
+      }
+    }
+
+    function spawnDeathParticles() {
+      for (let i = 0; i < 20; i++) {
+        const angle = (i / 20) * Math.PI * 2;
+        particles.push({
+          x: player.x + PLAYER_SIZE / 2,
+          y: player.y + PLAYER_SIZE / 2,
+          vx: Math.cos(angle) * (Math.random() * 4 + 2),
+          vy: Math.sin(angle) * (Math.random() * 4 + 2) - 2,
+          life: 35,
+          maxLife: 35,
+          color: '#ff6b6b',
+          r: Math.random() * 6 + 3,
+        });
+      }
+    }
+
+    // ── Render ─────────────────────────────────────────
+    function render() {
+      ctx.clearRect(0, 0, W, H);
+
+      // Sky gradient
+      const sky = ctx.createLinearGradient(0, 0, 0, GROUND_Y);
+      sky.addColorStop(0, '#0b1220');
+      sky.addColorStop(1, '#141f35');
+      ctx.fillStyle = sky;
+      ctx.fillRect(0, 0, W, GROUND_Y);
+
+      // Stars
+      for (const s of bgStars) {
+        ctx.globalAlpha = s.alpha;
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        ctx.fillStyle = '#fff';
+        ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+
+      // Ground
+      const groundGrad = ctx.createLinearGradient(0, GROUND_Y, 0, H);
+      groundGrad.addColorStop(0, '#1e3a5f');
+      groundGrad.addColorStop(1, '#0b1220');
+      ctx.fillStyle = groundGrad;
+      ctx.fillRect(0, GROUND_Y, W, H - GROUND_Y);
+
+      // Ground line glow
+      ctx.shadowColor = '#4f8cff';
+      ctx.shadowBlur = 8;
+      ctx.strokeStyle = '#4f8cff';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(0, GROUND_Y);
+      ctx.lineTo(W, GROUND_Y);
+      ctx.stroke();
+      ctx.shadowBlur = 0;
+
+      // Scrolling ground dashes
+      const dashOffset = -(frameCount * speed * 0.4) % 60;
+      ctx.setLineDash([30, 30]);
+      ctx.lineDashOffset = dashOffset;
+      ctx.strokeStyle = 'rgba(79, 140, 255, 0.3)';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(0, GROUND_Y + 12);
+      ctx.lineTo(W, GROUND_Y + 12);
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      // Particles
+      for (const p of particles) {
+        const alpha = p.life / p.maxLife;
+        ctx.globalAlpha = alpha;
+        ctx.fillStyle = p.color;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r * alpha, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+
+      // Obstacles
+      for (const obs of obstacles) {
+        // Shadow
+        ctx.fillStyle = 'rgba(0,0,0,0.3)';
+        ctx.fillRect(obs.x + 4, obs.y + 4, obs.w, obs.h);
+        // Body
+        const obsGrad = ctx.createLinearGradient(obs.x, obs.y, obs.x, obs.y + obs.h);
+        obsGrad.addColorStop(0, lighten(obs.color, 30));
+        obsGrad.addColorStop(1, obs.color);
+        ctx.fillStyle = obsGrad;
+        ctx.beginPath();
+        roundRect(ctx, obs.x, obs.y, obs.w, obs.h, 4);
+        ctx.fill();
+        // Highlight
+        ctx.fillStyle = 'rgba(255,255,255,0.15)';
+        ctx.beginPath();
+        roundRect(ctx, obs.x + 2, obs.y + 2, obs.w - 4, 6, 2);
+        ctx.fill();
+      }
+
+      // Player trail
+      for (let i = player.trail.length - 1; i >= 0; i--) {
+        const t = player.trail[i];
+        const alpha = (1 - i / player.trail.length) * 0.15;
+        ctx.globalAlpha = alpha;
+        ctx.fillStyle = '#4f8cff';
+        const scale = 1 / t.squish;
+        const tw = PLAYER_SIZE * (1 - i * 0.05);
+        const th = tw * t.squish;
+        ctx.fillRect(
+          t.x + (PLAYER_SIZE - tw) / 2,
+          t.y + PLAYER_SIZE - th,
+          tw, th
+        );
+      }
+      ctx.globalAlpha = 1;
+
+      // Player
+      ctx.save();
+      const cx = player.x + PLAYER_SIZE / 2;
+      const cy = player.y + PLAYER_SIZE / 2;
+      ctx.translate(cx, cy);
+      if (!player.onGround) ctx.rotate((player.rotation * Math.PI) / 180);
+      ctx.scale(1, player.squish);
+
+      // Shadow on ground
+      if (player.onGround) {
+        ctx.fillStyle = 'rgba(79,140,255,0.2)';
+        ctx.beginPath();
+        ctx.ellipse(0, PLAYER_SIZE / 2 + 6, PLAYER_SIZE / 2, 5, 0, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // Player glow
+      ctx.shadowColor = '#4f8cff';
+      ctx.shadowBlur = 14;
+      const pGrad = ctx.createLinearGradient(-PLAYER_SIZE/2, -PLAYER_SIZE/2, PLAYER_SIZE/2, PLAYER_SIZE/2);
+      pGrad.addColorStop(0, '#7ab3ff');
+      pGrad.addColorStop(1, '#2563eb');
+      ctx.fillStyle = pGrad;
+      ctx.beginPath();
+      roundRectCentered(ctx, -PLAYER_SIZE/2, -PLAYER_SIZE/2, PLAYER_SIZE, PLAYER_SIZE, 7);
+      ctx.fill();
+      ctx.shadowBlur = 0;
+
+      // Eyes
+      ctx.fillStyle = 'rgba(255,255,255,0.9)';
+      ctx.beginPath(); ctx.arc(-7, -4, 4, 0, Math.PI * 2); ctx.fill();
+      ctx.beginPath(); ctx.arc(7, -4, 4, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = '#1a1a2e';
+      ctx.beginPath(); ctx.arc(-6, -4, 2, 0, Math.PI * 2); ctx.fill();
+      ctx.beginPath(); ctx.arc(8, -4, 2, 0, Math.PI * 2); ctx.fill();
+
+      ctx.restore();
+
+      // Overlay screens
+      if (gameState === 'idle') drawIdleScreen();
+      else if (gameState === 'dead') drawDeadScreen();
+    }
+
+    function drawIdleScreen() {
+      ctx.fillStyle = 'rgba(11,18,32,0.75)';
+      ctx.fillRect(0, 0, W, H);
+      ctx.fillStyle = '#fff';
+      ctx.font = 'bold 32px system-ui';
+      ctx.textAlign = 'center';
+      ctx.fillText('Jump Block', W / 2, H / 2 - 40);
+      ctx.font = '16px system-ui';
+      ctx.fillStyle = '#aab3c5';
+      ctx.fillText('Press Space / Tap to Start', W / 2, H / 2);
+      ctx.font = '13px system-ui';
+      ctx.fillStyle = '#4f8cff';
+      ctx.fillText('Double jump supported!', W / 2, H / 2 + 28);
+      ctx.textAlign = 'left';
+    }
+
+    function drawDeadScreen() {
+      ctx.fillStyle = 'rgba(11,18,32,0.8)';
+      ctx.fillRect(0, 0, W, H);
+      ctx.fillStyle = '#ff6b6b';
+      ctx.font = 'bold 34px system-ui';
+      ctx.textAlign = 'center';
+      ctx.fillText('Game Over!', W / 2, H / 2 - 45);
+      ctx.fillStyle = '#fff';
+      ctx.font = '20px system-ui';
+      ctx.fillText('Score: ' + score, W / 2, H / 2 - 8);
+      ctx.fillStyle = '#4ecb71';
+      ctx.font = '16px system-ui';
+      ctx.fillText('Best: ' + storedBest, W / 2, H / 2 + 20);
+      ctx.fillStyle = '#aab3c5';
+      ctx.font = '14px system-ui';
+      ctx.fillText('Press Space / Tap to Play Again', W / 2, H / 2 + 52);
+      ctx.textAlign = 'left';
+
+      // Keep rendering particles
+      requestAnimationFrame(() => {
+        if (gameState === 'dead') render();
+      });
+    }
+
+    function updateHUD() {
+      document.getElementById('scoreDisplay').textContent = score;
+      document.getElementById('levelDisplay').textContent = level;
+      document.getElementById('bestDisplay').textContent = storedBest;
+    }
+
+    // ── Helpers ────────────────────────────────────────
+    function roundRect(ctx, x, y, w, h, r) {
+      ctx.moveTo(x + r, y);
+      ctx.lineTo(x + w - r, y);
+      ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+      ctx.lineTo(x + w, y + h - r);
+      ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+      ctx.lineTo(x + r, y + h);
+      ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+      ctx.lineTo(x, y + r);
+      ctx.quadraticCurveTo(x, y, x + r, y);
+      ctx.closePath();
+    }
+
+    function roundRectCentered(ctx, x, y, w, h, r) {
+      ctx.beginPath();
+      roundRect(ctx, x, y, w, h, r);
+    }
+
+    function lighten(hex, amount) {
+      const num = parseInt(hex.replace('#',''), 16);
+      const r = Math.min(255, (num >> 16) + amount);
+      const g = Math.min(255, ((num >> 8) & 0xff) + amount);
+      const b = Math.min(255, (num & 0xff) + amount);
+      return `rgb(${r},${g},${b})`;
+    }
+
+    // ── Boot ───────────────────────────────────────────
+    init();
+  })();
+  </script>
+  <script src="/knexio-bundle.js"></script>
+  <script src="../../cookie-consent.js"></script>
+</body>
+</html>

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BMI Calculator – Calculate Body Mass Index Online | Knexio</title>
+<meta name="description" content="">
+
+<link rel="canonical" href="">
+
+<!-- Open Graph -->
+<meta property="og:title" content="BMI Calculator">
+<meta property="og:description" content="">
+<meta property="og:url" content="">
+<meta property="og:type" content="WebApplication">
+<meta property="og:site_name" content="Knexio">
+<meta property="og:image" content="https://knexio.xyz/og-image.png">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"BMI Calculator","applicationCategory":"HealthApplication","operatingSystem":"All","url":"https://knexio.xyz/tools/bmi-calculator/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+
+<style>
+
+:root{
+  --bg:#0b1220;
+  --card:#111a2e;
+  --border:rgba(255,255,255,.08);
+  --text:#fff;
+  --sub:#aab3c5;
+  --accent:#4f8cff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:system-ui,-apple-system;
+  background:var(--bg);
+  color:var(--text);
+}
+.container{max-width:900px;margin:auto;padding:50px 16px}
+
+/* 统一的返回按钮样式 */
+.back {
+  display: inline-block;
+  color: var(--sub);
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 24px;
+  transition: color 0.2s;
+}
+.back:hover {
+  color: var(--accent);
+}
+
+h1{font-size:32px;margin-bottom:8px}
+h2{font-size:22px;margin-top:30px;margin-bottom:10px}
+.subtitle{color:var(--sub);margin-bottom:24px}
+
+.badge{
+  display:inline-block;
+  padding:4px 10px;
+  border-radius:20px;
+  background:rgba(79,140,255,.15);
+  color:var(--accent);
+  font-size:12px;
+  margin-bottom:10px;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:20px;
+  margin-bottom:20px;
+}
+
+textarea{
+  width:100%;
+  min-height:180px;
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:12px;
+  color:var(--text);
+  padding:14px;
+  font-size:15px;
+}
+textarea:focus{outline:none;border-color:var(--accent)}
+
+.btn-row{display:flex;gap:10px;margin-top:12px}
+button{
+  flex:1;
+  padding:10px;
+  border-radius:10px;
+  border:none;
+  background:var(--accent);
+  color:#fff;
+  cursor:pointer;
+}
+button.secondary{
+  background:transparent;
+  border:1px solid var(--border);
+  color:var(--sub);
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-top:16px;
+}
+.stat{
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:16px;
+  text-align:center;
+}
+.stat span{
+  font-size:24px;
+  font-weight:700;
+  color:var(--accent);
+}
+.stat label{
+  display:block;
+  font-size:12px;
+  color:var(--sub);
+}
+
+.tip{
+  font-size:13px;
+  color:var(--sub);
+  margin-top:10px;
+}
+
+.section p{
+  color:var(--sub);
+  line-height:1.7;
+  margin-bottom:10px;
+}
+
+.tools a{
+  display:inline-block;
+  margin:6px;
+  padding:8px 14px;
+  border-radius:8px;
+  border:1px solid var(--border);
+  color:var(--sub);
+  text-decoration:none;
+}
+.tools a:hover{
+  border-color:var(--accent);
+  color:var(--accent);
+}
+
+/* 广告样式 */
+.ad-banner {
+  margin: 32px 0;
+  text-align: center;
+}
+
+/* 统一的 Footer 样式 */
+footer {
+  margin-top: 40px;
+  text-align: center;
+  color: var(--sub);
+  font-size: 13px;
+}
+footer p {
+  margin-bottom: 8px;
+}
+footer a {
+  color: var(--sub);
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color 0.2s;
+}
+footer a:hover {
+  color: var(--accent);
+}
+
+@media(max-width:600px){
+  .stats{grid-template-columns:1fr 1fr}
+}
+
+</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2596567349043393" crossorigin="anonymous"></script>
+</head>
+
+<body><div class="container">
+
+<a class="back" href="../index.html">← Back to Tools</a>
+
+<h1>BMI Calculator</h1>
+<p class="subtitle">Calculate your Body Mass Index (BMI) to check if you're at a healthy weight. Supports metric and imperial units with personalized health insights.</p>
+
+<div class="ad-banner">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="3153457922"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<div class="container">
+  <a class="back" href="../index.html">← Back to Tools</a>
+  <h1>BMI Calculator</h1>
+      <p class="subtitle">Calculate your Body Mass Index (BMI) to check if you're at a healthy weight. Supports metric and imperial units with personalized health insights.</p>
+
+  <div class="seo-section">
+    <h2>How to Use This Tool</h2>
+    <div class="step-block">
+      <h3>Step 1: Enter your input</h3>
+      <p>Type or paste your data into the input field.</p>
+    </div>
+    <div class="step-block">
+      <h3>Step 2: Click the action button</h3>
+      <p>Press the main action button to process your input.</p>
+    </div>
+    <div class="step-block">
+      <h3>Step 3: Copy or download results</h3>
+      <p>Use the Copy button to copy results, or Download to save.</p>
+    </div>
+  </div>
+
+  <div class="calculator-grid">
+    <div class="panel">
+      <h2>📊 Your Details</h2>
+      <div class="unit-toggle">
+        <div class="btn-row">
+      <button class="active" onclick="setUnit('metric')" id="metricBtn">Metric (kg, cm)</button>
+        <button class="btn" onclick="setUnit('imperial')" id="imperialBtn">Imperial (lbs, ft)</button>
+    </div></div>
+      <div class="form-group">
+        <label>Height</label>
+        <div id="metricHeight">
+          <input type="number" id="heightCm" placeholder="175" min="50" max="300">
+        </div>
+        <div id="imperialHeight" class="height-inputs" style="display:none">
+          <input type="number" id="heightFt" placeholder="5" min="1" max="9">
+          <input type="number" id="heightIn" placeholder="9" min="0" max="11">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Weight</label>
+        <input type="number" id="weight" placeholder="70" min="20" max="500">
+      </div>
+      <button class="btn" onclick="calculateBMI()">Calculate BMI</button>
+    </div>
+
+    <div class="panel">
+      <h2>📈 Your Results</h2>
+      <div id="resultContainer" style="display:none">
+        <div class="result-box">
+          <div class="bmi-number" id="bmiValue">0</div>
+          <div class="bmi-category" id="bmiCategory">-</div>
+        </div>
+        <div class="gauge-container">
+          <div class="gauge-bar"></div>
+          <div class="gauge-marker" id="gaugeMarker" style="left:0%"></div>
+          <div class="gauge-labels">
+            <span>15</span>
+            <span>18.5</span>
+            <span>25</span>
+            <span>30</span>
+            <span>40</span>
+          </div>
+        </div>
+        <div class="result-details">
+          <div class="detail-row">
+            <span class="detail-label">Healthy weight range</span>
+            <span class="detail-value" id="healthyRange">-</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Ponderal Index</span>
+            <span class="detail-value" id="ponderalIndex">-</span>
+          </div>
+        </div>
+      </div>
+      <div id="emptyState" style="text-align:center;padding:60px 20px;color:var(--sub)">
+        <div style="font-size:48px;margin-bottom:16px">⚖️</div>
+        <div>Enter your height and weight to see your BMI</div>
+      </div>
+      <div class="bmi-table">
+        <h3>BMI Categories</h3>
+        <div class="table-row header">
+          <span class="table-range">BMI Range</span>
+          <span class="table-category">Category</span>
+        </div>
+        <div class="table-row" id="rowUnderweight">
+          <span class="table-range">Below 18.5</span>
+          <span class="table-category">Underweight</span>
+        </div>
+        <div class="table-row" id="rowNormal">
+          <span class="table-range">18.5 – 24.9</span>
+          <span class="table-category">Normal weight</span>
+        </div>
+        <div class="table-row" id="rowOverweight">
+          <span class="table-range">25.0 – 29.9</span>
+          <span class="table-category">Overweight</span>
+        </div>
+        <div class="table-row" id="rowObese">
+          <span class="table-range">30.0 and above</span>
+          <span class="table-category">Obese</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3153457922" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+  <section class="seo-section">
+    <h2>How to Use the BMI Calculator</h2>
+      <div class="step-block">
+        <h3>Step 1: Enter Your Height</h3>
+        <p>Input your height in centimetres or feet/inches.</p>
+      </div>
+      <div class="step-block">
+        <h3>Step 2: Enter Your Weight</h3>
+        <p>Input your weight in kilograms or pounds.</p>
+      </div>
+      <div class="step-block">
+        <h3>Step 3: Read Your BMI</h3>
+        <p>Your BMI score and category (Underweight / Normal / Overweight / Obese) appear instantly.</p>
+      </div>
+
+    <h2>What Is a BMI Calculator?</h2>
+    <p>Body Mass Index (BMI) is a simple measure of body fat based on height and weight. It helps assess whether you are underweight, normal weight, overweight, or obese.</p>
+
+    <h2>Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <h3>Is BMI always accurate?</h3>
+        <p>BMI is a screening tool, not a diagnostic measure. Athletes may have a high BMI due to muscle mass rather than fat.</p>
+      </div>
+  </section>
+
+<div class="ad-banner" style="margin-top:40px">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="3153457922"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<footer>
+  <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
+  <p>
+    <a href="/about/">About</a> •
+    <a href="/privacy/">Privacy Policy</a> •
+    <a href="/terms/">Terms of Service</a>
+  </p>
+</footer>
+
+</div>
+
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</body>
+</html>

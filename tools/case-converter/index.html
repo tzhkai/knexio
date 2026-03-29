@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Case Converter – Convert Text to Uppercase, Lowercase, Title Case</title>
+<meta name="description" content="Free case converter tool to convert text to uppercase, lowercase, title case, or sentence case instantly. No signup required.">
+
+<link rel="canonical" href="https://knexio.xyz/tools/case-converter/">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Case Converter">
+<meta property="og:description" content="Convert text to uppercase, lowercase, title case, or sentence case instantly.">
+<meta property="og:url" content="https://knexio.xyz/tools/case-converter/">
+<meta property="og:type" content="WebApplication">
+<meta property="og:site_name" content="Knexio">
+<meta property="og:image" content="https://knexio.xyz/og-image.png">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Case Converter",
+  "url": "https://knexio.xyz/tools/case-converter/",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "All",
+  "description": "Free tool to convert text to uppercase, lowercase, title case, or sentence case instantly."
+}
+</script>
+
+<style>
+:root{
+  --bg:#0b1220;
+  --card:#111a2e;
+  --border:rgba(255,255,255,.08);
+  --text:#fff;
+  --sub:#aab3c5;
+  --accent:#4f8cff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:system-ui,-apple-system;
+  background:var(--bg);
+  color:var(--text);
+}
+.container{max-width:900px;margin:auto;padding:50px 16px}
+
+/* 统一的返回按钮样式 */
+.back {
+  display: inline-block;
+  color: var(--sub);
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 24px;
+  transition: color 0.2s;
+}
+.back:hover {
+  color: var(--accent);
+}
+
+h1{font-size:32px;margin-bottom:8px}
+h2{font-size:22px;margin-top:30px;margin-bottom:10px}
+.subtitle{color:var(--sub);margin-bottom:24px}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:20px;
+  margin-bottom:20px;
+}
+
+
+textarea:focus{outline:none;border-color:var(--accent)}
+
+
+
+
+
+
+
+
+
+
+.tip{
+  font-size:13px;
+  color:var(--sub);
+  margin-top:10px;
+}
+
+.section p{
+  color:var(--sub);
+  line-height:1.7;
+  margin-bottom:10px;
+}
+
+
+
+.tools a{
+  display:inline-block;
+  margin:6px;
+  padding:8px 14px;
+  border-radius:8px;
+  border:1px solid var(--border);
+  color:var(--sub);
+  text-decoration:none;
+}
+.tools a:hover{
+  border-color:var(--accent);
+  color:var(--accent);
+}
+
+/* 广告样式 */
+.ad-banner {
+  margin: 32px 0;
+  text-align: center;
+}
+
+/* 统一的 Footer 样式 */
+footer {
+  margin-top: 40px;
+  text-align: center;
+  color: var(--sub);
+  font-size: 13px;
+}
+footer p {
+  margin-bottom: 8px;
+}
+footer a {
+  color: var(--sub);
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color 0.2s;
+}
+footer a:hover {
+  color: var(--accent);
+}
+
+@media(max-width:600px){
+  
+}
+textarea,.text-area{width:100%;min-height:180px;background:var(--bg);border:1px solid var(--border);border-radius:12px;color:var(--text);padding:14px;font-size:15px;resize:vertical;box-sizing:border-box}
+textarea:focus,.text-area:focus{outline:none;border-color:var(--accent)}
+.btn-row{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+button,.btn,.btn-row button{flex:1;padding:10px;border-radius:10px;border:none;background:var(--accent);color:#fff;cursor:pointer;font-size:14px;transition:opacity 0.2s;box-sizing:border-box}
+button:hover,.btn:hover{opacity:0.9}
+button.secondary,.btn.secondary,.btn-outline,.btn-row button.secondary{background:transparent;border:1px solid var(--border);color:var(--sub)}
+button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.stat{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center}
+.stat span,.stat-value,.result-value,.age-value{font-size:24px;font-weight:700;color:var(--accent);display:block}
+.stat label,.stat-label,.result-label,.age-label{font-size:12px;color:var(--sub);display:block}
+.result-box{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;margin-top:16px;min-height:100px;white-space:pre-wrap;word-break:break-all;font-size:15px;line-height:1.7;box-sizing:border-box}
+@media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.btn-row{flex-direction:column}}
+  </style>
+</head>
+
+<body><div class="container">
+
+<a class="back" href="../index.html">← Back to Tools</a>
+
+<h1>Case Converter</h1>
+<p class="subtitle">Convert text to uppercase, lowercase, title case, or sentence case instantly.</p>
+
+<div class="ad-banner">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="5794572171"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<div class="card">
+<textarea id="input" placeholder="Paste or type your text here..."></textarea>
+
+<div class="btn-row">
+<button onclick="upper()">UPPERCASE</button>
+<button onclick="lower()">lowercase</button>
+<button onclick="titleCase()">Title Case</button>
+<button class="secondary" onclick="sentence()">Sentence case</button>
+<button class="secondary" onclick="clearText()">Clear</button>
+<button class="secondary" onclick="copyText()">Copy</button>
+</div>
+
+<div class="stats">
+  <div class="stat">
+    <span id="chars">0</span>
+    <label>Characters</label>
+  </div>
+  <div class="stat">
+    <span id="words">0</span>
+    <label>Words</label>
+  </div>
+  <div class="stat">
+    <span id="sentences">0</span>
+    <label>Sentences</label>
+  </div>
+</div>
+
+<div class="tip" id="tip"></div>
+</div>
+
+<h2>Free Online Case Converter</h2>
+<div class="section">
+<p>Convert text between uppercase, lowercase, title case, and sentence case instantly. Perfect for editing documents, social media posts, and code.</p>
+</div>
+
+<h2>How It Works</h2>
+<div class="section">
+<p>A case converter allows you to quickly change capitalization style of your text. It is widely used for writing, coding, and formatting content. Whether you need UPPERCASE for headings, lowercase for URLs, or Title Case for book titles, this tool handles it all in one click.</p>
+</div>
+
+<h2>Case Types Explained</h2>
+<div class="section">
+<p><strong>UPPERCASE</strong> — Converts all letters to capitals. Great for acronyms, emphasis, and headings.</p>
+<p><strong>lowercase</strong> — Converts all letters to small letters. Useful for URLs, email addresses, and coding variables.</p>
+<p><strong>Title Case</strong> — Capitalizes first letter of every word. Ideal for article titles, book names, and product headings.</p>
+<p><strong>Sentence case</strong> — Capitalizes only first letter of each sentence. Best for body copy, emails, and social media posts.</p>
+</div>
+
+<h2>How It Works</h2>
+<div class="section">
+<p>Select a case conversion button and watch your text transform instantly. The tool also provides real-time character, word, and sentence counts to help you track text length.</p>
+</div>
+
+
+
+<h2>Related Tools</h2>
+<div class="tools">
+<a href="/tools/word-counter/">Word Counter</a>
+<a href="/tools/character-counter/">Character Counter</a>
+<a href="/tools/sentence-counter/">Sentence Counter</a>
+</div>
+
+<div class="ad-banner" style="margin-top:40px">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="9504968504"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<footer>
+  <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
+  <p>
+    <a href="/about/" style="color:var(--accent);text-decoration:none;margin:0 8px;">About</a>
+    <a href="/privacy/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Privacy</a>
+    <a href="/terms/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Terms</a>
+    <a href="/contact/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Contact</a>
+  </p>
+  <p>© 2026 Knexio. All rights reserved.</p>
+</footer>
+
+</div>
+
+<script>
+const input = document.getElementById("input");
+
+input.addEventListener("input", updateStats);
+
+function updateStats() {
+  const text = input.value;
+  const chars = text.length;
+  const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+  const sentences = text.split(/[.!?]+/).filter(s => s.trim()).length;
+
+  document.getElementById("chars").textContent = chars;
+  document.getElementById("words").textContent = words;
+  document.getElementById("sentences").textContent = sentences;
+
+  if (words > 0) {
+    document.getElementById("tip").innerText = "Text updated. Select a case to convert.";
+  } else {
+    document.getElementById("tip").innerText = "";
+  }
+}
+
+function upper() {
+  input.value = input.value.toUpperCase();
+  updateStats();
+}
+
+function lower() {
+  input.value = input.value.toLowerCase();
+  updateStats();
+}
+
+function titleCase() {
+  input.value = input.value.toLowerCase().replace(/\b\w/g, c => c.toUpperCase());
+  updateStats();
+}
+
+function sentence() {
+  input.value = input.value.toLowerCase().replace(/(^\s*\w|[.!?]\s*\w)/g, c => c.toUpperCase());
+  updateStats();
+}
+
+function clearText() {
+  input.value = "";
+  updateStats();
+}
+
+function copyText() {
+  navigator.clipboard.writeText(input.value);
+  alert("Copied!");
+}
+</script>
+
+<script>
+</script>
+
+<script src="/knexio-bundle.js"></script>
+</body>
+</html>

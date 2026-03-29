@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sentence Counter Online</title>
+<meta name="description" content="">
+
+<link rel="canonical" href="">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Sentence Counter Online">
+<meta property="og:description" content="">
+<meta property="og:url" content="">
+<meta property="og:type" content="WebApplication">
+<meta property="og:site_name" content="Knexio">
+<meta property="og:image" content="https://knexio.xyz/og-image.png">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Sentence Counter Online",
+    "description": "Free online sentence counter. Instantly count sentences, words, and characters in your text. Fast, private, and easy to use.",
+    "url": "https://knexio.xyz/tools/sentence-counter-online/",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Knexio",
+      "url": "https://knexio.xyz"
+    }
+  }
+  
+</script>
+
+<style>
+
+:root{
+  --bg:#0b1220;
+  --card:#111a2e;
+  --border:rgba(255,255,255,.08);
+  --text:#fff;
+  --sub:#aab3c5;
+  --accent:#4f8cff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:system-ui,-apple-system;
+  background:var(--bg);
+  color:var(--text);
+}
+.container{max-width:900px;margin:auto;padding:50px 16px}
+
+/* 统一的返回按钮样式 */
+.back {
+  display: inline-block;
+  color: var(--sub);
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 24px;
+  transition: color 0.2s;
+}
+.back:hover {
+  color: var(--accent);
+}
+
+h1{font-size:32px;margin-bottom:8px}
+h2{font-size:22px;margin-top:30px;margin-bottom:10px}
+.subtitle{color:var(--sub);margin-bottom:24px}
+
+.badge{
+  display:inline-block;
+  padding:4px 10px;
+  border-radius:20px;
+  background:rgba(79,140,255,.15);
+  color:var(--accent);
+  font-size:12px;
+  margin-bottom:10px;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:20px;
+  margin-bottom:20px;
+}
+
+textarea{
+  width:100%;
+  min-height:180px;
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:12px;
+  color:var(--text);
+  padding:14px;
+  font-size:15px;
+}
+textarea:focus{outline:none;border-color:var(--accent)}
+
+.btn-row{display:flex;gap:10px;margin-top:12px}
+button{
+  flex:1;
+  padding:10px;
+  border-radius:10px;
+  border:none;
+  background:var(--accent);
+  color:#fff;
+  cursor:pointer;
+}
+button.secondary{
+  background:transparent;
+  border:1px solid var(--border);
+  color:var(--sub);
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-top:16px;
+}
+.stat{
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:16px;
+  text-align:center;
+}
+.stat span{
+  font-size:24px;
+  font-weight:700;
+  color:var(--accent);
+}
+.stat label{
+  display:block;
+  font-size:12px;
+  color:var(--sub);
+}
+
+.tip{
+  font-size:13px;
+  color:var(--sub);
+  margin-top:10px;
+}
+
+.section p{
+  color:var(--sub);
+  line-height:1.7;
+  margin-bottom:10px;
+}
+
+.tools a{
+  display:inline-block;
+  margin:6px;
+  padding:8px 14px;
+  border-radius:8px;
+  border:1px solid var(--border);
+  color:var(--sub);
+  text-decoration:none;
+}
+.tools a:hover{
+  border-color:var(--accent);
+  color:var(--accent);
+}
+
+/* 广告样式 */
+.ad-banner {
+  margin: 32px 0;
+  text-align: center;
+}
+
+/* 统一的 Footer 样式 */
+footer {
+  margin-top: 40px;
+  text-align: center;
+  color: var(--sub);
+  font-size: 13px;
+}
+footer p {
+  margin-bottom: 8px;
+}
+footer a {
+  color: var(--sub);
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color 0.2s;
+}
+footer a:hover {
+  color: var(--accent);
+}
+
+@media(max-width:600px){
+  .stats{grid-template-columns:1fr 1fr}
+}
+
+</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2596567349043393" crossorigin="anonymous"></script>
+</head>
+
+<body><div class="container">
+
+<a class="back" href="../index.html">← Back to Tools</a>
+
+<h1>Sentence Counter Online</h1>
+<p class="subtitle">Count sentences online with real-time results. Fast, free, and works in your browser.</p>
+
+<div class="ad-banner">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="3153457922"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<div class="container">
+    <a class="back" href="../index.html">← Back to Tools</a>
+
+    <h1>Sentence Counter Online</h1>
+  <div class="ad-banner">
+    <ins class="adsbygoogle" style="display:block"
+         data-ad-client="ca-pub-2596567349043393"
+         data-ad-slot="3153457922"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+  </div>
+
+        <p class="subtitle">Count sentences online with real-time results. Fast, free, and works in your browser.</p>
+
+  <div class="seo-section">
+    <h2>How to Use This Tool</h2>
+    <div class="step-block">
+      <h3>Step 1: Enter your text</h3>
+      <p>Paste or type any text into the input field.</p>
+    </div>
+    <div class="step-block">
+      <h3>Step 2: Get instant results</h3>
+      <p>Sentence count, word count, and characters update live.</p>
+    </div>
+    <div class="step-block">
+      <h3>Step 3: Reset when done</h3>
+      <p>Click Clear to start fresh with new text.</p>
+    </div>
+  </div>
+  <div class="step-block">
+    <h3>Step 2: Adjust settings</h3>
+    <p>Use the available options to customize the processing.</p>
+  </div>
+  <div class="step-block">
+    <h3>Step 3: Get results</h3>
+    <p>View the processed output in the result area.</p>
+  </div>
+</div>
+
+    <!-- AdSense top -->
+
+    
+    <div class="stats" style="margin-bottom:16px;">
+      <div class="stat" style="padding:10px 12px;"><span id="sentences" style="font-size:20px;">0</span><label>Sentences</label></div>
+
+    <div class="btn-row">
+      <button class="btn" onclick="clearText()">Clear</button>
+      <button class="btn" onclick="navigator.clipboard.writeText(document.getElementById('textInput').value)">Copy Text</button>
+    </div>
+    <textarea class="text-area" id="textInput" placeholder="Paste or type your text here..."></textarea>
+
+    
+
+    
+      <div class="stat"><span id="words">0</span><label>Words</label></div>
+      <div class="stat"><span id="characters">0</span><label>Characters</label></div>
+    </div>
+
+    <!-- AdSense mid -->
+
+    <div class="section">
+      <h2>What is an Online Sentence Counter?</h2>
+      <p>
+        This online sentence counter helps you instantly measure how many sentences your text contains.
+        It works in real time as you type or paste, requiring no button presses or page reloads.
+        Whether you are editing a blog post, checking an essay, or reviewing a business email,
+        this tool gives you instant feedback on your sentence structure.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>When Do You Need an Online Sentence Counter?</h2>
+      <p>
+        An online sentence counter is useful in a wide range of writing scenarios. Students use it
+        to verify they meet minimum sentence requirements for paragraph-based assignments.
+        Content marketers use it to ensure their articles maintain consistent sentence density
+        across sections. Teachers and editors use it to quickly audit student work for structural issues.
+      </p>
+      <p>
+        Unlike desktop software, an online tool requires no installation. You simply open the page,
+        paste your text, and get results immediately — accessible from any device including phones,
+        tablets, and computers.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>Tips for Better Sentence Structure</h2>
+      <p>
+        Aim for sentence variety: mix short punchy sentences with longer explanatory ones.
+        Avoid writing more than three long sentences (20+ words) in a row — this slows the reading pace.
+        Use this counter alongside a <a href="../sentence-length-checker/index.html">Sentence Length Checker</a>
+        for a fuller picture of your writing quality.
+      </p>
+    </div>
+
+    <div class="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <h3>What is an online sentence counter?</h3>
+        <p>An online sentence counter is a browser-based tool that instantly counts the number of sentences in any text you paste or type, without requiring any software installation.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How accurate is the sentence counter?</h3>
+        <p>It detects sentences by identifying punctuation marks like periods, question marks, and exclamation points, giving reliable results for standard English text.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Can I use this on my phone?</h3>
+        <p>Yes. This tool is fully responsive and works on all devices including smartphones and tablets — no app download required.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Is this sentence counter online free?</h3>
+        <p>Yes. This tool is completely free, works in your browser, and requires no signup.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Related Tools</h2>
+      <div class="tools">
+        <a href="../sentence-counter/index.html">Sentence Counter</a>
+        <a href="../word-counter/index.html">Word Counter</a>
+        <a href="../sentence-length-checker/index.html">Sentence Length Checker</a>
+      </div>  </div>
+
+  <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3153457922" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+  </div>
+
+  <script>
+    const input = document.getElementById("textInput");
+
+    function updateStats() {
+      const text = input.value;
+      document.getElementById("sentences").textContent = text.split(/[.!?]+/).filter(s => s.trim()).length;
+      document.getElementById("words").textContent = text.trim() ? text.trim().split(/\s+/).length : 0;
+      document.getElementById("characters").textContent = text.length;
+    }
+
+    function clearText() {
+      input.value = "";
+      updateStats();
+    }
+
+    input.addEventListener("input", updateStats);
+  </script>
+  <script src="../../knexio-bundle.js"></script>
+  <script src="../../cookie-consent.js"></script>
+
+<div class="ad-banner" style="margin-top:40px">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="3153457922"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<footer>
+  <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
+  <p>
+    <a href="/about/">About</a> •
+    <a href="/privacy/">Privacy Policy</a> •
+    <a href="/terms/">Terms of Service</a>
+  </p>
+</footer>
+
+</div>
+
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</body>
+</html>

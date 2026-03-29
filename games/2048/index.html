@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>2048 - Free Online Game | Play Now | Knexio</title>
+  <meta name="description" content="Play 2048 free online. 2048 is a classic number puzzle game where you slide tiles on a 4×4 grid to combine them and reach the 2048 tile. Every ... No download required. Works on all devices." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="canonical" href="https://knexio.xyz/games/2048/" />
+  <meta property="og:title" content="Play 2048 Free Online" />
+  <meta property="og:description" content="2048 is a classic number puzzle game where you slide tiles on a 4×4 grid to combine them and reach t..." />
+  <meta property="og:url" content="https://knexio.xyz/games/2048/" />
+  <meta property="og:type" content="website" />
+<style>
+
+    :root{--bg:#0b1220;--bg2:#070d1a;--panel:#111a2e;--border:rgba(255,255,255,0.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff;}
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:linear-gradient(180deg,var(--bg),var(--bg2));color:var(--text);min-height:100vh;}
+    a{text-decoration:none;color:inherit;}
+    .wrap{max-width:520px;margin:0 auto;padding:50px 20px 80px;}
+    .back{display:inline-block;margin-bottom:24px;font-size:14px;color:var(--sub);}
+    .header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;}
+    h1{font-size:40px;font-weight:800;}
+    .score-board{display:flex;gap:10px;}
+    .score-box{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:8px 18px;text-align:center;min-width:80px;}
+    .score-label{font-size:10px;text-transform:uppercase;color:var(--sub);letter-spacing:0.05em;}
+    .score-val{font-size:20px;font-weight:700;color:var(--text);}
+    .subtitle{font-size:14px;color:var(--sub);margin-bottom:20px;}
+    .btn-row{display:flex;gap:10px;margin-bottom:20px;}
+    .btn{padding:9px 20px;border-radius:10px;border:none;background:var(--accent);color:#fff;font-size:14px;font-weight:500;cursor:pointer;transition:opacity 0.15s;}
+    .btn:hover{opacity:0.85;}
+    .btn.ghost{background:transparent;border:1px solid var(--border);color:var(--sub);}
+    .btn.ghost:hover{border-color:var(--accent);color:var(--accent);}
+    .ad-banner{margin-bottom:24px;text-align:center;}
+    .grid-container{background:#0d1526;border-radius:14px;padding:10px;position:relative;}
+    .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+    .cell{aspect-ratio:1;border-radius:8px;background:rgba(255,255,255,0.04);display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:800;transition:all 0.1s;}
+    .overlay{position:absolute;inset:0;background:rgba(11,18,32,0.88);border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;opacity:0;pointer-events:none;transition:opacity 0.3s;}
+    .overlay.show{opacity:1;pointer-events:all;}
+    .overlay h2{font-size:32px;}
+    .overlay p{color:var(--sub);font-size:15px;}
+    .hint{margin-top:16px;font-size:13px;color:var(--sub);text-align:center;}
+    .seo{margin-top:60px;}
+    .seo h2{font-size:20px;margin-bottom:10px;}
+    .seo p{font-size:14px;color:var(--sub);line-height:1.8;margin-bottom:14px;}
+    footer{margin-top:60px;text-align:center;font-size:13px;color:var(--sub);}
+
+    /* ==================== 移动端优化 ==================== */
+
+    /* 平板和手机 (≤768px) */
+    @media (max-width: 768px) {
+      /* 容器布局优化 */
+      .container, .wrap {
+        padding: 40px 15px 80px !important;
+        max-width: 100% !important;
+      }
+
+      /* 标题字体优化 */
+      h1 {
+        font-size: 28px !important;
+        line-height: 1.3 !important;
+      }
+
+      h2 {
+        font-size: 20px !important;
+        margin-top: 36px !important;
+        margin-bottom: 10px !important;
+      }
+
+      h3 {
+        font-size: 17px !important;
+      }
+
+      /* 正文内容优化 */
+      p, li, .intro, .subtitle {
+        font-size: 14px !important;
+        line-height: 1.7 !important;
+      }
+
+      /* 段落间距优化 */
+      p, ul, ol {
+        margin-bottom: 16px !important;
+      }
+
+      /* 列表优化 */
+      ul, ol {
+        padding-left: 18px !important;
+      }
+
+      li {
+        margin-bottom: 6px !important;
+      }
+
+      /* 内容块优化 */
+      .main-panel, .step-block, .notice, .extra-info {
+        padding: 16px !important;
+        border-radius: 12px !important;
+        margin: 16px 0 !important;
+      }
+
+      /* 按钮和输入框优化 */
+      .btn {
+        padding: 14px !important;
+        font-size: 15px !important;
+        min-height: 48px !important;
+      }
+
+      .input-group input {
+        padding: 12px !important;
+        font-size: 15px !important;
+      }
+
+      /* 网格系统优化 */
+      .age-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px !important;
+      }
+
+      /* 广告位优化 */
+      .ad-banner {
+        margin: 16px 0 !important;
+        min-height: 50px !important;
+      }
+
+      /* 游戏页面优化 */
+      .grid-container {
+        padding: 8px !important;
+      }
+
+      .grid { margin: 0 auto;
+        gap: 8px !important;
+      }
+
+      .cell {
+        font-size: 20px !important;
+        border-radius: 6px !important;
+      }
+
+      .score-box {
+        min-width: 70px !important;
+        padding: 6px 12px !important;
+      }
+
+      .score-val {
+        font-size: 18px !important;
+      }
+
+      /* 工具页面优化 */
+      .age-main {
+        font-size: 36px !important;
+      }
+
+      .age-value {
+        font-size: 24px !important;
+      }
+
+      .age-label {
+        font-size: 11px !important;
+      }
+
+      /* 引导页面优化 */
+      .intro {
+        border-left-width: 2px !important;
+        padding-left: 12px !important;
+        margin-bottom: 32px !important;
+      }
+
+      .faq-item {
+        margin-bottom: 20px !important;
+      }
+
+      .faq-item strong {
+        font-size: 15px !important;
+      }
+    }
+
+    /* 小手机优化 (≤480px) */
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 24px !important;
+      }
+
+      h2 {
+        font-size: 18px !important;
+      }
+
+      .container, .wrap {
+        padding: 32px 12px 60px !important;
+      }
+
+      .main-panel, .step-block, .notice {
+        padding: 14px !important;
+      }
+
+      .btn {
+        padding: 12px !important;
+        font-size: 14px !important;
+      }
+
+      .age-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
+    /* 触摸设备优化 */
+    @media (hover: none) and (pointer: coarse) {
+      button, .btn, a[onclick], .cell {
+        min-height: 44px !important;
+        min-width: 44px !important;
+      }
+
+      input, select, textarea {
+        font-size: 16px !important;
+      }
+        }
+
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Game","name":"2048","description":"Slide numbered tiles and merge them to reach 2048. Addictive number puzzle game.","genre":"Puzzle","gamePlatform":"Web Browser","url":"https://knexio.xyz/games/2048/","publisher":{"@type":"Organization","name":"Knexio"}}</script>
+
+  <meta name="keywords" content="2048 game, number puzzle, slide tiles, merge numbers, free online puzzle, addictive math game" /></head>
+<body><a href="../../cdn-cgi/content-q9tmgEtAc8M70mNGxDQqZT3dbEOG6_cKVzpB9tQwccY.html" aria-hidden="true" rel="nofollow noopener" style="display: none !important; visibility: hidden !important"></a>
+<div class="wrap">
+  <a class="back" href="../index.html">← Back to Games</a>
+  <div class="header">
+    <h1>2048</h1>
+    <div class="score-board">
+      <div class="score-box"><div class="score-label">Score</div><div class="score-val" id="score">0</div></div>
+      <div class="score-box"><div class="score-label">Best</div><div class="score-val" id="best">0</div></div>
+    </div>
+  </div>
+  <p class="subtitle">Combine tiles to reach <strong>2048</strong>. Use arrow keys or swipe.</p>
+  <div class="btn-row">
+    <button class="btn" onclick="newGame()">New Game</button>
+    <button class="btn ghost" onclick="undo()">Undo</button>
+  </div>
+
+  <div class="grid-container" id="gridContainer">
+    <div class="grid" id="grid"></div>
+    <div class="overlay" id="overlay">
+      <h2 id="overlayTitle">Game Over</h2>
+      <p id="overlayMsg">No more moves available.</p>
+      <button class="btn" onclick="newGame()">Play Again</button>
+    </div>
+
+  </div>
+
+  <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="5794572171" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+<!-- ==================== 游戏玩法说明 - SEO优化内容 ==================== -->
+<div class="gameplay-section" style="margin: 60px auto 0; max-width: 800px; padding: 32px 24px; background: var(--panel); border-radius: 18px; border: 1px solid var(--border);">
+    <h2 style="font-size: 28px; margin-bottom: 30px; color: var(--text-main); display: flex; align-items: center;">
+        <span style="background: var(--accent); color: white; width: 36px; height: 36px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 15px; font-size: 18px;">🎮</span>
+        How to Play 2048
+    </h2>
+
+    <div style="margin-bottom: 30px;">
+        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--text-main);">Game Description</h3>
+        <p style="font-size: 15px; color: var(--text-sub); line-height: 1.7; margin-bottom: 20px;">
+            2048 is a classic number puzzle game where you slide tiles on a 4×4 grid to combine them and reach the 2048 tile. Every move creates new tiles with values of 2 or 4, and when two tiles with the same number touch, they merge into one with double the value.
+        </p>
+    </div>
+
+    <div style="margin-bottom: 30px;">
+        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--text-main);">Basic Rules & Controls</h3>
+        <ol style="font-size: 15px; color: var(--text-sub); line-height: 1.7; padding-left: 25px; margin-bottom: 20px;">
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">Use arrow keys (↑, ↓, ←, →) or swipe on touch devices to move all tiles</strong>
+            </li>
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">Tiles slide as far as possible in the chosen direction until they hit the wall or another tile</strong>
+            </li>
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">When two tiles with the same number collide while moving, they merge into one tile with their sum</strong>
+            </li>
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">After each move, a new tile with value 2 (90% chance) or 4 (10% chance) appears in a random empty spot</strong>
+            </li>
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">The game ends when no more moves are possible (grid is full with no possible merges)</strong>
+            </li>
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">Your score increases by the value of merged tiles (e.g., merging two 8s gives 16 points)</strong>
+            </li>
+
+        </ol>
+    </div>
+
+    <div style="margin-bottom: 30px;">
+        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--text-main);">Pro Tips & Strategies</h3>
+        <ul style="font-size: 15px; color: var(--text-sub); line-height: 1.7; padding-left: 25px; margin-bottom: 20px;">
+
+            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;">
+                <span style="position: absolute; left: -15px; color: var(--accent);">✓</span>
+                Keep your highest-value tile in a corner (usually bottom-right)
+            </li>
+
+            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;">
+                <span style="position: absolute; left: -15px; color: var(--accent);">✓</span>
+                Build chains of increasing numbers in one direction
+            </li>
+
+            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;">
+                <span style="position: absolute; left: -15px; color: var(--accent);">✓</span>
+                Try to avoid moving tiles in the opposite direction of your main strategy
+            </li>
+
+            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;">
+                <span style="position: absolute; left: -15px; color: var(--accent);">✓</span>
+                Plan several moves ahead to avoid getting stuck
+            </li>
+
+            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;">
+                <span style="position: absolute; left: -15px; color: var(--accent);">✓</span>
+                Use the 'Undo' button to recover from mistakes
+            </li>
+
+        </ul>
+    </div>
+
+    <div style="background: rgba(79, 140, 255, 0.1); padding: 20px; border-radius: 12px; border-left: 4px solid var(--accent);">
+        <p style="font-size: 15px; color: var(--text-sub); margin: 0;">
+            <strong style="color: var(--accent);">💡 Quick Start:</strong> Just click/tap to begin! No registration required. 
+            All Knexio games work directly in your browser with no downloads needed.
+        </p>
+    </div>
+</div>
+
+<!-- ==================== 广告位优化 ==================== -->
+<div class="ad-section" style="margin-top: 40px; text-align: center;">
+    <ins class="adsbygoogle" 
+         style="display:block; background: var(--panel); border-radius: 12px; padding: 15px;"
+         data-ad-client="ca-pub-2596567349043393" 
+         data-ad-slot="9504968504" 
+         data-ad-format="auto" 
+         data-full-width-responsive="true">
+    </ins>
+    <p style="font-size: 12px; color: var(--text-sub); margin-top: 8px; opacity: 0.7;">
+        Advertisement supports free games development
+    </p>
+</div>
+
+<!-- ==================== 游戏常见问题 (FAQ) ==================== -->
+<div class="faq-section" style="margin: 60px auto 0; max-width: 800px; padding: 32px 24px; background: var(--panel); border-radius: 18px;">
+    <h2 style="font-size: 28px; margin-bottom: 30px; color: var(--text-main);">Frequently Asked Questions</h2>
+
+    <div class="faq-list">
+        <div class="faq-item" style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid var(--border);">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                Is this game free to play?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                Yes, all games on Knexio are completely free to play. There are no hidden charges, subscription fees, or in-app purchases. We support our games through non-intrusive advertisements.
+            </p>
+        </div>
+
+        <div class="faq-item" style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid var(--border);">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                Do I need to download anything to play?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                No downloads required! All our games run directly in your web browser. They work on desktop computers, laptops, tablets, and smartphones. Just visit the page and start playing.
+            </p>
+        </div>
+
+        <div class="faq-item" style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid var(--border);">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                How do I save my game progress?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                Most games automatically save your high scores and progress in your browser's local storage. Your best scores will be remembered even if you close the browser, as long as you don't clear your browsing data.
+            </p>
+        </div>
+
+        <div class="faq-item" style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid var(--border);">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                Can I play on mobile devices?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                Absolutely! All Knexio games are fully responsive and optimized for mobile devices. Touch controls are implemented for games that require precise input. The interface automatically adapts to your screen size.
+            </p>
+        </div>
+
+        <div class="faq-item" style="margin-bottom: 25px;">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                Is there sound in the games?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                Most games include optional sound effects. Look for a sound/mute button in the game interface. You can enable or disable sound based on your preference. We keep sound subtle and non-intrusive.
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== 结构化数据 (Schema.org) ==================== -->
+<script type="application/ld+json">
+{{
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "{game_display_name}",
+    "description": "{template['description'][:150]}...",
+    "applicationCategory": "GameApplication",
+    "gamePlatform": "Web Browser",
+    "operatingSystem": "All",
+    "url": "https://knexio.xyz/games/{game_name}/",
+    "genre": "Browser Game",
+    "playMode": "SinglePlayer",
+    "publisher": {{
+        "@type": "Organization",
+        "name": "Knexio",
+        "url": "https://knexio.xyz"
+    }},
+    "offers": {{
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+    }},
+    "keywords": "{', '.join(template['keywords'])}"
+}}
+</script>
+
+<script type="application/ld+json">
+{{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {{
+            "@type": "Question",
+            "name": "Is this game free to play?",
+            "acceptedAnswer": {{
+                "@type": "Answer",
+                "text": "Yes, all games on Knexio are completely free to play. There are no hidden charges, subscription fees, or in-app purchases. We support our games through non-intrusive advertisements."
+            }}
+        }},
+        {{
+            "@type": "Question",
+            "name": "Do I need to download anything to play?",
+            "acceptedAnswer": {{
+                "@type": "Answer",
+                "text": "No downloads required! All our games run directly in your web browser. They work on desktop computers, laptops, tablets, and smartphones. Just visit the page and start playing."
+            }}
+        }},
+        {{
+            "@type": "Question",
+            "name": "How do I save my game progress?",
+            "acceptedAnswer": {{
+                "@type": "Answer",
+                "text": "Most games automatically save your high scores and progress in your browser's local storage. Your best scores will be remembered even if you close the browser, as long as you don't clear your browsing data."
+            }}
+        }}
+    ]
+}}
+</script>
+
+<!-- ==================== 相关游戏推荐 ==================== -->
+<div class="related-games" style="margin: 60px auto 0; max-width: 800px; padding: 32px 24px;">
+    <h2 style="font-size: 24px; margin-bottom: 20px; color: var(--text-main);">More Fun Games to Try</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+        <a href="../snake/index.html" style="display: block; background: var(--panel); border-radius: 12px; padding: 20px; text-decoration: none; color: var(--text-main); border: 1px solid var(--border); transition: all 0.2s;">
+            <div style="font-weight: bold; margin-bottom: 8px;">🐍 Snake</div>
+            <div style="font-size: 13px; color: var(--text-sub);">Classic arcade game with growing snake</div>
+        </a>
+        <a href="../tetris/index.html" style="display: block; background: var(--panel); border-radius: 12px; padding: 20px; text-decoration: none; color: var(--text-main); border: 1px solid var(--border); transition: all 0.2s;">
+            <div style="font-weight: bold; margin-bottom: 8px;">🧱 Tetris</div>
+            <div style="font-size: 13px; color: var(--text-sub);">Iconic block-stacking puzzle game</div>
+        </a>
+        <a href="../wordle/index.html" style="display: block; background: var(--panel); border-radius: 12px; padding: 20px; text-decoration: none; color: var(--text-main); border: 1px solid var(--border); transition: all 0.2s;">
+            <div style="font-weight: bold; margin-bottom: 8px;">🔤 Wordle</div>
+            <div style="font-size: 13px; color: var(--text-sub);">Popular word guessing puzzle</div>
+        </a>
+        <a href="../index.html" style="display: block; background: var(--panel); border-radius: 12px; padding: 20px; text-decoration: none; color: var(--text-main); border: 1px solid var(--border); transition: all 0.2s; text-align: center;">
+            <div style="font-weight: bold;">🎮 View All Games →</div>
+        </a>
+    </div>
+</div>
+    <footer>
+      <p>Free online games to play anytime. Enjoy classic games, puzzles, and entertainment.</p>
+            <p style="margin: 8px 0; font-size: 13px;">
+        <a href="/about/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">About</a>
+        <a href="/privacy/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Privacy</a>
+        <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
+        <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
+      </p>
+      <p>© 2026 Knexio. All rights reserved.</p>
+    </footer>
+</div>
+
+<script>// Game init //
+  const COLORS = {
+  0:'rgba(255,255,255,0.04)',2:'#1e3a5f',4:'#1e4a6f',8:'#c84b00',16:'#d46000',
+  32:'#e07000',64:'#e07830',128:'#e6b800',256:'#e6c800',512:'#e6d400',
+  1024:'#22c55e',2048:'#4f8cff',4096:'#a78bfa',8192:'#ec4899'
+};
+const TEXT_COLOR = {0:'transparent',2:'#aab3c5',4:'#aab3c5',8:'#fff',16:'#fff',32:'#fff'};
+
+let board, score, best=0, prev=null;
+
+function newGame() {
+  board = Array.from({length:4},()=>Array(4).fill(0));
+  score = 0;
+  prev = null;
+  addTile(); addTile();
+  document.getElementById('overlay').classList.remove('show');
+  render();
+}
+
+function addTile() {
+  const empty = [];
+  board.forEach((r,i)=>r.forEach((v,j)=>{ if(!v) empty.push([i,j]); }));
+  if (!empty.length) return;
+  const [r,c] = empty[Math.floor(Math.random()*empty.length)];
+  board[r][c] = Math.random()<0.9 ? 2 : 4;
+}
+
+function render() {
+  document.getElementById('score').textContent = score;
+  if (score > best) { best = score; document.getElementById('best').textContent = best; localStorage.setItem('2048best',best); }
+  const g = document.getElementById('grid');
+  g.innerHTML = '';
+  board.flat().forEach(v=>{
+    const d = document.createElement('div');
+    d.className = 'cell';
+    d.style.background = COLORS[Math.min(v,8192)] || '#4f8cff';
+    d.style.color = v<=4 ? (TEXT_COLOR[v]||'#fff') : '#fff';
+    d.style.fontSize = v>=1000 ? '18px' : v>=100 ? '22px' : '28px';
+    d.textContent = v || '';
+    g.appendChild(d);
+  });
+}
+
+function slide(row) {
+  let r = row.filter(v=>v);
+  for (let i=0;i<r.length-1;i++) {
+    if (r[i]===r[i+1]) { r[i]*=2; score+=r[i]; r.splice(i+1,1); }
+  }
+  while(r.length<4) r.push(0);
+  return r;
+}
+
+function move(dir) {
+  prev = board.map(r=>[...r]);
+  let moved = false;
+  const nb = board.map(r=>[...r]);
+  if (dir==='left') { nb.forEach((r,i)=>{ const s=slide(r); if(s.join()!==r.join()) moved=true; nb[i]=s; }); }
+  else if (dir==='right') { nb.forEach((r,i)=>{ const s=slide([...r].reverse()).reverse(); if(s.join()!==r.join()) moved=true; nb[i]=s; }); }
+  else if (dir==='up') {
+    for(let j=0;j<4;j++){
+      const col=nb.map(r=>r[j]);
+      const s=slide(col);
+      if(s.join()!==col.join()) moved=true;
+      nb.forEach((r,i)=>r[j]=s[i]);
+    }
+  } else {
+    for(let j=0;j<4;j++){
+      const col=nb.map(r=>r[j]).reverse();
+      const s=slide(col).reverse();
+      if(s.join()!==nb.map(r=>r[j]).join()) moved=true;
+      nb.forEach((r,i)=>r[j]=s[i]);
+    }
+  }
+  if (!moved) return;
+  board = nb;
+  addTile();
+  render();
+  if (isWon()) showOverlay('You Win! 🎉','You reached 2048!');
+  else if (isOver()) showOverlay('Game Over','No more moves available.');
+}
+
+function undo() {
+  if (!prev) return;
+  board = prev.map(r=>[...r]);
+  prev = null;
+  document.getElementById('overlay').classList.remove('show');
+  render();
+}
+
+function isOver() {
+  for(let i=0;i<4;i++) for(let j=0;j<4;j++){
+    if(!board[i][j]) return false;
+    if(i<3&&board[i][j]===board[i+1][j]) return false;
+    if(j<3&&board[i][j]===board[i][j+1]) return false;
+  }
+  return true;
+}
+
+function isWon() { return board.some(r=>r.some(v=>v===2048)); }
+
+function showOverlay(title, msg) {
+  document.getElementById('overlayTitle').textContent = title;
+  document.getElementById('overlayMsg').textContent = msg;
+  document.getElementById('overlay').classList.add('show');
+}
+
+// Keyboard
+document.addEventListener('keydown', e=>{
+  const map={'ArrowLeft':'left','ArrowRight':'right','ArrowUp':'up','ArrowDown':'down'};
+  if(map[e.key]){ e.preventDefault(); move(map[e.key]); }
+});
+
+// Touch swipe
+let tx=0,ty=0;
+document.getElementById('gridContainer').addEventListener('touchstart',e=>{ tx=e.touches[0].clientX; ty=e.touches[0].clientY; },{passive:true});
+document.getElementById('gridContainer').addEventListener('touchend',e=>{
+  const dx=e.changedTouches[0].clientX-tx, dy=e.changedTouches[0].clientY-ty;
+  if(Math.abs(dx)<20&&Math.abs(dy)<20) return;
+  if(Math.abs(dx)>Math.abs(dy)) move(dx>0?'right':'left');
+  else move(dy>0?'down':'up');
+});
+
+// Load best
+best = parseInt(localStorage.getItem('2048best')||'0');
+document.getElementById('best').textContent = best;
+
+newGame();</script>
+  <script src="/knexio-bundle.js"></script>
+  <script src="../../cookie-consent.js"></script>
+</body>
+</html>

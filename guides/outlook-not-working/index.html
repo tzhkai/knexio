@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Outlook Not Working? How to Fix Outlook Problems (2026)</title>
+  <meta name="description" content="Outlook not opening, emails not syncing, or connection errors? Step-by-step fixes for Microsoft Outlook on Windows, Mac, iPhone, Android, and the web. Covers login, profile repair, filters, PST issues, and IMAP settings." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="canonical" href="https://knexio.xyz/guides/outlook-not-working/" />
+  <meta property="og:title" content="Outlook Not Working? How to Fix It (2026)" />
+  <meta property="og:description" content="Fix Outlook not loading, emails not syncing, connection issues, and profile errors on all platforms." />
+  <meta property="og:url" content="https://knexio.xyz/guides/outlook-not-working/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Knexio" />
+  <meta name="robots" content="index, follow" />
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Outlook Not Working – How to Fix It","description":"Complete troubleshooting guide for Microsoft Outlook not opening, syncing, or connecting.","author":{"@type":"Organization","name":"Knexio"},"publisher":{"@type":"Organization","name":"Knexio"},"datePublished":"2026-03-19","dateModified":"2026-03-22","mainEntityOfPage":{"@type":"WebPage","@id":"https://knexio.xyz/guides/outlook-not-working/"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why is Outlook not opening?","acceptedAnswer":{"@type":"Answer","text":"Outlook may fail to open due to a corrupted profile, add-in conflict, or damaged PST/OST data file. Try launching Outlook in safe mode first (hold Ctrl while clicking the Outlook icon) to test for add-in conflicts."}},{"@type":"Question","name":"Why is Outlook not connecting to the server?","acceptedAnswer":{"@type":"Answer","text":"Outlook shows 'Disconnected' or 'Trying to connect' when it can't reach Microsoft Exchange or Outlook.com servers. Check your internet connection, verify the Microsoft 365 service status, and repair your Outlook account in Account Settings."}},{"@type":"Question","name":"Why are Outlook emails not syncing?","acceptedAnswer":{"@type":"Answer","text":"Email sync issues in Outlook are usually caused by a full mailbox, network problems, or a corrupted offline data file (OST). Try Send/Receive All Folders (F9), then repair the OST using the Account Settings dialog."}},{"@type":"Question","name":"How do I repair Outlook?","acceptedAnswer":{"@type":"Answer","text":"To repair Microsoft Outlook on Windows: go to Control Panel → Programs → Programs and Features → Microsoft Office/365 → Change → Quick Repair. If that fails, select Online Repair for a more thorough fix."}},{"@type":"Question","name":"How do I configure Outlook IMAP settings?","acceptedAnswer":{"@type":"Answer","text":"For IMAP: server imap-mail.outlook.com, port 993 with SSL. For SMTP: smtp-mail.outlook.com, port 587 with TLS. Use your full email address and Microsoft password. For accounts with 2FA, use an App Password instead."}},{"@type":"Question","name":"How do I fix Outlook rules not working?","acceptedAnswer":{"@type":"Answer","text":"Outlook rules may stop working due to conflicts, disabled rules, or full mailboxes. Go to Rules → Manage Rules & Alerts to review, edit, or re-enable rules. Rules run in order, so check for conflicts."}}]}</script>
+<style>
+
+    :root{--bg:#0b1220;--bg2:#070d1a;--panel:#111a2e;--border:rgba(255,255,255,0.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:linear-gradient(180deg,var(--bg),var(--bg2));color:var(--text);min-height:100vh;line-height:1.7}
+    a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+    .wrap{max-width:860px;margin:0 auto;padding:32px 20px 80px}
+    .back{display:inline-block;margin-bottom:24px;color:var(--sub);font-size:14px}
+    h1{font-size:36px;margin-bottom:12px;line-height:1.25}
+    .meta{color:var(--sub);font-size:14px;margin-bottom:28px}
+    .ad-slot{margin:24px 0;text-align:center}
+    .summary-box{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:22px 24px;margin-bottom:32px}
+    .summary-box h2{font-size:16px;margin-bottom:12px;color:var(--sub)}
+    .summary-box ul{padding-left:18px;color:var(--sub);font-size:14px}
+    .summary-box li{margin-bottom:6px}
+    .summary-box a{color:var(--accent)}
+    h2{font-size:24px;margin:40px 0 14px;padding-top:8px;border-top:1px solid var(--border)}
+    h3{font-size:18px;margin:28px 0 10px;color:#7dd3fc}
+    p{color:var(--sub);margin-bottom:14px;font-size:15px}
+    ol,ul{color:var(--sub);font-size:15px;padding-left:22px;margin-bottom:16px}
+    li{margin-bottom:8px}
+    .step-box{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:22px 24px;margin:20px 0}
+    .step-box h3{margin-top:0;font-size:17px;color:var(--text)}
+    .step-box ol{margin-bottom:0}
+    .tip{background:rgba(79,140,255,.08);border:1px solid rgba(79,140,255,.25);border-radius:10px;padding:14px 18px;font-size:14px;color:var(--sub);margin:18px 0}
+    .tip strong{color:var(--accent)}
+    .warning{background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.25);border-radius:10px;padding:14px 18px;font-size:14px;color:var(--sub);margin:18px 0}
+    .warning strong{color:#f87171}
+    code{background:rgba(255,255,255,0.08);padding:2px 8px;border-radius:5px;font-family:"Courier New",monospace;font-size:13px;}
+    .related{margin-top:60px;background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:22px 24px}
+    .related h2{border:none;margin:0 0 14px;font-size:18px}
+    .related ul{margin:0;padding-left:18px}
+    footer{margin-top:80px;text-align:center;font-size:13px;color:var(--sub)}
+  .ad-banner{margin:24px 0;text-align:center;min-height:90px}
+
+    /* ==================== 移动端优化 ==================== */
+
+    /* 平板和手机 (≤768px) */
+    @media (max-width: 768px) {
+      /* 容器布局优化 */
+      .container, .wrap {
+        padding: 40px 15px 80px !important;
+        max-width: 100% !important;
+      }
+
+      /* 标题字体优化 */
+      h1 {
+        font-size: 28px !important;
+        line-height: 1.3 !important;
+      }
+
+      h2 {
+        font-size: 20px !important;
+        margin-top: 36px !important;
+        margin-bottom: 10px !important;
+      }
+
+      h3 {
+        font-size: 17px !important;
+      }
+
+      /* 正文内容优化 */
+      p, li, .intro, .subtitle {
+        font-size: 14px !important;
+        line-height: 1.7 !important;
+      }
+
+      /* 段落间距优化 */
+      p, ul, ol {
+        margin-bottom: 16px !important;
+      }
+
+      /* 列表优化 */
+      ul, ol {
+        padding-left: 18px !important;
+      }
+
+      li {
+        margin-bottom: 6px !important;
+      }
+
+      /* 内容块优化 */
+      .main-panel, .step-block, .notice, .extra-info {
+        padding: 16px !important;
+        border-radius: 12px !important;
+        margin: 16px 0 !important;
+      }
+
+      /* 按钮和输入框优化 */
+      .btn {
+        padding: 14px !important;
+        font-size: 15px !important;
+        min-height: 48px !important;
+      }
+
+      .input-group input {
+        padding: 12px !important;
+        font-size: 15px !important;
+      }
+
+      /* 网格系统优化 */
+      .age-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px !important;
+      }
+
+      /* 广告位优化 */
+      .ad-banner {
+        margin: 16px 0 !important;
+        min-height: 50px !important;
+      }
+
+      /* 游戏页面优化 */
+      .grid-container {
+        padding: 8px !important;
+      }
+
+      .grid {
+        gap: 8px !important;
+      }
+
+      .cell {
+        font-size: 20px !important;
+        border-radius: 6px !important;
+      }
+
+      .score-box {
+        min-width: 70px !important;
+        padding: 6px 12px !important;
+      }
+
+      .score-val {
+        font-size: 18px !important;
+      }
+
+      /* 工具页面优化 */
+      .age-main {
+        font-size: 36px !important;
+      }
+
+      .age-value {
+        font-size: 24px !important;
+      }
+
+      .age-label {
+        font-size: 11px !important;
+      }
+
+      /* 引导页面优化 */
+      .intro {
+        border-left-width: 2px !important;
+        padding-left: 12px !important;
+        margin-bottom: 32px !important;
+      }
+
+      .faq-item {
+        margin-bottom: 20px !important;
+      }
+
+      .faq-item strong {
+        font-size: 15px !important;
+      }
+    }
+
+    /* 小手机优化 (≤480px) */
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 24px !important;
+      }
+
+      h2 {
+        font-size: 18px !important;
+      }
+
+      .container, .wrap {
+        padding: 32px 12px 60px !important;
+      }
+
+      .main-panel, .step-block, .notice {
+        padding: 14px !important;
+      }
+
+      .btn {
+        padding: 12px !important;
+        font-size: 14px !important;
+      }
+
+      .age-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
+    /* 触摸设备优化 */
+    @media (hover: none) and (pointer: coarse) {
+      button, .btn, a[onclick], .cell {
+        min-height: 44px !important;
+        min-width: 44px !important;
+      }
+
+      input, select, textarea {
+        font-size: 16px !important;
+      }
+        }
+
+</style>
+</head>
+<body><a href="../../cdn-cgi/content-mnbr_DCGYTagQPcBNF8_JpNYOhA5TwMtU0G1sTU_eqM.html" aria-hidden="true" rel="nofollow noopener" style="display: none !important; visibility: hidden !important"></a>
+<div class="wrap">
+  <a class="back" href="../index.html">← Back to Guides</a>
+  <h1>Outlook Not Working? How to Fix Common Outlook Problems</h1>
+  <div class="meta">Updated March 2026 · 15 min read</div>
+
+  <div class="summary-box">
+    <h2>Quick Navigation</h2>
+
+  <ul>
+      <li><a href="index.html#login">Login & Authentication Issues</a></li>
+      <li><a href="index.html#not-opening">Outlook Not Opening</a></li>
+      <li><a href="index.html#disconnected">Disconnected / Not Connecting</a></li>
+      <li><a href="index.html#not-syncing">Emails Not Syncing</a></li>
+      <li><a href="index.html#storage">Mailbox Full / Storage Issues</a></li>
+      <li><a href="index.html#rules">Rules & Filter Problems</a></li>
+      <li><a href="index.html#safe-mode">Safe Mode & Add-ins</a></li>
+      <li><a href="index.html#repair">Repair Outlook</a></li>
+      <li><a href="index.html#mobile">Mobile App Fixes</a></li>
+      <li><a href="index.html#web">Outlook on the Web</a></li>
+      <li><a href="index.html#imap">IMAP & POP Settings</a></li>
+    </ul>
+  </div>
+
+  <p>Microsoft Outlook is the most widely used email client in business environments. When it fails to open, shows "Disconnected," or stops syncing, it can halt your work. This guide covers every major Outlook fix for Windows, Mac, iPhone, and Android — including login issues, storage problems, rule conflicts, and IMAP setup.</p>
+
+  <h2 id="login">1. Outlook Login & Authentication Issues</h2>
+  <p>If Outlook won't let you sign in or keeps asking for your password:</p>
+  <div class="step-box">
+    <h3>How to Fix Authentication Problems</h3>
+    <ol>
+      <li><strong>Check your Microsoft account</strong> — Visit <a href="https://account.microsoft.com" target="_blank" rel="noopener">account.microsoft.com</a> to verify your credentials work on the web.</li>
+      <li><strong>Reset your password</strong> — If you've forgotten it, go to <a href="https://account.live.com/password/reset" target="_blank" rel="noopener">account.live.com/password/reset</a>.</li>
+      <li><strong>Use the correct email format</strong> — For Microsoft 365 work accounts, use your full email (<a href="https://knexio.xyz/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="21584e5461424e4c51404f580f424e4c">[email&#160;protected]</a>). For personal Outlook/Hotmail, use your full address (<a href="https://knexio.xyz/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f980968cb9968c8d95969692d79a9694">[email&#160;protected]</a>).</li>
+      <li><strong>Enable 2-Factor Authentication (2FA)</strong> — If 2FA is required by your organization, Outlook may need a sign-in assistant or app password.</li>
+      <li><strong>Clear credential cache</strong> — Go to Windows Control Panel → Credential Manager → Windows Credentials → remove any saved Outlook credentials. Then restart Outlook.</li>
+      <li><strong>Check for expired password</strong> — Corporate Microsoft 365 accounts often require password changes every 90 days. If your password expired, update it and re-enter in Outlook.</li>
+      <li><strong>Allow less secure sign-ins</strong> — For personal Outlook.com accounts without 2FA, you may need to enable "Less secure app access" in your Microsoft account security settings.</li>
+    </ol>
+  </div>
+  <div class="warning"><strong>Note for Microsoft 365 users:</strong> If your admin has enforced Multi-Factor Authentication (MFA) or Conditional Access policies, you may need to register your device through the Microsoft Authenticator app before Outlook will accept your credentials.</div>
+
+    <!-- AdSense – in-article (auto-inserted) -->
+    <div style="margin: 32px 0; text-align: center;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2596567349043393"
+           data-ad-slot="9350673807"
+           data-ad-format="fluid"
+           data-ad-layout="in-article"></ins>
+    </div>
+
+
+
+  <h2 id="not-opening">2. Outlook Not Opening</h2>
+  <p>If Outlook crashes on launch or freezes on the startup screen:</p>
+  <div class="step-box">
+    <h3>Step-by-Step Fix</h3>
+    <ol>
+      <li>Wait 60 seconds — Outlook can hang at "Loading Profile" on slow computers.</li>
+      <li>End any existing Outlook processes: Ctrl+Alt+Delete → Task Manager → find Outlook.exe → End Task. Then relaunch.</li>
+      <li>Launch Outlook in safe mode: hold <strong>Ctrl</strong> and double-click the Outlook icon. Click Yes when prompted.</li>
+      <li>If Outlook opens in safe mode, an add-in is the cause (see Safe Mode section below).</li>
+      <li>Restart your computer and reopen Outlook normally.</li>
+      <li><strong>Create a new Outlook profile</strong> — Control Panel → Mail → Show Profiles → Add → configure your email account → set as default.</li>
+    </ol>
+  </div>
+
+  <h2 id="disconnected">3. Outlook Disconnected / Not Connecting to Server</h2>
+  <p>The status bar at the bottom of Outlook shows "Disconnected," "Trying to Connect," or "Working Offline." Here's how to fix it:</p>
+  <ol>
+    <li><strong>Check "Work Offline" mode</strong> – Go to Send/Receive tab → make sure "Work Offline" is NOT highlighted. Click it to toggle back online.</li>
+    <li><strong>Verify internet connection</strong> – Open a browser and check connectivity.</li>
+    <li><strong>Check Microsoft 365 service status</strong> – Visit <a href="https://status.office365.com" target="_blank" rel="noopener">status.office365.com</a> for outage information.</li>
+    <li><strong>Repair your account</strong> – File → Account Settings → Account Settings → select your account → Repair.</li>
+    <li><strong>Remove and re-add the account</strong> – As a last resort, remove your account from Outlook and add it back fresh.</li>
+    <li><strong>Reset the AutoDiscover feature</strong> – Close Outlook. Delete the AutoDiscover registry key: <code>HKEY_CURRENT_USER\Software\Microsoft\Office\XX.0\Outlook\AutoDiscover</code>. Relaunch Outlook.</li>
+  </ol>
+  <div class="tip"><strong>Tip:</strong> Press <strong>F9</strong> or go to Send/Receive → Send/Receive All Folders to manually force Outlook to sync.</div>
+
+  <h2 id="not-syncing">4. Emails Not Syncing</h2>
+  <p>Missing new emails, items stuck in Outbox, or sent items not appearing:</p>
+  <ol>
+    <li>Press <strong>F9</strong> to manually trigger send/receive.</li>
+    <li>Check your mailbox size — many corporate Exchange accounts have quotas. A full mailbox blocks incoming mail.</li>
+    <li><strong>Repair the OST data file</strong> – Close Outlook. In Windows, search "scanpst.exe" (Inbox Repair Tool) and run it against your OST/PST file. This fixes corruption.</li>
+    <li>Delete and recreate the email account profile in Outlook.</li>
+    <li><strong>Clear the Outlook cache</strong> – Close Outlook. Navigate to <code>%localappdata%\Microsoft\Outlook\RoamCache</code> and delete all files. Relaunch Outlook.</li>
+    <li><strong>Check folder sync settings</strong> – Right-click any folder → IMAP Folders → make sure all folders are set to subscribe/sync.</li>
+  </ol>
+  <div class="warning"><strong>Warning:</strong> Before running SCANPST or deleting your profile, back up your PST/OST file. Default location: <code>C:\Users\[username]\AppData\Local\Microsoft\Outlook\</code></div>
+
+  <h2 id="storage">5. Mailbox Full / Storage Issues</h2>
+  <p>If Outlook is slow, crashes frequently, or won't receive new emails, your mailbox may be full:</p>
+  <ol>
+    <li><strong>Check mailbox size</strong> – Right-click your mailbox root → Data File Properties → Folder Size → Advanced. Most Exchange/Microsoft 365 accounts have 50 GB–100 GB limits.</li>
+    <li><strong>Empty Deleted Items automatically</strong> – File → Options → Advanced → AutoArchive → enable AutoArchive. Set it to run daily and delete items older than 30 days.</li>
+    <li><strong>Manually archive old emails</strong> – File → Options → Advanced → AutoArchive Settings → Archive this folder automatically → select folders.</li>
+    <li><strong>Compress the PST file</strong> – File → Account Settings → Account Settings → Data Files → Settings → Compact Now. This reduces PST file size.</li>
+    <li><strong>Delete large attachments</strong> – Search for emails with large attachments, then remove attachments from messages (Edit → Remove Attachment) or delete the emails.</li>
+    <li><strong>Use Outlook.com storage management</strong> – If using Outlook.com, visit <a href="https://outlook.live.com/storage" target="_blank" rel="noopener">outlook.live.com/storage</a> to purchase additional storage or free up space.</li>
+  </ol>
+  <div class="tip"><strong>Tip:</strong> For PST files over 50 GB, consider splitting into multiple PST files using the Outlook Import/Export wizard. Large PST files can cause performance issues and corruption.</div>
+
+  <h2 id="rules">6. Outlook Rules & Filter Problems</h2>
+  <p>If your Outlook rules (also called "rules") are not running correctly:</p>
+  <h3>Common Rule Issues and Fixes</h3>
+  <ol>
+    <li><strong>Rules disabled</strong> – Rules may have been accidentally turned off. Go to File → Manage Rules & Alerts. Ensure all rules are checked/enabled.</li>
+    <li><strong>Rule conflicts</strong> – If two rules target the same emails, they may cancel each other out. Reorder rules by importance: Rules → Manage Rules & Alerts → drag to reorder.</li>
+    <li><strong>Rules only apply on send/receive</strong> – Server-side rules (Exchange/Microsoft 365) run automatically. Client-side rules (POP/IMAP) only run when Outlook is open.</li>
+    <li><strong>Rule actions are ignored</strong> – If a rule says "stop processing more rules," subsequent rules won't run. Uncheck this option if not intended.</li>
+    <li><strong>Rule condition not matching</strong> – Check that your rule conditions are specific enough. For example, "from contains john" also matches "<a href="https://knexio.xyz/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a7cdc8cfc9c9dee7c4c8cad7c6c9de89c4c8ca">[email&#160;protected]</a>" — use exact match if needed.</li>
+    <li><strong>Too many rules</strong> – Having 50+ rules can slow Outlook significantly. Consolidate similar rules or archive rarely-used ones.</li>
+    <li><strong>Rules not working on mobile</strong> – Rules only run on the device/client where they are created. For server-side rules, they apply everywhere, but only on Microsoft 365/Exchange accounts.</li>
+  </ol>
+  <div class="step-box">
+    <h3>How to Check and Fix Your Rules</h3>
+    <ol>
+      <li>Go to <strong>File → Manage Rules & Alerts</strong>.</li>
+      <li>Review all rules listed. Enabled rules have a checkmark.</li>
+      <li>Click <strong>Options</strong> to see a detailed view of rule conditions and actions.</li>
+      <li>To reorder rules, select a rule and click <strong>Move Up</strong> or <strong>Move Down</strong>.</li>
+      <li>To test a rule, manually run it: click <strong>Run Rules Now</strong> → select the rule → select folders → Run Now.</li>
+      <li>Delete and recreate problematic rules rather than trying to edit complex ones.</li>
+    </ol>
+  </div>
+  <div class="warning"><strong>Note:</strong> If using a shared mailbox or delegated account, rules created in those mailboxes must be stored in the delegate's Outlook, not the shared mailbox itself.</div>
+
+  <h2 id="safe-mode">7. Safe Mode & Disabling Add-ins</h2>
+  <p>Add-ins (plugins) are a common cause of Outlook crashes and slowness. Safe mode disables all add-ins temporarily:</p>
+  <ol>
+    <li>Open Outlook in safe mode: hold <strong>Ctrl</strong> and click the Outlook icon.</li>
+    <li>If Outlook works normally in safe mode, go to: File → Options → Add-ins.</li>
+    <li>At the bottom, in the "Manage" dropdown select "COM Add-ins" → Go.</li>
+    <li>Uncheck all add-ins and click OK.</li>
+    <li>Close and reopen Outlook normally. Re-enable add-ins one at a time to identify the problematic one.</li>
+    <li><strong>Update or remove problematic add-ins</strong> — Visit the add-in manufacturer's website for updates.</li>
+  </ol>
+
+  <h2 id="repair">8. Repair Microsoft Outlook (Windows)</h2>
+  <p>The built-in Office repair tool can fix most Outlook problems without uninstalling:</p>
+  <ol>
+    <li>Close Outlook completely.</li>
+    <li>Open Control Panel → Programs → Programs and Features.</li>
+    <li>Find "Microsoft Office" or "Microsoft 365" in the list → click Change.</li>
+    <li>Select <strong>Quick Repair</strong> first (no internet needed, takes ~5 min).</li>
+    <li>If Quick Repair doesn't help, run <strong>Online Repair</strong> (requires internet, ~30 min, more thorough).</li>
+  </ol>
+  <div class="tip"><strong>Mac users:</strong> Run Microsoft AutoUpdate from the Applications folder. If that doesn't help, use Finder → Applications → Microsoft Outlook → right-click → Show Package Contents → Office365RepairTool (if available).</div>
+
+  <h2 id="mobile">9. Outlook Mobile App Not Working</h2>
+  <div class="step-box">
+    <h3>iPhone Fixes</h3>
+    <ol>
+      <li>Force-close the Outlook app and reopen.</li>
+      <li>Update Outlook from the App Store.</li>
+      <li>Go to Settings → Outlook → toggle Background App Refresh on.</li>
+      <li>Remove your account inside Outlook (tap your avatar → settings icon → account → Delete Account) and re-add it.</li>
+      <li>Delete and reinstall the Outlook app.</li>
+      <li><strong>Check Focus/DND settings</strong> — iOS Focus mode can block Outlook notifications. Add Outlook to Focus exceptions.</li>
+      <li><strong>Clear credentials</strong> — Settings → Outlook → Account → Reset Account. This forces a full re-authentication.</li>
+    </ol>
+  </div>
+  <div class="step-box">
+    <h3>Android Fixes</h3>
+    <ol>
+      <li>Clear Outlook app cache: Settings → Apps → Outlook → Storage → Clear Cache.</li>
+      <li>Update Outlook from Google Play.</li>
+      <li>Disable battery optimization for Outlook: Settings → Battery → Battery Optimization → Outlook → Don't optimize.</li>
+      <li>Remove and re-add your account in the Outlook app.</li>
+      <li><strong>Check app permissions</strong> — Settings → Apps → Outlook → Permissions → ensure Notifications, Storage, and Contacts are allowed.</li>
+      <li><strong>Try Samsung-specific fix</strong> — If on Samsung devices, also check Settings → Device Care → Battery → Apps → Outlook → Allow background activity.</li>
+    </ol>
+  </div>
+
+  <h2 id="web">10. Outlook on the Web (OWA) Not Working</h2>
+  <p>If <a href="https://outlook.live.com" target="_blank" rel="noopener">outlook.live.com</a> or your company's OWA fails to load:</p>
+  <ol>
+    <li>Clear browser cache (Ctrl+Shift+Delete in Chrome).</li>
+    <li>Try Incognito/Private mode to rule out extension conflicts.</li>
+    <li>Use the light version of OWA: add <code>?light=1</code> to the URL.</li>
+    <li>Try a different browser.</li>
+    <li>Check <a href="https://status.office365.com" target="_blank" rel="noopener">status.office365.com</a> for Microsoft 365 service issues.</li>
+    <li><strong>Allow cookies</strong> — OWA requires cookies for authentication. Ensure third-party cookies are not fully blocked.</li>
+    <li><strong>Check your organization's network policy</strong> — Corporate firewalls may block OWA. Contact your IT department.</li>
+  </ol>
+
+  <h2 id="imap">11. Outlook IMAP & POP Settings</h2>
+  <p>Use these settings if you're setting up Outlook with a non-Exchange email account (e.g., Gmail, Yahoo, or a generic IMAP provider):</p>
+  <div class="step-box">
+    <h3>IMAP Settings (Recommended for most accounts)</h3>
+    <ul>
+      <li><strong>Incoming Email Server (IMAP):</strong> <code>imap-mail.outlook.com</code></li>
+      <li><strong>Port:</strong> <code>993</code> (SSL/TLS encrypted)</li>
+      <li><strong>Outgoing Email Server (SMTP):</strong> <code>smtp-mail.outlook.com</code></li>
+      <li><strong>SMTP Port:</strong> <code>587</code> (TLS/STARTTLS)</li>
+      <li><strong>Username:</strong> Your full email address</li>
+      <li><strong>Password:</strong> Your email password OR an App Password (for accounts with 2FA)</li>
+      <li><strong>Authentication:</strong> Choose "Normal Password" or "OAuth2" depending on your provider.</li>
+    </ul>
+  </div>
+  <div class="step-box">
+    <h3>POP Settings</h3>
+    <ul>
+      <li><strong>Incoming Email Server (POP):</strong> <code>pop-mail.outlook.com</code></li>
+      <li><strong>Port:</strong> <code>995</code> (SSL encrypted)</li>
+      <li><strong>SMTP Server:</strong> <code>smtp-mail.outlook.com</code></li>
+      <li><strong>SMTP Port:</strong> <code>587</code></li>
+      <li><strong>Leave a copy of messages on server:</strong> Check this if you want to access the same mail from multiple devices.</li>
+    </ul>
+  </div>
+  <div class="step-box">
+    <h3>Microsoft 365 / Exchange Settings</h3>
+    <ul>
+      <li><strong>Server:</strong> <code>outlook.office365.com</code></li>
+      <li><strong>Port:</strong> <code>993</code> (IMAP with SSL) or <code>995</code> (POP with SSL)</li>
+      <li><strong>SMTP:</strong> <code>smtp.office365.com</code> on port <code>587</code> (TLS)</li>
+      <li><strong>Authentication:</strong> Modern Authentication (OAuth 2.0) is recommended. Your admin may require this.</li>
+    </ul>
+  </div>
+  <div class="tip"><strong>Tip:</strong> To add an IMAP account in Outlook: File → Add Account → enter your email address → Advanced options → choose IMAP. Outlook will auto-detect most settings for popular email providers.</div>
+  <div class="warning"><strong>OAuth2 is recommended:</strong> Avoid using basic authentication (username + password) for IMAP/SMTP if your provider supports OAuth 2.0. OAuth is more secure and isn't blocked by Microsoft's security policies in Microsoft 365.
+  </div>
+
+  <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="5794572171" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+      <footer>
+      <p>Helpful guides and tutorials for games, apps, and digital tools. Solve your problems step by step.</p>
+            <p style="margin: 8px 0; font-size: 13px;">
+        <a href="/about/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">About</a>
+        <a href="/privacy/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Privacy</a>
+        <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
+        <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
+      </p>
+      <p>© 2026 Knexio. All rights reserved.</p>
+    </footer>
+</div>
+  <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script src="/knexio-bundle.js"></script>
+  <script src="../../cookie-consent.js"></script>
+  <!-- 中间广告 -->
+  <div class="ad-banner">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  </div>
+</body>
+</html>

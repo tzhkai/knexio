@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Loan Calculator – Calculate Monthly Payments & Interest | Knexio</title>
+<meta name="description" content="Free loan calculator to estimate monthly payments, total interest, and amortization schedule. Supports auto loans, personal loans, mortgages, and student loans.">
+
+<link rel="canonical" href="https://knexio.xyz/tools/loan-calculator/">
+
+<meta property="og:title" content="Loan Calculator – Calculate Monthly Payments & Interest">
+<meta property="og:description" content="Free loan calculator for auto, personal, mortgage, and student loans. Estimate payments and see amortization schedule.">
+<meta property="og:url" content="https://knexio.xyz/tools/loan-calculator/">
+<meta property="og:type" content="WebApplication">
+<meta property="og:site_name" content="Knexio">
+<meta property="og:image" content="https://knexio.xyz/og-image.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Loan Calculator",
+  "url": "https://knexio.xyz/tools/loan-calculator/",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "All",
+  "description": "Calculate loan payments, interest, and amortization schedule for auto, personal, mortgage, and student loans.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+
+<style>
+:root{
+  --bg:#0b1220;
+  --card:#111a2e;
+  --border:rgba(255,255,255,.08);
+  --text:#fff;
+  --sub:#aab3c5;
+  --accent:#4f8cff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:system-ui,-apple-system;
+  background:var(--bg);
+  color:var(--text);
+}
+.container{max-width:900px;margin:auto;padding:50px 16px}
+
+.back{
+  display:inline-block;
+  color:var(--sub);
+  text-decoration:none;
+  font-size:14px;
+  margin-bottom:24px;
+  transition:color 0.2s;
+}
+.back:hover{color:var(--accent)}
+
+h1{font-size:32px;margin-bottom:8px}
+h2{font-size:22px;margin-top:30px;margin-bottom:10px}
+.subtitle{color:var(--sub);margin-bottom:24px}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:20px;
+  margin-bottom:20px;
+}
+
+label{display:block;font-size:14px;color:var(--sub);margin-bottom:8px}
+input,select{
+  width:100%;
+  padding:12px 16px;
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:12px;
+  color:var(--text);
+  font-size:15px;
+  font-family:inherit;
+  margin-bottom:16px;
+}
+input:focus,select:focus{outline:none;border-color:var(--accent)}
+
+.form-group{margin-bottom:16px}
+.input-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+.btn-row{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+button,.btn,.btn-row button{
+  flex:1;
+  padding:10px;
+  border-radius:10px;
+  border:none;
+  background:var(--accent);
+  color:#fff;
+  cursor:pointer;
+  font-size:14px;
+  transition:opacity 0.2s;
+  box-sizing:border-box;
+}
+button:hover,.btn:hover{opacity:0.9}
+button.secondary,.btn.secondary,.btn-outline,.btn-row button.secondary{
+  background:transparent;
+  border:1px solid var(--border);
+  color:var(--sub);
+}
+button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{
+  border-color:var(--accent);
+  color:var(--accent);
+}
+
+.result-box{
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:20px;
+  margin-bottom:16px;
+  text-align:center;
+}
+.result-main{
+  font-size:36px;
+  font-weight:700;
+  color:var(--accent);
+  margin-bottom:4px;
+}
+.result-label{font-size:14px;color:var(--sub)}
+.result-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-top:16px;
+}
+.result-item{
+  background:var(--bg);
+  padding:12px;
+  border-radius:8px;
+  text-align:center;
+}
+.result-value{
+  font-size:20px;
+  font-weight:600;
+  color:var(--accent);
+}
+.result-desc{font-size:12px;color:var(--sub)}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:13px;
+}
+th,td{
+  padding:10px;
+  text-align:left;
+  border-bottom:1px solid var(--border);
+}
+th{color:var(--sub);font-weight:500}
+td{color:var(--text)}
+.schedule-container{
+  max-height:400px;
+  overflow-y:auto;
+}
+
+.tip{font-size:13px;color:var(--sub);margin-top:10px}
+
+.section p{color:var(--sub);line-height:1.7;margin-bottom:10px}
+
+.tools a{
+  display:inline-block;
+  margin:6px;
+  padding:8px 14px;
+  border-radius:8px;
+  border:1px solid var(--border);
+  color:var(--sub);
+  text-decoration:none;
+}
+.tools a:hover{border-color:var(--accent);color:var(--accent)}
+
+.ad-banner{margin:32px 0;text-align:center}
+
+.faq-item{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:20px;
+  margin-bottom:12px;
+}
+.faq-item h3{font-size:16px;margin-bottom:8px;color:var(--text)}
+.faq-item p{color:var(--sub);font-size:14px;line-height:1.7;margin:0}
+
+footer{
+  margin-top:40px;
+  text-align:center;
+  color:var(--sub);
+  font-size:13px;
+}
+footer p{margin-bottom:8px}
+footer a{
+  color:var(--sub);
+  text-decoration:none;
+  margin:0 10px;
+  transition:color 0.2s;
+}
+footer a:hover{color:var(--accent)}
+
+@media(max-width:600px){
+  .input-row{grid-template-columns:1fr}
+  .result-grid{grid-template-columns:1fr}
+  .result-main{font-size:28px}
+}
+</style>
+</head>
+
+<body><div class="container">
+
+<a class="back" href="../index.html">← Back to Tools</a>
+
+<h1>Loan Calculator</h1>
+<p class="subtitle">Calculate monthly payments, total interest, and view amortization schedule for auto, personal, mortgage, and student loans.</p>
+
+<div class="ad-banner">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="5794572171"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<div class="card">
+  <div class="form-group">
+    <label>Loan Amount</label>
+    <input type="number" id="amount" placeholder="25000" value="25000" min="1000">
+  </div>
+  
+  <div class="input-row">
+    <div class="form-group">
+      <label>Interest Rate (%)</label>
+      <input type="number" id="rate" placeholder="5.5" value="5.5" step="0.01" min="0" max="100">
+    </div>
+    <div class="form-group">
+      <label>Loan Term</label>
+      <input type="number" id="term" placeholder="5" value="5" min="1" max="30">
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label>Term Unit</label>
+    <select id="termUnit">
+      <option value="years" selected>Years</option>
+      <option value="months">Months</option>
+    </select>
+  </div>
+  
+  <div class="form-group">
+    <label>Loan Type</label>
+    <select id="loanType">
+      <option value="auto">Auto Loan</option>
+      <option value="personal" selected>Personal Loan</option>
+      <option value="mortgage">Mortgage</option>
+      <option value="student">Student Loan</option>
+    </select>
+  </div>
+  
+  <div class="btn-row">
+    <button onclick="calculateLoan()">Calculate Loan</button>
+    <button class="secondary" onclick="clearAll()">Clear</button>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Payment Summary</h2>
+  <div class="result-box">
+    <div class="result-main" id="monthlyPayment">$0.00</div>
+    <div class="result-label">Monthly Payment</div>
+  </div>
+  <div class="result-grid">
+    <div class="result-item">
+      <div class="result-value" id="totalPrincipal">$0</div>
+      <div class="result-desc">Total Principal</div>
+    </div>
+    <div class="result-item">
+      <div class="result-value" id="totalInterest">$0</div>
+      <div class="result-desc">Total Interest</div>
+    </div>
+    <div class="result-item">
+      <div class="result-value" id="totalCost">$0</div>
+      <div class="result-desc">Total Cost</div>
+    </div>
+    <div class="result-item">
+      <div class="result-value" id="numPayments">0</div>
+      <div class="result-desc"># of Payments</div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Amortization Schedule</h2>
+  <div class="schedule-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Payment #</th>
+          <th>Payment</th>
+          <th>Principal</th>
+          <th>Interest</th>
+          <th>Balance</th>
+        </tr>
+      </thead>
+      <tbody id="scheduleBody">
+        <tr><td colspan="5" style="text-align:center;color:var(--sub)">Enter loan details and click Calculate</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<h2>Free Online Loan Calculator</h2>
+<div class="section">
+  <p>Calculate your monthly loan payments, total interest, and view a complete amortization schedule. This free tool works for auto loans, personal loans, mortgages, and student loans. Simply enter the loan amount, interest rate, and term to see your payment breakdown instantly.</p>
+  <p>Understanding your loan costs before you borrow helps you make better financial decisions. The amortization schedule shows how each payment is split between principal and interest over the life of the loan, helping you see how much you'll pay over time.</p>
+</div>
+
+<h2>How It Works</h2>
+<div class="section">
+  <p><strong>1. Enter loan amount:</strong> Input the total amount you plan to borrow in dollars. This is the principal amount of the loan.</p>
+  <p><strong>2. Set interest rate:</strong> Enter the annual interest rate as a percentage. For example, if your rate is 5.5%, enter 5.5.</p>
+  <p><strong>3. Choose loan term:</strong> Select how long you'll repay the loan in years or months. Longer terms mean lower monthly payments but more total interest.</p>
+  <p><strong>4. Select loan type:</strong> Choose the type of loan (auto, personal, mortgage, or student) for personalized results.</p>
+  <p><strong>5. View results:</strong> Click Calculate to see your monthly payment, total interest, and complete amortization schedule showing each payment breakdown.</p>
+</div>
+
+<h2>Frequently Asked Questions</h2>
+<div class="faq-item">
+  <h3>How is monthly payment calculated?</h3>
+  <p>Monthly payment is calculated using the amortization formula: M = P × [r(1+r)^n] / [(1+r)^n-1], where M is monthly payment, P is principal, r is monthly interest rate, and n is number of payments. This accounts for compound interest over the loan term.</p>
+</div>
+<div class="faq-item">
+  <h3>What is an amortization schedule?</h3>
+  <p>An amortization schedule is a table showing each loan payment over time. It breaks down how much of each payment goes toward principal versus interest. Early in the loan, most payments go to interest. Over time, more goes to principal.</p>
+</div>
+<div class="faq-item">
+  <h3>Should I choose a longer or shorter loan term?</h3>
+  <p>Shorter terms have higher monthly payments but less total interest. Longer terms have lower monthly payments but more total interest over the loan's life. Choose based on your budget and total cost preference.</p>
+</div>
+<div class="faq-item">
+  <h3>What loan types does this calculator support?</h3>
+  <p>This calculator works for auto loans, personal loans, mortgages, and student loans. The calculation method is the same for all types, though typical interest rates and terms vary by loan type.</p>
+</div>
+<div class="faq-item">
+  <h3>Can I calculate a loan with 0% interest?</h3>
+  <p>Yes, simply enter 0 as the interest rate. The calculator will handle zero-interest loans by dividing the principal evenly across the payment period.</p>
+</div>
+<div class="faq-item">
+  <h3>Is this calculator accurate?</h3>
+  <p>This calculator uses the standard amortization formula used by lenders. However, actual payments may vary slightly due to rounding, fees, or specific lender terms. Always verify with your lender for exact payment amounts.</p>
+</div>
+
+<h2>Related Tools</h2>
+<div class="tools">
+  <a href="/tools/mortgage-calculator/">Mortgage Calculator</a>
+  <a href="/tools/interest-calculator/">Interest Calculator</a>
+  <a href="/tools/percentage-calculator/">Percentage Calculator</a>
+  <a href="/tools/compound-interest/">Compound Interest</a>
+</div>
+
+<div class="ad-banner">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="9504968504"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<footer>
+  <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
+  <p style="margin: 8px 0; font-size: 13px;">
+    <a href="/about/" style="color:var(--accent);text-decoration:none;margin:0 8px;">About</a>
+    <a href="/privacy/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Privacy</a>
+    <a href="/terms/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Terms</a>
+    <a href="/contact/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Contact</a>
+  </p>
+  <p>© 2026 Knexio. All rights reserved.</p>
+</footer>
+</div>
+
+<script>
+function formatCurrency(num) {
+  return '$' + num.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+
+function calculateLoan() {
+  const amount = parseFloat(document.getElementById('amount').value) || 0;
+  const rate = parseFloat(document.getElementById('rate').value) || 0;
+  let term = parseFloat(document.getElementById('term').value) || 0;
+  const termUnit = document.getElementById('termUnit').value;
+
+  if (termUnit === 'years') term *= 12;
+
+  const monthlyRate = rate / 100 / 12;
+  let monthlyPayment;
+
+  if (rate === 0) {
+    monthlyPayment = amount / term;
+  } else {
+    monthlyPayment = amount * (monthlyRate * Math.pow(1 + monthlyRate, term)) / (Math.pow(1 + monthlyRate, term) - 1);
+  }
+
+  const totalCost = monthlyPayment * term;
+  const totalInterest = totalCost - amount;
+
+  document.getElementById('monthlyPayment').textContent = formatCurrency(monthlyPayment);
+  document.getElementById('totalPrincipal').textContent = formatCurrency(amount);
+  document.getElementById('totalInterest').textContent = formatCurrency(totalInterest);
+  document.getElementById('totalCost').textContent = formatCurrency(totalCost);
+  document.getElementById('numPayments').textContent = term;
+
+  let balance = amount;
+  let html = '';
+  for (let i = 1; i <= Math.min(term, 360); i++) {
+    const interestPayment = balance * monthlyRate;
+    const principalPayment = monthlyPayment - interestPayment;
+    balance -= principalPayment;
+    if (balance < 0) balance = 0;
+
+    html += `<tr>
+      <td>${i}</td>
+      <td>${formatCurrency(monthlyPayment)}</td>
+      <td>${formatCurrency(principalPayment)}</td>
+      <td>${formatCurrency(interestPayment)}</td>
+      <td>${formatCurrency(balance)}</td>
+    </tr>`;
+  }
+  if (term > 360) {
+    html += `<tr><td colspan="5" style="text-align:center;color:var(--sub)">... ${term - 360} more payments ...</td></tr>`;
+  }
+  document.getElementById('scheduleBody').innerHTML = html;
+}
+
+function clearAll() {
+  document.getElementById('amount').value = '';
+  document.getElementById('rate').value = '';
+  document.getElementById('term').value = '';
+  document.getElementById('scheduleBody').innerHTML = '<tr><td colspan="5" style="text-align:center;color:var(--sub)">Enter loan details and click Calculate</td></tr>';
+  document.getElementById('monthlyPayment').textContent = '$0.00';
+  document.getElementById('totalPrincipal').textContent = '$0';
+  document.getElementById('totalInterest').textContent = '$0';
+  document.getElementById('totalCost').textContent = '$0';
+  document.getElementById('numPayments').textContent = '0';
+}
+
+calculateLoan();
+</script>
+<script src="/knexio-bundle.js"></script>
+</body>
+</html>

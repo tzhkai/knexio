@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Email Signature Generator – Create Professional Signatures | Knexio</title>
+  <meta name="description" content="Free email signature generator to create professional email signatures. Includes templates, images, and social media links.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="keywords" content="email signature generator, professional email signature, email signature template">
+  <link rel="canonical" href="https://knexio.xyz/business/email-signature-generator/">
+  <meta property="og:title" content="Email Signature Generator – Create Professional Signatures">
+  <meta property="og:description" content="Free email signature generator with templates and social media links.">
+  <meta property="og:url" content="https://knexio.xyz/business/email-signature-generator/">
+  <meta property="og:type" content="website">
+
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Email Signature Generator",
+    "description": "Create professional email signatures with templates and social media links",
+    "url": "https://knexio.xyz/business/email-signature-generator/",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Any",
+    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [{
+      "@type": "Question",
+      "name": "What is an email signature generator?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "An email signature generator is a tool that helps you create professional, formatted email signatures with your contact information, company details, and social media links."
+      }
+    }, {
+      "@type": "Question",
+      "name": "How do I use this email signature generator?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Simply fill in your details in the form, choose a template style, and click 'Generate Signature'. Then copy the HTML code or preview to use in your email client."
+      }
+    }]
+  }
+  </script>
+<style>
+
+    :root {
+      --bg: #0b1220;
+      --card: #111a2e;
+      --border: rgba(255,255,255,0.08);
+      --text: #ffffff;
+      --sub: #aab3c5;
+      --accent: #4f8cff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+
+    .back {
+      display: inline-block;
+      color: var(--sub);
+      text-decoration: none;
+      font-size: 14px;
+      margin-bottom: 24px;
+      transition: color 0.2s;
+    }
+
+    .back:hover {
+      color: var(--accent);
+    }
+
+    h1 {
+      font-size: 34px;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .subtitle {
+      font-size: 15px;
+      color: var(--sub);
+      margin-bottom: 24px;
+    }
+
+    .tool-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px;
+    }
+
+    .panel-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      color: var(--sub);
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 12px 16px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: var(--text);
+      font-size: 15px;
+      font-family: inherit;
+      transition: border-color 0.2s;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .btn {
+      flex: 1;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      background: #3d7de0;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--sub);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--sub);
+      color: var(--text);
+    }
+
+    .preview-box {
+      background: #ffffff;
+      color: #000000;
+      padding: 24px;
+      border-radius: 8px;
+      min-height: 150px;
+      font-family: Arial, sans-serif;
+    }
+
+    .code-box {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+      margin-top: 16px;
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      color: var(--sub);
+      max-height: 200px;
+      overflow-y: auto;
+    }
+
+    .content {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 32px;
+      margin-bottom: 24px;
+    }
+
+    .content h2 {
+      font-size: 24px;
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+
+    .content p {
+      color: var(--sub);
+      margin-bottom: 16px;
+      line-height: 1.7;
+    }
+
+    .content ul {
+      margin-left: 24px;
+      margin-bottom: 16px;
+      color: var(--sub);
+    }
+
+    .content li {
+      margin-bottom: 8px;
+    }
+
+    .faq-section {
+      margin-top: 40px;
+    }
+
+    .faq-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+
+    .faq-item h3 {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .faq-item p {
+      color: var(--sub);
+      line-height: 1.6;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      border-top: 1px solid var(--border);
+      margin-top: 60px;
+    }
+
+    footer a {
+      color: var(--sub);
+      text-decoration: none;
+      margin: 0 16px;
+      font-size: 14px;
+    }
+
+    footer a:hover {
+      color: var(--accent);
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 40px 16px 80px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      .tool-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .button-group {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 32px 12px 80px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      .panel {
+        padding: 20px;
+      }
+    }
+
+</style>
+</head>
+<body>
+  <div class="container">
+    <a href="/business/" class="back">← Back to Business</a>
+
+    <h1>Email Signature Generator</h1>
+    <p class="subtitle">Create professional email signatures with your contact information and social media links</p>
+
+    <div class="ad-banner">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3617326351" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+    <div class="tool-layout">
+      <div class="panel">
+        <h2 class="panel-title">Your Details</h2>
+
+        <div class="form-group">
+          <label for="fullName">Full Name</label>
+          <input type="text" id="fullName" placeholder="John Smith">
+        </div>
+
+        <div class="form-group">
+          <label for="jobTitle">Job Title</label>
+          <input type="text" id="jobTitle" placeholder="Marketing Manager">
+        </div>
+
+        <div class="form-group">
+          <label for="company">Company</label>
+          <input type="text" id="company" placeholder="Acme Inc.">
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="john@company.com">
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" placeholder="+1 (555) 123-4567">
+        </div>
+
+        <div class="form-group">
+          <label for="website">Website</label>
+          <input type="text" id="website" placeholder="www.company.com">
+        </div>
+
+        <div class="form-group">
+          <label for="style">Signature Style</label>
+          <select id="style">
+            <option value="modern">Modern</option>
+            <option value="classic">Classic</option>
+            <option value="minimal">Minimal</option>
+          </select>
+        </div>
+
+        <div class="button-group">
+          <button class="btn btn-primary" onclick="generateSignature()">Generate Signature</button>
+          <button class="btn btn-secondary" onclick="clearForm()">Clear</button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2 class="panel-title">Preview & Copy</h2>
+        <div class="preview-box" id="signaturePreview">
+          <p style="color: #666; text-align: center; padding: 40px;">Your signature will appear here</p>
+        </div>
+        <div class="button-group" style="margin-top: 16px;">
+          <button class="btn btn-primary" onclick="copyHTML()">Copy HTML</button>
+        </div>
+        <div class="code-box" id="htmlCode"></div>
+      </div>
+    </div>
+
+    <div class="content">
+      <h2>How to Use</h2>
+      <p>Fill in your contact information above and click "Generate Signature" to create your professional email signature. You can choose from three different styles: Modern, Classic, or Minimal.</p>
+
+      <h2>Features</h2>
+      <ul>
+        <li>Create professional email signatures in seconds</li>
+        <li>Choose from multiple signature styles</li>
+        <li>Include social media links</li>
+        <li>Copy HTML code for any email client</li>
+        <li>100% free to use</li>
+      </ul>
+
+      <h2>Why Use Email Signatures?</h2>
+      <p>Email signatures are essential for professional branding. They provide your contact information, promote your company, and establish credibility with every email you send.</p>
+    </div>
+
+    <div class="faq-section">
+      <h2 style="font-size: 24px; margin-bottom: 24px; color: var(--text);">Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <h3>What is an email signature generator?</h3>
+        <p>An email signature generator is a tool that helps you create professional, formatted email signatures with your contact information, company details, and social media links.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>How do I use this email signature generator?</h3>
+        <p>Simply fill in your details in the form, choose a template style, and click "Generate Signature". Then copy the HTML code or preview to use in your email client.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Can I customize the signature?</h3>
+        <p>Yes! You can choose from three different signature styles (Modern, Classic, or Minimal) to match your brand and personal preference.</p>
+      </div>
+    </div>
+
+      <footer>
+      <p>Free business tools and generators for entrepreneurs and startups. Create professional documents in seconds.</p>
+            <p style="margin: 8px 0; font-size: 13px;">
+        <a href="/about/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">About</a>
+        <a href="/privacy/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Privacy</a>
+        <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
+        <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
+      </p>
+      <p>© 2026 Knexio. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    function generateSignature() {
+      const fullName = document.getElementById('fullName').value || 'John Smith';
+      const jobTitle = document.getElementById('jobTitle').value || 'Marketing Manager';
+      const company = document.getElementById('company').value || 'Acme Inc.';
+      const email = document.getElementById('email').value || 'john@company.com';
+      const phone = document.getElementById('phone').value || '+1 (555) 123-4567';
+      const website = document.getElementById('website').value || 'www.company.com';
+      const style = document.getElementById('style').value;
+
+      let html = '';
+
+      if (style === 'modern') {
+        html = `
+          <div style="font-family: Arial, sans-serif; color: #333;">
+            <strong style="font-size: 16px; color: #4f8cff;">${fullName}</strong><br>
+            <span style="font-size: 14px; color: #666;">${jobTitle} | ${company}</span><br><br>
+            <a href="mailto:${email}" style="color: #4f8cff; text-decoration: none;">${email}</a><br>
+            <span style="color: #666;">${phone}</span><br>
+            <a href="https://${website}" style="color: #4f8cff; text-decoration: none;">${website}</a>
+          </div>
+        `;
+      } else if (style === 'classic') {
+        html = `
+          <div style="font-family: Georgia, serif; color: #000;">
+            <strong>${fullName}</strong><br>
+            <em>${jobTitle}</em><br>
+            ${company}<br><br>
+            Email: <a href="mailto:${email}">${email}</a><br>
+            Phone: ${phone}<br>
+            Web: <a href="https://${website}">${website}</a>
+          </div>
+        `;
+      } else {
+        html = `
+          <div style="font-family: Helvetica, sans-serif; color: #333;">
+            <strong>${fullName}</strong> — ${jobTitle}<br>
+            ${company}<br>
+            <a href="mailto:${email}">${email}</a> · ${phone} · <a href="https://${website}">${website}</a>
+          </div>
+        `;
+      }
+
+      document.getElementById('signaturePreview').innerHTML = html;
+      document.getElementById('htmlCode').textContent = html.replace(/\n\s*/g, '').trim();
+    }
+
+    function clearForm() {
+      document.getElementById('fullName').value = '';
+      document.getElementById('jobTitle').value = '';
+      document.getElementById('company').value = '';
+      document.getElementById('email').value = '';
+      document.getElementById('phone').value = '';
+      document.getElementById('website').value = '';
+      document.getElementById('signaturePreview').innerHTML = '<p style="color: #666; text-align: center; padding: 40px;">Your signature will appear here</p>';
+      document.getElementById('htmlCode').textContent = '';
+    }
+
+    function copyHTML() {
+      const code = document.getElementById('htmlCode').textContent;
+      navigator.clipboard.writeText(code).then(() => {
+        alert('✓ HTML copied to clipboard!');
+      });
+    }
+  </script>
+<script src="/knexio-bundle.js"></script>
+</body>
+</html>

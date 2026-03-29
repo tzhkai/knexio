@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>🎨 CSS Gradient Generator</title>
+<meta name="description" content="">
+
+<link rel="canonical" href="">
+
+<!-- Open Graph -->
+<meta property="og:title" content="🎨 CSS Gradient Generator">
+<meta property="og:description" content="">
+<meta property="og:url" content="">
+<meta property="og:type" content="WebApplication">
+<meta property="og:site_name" content="Knexio">
+<meta property="og:image" content="https://knexio.xyz/og-image.png">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is this tool for?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "This is a free online tool for [purpose]. It helps you [function] quickly and easily."
+        }
+      }
+    ]
+  }
+  
+</script>
+
+<style>
+
+:root{
+  --bg:#0b1220;
+  --card:#111a2e;
+  --border:rgba(255,255,255,.08);
+  --text:#fff;
+  --sub:#aab3c5;
+  --accent:#4f8cff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:system-ui,-apple-system;
+  background:var(--bg);
+  color:var(--text);
+}
+.container{max-width:900px;margin:auto;padding:50px 16px}
+
+/* 统一的返回按钮样式 */
+.back {
+  display: inline-block;
+  color: var(--sub);
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 24px;
+  transition: color 0.2s;
+}
+.back:hover {
+  color: var(--accent);
+}
+
+h1{font-size:32px;margin-bottom:8px}
+h2{font-size:22px;margin-top:30px;margin-bottom:10px}
+.subtitle{color:var(--sub);margin-bottom:24px}
+
+.badge{
+  display:inline-block;
+  padding:4px 10px;
+  border-radius:20px;
+  background:rgba(79,140,255,.15);
+  color:var(--accent);
+  font-size:12px;
+  margin-bottom:10px;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:20px;
+  margin-bottom:20px;
+}
+
+textarea{
+  width:100%;
+  min-height:180px;
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:12px;
+  color:var(--text);
+  padding:14px;
+  font-size:15px;
+}
+textarea:focus{outline:none;border-color:var(--accent)}
+
+.btn-row{display:flex;gap:10px;margin-top:12px}
+button{
+  flex:1;
+  padding:10px;
+  border-radius:10px;
+  border:none;
+  background:var(--accent);
+  color:#fff;
+  cursor:pointer;
+}
+button.secondary{
+  background:transparent;
+  border:1px solid var(--border);
+  color:var(--sub);
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-top:16px;
+}
+.stat{
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:16px;
+  text-align:center;
+}
+.stat span{
+  font-size:24px;
+  font-weight:700;
+  color:var(--accent);
+}
+.stat label{
+  display:block;
+  font-size:12px;
+  color:var(--sub);
+}
+
+.tip{
+  font-size:13px;
+  color:var(--sub);
+  margin-top:10px;
+}
+
+.section p{
+  color:var(--sub);
+  line-height:1.7;
+  margin-bottom:10px;
+}
+
+.tools a{
+  display:inline-block;
+  margin:6px;
+  padding:8px 14px;
+  border-radius:8px;
+  border:1px solid var(--border);
+  color:var(--sub);
+  text-decoration:none;
+}
+.tools a:hover{
+  border-color:var(--accent);
+  color:var(--accent);
+}
+
+/* 广告样式 */
+.ad-banner {
+  margin: 32px 0;
+  text-align: center;
+}
+
+/* 统一的 Footer 样式 */
+footer {
+  margin-top: 40px;
+  text-align: center;
+  color: var(--sub);
+  font-size: 13px;
+}
+footer p {
+  margin-bottom: 8px;
+}
+footer a {
+  color: var(--sub);
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color 0.2s;
+}
+footer a:hover {
+  color: var(--accent);
+}
+
+@media(max-width:600px){
+  .stats{grid-template-columns:1fr 1fr}
+}
+
+</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2596567349043393" crossorigin="anonymous"></script>
+</head>
+
+<body><div class="container">
+
+<a class="back" href="../index.html">← Back to Tools</a>
+
+<h1>🎨 CSS Gradient Generator</h1>
+<p class="subtitle">Build linear, radial, and conic CSS gradients visually. Add unlimited color stops, adjust angle, and copy production-ready CSS code in one click.</p>
+
+<div class="ad-banner">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="3153457922"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<div class="container">
+  <a class="back" href="../index.html">← Back to Tools</a>
+  <h1>🎨 CSS Gradient Generator</h1>
+  <p class="subtitle">Build linear, radial, and conic CSS gradients visually. Add unlimited color stops, adjust angle, and copy production-ready CSS code in one click.</p>
+
+  <!-- Ad Slot 1: Top -->
+
+  <div class="main-grid">
+    <!-- Controls -->
+    <div class="controls">
+      <div class="type-row">
+        <div class="btn-row">
+      <button class="btn type-btn active" id="btn-linear" onclick="setType('linear')">Linear</button>
+        <button class="btn type-btn" id="btn-radial" onclick="setType('radial')">Radial</button>
+        <button class="btn type-btn" id="btn-conic" onclick="setType('conic')">Conic</button>
+    </div></div>
+
+      <div class="ctrl-group" id="angle-group">
+        <span class="ctrl-label">Angle</span>
+        <div class="angle-row">
+          <input type="range" id="angleRange" min="0" max="360" value="135" oninput="updateAngle(this.value)">
+          <span class="angle-val" id="angleVal">135°</span>
+        </div>
+      </div>
+
+      <div class="ctrl-group">
+        <span class="ctrl-label">Color Stops</span>
+        <div class="stops-list" id="stopsList"></div>
+        <button class="add-stop" onclick="addStop()">+ Add Color Stop</button>
+      </div>
+    </div>
+
+    <!-- Preview + Output -->
+    <div class="preview-wrap">
+      <div class="preview-box" id="previewBox"></div>
+
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px;">
+        <span class="ctrl-label">CSS Output</span>
+        <div class="css-out" id="cssOut"></div>
+        
+      </div>
+
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px;">
+        <span class="ctrl-label">Preset Gradients</span>
+        <div class="presets" id="presetsGrid"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ad Slot 2: Mid -->
+
+  <h2>CSS Gradient Tips</h2>
+  <div class="tip-grid">
+    <div class="tip-card">
+      <h3>Linear Gradient</h3>
+      <p><code>linear-gradient(135deg, #4f8cff 0%, #a855f7 100%)</code> — flows from top-left to bottom-right at 135°.</p>
+    </div>
+    <div class="tip-card">
+      <h3>Radial Gradient</h3>
+      <p><code>radial-gradient(circle, #22c55e 0%, #0b1220 100%)</code> — radiates outward from center. Use <code>ellipse</code> for oval shapes.</p>
+    </div>
+    <div class="tip-card">
+      <h3>Conic Gradient</h3>
+      <p><code>conic-gradient(from 0deg, red, yellow, green)</code> — sweeps around a center point. Great for pie charts.</p>
+    </div>
+    <div class="tip-card">
+      <h3>Multiple Backgrounds</h3>
+      <p>Stack gradients: <code>background: linear-gradient(...), linear-gradient(...)</code>. The first listed is on top.</p>
+    </div>
+
+  </div>
+
+  <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3153457922" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+<script>
+  let gradType = 'linear';
+  let angle = 135;
+  let stops = [
+    {color:'#4f8cff', pos:0},
+    {color:'#a855f7', pos:100}
+  ];
+
+  const PRESETS = [
+    [{color:'#4f8cff',pos:0},{color:'#a855f7',pos:100}],
+    [{color:'#22c55e',pos:0},{color:'#06b6d4',pos:100}],
+    [{color:'#f97316',pos:0},{color:'#eab308',pos:100}],
+    [{color:'#ec4899',pos:0},{color:'#8b5cf6',pos:100}],
+    [{color:'#0f172a',pos:0},{color:'#1e40af',pos:50},{color:'#0f172a',pos:100}],
+    [{color:'#fbbf24',pos:0},{color:'#f87171',pos:50},{color:'#ec4899',pos:100}],
+    [{color:'#34d399',pos:0},{color:'#3b82f6',pos:100}],
+    [{color:'#f43f5e',pos:0},{color:'#f97316',pos:100}],
+    [{color:'#818cf8',pos:0},{color:'#c084fc',pos:50},{color:'#fb7185',pos:100}],
+    [{color:'#fff',pos:0},{color:'#94a3b8',pos:100}],
+  ];
+
+  function buildGradient() {
+    const stopStr = stops.map(s => `${s.color} ${s.pos}%`).join(', ');
+    if (gradType === 'linear') return `linear-gradient(${angle}deg, ${stopStr})`;
+    if (gradType === 'radial') return `radial-gradient(circle, ${stopStr})`;
+    if (gradType === 'conic') return `conic-gradient(from ${angle}deg, ${stopStr})`;
+  }
+
+  function render() {
+    const grad = buildGradient();
+    document.getElementById('previewBox').style.background = grad;
+    document.getElementById('cssOut').textContent = `background: ${grad};`;
+  }
+
+  function setType(t) {
+    gradType = t;
+    ['linear','radial','conic'].forEach(x => document.getElementById('btn-'+x).classList.toggle('active', x===t));
+    document.getElementById('angle-group').style.display = (t === 'radial') ? 'none' : 'block';
+    render();
+  }
+
+  function updateAngle(v) {
+    angle = +v;
+    document.getElementById('angleVal').textContent = v + '°';
+    render();
+  }
+
+  function renderStops() {
+    const list = document.getElementById('stopsList');
+    list.innerHTML = '';
+    stops.forEach((s, i) => {
+      const row = document.createElement('div');
+      row.className = 'stop-row';
+      row.innerHTML = `
+        <input type="color" value="${s.color}" oninput="stops[${i}].color=this.value;render()">
+        <input type="range" min="0" max="100" value="${s.pos}" oninput="stops[${i}].pos=+this.value;document.getElementById('pos-${i}').textContent=this.value+'%';render()">
+        <span class="stop-pos" id="pos-${i}">${s.pos}%</span>
+        ${stops.length > 2 ? `<button class="stop-remove" onclick="removeStop(${i})">✕</button>` : ''}
+      `;
+      list.appendChild(row);
+    });
+    render();
+  }
+
+  function addStop() {
+    const mid = Math.round((stops[stops.length-2]?.pos + stops[stops.length-1]?.pos) / 2) || 50;
+    stops.splice(stops.length - 1, 0, {color:'#ffffff', pos: Math.min(mid, 99)});
+    renderStops();
+  }
+
+  function removeStop(i) {
+    stops.splice(i, 1);
+    renderStops();
+  }
+
+  function copyCss() {
+    const text = document.getElementById('cssOut').textContent;
+    navigator.clipboard.writeText(text).then(() => {
+      const btn = document.getElementById('copyBtn');
+      btn.textContent = '✅ Copied!';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = '📋 Copy CSS'; btn.classList.remove('copied'); }, 2000);
+    });
+  }
+
+  function randomGradient() {
+    const rnd = () => '#' + Math.floor(Math.random()*16777215).toString(16).padStart(6,'0');
+    const n = 2 + Math.floor(Math.random() * 2);
+    stops = Array.from({length:n}, (_, i) => ({color: rnd(), pos: Math.round(i / (n-1) * 100)}));
+    angle = Math.floor(Math.random() * 360);
+    document.getElementById('angleRange').value = angle;
+    document.getElementById('angleVal').textContent = angle + '°';
+    renderStops();
+  }
+
+  function buildPresets() {
+    const grid = document.getElementById('presetsGrid');
+    grid.innerHTML = '';
+    PRESETS.forEach((p, i) => {
+      const stopStr = p.map(s => `${s.color} ${s.pos}%`).join(', ');
+      const div = document.createElement('div');
+      div.className = 'preset-swatch';
+      div.style.background = `linear-gradient(135deg, ${stopStr})`;
+      div.title = 'Preset ' + (i+1);
+      div.onclick = () => { stops = p.map(s => ({...s})); renderStops(); };
+      grid.appendChild(div);
+    });
+  }
+
+  buildPresets();
+  renderStops();
+</script>
+  <script src="../../knexio-bundle.js"></script>
+  <script src="../../cookie-consent.js"></script>
+  <!-- Schema: FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is this tool for?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "This is a free online tool for [purpose]. It helps you [function] quickly and easily."
+        }
+      }
+    ]
+  }
+  </script>
+  </div>
+
+  
+  <div class="seo-section">
+    <h2>How to Use the CSS Gradient Generator</h2>
+    <div class="step-block">
+      <h3>Step 1: Pick colors</h3>
+      <p>Choose two or more colors using the color pickers.</p>
+    </div>
+    <div class="step-block">
+      <h3>Step 2: Set direction and type</h3>
+      <p>Select angle/direction and choose linear, radial, or conic gradient.</p>
+    </div>
+    <div class="step-block">
+      <h3>Step 3: Preview in real time</h3>
+      <p>The gradient preview updates instantly as you adjust settings.</p>
+    </div>
+    <div class="step-block">
+      <h3>Step 4: Copy the CSS</h3>
+      <p>Click Copy CSS to get the ready-to-use background CSS property.</p>
+    </div>
+
+<div class="ad-banner" style="margin-top:40px">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="3153457922"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<footer>
+  <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
+  <p>
+    <a href="/about/">About</a> •
+    <a href="/privacy/">Privacy Policy</a> •
+    <a href="/terms/">Terms of Service</a>
+  </p>
+</footer>
+
+</div>
+
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</body>
+</html>

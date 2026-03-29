@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roman Numeral Converter – Convert Numbers to Roman Numerals | Knexio</title>
+<meta name="description" content="Convert numbers to Roman numerals and back. Free online Roman numeral converter with step-by-step breakdown. Supports 1 to 3,999,999.">
+<link rel="canonical" href="https://knexio.xyz/tools/roman-numeral-converter/">
+<meta property="og:title" content="Roman Numeral Converter">
+<meta property="og:description" content="Convert numbers to Roman numerals and back. Free online converter with step-by-step breakdown.">
+<meta property="og:url" content="https://knexio.xyz/tools/roman-numeral-converter/">
+<meta property="og:type" content="WebApplication">
+<meta property="og:site_name" content="Knexio">
+<meta property="og:image" content="https://knexio.xyz/og-image.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Roman Numeral Converter",
+  "url": "https://knexio.xyz/tools/roman-numeral-converter/",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+  "description": "Convert numbers to Roman numerals and Roman numerals to numbers. Supports 1–3,999,999 with step-by-step breakdown."
+}
+</script>
+<style>
+:root{
+  --bg:#0b1220;
+  --card:#111a2e;
+  --border:rgba(255,255,255,.08);
+  --text:#fff;
+  --sub:#aab3c5;
+  --accent:#4f8cff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system;background:var(--bg);color:var(--text)}
+.container{max-width:900px;margin:auto;padding:50px 16px}
+.back{display:inline-block;color:var(--sub);text-decoration:none;font-size:14px;margin-bottom:24px;transition:color .2s}
+.back:hover{color:var(--accent)}
+h1{font-size:32px;margin-bottom:8px}
+h2{font-size:22px;margin-top:30px;margin-bottom:10px}
+.subtitle{color:var(--sub);margin-bottom:24px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;margin-bottom:20px}
+textarea{width:100%;min-height:180px;background:var(--bg);border:1px solid var(--border);border-radius:12px;color:var(--text);padding:14px;font-size:15px;resize:vertical;box-sizing:border-box}
+textarea:focus{outline:none;border-color:var(--accent)}
+.btn-row{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+button{flex:1;padding:10px;border-radius:10px;border:none;background:var(--accent);color:#fff;cursor:pointer;font-size:14px;transition:opacity .2s;box-sizing:border-box}
+button:hover{opacity:.9}
+button.secondary{background:transparent;border:1px solid var(--border);color:var(--sub)}
+button.secondary:hover{border-color:var(--accent);color:var(--accent)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.stat{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center}
+.stat span{font-size:24px;font-weight:700;color:var(--accent);display:block}
+.stat label{font-size:12px;color:var(--sub);display:block}
+.tip{font-size:13px;color:var(--sub);margin-top:10px}
+.section p{color:var(--sub);line-height:1.7;margin-bottom:10px}
+.tools a{display:inline-block;margin:6px;padding:8px 14px;border-radius:8px;border:1px solid var(--border);color:var(--sub);text-decoration:none}
+.tools a:hover{border-color:var(--accent);color:var(--accent)}
+.ad-banner{margin:32px 0;text-align:center}
+.faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:12px}
+.faq-item h3{font-size:16px;margin-bottom:8px;color:var(--text)}
+.faq-item p{color:var(--sub);font-size:14px;line-height:1.7;margin:0}
+footer{margin-top:40px;text-align:center;color:var(--sub);font-size:13px}
+footer p{margin-bottom:8px}
+footer a{color:var(--sub);text-decoration:none;margin:0 10px}
+footer a:hover{color:var(--accent)}
+.mode-row{margin-bottom:20px}
+.mode-btn{flex:1;padding:10px;border-radius:10px;border:none;background:var(--bg);color:var(--sub);cursor:pointer;font-size:14px;transition:all .2s}
+.mode-btn.active{background:var(--accent);color:#fff}
+.mode-btn:hover:not(.active){background:var(--card);border:1px solid var(--border)}
+.big-input{width:100%;padding:16px;background:var(--bg);border:1px solid var(--border);border-radius:12px;color:var(--text);font-size:18px;margin-bottom:16px;box-sizing:border-box}
+.big-input:focus{outline:none;border-color:var(--accent)}
+.result-box{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:20px;margin-top:16px;min-height:80px;font-size:20px;font-weight:700;color:var(--accent);text-align:center;line-height:1.6}
+.breakdown{margin-top:20px;padding:16px;background:var(--bg);border:1px solid var(--border);border-radius:10px}
+.breakdown h3{font-size:16px;margin-bottom:12px;color:var(--text)}
+.step-list{font-family:monospace;font-size:14px;color:var(--sub);line-height:1.8}
+.ref-section{margin-top:30px}
+.ref-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:12px}
+.ref-card{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:12px;text-align:center}
+.ref-roman{font-size:20px;font-weight:700;color:var(--accent);margin-bottom:4px}
+.ref-num{font-size:13px;color:var(--sub)}
+@media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.btn-row{flex-direction:column}.ref-grid{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body><div class="container">
+<a class="back" href="../index.html">← Back to Tools</a>
+<h1>Roman Numeral Converter</h1>
+<p class="subtitle">Convert numbers to Roman numerals and Roman numerals back to numbers. Supports 1 to 3,999,999 with step-by-step breakdown.</p>
+
+<div class="ad-banner">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="5794572171"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<div class="card">
+  <div class="mode-row">
+    <div class="btn-row">
+      <button class="mode-btn active" id="m-n2r" onclick="setMode('n2r')">Number → Roman</button>
+      <button class="mode-btn" id="m-r2n" onclick="setMode('r2n')">Roman → Number</button>
+    </div>
+  </div>
+  
+  <div class="field-label" id="in-label">Enter a Number (1 – 3,999,999)</div>
+  <input class="big-input" type="text" id="main-input" placeholder="e.g. 2026" oninput="convert()">
+  <div class="result-box" id="result-box"></div>
+  
+  <div class="breakdown" id="breakdown-box" style="display:none">
+    <h3>Step-by-Step Breakdown</h3>
+    <div class="step-list" id="step-list"></div>
+  </div>
+  
+  <p class="tip" id="error-msg" style="color:#ff6b6b;display:none"></p>
+</div>
+
+<h2>Free Online Roman Numeral Converter</h2>
+<div class="section">
+  <p>Our Roman numeral converter instantly translates between Arabic numbers (1, 2, 3) and Roman numerals (I, II, III). Perfect for students, historians, or anyone working with classical numbering systems. Simply enter a number or Roman numeral, and get the conversion with a detailed breakdown of how it's constructed.</p>
+</div>
+
+<h2>How It Works</h2>
+<div class="section">
+  <p><strong>Converting Numbers to Roman Numerals:</strong> The converter breaks down your number into standard Roman numeral values (M=1000, D=500, C=100, L=50, X=10, V=5, I=1) and applies subtractive notation rules (IV=4, IX=9, XL=40, XC=90, CD=400, CM=900).</p>
+  <p><strong>Converting Roman Numerals to Numbers:</strong> The tool parses each Roman symbol, adds values together, and handles subtractive pairs correctly. Invalid Roman numerals will trigger an error message.</p>
+</div>
+
+<h2>Frequently Asked Questions</h2>
+<div class="faq-item">
+  <h3>What numbers can this converter handle?</h3>
+  <p>This converter supports integers from 1 to 3,999,999, which covers standard Roman numeral usage and extended notation with overlines.</p>
+</div>
+<div class="faq-item">
+  <h3>How are large Roman numerals written?</h3>
+  <p>Numbers beyond 3,999 use overlines (V̄ = 5,000, X̄ = 10,000) or parentheses to multiply the base value by 1,000. Our converter handles these automatically.</p>
+</div>
+<div class="faq-item">
+  <h3>What is subtractive notation?</h3>
+  <p>Subtractive notation places a smaller numeral before a larger one to indicate subtraction (IV = 4, IX = 9). This convention was adopted in medieval times and is now standard.</p>
+</div>
+<div class="faq-item">
+  <h3>Why is there no zero in Roman numerals?</h3>
+  <p>The ancient Romans didn't have a concept of zero. The numeral system was additive, not positional, so zero wasn't needed for calculations.</p>
+</div>
+<div class="faq-item">
+  <h3>Can I use this for years?</h3>
+  <p>Yes! Simply enter the year (e.g., 2024 → MMXXIV) to see its Roman numeral representation. Great for movie credits, book editions, or events.</p>
+</div>
+<div class="faq-item">
+  <h3>Is this converter free to use?</h3>
+  <p>Absolutely. This Roman numeral converter is completely free with no limits or restrictions. Use it as often as you need.</p>
+</div>
+
+<h2>Roman Numeral Reference</h2>
+<div class="card">
+  <div class="ref-grid">
+    <div class="ref-card"><div class="ref-roman">I</div><div class="ref-num">1</div></div>
+    <div class="ref-card"><div class="ref-roman">IV</div><div class="ref-num">4</div></div>
+    <div class="ref-card"><div class="ref-roman">V</div><div class="ref-num">5</div></div>
+    <div class="ref-card"><div class="ref-roman">IX</div><div class="ref-num">9</div></div>
+    <div class="ref-card"><div class="ref-roman">X</div><div class="ref-num">10</div></div>
+    <div class="ref-card"><div class="ref-roman">XL</div><div class="ref-num">40</div></div>
+    <div class="ref-card"><div class="ref-roman">L</div><div class="ref-num">50</div></div>
+    <div class="ref-card"><div class="ref-roman">XC</div><div class="ref-num">90</div></div>
+    <div class="ref-card"><div class="ref-roman">C</div><div class="ref-num">100</div></div>
+    <div class="ref-card"><div class="ref-roman">CD</div><div class="ref-num">400</div></div>
+    <div class="ref-card"><div class="ref-roman">D</div><div class="ref-num">500</div></div>
+    <div class="ref-card"><div class="ref-roman">CM</div><div class="ref-num">900</div></div>
+    <div class="ref-card"><div class="ref-roman">M</div><div class="ref-num">1,000</div></div>
+    <div class="ref-card"><div class="ref-roman">MV̄</div><div class="ref-num">4,000</div></div>
+    <div class="ref-card"><div class="ref-roman">V̄</div><div class="ref-num">5,000</div></div>
+    <div class="ref-card"><div class="ref-roman">M̄</div><div class="ref-num">1,000,000</div></div>
+  </div>
+</div>
+
+<h2>Related Tools</h2>
+<div class="tools">
+<a href="/tools/number-converter/">Number Converter</a>
+<a href="/tools/date-converter/">Date Converter</a>
+<a href="/tools/ancient-numbers/">Ancient Numbers</a>
+<a href="/tools/base-converter/">Base Converter</a>
+<a href="/tools/percentage-calculator/">Percentage Calculator</a>
+<a href="/tools/scientific-notation/">Scientific Notation</a>
+</div>
+
+<div class="ad-banner" style="margin-top:40px">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="9504968504"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<footer>
+  <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
+  <p style="margin: 8px 0; font-size: 13px;">
+    <a href="/about/" style="color:var(--accent);text-decoration:none;margin:0 8px;">About</a>
+    <a href="/privacy/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Privacy</a>
+    <a href="/terms/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Terms</a>
+    <a href="/contact/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Contact</a>
+  </p>
+  <p>© 2026 Knexio. All rights reserved.</p>
+</footer>
+</div>
+<script src="/knexio-bundle.js"></script>
+<script>
+let currentMode = 'n2r';
+
+const romanValues = {
+  'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000
+};
+
+const valuePairs = [
+  { val: 1000000, sym: 'M̄' },
+  { val: 900000, sym: 'C̄M̄' },
+  { val: 500000, sym: 'D̄' },
+  { val: 400000, sym: 'C̄D̄' },
+  { val: 100000, sym: 'C̄' },
+  { val: 90000, sym: 'X̄C̄' },
+  { val: 50000, sym: 'L̄' },
+  { val: 40000, sym: 'X̄L̄' },
+  { val: 10000, sym: 'X̄' },
+  { val: 9000, sym: 'ĪX̄' },
+  { val: 5000, sym: 'V̄' },
+  { val: 4000, sym: 'MV̄' },
+  { val: 1000, sym: 'M' },
+  { val: 900, sym: 'CM' },
+  { val: 500, sym: 'D' },
+  { val: 400, sym: 'CD' },
+  { val: 100, sym: 'C' },
+  { val: 90, sym: 'XC' },
+  { val: 50, sym: 'L' },
+  { val: 40, sym: 'XL' },
+  { val: 10, sym: 'X' },
+  { val: 9, sym: 'IX' },
+  { val: 5, sym: 'V' },
+  { val: 4, sym: 'IV' },
+  { val: 1, sym: 'I' }
+];
+
+function setMode(mode) {
+  currentMode = mode;
+  document.getElementById('m-n2r').classList.toggle('active', mode === 'n2r');
+  document.getElementById('m-r2n').classList.toggle('active', mode === 'r2n');
+  
+  const label = document.getElementById('in-label');
+  const input = document.getElementById('main-input');
+  const resultBox = document.getElementById('result-box');
+  const breakdownBox = document.getElementById('breakdown-box');
+  
+  label.textContent = mode === 'n2r' ? 'Enter a Number (1 – 3,999,999)' : 'Enter Roman Numerals (e.g., MMXXIV)';
+  input.placeholder = mode === 'n2r' ? 'e.g. 2026' : 'e.g. MMXXIV';
+  resultBox.textContent = '';
+  breakdownBox.style.display = 'none';
+  input.value = '';
+  document.getElementById('error-msg').style.display = 'none';
+}
+
+function convert() {
+  const input = document.getElementById('main-input').value.trim().toUpperCase();
+  const resultBox = document.getElementById('result-box');
+  const breakdownBox = document.getElementById('breakdown-box');
+  const stepList = document.getElementById('step-list');
+  const errorMsg = document.getElementById('error-msg');
+  
+  resultBox.textContent = '';
+  breakdownBox.style.display = 'none';
+  errorMsg.style.display = 'none';
+  
+  if (!input) return;
+  
+  if (currentMode === 'n2r') {
+    const num = parseInt(input, 10);
+    if (isNaN(num) || num < 1 || num > 3999999) {
+      errorMsg.textContent = 'Please enter a valid number between 1 and 3,999,999';
+      errorMsg.style.display = 'block';
+      return;
+    }
+    
+    const { result, steps } = numberToRoman(num);
+    resultBox.textContent = result;
+    stepList.textContent = steps;
+    breakdownBox.style.display = 'block';
+  } else {
+    if (!/^[IVXLCDM\u0305]+$/.test(input)) {
+      errorMsg.textContent = 'Invalid Roman numerals. Only I, V, X, L, C, D, M and overline characters are allowed';
+      errorMsg.style.display = 'block';
+      return;
+    }
+    
+    const { result, steps } = romanToNumber(input);
+    if (result === null) {
+      errorMsg.textContent = 'Invalid Roman numeral format';
+      errorMsg.style.display = 'block';
+      return;
+    }
+    
+    resultBox.textContent = result.toLocaleString();
+    stepList.textContent = steps;
+    breakdownBox.style.display = 'block';
+  }
+}
+
+function numberToRoman(num) {
+  let result = '';
+  let remaining = num;
+  const steps = [];
+  
+  for (const { val, sym } of valuePairs) {
+    while (remaining >= val) {
+      result += sym;
+      steps.push(`${val.toLocaleString()} = ${sym}`);
+      remaining -= val;
+    }
+  }
+  
+  return { result, steps: steps.join('\n') };
+}
+
+function romanToNumber(roman) {
+  const steps = [];
+  let total = 0;
+  let prevValue = 0;
+  
+  for (let i = roman.length - 1; i >= 0; i--) {
+    let char = roman[i];
+    let value = romanValues[char] || 0;
+    
+    if (value === 0) {
+      if (char === 'M̄') value = 1000000;
+      else if (char === 'D̄') value = 500000;
+      else if (char === 'C̄') value = 100000;
+      else if (char === 'L̄') value = 50000;
+      else if (char === 'X̄') value = 10000;
+      else if (char === 'V̄') value = 5000;
+      else {
+        return { result: null, steps: '' };
+      }
+    }
+    
+    if (value < prevValue) {
+      total -= value;
+      steps.push(`${char} = -${value.toLocaleString()}`);
+    } else {
+      total += value;
+      steps.push(`${char} = +${value.toLocaleString()}`);
+    }
+    prevValue = value;
+  }
+  
+  if (total < 1 || total > 3999999) {
+    return { result: null, steps: '' };
+  }
+  
+  return { result: total, steps: steps.reverse().join('\n') };
+}
+</script>
+</body>
+</html>

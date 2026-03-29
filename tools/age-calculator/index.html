@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Age Calculator – Calculate Exact Age Online | Knexio</title>
+<meta name="description" content="Free online age calculator. Calculate your exact age in years, months, days, hours, minutes, and seconds. Find your next birthday and zodiac sign.">
+
+<link rel="canonical" href="https://knexio.xyz/tools/age-calculator/">
+
+<meta property="og:title" content="Age Calculator">
+<meta property="og:description" content="Calculate your exact age in years, months, days, hours, minutes, and seconds.">
+<meta property="og:url" content="https://knexio.xyz/tools/age-calculator/">
+<meta property="og:type" content="WebApplication">
+<meta property="og:site_name" content="Knexio">
+<meta property="og:image" content="https://knexio.xyz/og-image.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Age Calculator",
+  "url": "https://knexio.xyz/tools/age-calculator/",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "All",
+  "description": "Free online age calculator. Calculate your exact age in years, months, days, hours, minutes, and seconds."
+}
+</script>
+
+<style>
+:root{
+  --bg:#0b1220;
+  --card:#111a2e;
+  --border:rgba(255,255,255,.08);
+  --text:#fff;
+  --sub:#aab3c5;
+  --accent:#4f8cff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:system-ui,-apple-system;
+  background:var(--bg);
+  color:var(--text);
+}
+.container{max-width:900px;margin:auto;padding:50px 16px}
+
+.back{
+  display:inline-block;
+  color:var(--sub);
+  text-decoration:none;
+  font-size:14px;
+  margin-bottom:24px;
+  transition:color .2s;
+}
+.back:hover{color:var(--accent)}
+
+h1{font-size:32px;margin-bottom:8px}
+h2{font-size:22px;margin-top:30px;margin-bottom:10px}
+.subtitle{color:var(--sub);margin-bottom:24px}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:20px;
+  margin-bottom:20px;
+}
+
+label{
+  display:block;
+  font-size:14px;
+  color:var(--sub);
+  margin-bottom:8px;
+  font-weight:500;
+}
+
+input[type="date"]{
+  width:100%;
+  padding:12px 16px;
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:12px;
+  color:var(--text);
+  font-size:15px;
+  font-family:inherit;
+}
+input[type="date"]:focus{outline:none;border-color:var(--accent)}
+
+.btn-row{display:flex;gap:10px;margin-top:12px}
+button{
+  flex:1;
+  padding:10px;
+  border-radius:10px;
+  border:none;
+  background:var(--accent);
+  color:#fff;
+  cursor:pointer;
+  font-size:14px;
+  font-family:inherit;
+  transition:opacity .2s;
+}
+button:hover{opacity:.9}
+
+/* 结果区 */
+.age-main{
+  font-size:52px;
+  font-weight:800;
+  color:var(--accent);
+  line-height:1;
+  margin-bottom:8px;
+}
+.age-sub{font-size:14px;color:var(--sub);margin-bottom:20px}
+.age-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-bottom:20px;
+}
+.age-item{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:16px;
+  text-align:center;
+}
+.age-value{
+  font-size:24px;
+  font-weight:700;
+  color:var(--accent);
+  margin-bottom:6px;
+}
+.age-label{font-size:12px;color:var(--sub)}
+.extra-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px 16px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:10px;
+  margin-bottom:10px;
+  font-size:14px;
+}
+.extra-row:last-child{margin-bottom:0}
+.extra-row span:first-child{color:var(--sub)}
+.extra-row span:last-child{font-weight:700;color:var(--accent)}
+
+.section p{color:var(--sub);line-height:1.7;margin-bottom:10px}
+.tools a{display:inline-block;margin:6px;padding:8px 14px;border-radius:8px;border:1px solid var(--border);color:var(--sub);text-decoration:none}
+.tools a:hover{border-color:var(--accent);color:var(--accent)}
+.ad-banner{margin:32px 0;text-align:center}
+
+footer{
+  margin-top:40px;
+  text-align:center;
+  color:var(--sub);
+  font-size:13px;
+}
+footer p{margin-bottom:8px}
+footer a{color:var(--accent);text-decoration:none;margin:0 8px}
+footer a:hover{opacity:.8}
+
+@media(max-width:600px){.age-grid{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+
+<body><div class="container">
+
+<a class="back" href="../index.html">← Back to Tools</a>
+
+<h1>Age Calculator</h1>
+<p class="subtitle">Calculate your exact age in years, months, days, hours, minutes, and seconds. Find your next birthday and zodiac sign.</p>
+
+<div class="ad-banner">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="5794572171"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<div class="card">
+  <label>Date of Birth</label>
+  <input type="date" id="birthDate">
+
+  <div class="btn-row">
+    <button onclick="calculateAge()">Calculate Age</button>
+  </div>
+
+  <div class="result-box" id="resultBox">
+    <div class="age-main" id="ageYears">0</div>
+    <div class="age-sub">years old</div>
+
+    <div class="age-grid">
+      <div class="age-item">
+        <div class="age-value" id="ageMonths">0</div>
+        <div class="age-label">Months</div>
+      </div>
+      <div class="age-item">
+        <div class="age-value" id="ageDays">0</div>
+        <div class="age-label">Days</div>
+      </div>
+      <div class="age-item">
+        <div class="age-value" id="ageHours">0</div>
+        <div class="age-label">Hours</div>
+      </div>
+      <div class="age-item">
+        <div class="age-value" id="ageMinutes">0</div>
+        <div class="age-label">Minutes</div>
+      </div>
+      <div class="age-item">
+        <div class="age-value" id="ageSeconds">0</div>
+        <div class="age-label">Seconds</div>
+      </div>
+    </div>
+
+    <div class="extra-row">
+      <span>Next Birthday</span>
+      <span id="nextBirthday">-</span>
+    </div>
+    <div class="extra-row">
+      <span>Days Until Birthday</span>
+      <span id="daysUntilBirthday">-</span>
+    </div>
+    <div class="extra-row">
+      <span>Zodiac Sign</span>
+      <span id="zodiacSign">-</span>
+    </div>
+    <div class="extra-row">
+      <span>Birth Day of Week</span>
+      <span id="birthDay">-</span>
+    </div>
+  </div>
+</div>
+
+<h2>How to Use the Age Calculator</h2>
+<div class="section">
+<p>Select your date of birth using the date picker and click "Calculate Age". Your exact age is displayed instantly in years, months, days, hours, minutes, and seconds.</p>
+</div>
+
+<h2>How It Works</h2>
+<div class="section">
+<p>The calculator computes the exact difference between your birth date and today's date, accounting for leap years and varying month lengths. It displays age in multiple units and calculates your next birthday countdown and zodiac sign.</p>
+</div>
+
+<h2>Related Tools</h2>
+<div class="tools">
+<a href="/tools/days-between-dates/">Days Between Dates</a>
+<a href="/tools/date-difference-calculator/">Date Difference Calculator</a>
+<a href="/tools/time-zone-converter/">Time Zone Converter</a>
+</div>
+
+<div class="ad-banner" style="margin-top:40px">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="9504968504"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<footer>
+  <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
+  <p style="margin: 8px 0; font-size: 13px;">
+    <a href="/about/" style="color:var(--accent);text-decoration:none;margin:0 8px;">About</a>
+    <a href="/privacy/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Privacy</a>
+    <a href="/terms/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Terms</a>
+    <a href="/contact/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Contact</a>
+  </p>
+  <p>© 2026 Knexio. All rights reserved.</p>
+</footer>
+
+</div>
+
+<script>
+document.getElementById('birthDate').max = new Date().toISOString().split('T')[0];
+
+function calculateAge() {
+  const birthDate = new Date(document.getElementById('birthDate').value);
+  if (isNaN(birthDate)) { alert('Please select a valid date'); return; }
+
+  const now = new Date();
+  const diff = now - birthDate;
+
+  let years = now.getFullYear() - birthDate.getFullYear();
+  let months = now.getMonth() - birthDate.getMonth();
+  let days = now.getDate() - birthDate.getDate();
+
+  if (days < 0) { months--; days += new Date(now.getFullYear(), now.getMonth(), 0).getDate(); }
+  if (months < 0) { years--; months += 12; }
+
+  const totalDays = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const totalHours = Math.floor(diff / (1000 * 60 * 60));
+  const totalMinutes = Math.floor(diff / (1000 * 60));
+  const totalSeconds = Math.floor(diff / 1000);
+
+  document.getElementById('ageYears').textContent = years;
+  document.getElementById('ageMonths').textContent = years * 12 + months;
+  document.getElementById('ageDays').textContent = totalDays.toLocaleString();
+  document.getElementById('ageHours').textContent = totalHours.toLocaleString();
+  document.getElementById('ageMinutes').textContent = totalMinutes.toLocaleString();
+  document.getElementById('ageSeconds').textContent = totalSeconds.toLocaleString();
+
+  const nextBirthday = new Date(now.getFullYear(), birthDate.getMonth(), birthDate.getDate());
+  if (nextBirthday < now) nextBirthday.setFullYear(now.getFullYear() + 1);
+  const daysUntil = Math.ceil((nextBirthday - now) / (1000 * 60 * 60 * 24);
+
+  document.getElementById('nextBirthday').textContent = nextBirthday.toLocaleDateString();
+  document.getElementById('daysUntilBirthday').textContent = daysUntil + ' days';
+  document.getElementById('zodiacSign').textContent = getZodiacSign(birthDate.getMonth() + 1, birthDate.getDate());
+  document.getElementById('birthDay').textContent = birthDate.toLocaleDateString('en-US', { weekday: 'long' });
+
+  document.getElementById('resultBox').style.display = 'block';
+}
+
+function getZodiacSign(month, day) {
+  const signs = [
+    { name: 'Capricorn', end: 19 },
+    { name: 'Aquarius', end: 18 },
+    { name: 'Pisces', end: 20 },
+    { name: 'Aries', end: 19 },
+    { name: 'Taurus', end: 20 },
+    { name: 'Gemini', end: 20 },
+    { name: 'Cancer', end: 22 },
+    { name: 'Leo', end: 22 },
+    { name: 'Virgo', end: 22 },
+    { name: 'Libra', end: 22 },
+    { name: 'Scorpio', end: 21 },
+    { name: 'Sagittarius', end: 21 },
+    { name: 'Capricorn', end: 31 }
+  ];
+  return signs[month - 1].name + (day > signs[month - 1].end ? ' / ' + signs[month].name : '');
+}
+</script>
+<script src="/knexio-bundle.js"></script>
+</body>
+</html>

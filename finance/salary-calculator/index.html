@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Salary Calculator – Net Pay After Tax | Knexio</title>
+  <meta name="description" content="Free salary calculator. Convert gross to net pay, calculate federal and state taxes, Social Security, and Medicare deductions.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://knexio.xyz/finance/salary-calculator/">
+  <meta property="og:title" content="Salary Calculator – Net Pay After Tax | Knexio">
+  <meta property="og:description" content="Free salary calculator. Convert gross to net pay, calculate federal and state taxes, Social Security, and Medicare deductions.">
+  <meta property="og:url" content="https://knexio.xyz/finance/salary-calculator/">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"Salary Calculator","url":"https://knexio.xyz/finance/salary-calculator/","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  </script>
+  <style>
+    :root{--bg:#0b1220;--card:#111a2e;--border:rgba(255,255,255,0.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:linear-gradient(180deg,var(--bg),#070d1a);color:var(--text);line-height:1.6;min-height:100vh}
+    a{color:var(--accent);text-decoration:none}
+    .container{max-width:920px;margin:0 auto;padding:60px 20px 100px}
+    .back{display:inline-block;color:var(--sub);font-size:14px;margin-bottom:28px;transition:color 0.2s}
+    .back:hover{color:var(--accent)}
+    h1{font-size:34px;font-weight:700;margin-bottom:8px}
+    .subtitle{font-size:15px;color:var(--sub);margin-bottom:32px}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px;margin-bottom:24px}
+    .section h2{font-size:22px;margin-bottom:16px;color:var(--text)}
+    .section p{color:var(--sub);font-size:15px;line-height:1.75;margin-bottom:14px}
+    .panel-title{font-size:16px;font-weight:600;color:var(--accent);margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+    .form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    .form-field{display:flex;flex-direction:column}
+    .form-field.full-width{grid-column:1/-1}
+    label{font-size:13px;color:var(--sub);margin-bottom:6px;font-weight:500}
+    input,select{width:100%;padding:12px 16px;background:var(--bg);border:1px solid var(--border);border-radius:12px;color:var(--text);font-size:15px;font-family:inherit;transition:border-color 0.2s}
+    input:focus,select:focus{outline:none;border-color:var(--accent)}
+    .btn-row{display:flex;gap:12px;margin-top:20px}
+    .btn{padding:12px 20px;border:none;border-radius:10px;background:var(--accent);color:#fff;font-size:15px;font-weight:600;cursor:pointer;transition:background 0.2s;flex:1}
+    .btn:hover{background:#3d7de0}
+    .btn-secondary{padding:12px 20px;border:1px solid var(--border);border-radius:10px;background:transparent;color:var(--sub);font-size:15px;font-weight:500;cursor:pointer;transition:all 0.2s}
+    .btn-secondary:hover{border-color:var(--accent);color:var(--accent)}
+    .results{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px;margin-bottom:24px;min-height:120px}
+    .result-header{font-size:16px;font-weight:600;color:var(--accent);margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+    .result-highlight{text-align:center;padding:24px;margin-bottom:20px}
+    .result-big{font-size:48px;font-weight:800;color:var(--accent);line-height:1}
+    .result-big-label{font-size:14px;color:var(--sub);margin-top:8px}
+    .result-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);font-size:14px}
+    .result-row:last-child{border-bottom:none}
+    .result-label{color:var(--sub)}
+    .result-value{font-weight:600;color:var(--text)}
+    .result-value.accent{color:var(--accent)}
+    .result-value.green{color:#00d4aa}
+    .result-value.red{color:#f87171}
+    .result-placeholder{text-align:center;padding:40px 0;color:var(--sub);font-size:15px}
+    .ad-banner{margin:32px 0;text-align:center}
+    .faq-item{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;margin-bottom:16px}
+    .faq-item h3{font-size:16px;font-weight:600;margin-bottom:12px;color:var(--text)}
+    .faq-item p{color:var(--sub);font-size:14px;line-height:1.6;margin:0}
+    footer{text-align:center;padding:40px 20px;border-top:1px solid var(--border);margin-top:20px;color:var(--sub);font-size:14px}
+    footer a{color:var(--accent);margin:0 10px;transition:color 0.2s}
+    footer a:hover{color:var(--accent)}
+    footer p{margin-bottom:8px}
+    @media(max-width:680px){.form-grid{grid-template-columns:1fr}.container{padding:40px 16px 80px}h1{font-size:28px}.btn-row{flex-direction:column}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a class="back" href="../">← Back to Finance</a>
+    <h1>Salary Calculator</h1>
+    <p class="subtitle">Calculate your net take-home pay after taxes and deductions</p>
+
+    <div class="ad-banner">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="5794572171" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+    <div class="card">
+      <div class="panel-title">Calculator</div>
+      <div class="form-grid">
+        <div class="form-field">
+          <label for="grossSalary">Gross Annual Salary ($)</label>
+          <input type="number" id="grossSalary" value="75000" min="0" step="1000">
+        </div>
+        <div class="form-field">
+          <label for="payFrequency">Pay Frequency</label>
+          <select id="payFrequency">
+            <option value="52">Weekly (52/yr)</option>
+            <option value="26">Bi-Weekly (26/yr)</option>
+            <option value="24">Semi-Monthly (24/yr)</option>
+            <option value="12" selected>Monthly (12/yr)</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="filingStatus">Filing Status</label>
+          <select id="filingStatus">
+            <option value="single">Single</option>
+            <option value="married">Married Filing Jointly</option>
+            <option value="head">Head of Household</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="stateTaxRate">State Tax Rate (%)</label>
+          <input type="number" id="stateTaxRate" value="5" min="0" max="15" step="0.1">
+        </div>
+        <div class="form-field">
+          <label for="contrib401k">401(k) Contribution (%)</label>
+          <input type="number" id="contrib401k" value="6" min="0" max="100" step="1">
+        </div>
+        <div class="form-field">
+          <label for="otherDeductions">Other Deductions ($/yr)</label>
+          <input type="number" id="otherDeductions" value="0" min="0" step="100">
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn" onclick="calculate()">Calculate</button>
+        <button class="btn-secondary" onclick="clearForm()">Reset</button>
+      </div>
+    </div>
+
+    <div class="results" id="results">
+      <div class="result-placeholder">Enter your details and click <strong>Calculate</strong> to see results</div>
+    </div>
+
+    <div class="section">
+      <h2>Free Online Salary Calculator</h2>
+      <p>Our free online salary calculator helps you estimate your take-home pay after accounting for federal taxes, state taxes, Social Security, Medicare, and common deductions like 401(k) contributions. Based on current US tax brackets, this tool provides accurate estimates for any pay frequency. Simply enter your gross salary, select your filing status and pay period, and see your net pay breakdown instantly. No account required—just fast, accurate calculations for your financial planning.</p>
+    </div>
+
+    <div class="section">
+      <h2>How It Works</h2>
+      <p>The calculator uses progressive federal tax brackets to determine your federal income tax liability, with rates ranging from 10% to 37% depending on your taxable income and filing status. State tax is calculated based on your specified state tax rate applied to your taxable income. Social Security is taxed at 6.2% of your gross wages (up to the annual wage base limit), while Medicare is taxed at 1.45% with no income limit.</p>
+      <p>Your taxable income is your gross salary minus pre-tax deductions like 401(k) contributions and other specified deductions. The calculator then subtracts all taxes and deductions from your gross pay to determine your net take-home amount, breaking down the results by pay period (weekly, bi-weekly, semi-monthly, or monthly) so you can see exactly how much you'll bring home in each paycheck.</p>
+      <p>The results display your total deductions breakdown, including federal and state taxes, FICA taxes, and voluntary deductions. Your effective tax rate shows what percentage of your gross income goes to taxes, helping you understand the overall tax burden. All calculations use current tax year brackets and are updated annually to reflect tax law changes.</p>
+    </div>
+
+    <div class="section">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <h3>What is the difference between gross and net pay?</h3>
+        <p>Gross pay is your total earnings before any deductions, while net pay (take-home pay) is what remains after taxes, Social Security, Medicare, and other deductions are subtracted. Net pay is the amount that actually goes into your bank account.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How does the federal tax bracket system work?</h3>
+        <p>The US uses a progressive tax system, meaning different portions of your income are taxed at different rates. Only the income within each bracket range is taxed at that bracket's rate, not your entire income. This results in an effective tax rate lower than your top marginal rate.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What is the FICA tax?</h3>
+        <p>FICA (Federal Insurance Contributions Act) tax consists of Social Security (6.2%) and Medicare (1.45%) taxes, totaling 7.65% of your gross wages. Your employer matches this amount. Social Security has a wage base limit that changes annually, while Medicare has no income limit.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Should I contribute to a 401(k) plan?</h3>
+        <p>401(k) contributions are pre-tax, meaning they reduce your taxable income now and grow tax-deferred until retirement. Many employers offer matching contributions, which is essentially free money. Consider contributing at least enough to get your full employer match.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How does filing status affect my taxes?</h3>
+        <p>Your filing status determines which tax brackets apply to you and affects your standard deduction. Single filers have the lowest standard deduction, while married filing jointly and head of household have higher thresholds, often resulting in lower taxes for the same income level.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Is this salary calculator accurate?</h3>
+        <p>This calculator uses current federal tax brackets and standard deduction amounts to provide estimates. However, tax situations can be complex with additional factors like itemized deductions, tax credits, and state-specific rules. For precise tax planning, consult a qualified tax professional.</p>
+      </div>
+    </div>
+
+    <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+    <footer>
+      <p>Free financial calculators for mortgages, loans, investments, and budgeting. Plan your finances with ease.</p>
+      <p style="margin:8px 0;font-size:13px">
+        <a href="/about/" style="color:var(--accent)">About</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="/contact/">Contact</a>
+      </p>
+      <p>© 2026 Knexio. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    function fmt(n){return n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}
+    function calcFederalTax(income, status){
+      let brackets;
+      if(status==='married'){
+        brackets=[[23200,0.10],[94300,0.12],[201050,0.22],[383900,0.24],[487450,0.32],[731200,0.35],[Infinity,0.37]];
+      } else {
+        brackets=[[11600,0.10],[47150,0.12],[100525,0.22],[191950,0.24],[243725,0.32],[609350,0.35],[Infinity,0.37]];
+      }
+      let tax=0,prev=0;
+      for(const [limit,rate] of brackets){
+        if(income<=prev) break;
+        tax+=(Math.min(income,limit)-prev)*rate;
+        prev=limit;
+      }
+      return tax;
+    }
+    function calculate(){
+      const gross=parseFloat(document.getElementById('grossSalary').value)||0;
+      const freq=parseInt(document.getElementById('payFrequency').value);
+      const status=document.getElementById('filingStatus').value;
+      const stateRate=parseFloat(document.getElementById('stateTaxRate').value)||0;
+      const k401Pct=parseFloat(document.getElementById('contrib401k').value)||0;
+      const otherDed=parseFloat(document.getElementById('otherDeductions').value)||0;
+      const k401=gross*k401Pct/100;
+      const taxableIncome=Math.max(0,gross-k401-otherDed);
+      const federalTax=calcFederalTax(taxableIncome,status);
+      const socialSecurity=Math.min(gross*0.062,gross);
+      const medicare=gross*0.0145;
+      const stateTax=taxableIncome*stateRate/100;
+      const totalDeductions=federalTax+socialSecurity+medicare+stateTax+k401+otherDed;
+      const annualNet=gross-totalDeductions;
+      const perPeriodGross=gross/freq;
+      const perPeriodNet=annualNet/freq;
+      document.getElementById('results').innerHTML=`
+        <div class="result-header">Pay Summary</div>
+        <div class="result-highlight">
+          <div class="result-big">$${fmt(perPeriodNet)}</div>
+          <div class="result-big-label">Take-Home Pay per Period</div>
+        </div>
+        <div class="result-row"><span class="result-label">Gross annual salary</span><span class="result-value">$${fmt(gross)}</span></div>
+        <div class="result-row"><span class="result-label">Federal income tax</span><span class="result-value">$${fmt(federalTax)} ($${((federalTax/gross)*100).toFixed(1)}%)</span></div>
+        <div class="result-row"><span class="result-label">State income tax</span><span class="result-value">$${fmt(stateTax)} (${stateRate}%)</span></div>
+        <div class="result-row"><span class="result-label">Social Security (6.2%)</span><span class="result-value">$${fmt(socialSecurity)}</span></div>
+        <div class="result-row"><span class="result-label">Medicare (1.45%)</span><span class="result-value">$${fmt(medicare)}</span></div>
+        <div class="result-row"><span class="result-label">401(k) contribution</span><span class="result-value">$${fmt(k401)}</span></div>
+        <div class="result-row"><span class="result-label">Total deductions</span><span class="result-value">$${fmt(totalDeductions)}</span></div>
+        <div class="result-row"><span class="result-label">Annual net pay</span><span class="result-value accent">$${fmt(annualNet)}</span></div>
+        <div class="result-row"><span class="result-label">Per-period gross</span><span class="result-value">$${fmt(perPeriodGross)}</span></div>
+        <div class="result-row"><span class="result-label">Per-period take-home</span><span class="result-value green">$${fmt(perPeriodNet)}</span></div>
+        <div class="result-row"><span class="result-label">Effective tax rate</span><span class="result-value">${(((federalTax+stateTax)/gross)*100).toFixed(1)}%</span></div>
+      `;
+    }
+    function clearForm(){
+      document.getElementById('grossSalary').value='75000';
+      document.getElementById('payFrequency').value='12';
+      document.getElementById('filingStatus').value='single';
+      document.getElementById('stateTaxRate').value='5';
+      document.getElementById('contrib401k').value='6';
+      document.getElementById('otherDeductions').value='0';
+      document.getElementById('results').innerHTML='<div class="result-placeholder">Enter your details and click <strong>Calculate</strong> to see results</div>';
+    }
+  </script>
+  <script src="/knexio-bundle.js"></script>
+</body>
+</html>

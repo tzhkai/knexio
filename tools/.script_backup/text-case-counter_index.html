@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Text Case Counter</title>
+<meta name="description" content="">
+
+<link rel="canonical" href="">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Text Case Counter">
+<meta property="og:description" content="">
+<meta property="og:url" content="">
+<meta property="og:type" content="WebApplication">
+<meta property="og:site_name" content="Knexio">
+<meta property="og:image" content="https://knexio.xyz/og-image.png">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is this tool for?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "This is a free online tool for [purpose]. It helps you [function] quickly and easily."
+        }
+      }
+    ]
+  }
+  
+</script>
+
+<style>
+
+:root{
+  --bg:#0b1220;
+  --card:#111a2e;
+  --border:rgba(255,255,255,.08);
+  --text:#fff;
+  --sub:#aab3c5;
+  --accent:#4f8cff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:system-ui,-apple-system;
+  background:var(--bg);
+  color:var(--text);
+}
+.container{max-width:900px;margin:auto;padding:50px 16px}
+
+/* 统一的返回按钮样式 */
+.back {
+  display: inline-block;
+  color: var(--sub);
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 24px;
+  transition: color 0.2s;
+}
+.back:hover {
+  color: var(--accent);
+}
+
+h1{font-size:32px;margin-bottom:8px}
+h2{font-size:22px;margin-top:30px;margin-bottom:10px}
+.subtitle{color:var(--sub);margin-bottom:24px}
+
+.badge{
+  display:inline-block;
+  padding:4px 10px;
+  border-radius:20px;
+  background:rgba(79,140,255,.15);
+  color:var(--accent);
+  font-size:12px;
+  margin-bottom:10px;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:20px;
+  margin-bottom:20px;
+}
+
+textarea{
+  width:100%;
+  min-height:180px;
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:12px;
+  color:var(--text);
+  padding:14px;
+  font-size:15px;
+}
+textarea:focus{outline:none;border-color:var(--accent)}
+
+.btn-row{display:flex;gap:10px;margin-top:12px}
+button{
+  flex:1;
+  padding:10px;
+  border-radius:10px;
+  border:none;
+  background:var(--accent);
+  color:#fff;
+  cursor:pointer;
+}
+button.secondary{
+  background:transparent;
+  border:1px solid var(--border);
+  color:var(--sub);
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-top:16px;
+}
+.stat{
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:16px;
+  text-align:center;
+}
+.stat span{
+  font-size:24px;
+  font-weight:700;
+  color:var(--accent);
+}
+.stat label{
+  display:block;
+  font-size:12px;
+  color:var(--sub);
+}
+
+.tip{
+  font-size:13px;
+  color:var(--sub);
+  margin-top:10px;
+}
+
+.section p{
+  color:var(--sub);
+  line-height:1.7;
+  margin-bottom:10px;
+}
+
+.tools a{
+  display:inline-block;
+  margin:6px;
+  padding:8px 14px;
+  border-radius:8px;
+  border:1px solid var(--border);
+  color:var(--sub);
+  text-decoration:none;
+}
+.tools a:hover{
+  border-color:var(--accent);
+  color:var(--accent);
+}
+
+/* 广告样式 */
+.ad-banner {
+  margin: 32px 0;
+  text-align: center;
+}
+
+/* 统一的 Footer 样式 */
+footer {
+  margin-top: 40px;
+  text-align: center;
+  color: var(--sub);
+  font-size: 13px;
+}
+footer p {
+  margin-bottom: 8px;
+}
+footer a {
+  color: var(--sub);
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color 0.2s;
+}
+footer a:hover {
+  color: var(--accent);
+}
+
+@media(max-width:600px){
+  .stats{grid-template-columns:1fr 1fr}
+}
+
+</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2596567349043393" crossorigin="anonymous"></script>
+</head>
+
+<body><div class="container">
+
+<a class="back" href="../index.html">← Back to Tools</a>
+
+<h1>Text Case Counter</h1>
+<p class="subtitle">Paste any text to instantly count uppercase letters, lowercase letters, numbers, spaces, punctuation, and special characters. Get a full breakdown with a bar chart and character frequency table.</p>
+
+<div class="ad-banner">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="3153457922"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<div class="container">
+  <a class="back" href="../index.html">← Back to Tools</a>
+  <h1>Text Case Counter</h1>
+  <p class="subtitle">Paste any text to instantly count uppercase letters, lowercase letters, numbers, spaces, punctuation, and special characters. Get a full breakdown with a bar chart and character frequency table.</p>
+
+  <!-- Ad Slot 1: Top -->
+
+  <div class="main-box">
+    <textarea class="text-area" id="textIn" placeholder="Paste or type your text here…" oninput="analyze()">The Quick Brown Fox Jumps Over The Lazy Dog — Pack My Box With Five Dozen Liquor Jugs! (Score: 100)</textarea>
+
+    <div class="stats-grid" id="statsGrid">
+      <div class="stat-card"><div class="stat-val c-blue" id="sTotal">0</div><div class="stat-lbl">Total Chars</div></div>
+      <div class="stat-card"><div class="stat-val c-green" id="sUpper">0</div><div class="stat-lbl">Uppercase</div></div>
+      <div class="stat-card"><div class="stat-val c-orange" id="sLower">0</div><div class="stat-lbl">Lowercase</div></div>
+      <div class="stat-card"><div class="stat-val c-purple" id="sDigit">0</div><div class="stat-lbl">Digits</div></div>
+      <div class="stat-card"><div class="stat-val c-teal" id="sSpace">0</div><div class="stat-lbl">Spaces</div></div>
+      <div class="stat-card"><div class="stat-val c-red" id="sPunct">0</div><div class="stat-lbl">Punctuation</div></div>
+      <div class="stat-card"><div class="stat-val c-yellow" id="sOther">0</div><div class="stat-lbl">Other / Emoji</div></div>
+      <div class="stat-card"><div class="stat-val c-pink" id="sWords">0</div><div class="stat-lbl">Words</div></div>
+    </div>
+
+    <div class="bar-section" id="barSection"></div>
+
+    <div class="btn-row">
+      <button class="btn btn-secondary" onclick="clearText()">Clear</button>
+      <button class="btn btn-secondary" onclick="loadSample()">Load Sample</button>
+    </div></div>
+  </div>
+
+  <!-- Frequency table -->
+  <div class="freq-box">
+    <div class="freq-title">Character Frequency (Top 30)</div>
+    <div class="freq-grid" id="freqGrid"></div>
+  </div>
+
+  <!-- Ad Slot 2: In-content -->
+
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-item">
+    <div class="faq-q">What counts as a "special character"?</div>
+    <div class="faq-a">This tool categorizes characters into: uppercase (A–Z), lowercase (a–z), digits (0–9), spaces/tabs/newlines, standard punctuation (!"#$%&'()*+,-./:;&lt;=&gt;?@[\]^_`{|}~), and "other" which includes emoji, non-Latin scripts, currency symbols, and any character outside the ASCII range.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">How are words counted?</div>
+    <div class="faq-a">Words are counted by splitting on whitespace (spaces, tabs, newlines). Consecutive spaces count as one separator. Empty lines don't add words. This matches how most text editors count words.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Why would I need to count uppercase letters?</div>
+    <div class="faq-a">Common uses include checking passwords for complexity requirements (at least 1 uppercase), auditing content for shouting (all caps), checking code style rules, or analyzing writing patterns and habits.</div>
+
+  </div>
+
+  <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3153457922" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+<script>
+  function analyze() {
+    const text = document.getElementById('textIn').value;
+    let upper=0,lower=0,digit=0,space=0,punct=0,other=0;
+    const PUNCT = '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~';
+    for (const ch of text) {
+      if (ch >= 'A' && ch <= 'Z') upper++;
+      else if (ch >= 'a' && ch <= 'z') lower++;
+      else if (ch >= '0' && ch <= '9') digit++;
+      else if (ch === ' ' || ch === '\t' || ch === '\n' || ch === '\r') space++;
+      else if (PUNCT.includes(ch)) punct++;
+      else other++;
+    }
+    const total = text.length;
+    const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+
+    document.getElementById('sTotal').textContent = total;
+    document.getElementById('sUpper').textContent = upper;
+    document.getElementById('sLower').textContent = lower;
+    document.getElementById('sDigit').textContent = digit;
+    document.getElementById('sSpace').textContent = space;
+    document.getElementById('sPunct').textContent = punct;
+    document.getElementById('sOther').textContent = other;
+    document.getElementById('sWords').textContent = words;
+
+    // Bar chart
+    const bars = [
+      {label:'Uppercase',val:upper,color:'#22c55e'},
+      {label:'Lowercase',val:lower,color:'#f97316'},
+      {label:'Digits',val:digit,color:'#a78bfa'},
+      {label:'Spaces',val:space,color:'#2dd4bf'},
+      {label:'Punctuation',val:punct,color:'#f87171'},
+      {label:'Other / Emoji',val:other,color:'#facc15'},
+    ];
+    const maxVal = Math.max(1, ...bars.map(b=>b.val));
+    const barSection = document.getElementById('barSection');
+    barSection.innerHTML = bars.map(b => `
+      <div class="bar-item">
+        <div class="bar-label">${b.label}</div>
+        <div class="bar-track"><div class="bar-fill" style="width:${(b.val/maxVal*100).toFixed(1)}%;background:${b.color}"></div></div>
+        <div class="bar-count">${b.val}</div>
+      </div>`).join('');
+
+    // Frequency table
+    const freq = {};
+    for (const ch of text) {
+      if (ch !== ' ' && ch !== '\n' && ch !== '\r' && ch !== '\t') {
+        freq[ch] = (freq[ch] || 0) + 1;
+      }
+    }
+    const sorted = Object.entries(freq).sort((a,b)=>b[1]-a[1]).slice(0,30);
+    const grid = document.getElementById('freqGrid');
+    grid.innerHTML = sorted.map(([ch,n]) => `
+      <div class="freq-cell">
+        <div class="freq-char">${ch === '<' ? '&lt;' : ch === '>' ? '&gt;' : ch === '&' ? '&amp;' : ch}</div>
+        <div class="freq-n">${n}</div>
+      </div>`).join('');
+  }
+
+  function clearText() { document.getElementById('textIn').value = ''; analyze(); }
+  function loadSample() {
+    document.getElementById('textIn').value = 'Hello, World! This is a TEXT CASE COUNTER demo.\nIt counts: UPPERCASE, lowercase, d1g1ts (123), spaces, and punctuation!\nTry pasting your own content here — works great for passwords & emails.';
+    analyze();
+  }
+
+  analyze();
+</script>
+  <script src="../../knexio-bundle.js"></script>
+  <script src="../../cookie-consent.js"></script>
+  <!-- Schema: FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is this tool for?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "This is a free online tool for [purpose]. It helps you [function] quickly and easily."
+        }
+      }
+    ]
+  }
+  </script>
+
+  
+  <div class="seo-section">
+    <h2>How to Use the Text Case Counter</h2>
+    <div class="step-block">
+      <h3>Step 1: Paste your text</h3>
+      <p>Type or paste any text into the input area.</p>
+    </div>
+    <div class="step-block">
+      <h3>Step 2: View case statistics</h3>
+      <p>See the count of uppercase letters, lowercase letters, digits, and special characters.</p>
+    </div>
+    <div class="step-block">
+      <h3>Step 3: Check formatting consistency</h3>
+      <p>Use results to verify proper capitalization in your writing or code.</p>
+    </div>
+
+<div class="ad-banner" style="margin-top:40px">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="3153457922"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<footer>
+  <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
+  <p>
+    <a href="/about/">About</a> •
+    <a href="/privacy/">Privacy Policy</a> •
+    <a href="/terms/">Terms of Service</a>
+  </p>
+</footer>
+
+</div>
+
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</body>
+</html>

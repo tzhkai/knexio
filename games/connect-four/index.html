@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>🔴 Connect Four</title>
+  <meta name="description" content="Drop discs to connect 4 in a row. Play against AI or a friend." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="canonical" href="https://knexio.xyz/games/connect-four/" />
+  <meta property="og:title" content="🔴 Connect Four" />
+  <meta property="og:description" content="Drop discs to connect 4 in a row. Play against AI or a friend." />
+  <meta property="og:url" content="https://knexio.xyz/games/connect-four/" />
+  <meta property="og:type" content="Game" />
+  <meta property="og:site_name" content="Knexio" />
+  <meta property="og:image" content="https://knexio.xyz/og-image.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "🔴 Connect Four",
+    "description": "Drop discs to connect 4 in a row. Play against AI or a friend.",
+    "url": "https://knexio.xyz/games/connect-four/",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Knexio",
+      "url": "https://knexio.xyz"
+    }
+  }
+  </script>
+<style>
+    :root{--bg:#0b1220;--bg2:#070d1a;--panel:#111a2e;--border:rgba(255,255,255,0.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff;--red:#f87171;--yellow:#fbbf24;}
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:linear-gradient(180deg,var(--bg),var(--bg2));color:var(--text);min-height:100vh;}
+    a{text-decoration:none;color:inherit;}
+    .wrap{max-width:700px;margin:0 auto;padding:40px 16px 80px;}
+    .back{display:inline-block;margin-bottom:20px;font-size:14px;color:var(--sub);}
+    .back:hover{color:var(--accent);}
+    h1{font-size:30px;margin-bottom:6px;}
+    .subtitle{font-size:15px;color:var(--sub);margin-bottom:20px;}
+    .ad-slot{margin:20px 0;text-align:center;min-height:90px;background:rgba(255,255,255,0.02);border:1px dashed rgba(255,255,255,0.08);border-radius:8px;display:flex;align-items:center;justify-content:center;}
+    .controls{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;align-items:center;}
+    .ctrl-label{font-size:13px;color:var(--sub);}
+    .seg{display:flex;border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+    .seg button{padding:8px 16px;background:none;border:none;color:var(--sub);font-size:13px;cursor:pointer;transition:all 0.15s;}
+    .seg button.active{background:var(--accent);color:#fff;}
+    .btn{padding:9px 20px;border-radius:10px;border:none;background:var(--accent);color:#fff;font-size:14px;cursor:pointer;transition:opacity 0.18s;}
+    .btn:hover{opacity:0.85;}
+    .btn.secondary{background:var(--panel);border:1px solid var(--border);color:var(--sub);}
+    .status-bar{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:12px 18px;margin-bottom:16px;display:flex;align-items:center;gap:12px;font-size:15px;}
+    .disc-indicator{width:22px;height:22px;border-radius:50%;display:inline-block;}
+    .disc-red{background:var(--red);}
+    .disc-yellow{background:var(--yellow);}
+    .board-wrap{background:#1a2540;border-radius:16px;padding:12px;display:inline-block;cursor:pointer;user-select:none;}
+    .board-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;}
+    .cell{width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,0.07);transition:background 0.15s;}
+    @media(max-width:480px){.cell{width:40px;height:40px;}.board-wrap{padding:8px;}.board-grid{gap:5px;}}
+    .cell.red{background:var(--red);box-shadow:0 0 10px rgba(248,113,113,0.5);}
+    .cell.yellow{background:var(--yellow);box-shadow:0 0 10px rgba(251,191,36,0.5);}
+    .cell.win{animation:pulse 0.5s infinite alternate;}
+    @keyframes pulse{from{opacity:1}to{opacity:0.5}}
+    .hover-row{height:24px;display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-bottom:6px;}
+    .hover-cell{border-radius:50%;width:100%;}
+    .hover-cell.show-red{background:rgba(248,113,113,0.6);}
+    .hover-cell.show-yellow{background:rgba(251,191,36,0.6);}
+    .score-row{display:flex;gap:12px;margin-top:16px;justify-content:center;}
+    .score-card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:12px 24px;text-align:center;}
+    .score-card .s-label{font-size:12px;color:var(--sub);margin-bottom:4px;}
+    .score-card .s-val{font-size:26px;font-weight:700;}
+    .score-card .s-val.red{color:var(--red);}
+    .score-card .s-val.yellow{color:var(--yellow);}
+    /* Game Over Modal */
+    .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:100;align-items:center;justify-content:center;}
+    .modal-overlay.show{display:flex;}
+    .modal{background:var(--panel);border:1px solid var(--border);border-radius:20px;padding:36px 32px;text-align:center;max-width:340px;width:100%;}
+    .modal h2{font-size:26px;margin-bottom:10px;}
+    .modal p{color:var(--sub);margin-bottom:20px;font-size:15px;}
+    .modal .ad-slot{margin:0 0 20px;min-height:70px;}
+    .modal .btn{width:100%;}
+    h2.section{font-size:22px;margin:32px 0 12px;}
+    .rules-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px;}
+    @media(max-width:480px){.rules-grid{grid-template-columns:1fr;}}
+    .rule-card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:16px;}
+    .rule-card h3{font-size:14px;color:var(--accent);margin-bottom:6px;}
+    .rule-card p{font-size:13px;color:var(--sub);line-height:1.5;}
+    footer{margin-top:40px;text-align:center;font-size:13px;color:var(--sub);}
+    footer a{color:var(--sub);margin:0 10px;}
+    footer a:hover{color:var(--accent);}
+  .ad-banner{margin:24px 0;text-align:center;min-height:90px}
+  
+    /* ==================== 移动端优化 ==================== */
+    
+    /* 平板和手机 (≤768px) */
+    @media (max-width: 768px) {
+      /* 容器布局优化 */
+      .container, .wrap {
+        padding: 40px 15px 80px !important;
+        max-width: 100% !important;
+      
+      /* 标题字体优化 */
+      h1 {
+        font-size: 28px !important;
+        line-height: 1.3 !important;
+      }
+      
+      h2 {
+        font-size: 20px !important;
+        margin-top: 36px !important;
+        margin-bottom: 10px !important;
+      }
+      
+      h3 {
+        font-size: 17px !important;
+      }
+      
+      /* 正文内容优化 */
+      p, li, .intro, .subtitle {
+        font-size: 14px !important;
+        line-height: 1.7 !important;
+      }
+      
+      /* 段落间距优化 */
+      p, ul, ol {
+        margin-bottom: 16px !important;
+      }
+      
+      /* 列表优化 */
+      ul, ol {
+        padding-left: 18px !important;
+      }
+      
+      li {
+        margin-bottom: 6px !important;
+      }
+      
+      /* 内容块优化 */
+      .main-panel, .step-block, .notice, .extra-info {
+        padding: 16px !important;
+        border-radius: 12px !important;
+        margin: 16px 0 !important;
+      }
+      
+      /* 按钮和输入框优化 */
+      .btn {
+        padding: 14px !important;
+        font-size: 15px !important;
+        min-height: 48px !important;
+      }
+      
+      .input-group input {
+        padding: 12px !important;
+        font-size: 15px !important;
+      }
+      
+      /* 网格系统优化 */
+      .age-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px !important;
+      }
+      
+      /* 广告位优化 */
+      .ad-banner {
+        margin: 16px 0 !important;
+        min-height: 50px !important;
+      }
+      
+      /* 游戏页面优化 */
+      .grid-container {
+        padding: 8px !important;
+      }
+      
+      .grid {
+        gap: 8px !important;
+      }
+      
+      .cell {
+        font-size: 20px !important;
+        border-radius: 6px !important;
+      }
+      
+      .score-box {
+        min-width: 70px !important;
+        padding: 6px 12px !important;
+      }
+      
+      .score-val {
+        font-size: 18px !important;
+      }
+      
+      /* 工具页面优化 */
+      .age-main {
+        font-size: 36px !important;
+      }
+      
+      .age-value {
+        font-size: 24px !important;
+      }
+      
+      .age-label {
+        font-size: 11px !important;
+      }
+      
+      /* 引导页面优化 */
+      .intro {
+        border-left-width: 2px !important;
+        padding-left: 12px !important;
+        margin-bottom: 32px !important;
+      }
+      
+      .faq-item {
+        margin-bottom: 20px !important;
+      }
+      
+      .faq-item strong {
+        font-size: 15px !important;
+      }
+    }
+    
+    /* 小手机优化 (≤480px) */
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 24px !important;
+      }
+      
+      h2 {
+        font-size: 18px !important;
+      }
+      
+      .container, .wrap {
+        padding: 32px 12px 60px !important;
+      }
+      
+      .main-panel, .step-block, .notice {
+        padding: 14px !important;
+      }
+      
+      .btn {
+        padding: 12px !important;
+        font-size: 14px !important;
+      }
+      
+      .age-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
+    
+    /* 触摸设备优化 */
+    @media (hover: none) and (pointer: coarse) {
+      button, .btn, a[onclick], .cell {
+        min-height: 44px !important;
+        min-width: 44px !important;
+      }
+      
+      input, select, textarea {
+        font-size: 16px !important;
+      }
+    }      .container { padding: 40px 15px 80px; }
+    }
+    </style>
+</head>
+<body><a href="../../cdn-cgi/content-Kl2lp_R6Wan1HeUNi_2Mg_VkZSk8Wc9VEPcXLV_GaRE.html" aria-hidden="true" rel="nofollow noopener" style="display: none !important; visibility: hidden !important"></a>
+<div class="wrap">
+  <a class="back" href="../index.html">← Back to Games</a>
+  <h1>🔴 Connect Four</h1>
+  <p class="subtitle">Drop discs to connect 4 in a row. Play against AI or a friend.</p>
+
+  <!-- Ad Slot 1: Top -->
+
+  <div class="controls">
+    <span class="ctrl-label">Mode:</span>
+    <div class="seg">
+      <button class="active" id="btn-vs-ai" onclick="setMode('ai')">vs AI</button>
+      <button id="btn-vs-player" onclick="setMode('2p')">2 Players</button>
+    </div>
+    <span class="ctrl-label">Difficulty:</span>
+    <div class="seg" id="diff-seg">
+      <button onclick="setDiff('easy')">Easy</button>
+      <button class="active" onclick="setDiff('medium')">Medium</button>
+      <button onclick="setDiff('hard')">Hard</button>
+    </div>
+    <button class="btn secondary" onclick="newGame()">New Game</button>
+  </div>
+
+  <div class="status-bar">
+    <span class="disc-indicator" id="turnDisc"></span>
+    <span id="statusText">Red's turn</span>
+  </div>
+
+  <div style="text-align:center;">
+    <div class="hover-row" id="hoverRow"></div>
+    <div class="board-wrap" id="boardWrap">
+      <div class="board-grid" id="boardGrid"></div>
+    </div>
+  </div>
+
+  <div class="score-row">
+    <div class="score-card"><div class="s-label">🔴 Red</div><div class="s-val red" id="scoreRed">0</div></div>
+    <div class="score-card"><div class="s-label">Draws</div><div class="s-val" id="scoreDraws">0</div></div>
+    <div class="score-card"><div class="s-label">🟡 Yellow</div><div class="s-val yellow" id="scoreYellow">0</div></div>
+  </div>
+
+  <!-- Ad Slot 2: Mid -->
+
+  <h2 class="section">How to Play</h2>
+  <div class="rules-grid">
+    <div class="rule-card"><h3>Objective</h3><p>Be the first to connect 4 of your discs in a row — horizontally, vertically, or diagonally.</p></div>
+    <div class="rule-card"><h3>Taking a Turn</h3><p>Click (or tap) any column to drop your disc. It falls to the lowest available row in that column.</p></div>
+    <div class="rule-card"><h3>AI Difficulty</h3><p>Easy: random moves. Medium: blocks obvious wins. Hard: uses minimax with alpha-beta pruning — very tough to beat!</p></div>
+    <div class="rule-card"><h3>Draw</h3><p>If the entire 6×7 board fills up with no winner, the game is a draw. Scores track across games.</p></div>
+  </div>
+</div>
+
+<!-- Game Over Modal -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <h2 id="modalTitle">🎉 Red Wins!</h2>
+    <p id="modalSub">Connect 4 in a row to win.</p>
+
+    <button class="btn" onclick="newGame()">Play Again</button>
+
+  </div>
+
+  <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3617326351" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  </div>
+    </div>
+
+          <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+    <footer>
+      <p>Free online games to play anytime. Enjoy classic games, puzzles, and entertainment.</p>
+            <p style="margin: 8px 0; font-size: 13px;">
+        <a href="/about/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">About</a>
+        <a href="/privacy/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Privacy</a>
+        <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
+        <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
+      </p>
+      <p>© 2026 Knexio. All rights reserved.</p>
+    </footer>
+
+<script>
+  const ROWS = 6, COLS = 7;
+  let board, currentPlayer, gameOver, mode, difficulty;
+  let scores = {red:0, yellow:0, draws:0};
+
+  function setMode(m) {
+    mode = m;
+    document.getElementById('btn-vs-ai').classList.toggle('active', m==='ai');
+    document.getElementById('btn-vs-player').classList.toggle('active', m==='2p');
+    document.getElementById('diff-seg').style.opacity = m==='ai' ? '1' : '0.4';
+    newGame();
+  }
+
+  function setDiff(d) {
+    difficulty = d;
+    document.querySelectorAll('#diff-seg button').forEach((b,i) => b.classList.toggle('active', ['easy','medium','hard'][i]===d));
+    newGame();
+  }
+
+  function newGame() {
+    board = Array.from({length:ROWS}, ()=>Array(COLS).fill(0));
+    currentPlayer = 1; gameOver = false;
+    render(); updateStatus(); closeModal();
+  }
+
+  function render() {
+    const grid = document.getElementById('boardGrid');
+    grid.innerHTML = '';
+    for(let r=0;r<ROWS;r++) for(let c=0;c<COLS;c++){
+      const cell=document.createElement('div');
+      cell.className='cell'+(board[r][c]===1?' red':board[r][c]===2?' yellow':'');
+      grid.appendChild(cell);
+    }
+    const hover=document.getElementById('hoverRow');
+    hover.innerHTML='';
+    for(let c=0;c<COLS;c++){
+      const hc=document.createElement('div');
+      hc.className='hover-cell';
+      hc.dataset.col=c;
+      hover.appendChild(hc);
+    }
+  }
+
+  function updateStatus() {
+    const disc=document.getElementById('turnDisc');
+    disc.className='disc-indicator '+(currentPlayer===1?'disc-red':'disc-yellow');
+    document.getElementById('statusText').textContent = gameOver ? '' : (currentPlayer===1?'Red':'Yellow')+"'s turn" + (mode==='ai'&&currentPlayer===2?' (AI)':'');
+    document.getElementById('scoreRed').textContent=scores.red;
+    document.getElementById('scoreYellow').textContent=scores.yellow;
+    document.getElementById('scoreDraws').textContent=scores.draws;
+  }
+
+  function dropDisc(col) {
+    if(gameOver) return;
+    if(mode==='ai' && currentPlayer===2) return;
+    const row = getRow(col);
+    if(row===-1) return;
+    board[row][col]=currentPlayer;
+    const win=checkWin(row,col);
+    render();
+    if(win){endGame(currentPlayer); return;}
+    if(isDraw()){endGame(0); return;}
+    currentPlayer=currentPlayer===1?2:1;
+    updateStatus();
+    if(mode==='ai' && currentPlayer===2) setTimeout(aiMove,400);
+  }
+
+  function getRow(col){for(let r=ROWS-1;r>=0;r--)if(board[r][col]===0)return r;return -1;}
+
+  function checkWin(row,col){
+    const p=board[row][col];
+    const dirs=[[0,1],[1,0],[1,1],[1,-1]];
+    for(const[dr,dc]of dirs){
+      let count=1,cells=[[row,col]];
+      for(let d=-1;d<=1;d+=2) for(let i=1;i<4;i++){
+        const r=row+dr*i*d,c=col+dc*i*d;
+        if(r<0||r>=ROWS||c<0||c>=COLS||board[r][c]!==p) break;
+        count++;cells.push([r,c]);
+      }
+      if(count>=4){highlightWin(cells);return true;}
+    }
+    return false;
+  }
+
+  function highlightWin(cells){
+    const grid=document.getElementById('boardGrid');
+    cells.forEach(([r,c])=>grid.children[r*COLS+c].classList.add('win'));
+  }
+
+  function isDraw(){return board[0].every(v=>v!==0);}
+
+  function endGame(winner){
+    gameOver=true;
+    if(winner===1)scores.red++;
+    else if(winner===2)scores.yellow++;
+    else scores.draws++;
+    updateStatus();
+    const titles={1:'🔴 Red Wins!',2:'🟡 Yellow Wins!',0:'🤝 Draw!'};
+    const subs={1:'Great move! Red connected 4 in a row.',2:'Excellent! Yellow connected 4 in a row.',0:'The board is full — nobody wins this time.'};
+    document.getElementById('modalTitle').textContent=titles[winner];
+    document.getElementById('modalSub').textContent=subs[winner];
+    setTimeout(()=>document.getElementById('modal').classList.add('show'),600);
+  }
+
+  function closeModal(){document.getElementById('modal').classList.remove('show');}
+
+  // AI Logic
+  function aiMove(){
+    let col;
+    if(difficulty==='easy') col=randomMove();
+    else if(difficulty==='medium') col=mediumMove();
+    else col=minimaxMove();
+    const row=getRow(col);
+    if(row===-1) return;
+    board[row][col]=2;
+    const win=checkWin(row,col);
+    render();
+    if(win){endGame(2);return;}
+    if(isDraw()){endGame(0);return;}
+    currentPlayer=1;updateStatus();
+  }
+
+  function randomMove(){
+    const valid=[];for(let c=0;c<COLS;c++)if(getRow(c)!==-1)valid.push(c);
+    return valid[Math.floor(Math.random()*valid.length)];
+  }
+
+  function mediumMove(){
+    // Block player win, or take AI win
+    for(let p=2;p>=1;p--){
+      for(let c=0;c<COLS;c++){
+        const r=getRow(c);if(r===-1)continue;
+        board[r][c]=p;
+        if(checkWinSilent(r,c)){board[r][c]=0;return c;}
+        board[r][c]=0;
+      }
+    }
+    return randomMove();
+  }
+
+  function checkWinSilent(row,col){
+    const p=board[row][col];
+    const dirs=[[0,1],[1,0],[1,1],[1,-1]];
+    for(const[dr,dc]of dirs){
+      let count=1;
+      for(let d=-1;d<=1;d+=2)for(let i=1;i<4;i++){
+        const r=row+dr*i*d,c=col+dc*i*d;
+        if(r<0||r>=ROWS||c<0||c>=COLS||board[r][c]!==p)break;
+        count++;
+      }
+      if(count>=4)return true;
+    }
+    return false;
+  }
+
+  function minimaxMove(){
+    let best=-Infinity,bestCol=randomMove();
+    for(let c=0;c<COLS;c++){
+      const r=getRow(c);if(r===-1)continue;
+      board[r][c]=2;
+      const score=minimax(board,5,false,-Infinity,Infinity);
+      board[r][c]=0;
+      if(score>best){best=score;bestCol=c;}
+    }
+    return bestCol;
+  }
+
+  function minimax(b,depth,isMax,alpha,beta){
+    // Check terminal
+    for(let r=0;r<ROWS;r++)for(let c=0;c<COLS;c++){
+      if(b[r][c]&&checkWinSilent(r,c)) return b[r][c]===2?(depth+1)*100:-(depth+1)*100;
+    }
+    if(depth===0||isDraw()) return evaluateBoard();
+    if(isMax){
+      let best=-Infinity;
+      for(let c=0;c<COLS;c++){
+        const r=getRow(c);if(r===-1)continue;
+        board[r][c]=2;const score=minimax(board,depth-1,false,alpha,beta);board[r][c]=0;
+        best=Math.max(best,score);alpha=Math.max(alpha,score);if(beta<=alpha)break;
+      }
+      return best;
+    }else{
+      let best=Infinity;
+      for(let c=0;c<COLS;c++){
+        const r=getRow(c);if(r===-1)continue;
+        board[r][c]=1;const score=minimax(board,depth-1,true,alpha,beta);board[r][c]=0;
+        best=Math.min(best,score);beta=Math.min(beta,score);if(beta<=alpha)break;
+      }
+      return best;
+    }
+  }
+
+  function evaluateBoard(){
+    let score=0;
+    // Center column preference
+    const center=Math.floor(COLS/2);
+    for(let r=0;r<ROWS;r++){if(board[r][center]===2)score+=3;else if(board[r][center]===1)score-=3;}
+    return score;
+  }
+
+  // Event listeners
+  document.getElementById('boardWrap').addEventListener('click', e=>{
+    if(gameOver)return;
+    const grid=document.getElementById('boardGrid');
+    const cells=[...grid.children];
+    const clicked=e.target.closest('.cell') || e.target;
+    const idx=cells.indexOf(clicked);
+    if(idx!==-1)dropDisc(idx%COLS);
+    else{
+      const rect=document.getElementById('boardWrap').getBoundingClientRect();
+      const cellW=rect.width/COLS;
+      const col=Math.floor((e.clientX-rect.left)/cellW);
+      dropDisc(col);
+    }
+  });
+
+  document.getElementById('hoverRow').addEventListener('click',e=>{
+    const col=e.target.dataset.col;
+    if(col!==undefined)dropDisc(+col);
+  });
+
+  document.getElementById('hoverRow').addEventListener('mouseover',e=>{
+    if(gameOver)return;
+    const col=e.target.dataset.col;
+    if(col===undefined)return;
+    document.querySelectorAll('.hover-cell').forEach(h=>h.className='hover-cell');
+    e.target.className='hover-cell '+(currentPlayer===1?'show-red':'show-yellow');
+  });
+
+  document.getElementById('hoverRow').addEventListener('mouseleave',()=>{
+    document.querySelectorAll('.hover-cell').forEach(h=>h.className='hover-cell');
+  });
+
+  // Init
+  mode='ai'; difficulty='medium';
+  newGame();
+</script>
+  <script src="/knexio-bundle.js"></script>
+  <script src="../../cookie-consent.js"></script>
+</body>

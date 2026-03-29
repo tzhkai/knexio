@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Checkers - Free Online Game | Play Now | Knexio</title>
+  <meta name="description" content="Play Checkers free online. Checkers is a fun browser game that you can play for free. Enjoy this entertaining game with simple controls and engagin... No download required. Works on all devices." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="canonical" href="https://knexio.xyz/games/checkers/" />
+  <meta property="og:title" content="Play Checkers Free Online" />
+  <meta property="og:description" content="Checkers is a fun browser game that you can play for free. Enjoy this entertaining game with simple ..." />
+  <meta property="og:url" content="https://knexio.xyz/games/checkers/" />
+  <meta property="og:type" content="website" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Game",
+    "name": "Checkers",
+    "url": "https://knexio.xyz/games/checkers/",
+    "description": "Free online checkers (draughts) game with AI opponent.",
+    "genre": "Board Game",
+    "gamePlatform": "Web Browser"
+  }
+  </script>
+<style>
+
+    :root{--bg:#0b1220;--bg2:#070d1a;--panel:#111a2e;--border:rgba(255,255,255,0.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff;--board-light:#eecfa1;--board-dark:#8b4513;--piece-red:#dc2626;--piece-black:#1f2937;--king-gold:#fbbf24;}
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:linear-gradient(180deg,var(--bg),var(--bg2));color:var(--text);min-height:100vh;}
+    a{text-decoration:none;color:inherit;}
+    .wrap{width:fit-content;margin:0 auto;padding:20px;}
+    .back{display:inline-block;margin-bottom:15px;font-size:14px;color:var(--sub);}
+    .back:hover{color:var(--accent);}
+    h1{font-size:28px;margin-bottom:10px;text-align:center;}
+    .subtitle{text-align:center;color:var(--sub);font-size:14px;margin-bottom:15px;}
+    .ad-banner{margin:15px 0;text-align:center;}
+    .game-container{background:var(--panel);border-radius:12px;padding:20px;}
+    .game-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px;padding:12px;background:var(--bg2);border-radius:8px;flex-wrap:wrap;gap:10px;}
+    .player-info{display:flex;align-items:center;gap:10px;}
+    .player-piece{width:24px;height:24px;border-radius:50%;border:3px solid var(--border);}
+    .player-piece.red{background:var(--piece-red);}
+    .player-piece.black{background:var(--piece-black);}
+    .turn-indicator{font-size:13px;color:var(--accent);font-weight:600;}
+    .score{display:flex;gap:20px;}
+    .score-item{text-align:center;}
+    .score-value{font-size:20px;font-weight:600;}
+    .score-value.red{color:var(--piece-red);}
+    .score-value.black{color:#6b7280;}
+    .score-label{font-size:11px;color:var(--sub);}
+    .controls{display:flex;gap:8px;}
+    .btn{padding:8px 16px;background:var(--accent);border:none;border-radius:6px;color:#fff;font-size:13px;cursor:pointer;transition:opacity 0.2s;}
+    .btn:hover{opacity:0.9;}
+    .btn-secondary{background:var(--bg2);}
+    .board-container{display:flex;justify-content:center;}
+    .checkers-board{width:fit-content;min-width:320px;aspect-ratio:1;display:grid;grid-template-columns:repeat(8,1fr);border:4px solid #5d4037;border-radius:4px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,0.5);}
+    .square{display:flex;align-items:center;justify-content:center;position:relative;}
+    .square.light{background:var(--board-light);}
+    .square.dark{background:var(--board-dark);}
+    .square.valid-move::after{content:'';position:absolute;width:40%;height:40%;background:rgba(255,255,255,0.3);border-radius:50%;}
+    .square.selected::before{content:'';position:absolute;inset:0;background:rgba(255,255,0,0.4);}
+    .piece{width:75%;height:75%;border-radius:50%;cursor:pointer;transition:transform 0.15s;position:relative;box-shadow:0 3px 6px rgba(0,0,0,0.4);}
+    .piece:hover{transform:scale(1.05);}
+    .piece.red{background:radial-gradient(circle at 30% 30%,#ef4444,var(--piece-red));}
+    .piece.black{background:radial-gradient(circle at 30% 30%,#4b5563,var(--piece-black));}
+    .piece.king::after{content:'★';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:20px;color:var(--king-gold);text-shadow:0 1px 2px rgba(0,0,0,0.5);}
+    .status-message{margin-top:15px;padding:12px;background:var(--bg2);border-radius:8px;text-align:center;font-size:14px;}
+    .status-message.capture{background:rgba(34,197,94,0.2);color:#86efac;}
+    .status-message.win{background:rgba(34,197,94,0.3);color:#86efac;font-weight:600;}
+    .rules{margin-top:30px;background:var(--panel);border-radius:12px;padding:20px;}
+    .rules h2{font-size:18px;margin-bottom:15px;}
+    .rules h3{font-size:15px;margin:15px 0 8px;color:var(--sub);}
+    .rules p,.rules li{color:var(--sub);font-size:14px;line-height:1.7;}
+    .rules ul{margin-left:20px;}
+    footer{margin-top:30px;text-align:center;font-size:13px;color:var(--sub);}
+    footer a{color:var(--accent);}
+    @media(max-width:500px){.piece.king::after{font-size:14px;}.game-header{flex-direction:column;text-align:center;}}
+
+    /* ==================== 移动端优化 ==================== */
+
+    /* 平板和手机 (≤768px) */
+    @media (max-width: 768px) {
+      /* 容器布局优化 */
+      .container, .wrap {
+        padding: 40px 15px 80px !important;
+        max-width: 100% !important;
+      }
+
+      /* 标题字体优化 */
+      h1 {
+        font-size: 28px !important;
+        line-height: 1.3 !important;
+      }
+
+      h2 {
+        font-size: 20px !important;
+        margin-top: 36px !important;
+        margin-bottom: 10px !important;
+      }
+
+      h3 {
+        font-size: 17px !important;
+      }
+
+      /* 正文内容优化 */
+      p, li, .intro, .subtitle {
+        font-size: 14px !important;
+        line-height: 1.7 !important;
+      }
+
+      /* 段落间距优化 */
+      p, ul, ol {
+        margin-bottom: 16px !important;
+      }
+
+      /* 列表优化 */
+      ul, ol {
+        padding-left: 18px !important;
+      }
+
+      li {
+        margin-bottom: 6px !important;
+      }
+
+      /* 内容块优化 */
+      .main-panel, .step-block, .notice, .extra-info {
+        padding: 16px !important;
+        border-radius: 12px !important;
+        margin: 16px 0 !important;
+      }
+
+      /* 按钮和输入框优化 */
+      .btn {
+        padding: 14px !important;
+        font-size: 15px !important;
+        min-height: 48px !important;
+      }
+
+      .input-group input {
+        padding: 12px !important;
+        font-size: 15px !important;
+      }
+
+      /* 网格系统优化 */
+      .age-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px !important;
+      }
+
+      /* 广告位优化 */
+      .ad-banner {
+        margin: 16px 0 !important;
+        min-height: 50px !important;
+      }
+
+      /* 游戏页面优化 */
+      .grid-container {
+        padding: 8px !important;
+      }
+
+      .grid {
+        gap: 8px !important;
+      }
+
+      .cell {
+        font-size: 20px !important;
+        border-radius: 6px !important;
+      }
+
+      .score-box {
+        min-width: 70px !important;
+        padding: 6px 12px !important;
+      }
+
+      .score-val {
+        font-size: 18px !important;
+      }
+
+      /* 工具页面优化 */
+      .age-main {
+        font-size: 36px !important;
+      }
+
+      .age-value {
+        font-size: 24px !important;
+      }
+
+      .age-label {
+        font-size: 11px !important;
+      }
+
+      /* 引导页面优化 */
+      .intro {
+        border-left-width: 2px !important;
+        padding-left: 12px !important;
+        margin-bottom: 32px !important;
+      }
+
+      .faq-item {
+        margin-bottom: 20px !important;
+      }
+
+      .faq-item strong {
+        font-size: 15px !important;
+      }
+    }
+
+    /* 小手机优化 (≤480px) */
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 24px !important;
+      }
+
+      h2 {
+        font-size: 18px !important;
+      }
+
+      .container, .wrap {
+        padding: 32px 12px 60px !important;
+      }
+
+      .main-panel, .step-block, .notice {
+        padding: 14px !important;
+      }
+
+      .btn {
+        padding: 12px !important;
+        font-size: 14px !important;
+      }
+
+      .age-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
+    /* 触摸设备优化 */
+    @media (hover: none) and (pointer: coarse) {
+      button, .btn, a[onclick], .cell {
+        min-height: 44px !important;
+        min-width: 44px !important;
+      }
+
+      input, select, textarea {
+        font-size: 16px !important;
+      }
+        }
+
+</style>
+  <meta name="keywords" content="checkers game, free online game, browser game, play online, casual game" /></head>
+<body><a href="../../cdn-cgi/content-d_84B7NnsMCt64fyxR_xZJXFKVXs0oGeMAsA3IxvV1g.html" aria-hidden="true" rel="nofollow noopener" style="display: none !important; visibility: hidden !important"></a>
+<div class="wrap">
+  <a class="back" href="../index.html">← Back to Games</a>
+
+  <h1>⚫ Checkers ⚪</h1>
+  <p class="subtitle">Classic draughts - Capture all opponent pieces or block their moves</p>
+
+  <div class="game-container">
+    <div class="game-header">
+      <div class="player-info">
+        <div class="player-piece black"></div>
+        <span>AI (Black)</span>
+      </div>
+
+      <div class="score">
+        <div class="score-item">
+          <div class="score-value red" id="redScore">12</div>
+          <div class="score-label">RED</div>
+        </div>
+        <div class="score-item">
+          <div class="score-value black" id="blackScore">12</div>
+          <div class="score-label">BLACK</div>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button class="btn btn-secondary" onclick="undoMove()">↩ Undo</button>
+        <button class="btn" onclick="newGame()">New Game</button>
+      </div>
+    </div>
+
+    <div class="board-container">
+      <div class="checkers-board" id="checkersBoard">
+      <div class="square light" data-row="0" data-col="0"></div>
+      <div class="square dark" data-row="0" data-col="1"></div>
+      <div class="square light" data-row="0" data-col="2"></div>
+      <div class="square dark" data-row="0" data-col="3"></div>
+      <div class="square light" data-row="0" data-col="4"></div>
+      <div class="square dark" data-row="0" data-col="5"></div>
+      <div class="square light" data-row="0" data-col="6"></div>
+      <div class="square dark" data-row="0" data-col="7"></div>
+      <div class="square dark" data-row="1" data-col="0"></div>
+      <div class="square light" data-row="1" data-col="1"></div>
+      <div class="square dark" data-row="1" data-col="2"></div>
+      <div class="square light" data-row="1" data-col="3"></div>
+      <div class="square dark" data-row="1" data-col="4"></div>
+      <div class="square light" data-row="1" data-col="5"></div>
+      <div class="square dark" data-row="1" data-col="6"></div>
+      <div class="square light" data-row="1" data-col="7"></div>
+      <div class="square light" data-row="2" data-col="0"></div>
+      <div class="square dark" data-row="2" data-col="1"></div>
+      <div class="square light" data-row="2" data-col="2"></div>
+      <div class="square dark" data-row="2" data-col="3"></div>
+      <div class="square light" data-row="2" data-col="4"></div>
+      <div class="square dark" data-row="2" data-col="5"></div>
+      <div class="square light" data-row="2" data-col="6"></div>
+      <div class="square dark" data-row="2" data-col="7"></div>
+      <div class="square dark" data-row="3" data-col="0"></div>
+      <div class="square light" data-row="3" data-col="1"></div>
+      <div class="square dark" data-row="3" data-col="2"></div>
+      <div class="square light" data-row="3" data-col="3"></div>
+      <div class="square dark" data-row="3" data-col="4"></div>
+      <div class="square light" data-row="3" data-col="5"></div>
+      <div class="square dark" data-row="3" data-col="6"></div>
+      <div class="square light" data-row="3" data-col="7"></div>
+      <div class="square light" data-row="4" data-col="0"></div>
+      <div class="square dark" data-row="4" data-col="1"></div>
+      <div class="square light" data-row="4" data-col="2"></div>
+      <div class="square dark" data-row="4" data-col="3"></div>
+      <div class="square light" data-row="4" data-col="4"></div>
+      <div class="square dark" data-row="4" data-col="5"></div>
+      <div class="square light" data-row="4" data-col="6"></div>
+      <div class="square dark" data-row="4" data-col="7"></div>
+      <div class="square dark" data-row="5" data-col="0"></div>
+      <div class="square light" data-row="5" data-col="1"></div>
+      <div class="square dark" data-row="5" data-col="2"></div>
+      <div class="square light" data-row="5" data-col="3"></div>
+      <div class="square dark" data-row="5" data-col="4"></div>
+      <div class="square light" data-row="5" data-col="5"></div>
+      <div class="square dark" data-row="5" data-col="6"></div>
+      <div class="square light" data-row="5" data-col="7"></div>
+      <div class="square light" data-row="6" data-col="0"></div>
+      <div class="square dark" data-row="6" data-col="1"></div>
+      <div class="square light" data-row="6" data-col="2"></div>
+      <div class="square dark" data-row="6" data-col="3"></div>
+      <div class="square light" data-row="6" data-col="4"></div>
+      <div class="square dark" data-row="6" data-col="5"></div>
+      <div class="square light" data-row="6" data-col="6"></div>
+      <div class="square dark" data-row="6" data-col="7"></div>
+      <div class="square dark" data-row="7" data-col="0"></div>
+      <div class="square light" data-row="7" data-col="1"></div>
+      <div class="square dark" data-row="7" data-col="2"></div>
+      <div class="square light" data-row="7" data-col="3"></div>
+      <div class="square dark" data-row="7" data-col="4"></div>
+      <div class="square light" data-row="7" data-col="5"></div>
+      <div class="square dark" data-row="7" data-col="6"></div>
+      <div class="square light" data-row="7" data-col="7"></div>
+    </div>
+    </div>
+
+    <div class="status-message" id="statusMessage">Your turn (Red) - Click a piece to move</div>
+
+  </div>
+
+  <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="5794572171" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+<!-- ==================== 游戏玩法说明 - SEO优化内容 ==================== -->
+<div class="gameplay-section" style="margin: 60px auto 0; max-width: 800px; padding: 32px 24px; background: var(--panel); border-radius: 18px; border: 1px solid var(--border);">
+    <h2 style="font-size: 28px; margin-bottom: 30px; color: var(--text-main); display: flex; align-items: center;">
+        <span style="background: var(--accent); color: white; width: 36px; height: 36px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 15px; font-size: 18px;">🎮</span>
+        How to Play Checkers
+    </h2>
+
+    <div style="margin-bottom: 30px;">
+        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--text-main);">Game Description</h3>
+        <p style="font-size: 15px; color: var(--text-sub); line-height: 1.7; margin-bottom: 20px;">
+            Checkers is a fun browser game that you can play for free. Enjoy this entertaining game with simple controls and engaging gameplay.
+        </p>
+    </div>
+
+    <div style="margin-bottom: 30px;">
+        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--text-main);">Basic Rules & Controls</h3>
+        <ol style="font-size: 15px; color: var(--text-sub); line-height: 1.7; padding-left: 25px; margin-bottom: 20px;">
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">Use your mouse, keyboard, or touch controls to play</strong>
+            </li>
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">Follow the on-screen instructions</strong>
+            </li>
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">Try to achieve the highest score possible</strong>
+            </li>
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">The game may have different modes or difficulty levels</strong>
+            </li>
+
+        </ol>
+    </div>
+
+    <div style="margin-bottom: 30px;">
+        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--text-main);">Pro Tips & Strategies</h3>
+        <ul style="font-size: 15px; color: var(--text-sub); line-height: 1.7; padding-left: 25px; margin-bottom: 20px;">
+
+            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;">
+                <span style="position: absolute; left: -15px; color: var(--accent);">✓</span>
+                Read the instructions carefully before playing
+            </li>
+
+            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;">
+                <span style="position: absolute; left: -15px; color: var(--accent);">✓</span>
+                Practice to improve your skills
+            </li>
+
+            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;">
+                <span style="position: absolute; left: -15px; color: var(--accent);">✓</span>
+                Take breaks if you get frustrated
+            </li>
+
+            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;">
+                <span style="position: absolute; left: -15px; color: var(--accent);">✓</span>
+                Try different strategies to find what works best
+            </li>
+
+        </ul>
+    </div>
+
+    <div style="background: rgba(79, 140, 255, 0.1); padding: 20px; border-radius: 12px; border-left: 4px solid var(--accent);">
+        <p style="font-size: 15px; color: var(--text-sub); margin: 0;">
+            <strong style="color: var(--accent);">💡 Quick Start:</strong> Just click/tap to begin! No registration required. 
+            All Knexio games work directly in your browser with no downloads needed.
+        </p>
+    </div>
+</div>
+
+<!-- ==================== 广告位优化 ==================== -->
+<div class="ad-section" style="margin-top: 40px; text-align: center;">
+    <ins class="adsbygoogle" 
+         style="display:block; background: var(--panel); border-radius: 12px; padding: 15px;"
+         data-ad-client="ca-pub-2596567349043393" 
+         data-ad-slot="9504968504" 
+         data-ad-format="auto" 
+         data-full-width-responsive="true">
+    </ins>
+    <p style="font-size: 12px; color: var(--text-sub); margin-top: 8px; opacity: 0.7;">
+        Advertisement supports free games development
+    </p>
+</div>
+
+<!-- ==================== 游戏常见问题 (FAQ) ==================== -->
+<div class="faq-section" style="margin: 60px auto 0; max-width: 800px; padding: 32px 24px; background: var(--panel); border-radius: 18px;">
+    <h2 style="font-size: 28px; margin-bottom: 30px; color: var(--text-main);">Frequently Asked Questions</h2>
+
+    <div class="faq-list">
+        <div class="faq-item" style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid var(--border);">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                Is this game free to play?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                Yes, all games on Knexio are completely free to play. There are no hidden charges, subscription fees, or in-app purchases. We support our games through non-intrusive advertisements.
+            </p>
+        </div>
+
+        <div class="faq-item" style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid var(--border);">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                Do I need to download anything to play?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                No downloads required! All our games run directly in your web browser. They work on desktop computers, laptops, tablets, and smartphones. Just visit the page and start playing.
+            </p>
+        </div>
+
+        <div class="faq-item" style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid var(--border);">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                How do I save my game progress?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                Most games automatically save your high scores and progress in your browser's local storage. Your best scores will be remembered even if you close the browser, as long as you don't clear your browsing data.
+            </p>
+        </div>
+
+        <div class="faq-item" style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid var(--border);">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                Can I play on mobile devices?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                Absolutely! All Knexio games are fully responsive and optimized for mobile devices. Touch controls are implemented for games that require precise input. The interface automatically adapts to your screen size.
+            </p>
+        </div>
+
+        <div class="faq-item" style="margin-bottom: 25px;">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                Is there sound in the games?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                Most games include optional sound effects. Look for a sound/mute button in the game interface. You can enable or disable sound based on your preference. We keep sound subtle and non-intrusive.
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== 结构化数据 (Schema.org) ==================== -->
+<script type="application/ld+json">
+{{
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "{game_display_name}",
+    "description": "{template['description'][:150]}...",
+    "applicationCategory": "GameApplication",
+    "gamePlatform": "Web Browser",
+    "operatingSystem": "All",
+    "url": "https://knexio.xyz/games/{game_name}/",
+    "genre": "Browser Game",
+    "playMode": "SinglePlayer",
+    "publisher": {{
+        "@type": "Organization",
+        "name": "Knexio",
+        "url": "https://knexio.xyz"
+    }},
+    "offers": {{
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+    }},
+    "keywords": "{', '.join(template['keywords'])}"
+}}
+</script>
+
+<script type="application/ld+json">
+{{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {{
+            "@type": "Question",
+            "name": "Is this game free to play?",
+            "acceptedAnswer": {{
+                "@type": "Answer",
+                "text": "Yes, all games on Knexio are completely free to play. There are no hidden charges, subscription fees, or in-app purchases. We support our games through non-intrusive advertisements."
+            }}
+        }},
+        {{
+            "@type": "Question",
+            "name": "Do I need to download anything to play?",
+            "acceptedAnswer": {{
+                "@type": "Answer",
+                "text": "No downloads required! All our games run directly in your web browser. They work on desktop computers, laptops, tablets, and smartphones. Just visit the page and start playing."
+            }}
+        }},
+        {{
+            "@type": "Question",
+            "name": "How do I save my game progress?",
+            "acceptedAnswer": {{
+                "@type": "Answer",
+                "text": "Most games automatically save your high scores and progress in your browser's local storage. Your best scores will be remembered even if you close the browser, as long as you don't clear your browsing data."
+            }}
+        }}
+    ]
+}}
+</script>
+
+<!-- ==================== 相关游戏推荐 ==================== -->
+<div class="related-games" style="margin: 60px auto 0; max-width: 800px; padding: 32px 24px;">
+    <h2 style="font-size: 24px; margin-bottom: 20px; color: var(--text-main);">More Fun Games to Try</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+        <a href="../snake/index.html" style="display: block; background: var(--panel); border-radius: 12px; padding: 20px; text-decoration: none; color: var(--text-main); border: 1px solid var(--border); transition: all 0.2s;">
+            <div style="font-weight: bold; margin-bottom: 8px;">🐍 Snake</div>
+            <div style="font-size: 13px; color: var(--text-sub);">Classic arcade game with growing snake</div>
+        </a>
+        <a href="../tetris/index.html" style="display: block; background: var(--panel); border-radius: 12px; padding: 20px; text-decoration: none; color: var(--text-main); border: 1px solid var(--border); transition: all 0.2s;">
+            <div style="font-weight: bold; margin-bottom: 8px;">🧱 Tetris</div>
+            <div style="font-size: 13px; color: var(--text-sub);">Iconic block-stacking puzzle game</div>
+        </a>
+        <a href="../wordle/index.html" style="display: block; background: var(--panel); border-radius: 12px; padding: 20px; text-decoration: none; color: var(--text-main); border: 1px solid var(--border); transition: all 0.2s;">
+            <div style="font-weight: bold; margin-bottom: 8px;">🔤 Wordle</div>
+            <div style="font-size: 13px; color: var(--text-sub);">Popular word guessing puzzle</div>
+        </a>
+        <a href="../index.html" style="display: block; background: var(--panel); border-radius: 12px; padding: 20px; text-decoration: none; color: var(--text-main); border: 1px solid var(--border); transition: all 0.2s; text-align: center;">
+            <div style="font-weight: bold;">🎮 View All Games →</div>
+        </a>
+    </div>
+</div>
+    <footer>
+      <p>Free online games to play anytime. Enjoy classic games, puzzles, and entertainment.</p>
+            <p style="margin: 8px 0; font-size: 13px;">
+        <a href="/about/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">About</a>
+        <a href="/privacy/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Privacy</a>
+        <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
+        <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
+      </p>
+      <p>© 2026 Knexio. All rights reserved.</p>
+    </footer>
+</div>
+
+<script>
+const BOARD_SIZE = 8;
+const EMPTY = 0;
+const RED = 1;
+const BLACK = 2;
+const RED_KING = 3;
+const BLACK_KING = 4;
+
+let board = [];
+let selectedPiece = null;
+let validMoves = [];
+let currentPlayer = RED;
+let gameOver = false;
+let mustCapture = false;
+let captureChain = false;
+
+function initBoard() {
+  board = Array(BOARD_SIZE).fill(null).map(() => Array(BOARD_SIZE).fill(EMPTY));
+
+  // Place red pieces (bottom)
+  for (let row = 5; row < 8; row++) {
+    for (let col = 0; col < 8; col++) {
+      if ((row + col) % 2 === 1) {
+        board[row][col] = RED;
+      }
+    }
+  }
+
+  // Place black pieces (top)
+  for (let row = 0; row < 3; row++) {
+    for (let col = 0; col < 8; col++) {
+      if ((row + col) % 2 === 1) {
+        board[row][col] = BLACK;
+      }
+    }
+  }
+}
+
+function renderBoard() {
+  const boardEl = document.getElementById('checkersBoard');
+  boardEl.innerHTML = '';
+
+  for (let row = 0; row < BOARD_SIZE; row++) {
+    for (let col = 0; col < BOARD_SIZE; col++) {
+      const square = document.createElement('div');
+      square.className = `square ${(row + col) % 2 === 0 ? 'light' : 'dark'}`;
+      square.dataset.row = row;
+      square.dataset.col = col;
+
+      if (selectedPiece && selectedPiece.row === row && selectedPiece.col === col) {
+        square.classList.add('selected');
+      }
+
+      if (validMoves.some(m => m.row === row && m.col === col)) {
+        square.classList.add('valid-move');
+      }
+
+      const piece = board[row][col];
+      if (piece !== EMPTY) {
+        const pieceEl = document.createElement('div');
+        pieceEl.className = `piece ${piece === RED || piece === RED_KING ? 'red' : 'black'}`;
+        if (piece === RED_KING || piece === BLACK_KING) {
+          pieceEl.classList.add('king');
+        }
+        pieceEl.onclick = (e) => {
+          e.stopPropagation();
+          handlePieceClick(row, col);
+        };
+        square.appendChild(pieceEl);
+      }
+
+      square.onclick = () => handleSquareClick(row, col);
+      boardEl.appendChild(square);
+    }
+  }
+
+  updateScore();
+}
+
+function handlePieceClick(row, col) {
+  if (gameOver) return;
+  if (currentPlayer !== RED) return;
+
+  const piece = board[row][col];
+  if (!isPlayerPiece(piece, RED)) return;
+
+  // If must capture, only allow selecting pieces that can capture
+  if (mustCapture && !canPieceCapture(row, col)) return;
+
+  selectedPiece = { row, col };
+  validMoves = getValidMoves(row, col);
+  renderBoard();
+}
+
+function handleSquareClick(row, col) {
+  if (!selectedPiece || gameOver) return;
+
+  const move = validMoves.find(m => m.row === row && m.col === col);
+  if (move) {
+    makeMove(selectedPiece, move);
+
+    // Check for additional captures
+    if (move.capture && canPieceCapture(row, col)) {
+      captureChain = true;
+      selectedPiece = { row, col };
+      validMoves = getValidMoves(row, col).filter(m => m.capture);
+      renderBoard();
+      updateStatus('Double jump available! Continue capturing.');
+    } else {
+      captureChain = false;
+      selectedPiece = null;
+      validMoves = [];
+      currentPlayer = BLACK;
+      renderBoard();
+      updateStatus('AI is thinking...');
+      setTimeout(makeAIMove, 800);
+    }
+  }
+}
+
+function getValidMoves(row, col) {
+  const piece = board[row][col];
+  const moves = [];
+  const isKing = piece === RED_KING || piece === BLACK_KING;
+  const directions = isKing ? [-1, 1] : (piece === RED ? [-1] : [1]);
+
+  // Check captures first
+  for (const dr of [-1, 1]) {
+    for (const dc of [-1, 1]) {
+      const jumpRow = row + dr * 2;
+      const jumpCol = col + dc * 2;
+      const midRow = row + dr;
+      const midCol = col + dc;
+
+      if (isValidPos(jumpRow, jumpCol) && board[jumpRow][jumpCol] === EMPTY) {
+        const midPiece = board[midRow][midCol];
+        if (midPiece !== EMPTY && !isPlayerPiece(midPiece, piece)) {
+          moves.push({ row: jumpRow, col: jumpCol, capture: { row: midRow, col: midCol } });
+        }
+      }
+    }
+  }
+
+  // If no captures and not in capture chain, check regular moves
+  if (moves.length === 0 && !captureChain) {
+    for (const dr of directions) {
+      for (const dc of [-1, 1]) {
+        const newRow = row + dr;
+        const newCol = col + dc;
+        if (isValidPos(newRow, newCol) && board[newRow][newCol] === EMPTY) {
+          moves.push({ row: newRow, col: newCol });
+        }
+      }
+    }
+  }
+
+  return moves;
+}
+
+function canPieceCapture(row, col) {
+  const moves = getValidMoves(row, col);
+  return moves.some(m => m.capture);
+}
+
+function isPlayerPiece(piece, player) {
+  if (player === RED) {
+    return piece === RED || piece === RED_KING;
+  }
+  return piece === BLACK || piece === BLACK_KING;
+}
+
+function isValidPos(row, col) {
+  return row >= 0 && row < BOARD_SIZE && col >= 0 && col < BOARD_SIZE;
+}
+
+function makeMove(from, to) {
+  const piece = board[from.row][from.col];
+  board[to.row][to.col] = piece;
+  board[from.row][from.col] = EMPTY;
+
+  // Handle capture
+  if (to.capture) {
+    board[to.capture.row][to.capture.col] = EMPTY;
+  }
+
+  // Check for king promotion
+  if (piece === RED && to.row === 0) {
+    board[to.row][to.col] = RED_KING;
+  } else if (piece === BLACK && to.row === 7) {
+    board[to.row][to.col] = BLACK_KING;
+  }
+}
+
+function makeAIMove() {
+  if (gameOver) return;
+
+  const moves = getAllValidMoves(BLACK);
+  if (moves.length === 0) {
+    endGame(RED);
+    return;
+  }
+
+  // Prioritize captures
+  const captures = moves.filter(m => m.move.capture);
+  let move;
+
+  if (captures.length > 0) {
+    move = captures[Math.floor(Math.random() * captures.length)];
+  } else {
+    move = moves[Math.floor(Math.random() * moves.length)];
+  }
+
+  makeMove(move.from, move.move);
+
+  // Check for AI capture chain
+  if (move.move.capture && canPieceCapture(move.move.row, move.move.col)) {
+    renderBoard();
+    setTimeout(() => makeAIMove(), 600);
+    return;
+  }
+
+  currentPlayer = RED;
+  checkMustCapture();
+  renderBoard();
+
+  if (getAllValidMoves(RED).length === 0) {
+    endGame(BLACK);
+  } else {
+    updateStatus(mustCapture ? 'You must capture!' : 'Your turn (Red)');
+  }
+}
+
+function getAllValidMoves(player) {
+  const moves = [];
+  let hasCapture = false;
+
+  for (let row = 0; row < BOARD_SIZE; row++) {
+    for (let col = 0; col < BOARD_SIZE; col++) {
+      if (isPlayerPiece(board[row][col], player)) {
+        const pieceMoves = getValidMoves(row, col);
+        if (pieceMoves.some(m => m.capture)) {
+          hasCapture = true;
+        }
+        pieceMoves.forEach(m => moves.push({ from: { row, col }, move: m }));
+      }
+    }
+  }
+
+  // If any capture available, only return captures
+  if (hasCapture) {
+    return moves.filter(m => m.move.capture);
+  }
+  return moves;
+}
+
+function checkMustCapture() {
+  mustCapture = false;
+  for (let row = 0; row < BOARD_SIZE; row++) {
+    for (let col = 0; col < BOARD_SIZE; col++) {
+      if (isPlayerPiece(board[row][col], RED) && canPieceCapture(row, col)) {
+        mustCapture = true;
+        return;
+      }
+    }
+  }
+}
+
+function updateScore() {
+  let red = 0, black = 0;
+  for (let row = 0; row < BOARD_SIZE; row++) {
+    for (let col = 0; col < BOARD_SIZE; col++) {
+      if (isPlayerPiece(board[row][col], RED)) red++;
+      else if (isPlayerPiece(board[row][col], BLACK)) black++;
+    }
+  }
+  document.getElementById('redScore').textContent = red;
+  document.getElementById('blackScore').textContent = black;
+}
+
+function updateStatus(msg) {
+  document.getElementById('statusMessage').textContent = msg;
+}
+
+function endGame(winner) {
+  gameOver = true;
+  const msg = winner === RED ? '🎉 You Win!' : 'AI Wins! Try again.';
+  document.getElementById('statusMessage').textContent = msg;
+  document.getElementById('statusMessage').className = 'status-message win';
+}
+
+function undoMove() {
+  // Simplified - would need move history for full undo
+  newGame();
+}
+
+function newGame() {
+  initBoard();renderBoard();
+  selectedPiece = null;
+  validMoves = [];
+  currentPlayer = RED;
+  gameOver = false;
+  mustCapture = false;
+  captureChain = false;
+  document.getElementById('statusMessage').className = 'status-message';
+  updateStatus('Your turn (Red) - Click a piece to move');
+  renderBoard();
+}
+
+// Initialize
+initBoard();renderBoard();
+</script>
+  <script src="/knexio-bundle.js"></script>
+  <script src="../../cookie-consent.js"></script>
+</body>
+</html>

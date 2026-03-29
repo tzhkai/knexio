@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Markdown Preview – Live Markdown Editor | Knexio</title>
+<meta name="description" content="">
+
+<link rel="canonical" href="">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Markdown Preview">
+<meta property="og:description" content="">
+<meta property="og:url" content="">
+<meta property="og:type" content="WebApplication">
+<meta property="og:site_name" content="Knexio">
+<meta property="og:image" content="https://knexio.xyz/og-image.png">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is this tool for?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "This is a free online tool for [purpose]. It helps you [function] quickly and easily."
+        }
+      }
+    ]
+  }
+  
+</script>
+
+<style>
+
+:root{
+  --bg:#0b1220;
+  --card:#111a2e;
+  --border:rgba(255,255,255,.08);
+  --text:#fff;
+  --sub:#aab3c5;
+  --accent:#4f8cff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:system-ui,-apple-system;
+  background:var(--bg);
+  color:var(--text);
+}
+.container{max-width:900px;margin:auto;padding:50px 16px}
+
+/* 统一的返回按钮样式 */
+.back {
+  display: inline-block;
+  color: var(--sub);
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 24px;
+  transition: color 0.2s;
+}
+.back:hover {
+  color: var(--accent);
+}
+
+h1{font-size:32px;margin-bottom:8px}
+h2{font-size:22px;margin-top:30px;margin-bottom:10px}
+.subtitle{color:var(--sub);margin-bottom:24px}
+
+.badge{
+  display:inline-block;
+  padding:4px 10px;
+  border-radius:20px;
+  background:rgba(79,140,255,.15);
+  color:var(--accent);
+  font-size:12px;
+  margin-bottom:10px;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:20px;
+  margin-bottom:20px;
+}
+
+textarea{
+  width:100%;
+  min-height:180px;
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:12px;
+  color:var(--text);
+  padding:14px;
+  font-size:15px;
+}
+textarea:focus{outline:none;border-color:var(--accent)}
+
+.btn-row{display:flex;gap:10px;margin-top:12px}
+button{
+  flex:1;
+  padding:10px;
+  border-radius:10px;
+  border:none;
+  background:var(--accent);
+  color:#fff;
+  cursor:pointer;
+}
+button.secondary{
+  background:transparent;
+  border:1px solid var(--border);
+  color:var(--sub);
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-top:16px;
+}
+.stat{
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:16px;
+  text-align:center;
+}
+.stat span{
+  font-size:24px;
+  font-weight:700;
+  color:var(--accent);
+}
+.stat label{
+  display:block;
+  font-size:12px;
+  color:var(--sub);
+}
+
+.tip{
+  font-size:13px;
+  color:var(--sub);
+  margin-top:10px;
+}
+
+.section p{
+  color:var(--sub);
+  line-height:1.7;
+  margin-bottom:10px;
+}
+
+.tools a{
+  display:inline-block;
+  margin:6px;
+  padding:8px 14px;
+  border-radius:8px;
+  border:1px solid var(--border);
+  color:var(--sub);
+  text-decoration:none;
+}
+.tools a:hover{
+  border-color:var(--accent);
+  color:var(--accent);
+}
+
+/* 广告样式 */
+.ad-banner {
+  margin: 32px 0;
+  text-align: center;
+}
+
+/* 统一的 Footer 样式 */
+footer {
+  margin-top: 40px;
+  text-align: center;
+  color: var(--sub);
+  font-size: 13px;
+}
+footer p {
+  margin-bottom: 8px;
+}
+footer a {
+  color: var(--sub);
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color 0.2s;
+}
+footer a:hover {
+  color: var(--accent);
+}
+
+@media(max-width:600px){
+  .stats{grid-template-columns:1fr 1fr}
+}
+
+</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2596567349043393" crossorigin="anonymous"></script>
+</head>
+
+<body><div class="container">
+
+<a class="back" href="../index.html">← Back to Tools</a>
+
+<h1>Markdown Preview</h1>
+<p class="subtitle">Write Markdown on the left, see formatted HTML on the right. Supports tables, code blocks, and GitHub Flavored Markdown.</p>
+
+<div class="ad-banner">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="3153457922"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<div class="container">
+  <a class="back" href="../index.html">← Back to Tools</a>
+  <h1>Markdown Preview</h1>
+      <p class="subtitle">Write Markdown on the left, see formatted HTML on the right. Supports tables, code blocks, and GitHub Flavored Markdown.</p>
+
+  <div class="seo-section">
+    <h2>How to Use This Tool</h2>
+    <div class="step-block">
+      <h3>Step 1: Enter your input</h3>
+      <p>Type or paste your data into the input field.</p>
+    </div>
+    <div class="step-block">
+      <h3>Step 2: Click the action button</h3>
+      <p>Press the main action button to process your input.</p>
+    </div>
+    <div class="step-block">
+      <h3>Step 3: Copy or download results</h3>
+      <p>Use the Copy button to copy results, or Download to save.</p>
+    </div>
+  </div>
+
+  <div class="toolbar">
+    <div class="btn-row">
+      <button class="btn" onclick="loadSample()">Load Sample</button>
+    <button class="btn btn-outline" onclick="clearEditor()">Clear</button>
+    <button class="btn btn-outline" onclick="copyHTML()">Copy HTML</button>
+    </div></div>
+
+  <div class="editor">
+    <div class="pane">
+      <div class="pane-header">Markdown Input</div>
+      <textarea class="text-area" id="markdownInput" placeholder="# Hello World
+
+Write your **Markdown** here...
+
+- Item 1
+- Item 2
+- Item 3
+
+```javascript
+console.log('Hello');
+```"></textarea>
+    </div>
+    <div class="pane">
+      <div class="pane-header">HTML Preview</div>
+      <div class="preview" id="htmlPreview"></div>
+    </div>
+
+  </div>
+
+  <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3153457922" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+</div>
+
+<script>
+const sampleMarkdown = `# Welcome to Markdown Preview
+
+This is a **live preview** of your Markdown. Edit the text on the left to see changes instantly!
+
+## Features
+
+- ✨ Live preview as you type
+- 🎨 Syntax highlighting for code blocks
+- 📊 Table support
+- 🔗 Link and image rendering
+
+## Code Example
+
+\`\`\`javascript
+function greet(name) {
+  return \`Hello, \${name}!\`;
+}
+
+console.log(greet('World'));
+\`\`\`
+
+## Table Example
+
+| Feature | Status |
+|---------|--------|
+| Live Preview | ✅ |
+| Code Blocks | ✅ |
+| Tables | ✅ |
+
+> Markdown is a lightweight markup language that you can use to add formatting elements to plaintext text documents.
+
+Enjoy writing! 🚀`;
+
+function parseMarkdown(md) {
+  let html = md
+    .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+    .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+    .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+    .replace(/\*\*(.*)\*\*/gim, '<strong>$1</strong>')
+    .replace(/\*(.*)\*/gim, '<em>$1</em>')
+    .replace(/~~(.*)~~/gim, '<del>$1</del>')
+    .replace(/\`([^\`]+)\`/gim, '<code>$1</code>')
+    .replace(/^\> (.*$)/gim, '<blockquote>$1</blockquote>')
+    .replace(/^\- (.*$)/gim, '<ul><li>$1</li></ul>')
+    .replace(/^\d+\. (.*$)/gim, '<ol><li>$1</li></ol>')
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/gim, '<a href="https://knexio.xyz/tools/markdown-preview/$2" target="_blank">$1</a>')
+    .replace(/!\[([^\]]*)\]\(([^)]+)\)/gim, '<img alt="$1" src="https://knexio.xyz/tools/markdown-preview/$2" style="max-width:100%">')
+    .replace(/\n/gim, '<br>');
+
+  // Fix consecutive list items
+  html = html.replace(/<\/ul><br><ul>/gim, '')
+             .replace(/<\/ol><br><ol>/gim, '');
+
+  // Code blocks
+  html = html.replace(/\`\`\`([\s\S]*?)\`\`\`/gim, '<pre><code>$1</code></pre>');
+
+  return html;
+}
+
+function updatePreview() {
+  const md = document.getElementById('markdownInput').value;
+  document.getElementById('htmlPreview').innerHTML = parseMarkdown(md);
+}
+
+function loadSample() {
+  document.getElementById('markdownInput').value = sampleMarkdown;
+  updatePreview();
+}
+
+function clearEditor() {
+  document.getElementById('markdownInput').value = '';
+  updatePreview();
+}
+
+function copyHTML() {
+  const html = document.getElementById('htmlPreview').innerHTML;
+  navigator.clipboard.writeText(html);
+  alert('HTML copied!');
+}
+
+document.getElementById('markdownInput').addEventListener('input', updatePreview);
+updatePreview();
+</script>
+<script src="../../knexio-bundle.js"></script>
+  <script src="../../cookie-consent.js"></script>
+  <!-- Schema: FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is this tool for?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "This is a free online tool for [purpose]. It helps you [function] quickly and easily."
+        }
+      }
+    ]
+  }
+  </script>
+
+
+  <section class="seo-section">
+    <h2>How to Use the Markdown Live Preview</h2>
+      <div class="step-block">
+        <h3>Step 1: Type Your Markdown</h3>
+        <p>Write or paste Markdown text in the left panel.</p>
+      </div>
+      <div class="step-block">
+        <h3>Step 2: See the Preview</h3>
+        <p>The right panel updates instantly as you type.</p>
+      </div>
+      <div class="step-block">
+        <h3>Step 3: Copy the HTML</h3>
+        <p>Use the Copy HTML button to grab the rendered output.</p>
+      </div>
+
+    <h2>What Is a Markdown Live Preview?</h2>
+    <p>A Markdown live preview editor lets you write Markdown syntax on the left and see the rendered HTML output on the right in real time — perfect for README files, blog posts, and documentation.</p>
+
+    <h2>Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <h3>What Markdown flavors are supported?</h3>
+        <p>CommonMark and GitHub Flavored Markdown (GFM) including tables, task lists, and fenced code blocks.</p>
+
+<div class="ad-banner" style="margin-top:40px">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="3153457922"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<footer>
+  <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
+  <p>
+    <a href="/about/">About</a> •
+    <a href="/privacy/">Privacy Policy</a> •
+    <a href="/terms/">Terms of Service</a>
+  </p>
+</footer>
+
+</div>
+
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</body>
+</html>

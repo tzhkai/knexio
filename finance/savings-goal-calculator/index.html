@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Savings Goal Calculator – Monthly Savings Plan | Knexio</title>
+  <meta name="description" content="Free savings goal calculator. Find out how much to save monthly to reach your financial goal on time.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://knexio.xyz/finance/savings-goal-calculator/">
+  <meta property="og:title" content="Savings Goal Calculator – Monthly Savings Plan | Knexio">
+  <meta property="og:description" content="Free savings goal calculator. Find out how much to save monthly to reach your financial goal on time.">
+  <meta property="og:url" content="https://knexio.xyz/finance/savings-goal-calculator/">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"Savings Goal Calculator","url":"https://knexio.xyz/finance/savings-goal-calculator/","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  </script>
+  <style>
+    :root{--bg:#0b1220;--card:#111a2e;--text:#fff;--sub:#aab3c5;--accent:#4f8cff;--border:rgba(255,255,255,0.08)}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh}
+    a{color:var(--accent);text-decoration:none}
+    .container{max-width:920px;margin:0 auto;padding:60px 20px 100px}
+    .back{display:inline-block;color:var(--sub);font-size:14px;margin-bottom:28px;transition:color 0.2s}
+    .back:hover{color:var(--accent)}
+    h1{font-size:34px;font-weight:700;margin-bottom:8px}
+    .subtitle{font-size:15px;color:var(--sub);margin-bottom:32px}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px;margin-bottom:24px}
+    .card-title{font-size:16px;font-weight:600;color:var(--accent);margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+    .form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    .form-field{display:flex;flex-direction:column}
+    .form-field.full-width{grid-column:1/-1}
+    label{font-size:13px;color:var(--sub);margin-bottom:6px;font-weight:500}
+    input,select{width:100%;padding:12px 16px;background:var(--bg);border:1px solid var(--border);border-radius:12px;color:var(--text);font-size:15px;font-family:inherit;transition:border-color 0.2s}
+    input:focus,select:focus{outline:none;border-color:var(--accent)}
+    .btn-row{display:flex;gap:12px;margin-top:20px}
+    .btn-primary{padding:12px 28px;border:none;border-radius:10px;background:var(--accent);color:#fff;font-size:15px;font-weight:600;cursor:pointer;transition:background 0.2s;flex:1}
+    .btn-primary:hover{background:#3d7de0}
+    .btn-secondary{padding:12px 20px;border:1px solid var(--border);border-radius:10px;background:transparent;color:var(--sub);font-size:15px;font-weight:500;cursor:pointer;transition:all 0.2s}
+    .btn-secondary:hover{border-color:var(--accent);color:var(--accent)}
+    .results{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px;margin-bottom:24px;min-height:120px}
+    .result-header{font-size:16px;font-weight:600;color:var(--accent);margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+    .result-highlight{text-align:center;padding:24px;margin-bottom:20px}
+    .result-big{font-size:48px;font-weight:800;color:var(--accent);line-height:1}
+    .result-big-label{font-size:14px;color:var(--sub);margin-top:8px}
+    .result-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);font-size:14px}
+    .result-row:last-child{border-bottom:none}
+    .result-label{color:var(--sub)}
+    .result-value{font-weight:600;color:var(--text)}
+    .result-value.accent{color:var(--accent)}
+    .result-value.green{color:#00d4aa}
+    .result-value.red{color:#f87171}
+    .result-placeholder{text-align:center;padding:40px 0;color:var(--sub);font-size:15px}
+    .ad-banner{margin:32px 0;text-align:center}
+    .section{margin-bottom:32px}
+    h2{font-size:22px;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+    p{color:var(--sub);font-size:15px;line-height:1.75;margin-bottom:14px}
+    .faq-item{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;margin-bottom:16px}
+    .faq-item h3{font-size:16px;font-weight:600;color:var(--text);margin-bottom:8px}
+    .faq-item p{font-size:14px;color:var(--sub);margin-bottom:0;line-height:1.6}
+    footer{text-align:center;padding:40px 20px;border-top:1px solid var(--border);margin-top:60px;color:var(--sub);font-size:14px}
+    footer p{margin-bottom:8px}
+    footer a{color:var(--accent);transition:color 0.2s}
+    footer a:hover{color:#3d7de0}
+    @media(max-width:680px){.form-grid{grid-template-columns:1fr}.container{padding:40px 16px 80px}h1{font-size:28px}.btn-row{flex-direction:column}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a class="back" href="../index.html">← Back to Finance</a>
+    <h1>Savings Goal Calculator</h1>
+    <p class="subtitle">Calculate how much you need to save each month to reach your goal</p>
+
+    <div class="ad-banner">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="5794572171" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Calculator</div>
+      <div class="form-grid">
+        <div class="form-field">
+          <label for="goalAmount">Savings Goal ($)</label>
+          <input type="number" id="goalAmount" value="10000" min="0" step="500">
+        </div>
+        <div class="form-field">
+          <label for="currentSavings">Current Savings ($)</label>
+          <input type="number" id="currentSavings" value="0" min="0" step="100">
+        </div>
+        <div class="form-field">
+          <label for="timeframe">Timeframe (months)</label>
+          <input type="number" id="timeframe" value="24" min="1" max="600" step="1">
+        </div>
+        <div class="form-field">
+          <label for="interestRate">Annual Interest Rate (%)</label>
+          <input type="number" id="interestRate" value="4.5" min="0" max="15" step="0.1">
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="calculate()">Calculate</button>
+        <button class="btn-secondary" onclick="clearForm()">Reset</button>
+      </div>
+    </div>
+
+    <div class="results" id="results">
+      <div class="result-placeholder">Enter your details and click <strong>Calculate</strong> to see results</div>
+    </div>
+
+    <div class="section">
+      <h2>Free Online Savings Goal Calculator</h2>
+      <p>Turn your financial dreams into achievable goals with our free savings goal calculator. Whether you're saving for a vacation, down payment on a home, emergency fund, or any other financial objective, this tool helps you create a realistic savings plan. Simply enter your target amount, current savings, timeframe, and expected interest rate to see exactly how much you need to save each month.</p>
+      <p>The calculator factors in the power of compound interest, showing you how your existing savings and regular contributions will grow over time. By understanding the monthly commitment required to reach your goal, you can adjust your budget and timeline as needed to make your financial dreams a reality. Small, consistent savings efforts can add up to significant amounts over time.</p>
+    </div>
+
+    <div class="section">
+      <h2>How It Works</h2>
+      <p>The savings goal calculator uses the future value formula to determine your required monthly savings. First, enter your savings goal amount – this is the total you want to accumulate. Then, specify your current savings balance, which will grow through compound interest over your chosen timeframe. Finally, enter your timeframe in months and your expected annual interest rate.</p>
+      <p>The calculator calculates the future value of your current savings after compounding over your timeframe. It then determines the remaining amount you need to save and calculates the monthly payment required to reach your goal, accounting for the compound interest earned on your monthly contributions as well. The result is a precise monthly savings target that will help you reach your goal on time.</p>
+      <p>Your results show the required monthly savings amount, your total contributions over the period, and the interest you'll earn. This breakdown helps you understand how much you're personally contributing versus how much your money is working for you through compound interest. You can experiment with different timeframes and interest rates to find a plan that fits your budget and financial goals.</p>
+    </div>
+
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>What is a savings goal calculator?</h3>
+      <p>A savings goal calculator helps you determine how much you need to save each month to reach a specific financial goal within your desired timeframe. It accounts for your current savings, expected interest rate, and compound interest to provide an accurate monthly savings target.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How do I choose a realistic savings timeframe?</h3>
+      <p>Consider your budget and how much you can comfortably save each month. Use the calculator to test different timeframes – longer timeframes mean smaller monthly payments, while shorter timeframes require larger monthly savings. Find a balance that's challenging but achievable without straining your finances.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What interest rate should I use?</h3>
+      <p>Use the expected annual return on your savings account or investment vehicle. For traditional savings accounts, 0.5-2% is typical. For high-yield savings accounts, 3-5% is common. If investing in stocks or bonds, 7-10% might be appropriate, though remember that higher returns come with higher risk.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How does compound interest help me reach my goal?</h3>
+      <p>Compound interest means you earn interest not only on your initial savings but also on the interest that accumulates over time. This accelerates your savings growth, especially for longer timeframes. The calculator shows you exactly how much interest you'll earn, reducing the amount you need to contribute yourself.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What if the required monthly savings is too high?</h3>
+      <p>If the calculated monthly payment exceeds what you can afford, try extending your timeframe to reduce the monthly requirement. Alternatively, consider starting with a smaller initial goal and building up to larger goals as your savings capacity increases. You can also look for higher-yield savings options to reduce your monthly contribution requirement.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Is this savings goal calculator free to use?</h3>
+      <p>Yes, this savings goal calculator is completely free to use with no registration required. You can run unlimited calculations to explore different goals, timeframes, and savings scenarios to find the plan that works best for your financial situation and objectives.</p>
+    </div>
+
+    <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+    <footer>
+      <p>Free financial calculators for mortgages, loans, investments, and budgeting. Plan your finances with ease.</p>
+      <p style="margin:8px 0;font-size:13px">
+        <a href="/about/" style="color:var(--accent)">About</a><a href="/privacy/" style="color:var(--accent)">Privacy</a><a href="/terms/" style="color:var(--accent)">Terms</a><a href="/contact/" style="color:var(--accent)">Contact</a>
+      </p>
+      <p>© 2026 Knexio. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    function fmt(n){return n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}
+    function calculate(){
+      const goal=parseFloat(document.getElementById('goalAmount').value)||0;
+      const current=parseFloat(document.getElementById('currentSavings').value)||0;
+      const months=parseInt(document.getElementById('timeframe').value)||1;
+      const annualRate=parseFloat(document.getElementById('interestRate').value)||0;
+      if(goal<=0){alert('Please enter a valid savings goal.');return;}
+      const monthlyRate=annualRate/100/12;
+      const currentFV=current*Math.pow(1+monthlyRate,months);
+      const remaining=Math.max(0,goal-currentFV);
+      let monthly;
+      if(monthlyRate===0){monthly=remaining/months;}
+      else{monthly=remaining*monthlyRate/(Math.pow(1+monthlyRate,months)-1);}
+      const totalContributions=monthly*months;
+      const totalInterestEarned=goal-current-totalContributions;
+      document.getElementById('results').innerHTML=`
+        <div class="result-header">Savings Plan</div>
+        <div class="result-highlight">
+          <div class="result-big">$${fmt(monthly)}</div>
+          <div class="result-big-label">Required Monthly Savings</div>
+        </div>
+        <div class="result-row"><span class="result-label">Savings goal</span><span class="result-value">$${fmt(goal)}</span></div>
+        <div class="result-row"><span class="result-label">Time to goal</span><span class="result-value">${months} months (${(months/12).toFixed(1)} years)</span></div>
+        <div class="result-row"><span class="result-label">Current savings</span><span class="result-value">$${fmt(current)}</span></div>
+        <div class="result-row"><span class="result-label">Monthly savings needed</span><span class="result-value accent">$${fmt(monthly)}</span></div>
+        <div class="result-row"><span class="result-label">Total contributions</span><span class="result-value">$${fmt(totalContributions)}</span></div>
+        <div class="result-row"><span class="result-label">Interest earned</span><span class="result-value green">$${fmt(Math.max(0,totalInterestEarned))}</span></div>
+      `;
+    }
+    function clearForm(){
+      document.getElementById('goalAmount').value='10000';
+      document.getElementById('currentSavings').value='0';
+      document.getElementById('timeframe').value='24';
+      document.getElementById('interestRate').value='4.5';
+      document.getElementById('results').innerHTML='<div class="result-placeholder">Enter your details and click <strong>Calculate</strong> to see results</div>';
+    }
+  </script>
+  <script src="/knexio-bundle.js"></script>
+</body>
+</html>

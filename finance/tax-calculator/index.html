@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tax Calculator – Income Tax Estimate | Knexio</title>
+  <meta name="description" content="Free income tax calculator. Estimate your federal and state income tax, effective tax rate, and after-tax income.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://knexio.xyz/finance/tax-calculator/">
+  <meta property="og:title" content="Tax Calculator – Income Tax Estimate | Knexio">
+  <meta property="og:description" content="Free income tax calculator. Estimate your federal and state income tax, effective tax rate, and after-tax income.">
+  <meta property="og:url" content="https://knexio.xyz/finance/tax-calculator/">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"Tax Calculator","url":"https://knexio.xyz/finance/tax-calculator/","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  </script>
+  <style>
+    :root{--bg:#0b1220;--card:#111a2e;--border:rgba(255,255,255,0.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:linear-gradient(180deg,var(--bg),#070d1a);color:var(--text);line-height:1.6;min-height:100vh}
+    a{color:var(--accent);text-decoration:none}
+    .container{max-width:920px;margin:0 auto;padding:60px 20px 100px}
+    .back{display:inline-block;color:var(--sub);font-size:14px;margin-bottom:28px;transition:color 0.2s}
+    .back:hover{color:var(--accent)}
+    h1{font-size:34px;font-weight:700;margin-bottom:8px}
+    .subtitle{font-size:15px;color:var(--sub);margin-bottom:32px}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px;margin-bottom:24px}
+    .section h2{font-size:22px;margin-bottom:16px;color:var(--text)}
+    .section p{color:var(--sub);font-size:15px;line-height:1.75;margin-bottom:14px}
+    .panel-title{font-size:16px;font-weight:600;color:var(--accent);margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+    .form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    .form-field{display:flex;flex-direction:column}
+    .form-field.full-width{grid-column:1/-1}
+    label{font-size:13px;color:var(--sub);margin-bottom:6px;font-weight:500}
+    input,select{width:100%;padding:12px 16px;background:var(--bg);border:1px solid var(--border);border-radius:12px;color:var(--text);font-size:15px;font-family:inherit;transition:border-color 0.2s}
+    input:focus,select:focus{outline:none;border-color:var(--accent)}
+    .btn-row{display:flex;gap:12px;margin-top:20px}
+    .btn{padding:12px 20px;border:none;border-radius:10px;background:var(--accent);color:#fff;font-size:15px;font-weight:600;cursor:pointer;transition:background 0.2s;flex:1}
+    .btn:hover{background:#3d7de0}
+    .btn-secondary{padding:12px 20px;border:1px solid var(--border);border-radius:10px;background:transparent;color:var(--sub);font-size:15px;font-weight:500;cursor:pointer;transition:all 0.2s}
+    .btn-secondary:hover{border-color:var(--accent);color:var(--accent)}
+    .results{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px;margin-bottom:24px;min-height:120px}
+    .result-header{font-size:16px;font-weight:600;color:var(--accent);margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+    .result-highlight{text-align:center;padding:24px;margin-bottom:20px}
+    .result-big{font-size:48px;font-weight:800;color:var(--accent);line-height:1}
+    .result-big-label{font-size:14px;color:var(--sub);margin-top:8px}
+    .result-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);font-size:14px}
+    .result-row:last-child{border-bottom:none}
+    .result-label{color:var(--sub)}
+    .result-value{font-weight:600;color:var(--text)}
+    .result-value.accent{color:var(--accent)}
+    .result-value.green{color:#00d4aa}
+    .result-value.red{color:#f87171}
+    .result-placeholder{text-align:center;padding:40px 0;color:var(--sub);font-size:15px}
+    .ad-banner{margin:32px 0;text-align:center}
+    .faq-item{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;margin-bottom:16px}
+    .faq-item h3{font-size:16px;font-weight:600;margin-bottom:12px;color:var(--text)}
+    .faq-item p{color:var(--sub);font-size:14px;line-height:1.6;margin:0}
+    footer{text-align:center;padding:40px 20px;border-top:1px solid var(--border);margin-top:20px;color:var(--sub);font-size:14px}
+    footer a{color:var(--accent);margin:0 10px;transition:color 0.2s}
+    footer a:hover{color:var(--accent)}
+    footer p{margin-bottom:8px}
+    @media(max-width:680px){.form-grid{grid-template-columns:1fr}.container{padding:40px 16px 80px}h1{font-size:28px}.btn-row{flex-direction:column}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a class="back" href="../">← Back to Finance</a>
+    <h1>Tax Calculator</h1>
+    <p class="subtitle">Estimate your income tax liability and effective tax rate</p>
+
+    <div class="ad-banner">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="5794572171" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+    <div class="card">
+      <div class="panel-title">Calculator</div>
+      <div class="form-grid">
+        <div class="form-field">
+          <label for="income">Annual Gross Income ($)</label>
+          <input type="number" id="income" value="80000" min="0" step="1000">
+        </div>
+        <div class="form-field">
+          <label for="filingStatus">Filing Status</label>
+          <select id="filingStatus">
+            <option value="single">Single</option>
+            <option value="married">Married Filing Jointly</option>
+            <option value="mfs">Married Filing Separately</option>
+            <option value="head">Head of Household</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="deductions">Itemized Deductions ($)</label>
+          <input type="number" id="deductions" value="0" min="0" step="500">
+        </div>
+        <div class="form-field">
+          <label for="stateTaxRate">State Tax Rate (%)</label>
+          <input type="number" id="stateTaxRate" value="5" min="0" max="15" step="0.1">
+        </div>
+        <div class="form-field">
+          <label for="credits">Tax Credits ($)</label>
+          <input type="number" id="credits" value="0" min="0" step="100">
+        </div>
+        <div class="form-field">
+          <label for="year">Tax Year</label>
+          <select id="year">
+            <option value="2024">2024</option>
+            <option value="2023">2023</option>
+          </select>
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn" onclick="calculate()">Calculate</button>
+        <button class="btn-secondary" onclick="clearForm()">Reset</button>
+      </div>
+    </div>
+
+    <div class="results" id="results">
+      <div class="result-placeholder">Enter your details and click <strong>Calculate</strong> to see results</div>
+    </div>
+
+    <div class="section">
+      <h2>Free Online Tax Calculator</h2>
+      <p>Our free online tax calculator helps you estimate your federal and state income tax liability quickly and accurately. Enter your gross annual income, select your filing status, and add any deductions or credits to see your estimated tax burden. The calculator uses current federal tax brackets, standard deductions, and FICA tax rates to provide reliable estimates. Understand your effective tax rate, marginal tax bracket, and after-tax income to make better financial decisions.</p>
+    </div>
+
+    <div class="section">
+      <h2>How It Works</h2>
+      <p>The calculator determines your taxable income by subtracting the greater of your standard deduction or itemized deductions from your gross income. Standard deduction amounts vary by filing status and are updated annually. For 2024, the standard deduction is $14,600 for single filers, $29,200 for married filing jointly, $14,600 for married filing separately, and $21,900 for head of household. Your taxable income is then taxed progressively across federal tax brackets ranging from 10% to 37%.</p>
+      <p>Federal income tax is calculated by applying progressive rates to portions of your taxable income within each bracket range. Your marginal tax rate is the rate applied to your last dollar earned, while your effective tax rate is the total tax divided by your total income. State income tax is calculated based on your specified state tax rate applied to your taxable income. FICA taxes include Social Security (6.2%) on wages up to the annual wage base limit and Medicare (1.45%) with no income limit.</p>
+      <p>Tax credits directly reduce your tax liability dollar-for-dollar, unlike deductions which reduce taxable income. Common credits include the Child Tax Credit, Earned Income Tax Credit, and education credits. The results show your total tax burden (federal, state, and FICA), after-tax income, effective tax rate, and marginal tax rate, giving you a complete picture of your tax situation. Use these insights to plan withholding, estimate quarterly payments, or evaluate tax strategies.</p>
+    </div>
+
+    <div class="section">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <h3>What is the difference between standard and itemized deductions?</h3>
+        <p>The standard deduction is a fixed amount based on your filing status that you can deduct from taxable income without needing receipts. Itemized deductions are specific expenses you can deduct if they exceed the standard deduction. Common itemized deductions include mortgage interest, state and local taxes, charitable contributions, and medical expenses above a certain threshold. Choose whichever gives you a larger deduction.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What is the marginal tax rate vs. effective tax rate?</h3>
+        <p>Your marginal tax rate is the rate you pay on your last dollar of earned income—the highest bracket you fall into. The effective tax rate is your total tax divided by your total income, representing your average tax rate across all brackets. For example, if you're in the 24% bracket, only the income above the 22% bracket threshold is taxed at 24%, not your entire income.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How do tax credits differ from deductions?</h3>
+        <p>Tax deductions reduce your taxable income, lowering the amount of income subject to tax. Tax credits directly reduce your tax liability dollar-for-dollar, making them more valuable. A $1,000 credit saves you $1,000 in taxes, while a $1,000 deduction might only save you $220 if you're in the 22% tax bracket. Some credits are refundable, meaning you can receive money back even if you owe no tax.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What is included in FICA tax?</h3>
+        <p>FICA (Federal Insurance Contributions Act) tax consists of two components: Social Security tax (6.2% of wages up to an annual wage base limit) and Medicare tax (1.45% of wages with no income limit). Employees pay 7.65% total, and employers match this amount. Self-employed individuals pay both halves, totaling 15.3% through the Self-Employment Tax.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How do I choose my filing status?</h3>
+        <p>Choose the filing status that applies to your situation on the last day of the tax year. Single applies if unmarried. Married filing jointly is generally best for married couples with similar incomes. Married filing separately may be appropriate if you want to keep finances separate or have specific tax situations. Head of household is for unmarried individuals who pay more than half the cost of maintaining a home and have a qualifying dependent.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Is this tax calculator accurate for tax planning?</h3>
+        <p>This calculator provides reliable estimates based on current federal tax brackets, standard deductions, and common assumptions. However, tax situations can be complex with factors like capital gains, self-employment income, retirement account contributions, state-specific rules, and various credits and deductions. For precise tax planning and filing, consult a qualified tax professional or use certified tax software.</p>
+      </div>
+    </div>
+
+    <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+    <footer>
+      <p>Free financial calculators for mortgages, loans, investments, and budgeting. Plan your finances with ease.</p>
+      <p style="margin:8px 0;font-size:13px">
+        <a href="/about/" style="color:var(--accent)">About</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="/contact/">Contact</a>
+      </p>
+      <p>© 2026 Knexio. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    function fmt(n){return n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}
+    const STANDARD_DEDUCTION = {single:14600,married:29200,mfs:14600,head:21900};
+    const BRACKETS = {
+      single:[[11600,0.10],[47150,0.12],[100525,0.22],[191950,0.24],[243725,0.32],[609350,0.35],[Infinity,0.37]],
+      married:[[23200,0.10],[94300,0.12],[201050,0.22],[383900,0.24],[487450,0.32],[731200,0.35],[Infinity,0.37]],
+      mfs:[[11600,0.10],[47150,0.12],[100525,0.22],[191950,0.24],[243725,0.32],[365600,0.35],[Infinity,0.37]],
+      head:[[16550,0.10],[63100,0.12],[100500,0.22],[191950,0.24],[243700,0.32],[609350,0.35],[Infinity,0.37]]
+    };
+    function calcFedTax(taxableIncome,status){
+      const brackets=BRACKETS[status]||BRACKETS.single;
+      let tax=0,prev=0;
+      for(const [limit,rate] of brackets){
+        if(taxableIncome<=prev) break;
+        tax+=(Math.min(taxableIncome,limit)-prev)*rate;
+        prev=limit;
+      }
+      return tax;
+    }
+    function calculate(){
+      const income=parseFloat(document.getElementById('income').value)||0;
+      const status=document.getElementById('filingStatus').value;
+      const itemized=parseFloat(document.getElementById('deductions').value)||0;
+      const stateRate=parseFloat(document.getElementById('stateTaxRate').value)||0;
+      const credits=parseFloat(document.getElementById('credits').value)||0;
+      const stdDed=STANDARD_DEDUCTION[status]||14600;
+      const deduction=Math.max(stdDed,itemized);
+      const taxableIncome=Math.max(0,income-deduction);
+      const fedTax=Math.max(0,calcFedTax(taxableIncome,status)-credits);
+      const stateTax=taxableIncome*stateRate/100;
+      const fica=Math.min(income*0.062,income*0.062)+income*0.0145;
+      const totalTax=fedTax+stateTax+fica;
+      const afterTaxIncome=income-totalTax;
+      const effectiveRate=(totalTax/income)*100;
+      const marginalRate=(()=>{
+        const brackets=BRACKETS[status]||BRACKETS.single;
+        let prev=0;
+        for(const [limit,rate] of brackets){
+          if(taxableIncome<=prev) return rate*100;
+          if(taxableIncome<=limit) return rate*100;
+          prev=limit;
+        }
+        return 37;
+      })();
+      document.getElementById('results').innerHTML=`
+        <div class="result-header">Tax Summary (2024)</div>
+        <div class="result-highlight">
+          <div class="result-big">$${fmt(afterTaxIncome)}</div>
+          <div class="result-big-label">After-Tax Income</div>
+        </div>
+        <div class="result-row"><span class="result-label">Gross income</span><span class="result-value">$${fmt(income)}</span></div>
+        <div class="result-row"><span class="result-label">${itemized>stdDed?'Itemized':'Standard'} deduction</span><span class="result-value">$${fmt(deduction)}</span></div>
+        <div class="result-row"><span class="result-label">Federal taxable income</span><span class="result-value">$${fmt(taxableIncome)}</span></div>
+        <div class="result-row"><span class="result-label">Federal income tax</span><span class="result-value">$${fmt(fedTax)}</span></div>
+        <div class="result-row"><span class="result-label">State income tax (${stateRate}%)</span><span class="result-value">$${fmt(stateTax)}</span></div>
+        <div class="result-row"><span class="result-label">FICA (SS + Medicare)</span><span class="result-value">$${fmt(fica)}</span></div>
+        <div class="result-row"><span class="result-label">Total tax burden</span><span class="result-value">$${fmt(totalTax)}</span></div>
+        <div class="result-row"><span class="result-label">After-tax income</span><span class="result-value green">$${fmt(afterTaxIncome)}</span></div>
+        <div class="result-row"><span class="result-label">Effective tax rate</span><span class="result-value accent">${effectiveRate.toFixed(1)}%</span></div>
+        <div class="result-row"><span class="result-label">Marginal tax rate</span><span class="result-value">${marginalRate.toFixed(0)}%</span></div>
+      `;
+    }
+    function clearForm(){
+      document.getElementById('income').value='80000';
+      document.getElementById('filingStatus').value='single';
+      document.getElementById('deductions').value='0';
+      document.getElementById('stateTaxRate').value='5';
+      document.getElementById('credits').value='0';
+      document.getElementById('year').value='2024';
+      document.getElementById('results').innerHTML='<div class="result-placeholder">Enter your details and click <strong>Calculate</strong> to see results</div>';
+    }
+  </script>
+  <script src="/knexio-bundle.js"></script>
+</body>
+</html>

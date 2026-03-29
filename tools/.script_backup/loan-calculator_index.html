@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Loan Calculator</title>
+<meta name="description" content="">
+
+<link rel="canonical" href="">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Loan Calculator">
+<meta property="og:description" content="">
+<meta property="og:url" content="">
+<meta property="og:type" content="WebApplication">
+<meta property="og:site_name" content="Knexio">
+<meta property="og:image" content="https://knexio.xyz/og-image.png">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is this tool for?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "This is a free online tool for [purpose]. It helps you [function] quickly and easily."
+        }
+      }
+    ]
+  }
+  
+</script>
+
+<style>
+
+:root{
+  --bg:#0b1220;
+  --card:#111a2e;
+  --border:rgba(255,255,255,.08);
+  --text:#fff;
+  --sub:#aab3c5;
+  --accent:#4f8cff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:system-ui,-apple-system;
+  background:var(--bg);
+  color:var(--text);
+}
+.container{max-width:900px;margin:auto;padding:50px 16px}
+
+/* 统一的返回按钮样式 */
+.back {
+  display: inline-block;
+  color: var(--sub);
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 24px;
+  transition: color 0.2s;
+}
+.back:hover {
+  color: var(--accent);
+}
+
+h1{font-size:32px;margin-bottom:8px}
+h2{font-size:22px;margin-top:30px;margin-bottom:10px}
+.subtitle{color:var(--sub);margin-bottom:24px}
+
+.badge{
+  display:inline-block;
+  padding:4px 10px;
+  border-radius:20px;
+  background:rgba(79,140,255,.15);
+  color:var(--accent);
+  font-size:12px;
+  margin-bottom:10px;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:20px;
+  margin-bottom:20px;
+}
+
+textarea{
+  width:100%;
+  min-height:180px;
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:12px;
+  color:var(--text);
+  padding:14px;
+  font-size:15px;
+}
+textarea:focus{outline:none;border-color:var(--accent)}
+
+.btn-row{display:flex;gap:10px;margin-top:12px}
+button{
+  flex:1;
+  padding:10px;
+  border-radius:10px;
+  border:none;
+  background:var(--accent);
+  color:#fff;
+  cursor:pointer;
+}
+button.secondary{
+  background:transparent;
+  border:1px solid var(--border);
+  color:var(--sub);
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-top:16px;
+}
+.stat{
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:16px;
+  text-align:center;
+}
+.stat span{
+  font-size:24px;
+  font-weight:700;
+  color:var(--accent);
+}
+.stat label{
+  display:block;
+  font-size:12px;
+  color:var(--sub);
+}
+
+.tip{
+  font-size:13px;
+  color:var(--sub);
+  margin-top:10px;
+}
+
+.section p{
+  color:var(--sub);
+  line-height:1.7;
+  margin-bottom:10px;
+}
+
+.tools a{
+  display:inline-block;
+  margin:6px;
+  padding:8px 14px;
+  border-radius:8px;
+  border:1px solid var(--border);
+  color:var(--sub);
+  text-decoration:none;
+}
+.tools a:hover{
+  border-color:var(--accent);
+  color:var(--accent);
+}
+
+/* 广告样式 */
+.ad-banner {
+  margin: 32px 0;
+  text-align: center;
+}
+
+/* 统一的 Footer 样式 */
+footer {
+  margin-top: 40px;
+  text-align: center;
+  color: var(--sub);
+  font-size: 13px;
+}
+footer p {
+  margin-bottom: 8px;
+}
+footer a {
+  color: var(--sub);
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color 0.2s;
+}
+footer a:hover {
+  color: var(--accent);
+}
+
+@media(max-width:600px){
+  .stats{grid-template-columns:1fr 1fr}
+}
+
+</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2596567349043393" crossorigin="anonymous"></script>
+</head>
+
+<body><div class="container">
+
+<a class="back" href="../index.html">← Back to Tools</a>
+
+<h1>Loan Calculator</h1>
+<p class="subtitle">Calculate monthly payments, total interest, and view amortization schedule</p>
+
+<div class="ad-banner">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="3153457922"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<div class="container">
+    <header>
+      <a href="../../index.html" class="logo">Knexio</a>
+      <a class="back" href="../index.html">← Back to Tools</a>
+    </header>
+
+    <h1>Loan Calculator</h1>
+    <p class="subtitle">Calculate monthly payments, total interest, and view amortization schedule</p>
+
+      <div class="ad-banner">
+    <ins class="adsbygoogle" style="display:block"
+         data-ad-client="ca-pub-2596567349043393"
+         data-ad-slot="3153457922"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+  </div>
+  <div class="step-block">
+    <h3>Step 2: Adjust settings</h3>
+    <p>Use the available options to customize the processing.</p>
+  </div>
+  <div class="step-block">
+    <h3>Step 3: Get results</h3>
+    <p>View the processed output in the result area.</p>
+  </div>
+</div>
+
+    <div class="grid">
+      <div class="panel">
+        <h2>Loan Details</h2>
+        <div class="form-group">
+          <label>Loan Amount</label>
+          <input type="number" id="amount" placeholder="25000" value="25000">
+        </div>
+        <div class="input-row">
+          <div class="form-group">
+            <label>Interest Rate (%)</label>
+            <input type="number" id="rate" placeholder="5.5" value="5.5" step="0.01">
+          </div>
+          <div class="form-group">
+            <label>Loan Term</label>
+            <input type="number" id="term" placeholder="5" value="5">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Term Unit</label>
+          <select id="termUnit">
+            <option value="years" selected>Years</option>
+            <option value="months">Months</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Loan Type</label>
+          <select id="loanType">
+            <option value="auto">Auto Loan</option>
+            <option value="personal" selected>Personal Loan</option>
+            <option value="mortgage">Mortgage</option>
+            <option value="student">Student Loan</option>
+          </select>
+        </div>
+        <button class="btn" onclick="calculateLoan()">Calculate Loan</button>
+
+        <div class="info-box">
+          <h3>How It Works</h3>
+          <p>This calculator uses the standard amortization formula to determine your monthly payment based on the loan amount, interest rate, and term. The schedule shows how each payment is split between principal and interest over time.</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>Payment Summary</h2>
+        <div class="result-box">
+          <div class="result-main" id="monthlyPayment">$0.00</div>
+          <div class="result-label">Monthly Payment</div>
+        </div>
+        <div class="result-grid">
+          <div class="result-item">
+            <div class="result-value" id="totalPrincipal">$0</div>
+            <div class="result-desc">Total Principal</div>
+          </div>
+          <div class="result-item">
+            <div class="result-value" id="totalInterest">$0</div>
+            <div class="result-desc">Total Interest</div>
+          </div>
+          <div class="result-item">
+            <div class="result-value" id="totalCost">$0</div>
+            <div class="result-desc">Total Cost</div>
+          </div>
+          <div class="result-item">
+            <div class="result-value" id="numPayments">0</div>
+            <div class="result-desc"># of Payments</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ad-mid">AdSense In-Content</div>
+
+    <div class="panel" style="margin-top:24px">
+      <h2>Amortization Schedule</h2>
+      <div class="schedule-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Payment #</th>
+              <th>Payment</th>
+              <th>Principal</th>
+              <th>Interest</th>
+              <th>Balance</th>
+            </tr>
+          </thead>
+          <tbody id="scheduleBody">
+            <tr><td colspan="5" style="text-align:center;color:var(--muted)">Enter loan details and click Calculate</td></tr>
+          </tbody>
+        </table>
+
+  </div>
+
+  <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3153457922" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+  </div>
+
+  <script>
+    function formatCurrency(num) {
+      return '$' + num.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    }
+
+    function calculateLoan() {
+      const amount = parseFloat(document.getElementById('amount').value) || 0;
+      const rate = parseFloat(document.getElementById('rate').value) || 0;
+      let term = parseFloat(document.getElementById('term').value) || 0;
+      const termUnit = document.getElementById('termUnit').value;
+
+      if (termUnit === 'years') term *= 12;
+
+      const monthlyRate = rate / 100 / 12;
+      let monthlyPayment;
+
+      if (rate === 0) {
+        monthlyPayment = amount / term;
+      } else {
+        monthlyPayment = amount * (monthlyRate * Math.pow(1 + monthlyRate, term)) / (Math.pow(1 + monthlyRate, term) - 1);
+      }
+
+      const totalCost = monthlyPayment * term;
+      const totalInterest = totalCost - amount;
+
+      document.getElementById('monthlyPayment').textContent = formatCurrency(monthlyPayment);
+      document.getElementById('totalPrincipal').textContent = formatCurrency(amount);
+      document.getElementById('totalInterest').textContent = formatCurrency(totalInterest);
+      document.getElementById('totalCost').textContent = formatCurrency(totalCost);
+      document.getElementById('numPayments').textContent = term;
+
+      // Generate amortization schedule
+      let balance = amount;
+      let html = '';
+      for (let i = 1; i <= Math.min(term, 360); i++) {
+        const interestPayment = balance * monthlyRate;
+        const principalPayment = monthlyPayment - interestPayment;
+        balance -= principalPayment;
+        if (balance < 0) balance = 0;
+
+        html += `<tr>
+          <td>${i}</td>
+          <td>${formatCurrency(monthlyPayment)}</td>
+          <td>${formatCurrency(principalPayment)}</td>
+          <td>${formatCurrency(interestPayment)}</td>
+          <td>${formatCurrency(balance)}</td>
+        </tr>`;
+      }
+      if (term > 360) {
+        html += `<tr><td colspan="5" style="text-align:center;color:var(--muted)">... ${term - 360} more payments ...</td></tr>`;
+      }
+      document.getElementById('scheduleBody').innerHTML = html;
+    }
+
+    // Calculate on load
+    calculateLoan();
+  </script>
+  <script src="../../knexio-bundle.js"></script>
+  <script src="../../cookie-consent.js"></script>
+  <!-- Schema: FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is this tool for?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "This is a free online tool for [purpose]. It helps you [function] quickly and easily."
+        }
+      }
+    ]
+  }
+  </script>
+  </div>
+
+  
+  <div class="seo-section">
+    <h2>How to Use the Loan Calculator</h2>
+    <div class="step-block">
+      <h3>Step 1: Enter loan amount</h3>
+      <p>Input the total amount you wish to borrow.</p>
+    </div>
+    <div class="step-block">
+      <h3>Step 2: Set annual interest rate</h3>
+      <p>Enter the annual percentage rate (APR) from your lender.</p>
+    </div>
+    <div class="step-block">
+      <h3>Step 3: Choose repayment term</h3>
+      <p>Select the loan duration in years or months.</p>
+    </div>
+    <div class="step-block">
+      <h3>Step 4: View payment breakdown</h3>
+      <p>See monthly payment, total interest paid, and full amortization schedule.</p>
+    </div>
+
+<div class="ad-banner" style="margin-top:40px">
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="3153457922"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</div>
+
+<footer>
+  <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
+  <p>
+    <a href="/about/">About</a> •
+    <a href="/privacy/">Privacy Policy</a> •
+    <a href="/terms/">Terms of Service</a>
+  </p>
+</footer>
+
+</div>
+
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</body>
+</html>
