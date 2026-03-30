@@ -412,7 +412,7 @@ const LANE_CONFIG=[
   {row:6,type:'safe',color:'#0d2a14'},
 ];
 
-let frog={x:6,y:11},lives,score,best=0,level,gameState='start',obstacles=[],safeZones,safeFilled;
+let frog={x:6,y:11},lives,score,best=0,level,gameState='start',obstacles=[],safeZones,safeFilled=new Set();
 
 function initGame(){
   lives=3;score=0;level=1;
