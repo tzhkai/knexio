@@ -416,6 +416,7 @@ function setSize(s){
 function newGame(){
   clearInterval(timer);seconds=0;moves=0;started=false;
   updateMovesTime();
+  document.getElementById('board').style.gridTemplateColumns=`repeat(${size},1fr)`;
   document.getElementById('statusRow').textContent='Click a tile adjacent to the empty space';
   document.getElementById('statusRow').className='status-row';
   const total=size*size;
