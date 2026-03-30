@@ -400,6 +400,267 @@
     </div>
 </div>
 
+  <script>
+  (function() {
+    const CATEGORIES = {
+      animals: ['ELEPHANT', 'GIRAFFE', 'DOLPHIN', 'PENGUIN', 'BUTTERFLY', 'KANGAROO', 'OCTOPUS', 'RHINOCEROS'],
+      food: ['PIZZA', 'BURGER', 'SANDWICH', 'CHOCOLATE', 'SPAGHETTI', 'PANCAKES', 'AVOCADO', 'STRAWBERRY'],
+      countries: ['AUSTRALIA', 'BRAZIL', 'CANADA', 'DENMARK', 'EGYPT', 'FRANCE', 'GERMANY', 'JAPAN'],
+      sports: ['BASKETBALL', 'FOOTBALL', 'TENNIS', 'SWIMMING', 'BASEBALL', 'VOLLEYBALL', 'CRICKET', 'HOCKEY'],
+      tech: ['COMPUTER', 'INTERNET', 'SOFTWARE', 'DATABASE', 'NETWORK', 'SECURITY', 'PROGRAMMING', 'ALGORITHM']
+    };
+
+    const GRID_SIZE = 12;
+    let currentCategory = 'animals';
+    let grid = [];
+    let words = [];
+    let foundWords = new Set();
+    let placedWords = [];
+    let isSelecting = false;
+    let selectionStart = null;
+    let selectionCells = [];
+    let startTime, timerInterval;
+
+    function init() {
+      newGame();
+    }
+
+    function setCategory(cat) {
+      currentCategory = cat;
+      document.querySelectorAll('.cat-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.textContent.toLowerCase().includes(cat) ||
+          (cat === 'tech' && btn.textContent.includes('Tech')));
+      });
+      newGame();
+    }
+
+    function newGame() {
+      clearInterval(timerInterval);
+      foundWords.clear();
+      placedWords = [];
+      words = [...CATEGORIES[currentCategory]];
+      document.getElementById('totalWords').textContent = words.length;
+      document.getElementById('foundCount').textContent = '0';
+      document.getElementById('timer').textContent = '0:00';
+      document.getElementById('winMessage').classList.remove('show');
+
+      generateGrid();
+      renderGrid();
+      renderWordList();
+
+      startTime = Date.now();
+      timerInterval = setInterval(updateTimer, 1000);
+    }
+
+    function updateTimer() {
+      const elapsed = Math.floor((Date.now() - startTime) / 1000);
+      const mins = Math.floor(elapsed / 60);
+      const secs = elapsed % 60;
+      document.getElementById('timer').textContent = `${mins}:${secs.toString().padStart(2, '0')}`;
+    }
+
+    function generateGrid() {
+      // Initialize empty grid
+      grid = Array(GRID_SIZE).fill(null).map(() => Array(GRID_SIZE).fill(''));
+
+      const directions = [
+        [0, 1],   // right
+        [1, 0],   // down
+        [1, 1],   // diagonal down-right
+        [0, -1],  // left
+        [-1, 0],  // up
+        [-1, -1], // diagonal up-left
+        [1, -1],  // diagonal down-left
+        [-1, 1]   // diagonal up-right
+      ];
+
+      // Try to place each word
+      for (const word of words) {
+        let placed = false;
+        let attempts = 0;
+
+        while (!placed && attempts < 200) {
+          attempts++;
+          const dir = directions[Math.floor(Math.random() * directions.length)];
+          const reverse = Math.random() < 0.3; // 30% chance to reverse
+          const actualWord = reverse ? word.split('').reverse().join('') : word;
+
+          const maxRow = dir[0] === 1 ? GRID_SIZE - word.length : (dir[0] === -1 ? word.length - 1 : GRID_SIZE);
+          const maxCol = dir[1] === 1 ? GRID_SIZE - word.length : (dir[1] === -1 ? word.length - 1 : GRID_SIZE);
+          const minRow = dir[0] === -1 ? word.length - 1 : 0;
+          const minCol = dir[1] === -1 ? word.length - 1 : 0;
+
+          const row = Math.floor(Math.random() * (maxRow - minRow) + minRow);
+          const col = Math.floor(Math.random() * (maxCol - minCol) + minCol);
+
+          // Check if word fits
+          let fits = true;
+          const positions = [];
+          for (let i = 0; i < word.length; i++) {
+            const r = row + dir[0] * i;
+            const c = col + dir[1] * i;
+            if (grid[r][c] !== '' && grid[r][c] !== actualWord[i]) {
+              fits = false;
+              break;
+            }
+            positions.push([r, c]);
+          }
+
+          if (fits) {
+            for (let i = 0; i < word.length; i++) {
+              const [r, c] = positions[i];
+              grid[r][c] = actualWord[i];
+            }
+            placedWords.push({ word, positions, reverse });
+            placed = true;
+          }
+        }
+      }
+
+      // Fill empty cells with random letters
+      const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      for (let r = 0; r < GRID_SIZE; r++) {
+        for (let c = 0; c < GRID_SIZE; c++) {
+          if (grid[r][c] === '') {
+            grid[r][c] = letters[Math.floor(Math.random() * letters.length)];
+          }
+        }
+      }
+    }
+
+    function renderGrid() {
+      const gridEl = document.getElementById('grid');
+      gridEl.innerHTML = '';
+      gridEl.style.gridTemplateColumns = `repeat(${GRID_SIZE}, 1fr)`;
+
+      for (let r = 0; r < GRID_SIZE; r++) {
+        for (let c = 0; c < GRID_SIZE; c++) {
+          const cell = document.createElement('div');
+          cell.className = 'cell';
+          cell.dataset.row = r;
+          cell.dataset.col = c;
+          cell.textContent = grid[r][c];
+
+          cell.addEventListener('mousedown', (e) => startSelection(r, c));
+          cell.addEventListener('mouseenter', (e) => continueSelection(r, c));
+          cell.addEventListener('mouseup', endSelection);
+          cell.addEventListener('touchstart', (e) => { e.preventDefault(); startSelection(r, c); }, {passive: false});
+          cell.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+            const touch = e.touches[0];
+            const element = document.elementFromPoint(touch.clientX, touch.clientY);
+            if (element && element.classList.contains('cell')) {
+              continueSelection(parseInt(element.dataset.row), parseInt(element.dataset.col));
+            }
+          }, {passive: false});
+          cell.addEventListener('touchend', endSelection);
+
+          gridEl.appendChild(cell);
+        }
+      }
+    }
+
+    function renderWordList() {
+      const listEl = document.getElementById('wordList');
+      listEl.innerHTML = '';
+      for (const word of words) {
+        const item = document.createElement('div');
+        item.className = 'word-item' + (foundWords.has(word) ? ' found' : '');
+        item.textContent = word;
+        listEl.appendChild(item);
+      }
+    }
+
+    function startSelection(r, c) {
+      isSelecting = true;
+      selectionStart = [r, c];
+      selectionCells = [[r, c]];
+      updateSelection();
+    }
+
+    function continueSelection(r, c) {
+      if (!isSelecting) return;
+
+      // Determine direction from start
+      const dr = r - selectionStart[0];
+      const dc = c - selectionStart[1];
+
+      // Only allow straight lines (horizontal, vertical, diagonal)
+      if (dr === 0 || dc === 0 || Math.abs(dr) === Math.abs(dc)) {
+        const steps = Math.max(Math.abs(dr), Math.abs(dc));
+        const stepR = steps === 0 ? 0 : dr / steps;
+        const stepC = steps === 0 ? 0 : dc / steps;
+
+        selectionCells = [];
+        for (let i = 0; i <= steps; i++) {
+          const nr = selectionStart[0] + stepR * i;
+          const nc = selectionStart[1] + stepC * i;
+          if (nr >= 0 && nr < GRID_SIZE && nc >= 0 && nc < GRID_SIZE) {
+            selectionCells.push([nr, nc]);
+          }
+        }
+        updateSelection();
+      }
+    }
+
+    function endSelection() {
+      if (!isSelecting) return;
+      isSelecting = false;
+
+      // Check if selection matches a word
+      const selectedWord = selectionCells.map(([r, c]) => grid[r][c]).join('');
+      const reversedWord = selectedWord.split('').reverse().join('');
+
+      for (const { word, positions } of placedWords) {
+        if (!foundWords.has(word)) {
+          const wordStr = positions.map(([r, c]) => grid[r][c]).join('');
+          if (selectedWord === wordStr || reversedWord === wordStr) {
+            // Found a word!
+            foundWords.add(word);
+            document.getElementById('foundCount').textContent = foundWords.size;
+
+            // Mark cells as found
+            for (const [r, c] of positions) {
+              const cell = document.querySelector(`.cell[data-row="${r}"][data-col="${c}"]`);
+              if (cell) cell.classList.add('found');
+            }
+
+            renderWordList();
+
+            if (foundWords.size === words.length) {
+              clearInterval(timerInterval);
+              document.getElementById('finalTime').textContent = document.getElementById('timer').textContent;
+              setTimeout(() => document.getElementById('winMessage').classList.add('show'), 300);
+            }
+            break;
+          }
+        }
+      }
+
+      // Clear selection
+      document.querySelectorAll('.cell.selected').forEach(cell => cell.classList.remove('selected'));
+      selectionCells = [];
+    }
+
+    function updateSelection() {
+      document.querySelectorAll('.cell.selected').forEach(cell => cell.classList.remove('selected'));
+      for (const [r, c] of selectionCells) {
+        const cell = document.querySelector(`.cell[data-row="${r}"][data-col="${c}"]`);
+        if (cell) cell.classList.add('selected');
+      }
+    }
+
+    // Prevent text selection while dragging
+    document.addEventListener('selectstart', (e) => {
+      if (isSelecting) e.preventDefault();
+    });
+
+    window.setCategory = setCategory;
+    window.newGame = newGame;
+
+    init();
+  })();
+  </script>
 <script src="/knexio-bundle.js"></script>
   
     <footer>
