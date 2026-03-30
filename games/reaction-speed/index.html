@@ -395,6 +395,87 @@
     </div>
 </div>
 
+<script>
+  const MAX = 5;
+  let state = 'idle'; // idle, waiting, ready, tooSoon, result
+  let startTime = 0;
+  let timer = null;
+  let results = [];
+
+  function renderAttempts() {
+    const wrap = document.getElementById('attempts');
+    wrap.innerHTML = '';
+    for(let i=0;i<MAX;i++){
+      const b = document.createElement('div');
+      b.className = 'attempt-badge' + (i<results.length?' done':i===results.length?' current':'');
+      b.textContent = i<results.length ? results[i]+'ms' : 'Attempt '+(i+1);
+      wrap.appendChild(b);
+    }
+  }
+
+  function setArena(cls, icon, title, sub) {
+    const a = document.getElementById('arena');
+    a.className = 'arena ' + cls;
+    document.getElementById('arenaIcon').textContent = icon;
+    document.getElementById('arenaTitle').textContent = title;
+    document.getElementById('arenaSub').textContent = sub;
+  }
+
+  function handleClick() {
+    if (state === 'idle' || state === 'result') {
+      if (results.length >= MAX) return;
+      startWaiting();
+    } else if (state === 'waiting') {
+      // Too soon!
+      clearTimeout(timer);
+      state = 'tooSoon';
+      setArena('too-soon','❌','Too Soon!','Wait for the green screen. Click to try again.');
+    } else if (state === 'ready') {
+      const rt = Date.now() - startTime;
+      results.push(rt);
+      state = 'result';
+      setArena('result','✅', rt+'ms', results.length<MAX ? 'Click to continue ('+results.length+'/'+MAX+')' : 'All done! See your average below.');
+      renderAttempts();
+      if (results.length >= MAX) showAvg();
+    } else if (state === 'tooSoon') {
+      startWaiting();
+    }
+  }
+
+  function startWaiting() {
+    state = 'waiting';
+    setArena('waiting','👀','Get Ready…','Wait for the screen to turn green, then click as fast as you can!');
+    const delay = 1500 + Math.random() * 3500;
+    timer = setTimeout(()=>{
+      state = 'ready';
+      startTime = Date.now();
+      setArena('ready','🟢','CLICK NOW!','');
+    }, delay);
+  }
+
+  function showAvg() {
+    const avg = Math.round(results.reduce((a,b)=>a+b,0)/results.length);
+    document.getElementById('avgVal').textContent = avg;
+    let rating = '';
+    if(avg<200) rating='⚡ Exceptional reflex!';
+    else if(avg<250) rating='🚀 Excellent — above average!';
+    else if(avg<300) rating='✅ Good — near average.';
+    else if(avg<400) rating='😐 Average — room to improve.';
+    else rating='😴 Slow — try again after a break!';
+    document.getElementById('avgRating').textContent = rating;
+    document.getElementById('avgBox').style.display = 'block';
+  }
+
+  function reset() {
+    results = [];
+    state = 'idle';
+    document.getElementById('avgBox').style.display = 'none';
+    setArena('waiting','🖱️','Click to Start','We\'ll measure your reaction time in milliseconds');
+    renderAttempts();
+  }
+
+  renderAttempts();
+</script>
 <script src="/knexio-bundle.js"></script>
   
     <footer>

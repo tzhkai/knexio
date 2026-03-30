@@ -441,6 +441,129 @@
     </div>
 </div>
 
+<script>// Game init //
+  // Sudoku puzzles library (given, solution)
+const PUZZLES = {
+  easy: [
+    {g:[5,3,0,0,7,0,0,0,0,6,0,0,1,9,5,0,0,0,0,9,8,0,0,0,0,6,0,8,0,0,0,6,0,0,0,3,4,0,0,8,0,3,0,0,1,7,0,0,0,2,0,0,0,6,0,6,0,0,0,0,2,8,0,0,0,0,4,1,9,0,0,5,0,0,0,0,8,0,0,7,9],
+     s:[5,3,4,6,7,8,9,1,2,6,7,2,1,9,5,3,4,8,1,9,8,3,4,2,5,6,7,8,5,9,7,6,1,4,2,3,4,2,6,8,5,3,7,9,1,7,1,3,9,2,4,8,5,6,9,6,1,5,3,7,2,8,4,2,8,7,4,1,9,6,3,5,3,4,5,2,8,6,1,7,9]},
+    {g:[0,0,0,2,6,0,7,0,1,6,8,0,0,7,0,0,9,0,1,9,0,0,0,4,5,0,0,8,2,0,1,0,0,0,4,0,0,0,4,6,0,2,9,0,0,0,5,0,0,0,3,0,2,8,0,0,9,3,0,0,0,7,4,0,4,0,0,5,0,0,3,6,7,0,3,0,1,8,0,0,0],
+     s:[4,3,5,2,6,9,7,8,1,6,8,2,5,7,1,4,9,3,1,9,7,8,3,4,5,6,2,8,2,6,1,9,5,3,4,7,3,7,4,6,8,2,9,1,5,9,5,1,7,4,3,6,2,8,5,1,9,3,2,6,8,7,4,2,4,8,9,5,7,1,3,6,7,6,3,4,1,8,2,5,9]},
+  ],
+  medium: [
+    {g:[0,0,0,0,0,0,2,0,0,0,8,0,0,0,7,0,9,0,6,0,2,0,0,0,5,0,0,0,7,0,0,6,0,0,0,0,0,0,8,2,0,4,6,0,0,0,0,0,0,1,0,0,4,0,0,0,6,0,0,0,3,0,8,0,4,0,6,0,0,0,7,0,0,0,9,0,0,0,0,0,0],
+     s:[4,3,5,6,9,1,2,8,7,1,8,6,5,4,7,3,9,2,6,9,2,8,3,5,5,1,4,5,7,1,4,6,8,9,2,3,3,6,8,2,5,4,6,1,9,2,5,4,9,1,3,7,4,6,9,1,7,2,4,3,8,5,8,8,4,3,6,2,5,1,7,1,7,2,9,3,8,4,5,6,5]},
+    {g:[0,0,3,0,2,0,6,0,0,9,0,0,3,0,5,0,0,1,0,0,1,8,0,6,4,0,0,0,0,8,1,0,2,9,0,0,7,0,0,0,0,0,0,0,8,0,0,6,7,0,8,2,0,0,0,0,2,6,0,9,5,0,0,8,0,0,2,0,3,0,0,9,0,0,5,0,1,0,3,0,0],
+     s:[4,8,3,9,2,1,6,5,7,9,6,7,3,4,5,8,2,1,2,5,1,8,7,6,4,9,3,5,4,8,1,3,2,9,7,6,7,2,9,5,6,4,1,3,8,1,3,6,7,9,8,2,4,5,3,7,2,6,8,9,5,1,4,8,1,4,2,5,3,7,6,9,6,9,5,4,1,7,3,8,2]},
+  ],
+  hard: [
+    {g:[8,0,0,0,0,0,0,0,0,0,0,3,6,0,0,0,0,0,0,7,0,0,9,0,2,0,0,0,5,0,0,0,7,0,0,0,0,0,0,0,4,5,7,0,0,0,0,0,1,0,0,0,3,0,0,0,1,0,0,0,0,6,8,0,0,8,5,0,0,0,1,0,0,9,0,0,0,0,4,0,0],
+     s:[8,1,2,7,5,3,6,4,9,9,4,3,6,8,2,1,7,5,6,7,5,4,9,1,2,8,3,1,5,4,2,3,7,8,9,6,3,6,9,8,4,5,7,2,1,2,8,7,1,6,9,5,3,4,5,2,1,9,7,4,3,6,8,4,3,8,5,2,6,9,1,7,7,9,6,3,1,8,4,5,2]},
+    {g:[0,0,9,0,0,0,0,5,0,0,0,0,9,0,0,4,0,0,0,6,0,0,0,5,0,0,0,0,0,0,0,8,0,0,9,0,0,0,0,0,1,0,0,0,0,0,0,4,0,7,0,0,0,0,0,0,0,6,0,0,0,2,0,0,0,3,0,0,4,0,0,0,0,2,0,0,0,0,1,0,0],
+     s:[3,4,9,1,6,7,2,5,8,2,5,1,9,3,8,4,7,6,7,6,8,2,4,5,9,3,1,5,1,2,3,8,6,7,9,4,6,9,7,4,1,2,8,3,5,8,3,4,5,7,9,6,1,2,1,7,5,6,9,3,3,2,4,9,8,3,7,2,4,5,6,1,4,2,6,8,5,1,1,4,7]},
+  ]
+};
+
+let board=[],given=[],solution=[],selected=null,hintsRemaining=3,currentDiff='easy',timerSec=0,timerInt=null;
+
+function newGame(diff){
+  currentDiff=diff;
+  document.querySelectorAll('.diff-btn').forEach(b=>b.classList.toggle('active',b.textContent.toLowerCase()===diff));
+  const pool=PUZZLES[diff];
+  const puzzle=pool[Math.floor(Math.random()*pool.length)];
+  given=[...puzzle.g];solution=[...puzzle.s];
+  board=given.map(v=>v);
+  selected=null;hintsRemaining=3;
+  document.getElementById('hintsLeft').textContent=3;
+  document.getElementById('winBanner').style.display='none';
+  clearInterval(timerInt);timerSec=0;updateTimer();
+  timerInt=setInterval(()=>{timerSec++;updateTimer()},1000);
+  renderBoard();
+}
+
+function updateTimer(){
+  const m=Math.floor(timerSec/60),s=timerSec%60;
+  document.getElementById('timerEl').textContent=m+':'+(s<10?'0':'')+s;
+}
+
+function renderBoard(){
+  const boardEl=document.getElementById('board');
+  boardEl.innerHTML='';
+  for(let i=0;i<81;i++){
+    const cell=document.createElement('div');
+    cell.className='cell'+(given[i]?' given':'')+(i===selected?' selected':'');
+    // box borders
+    const col=i%9,row=Math.floor(i/9);
+    if(col===2||col===5)cell.classList.add('box-right');
+    if(row===2||row===5)cell.classList.add('box-bottom');
+    // highlight same row/col/box
+    if(selected!==null&&selected!==i){
+      const sc=selected%9,sr=Math.floor(selected/9);
+      const bc=Math.floor(col/3),bsc=Math.floor(sc/3);
+      const br=Math.floor(row/3),bsr=Math.floor(sr/3);
+      if(col===sc||row===sr||(bc===bsc&&br===bsr))cell.classList.add('highlight');
+    }
+    // conflict check
+    if(board[i]&&!given[i]){
+      if(hasConflict(i,board[i]))cell.classList.add('conflict');
+      else if(board[i]===solution[i])cell.classList.add('correct');
+    }
+    if(board[i])cell.textContent=board[i];
+    cell.addEventListener('click',()=>{selected=i;renderBoard()});
+    boardEl.appendChild(cell);
+  }
+}
+
+function hasConflict(idx,val){
+  const row=Math.floor(idx/9),col=idx%9;
+  for(let i=0;i<9;i++){
+    if(i!==idx&&Math.floor(i/9)===row&&board[i]===val)return true;
+    const c=row*9+i;if(c!==idx&&board[c]===val&&Math.floor(c/9)===row){}
+    const ci=i*9+col;if(ci!==idx&&board[ci]===val)return true;
+  }
+  const br=Math.floor(row/3)*3,bc=Math.floor(col/3)*3;
+  for(let r=br;r<br+3;r++)for(let c=bc;c<bc+3;c++){const ci=r*9+c;if(ci!==idx&&board[ci]===val)return true}
+  return false;
+}
+
+function inputNum(n){
+  if(selected===null||given[selected])return;
+  board[selected]=n||0;
+  renderBoard();
+  checkWin();
+}
+
+function useHint(){
+  if(hintsRemaining<=0){alert('No hints left!');return}
+  if(selected===null){alert('Select a cell first.');return}
+  if(given[selected]){alert('That cell is already given.');return}
+  board[selected]=solution[selected];
+  hintsRemaining--;
+  document.getElementById('hintsLeft').textContent=hintsRemaining;
+  renderBoard();checkWin();
+}
+
+function checkWin(){
+  for(let i=0;i<81;i++){if(board[i]!==solution[i])return}
+  clearInterval(timerInt);
+  const m=Math.floor(timerSec/60),s=timerSec%60;
+  document.getElementById('winBanner').style.display='block';
+  document.getElementById('winMsg').textContent='Completed in '+m+'m '+s+'s with '+hintsRemaining+'/3 hints remaining!';
+}
+
+document.addEventListener('keydown',e=>{
+  if(selected===null)return;
+  const n=parseInt(e.key);
+  if(n>=1&&n<=9)inputNum(n);
+  else if(e.key==='Backspace'||e.key==='Delete'||e.key==='0')inputNum(0);
+  else if(e.key==='ArrowRight'){selected=Math.min(80,selected+1);renderBoard()}
+  else if(e.key==='ArrowLeft'){selected=Math.max(0,selected-1);renderBoard()}
+  else if(e.key==='ArrowDown'){selected=Math.min(80,selected+9);renderBoard()}
+  else if(e.key==='ArrowUp'){selected=Math.max(0,selected-9);renderBoard()}
+  if(['ArrowRight','ArrowLeft','ArrowUp','ArrowDown'].includes(e.key))e.preventDefault();
+});
+
+newGame('easy');</script>
 <script src="/knexio-bundle.js"></script>
   
     <footer>

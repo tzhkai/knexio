@@ -421,6 +421,32 @@
       <p>© 2026 Knexio. All rights reserved.</p>
     </footer>
 
-  <script src="/knexio-bundle.js"></script>
+  <script>
+let selectedSides=4, qty=1, history=[];
+
+function selectDie(sides){
+  selectedSides=sides;
+  document.querySelectorAll('.dice-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelector('[data-sides="'+sides+'"]').classList.add('active');
+}
+
+function changeQty(d){
+  qty=Math.max(1,Math.min(10,qty+d));
+  document.getElementById('qtyVal').textContent=qty;
+}
+
+function rollDice(){
+  const results=Array.from({length:qty},()=>Math.floor(Math.random()*selectedSides)+1);
+  const total=results.reduce((a,b)=>a+b,0);
+  document.getElementById('diceResults').innerHTML=results.map(r=>`<div class="die-result">${r}</div>`).join('');
+  document.getElementById('totalRow').innerHTML=qty>1?`Total: <span>${total}</span>`:`Result: <span>${results[0]}</span>`;
+  const entry=`${qty}D${selectedSides}: [${results.join(', ')}]`+(qty>1?` = ${total}`:'');
+  history.unshift(entry);
+  if(history.length>20)history.pop();
+  const hl=document.getElementById('historyList');
+  hl.innerHTML=history.map(h=>`<div class="history-item">${h}</div>`).join('');
+}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>

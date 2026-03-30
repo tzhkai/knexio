@@ -416,6 +416,188 @@
     </div>
 </div>
 
+  <script>// Game init //
+  let gridSize = 4;
+    let tiles = []; // 1D array representing the grid
+    let emptyIndex = 15;
+    let moves = 0;
+    let startTime = null;
+    let timerInterval = null;
+    let isPlaying = false;
+
+    function setSize(size) {
+      gridSize = size;
+      document.querySelectorAll('.size-btn').forEach(btn => {
+        btn.classList.toggle('active', parseInt(btn.dataset.size) === size);
+      });
+      newGame();
+    }
+
+    function initBoard() {
+      tiles = [];
+      for (let i = 1; i < gridSize * gridSize; i++) {
+        tiles.push(i);
+      }
+      tiles.push(0); // 0 represents empty space
+      emptyIndex = tiles.length - 1;
+    }
+
+    function render() {
+      const board = document.getElementById('board');
+      board.innerHTML = '';
+      board.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
+
+      tiles.forEach((num, index) => {
+        const tile = document.createElement('div');
+        tile.className = 'tile';
+        if (num === 0) {
+          tile.classList.add('empty');
+        } else {
+          tile.textContent = num;
+          // Highlight if in correct position
+          if (num === index + 1) {
+            tile.classList.add('correct');
+          }
+          tile.onclick = () => handleTileClick(index);
+        }
+        board.appendChild(tile);
+      });
+    }
+
+    function handleTileClick(index) {
+      if (!isPlaying) return;
+
+      if (canMove(index)) {
+        swapTiles(index, emptyIndex);
+        moves++;
+        document.getElementById('moves').textContent = moves;
+        render();
+
+        if (checkWin()) {
+          gameWon();
+        }
+      }
+    }
+
+    function canMove(index) {
+      const row = Math.floor(index / gridSize);
+      const col = index % gridSize;
+      const emptyRow = Math.floor(emptyIndex / gridSize);
+      const emptyCol = emptyIndex % gridSize;
+
+      // Check if adjacent (not diagonal)
+      const rowDiff = Math.abs(row - emptyRow);
+      const colDiff = Math.abs(col - emptyCol);
+
+      return (rowDiff === 1 && colDiff === 0) || (rowDiff === 0 && colDiff === 1);
+    }
+
+    function swapTiles(i, j) {
+      [tiles[i], tiles[j]] = [tiles[j], tiles[i]];
+      emptyIndex = i;
+    }
+
+    function shuffleBoard() {
+      // Perform random valid moves to ensure solvability
+      const shuffleMoves = gridSize === 3 ? 100 : (gridSize === 4 ? 200 : 400);
+      let lastIndex = -1;
+
+      for (let i = 0; i < shuffleMoves; i++) {
+        const neighbors = getNeighbors(emptyIndex);
+        // Don't undo the immediate last move
+        const validNeighbors = neighbors.filter(n => n !== lastIndex);
+        const randomNeighbor = validNeighbors[Math.floor(Math.random() * validNeighbors.length)];
+
+        lastIndex = emptyIndex;
+        swapTiles(randomNeighbor, emptyIndex);
+      }
+
+      moves = 0;
+      document.getElementById('moves').textContent = moves;
+      render();
+    }
+
+    function getNeighbors(index) {
+      const row = Math.floor(index / gridSize);
+      const col = index % gridSize;
+      const neighbors = [];
+
+      if (row > 0) neighbors.push(index - gridSize); // Up
+      if (row < gridSize - 1) neighbors.push(index + gridSize); // Down
+      if (col > 0) neighbors.push(index - 1); // Left
+      if (col < gridSize - 1) neighbors.push(index + 1); // Right
+
+      return neighbors;
+    }
+
+    function checkWin() {
+      for (let i = 0; i < tiles.length - 1; i++) {
+        if (tiles[i] !== i + 1) return false;
+      }
+      return true;
+    }
+
+    function gameWon() {
+      isPlaying = false;
+      clearInterval(timerInterval);
+      document.getElementById('finalMoves').textContent = moves;
+      document.getElementById('finalTime').textContent = document.getElementById('time').textContent;
+      document.getElementById('winMessage').classList.add('show');
+    }
+
+    function updateTimer() {
+      const elapsed = Math.floor((Date.now() - startTime) / 1000);
+      const mins = Math.floor(elapsed / 60);
+      const secs = elapsed % 60;
+      document.getElementById('time').textContent = `${mins}:${secs.toString().padStart(2, '0')}`;
+    }
+
+    function newGame() {
+      moves = 0;
+      document.getElementById('moves').textContent = moves;
+      document.getElementById('time').textContent = '0:00';
+      document.getElementById('winMessage').classList.remove('show');
+
+      initBoard();
+      shuffleBoard();
+
+      isPlaying = true;
+      startTime = Date.now();
+      if (timerInterval) clearInterval(timerInterval);
+      timerInterval = setInterval(updateTimer, 1000);
+    }
+
+    // Keyboard controls
+    document.addEventListener('keydown', (e) => {
+      if (!isPlaying) return;
+
+      const emptyRow = Math.floor(emptyIndex / gridSize);
+      const emptyCol = emptyIndex % gridSize;
+      let targetIndex = -1;
+
+      switch(e.key) {
+        case 'ArrowUp':
+          if (emptyRow < gridSize - 1) targetIndex = emptyIndex + gridSize;
+          break;
+        case 'ArrowDown':
+          if (emptyRow > 0) targetIndex = emptyIndex - gridSize;
+          break;
+        case 'ArrowLeft':
+          if (emptyCol < gridSize - 1) targetIndex = emptyIndex + 1;
+          break;
+        case 'ArrowRight':
+          if (emptyCol > 0) targetIndex = emptyIndex - 1;
+          break;
+      }
+
+      if (targetIndex !== -1) {
+        e.preventDefault();
+        handleTileClick(targetIndex);
+      }
+    });
+
+    // Initialize
+    newGame();</script>
 <script src="/knexio-bundle.js"></script>
   
     <footer>

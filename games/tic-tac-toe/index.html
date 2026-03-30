@@ -407,6 +407,85 @@
       <p>© 2026 Knexio. All rights reserved.</p>
     </footer>
 
-  <script src="/knexio-bundle.js"></script>
+  <script>
+let board=Array(9).fill(null), current='X', mode='ai', diff='easy', xW=0, oW=0, dr=0, gameOver=false;
+const WINS=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+
+function setMode(m){mode=m;document.getElementById('modeVsAI').className='mode-btn'+(m==='ai'?' active':'');document.getElementById('mode2P').className='mode-btn'+(m==='2p'?' active':'');document.getElementById('diffRow').style.display=m==='ai'?'flex':'none';resetGame();}
+function setDiff(d){diff=d;document.getElementById('diffEasy').className='diff-btn'+(d==='easy'?' active':'');document.getElementById('diffHard').className='diff-btn'+(d==='hard'?' active':'');resetGame();}
+
+function resetGame(){board=Array(9).fill(null);current='X';gameOver=false;setStatus('Your turn (X)','');render();}
+
+function setStatus(t,cls){const el=document.getElementById('statusText');el.textContent=t;el.className='status-text '+cls;}
+
+function checkWin(b,p){return WINS.find(([a,bb,c])=>b[a]===p&&b[bb]===p&&b[c]===p)||null;}
+
+function render(){
+  const boardEl=document.getElementById('board');
+  const winLine=checkWin(board,'X')||checkWin(board,'O');
+  boardEl.innerHTML=board.map((v,i)=>{
+    let cls='cell'+(v?' taken':'');
+    if(v==='X')cls='cell taken x';if(v==='O')cls='cell taken o';
+    const isWinCell=winLine&&winLine.includes(i);
+    if(isWinCell)cls+=' win-cell';
+    return '<div class="'+cls+'" data-i="'+i+'">'+(v||'')+'</div>';
+  }).join('');
+}
+
+// 事件委托方式，更可靠
+document.getElementById('board').addEventListener('click',function(e){
+  const cell=e.target.closest('[data-i]');
+  if(!cell)return;
+  const i=parseInt(cell.dataset.i);
+  if(gameOver||board[i])return;
+  board[i]=current;
+  if(checkResult())return;
+  current=current==='X'?'O':'X';
+  render();
+  if(mode==='ai'&&current==='O'&&!gameOver)setTimeout(aiMove,350);
+  else updateStatus();
+});
+
+function updateStatus(){
+  if(!gameOver)setStatus(`${current}'s turn`,'');
+}
+
+function checkResult(){
+  render();
+  const win=checkWin(board,'X')||checkWin(board,'O');
+  if(win){
+    gameOver=true;
+    const p=board[win[0]];
+    if(p==='X'){xW++;document.getElementById('xWins').textContent=xW;setStatus(mode==='ai'?'🎉 You win!':'🎉 X wins!','status-win');}
+    else{oW++;document.getElementById('oWins').textContent=oW;setStatus(mode==='ai'?'😞 Computer wins!':'🎉 O wins!','status-lose');}
+    return true;
+  }
+  if(board.every(c=>c)){gameOver=true;dr++;document.getElementById('draws').textContent=dr;setStatus("It's a draw!",'status-draw');return true;}
+  return false;
+}
+
+function aiMove(){
+  if(diff==='easy'){
+    const empty=board.map((v,i)=>v?null:i).filter(i=>i!==null);
+    board[empty[Math.floor(Math.random()*empty.length)]]='O';
+  } else {
+    let best=-Infinity,bestIdx=0;
+    board.forEach((v,i)=>{if(!v){board[i]='O';const s=minimax(board,0,false);board[i]=null;if(s>best){best=s;bestIdx=i;}}});
+    board[bestIdx]='O';
+  }
+  if(!checkResult()){current='X';render();setStatus('Your turn (X)','');}
+}
+
+function minimax(b,depth,isMax){
+  if(checkWin(b,'O'))return 10-depth;
+  if(checkWin(b,'X'))return depth-10;
+  if(b.every(c=>c))return 0;
+  if(isMax){let best=-Infinity;b.forEach((v,i)=>{if(!v){b[i]='O';best=Math.max(best,minimax(b,depth+1,false));b[i]=null;}});return best;}
+  else{let best=Infinity;b.forEach((v,i)=>{if(!v){b[i]='X';best=Math.min(best,minimax(b,depth+1,true));b[i]=null;}});return best;}
+}
+
+resetGame();
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>

@@ -411,6 +411,144 @@
     </div>
 </div>
 
+<script>
+const WORDS=['the','be','to','of','and','a','in','that','have','it','for','not','on','with','he','as','you','do','at','this','but','his','by','from','they','we','say','her','she','or','an','will','my','one','all','would','there','their','what','so','up','out','if','about','who','get','which','go','me','when','make','can','like','time','no','just','him','know','take','people','into','year','your','good','some','could','them','see','other','than','then','now','look','only','come','its','over','think','also','back','after','use','two','how','our','work','first','well','way','even','new','want','because','any','these','give','day','most','us','great','between','need','large','often','hand','high','place','hold','turn','with','same','tell','does','set','three','air','play','small','number','off','always','move','try','kind','hand','picture','again','change','off','play','spell','air','away','animal','house','point','page','letter','mother','answer','found','still','learn','should','America','world'];
+
+let text=[],typed=[],current=0,errors=0,started=false,finished=false,timerInt=null,duration=60,remaining=60,keystrokes=0,correctKeys=0;
+
+function setDuration(d){
+  duration=d;remaining=d;
+  document.querySelectorAll('.time-btn').forEach(b=>b.classList.toggle('active',b.textContent===d+'s'));
+  resetTest();
+}
+
+function generateText(){
+  const arr=[];
+  for(let i=0;i<60;i++)arr.push(WORDS[Math.floor(Math.random()*WORDS.length)]);
+  return arr;
+}
+
+function render(){
+  const container=document.getElementById('wordSpans');
+  container.innerHTML='';
+  text.forEach((word,wi)=>{
+    word.split('').forEach((ch,ci)=>{
+      const flat=text.slice(0,wi).join(' ').length+(wi>0?1:0)+ci;
+      const span=document.createElement('span');
+      span.textContent=ch;
+      if(flat<typed.length){span.className=typed[flat]===ch?'correct':'wrong'}
+      else if(flat===typed.length){span.className='current'}
+      else{span.className='untyped'}
+      container.appendChild(span);
+    });
+    if(wi<text.length-1){
+      const flat=text.slice(0,wi+1).join(' ').length;
+      const sp=document.createElement('span');sp.textContent=' ';
+      if(flat<typed.length){sp.className=typed[flat]===' '?'correct':'wrong'}
+      else if(flat===typed.length){sp.className='current'}
+      else{sp.className='untyped'}
+      container.appendChild(sp);
+    }
+  });
+  // scroll current into view
+  const cur=container.querySelector('.current');
+  if(cur)cur.scrollIntoView({block:'nearest',behavior:'smooth'});
+}
+
+function calcWPM(){
+  if(!started)return 0;
+  const elapsed=(duration-remaining)||1;
+  const words=typed.join('').trim().split(/\s+/).filter(w=>w).length;
+  return Math.round(words/(elapsed/60));
+}
+
+function calcAcc(){
+  if(keystrokes===0)return 100;
+  return Math.round(correctKeys/keystrokes*100);
+}
+
+function updateStats(){
+  document.getElementById('wpm-val').textContent=calcWPM();
+  document.getElementById('acc-val').textContent=calcAcc()+'%';
+  document.getElementById('errors-val').textContent=errors;
+}
+
+function focusInput(){document.getElementById('typingInput').focus()}
+
+function startTest(){
+  if(started)return;
+  started=true;
+  document.getElementById('startHint').style.display='none';
+  remaining=duration;
+  timerInt=setInterval(()=>{
+    remaining--;
+    document.getElementById('timer-val').textContent=remaining;
+    updateStats();
+    if(remaining<=0){endTest();}
+  },1000);
+}
+
+function endTest(){
+  clearInterval(timerInt);finished=true;
+  document.getElementById('resultOverlay').style.display='block';
+  const wpm=calcWPM(),acc=calcAcc();
+  document.getElementById('r-wpm').textContent=wpm;
+  document.getElementById('r-acc').textContent=acc+'%';
+  document.getElementById('r-chars').textContent=correctKeys;
+  document.getElementById('r-err').textContent=errors;
+  let grade='Keep practicing!';
+  if(wpm>=100)grade='Expert Typist! Outstanding speed.';
+  else if(wpm>=80)grade='Advanced Typist. Excellent!';
+  else if(wpm>=60)grade='Proficient Typist. Above average!';
+  else if(wpm>=40)grade='Average Typist. You\'re doing well!';
+  document.getElementById('wpmGrade').textContent=grade;
+}
+
+function resetTest(){
+  clearInterval(timerInt);
+  text=generateText();typed=[];current=0;errors=0;started=false;finished=false;keystrokes=0;correctKeys=0;
+  remaining=duration;
+  document.getElementById('timer-val').textContent=duration;
+  document.getElementById('wpm-val').textContent='0';
+  document.getElementById('acc-val').textContent='100%';
+  document.getElementById('errors-val').textContent='0';
+  document.getElementById('startHint').style.display='flex';
+  document.getElementById('resultOverlay').style.display='none';
+  document.getElementById('typingInput').value='';
+  render();
+}
+
+document.getElementById('typingInput').addEventListener('keydown',e=>{
+  if(finished)return;
+  if(e.key==='Tab'){e.preventDefault();return}
+  if(!started&&e.key.length===1)startTest();
+});
+
+document.getElementById('typingInput').addEventListener('input',e=>{
+  if(finished)return;
+  const fullText=text.join(' ');
+  const val=e.target.value;
+  keystrokes++;
+  if(val.length<=fullText.length){
+    const lastCh=val[val.length-1];
+    const expected=fullText[val.length-1];
+    if(lastCh===expected)correctKeys++;
+    else errors++;
+    typed=val.split('');
+  }else{
+    e.target.value=e.target.value.slice(0,-1);
+  }
+  render();updateStats();
+});
+
+document.addEventListener('keydown',e=>{
+  if(!['INPUT','TEXTAREA'].includes(document.activeElement.tagName)){
+    if(e.key.length===1)focusInput();
+  }
+});
+
+resetTest();
+</script>
 <script src="/knexio-bundle.js"></script>
   
     <footer>

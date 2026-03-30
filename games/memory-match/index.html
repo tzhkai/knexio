@@ -396,6 +396,103 @@
     </div>
 </div>
 
+<script>// Game init //
+  const EMOJIS = ['🐶','🐱','🐭','🐹','🐰','🦊','🐻','🐼','🐨','🦁','🐮','🐷','🐸','🐙','🦋','🌺','🍎','🍕','🚀','🎸','🏆','⚡','🌈','💎','🔮','🎭','🎪','🦄','🌙','⭐'];
+
+let gridCols, gridRows, totalPairs;
+let cards, flipped, matched, moves, startTime, timerInterval;
+let locked = false;
+let size = 4;
+
+function setSize(s) {
+  size = s;
+  ['4','5','6'].forEach(x=>document.getElementById('sz'+x).classList.toggle('active',x===String(s)));
+  newGame();
+}
+
+function newGame() {
+  clearInterval(timerInterval);
+  document.getElementById('resultPanel').style.display = 'none';
+
+  if (size===4) { gridCols=4; gridRows=4; }
+  else if (size===5) { gridCols=5; gridRows=4; }
+  else { gridCols=6; gridRows=5; }
+
+  totalPairs = (gridCols*gridRows)/2;
+  const emojiSet = EMOJIS.slice(0,totalPairs);
+  const deck = [...emojiSet,...emojiSet].sort(()=>Math.random()-0.5);
+
+  moves = 0; flipped = []; matched = 0; startTime = null;
+  document.getElementById('moves').textContent = '0';
+  document.getElementById('timer').textContent = '0s';
+  document.getElementById('pairs').textContent = `0/${totalPairs}`;
+  const bestKey = `mm_best_${size}`;
+  const b = localStorage.getItem(bestKey);
+  document.getElementById('best').textContent = b ? b+'s' : '—';
+
+  const grid = document.getElementById('grid');
+  const cardSize = Math.min(Math.floor((Math.min(520,window.innerWidth-40) - (gridCols-1)*10) / gridCols), 90);
+  grid.style.gridTemplateColumns = `repeat(${gridCols},${cardSize}px)`;
+  grid.innerHTML = '';
+  cards = [];
+
+  deck.forEach((emoji,i)=>{
+    const card = document.createElement('div');
+    card.className = 'card' + (cardSize<72?' size-lg':'');
+    card.style.width = cardSize+'px';
+    card.dataset.emoji = emoji;
+    card.dataset.idx = i;
+    card.innerHTML = `<div class="front-face">❓</div><div class="back-face">${emoji}</div>`;
+    card.addEventListener('click',()=>flipCard(card));
+    grid.appendChild(card);
+    cards.push(card);
+  });
+}
+
+function flipCard(card) {
+  if (locked || card.classList.contains('flipped') || card.classList.contains('matched')) return;
+  if (!startTime) {
+    startTime = Date.now();
+    timerInterval = setInterval(()=>{
+      document.getElementById('timer').textContent = Math.floor((Date.now()-startTime)/1000)+'s';
+    }, 500);
+  }
+  card.classList.add('flipped');
+  flipped.push(card);
+  if (flipped.length === 2) {
+    locked = true;
+    moves++;
+    document.getElementById('moves').textContent = moves;
+    const [a,b] = flipped;
+    if (a.dataset.emoji === b.dataset.emoji) {
+      a.classList.add('matched'); b.classList.add('matched');
+      a.classList.remove('flipped'); b.classList.remove('flipped');
+      matched++;
+      document.getElementById('pairs').textContent = `${matched}/${totalPairs}`;
+      flipped = []; locked = false;
+      if (matched >= totalPairs) endGame();
+    } else {
+      setTimeout(()=>{
+        a.classList.remove('flipped'); b.classList.remove('flipped');
+        flipped = []; locked = false;
+      }, 900);
+    }
+  }
+}
+
+function endGame() {
+  clearInterval(timerInterval);
+  const elapsed = Math.floor((Date.now()-startTime)/1000);
+  const bestKey = `mm_best_${size}`;
+  const prev = parseInt(localStorage.getItem(bestKey)||'99999');
+  const isNew = elapsed < prev;
+  if (isNew) localStorage.setItem(bestKey, elapsed);
+  document.getElementById('best').textContent = Math.min(elapsed,prev)+'s';
+  document.getElementById('resultMsg').textContent = `You finished in ${elapsed} seconds with ${moves} moves.${isNew?' New best time! 🏆':''}`;
+  document.getElementById('resultPanel').style.display = 'block';
+}
+
+newGame();</script>
 <script src="/knexio-bundle.js"></script>
   
     <footer>

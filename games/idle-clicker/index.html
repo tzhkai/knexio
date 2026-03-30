@@ -406,6 +406,96 @@
       <p>© 2026 Knexio. All rights reserved.</p>
     </footer>
 
-  <script src="/knexio-bundle.js"></script>
+  <script>
+const UPGRADES=[
+  {id:'cursor',name:'Cursor',emoji:'👆',desc:'Auto-clicks once per second',baseCost:15,baseCPS:1},
+  {id:'mine',name:'Mine',emoji:'⛏️',desc:'Digs up coins from the ground',baseCost:100,baseCPS:5},
+  {id:'farm',name:'Farm',emoji:'🌾',desc:'Grows money trees',baseCost:500,baseCPS:20},
+  {id:'factory',name:'Factory',emoji:'🏭',desc:'Mass-produces coins',baseCost:2000,baseCPS:80},
+  {id:'bank',name:'Bank',emoji:'🏦',desc:'Compounds coin interest',baseCost:10000,baseCPS:300},
+  {id:'lab',name:'Lab',emoji:'🔬',desc:'Synthesizes coins scientifically',baseCost:50000,baseCPS:1200},
+  {id:'portal',name:'Portal',emoji:'🌀',desc:'Imports coins from other dimensions',baseCost:300000,baseCPS:5000},
+  {id:'rocket',name:'Rocket',emoji:'🚀',desc:'Mines asteroids for precious coins',baseCost:2000000,baseCPS:20000},
+];
+
+let coins=0, clickPower=1, owned={}, totalCPS=0;
+UPGRADES.forEach(u=>owned[u.id]=0);
+
+function getCost(u){return Math.floor(u.baseCost*Math.pow(1.15,owned[u.id]));}
+function getCPS(u){return u.baseCPS*owned[u.id];}
+function fmt(n){if(n>=1e9)return(n/1e9).toFixed(2)+'B';if(n>=1e6)return(n/1e6).toFixed(2)+'M';if(n>=1e3)return(n/1e3).toFixed(1)+'K';return Math.floor(n).toString();}
+
+function clickCoin(e){
+  coins+=clickPower;
+  updateUI();
+  // Floating text
+  const el=document.createElement('div');
+  el.className='floating';
+  el.textContent='+'+fmt(clickPower);
+  el.style.left=(e.clientX-20)+'px';
+  el.style.top=(e.clientY-20)+'px';
+  document.body.appendChild(el);
+  setTimeout(()=>el.remove(),800);
+}
+
+function buyUpgrade(id){
+  const u=UPGRADES.find(x=>x.id===id);
+  const cost=getCost(u);
+  if(coins<cost)return;
+  coins-=cost;
+  owned[id]++;
+  clickPower=1+Math.floor(owned['cursor']*0.1);
+  recalcCPS();
+  updateUI();
+  checkMilestones();
+}
+
+function recalcCPS(){
+  totalCPS=UPGRADES.reduce((s,u)=>s+getCPS(u),0);
+}
+
+function updateUI(){
+  document.getElementById('coinCount').textContent=fmt(coins)+' 🪙';
+  document.getElementById('coinRate').textContent='+'+fmt(clickPower)+' per click · '+fmt(totalCPS)+'/sec';
+  document.getElementById('totalCPS').textContent='Total: '+fmt(totalCPS)+' coins/sec';
+  document.getElementById('upgradesPanel').innerHTML=UPGRADES.map(u=>{
+    const cost=getCost(u);const canBuy=coins>=cost;
+    return`<div class="upgrade-card">
+      <div class="upgrade-header">
+        <div class="upgrade-name">${u.emoji} ${u.name} <span class="upgrade-owned">${owned[u.id]}</span></div>
+      </div>
+      <div class="upgrade-desc">${u.desc}</div>
+      <div class="upgrade-footer">
+        <span class="cost-text">🪙 ${fmt(cost)}</span>
+        ${owned[u.id]>0?`<span class="upgrade-cps">+${fmt(getCPS(u))}/sec</span>`:''}
+        <button class="buy-btn" onclick="buyUpgrade('${u.id}')" ${canBuy?'':'disabled'}>Buy</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+const MILESTONES=[100,1000,10000,100000,1000000,1000000000];
+let lastMilestone=-1;
+function checkMilestones(){
+  for(let i=MILESTONES.length-1;i>=0;i--){
+    if(coins>=MILESTONES[i]&&i>lastMilestone){
+      lastMilestone=i;
+      const el=document.getElementById('milestone');
+      const labels=['100 coins!','1K coins!','10K coins!','100K coins!','1 Million!','1 Billion! 🎉'];
+      el.textContent='🏆 Milestone: '+labels[i];
+      el.className='milestone show';
+      setTimeout(()=>el.className='milestone',4000);
+    }
+  }
+}
+
+setInterval(()=>{
+  if(totalCPS>0){coins+=totalCPS/20;checkMilestones();}
+  updateUI();
+},50);
+
+updateUI();
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>

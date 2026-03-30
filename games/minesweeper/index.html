@@ -509,6 +509,253 @@
     </div>
 </div>
 
+  <script>
+    const DIFFICULTIES = {
+      easy: { rows: 9, cols: 9, mines: 10 },
+      medium: { rows: 16, cols: 16, mines: 40 },
+      hard: { rows: 16, cols: 30, mines: 99 },
+      expert: { rows: 30, cols: 16, mines: 99 }
+    };
+
+    let currentDifficulty = 'medium';
+    let board = [];
+    let revealed = [];
+    let flagged = [];
+    let gameOver = false;
+    let won = false;
+    let timer = 0;
+    let timerInterval = null;
+    let flagCount = 0;
+
+    function setDifficulty(level) {
+      currentDifficulty = level;
+      initGame();
+    }
+
+    function initGame() {
+      const { rows, cols, mines } = DIFFICULTIES[currentDifficulty];
+
+      board = [];
+      revealed = [];
+      flagged = [];
+
+      for (let r = 0; r < rows; r++) {
+        board[r] = [];
+        revealed[r] = [];
+        flagged[r] = [];
+        for (let c = 0; c < cols; c++) {
+          board[r][c] = 0;
+          revealed[r][c] = false;
+          flagged[r][c] = false;
+        }
+      }
+
+      let placedMines = 0;
+      while (placedMines < mines) {
+        const r = Math.floor(Math.random() * rows);
+        const c = Math.floor(Math.random() * cols);
+        if (board[r][c] !== -1) {
+          board[r][c] = -1;
+          placedMines++;
+        }
+      }
+
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          if (board[r][c] === -1) continue;
+          board[r][c] = countMines(r, c);
+        }
+      }
+
+      gameOver = false;
+      won = false;
+      timer = 0;
+      flagCount = 0;
+
+      if (timerInterval) clearInterval(timerInterval);
+      timerInterval = null;
+
+      updateTimer();
+      updateMineCount();
+      updateFlagCount();
+      renderBoard();
+    }
+
+    function countMines(row, col) {
+      const { rows, cols } = DIFFICULTIES[currentDifficulty];
+      let count = 0;
+      for (let dr = -1; dr <= 1; dr++) {
+        for (let dc = -1; dc <= 1; dc++) {
+          if (dr === 0 && dc === 0) continue;
+          const nr = row + dr;
+          const nc = col + dc;
+          if (nr >= 0 && nr < rows && nc >= 0 && nc < cols) {
+            if (board[nr][nc] === -1) count++;
+          }
+        }
+      }
+      return count;
+    }
+
+    function renderBoard() {
+      const { rows, cols } = DIFFICULTIES[currentDifficulty];
+      const boardEl = document.getElementById('board');
+      boardEl.style.gridTemplateColumns = `repeat(${cols}, 32px)`;
+      boardEl.innerHTML = '';
+
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          const cell = document.createElement('div');
+          cell.className = 'cell';
+          cell.dataset.row = r;
+          cell.dataset.col = c;
+
+          if (revealed[r][c]) {
+            cell.classList.add('revealed');
+            if (board[r][c] === -1) {
+              cell.classList.add('mine');
+              cell.textContent = '💣';
+            } else if (board[r][c] > 0) {
+              cell.textContent = board[r][c];
+              cell.classList.add(`safe-${board[r][c]}`);
+            }
+          } else if (flagged[r][c]) {
+            cell.classList.add('flagged');
+            cell.textContent = '🚩';
+          }
+
+          cell.addEventListener('click', () => handleClick(r, c));
+          cell.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+            handleRightClick(r, c);
+          
+          cell.addEventListener('touchstart', (e) => handleTouchStart(e, r, c), { passive: false 
+          cell.addEventListener('touchend', (e) => handleTouchEnd(e), { passive: false 
+
+          boardEl.appendChild(cell);
+        }
+      }
+    }
+
+    let touchTimer = null;
+    function handleTouchStart(e, row, col) {
+      if (touchTimer) clearTimeout(touchTimer);
+      touchTimer = setTimeout(() => handleRightClick(row, col), 500);
+      e.preventDefault();
+    }
+
+    function handleTouchEnd(e) {
+      if (touchTimer) {
+        clearTimeout(touchTimer);
+        touchTimer = null;
+      }
+    }
+
+    function handleClick(row, col) {
+      if (gameOver || flagged[row][col]) return;
+      startTimer();
+      revealCell(row, col);
+    }
+
+    function handleRightClick(row, col) {
+      if (gameOver || revealed[row][col]) return;
+      flagged[row][col] = !flagged[row][col];
+      flagCount += flagged[row][col] ? 1 : -1;
+      updateFlagCount();
+      renderBoard();
+    }
+
+    function revealCell(row, col) {
+      const { rows, cols, mines } = DIFFICULTIES[currentDifficulty];
+
+      if (row < 0 || row >= rows || col < 0 || col >= cols) return;
+      if (revealed[row][col] || flagged[row][col]) return;
+
+      revealed[row][col] = true;
+
+      if (board[row][col] === -1) {
+        gameOver = true;
+        won = false;
+        revealAllMines();
+        if (timerInterval) clearInterval(timerInterval);
+        alert('💥 Game Over! You hit a mine.');
+      } else {
+        if (board[row][col] === 0) {
+          for (let dr = -1; dr <= 1; dr++) {
+            for (let dc = -1; dc <= 1; dc++) {
+              if (dr === 0 && dc === 0) continue;
+              revealCell(row + dr, col + dc);
+            }
+          }
+        }
+      }
+
+      renderBoard();
+      checkWin();
+    }
+
+    function revealAllMines() {
+      const { rows, cols } = DIFFICULTIES[currentDifficulty];
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          if (board[r][c] === -1) {
+            revealed[r][c] = true;
+          }
+        }
+      }
+      renderBoard();
+    }
+
+    function checkWin() {
+      const { rows, cols, mines } = DIFFICULTIES[currentDifficulty];
+      let revealedSafe = 0;
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          if (revealed[r][c] && board[r][c] !== -1) {
+            revealedSafe++;
+          }
+        }
+      }
+      if (revealedSafe === (rows * cols - mines) && !gameOver) {
+        gameOver = true;
+        won = true;
+        if (timerInterval) clearInterval(timerInterval);
+        alert('🎉 You Won! Time: ' + formatTime(timer));
+      }
+    }
+
+    function startTimer() {
+      if (!timerInterval && !gameOver) {
+        timerInterval = setInterval(() => {
+          timer++;
+          updateTimer();
+        }, 1000);
+      }
+    }
+
+    function updateTimer() {
+      document.getElementById('timer').textContent = formatTime(timer);
+    }
+
+    function formatTime(seconds) {
+      const m = Math.floor(seconds / 60).toString().padStart(2, '0');
+      const s = (seconds % 60).toString().padStart(2, '0');
+      return `${m}:${s}`;
+    }
+
+    function updateMineCount() {
+      const { mines } = DIFFICULTIES[currentDifficulty];
+      document.getElementById('mineCount').textContent = mines;
+    }
+
+    function updateFlagCount() {
+      document.getElementById('flagCount').textContent = flagCount;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initGame();
+    
+  </script>
 <script src="/knexio-bundle.js"></script>
   
     <footer>
