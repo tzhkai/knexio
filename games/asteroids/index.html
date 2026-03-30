@@ -520,7 +520,7 @@ function updateHUD(){
   document.getElementById('waveDisp').textContent=wave;
 }
 
-document.addEventListener('keydown',e=>{keys[e.key]=true;if(e.key==='Enter'){if(gameState!=='playing')initGame();}if([' ','ArrowUp','ArrowDown'].includes(e.key))e.preventDefault();});
+document.addEventListener('keydown',e=>{keys[e.key]=true;if(e.key==='Enter'){if(gameState!=='playing')initGame();}if([' ','ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.key))e.preventDefault();});
 document.addEventListener('keyup',e=>{keys[e.key]=false;});
 canvas.addEventListener('click',()=>{if(gameState!=='playing')initGame();});
 
