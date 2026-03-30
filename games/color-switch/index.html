@@ -376,6 +376,144 @@
     </div>
 </div>
 
+
+<script>
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+const overlay = document.getElementById('overlay');
+const scoreEl = document.getElementById('scoreEl');
+const bestEl = document.getElementById('bestEl');
+
+const COLORS = ['#FF3366','#4f8cff','#FFCC00','#00E676'];
+const W = 360, H = 500;
+
+let ball, obstacles, score, best = 0, raf, running = false;
+
+function Ball() {
+  return { x: W/2, y: H*0.75, vy: 0, r: 14, color: COLORS[0], colorIdx: 0 };
+}
+
+function Obstacle(y) {
+  const gap = Math.PI * 0.45;
+  const offset = Math.random() * Math.PI * 2;
+  return { y, radius: 70, speed: 0.018 + score * 0.0003, angle: offset, gap, colors: shuffleColors() };
+}
+
+function shuffleColors() {
+  const c = [...COLORS];
+  for(let i=c.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[c[i],c[j]]=[c[j],c[i]];}
+  return c;
+}
+
+function init() {
+  ball = Ball();
+  obstacles = [Obstacle(H * 0.35), Obstacle(H * 0.35 - 180)];
+  score = 0;
+  scoreEl.textContent = '0';
+  running = true;
+  overlay.style.display = 'none';
+}
+
+function drawBall() {
+  ctx.save();
+  ctx.shadowColor = ball.color;
+  ctx.shadowBlur = 18;
+  ctx.beginPath();
+  ctx.arc(ball.x, ball.y, ball.r, 0, Math.PI*2);
+  ctx.fillStyle = ball.color;
+  ctx.fill();
+  ctx.restore();
+}
+
+function drawObstacle(ob) {
+  const segAngle = (Math.PI * 2 - ob.gap) / 4;
+  for(let i=0;i<4;i++) {
+    const start = ob.angle + i * (Math.PI*2/4);
+    const end = start + segAngle;
+    ctx.beginPath();
+    ctx.arc(W/2, ob.y, ob.radius, start, end);
+    ctx.lineWidth = 18;
+    ctx.strokeStyle = ob.colors[i];
+    ctx.lineCap = 'round';
+    ctx.stroke();
+  }
+}
+
+function checkCollision(ob) {
+  const dx = ball.x - W/2;
+  const dy = ball.y - ob.y;
+  const dist = Math.sqrt(dx*dx + dy*dy);
+  if(dist < ob.radius + ball.r + 2 && dist > ob.radius - ball.r - 2) {
+    const angle = Math.atan2(dy, dx);
+    let relAngle = ((angle - ob.angle) % (Math.PI*2) + Math.PI*2) % (Math.PI*2);
+    const segAngle = (Math.PI*2 - ob.gap) / 4;
+    const segFull = Math.PI*2 / 4;
+    const segIdx = Math.floor(relAngle / segFull);
+    const withinSeg = relAngle % segFull;
+    if(withinSeg < segAngle) {
+      if(ob.colors[segIdx % 4] !== ball.color) return true; // hit wrong color
+    }
+  }
+  return false;
+}
+
+function gameOver() {
+  running = false;
+  cancelAnimationFrame(raf);
+  if(score > best) { best = score; bestEl.textContent = best; }
+  overlay.innerHTML = `<h2>Game Over</h2><p style="color:#aab3c5">Score: ${score}</p><button class="btn" id="startBtn">Play Again</button>`;
+  overlay.style.display = 'flex';
+  document.getElementById('startBtn').addEventListener('click', init, {once:true});
+}
+
+function loop() {
+  ctx.fillStyle = '#070d1a';
+  ctx.fillRect(0, 0, W, H);
+
+  ball.vy += 0.32;
+  ball.y += ball.vy;
+
+  obstacles.forEach(ob => {
+    ob.angle += ob.speed;
+    ob.y += 1.5;
+    drawObstacle(ob);
+    if(checkCollision(ob)) { gameOver(); return; }
+  });
+
+  // recycle obstacles that fall off bottom
+  obstacles = obstacles.map(ob => {
+    if(ob.y > H + 80) {
+      score++;
+      scoreEl.textContent = score;
+      // change ball color to next
+      ball.colorIdx = (ball.colorIdx + 1) % COLORS.length;
+      ball.color = COLORS[ball.colorIdx];
+      return Obstacle(-80);
+    }
+    return ob;
+  });
+
+  if(ball.y > H + ball.r) gameOver();
+  if(ball.y < -ball.r) gameOver();
+
+  drawBall();
+
+  if(running) raf = requestAnimationFrame(loop);
+}
+
+function tap() {
+  if(!running) return;
+  ball.vy = -9;
+}
+
+canvas.addEventListener('click', tap);
+canvas.addEventListener('touchstart', e => { e.preventDefault(); tap(); }, {passive:false});
+document.getElementById('startBtn').addEventListener('click', () => { init(); loop(); }, {once:true});
+
+// initial draw
+ctx.fillStyle = '#070d1a';
+ctx.fillRect(0, 0, W, H);
+</script>
 <script src="/knexio-bundle.js"></script>
   
     <footer>

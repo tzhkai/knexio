@@ -357,6 +357,81 @@
     </div>
 </div>
 
+
+<script>
+const canvas = document.getElementById('game');
+    const ctx = canvas.getContext('2d');
+    let player = { x: 180, y: 400, vy: 0, radius: 15 };
+    let platforms = [];
+    let score = 0;
+    let keys = {};
+
+    function init() {
+      platforms = [];
+      for(let i = 0; i < 6; i++) {
+        platforms.push({ x: Math.random() * 300, y: 450 - i * 80, width: 60 });
+      }
+      player = { x: 180, y: 400, vy: 0, radius: 15 };
+      score = 0;
+    }
+
+    function update() {
+      if(keys['ArrowLeft']) player.x -= 5;
+      if(keys['ArrowRight']) player.x += 5;
+      player.x = (player.x + 360) % 360;
+
+      player.vy += 0.3;
+      player.y += player.vy;
+
+      platforms.forEach(p => {
+        if(player.vy > 0 && player.y + player.radius > p.y && player.y + player.radius < p.y + 10 &&
+           player.x > p.x - 10 && player.x < p.x + p.width + 10) {
+          player.vy = -10;
+        }
+      });
+
+      if(player.y < 250) {
+        let diff = 250 - player.y;
+        player.y = 250;
+        platforms.forEach(p => { p.y += diff; score += Math.floor(diff/10); });
+        platforms = platforms.filter(p => p.y < 500);
+        while(platforms.length < 6) {
+          platforms.push({ x: Math.random() * 300, y: platforms[platforms.length-1]?.y - 80 || 50, width: 60 });
+        }
+      }
+
+      if(player.y > 500) init();
+      document.getElementById('score').textContent = score;
+    }
+
+    function draw() {
+      ctx.fillStyle = '#0a0a1a';
+      ctx.fillRect(0, 0, 360, 500);
+
+      ctx.fillStyle = '#4f8cff';
+      ctx.beginPath();
+      ctx.arc(player.x, player.y, player.radius, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.fillStyle = '#2d5a27';
+      platforms.forEach(p => ctx.fillRect(p.x, p.y, p.width, 10));
+    }
+
+    function loop() { update(); draw(); requestAnimationFrame(loop); }
+
+    document.addEventListener('keydown', e => keys[e.key] = true);
+    document.addEventListener('keyup', e => keys[e.key] = false);
+    canvas.addEventListener('touchstart', e => {
+      const touch = e.touches[0];
+      if(touch.clientX < window.innerWidth / 2) keys['ArrowLeft'] = true;
+      else keys['ArrowRight'] = true;
+    });
+    canvas.addEventListener('touchend', () => { keys['ArrowLeft'] = false; keys['ArrowRight'] = false; });
+
+    function resetGame() { init(); }
+    init();
+    loop();
+</script>
 <script src="/knexio-bundle.js"></script>
   
     <footer>

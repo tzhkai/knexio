@@ -399,6 +399,103 @@
     </div>
 </div>
 
+
+<script>
+let score = 0, timeLeft = 30, running = false, mode = 'medium';
+  let moleTimer = null, countTimer = null, activeHoles = new Set();
+  const SPEEDS = { easy: {show:1400,min:1000}, medium: {show:900,min:600}, hard: {show:600,min:350} };
+
+  // Build holes
+  const arena = document.getElementById('arena');
+  for(let i=0;i<9;i++){
+    const h = document.createElement('div');
+    h.className = 'hole';
+    h.dataset.id = i;
+    h.innerHTML = '<div class="mole">🐭</div><div class="score-pop" id="pop'+i+'">+1</div>';
+    h.addEventListener('click', ()=>whack(i));
+    h.addEventListener('touchstart', e=>{e.preventDefault();whack(i);},{passive:false});
+    arena.appendChild(h);
+  }
+
+  function setMode(m) {
+    mode = m;
+    ['easy','medium','hard'].forEach(x=>{
+      document.getElementById('mode'+x.charAt(0).toUpperCase()+x.slice(1)).classList.toggle('active', x===m);
+    });
+  }
+
+  function startGame() {
+    if (running) { stopGame(); }
+    score = 0; timeLeft = 30; activeHoles.clear();
+    document.getElementById('score').textContent = '0';
+    document.getElementById('timer').textContent = '30';
+    document.getElementById('resultMsg').style.display = 'none';
+    document.getElementById('statusBar').textContent = 'Whack those moles!';
+    running = true;
+    document.getElementById('startBtn').textContent = 'Restart';
+    scheduleMole();
+    countTimer = setInterval(()=>{
+      timeLeft--;
+      document.getElementById('timer').textContent = timeLeft;
+      if (timeLeft <= 0) endGame();
+    }, 1000);
+  }
+
+  function stopGame() {
+    running = false;
+    clearTimeout(moleTimer);
+    clearInterval(countTimer);
+    document.querySelectorAll('.hole').forEach(h=>h.classList.remove('up','bonk'));
+    activeHoles.clear();
+  }
+
+  function scheduleMole() {
+    if (!running) return;
+    const sp = SPEEDS[mode];
+    const delay = sp.min + Math.random()*(sp.show-sp.min);
+    moleTimer = setTimeout(()=>{
+      showMole();
+      scheduleMole();
+    }, 400 + Math.random()*300);
+  }
+
+  function showMole() {
+    const holes = document.querySelectorAll('.hole');
+    const available = [...holes].filter(h=>!h.classList.contains('up') && !h.classList.contains('bonk'));
+    if (!available.length) return;
+    const h = available[Math.floor(Math.random()*available.length)];
+    const id = +h.dataset.id;
+    h.classList.add('up');
+    activeHoles.add(id);
+    const sp = SPEEDS[mode];
+    const stayTime = sp.min + Math.random()*(sp.show - sp.min);
+    setTimeout(()=>{
+      if(h.classList.contains('up')){ h.classList.remove('up'); activeHoles.delete(id); }
+    }, stayTime);
+  }
+
+  function whack(id) {
+    if (!running) return;
+    const h = document.querySelector(`.hole[data-id="${id}"]`);
+    if (!h.classList.contains('up')) return;
+    h.classList.remove('up');
+    h.classList.add('bonk');
+    activeHoles.delete(id);
+    score++;
+    document.getElementById('score').textContent = score;
+    const pop = document.getElementById('pop'+id);
+    pop.classList.add('show');
+    setTimeout(()=>{ h.classList.remove('bonk'); pop.classList.remove('show'); }, 300);
+  }
+
+  function endGame() {
+    stopGame();
+    document.getElementById('statusBar').textContent = '';
+    document.getElementById('finalScore').textContent = `You scored ${score} point${score===1?'':'s'}. ${score>=20?'Amazing!':score>=10?'Nice!':'Keep practicing!'}`;
+    document.getElementById('resultMsg').style.display = 'block';
+    document.getElementById('startBtn').textContent = 'Start Game';
+  }
+</script>
 <script src="/knexio-bundle.js"></script>
   
     <footer>

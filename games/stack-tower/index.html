@@ -372,6 +372,296 @@
     </div>
 </div>
 
+
+<script>
+(function() {
+    const canvas = document.getElementById('game');
+    const ctx = canvas.getContext('2d');
+    const W = canvas.width, H = canvas.height;
+
+    const BLOCK_HEIGHT = 30;
+    const INITIAL_WIDTH = 200;
+    const INITIAL_SPEED = 3;
+
+    let score, bestScore, gameState, blocks, currentBlock, cameraY, particles;
+
+    try { bestScore = parseInt(localStorage.getItem('stacktower_best') || '0'); } catch(e){ bestScore = 0; }
+
+    const colors = [
+      '#4f8cff', '#ff6b6b', '#4ecb71', '#ffa53d', '#c678dd',
+      '#22d3ee', '#f472b6', '#a3e635', '#fbbf24', '#818cf8'
+    ];
+
+    function init() {
+      score = 0;
+      gameState = 'idle';
+      blocks = [];
+      particles = [];
+      cameraY = 0;
+
+      // Base block
+      blocks.push({
+        x: W/2 - INITIAL_WIDTH/2,
+        y: H - 100,
+        w: INITIAL_WIDTH,
+        h: BLOCK_HEIGHT,
+        color: colors[0]
+      });
+
+      spawnBlock();
+      updateHUD();
+      render();
+    }
+
+    function spawnBlock() {
+      const lastBlock = blocks[blocks.length - 1];
+      const direction = blocks.length % 2 === 0 ? 1 : -1;
+      const speed = Math.min(INITIAL_SPEED + score * 0.15, 12);
+
+      currentBlock = {
+        x: direction === 1 ? -lastBlock.w : W,
+        y: lastBlock.y - BLOCK_HEIGHT,
+        w: lastBlock.w,
+        h: BLOCK_HEIGHT,
+        color: colors[score % colors.length],
+        speed: speed * direction,
+        direction: direction
+      };
+    }
+
+    function updateHUD() {
+      document.getElementById('scoreDisplay').textContent = score;
+      document.getElementById('bestDisplay').textContent = bestScore;
+    }
+
+    // ── Input ──────────────────────────────────────────
+    function dropBlock() {
+      if (gameState === 'idle') { startGame(); return; }
+      if (gameState !== 'playing') { init(); return; }
+
+      const lastBlock = blocks[blocks.length - 1];
+
+      // Calculate overlap
+      const left = Math.max(currentBlock.x, lastBlock.x);
+      const right = Math.min(currentBlock.x + currentBlock.w, lastBlock.x + lastBlock.w);
+      const overlap = right - left;
+
+      if (overlap <= 0) {
+        // Missed completely - game over
+        spawnParticles(currentBlock.x + currentBlock.w/2, currentBlock.y + BLOCK_HEIGHT/2, currentBlock.color, 20);
+        gameState = 'dead';
+        if (score > bestScore) {
+          bestScore = score;
+          try { localStorage.setItem('stacktower_best', bestScore); } catch(e){}
+        }
+        updateHUD();
+        return;
+      }
+
+      // Perfect placement bonus
+      const perfect = overlap >= currentBlock.w - 2;
+      if (perfect && score > 0) {
+        // Keep same width for perfect placement
+        currentBlock.x = lastBlock.x;
+        currentBlock.w = lastBlock.w;
+        spawnParticles(currentBlock.x + currentBlock.w/2, currentBlock.y, '#ffd700', 15);
+      } else {
+        // Cut off overhang
+        currentBlock.x = left;
+        currentBlock.w = overlap;
+
+        // Spawn particles for cut off part
+        const cutOffX = currentBlock.direction === 1 ? right : currentBlock.x - (currentBlock.direction === 1 ? 0 : lastBlock.w - overlap);
+        const cutOffWidth = currentBlock.w - overlap;
+        if (cutOffWidth > 0) {
+          spawnParticles(cutOffX + cutOffWidth/2, currentBlock.y + BLOCK_HEIGHT/2, currentBlock.color, 10);
+        }
+      }
+
+      blocks.push({ ...currentBlock });
+      score++;
+
+      // Camera follow
+      if (blocks.length > 5) {
+        cameraY = blocks[blocks.length - 1].y - (H - 200);
+      }
+
+      spawnBlock();
+      updateHUD();
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.code === 'Space') { e.preventDefault(); dropBlock(); }
+    });
+    canvas.addEventListener('pointerdown', e => { e.preventDefault(); dropBlock(); });
+
+    function startGame() {
+      gameState = 'playing';
+      loop();
+    }
+
+    // ── Loop ───────────────────────────────────────────
+    function loop() {
+      if (gameState !== 'playing') return;
+      update();
+      render();
+      requestAnimationFrame(loop);
+    }
+
+    function update() {
+      // Move current block
+      if (currentBlock) {
+        currentBlock.x += currentBlock.speed;
+
+        // Bounce off walls
+        if (currentBlock.x <= -currentBlock.w) {
+          currentBlock.x = -currentBlock.w;
+          currentBlock.speed = Math.abs(currentBlock.speed);
+        } else if (currentBlock.x >= W) {
+          currentBlock.x = W;
+          currentBlock.speed = -Math.abs(currentBlock.speed);
+        }
+      }
+
+      // Update particles
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.3;
+        p.life--;
+        if (p.life <= 0) particles.splice(i, 1);
+      }
+    }
+
+    function spawnParticles(x, y, color, count) {
+      for (let i = 0; i < count; i++) {
+        const angle = (Math.PI * 2 * i) / count + Math.random() * 0.5;
+        particles.push({
+          x, y,
+          vx: Math.cos(angle) * (Math.random() * 5 + 2),
+          vy: Math.sin(angle) * (Math.random() * 5 + 2) - 3,
+          life: 30 + Math.random() * 20,
+          color,
+          size: Math.random() * 6 + 3
+        });
+      }
+    }
+
+    // ── Render ─────────────────────────────────────────
+    function render() {
+      // Clear with gradient
+      const grad = ctx.createLinearGradient(0, 0, 0, H);
+      grad.addColorStop(0, '#0b1220');
+      grad.addColorStop(1, '#1a1a2e');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, W, H);
+
+      ctx.save();
+      ctx.translate(0, -cameraY);
+
+      // Draw placed blocks
+      for (let i = 0; i < blocks.length; i++) {
+        const b = blocks[i];
+        drawBlock(b, i === blocks.length - 1);
+      }
+
+      // Draw current moving block
+      if (currentBlock && gameState === 'playing') {
+        drawBlock(currentBlock, false, true);
+
+        // Draw ghost/guide line
+        ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+        ctx.setLineDash([5, 5]);
+        ctx.beginPath();
+        ctx.moveTo(currentBlock.x, currentBlock.y);
+        ctx.lineTo(currentBlock.x, currentBlock.y + BLOCK_HEIGHT);
+        ctx.moveTo(currentBlock.x + currentBlock.w, currentBlock.y);
+        ctx.lineTo(currentBlock.x + currentBlock.w, currentBlock.y + BLOCK_HEIGHT);
+        ctx.stroke();
+        ctx.setLineDash([]);
+      }
+
+      ctx.restore();
+
+      // Particles (not affected by camera)
+      for (const p of particles) {
+        const py = p.y - cameraY;
+        if (py > H + 50 || py < -50) continue;
+        ctx.globalAlpha = p.life / 40;
+        ctx.fillStyle = p.color;
+        ctx.fillRect(p.x - p.size/2, py - p.size/2, p.size, p.size);
+      }
+      ctx.globalAlpha = 1;
+
+      // Overlays
+      if (gameState === 'idle') {
+        drawOverlay('Stack Tower', 'Press Space or Tap to Start', '#4f8cff');
+      } else if (gameState === 'dead') {
+        drawOverlay('Game Over', `Score: ${score}  ·  Best: ${bestScore}`, '#ff6b6b');
+        ctx.fillStyle = '#fff';
+        ctx.font = '14px system-ui';
+        ctx.textAlign = 'center';
+        ctx.fillText('Tap to play again', W/2, H/2 + 50);
+        ctx.textAlign = 'left';
+      }
+    }
+
+    function drawBlock(b, isLast, isMoving) {
+      // Shadow
+      ctx.fillStyle = 'rgba(0,0,0,0.3)';
+      ctx.fillRect(b.x + 4, b.y + 4, b.w, b.h);
+
+      // Block body
+      const grad = ctx.createLinearGradient(b.x, b.y, b.x, b.y + b.h);
+      grad.addColorStop(0, lighten(b.color, 40));
+      grad.addColorStop(1, b.color);
+      ctx.fillStyle = grad;
+      ctx.fillRect(b.x, b.y, b.w, b.h);
+
+      // Border
+      ctx.strokeStyle = isMoving ? '#fff' : 'rgba(255,255,255,0.2)';
+      ctx.lineWidth = isMoving ? 2 : 1;
+      ctx.strokeRect(b.x, b.y, b.w, b.h);
+
+      // Shine effect
+      ctx.fillStyle = 'rgba(255,255,255,0.15)';
+      ctx.fillRect(b.x + 2, b.y + 2, b.w - 4, 4);
+
+      // Number on last block
+      if (isLast && !isMoving) {
+        ctx.fillStyle = '#fff';
+        ctx.font = 'bold 14px system-ui';
+        ctx.textAlign = 'center';
+        ctx.fillText(score, b.x + b.w/2, b.y + b.h/2 + 5);
+        ctx.textAlign = 'left';
+      }
+    }
+
+    function drawOverlay(title, sub, color) {
+      ctx.fillStyle = 'rgba(11,18,32,0.85)';
+      ctx.fillRect(0, 0, W, H);
+      ctx.fillStyle = color;
+      ctx.font = 'bold 32px system-ui';
+      ctx.textAlign = 'center';
+      ctx.fillText(title, W/2, H/2 - 30);
+      ctx.fillStyle = '#aab3c5';
+      ctx.font = '16px system-ui';
+      ctx.fillText(sub, W/2, H/2 + 10);
+      ctx.textAlign = 'left';
+    }
+
+    function lighten(hex, amount) {
+      const num = parseInt(hex.replace('#',''), 16);
+      const r = Math.min(255, (num >> 16) + amount);
+      const g = Math.min(255, ((num >> 8) & 0xff) + amount);
+      const b = Math.min(255, (num & 0xff) + amount);
+      return `rgb(${r},${g},${b})`;
+    }
+
+    init();
+  })();
+</script>
 <script src="/knexio-bundle.js"></script>
   
     <footer>

@@ -414,6 +414,98 @@
       <p>© 2026 Knexio. All rights reserved.</p>
     </footer>
 
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+const COLORS=[
+  {name:'RED',hex:'#f87171'},
+  {name:'BLUE',hex:'#4f8cff'},
+  {name:'GREEN',hex:'#34d399'},
+  {name:'YELLOW',hex:'#facc15'},
+  {name:'PURPLE',hex:'#a78bfa'},
+  {name:'ORANGE',hex:'#f97316'},
+];
+let score=0, best=0, streak=0, correct=0, timer=null, timeLeft=30, answering=true;
+
+function startGame(){
+  score=0;streak=0;correct=0;timeLeft=30;answering=true;
+  document.getElementById('gamePanel').style.display='';
+  document.getElementById('resultPanel').style.display='none';
+  updateHUD();
+  clearInterval(timer);
+  document.getElementById('timerFill').style.transition='none';
+  document.getElementById('timerFill').style.width='100%';
+  setTimeout(()=>{
+    document.getElementById('timerFill').style.transition='width 30s linear';
+    document.getElementById('timerFill').style.width='0%';
+  },50);
+  timer=setInterval(()=>{
+    timeLeft--;
+    document.getElementById('timerVal').textContent=timeLeft;
+    if(timeLeft<=5)document.getElementById('timerFill').style.background='var(--red)';
+    if(timeLeft<=0){clearInterval(timer);endGame();}
+  },1000);
+  nextRound();
+}
+
+function updateHUD(){
+  document.getElementById('scoreVal').textContent=score;
+  document.getElementById('bestVal').textContent=best;
+  document.getElementById('streakVal').textContent=streak;
+}
+
+function shuffle(a){return a.sort(()=>Math.random()-0.5);}
+
+function nextRound(){
+  document.getElementById('feedbackText').textContent='';
+  document.getElementById('feedbackText').className='feedback-text';
+  // Word text = random color name, ink color = different random color
+  const wordIdx=Math.floor(Math.random()*COLORS.length);
+  let inkIdx=Math.floor(Math.random()*COLORS.length);
+  if(inkIdx===wordIdx)inkIdx=(inkIdx+1)%COLORS.length;
+  const wordName=COLORS[wordIdx].name;
+  const inkColor=COLORS[inkIdx];
+  document.getElementById('colorWord').textContent=wordName;
+  document.getElementById('colorWord').style.color=inkColor.hex;
+  // Buttons: inkColor + 3 random others
+  const others=COLORS.filter(c=>c.name!==inkColor.name);
+  const wrong3=shuffle([...others]).slice(0,3);
+  const opts=shuffle([inkColor,...wrong3]);
+  document.getElementById('colorBtns').innerHTML=opts.map(c=>`<button class="color-btn" style="background:${c.hex}" onclick="pick('${c.name}','${inkColor.name}')">${c.name}</button>`).join('');
+  answering=true;
+}
+
+function pick(chosen, correct_name){
+  if(!answering||timeLeft<=0)return;
+  answering=false;
+  const btns=document.querySelectorAll('.color-btn');
+  btns.forEach(b=>{
+    b.disabled=true;
+    if(b.textContent===chosen)b.className='color-btn '+(chosen===correct_name?'correct':'wrong');
+  });
+  if(chosen===correct_name){
+    score+=10+(streak*2);streak++;correct++;
+    if(score>best)best=score;
+    document.getElementById('feedbackText').textContent='✅';
+    document.getElementById('feedbackText').className='feedback-text ok';
+  } else {
+    streak=0;
+    document.getElementById('feedbackText').textContent='❌';
+    document.getElementById('feedbackText').className='feedback-text no';
+  }
+  updateHUD();
+  setTimeout(nextRound,400);
+}
+
+function endGame(){
+  answering=false;
+  document.getElementById('gamePanel').style.display='none';
+  document.getElementById('resultPanel').style.display='';
+  document.getElementById('resultScore').textContent=score;
+  document.getElementById('resultDetail').textContent=correct+' correct answers';
+}
+
+startGame();
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>

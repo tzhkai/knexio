@@ -409,6 +409,310 @@
     </div>
 </div>
 
+
+<script>
+const canvas = document.getElementById('game');
+    const ctx = canvas.getContext('2d');
+    const GRAVITY = 0.4;
+    const JUMP_STRENGTH = -7;
+    const PIPE_SPEED = 2;
+    const PIPE_WIDTH = 50;
+    const PIPE_GAP = 110;
+    const PIPE_SPAWN_X = 400;
+
+    let plane = { x: 80, y: 200, velocity: 0, rotation: 0 };
+    let pipes = [];
+    let score = 0;
+    let bestScore = parseInt(localStorage.getItem('flappyPlaneBest') || '0');
+    let gameState = 'start'; // start, playing, gameover
+    let particles = [];
+    let clouds = [];
+    let frameCount = 0;
+
+    // Initialize clouds
+    for (let i = 0; i < 5; i++) {
+      clouds.push({
+        x: Math.random() * 360,
+        y: Math.random() * 200,
+        speed: 0.3 + Math.random() * 0.3,
+        size: 20 + Math.random() * 20
+      });
+    }
+
+    function init() {
+      plane = { x: 80, y: 250, velocity: 0, rotation: 0 };
+      pipes = [];
+      score = 0;
+      particles = [];
+      frameCount = 0;
+      document.getElementById('score').textContent = score;
+      document.getElementById('best').textContent = bestScore;
+    }
+
+    function startGame() {
+      gameState = 'playing';
+      document.getElementById('startOverlay').classList.add('hidden');
+      document.getElementById('gameOverOverlay').classList.add('hidden');
+      init();
+      // Add first pipe
+      spawnPipe();
+    }
+
+    function spawnPipe() {
+      const minY = 60;
+      const maxY = 350;
+      const pipeY = minY + Math.random() * (maxY - minY);
+      pipes.push({ x: PIPE_SPAWN_X, y: pipeY, passed: false });
+    }
+
+    function createExplosion(x, y) {
+      for (let i = 0; i < 15; i++) {
+        particles.push({
+          x: x,
+          y: y,
+          vx: (Math.random() - 0.5) * 8,
+          vy: (Math.random() - 0.5) * 8,
+          life: 1,
+          color: `hsl(${40 + Math.random() * 20}, 100%, 50%)`
+        });
+      }
+    }
+
+    function update() {
+      frameCount++;
+
+      // Update clouds
+      clouds.forEach(cloud => {
+        cloud.x -= cloud.speed;
+        if (cloud.x < -50) cloud.x = 400;
+      });
+
+      if (gameState === 'playing') {
+        // Plane physics
+        plane.velocity += GRAVITY;
+        plane.y += plane.velocity;
+        plane.rotation = Math.min(Math.PI / 4, Math.max(-Math.PI / 4, plane.velocity * 0.05));
+
+        // Ground/ceiling collision
+        if (plane.y < 0 || plane.y > 470) {
+          gameOver();
+        }
+
+        // Update pipes
+        pipes.forEach((pipe, index) => {
+          pipe.x -= PIPE_SPEED;
+
+          // Check collision
+          const planeRight = plane.x + 26;
+          const planeLeft = plane.x;
+          const planeTop = plane.y;
+          const planeBottom = plane.y + 18;
+          const pipeLeft = pipe.x;
+          const pipeRight = pipe.x + PIPE_WIDTH;
+          const topPipeBottom = pipe.y - PIPE_GAP / 2;
+          const bottomPipeTop = pipe.y + PIPE_GAP / 2;
+
+          // Collision with top pipe
+          if (planeRight > pipeLeft && planeLeft < pipeRight && planeTop < topPipeBottom) {
+            gameOver();
+          }
+          // Collision with bottom pipe
+          if (planeRight > pipeLeft && planeLeft < pipeRight && planeBottom > bottomPipeTop) {
+            gameOver();
+          }
+
+          // Score when passing pipe
+          if (!pipe.passed && pipe.x + PIPE_WIDTH < plane.x) {
+            pipe.passed = true;
+            score++;
+            document.getElementById('score').textContent = score;
+          }
+        });
+
+        // Remove off-screen pipes
+        pipes = pipes.filter(pipe => pipe.x > -60);
+
+        // Spawn new pipes
+        if (frameCount % 120 === 0) {
+          spawnPipe();
+        }
+      }
+
+      // Update particles
+      particles.forEach(p => {
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.2;
+        p.life -= 0.02;
+      });
+      particles = particles.filter(p => p.life > 0);
+    }
+
+    function draw() {
+      // Sky gradient
+      const gradient = ctx.createLinearGradient(0, 0, 0, 500);
+      gradient.addColorStop(0, '#4facfe');
+      gradient.addColorStop(1, '#00f2fe');
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, 360, 500);
+
+      // Draw clouds
+      ctx.fillStyle = 'rgba(255,255,255,0.6)';
+      clouds.forEach(cloud => {
+        ctx.beginPath();
+        ctx.arc(cloud.x, cloud.y, cloud.size, 0, Math.PI * 2);
+        ctx.arc(cloud.x + cloud.size * 0.5, cloud.y - cloud.size * 0.3, cloud.size * 0.8, 0, Math.PI * 2);
+        ctx.arc(cloud.x + cloud.size, cloud.y, cloud.size * 0.7, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      // Draw pipes
+      pipes.forEach(pipe => {
+        const topHeight = pipe.y - PIPE_GAP / 2;
+        const bottomY = pipe.y + PIPE_GAP / 2;
+
+        // Pipe gradient
+        const pipeGrad = ctx.createLinearGradient(pipe.x, 0, pipe.x + PIPE_WIDTH, 0);
+        pipeGrad.addColorStop(0, '#2ecc71');
+        pipeGrad.addColorStop(0.5, '#27ae60');
+        pipeGrad.addColorStop(1, '#229954');
+        ctx.fillStyle = pipeGrad;
+
+        // Top pipe
+        ctx.fillRect(pipe.x, 0, PIPE_WIDTH, topHeight);
+        ctx.fillStyle = '#1e8449';
+        ctx.fillRect(pipe.x - 2, topHeight - 20, PIPE_WIDTH + 4, 20);
+
+        // Bottom pipe
+        ctx.fillStyle = pipeGrad;
+        ctx.fillRect(pipe.x, bottomY, PIPE_WIDTH, 500 - bottomY);
+        ctx.fillStyle = '#1e8449';
+        ctx.fillRect(pipe.x - 2, bottomY, PIPE_WIDTH + 4, 20);
+      });
+
+      // Draw ground
+      ctx.fillStyle = '#8B4513';
+      ctx.fillRect(0, 480, 360, 20);
+      ctx.fillStyle = '#228B22';
+      ctx.fillRect(0, 475, 360, 5);
+
+      // Draw plane
+      ctx.save();
+      ctx.translate(plane.x + 15, plane.y + 10);
+      ctx.rotate(plane.rotation);
+
+      // Plane body
+      ctx.fillStyle = '#FFD700';
+      ctx.beginPath();
+      ctx.ellipse(0, 0, 18, 10, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Cockpit
+      ctx.fillStyle = '#87CEEB';
+      ctx.beginPath();
+      ctx.ellipse(5, -3, 8, 5, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Wing
+      ctx.fillStyle = '#FF6B6B';
+      ctx.beginPath();
+      ctx.moveTo(-5, 5);
+      ctx.lineTo(5, 5);
+      ctx.lineTo(0, 15);
+      ctx.closePath();
+      ctx.fill();
+
+      // Tail
+      ctx.fillStyle = '#FF6B6B';
+      ctx.beginPath();
+      ctx.moveTo(-12, -5);
+      ctx.lineTo(-18, -12);
+      ctx.lineTo(-8, -8);
+      ctx.closePath();
+      ctx.fill();
+
+      // Propeller
+      ctx.fillStyle = '#8B4513';
+      ctx.fillRect(16, -8, 3, 16);
+
+      ctx.restore();
+
+      // Draw particles
+      particles.forEach(p => {
+        ctx.globalAlpha = p.life;
+        ctx.fillStyle = p.color;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 4, 0, Math.PI * 2);
+        ctx.fill();
+      });
+      ctx.globalAlpha = 1;
+    }
+
+    function loop() {
+      update();
+      draw();
+      requestAnimationFrame(loop);
+    }
+
+    function jump() {
+      if (gameState === 'playing') {
+        plane.velocity = JUMP_STRENGTH;
+      } else if (gameState === 'start') {
+        startGame();
+      } else if (gameState === 'gameover') {
+        resetGame();
+      }
+    }
+
+    function gameOver() {
+      gameState = 'gameover';
+      createExplosion(plane.x + 15, plane.y + 10);
+
+      // Update best score
+      const newBest = score > bestScore;
+      if (newBest) {
+        bestScore = score;
+        localStorage.setItem('flappyPlaneBest', bestScore.toString());
+        document.getElementById('best').textContent = bestScore;
+      }
+
+      document.getElementById('finalScore').textContent = score;
+      document.getElementById('newBest').classList.toggle('hidden', !newBest);
+      document.getElementById('gameOverOverlay').classList.remove('hidden');
+    }
+
+    function resetGame() {
+      gameState = 'playing';
+      document.getElementById('gameOverOverlay').classList.add('hidden');
+      init();
+      spawnPipe();
+    }
+
+    // Input handling
+    document.addEventListener('keydown', e => {
+      if (e.code === 'Space' || e.code === 'ArrowUp') {
+        e.preventDefault();
+        jump();
+      }
+    });
+
+    canvas.addEventListener('mousedown', e => {
+      e.preventDefault();
+      jump();
+    });
+
+    canvas.addEventListener('touchstart', e => {
+      e.preventDefault();
+      jump();
+    }, { passive: false });
+
+    // Show start screen
+    document.getElementById('startOverlay').classList.remove('hidden');
+    document.getElementById('best').textContent = bestScore;
+
+    // Start loop
+    loop();
+</script>
 <script src="/knexio-bundle.js"></script>
   
     <footer>

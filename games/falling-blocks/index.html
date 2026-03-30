@@ -412,6 +412,145 @@
       <p>© 2026 Knexio. All rights reserved.</p>
     </footer>
 
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+const canvas=document.getElementById('gameCanvas');
+const ctx=canvas.getContext('2d');
+const nextCtx=document.getElementById('nextCanvas').getContext('2d');
+const holdCtx=document.getElementById('holdCanvas').getContext('2d');
+const CELL=20,COLS=10,ROWS=20;
+const COLORS={I:'#22d3ee',O:'#facc15',T:'#a78bfa',S:'#34d399',Z:'#f87171',J:'#60a5fa',L:'#f97316'};
+const PIECES={
+  I:[[0,0,0,0],[1,1,1,1],[0,0,0,0],[0,0,0,0]],
+  O:[[1,1],[1,1]],
+  T:[[0,1,0],[1,1,1],[0,0,0]],
+  S:[[0,1,1],[1,1,0],[0,0,0]],
+  Z:[[1,1,0],[0,1,1],[0,0,0]],
+  J:[[1,0,0],[1,1,1],[0,0,0]],
+  L:[[0,0,1],[1,1,1],[0,0,0]]
+};
+const TYPES=Object.keys(PIECES);
+
+let board,current,next,hold,canHold,score,lines,level,best=0,drop,gameState='start',paused=false;
+
+function newBoard(){return Array.from({length:ROWS},()=>Array(COLS).fill(null));}
+function randPiece(){
+  const t=TYPES[Math.floor(Math.random()*TYPES.length)];
+  return{type:t,matrix:PIECES[t].map(r=>[...r]),x:Math.floor(COLS/2)-Math.ceil(PIECES[t][0].length/2),y:0};
+}
+function rotate(m){return m[0].map((_,i)=>m.map(r=>r[i]).reverse());}
+function valid(m,x,y){
+  for(let r=0;r<m.length;r++)for(let c=0;c<m[r].length;c++){
+    if(!m[r][c])continue;
+    const nx=x+c,ny=y+r;
+    if(nx<0||nx>=COLS||ny>=ROWS)return false;
+    if(ny>=0&&board[ny][nx])return false;
+  }return true;
+}
+function place(){
+  for(let r=0;r<current.matrix.length;r++)for(let c=0;c<current.matrix[r].length;c++){
+    if(current.matrix[r][c]){
+      if(current.y+r<0){endGame();return;}
+      board[current.y+r][current.x+c]=current.type;
+    }
+  }
+  clearLines();current=next;next=randPiece();canHold=true;
+  if(!valid(current.matrix,current.x,current.y))endGame();
+}
+function clearLines(){
+  const full=[];
+  for(let r=ROWS-1;r>=0;r--){if(board[r].every(c=>c))full.push(r);}
+  if(!full.length)return;
+  full.forEach(r=>board.splice(r,1));
+  while(board.length<ROWS)board.unshift(Array(COLS).fill(null));
+  const pts=[0,100,300,500,800];lines+=full.length;score+=pts[Math.min(full.length,4)]*level;
+  level=Math.floor(lines/10)+1;drop=Math.max(100,800-level*70);
+  if(score>best)best=score;
+  updateHUD();
+}
+function ghost(){let gy=current.y;while(valid(current.matrix,current.x,gy+1))gy++;return gy;}
+function hardDrop(){while(valid(current.matrix,current.x,current.y+1))current.y++;place();}
+function holdPiece(){
+  if(!canHold)return;canHold=false;
+  const h=hold;hold={type:current.type,matrix:PIECES[current.type].map(r=>[...r])};
+  if(h){current={...h,x:Math.floor(COLS/2)-Math.ceil(h.matrix[0].length/2),y:0};}
+  else{current=next;next=randPiece();}
+}
+function initGame(){
+  board=newBoard();current=randPiece();next=randPiece();hold=null;canHold=true;
+  score=0;lines=0;level=1;drop=800;paused=false;gameState='playing';
+  updateHUD();
+}
+function endGame(){gameState='over';if(score>best)best=score;updateHUD();}
+function updateHUD(){
+  document.getElementById('scoreDisp').textContent=score;
+  document.getElementById('linesDisp').textContent=lines;
+  document.getElementById('levelDisp').textContent=level;
+  document.getElementById('bestDisp').textContent=best;
+}
+function drawCell(c,x,y,alpha=1){
+  if(!c)return;
+  ctx.globalAlpha=alpha;
+  ctx.fillStyle=COLORS[c];
+  ctx.fillRect(x*CELL+1,y*CELL+1,CELL-2,CELL-2);
+  ctx.globalAlpha=1;
+}
+function drawMini(c,matrix,miniCtx,cw,ch){
+  miniCtx.fillStyle='rgba(0,0,0,0.5)';miniCtx.fillRect(0,0,cw,ch);
+  if(!c)return;
+  const mc=matrix[0].length,mr=matrix.length;
+  const cs=Math.min(cw/mc,ch/mr)*0.9;
+  const ox=(cw-mc*cs)/2,oy=(ch-mr*cs)/2;
+  miniCtx.fillStyle=COLORS[c];
+  for(let r=0;r<mr;r++)for(let col=0;col<mc;col++)if(matrix[r][col])miniCtx.fillRect(ox+col*cs+1,oy+r*cs+1,cs-2,cs-2);
+}
+
+let lastDrop=0;
+function gameLoop(t){
+  if(gameState==='playing'&&!paused){
+    if(t-lastDrop>drop){lastDrop=t;if(valid(current.matrix,current.x,current.y+1))current.y++;else place();}
+  }
+  // Draw
+  ctx.fillStyle='#050c1a';ctx.fillRect(0,0,canvas.width,canvas.height);
+  // Grid
+  ctx.strokeStyle='rgba(255,255,255,0.03)';ctx.lineWidth=0.5;
+  for(let c=1;c<COLS;c++){ctx.beginPath();ctx.moveTo(c*CELL,0);ctx.lineTo(c*CELL,ROWS*CELL);ctx.stroke();}
+  for(let r=1;r<ROWS;r++){ctx.beginPath();ctx.moveTo(0,r*CELL);ctx.lineTo(COLS*CELL,r*CELL);ctx.stroke();}
+  // Board
+  for(let r=0;r<ROWS;r++)for(let c=0;c<COLS;c++)drawCell(board[r][c],c,r);
+  if(gameState==='playing'){
+    // Ghost
+    const gy=ghost();
+    for(let r=0;r<current.matrix.length;r++)for(let c=0;c<current.matrix[r].length;c++){if(current.matrix[r][c])drawCell(current.type,current.x+c,gy+r,0.25);}
+    // Piece
+    for(let r=0;r<current.matrix.length;r++)for(let c=0;c<current.matrix[r].length;c++){if(current.matrix[r][c])drawCell(current.type,current.x+c,current.y+r);}
+  }
+  // Mini canvases
+  if(next)drawMini(next.type,PIECES[next.type],nextCtx,80,80);
+  if(hold)drawMini(hold.type,PIECES[hold.type],holdCtx,80,80);
+  else{holdCtx.fillStyle='rgba(0,0,0,0.5)';holdCtx.fillRect(0,0,80,80);}
+  // Overlay
+  if(gameState==='start'){ctx.fillStyle='rgba(0,0,0,0.7)';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.fillStyle='#fff';ctx.font='bold 18px sans-serif';ctx.textAlign='center';ctx.fillText('FALLING BLOCKS',canvas.width/2,canvas.height/2-14);ctx.font='13px sans-serif';ctx.fillStyle='#aab3c5';ctx.fillText('Press ENTER to start',canvas.width/2,canvas.height/2+12);}
+  if(paused){ctx.fillStyle='rgba(0,0,0,0.5)';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.fillStyle='#fff';ctx.font='bold 18px sans-serif';ctx.textAlign='center';ctx.fillText('PAUSED',canvas.width/2,canvas.height/2);}
+  if(gameState==='over'){ctx.fillStyle='rgba(0,0,0,0.75)';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.fillStyle='#f87171';ctx.font='bold 18px sans-serif';ctx.textAlign='center';ctx.fillText('GAME OVER',canvas.width/2,canvas.height/2-16);ctx.fillStyle='#aab3c5';ctx.font='13px sans-serif';ctx.fillText('Score: '+score,canvas.width/2,canvas.height/2+8);ctx.fillText('Press ENTER to restart',canvas.width/2,canvas.height/2+28);}
+  requestAnimationFrame(gameLoop);
+}
+
+let softDropInterval=null;
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'){if(gameState!=='playing'){initGame();}return;}
+  if(e.key==='p'||e.key==='P'){paused=!paused;return;}
+  if(gameState!=='playing'||paused)return;
+  if(e.key==='ArrowLeft'){if(valid(current.matrix,current.x-1,current.y))current.x--;e.preventDefault();}
+  else if(e.key==='ArrowRight'){if(valid(current.matrix,current.x+1,current.y))current.x++;e.preventDefault();}
+  else if(e.key==='ArrowUp'||e.key==='z'||e.key==='Z'){const r=rotate(current.matrix);if(valid(r,current.x,current.y)){current.matrix=r;}e.preventDefault();}
+  else if(e.key==='ArrowDown'){if(valid(current.matrix,current.x,current.y+1))current.y++;else place();e.preventDefault();}
+  else if(e.key===' '){hardDrop();e.preventDefault();}
+  else if(e.key==='c'||e.key==='C'){holdPiece();}
+});
+
+requestAnimationFrame(gameLoop);
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>

@@ -408,6 +408,102 @@
       <p>© 2026 Knexio. All rights reserved.</p>
     </footer>
 
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+const COLORS=[
+  {bg:'#f87171',emoji:'🎈'},
+  {bg:'#4f8cff',emoji:'💙'},
+  {bg:'#34d399',emoji:'💚'},
+  {bg:'#f97316',emoji:'🟠'},
+  {bg:'#a78bfa',emoji:'💜'},
+  {bg:'#facc15',emoji:'💛'},
+  {bg:'#f472b6',emoji:'🩷'},
+];
+const DIFF={easy:{speed:60,rate:1600,lives:5},medium:{speed:90,rate:1200,lives:3},hard:{speed:130,rate:900,lives:3}};
+
+let diff='easy', score=0, best=0, lives=3, gameRunning=false, spawnInterval=null, moveInterval=null, countdown=null, timeLeft=30, balloons=[];
+
+function setDiff(d){
+  diff=d;
+  document.querySelectorAll('.diff-btn').forEach(b=>b.classList.remove('active'));
+  event.target.classList.add('active');
+}
+
+function startGame(){
+  score=0; timeLeft=30;
+  const cfg=DIFF[diff];
+  lives=cfg.lives;
+  balloons=[];
+  gameRunning=true;
+  document.getElementById('overlay').style.display='none';
+  document.getElementById('gameArea').querySelectorAll('.balloon').forEach(b=>b.remove());
+  updateHUD();
+  spawnInterval=setInterval(spawnBalloon, cfg.rate);
+  moveInterval=setInterval(moveBalloons, 50);
+  countdown=setInterval(()=>{timeLeft--;document.getElementById('timerDisp').textContent=timeLeft;if(timeLeft<=0)endGame();},1000);
+}
+
+function updateHUD(){
+  document.getElementById('scoreDisp').textContent=score;
+  document.getElementById('bestDisp').textContent=best;
+  const hearts='❤️'.repeat(Math.max(0,lives))+'🖤'.repeat(Math.max(0,Math.max(0,DIFF[diff].lives)-lives));
+  document.getElementById('livesDisp').textContent=hearts;
+}
+
+function spawnBalloon(){
+  if(!gameRunning)return;
+  const area=document.getElementById('gameArea');
+  const c=COLORS[Math.floor(Math.random()*COLORS.length)];
+  const el=document.createElement('div');
+  el.className='balloon';
+  const x=Math.random()*(area.offsetWidth-64);
+  const speed=DIFF[diff].speed*(0.8+Math.random()*0.5);
+  el.style.left=x+'px';
+  el.style.bottom='-80px';
+  el.innerHTML=`<div class="balloon-body" style="background:${c.bg}">${c.emoji}</div><div class="balloon-string"></div>`;
+  el.onclick=()=>popBalloon(el);
+  area.appendChild(el);
+  balloons.push({el,speed,bottom:-80});
+}
+
+function moveBalloons(){
+  if(!gameRunning)return;
+  const area=document.getElementById('gameArea');
+  const areaH=area.offsetHeight;
+  balloons=balloons.filter(b=>{
+    b.bottom+=b.speed/60;
+    if(b.bottom>areaH+10){
+      b.el.remove();
+      lives--;
+      if(lives<=0){endGame();return false;}
+      updateHUD();
+      return false;
+    }
+    b.el.style.bottom=b.bottom+'px';
+    return true;
+  });
+}
+
+function popBalloon(el){
+  if(!gameRunning)return;
+  el.classList.add('pop');
+  score+=10;
+  if(score>best)best=score;
+  balloons=balloons.filter(b=>b.el!==el);
+  setTimeout(()=>el.remove(),200);
+  updateHUD();
+}
+
+function endGame(){
+  gameRunning=false;
+  clearInterval(spawnInterval);clearInterval(moveInterval);clearInterval(countdown);
+  document.getElementById('gameArea').querySelectorAll('.balloon').forEach(b=>b.remove());
+  const ov=document.getElementById('overlay');
+  ov.style.display='flex';
+  document.getElementById('overlayTitle').textContent='Game Over!';
+  document.getElementById('overlayDesc').textContent='Score: '+score+' | Best: '+best;
+}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>

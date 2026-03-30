@@ -474,6 +474,128 @@
     </div>
 </div>
 
+
+<script>
+let ops = new Set(['add','sub']);
+let difficulty = 'easy';
+let timeLimit = 60;
+let score = 0, correct = 0, streak = 0, bestStreak = 0;
+let timeLeft = 0, timerInt = null;
+let currentAnswer = 0;
+let lastReplaySettings = null;
+
+function toggleOp(op) {
+  if (ops.has(op) && ops.size === 1) return; // keep at least 1
+  ops.has(op) ? ops.delete(op) : ops.add(op);
+  document.getElementById('op-'+op).classList.toggle('sel', ops.has(op));
+}
+
+function setDiff(d) {
+  difficulty = d;
+  ['easy','medium','hard'].forEach(x => document.getElementById('d-'+x).classList.toggle('sel', x===d));
+}
+
+function setTime(t) {
+  timeLimit = t;
+  [30,60,120].forEach(x => document.getElementById('t-'+x).classList.toggle('sel', x===t));
+}
+
+function randInt(min, max) { return Math.floor(Math.random()*(max-min+1))+min; }
+
+function generateQ() {
+  const op = [...ops][Math.floor(Math.random()*ops.size)];
+  let a, b, q, ans;
+  const ranges = { easy:[1,9], medium:[1,19], hard:[2,25] };
+  const [mn,mx] = ranges[difficulty];
+  if (op === 'add') { a=randInt(mn,mx); b=randInt(mn,mx); q=`${a} + ${b} = ?`; ans=a+b; }
+  else if (op === 'sub') { a=randInt(mn,mx); b=randInt(mn,mx); if(a<b)[a,b]=[b,a]; q=`${a} − ${b} = ?`; ans=a-b; }
+  else if (op === 'mul') { const mr=difficulty==='easy'?[1,9]:difficulty==='medium'?[1,12]:[2,15]; a=randInt(mr[0],mr[1]); b=randInt(mr[0],mr[1]); q=`${a} × ${b} = ?`; ans=a*b; }
+  else { const dr=difficulty==='easy'?[1,9]:[1,12]; b=randInt(dr[0],dr[1]); a=b*randInt(1,difficulty==='easy'?9:12); q=`${a} ÷ ${b} = ?`; ans=a/b; }
+  return { q, ans };
+}
+
+function startGame() {
+  score=0; correct=0; streak=0; bestStreak=0;
+  timeLeft=timeLimit;
+  document.getElementById('setup-panel').style.display='none';
+  document.getElementById('result-panel').style.display='none';
+  document.getElementById('game-panel').style.display='block';
+  document.getElementById('g-score').textContent='0';
+  document.getElementById('g-streak').textContent='0';
+  const {q, ans} = generateQ();
+  document.getElementById('question').textContent=q;
+  currentAnswer=ans;
+  document.getElementById('answer-input').value='';
+  document.getElementById('answer-input').focus();
+  document.getElementById('feedback').textContent='';
+  updateTimer();
+  timerInt = setInterval(tick, 1000);
+  document.getElementById('answer-input').oninput = checkAnswer;
+}
+
+function tick() {
+  timeLeft--;
+  updateTimer();
+  if (timeLeft <= 0) { clearInterval(timerInt); endGame(); }
+}
+
+function updateTimer() {
+  document.getElementById('g-timer').textContent=timeLeft;
+  const bar = document.getElementById('timer-bar');
+  const pct = (timeLeft/timeLimit)*100;
+  bar.style.width=pct+'%';
+  bar.className='timer-bar'+(pct<=20?' danger':pct<=40?' warn':'');
+}
+
+function checkAnswer() {
+  const val = parseInt(document.getElementById('answer-input').value);
+  if (isNaN(val)) return;
+  if (val === currentAnswer) {
+    streak++; if(streak>bestStreak) bestStreak=streak;
+    const bonus = streak >= 5 ? 20 : streak >= 3 ? 15 : 10;
+    score += bonus; correct++;
+    document.getElementById('g-score').textContent=score;
+    document.getElementById('g-streak').textContent=streak;
+    const inp = document.getElementById('answer-input');
+    inp.classList.add('correct');
+    document.getElementById('feedback').textContent='✓ Correct' + (streak>=3?` (${streak}× streak +${bonus}pts)`:` +${bonus}pts`);
+    document.getElementById('feedback').className='feedback ok';
+    setTimeout(()=>{ inp.classList.remove('correct'); document.getElementById('feedback').textContent=''; },350);
+    const {q,ans}=generateQ(); document.getElementById('question').textContent=q; currentAnswer=ans;
+    document.getElementById('answer-input').value='';
+  } else if (String(val).length >= String(currentAnswer).length + 1) {
+    // wrong answer submitted (longer than correct)
+    streak=0; document.getElementById('g-streak').textContent=0;
+    const inp=document.getElementById('answer-input');
+    inp.classList.add('wrong');
+    document.getElementById('feedback').textContent=`✗ Was ${currentAnswer}`;
+    document.getElementById('feedback').className='feedback no';
+    setTimeout(()=>{ inp.classList.remove('wrong'); document.getElementById('feedback').textContent=''; },400);
+    const {q,ans}=generateQ(); document.getElementById('question').textContent=q; currentAnswer=ans;
+    document.getElementById('answer-input').value='';
+  }
+}
+
+function endGame() {
+  document.getElementById('game-panel').style.display='none';
+  document.getElementById('result-panel').style.display='block';
+  const emoji = score>=200?'🏆':score>=100?'⭐':'👍';
+  document.getElementById('result-title').textContent=`${emoji} Time's Up!`;
+  document.getElementById('r-score').textContent=score;
+  document.getElementById('r-correct').textContent=correct;
+  document.getElementById('r-streak').textContent=bestStreak;
+  document.getElementById('answer-input').oninput=null;
+}
+
+function replayGame() {
+  document.getElementById('result-panel').style.display='none';
+  startGame();
+}
+function showSetup() {
+  document.getElementById('result-panel').style.display='none';
+  document.getElementById('setup-panel').style.display='block';
+}
+</script>
 <script src="/knexio-bundle.js"></script>
   
     <footer>
