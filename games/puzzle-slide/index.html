@@ -416,6 +416,13 @@
     </div>
 </div>
 
+  <div class="win-message" id="winMessage">
+    <h2>🎉 Puzzle Solved!</h2>
+    <p>Moves: <span id="finalMoves">0</span></p>
+    <p>Time: <span id="finalTime">0:00</span></p>
+    <button class="btn" onclick="newGame()" style="margin-top:20px;">Play Again</button>
+  </div>
+
   <script>// Game init //
   let gridSize = 4;
     let tiles = []; // 1D array representing the grid

@@ -444,7 +444,12 @@
     </div>
 </div>
 
-
+  <div class="win-message" id="winMessage">
+    <h2>🎉 Maze Complete!</h2>
+    <p>Time: <span id="finalTime">0:00</span></p>
+    <p>Steps: <span id="finalSteps">0</span></p>
+    <button class="btn" onclick="newGame()" style="margin-top:20px;">Next Maze</button>
+  </div>
 
   <script>
     const DIFFICULTY = { easy: 15, medium: 21, hard: 31 };
