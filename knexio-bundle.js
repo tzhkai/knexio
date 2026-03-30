@@ -180,11 +180,29 @@
 
   // ==================== Ad Container CLS Fix ====================
   function fixAdContainerCLS() {
-    var adBanners = document.querySelectorAll('.ad-banner, .ad-container');
-    adBanners.forEach(function(container) {
-      if (!container.style.minHeight) {
-        container.style.minHeight = '100px';
-      }
+    // Only set min-height AFTER ad is confirmed loaded, not before
+    // This prevents empty boxes from showing when ads haven't loaded yet
+    var adBanners = document.querySelectorAll('.ad-banner ins.adsbygoogle');
+    adBanners.forEach(function(ins) {
+      // Watch for ad fill status
+      var observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(m) {
+          if (m.attributeName === 'data-adsbygoogle-status') {
+            var status = ins.getAttribute('data-adsbygoogle-status');
+            var container = ins.closest('.ad-banner, .ad-container');
+            if (!container) return;
+            if (status === 'done') {
+              // Ad loaded - ensure it's visible
+              container.style.minHeight = '';
+              container.style.display = '';
+            } else if (status === 'unfilled') {
+              // Ad not filled - hide the container completely
+              container.style.display = 'none';
+            }
+          }
+        });
+      });
+      observer.observe(ins, { attributes: true });
     });
   }
 
