@@ -506,6 +506,129 @@
     </div>
 </div>
 
+
+<script>
+let difficulty = 5;
+let sequence = [];
+let playerSequence = [];
+let showingSequence = false;
+let level = 1;
+let best = 0;
+let waitingForInput = false;
+
+function setDifficulty(n) {
+  difficulty = n;
+  level = 1;
+  best = 0;
+  startGame();
+}
+
+function startGame() {
+  level = 1;
+  document.getElementById('bestDisplay').textContent = best || '—';
+  document.getElementById('levelDisplay').textContent = level;
+  showNextLevel();
+}
+
+function showNextLevel() {
+  sequence = [];
+  playerSequence = [];
+  showingSequence = true;
+  waitingForInput = false;
+
+  for (let i = 0; i < level + difficulty; i++) {
+    sequence.push(Math.floor(Math.random() * Math.min(level + difficulty, 9)));
+  }
+
+  document.getElementById('message').textContent = `Level ${level}: Watch carefully!`;
+  document.getElementById('message').style.color = 'var(--accent)';
+
+  renderGrid();
+
+  let index = 0;
+  const interval = setInterval(() => {
+    if (index < sequence.length) {
+      const tile = document.getElementById('tile-' + sequence[index]);
+      tile.classList.add('active');
+      setTimeout(() => tile.classList.remove('active'), 500);
+      index++;
+    } else {
+      clearInterval(interval);
+      showingSequence = false;
+      waitingForInput = true;
+      document.getElementById('message').textContent = 'Your turn! Repeat the sequence.';
+      document.getElementById('message').style.color = 'var(--text-sub)';
+    }
+  }, 800);
+}
+
+function renderGrid() {
+  const grid = document.getElementById('grid');
+  const count = Math.min(level + difficulty, 9);
+  grid.style.gridTemplateColumns = 'repeat(3, 80px)';
+  grid.innerHTML = '';
+
+  for (let i = 0; i < count; i++) {
+    const tile = document.createElement('div');
+    tile.className = 'tile';
+    tile.id = 'tile-' + i;
+    tile.textContent = i + 1;
+
+    if (showingSequence) {
+      tile.classList.add('disabled');
+    }
+
+    tile.addEventListener('click', () => handleTileClick(i));
+    grid.appendChild(tile);
+  }
+}
+
+function handleTileClick(num) {
+  if (!waitingForInput || showingSequence) return;
+
+  playerSequence.push(num);
+
+  const tile = document.getElementById('tile-' + num);
+  tile.classList.add('active');
+  setTimeout(() => tile.classList.remove('active'), 200);
+
+  if (playerSequence.length === sequence.length) {
+    waitingForInput = false;
+    checkWin();
+  }
+}
+
+function checkWin() {
+  const correct = playerSequence.every((val, idx) => val === sequence[idx]);
+
+  if (correct) {
+    document.getElementById('message').textContent = '✓ Correct!';
+    document.getElementById('message').style.color = '#10b981';
+    level++;
+
+    if (level > best) {
+      best = level - 1;
+      document.getElementById('bestDisplay').textContent = best;
+    }
+
+    document.getElementById('levelDisplay').textContent = level;
+
+    setTimeout(() => showNextLevel(), 1500);
+  } else {
+    document.getElementById('message').textContent = '✗ Wrong! Game Over.';
+    document.getElementById('message').style.color = '#ef4444';
+    waitingForInput = false;
+    setTimeout(() => {
+      alert('Game Over! You reached level ' + (level - 1) + '.');
+      startGame();
+    }, 1500);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  startGame();
+});
+</script>
 <script src="/knexio-bundle.js"></script>
   
     <footer>
