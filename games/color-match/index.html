@@ -14,7 +14,6 @@
   <meta property="og:image" content="https://knexio.xyz/og-image.svg" />
   <meta name="robots" content="index, follow" />
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Game","name":"Color Match","description":"Stroop Effect color matching game — match the word color not the word text","url":"https://knexio.xyz/games/color-match/","gamePlatform":"Browser","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
 <style>
 
     :root{--bg:#0b1220;--bg2:#070d1a;--panel:#111a2e;--border:rgba(255,255,255,0.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff;--green:#34d399;--red:#f87171;--orange:#f97316}
@@ -42,7 +41,6 @@
     .color-btn:hover:not(:disabled){filter:brightness(1.15);transform:scale(1.03)}
     .color-btn.correct{border-color:#fff;animation:flash 0.2s}
     .color-btn.wrong{filter:grayscale(0.8);opacity:0.4}
-    @keyframes flash{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
     .feedback-text{font-size:17px;font-weight:600;min-height:24px;margin-top:10px}
     .feedback-text.ok{color:var(--green)}.feedback-text.no{color:var(--red)}
     .result-box{padding:10px}
@@ -404,190 +402,6 @@
     </div>
 </div>
 
-<!-- ==================== 结构化数据 (Schema.org) ==================== -->
-<script type="application/ld+json">
-{{
-    "@context": "https://schema.org",
-    "@type": "VideoGame",
-    "name": "{game_display_name}",
-    "description": "{template['description'][:150]}...",
-    "applicationCategory": "GameApplication",
-    "gamePlatform": "Web Browser",
-    "operatingSystem": "All",
-    "url": "https://knexio.xyz/games/{game_name}/",
-    "genre": "Browser Game",
-    "playMode": "SinglePlayer",
-    "publisher": {{
-        "@type": "Organization",
-        "name": "Knexio",
-        "url": "https://knexio.xyz"
-    }},
-    "offers": {{
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-    }},
-    "keywords": "{', '.join(template['keywords'])}"
-}}
-</script>
-
-<script type="application/ld+json">
-{{
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-        {{
-            "@type": "Question",
-            "name": "Is this game free to play?",
-            "acceptedAnswer": {{
-                "@type": "Answer",
-                "text": "Yes, all games on Knexio are completely free to play. There are no hidden charges, subscription fees, or in-app purchases. We support our games through non-intrusive advertisements."
-            }}
-        }},
-        {{
-            "@type": "Question",
-            "name": "Do I need to download anything to play?",
-            "acceptedAnswer": {{
-                "@type": "Answer",
-                "text": "No downloads required! All our games run directly in your web browser. They work on desktop computers, laptops, tablets, and smartphones. Just visit the page and start playing."
-            }}
-        }},
-        {{
-            "@type": "Question",
-            "name": "How do I save my game progress?",
-            "acceptedAnswer": {{
-                "@type": "Answer",
-                "text": "Most games automatically save your high scores and progress in your browser's local storage. Your best scores will be remembered even if you close the browser, as long as you don't clear your browsing data."
-            }}
-        }}
-    ]
-}}
-</script>
-
-<!-- ==================== 相关游戏推荐 ==================== -->
-<div class="related-games" style="margin: 60px auto 0; max-width: 800px; padding: 32px 24px;">
-    <h2 style="font-size: 24px; margin-bottom: 20px; color: var(--text-main);">More Fun Games to Try</h2>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
-        <a href="../snake/index.html" style="display: block; background: var(--panel); border-radius: 12px; padding: 20px; text-decoration: none; color: var(--text-main); border: 1px solid var(--border); transition: all 0.2s;">
-            <div style="font-weight: bold; margin-bottom: 8px;">🐍 Snake</div>
-            <div style="font-size: 13px; color: var(--text-sub);">Classic arcade game with growing snake</div>
-        </a>
-        <a href="../tetris/index.html" style="display: block; background: var(--panel); border-radius: 12px; padding: 20px; text-decoration: none; color: var(--text-main); border: 1px solid var(--border); transition: all 0.2s;">
-            <div style="font-weight: bold; margin-bottom: 8px;">🧱 Tetris</div>
-            <div style="font-size: 13px; color: var(--text-sub);">Iconic block-stacking puzzle game</div>
-        </a>
-        <a href="../wordle/index.html" style="display: block; background: var(--panel); border-radius: 12px; padding: 20px; text-decoration: none; color: var(--text-main); border: 1px solid var(--border); transition: all 0.2s;">
-            <div style="font-weight: bold; margin-bottom: 8px;">🔤 Wordle</div>
-            <div style="font-size: 13px; color: var(--text-sub);">Popular word guessing puzzle</div>
-        </a>
-        <a href="../index.html" style="display: block; background: var(--panel); border-radius: 12px; padding: 20px; text-decoration: none; color: var(--text-main); border: 1px solid var(--border); transition: all 0.2s; text-align: center;">
-            <div style="font-weight: bold;">🎮 View All Games →</div>
-        </a>
-    </div>
-</div>
-    <footer>
-      <p>Free online games to play anytime. Enjoy classic games, puzzles, and entertainment.</p>
-            <p style="margin: 8px 0; font-size: 13px;">
-        <a href="/about/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">About</a>
-        <a href="/privacy/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Privacy</a>
-        <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
-        <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
-      </p>
-      <p>© 2026 Knexio. All rights reserved.</p>
-    </footer>
-</div>
-
-<script>
-const COLORS=[
-  {name:'RED',hex:'#f87171'},
-  {name:'BLUE',hex:'#4f8cff'},
-  {name:'GREEN',hex:'#34d399'},
-  {name:'YELLOW',hex:'#facc15'},
-  {name:'PURPLE',hex:'#a78bfa'},
-  {name:'ORANGE',hex:'#f97316'},
-];
-let score=0, best=0, streak=0, correct=0, timer=null, timeLeft=30, answering=true;
-
-function startGame(){
-  score=0;streak=0;correct=0;timeLeft=30;answering=true;
-  document.getElementById('gamePanel').style.display='';
-  document.getElementById('resultPanel').style.display='none';
-  updateHUD();
-  clearInterval(timer);
-  document.getElementById('timerFill').style.transition='none';
-  document.getElementById('timerFill').style.width='100%';
-  setTimeout(()=>{
-    document.getElementById('timerFill').style.transition='width 30s linear';
-    document.getElementById('timerFill').style.width='0%';
-  },50);
-  timer=setInterval(()=>{
-    timeLeft--;
-    document.getElementById('timerVal').textContent=timeLeft;
-    if(timeLeft<=5)document.getElementById('timerFill').style.background='var(--red)';
-    if(timeLeft<=0){clearInterval(timer);endGame();}
-  },1000);
-  nextRound();
-}
-
-function updateHUD(){
-  document.getElementById('scoreVal').textContent=score;
-  document.getElementById('bestVal').textContent=best;
-  document.getElementById('streakVal').textContent=streak;
-}
-
-function shuffle(a){return a.sort(()=>Math.random()-0.5);}
-
-function nextRound(){
-  document.getElementById('feedbackText').textContent='';
-  document.getElementById('feedbackText').className='feedback-text';
-  // Word text = random color name, ink color = different random color
-  const wordIdx=Math.floor(Math.random()*COLORS.length);
-  let inkIdx=Math.floor(Math.random()*COLORS.length);
-  if(inkIdx===wordIdx)inkIdx=(inkIdx+1)%COLORS.length;
-  const wordName=COLORS[wordIdx].name;
-  const inkColor=COLORS[inkIdx];
-  document.getElementById('colorWord').textContent=wordName;
-  document.getElementById('colorWord').style.color=inkColor.hex;
-  // Buttons: inkColor + 3 random others
-  const others=COLORS.filter(c=>c.name!==inkColor.name);
-  const wrong3=shuffle([...others]).slice(0,3);
-  const opts=shuffle([inkColor,...wrong3]);
-  document.getElementById('colorBtns').innerHTML=opts.map(c=>`<button class="color-btn" style="background:${c.hex}" onclick="pick('${c.name}','${inkColor.name}')">${c.name}</button>`).join('');
-  answering=true;
-}
-
-function pick(chosen, correct_name){
-  if(!answering||timeLeft<=0)return;
-  answering=false;
-  const btns=document.querySelectorAll('.color-btn');
-  btns.forEach(b=>{
-    b.disabled=true;
-    if(b.textContent===chosen)b.className='color-btn '+(chosen===correct_name?'correct':'wrong');
-  });
-  if(chosen===correct_name){
-    score+=10+(streak*2);streak++;correct++;
-    if(score>best)best=score;
-    document.getElementById('feedbackText').textContent='✅';
-    document.getElementById('feedbackText').className='feedback-text ok';
-  } else {
-    streak=0;
-    document.getElementById('feedbackText').textContent='❌';
-    document.getElementById('feedbackText').className='feedback-text no';
-  }
-  updateHUD();
-  setTimeout(nextRound,400);
-}
-
-function endGame(){
-  answering=false;
-  document.getElementById('gamePanel').style.display='none';
-  document.getElementById('resultPanel').style.display='';
-  document.getElementById('resultScore').textContent=score;
-  document.getElementById('resultDetail').textContent=correct+' correct answers';
-}
-
-startGame();
-</script>
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>

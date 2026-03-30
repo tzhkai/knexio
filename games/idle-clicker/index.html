@@ -14,7 +14,6 @@
   <meta property="og:image" content="https://knexio.xyz/og-image.svg" />
   <meta name="robots" content="index, follow" />
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Game","name":"Idle Clicker","description":"Incremental idle clicker — click to earn coins and buy auto-generators","url":"https://knexio.xyz/games/idle-clicker/","gamePlatform":"Browser","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
 <style>
 
     :root{--bg:#0b1220;--bg2:#070d1a;--panel:#111a2e;--border:rgba(255,255,255,0.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff;--green:#34d399;--orange:#f97316;--gold:#facc15}
@@ -27,7 +26,6 @@
     .subtitle{color:var(--sub);font-size:14px;margin-bottom:16px;text-align:center}
     .ad-banner{margin:12px 0;text-align:center}
     .main-layout{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-    @media(max-width:480px){.main-layout{grid-template-columns:1fr}}
     .left-col{display:flex;flex-direction:column;gap:12px}
     .right-col{display:flex;flex-direction:column;gap:10px}
     .coin-display{text-align:center;background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:20px}
@@ -51,9 +49,7 @@
     .section-title{font-size:12px;color:var(--sub);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:4px}
     .milestone{background:rgba(250,204,21,0.08);border:1px solid rgba(250,204,21,0.2);border-radius:10px;padding:8px 12px;font-size:12px;color:var(--gold);text-align:center;display:none}
     .milestone.show{display:block;animation:fadeIn 0.5s}
-    @keyframes fadeIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
     .floating{position:fixed;pointer-events:none;font-size:16px;font-weight:700;color:var(--gold);animation:floatUp 0.8s ease forwards;z-index:999}
-    @keyframes floatUp{0%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(-60px)}}
     .seo{margin-top:60px;text-align:left}
     .seo h2{font-size:22px;margin-bottom:10px}
     .seo p{font-size:14px;color:var(--sub);line-height:1.8;margin-bottom:12px}
@@ -398,189 +394,6 @@
     </div>
 </div>
 
-<!-- ==================== 结构化数据 (Schema.org) ==================== -->
-<script type="application/ld+json">
-{{
-    "@context": "https://schema.org",
-    "@type": "VideoGame",
-    "name": "{game_display_name}",
-    "description": "{template['description'][:150]}...",
-    "applicationCategory": "GameApplication",
-    "gamePlatform": "Web Browser",
-    "operatingSystem": "All",
-    "url": "https://knexio.xyz/games/{game_name}/",
-    "genre": "Browser Game",
-    "playMode": "SinglePlayer",
-    "publisher": {{
-        "@type": "Organization",
-        "name": "Knexio",
-        "url": "https://knexio.xyz"
-    }},
-    "offers": {{
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-    }},
-    "keywords": "{', '.join(template['keywords'])}"
-}}
-</script>
-
-<script type="application/ld+json">
-{{
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-        {{
-            "@type": "Question",
-            "name": "Is this game free to play?",
-            "acceptedAnswer": {{
-                "@type": "Answer",
-                "text": "Yes, all games on Knexio are completely free to play. There are no hidden charges, subscription fees, or in-app purchases. We support our games through non-intrusive advertisements."
-            }}
-        }},
-        {{
-            "@type": "Question",
-            "name": "Do I need to download anything to play?",
-            "acceptedAnswer": {{
-                "@type": "Answer",
-                "text": "No downloads required! All our games run directly in your web browser. They work on desktop computers, laptops, tablets, and smartphones. Just visit the page and start playing."
-            }}
-        }},
-        {{
-            "@type": "Question",
-            "name": "How do I save my game progress?",
-            "acceptedAnswer": {{
-                "@type": "Answer",
-                "text": "Most games automatically save your high scores and progress in your browser's local storage. Your best scores will be remembered even if you close the browser, as long as you don't clear your browsing data."
-            }}
-        }}
-    ]
-}}
-</script>
-
-<!-- ==================== 相关游戏推荐 ==================== -->
-<div class="related-games" style="margin: 60px auto 0; max-width: 800px; padding: 32px 24px;">
-    <h2 style="font-size: 24px; margin-bottom: 20px; color: var(--text-main);">More Fun Games to Try</h2>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
-        <a href="../snake/index.html" style="display: block; background: var(--panel); border-radius: 12px; padding: 20px; text-decoration: none; color: var(--text-main); border: 1px solid var(--border); transition: all 0.2s;">
-            <div style="font-weight: bold; margin-bottom: 8px;">🐍 Snake</div>
-            <div style="font-size: 13px; color: var(--text-sub);">Classic arcade game with growing snake</div>
-        </a>
-        <a href="../tetris/index.html" style="display: block; background: var(--panel); border-radius: 12px; padding: 20px; text-decoration: none; color: var(--text-main); border: 1px solid var(--border); transition: all 0.2s;">
-            <div style="font-weight: bold; margin-bottom: 8px;">🧱 Tetris</div>
-            <div style="font-size: 13px; color: var(--text-sub);">Iconic block-stacking puzzle game</div>
-        </a>
-        <a href="../wordle/index.html" style="display: block; background: var(--panel); border-radius: 12px; padding: 20px; text-decoration: none; color: var(--text-main); border: 1px solid var(--border); transition: all 0.2s;">
-            <div style="font-weight: bold; margin-bottom: 8px;">🔤 Wordle</div>
-            <div style="font-size: 13px; color: var(--text-sub);">Popular word guessing puzzle</div>
-        </a>
-        <a href="../index.html" style="display: block; background: var(--panel); border-radius: 12px; padding: 20px; text-decoration: none; color: var(--text-main); border: 1px solid var(--border); transition: all 0.2s; text-align: center;">
-            <div style="font-weight: bold;">🎮 View All Games →</div>
-        </a>
-    </div>
-</div>
-    <footer>
-      <p>Free online games to play anytime. Enjoy classic games, puzzles, and entertainment.</p>
-            <p style="margin: 8px 0; font-size: 13px;">
-        <a href="/about/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">About</a>
-        <a href="/privacy/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Privacy</a>
-        <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
-        <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
-      </p>
-      <p>© 2026 Knexio. All rights reserved.</p>
-    </footer>
-</div>
-
-<script>
-const UPGRADES=[
-  {id:'cursor',name:'Cursor',emoji:'👆',desc:'Auto-clicks once per second',baseCost:15,baseCPS:1},
-  {id:'mine',name:'Mine',emoji:'⛏️',desc:'Digs up coins from the ground',baseCost:100,baseCPS:5},
-  {id:'farm',name:'Farm',emoji:'🌾',desc:'Grows money trees',baseCost:500,baseCPS:20},
-  {id:'factory',name:'Factory',emoji:'🏭',desc:'Mass-produces coins',baseCost:2000,baseCPS:80},
-  {id:'bank',name:'Bank',emoji:'🏦',desc:'Compounds coin interest',baseCost:10000,baseCPS:300},
-  {id:'lab',name:'Lab',emoji:'🔬',desc:'Synthesizes coins scientifically',baseCost:50000,baseCPS:1200},
-  {id:'portal',name:'Portal',emoji:'🌀',desc:'Imports coins from other dimensions',baseCost:300000,baseCPS:5000},
-  {id:'rocket',name:'Rocket',emoji:'🚀',desc:'Mines asteroids for precious coins',baseCost:2000000,baseCPS:20000},
-];
-
-let coins=0, clickPower=1, owned={}, totalCPS=0;
-UPGRADES.forEach(u=>owned[u.id]=0);
-
-function getCost(u){return Math.floor(u.baseCost*Math.pow(1.15,owned[u.id]));}
-function getCPS(u){return u.baseCPS*owned[u.id];}
-function fmt(n){if(n>=1e9)return(n/1e9).toFixed(2)+'B';if(n>=1e6)return(n/1e6).toFixed(2)+'M';if(n>=1e3)return(n/1e3).toFixed(1)+'K';return Math.floor(n).toString();}
-
-function clickCoin(e){
-  coins+=clickPower;
-  updateUI();
-  // Floating text
-  const el=document.createElement('div');
-  el.className='floating';
-  el.textContent='+'+fmt(clickPower);
-  el.style.left=(e.clientX-20)+'px';
-  el.style.top=(e.clientY-20)+'px';
-  document.body.appendChild(el);
-  setTimeout(()=>el.remove(),800);
-}
-
-function buyUpgrade(id){
-  const u=UPGRADES.find(x=>x.id===id);
-  const cost=getCost(u);
-  if(coins<cost)return;
-  coins-=cost;
-  owned[id]++;
-  clickPower=1+Math.floor(owned['cursor']*0.1);
-  recalcCPS();
-  updateUI();
-  checkMilestones();
-}
-
-function recalcCPS(){
-  totalCPS=UPGRADES.reduce((s,u)=>s+getCPS(u),0);
-}
-
-function updateUI(){
-  document.getElementById('coinCount').textContent=fmt(coins)+' 🪙';
-  document.getElementById('coinRate').textContent='+'+fmt(clickPower)+' per click · '+fmt(totalCPS)+'/sec';
-  document.getElementById('totalCPS').textContent='Total: '+fmt(totalCPS)+' coins/sec';
-  document.getElementById('upgradesPanel').innerHTML=UPGRADES.map(u=>{
-    const cost=getCost(u);const canBuy=coins>=cost;
-    return`<div class="upgrade-card">
-      <div class="upgrade-header">
-        <div class="upgrade-name">${u.emoji} ${u.name} <span class="upgrade-owned">${owned[u.id]}</span></div>
-      </div>
-      <div class="upgrade-desc">${u.desc}</div>
-      <div class="upgrade-footer">
-        <span class="cost-text">🪙 ${fmt(cost)}</span>
-        ${owned[u.id]>0?`<span class="upgrade-cps">+${fmt(getCPS(u))}/sec</span>`:''}
-        <button class="buy-btn" onclick="buyUpgrade('${u.id}')" ${canBuy?'':'disabled'}>Buy</button>
-      </div>
-    </div>`;
-  }).join('');
-}
-
-const MILESTONES=[100,1000,10000,100000,1000000,1000000000];
-let lastMilestone=-1;
-function checkMilestones(){
-  for(let i=MILESTONES.length-1;i>=0;i--){
-    if(coins>=MILESTONES[i]&&i>lastMilestone){
-      lastMilestone=i;
-      const el=document.getElementById('milestone');
-      const labels=['100 coins!','1K coins!','10K coins!','100K coins!','1 Million!','1 Billion! 🎉'];
-      el.textContent='🏆 Milestone: '+labels[i];
-      el.className='milestone show';
-      setTimeout(()=>el.className='milestone',4000);
-    }
-  }
-}
-
-setInterval(()=>{
-  if(totalCPS>0){coins+=totalCPS/20;checkMilestones();}
-  updateUI();
-},50);
-
-updateUI();
-</script>
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>

@@ -14,8 +14,6 @@
   <meta property="og:image" content="https://knexio.xyz/og-image.svg" />
   <meta name="robots" content="index, follow" />
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Dice Roller","description":"Roll virtual D4 to D100 dice for board games and RPG","url":"https://knexio.xyz/games/dice-roller/","applicationCategory":"Game","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What dice types can I roll?","acceptedAnswer":{"@type":"Answer","text":"You can roll D4, D6, D8, D10, D12, D20, and D100 (percentile). Roll 1–10 dice at once."}},{"@type":"Question","name":"Is this dice roller truly random?","acceptedAnswer":{"@type":"Answer","text":"Yes, it uses JavaScript's Math.random() function for cryptographically random results."}},{"@type":"Question","name":"Can I use this for D&D or tabletop RPGs?","acceptedAnswer":{"@type":"Answer","text":"Absolutely! All standard RPG dice types (D4–D20) are available. Roll multiple dice and see the total sum instantly."}}]}</script>
 <style>
 
     :root{--bg:#0b1220;--bg2:#070d1a;--panel:#111a2e;--border:rgba(255,255,255,0.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff;--green:#34d399;--orange:#f97316}
@@ -45,7 +43,6 @@
     .result-area{min-height:90px;display:flex;flex-direction:column;align-items:center;gap:10px}
     .dice-results{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
     .die-result{width:52px;height:52px;background:rgba(255,255,255,0.08);border:2px solid var(--accent);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;color:var(--accent);animation:popIn 0.3s ease}
-    @keyframes popIn{0%{transform:scale(0.6) rotate(-20deg);opacity:0}100%{transform:scale(1) rotate(0);opacity:1}}
     .total-row{font-size:16px;color:var(--sub)}
     .total-row span{font-size:28px;font-weight:700;color:var(--green)}
     .history-title{font-size:13px;color:var(--sub);text-transform:uppercase;letter-spacing:0.05em;text-align:left;margin-bottom:8px}
@@ -412,125 +409,6 @@
     </div>
 </div>
 
-<!-- ==================== 结构化数据 (Schema.org) ==================== -->
-<script type="application/ld+json">
-{{
-    "@context": "https://schema.org",
-    "@type": "VideoGame",
-    "name": "{game_display_name}",
-    "description": "{template['description'][:150]}...",
-    "applicationCategory": "GameApplication",
-    "gamePlatform": "Web Browser",
-    "operatingSystem": "All",
-    "url": "https://knexio.xyz/games/{game_name}/",
-    "genre": "Browser Game",
-    "playMode": "SinglePlayer",
-    "publisher": {{
-        "@type": "Organization",
-        "name": "Knexio",
-        "url": "https://knexio.xyz"
-    }},
-    "offers": {{
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-    }},
-    "keywords": "{', '.join(template['keywords'])}"
-}}
-</script>
-
-<script type="application/ld+json">
-{{
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-        {{
-            "@type": "Question",
-            "name": "Is this game free to play?",
-            "acceptedAnswer": {{
-                "@type": "Answer",
-                "text": "Yes, all games on Knexio are completely free to play. There are no hidden charges, subscription fees, or in-app purchases. We support our games through non-intrusive advertisements."
-            }}
-        }},
-        {{
-            "@type": "Question",
-            "name": "Do I need to download anything to play?",
-            "acceptedAnswer": {{
-                "@type": "Answer",
-                "text": "No downloads required! All our games run directly in your web browser. They work on desktop computers, laptops, tablets, and smartphones. Just visit the page and start playing."
-            }}
-        }},
-        {{
-            "@type": "Question",
-            "name": "How do I save my game progress?",
-            "acceptedAnswer": {{
-                "@type": "Answer",
-                "text": "Most games automatically save your high scores and progress in your browser's local storage. Your best scores will be remembered even if you close the browser, as long as you don't clear your browsing data."
-            }}
-        }}
-    ]
-}}
-</script>
-
-<!-- ==================== 相关游戏推荐 ==================== -->
-<div class="related-games" style="margin: 60px auto 0; max-width: 800px; padding: 32px 24px;">
-    <h2 style="font-size: 24px; margin-bottom: 20px; color: var(--text-main);">More Fun Games to Try</h2>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
-        <a href="../snake/index.html" style="display: block; background: var(--panel); border-radius: 12px; padding: 20px; text-decoration: none; color: var(--text-main); border: 1px solid var(--border); transition: all 0.2s;">
-            <div style="font-weight: bold; margin-bottom: 8px;">🐍 Snake</div>
-            <div style="font-size: 13px; color: var(--text-sub);">Classic arcade game with growing snake</div>
-        </a>
-        <a href="../tetris/index.html" style="display: block; background: var(--panel); border-radius: 12px; padding: 20px; text-decoration: none; color: var(--text-main); border: 1px solid var(--border); transition: all 0.2s;">
-            <div style="font-weight: bold; margin-bottom: 8px;">🧱 Tetris</div>
-            <div style="font-size: 13px; color: var(--text-sub);">Iconic block-stacking puzzle game</div>
-        </a>
-        <a href="../wordle/index.html" style="display: block; background: var(--panel); border-radius: 12px; padding: 20px; text-decoration: none; color: var(--text-main); border: 1px solid var(--border); transition: all 0.2s;">
-            <div style="font-weight: bold; margin-bottom: 8px;">🔤 Wordle</div>
-            <div style="font-size: 13px; color: var(--text-sub);">Popular word guessing puzzle</div>
-        </a>
-        <a href="../index.html" style="display: block; background: var(--panel); border-radius: 12px; padding: 20px; text-decoration: none; color: var(--text-main); border: 1px solid var(--border); transition: all 0.2s; text-align: center;">
-            <div style="font-weight: bold;">🎮 View All Games →</div>
-        </a>
-    </div>
-</div>
-    <footer>
-      <p>Free online games to play anytime. Enjoy classic games, puzzles, and entertainment.</p>
-            <p style="margin: 8px 0; font-size: 13px;">
-        <a href="/about/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">About</a>
-        <a href="/privacy/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Privacy</a>
-        <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
-        <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
-      </p>
-      <p>© 2026 Knexio. All rights reserved.</p>
-    </footer>
-</div>
-
-<script>
-let selectedSides=4, qty=1, history=[];
-
-function selectDie(sides){
-  selectedSides=sides;
-  document.querySelectorAll('.dice-btn').forEach(b=>b.classList.remove('active'));
-  document.querySelector('[data-sides="'+sides+'"]').classList.add('active');
-}
-
-function changeQty(d){
-  qty=Math.max(1,Math.min(10,qty+d));
-  document.getElementById('qtyVal').textContent=qty;
-}
-
-function rollDice(){
-  const results=Array.from({length:qty},()=>Math.floor(Math.random()*selectedSides)+1);
-  const total=results.reduce((a,b)=>a+b,0);
-  document.getElementById('diceResults').innerHTML=results.map(r=>`<div class="die-result">${r}</div>`).join('');
-  document.getElementById('totalRow').innerHTML=qty>1?`Total: <span>${total}</span>`:`Result: <span>${results[0]}</span>`;
-  const entry=`${qty}D${selectedSides}: [${results.join(', ')}]`+(qty>1?` = ${total}`:'');
-  history.unshift(entry);
-  if(history.length>20)history.pop();
-  const hl=document.getElementById('historyList');
-  hl.innerHTML=history.map(h=>`<div class="history-item">${h}</div>`).join('');
-}
-</script>
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
