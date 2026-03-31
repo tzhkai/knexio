@@ -445,6 +445,53 @@
 
 
 
-  <script src="/knexio-bundle.js"></script>
+  <script>
+const EMOJI = {rock:'🪨', paper:'📄', scissors:'✂️'};
+const CHOICES = ['rock','paper','scissors'];
+let wins=0,losses=0,draws=0,total=0;
+
+function play(player) {
+  const cpu = CHOICES[Math.floor(Math.random()*3)];
+  const pEl = document.getElementById('playerChoice');
+  const cEl = document.getElementById('cpuChoice');
+  const rEl = document.getElementById('resultText');
+
+  pEl.className = 'choice-display';
+  cEl.className = 'choice-display';
+  pEl.textContent = EMOJI[player];
+  cEl.textContent = EMOJI[cpu];
+  total++;
+
+  let result, cls;
+  if (player === cpu) {
+    result = "It's a Draw!"; cls = 'result-draw'; draws++;
+  } else if ((player==='rock'&&cpu==='scissors')||(player==='paper'&&cpu==='rock')||(player==='scissors'&&cpu==='paper')) {
+    result = '🎉 You Win!'; cls = 'result-win'; wins++;
+    pEl.className = 'choice-display win'; cEl.className = 'choice-display lose';
+  } else {
+    result = '😞 You Lose!'; cls = 'result-lose'; losses++;
+    pEl.className = 'choice-display lose'; cEl.className = 'choice-display win';
+  }
+
+  rEl.textContent = result;
+  rEl.className = 'result-text ' + cls;
+  document.getElementById('winCount').textContent = wins;
+  document.getElementById('lossCount').textContent = losses;
+  document.getElementById('drawCount').textContent = draws;
+}
+
+function resetGame() {
+  wins=0;losses=0;draws=0;total=0;
+  document.getElementById('winCount').textContent = '0';
+  document.getElementById('lossCount').textContent = '0';
+  document.getElementById('drawCount').textContent = '0';
+  document.getElementById('playerChoice').textContent = '❓';
+  document.getElementById('cpuChoice').textContent = '❓';
+  document.getElementById('resultText').textContent = 'Make your choice!';
+  document.getElementById('resultText').className = 'result-text';
+}
+</script>
+
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
