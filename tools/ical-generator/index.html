@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>iCal Generator – Create Calendar Events (.ics) | Knexio</title>
+<meta name="description" content="Free iCal generator. Create .ics calendar files for Google Calendar, Outlook, and Apple Calendar. Generate event invites instantly.">
+<link rel="canonical" href="https://knexio.xyz/tools/ical-generator/">
+<meta property="og:title" content="iCal Generator">
+<meta property="og:description" content="Create .ics calendar events.">
+<meta property="og:image" content="https://knexio.xyz/og-image.svg">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"iCal Generator","url":"https://knexio.xyz/tools/ical-generator/","applicationCategory":"UtilitiesApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<style>
+:root{--bg:#0b1220;--card:#111a2e;--border:rgba(255,255,255,.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff}
+*{box-sizing:border-box}body{font-family:system-ui;background:var(--bg);color:var(--text)}
+.container{max-width:900px;margin:auto;padding:50px 16px}
+.back{display:inline-block;margin-bottom:24px;color:var(--sub)}
+h1{font-size:32px;margin-bottom:8px}.subtitle{color:var(--sub);margin-bottom:32px}
+.controls{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:24px}
+input,textarea,button,select{width:100%;padding:12px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);margin-bottom:12px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+button{background:var(--accent);color:#fff;border:none;cursor:pointer;font-weight:600}
+.output textarea{font-family:monospace;font-size:12px;min-height:150px}
+.faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px}
+footer{margin-top:60px;text-align:center;color:var(--sub)}
+</style>
+</head>
+<body>
+<div class="container">
+<a class="back" href="../index.html">← Back to Tools</a>
+<h1>iCal Generator</h1>
+<p class="subtitle">Create .ics calendar files</p>
+<div class="controls">
+<label>Event Title</label>
+<input type="text" id="title" placeholder="Meeting with Team">
+<div class="row">
+<input type="date" id="startDate">
+<input type="time" id="startTime">
+</div>
+<div class="row">
+<input type="date" id="endDate">
+<input type="time" id="endTime">
+</div>
+<textarea id="description" placeholder="Event description (optional)"></textarea>
+<input type="text" id="location" placeholder="Location (optional)">
+<button onclick="generateICS()">Generate .ics File</button>
+</div>
+<div class="output">
+<textarea id="output" placeholder=".ics content will appear here" readonly></textarea>
+<button onclick="downloadICS()">Download .ics</button>
+</div>
+<div class="section">
+<p><strong>Free iCal Generator</strong> - Create .ics calendar files for any calendar app. Generate events with title, date, time, location, and description. Works with Google Calendar, Outlook, Apple Calendar.</p>
+</div>
+<div class="section">
+<p><strong>How It Works</strong> - Enter event details, click Generate, then Download. Open the .ics file to add the event to your calendar.</p>
+</div>
+<h2>FAQ</h2>
+<div class="faq-item">
+<h3>What calendars work with .ics?</h3>
+<p>Google Calendar, Apple Calendar, Outlook, and most calendar apps.</p>
+</div>
+<footer>Free online tools. <a href="/about/">About</a></footer>
+</div>
+<script>
+function generateICS() {
+  const title = document.getElementById('title').value || 'Event';
+  const startDate = document.getElementById('startDate').value.replace(/-/g, '');
+  const startTime = (document.getElementById('startTime').value || '090000').replace(':','');
+  const desc = document.getElementById('description').value;
+  const location = document.getElementById('location').value;
+  
+  const ics = `BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Knexio//iCal Generator//EN
+BEGIN:VEVENT
+UID:${Date.now()}@knexio.xyz
+DTSTAMP:${new Date().toISOString().replace(/[-:]/g,'').split('.')[0]}Z
+DTSTART:${startDate}T${startTime}
+SUMMARY:${title}
+DESCRIPTION:${desc}
+LOCATION:${location}
+END:VEVENT
+END:VCALENDAR`;
+  
+  document.getElementById('output').value = ics;
+}
+
+function downloadICS() {
+  const ics = document.getElementById('output').value;
+  const blob = new Blob([ics], {type: 'text/calendar'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'event.ics';
+  a.click();
+}
+</script>
+<script src="/knexio-bundle.js"></script>
+</body>
+</html>
