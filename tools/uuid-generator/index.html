@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>UUID Generator – Generate Unique IDs Online | Knexio</title>
+<meta name="description" content="Free UUID generator to create version 1, v4, and v7 UUIDs. Generate multiple UUIDs instantly. No download required. Works in your browser.">
+
+<link rel="canonical" href="https://knexio.xyz/tools/uuid-generator/">
+
+<meta property="og:title" content="UUID Generator – Create Unique IDs">
+<meta property="og:description" content="Generate UUID v1, v4, v7 instantly. Free online tool.">
+<meta property="og:url" content="https://knexio.xyz/tools/uuid-generator/">
+<meta property="og:type" content="WebApplication">
+<meta property="og:image" content="https://knexio.xyz/og-image.svg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "UUID Generator",
+  "url": "https://knexio.xyz/tools/uuid-generator/",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "All",
+  "description": "Generate UUID v1, v4, and v7 identifiers instantly. Free online tool for developers.",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "What is UUID?", "acceptedAnswer": {"@type": "Answer", "text": "UUID (Universally Unique Identifier) is a 128-bit identifier formatted as a string. Used for unique IDs in databases, APIs, and software."}},
+    {"@type": "Question", "name": "What's the difference between UUID versions?", "acceptedAnswer": {"@type": "Answer", "text": "v1 uses timestamp + node, v4 uses random numbers, v7 uses Unix timestamp + random. v4 is most common for general use."}},
+    {"@type": "Question", "name": "Can I generate multiple UUIDs at once?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, select quantity from 1 to 100 and generate multiple unique IDs instantly."}}
+  ]
+}
+</script>
+
+<style>
+:root{--bg:#0b1220;--card:#111a2e;--border:rgba(255,255,255,.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system;background:var(--bg);color:var(--text)}
+.container{max-width:900px;margin:auto;padding:50px 16px}
+.back{display:inline-block;margin-bottom:24px;color:var(--sub);font-size:14px;text-decoration:none}
+.back:hover{color:var(--accent)}
+h1{font-size:32px;margin-bottom:8px}
+.subtitle{color:var(--sub);margin-bottom:32px;font-size:16px}
+.controls{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:24px}
+.controls label{display:block;margin-bottom:12px;color:var(--sub);font-size:14px}
+.controls select,.controls input,.controls button{width:100%;padding:12px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-size:15px;margin-bottom:12px}
+.controls button{background:var(--accent);border-color:var(--accent);cursor:pointer;font-weight:600}
+.controls button:hover{opacity:.9}
+.row{display:flex;gap:12px;flex-wrap:wrap}
+.row > *{flex:1;min-width:150px}
+.output{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px}
+.output textarea{width:100%;min-height:200px;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:16px;color:var(--text);font-family:monospace;font-size:14px;resize:vertical}
+.btn-copy{background:var(--accent);color:#fff;border:none;padding:12px 24px;border-radius:8px;cursor:pointer;margin-top:12px;font-weight:600}
+.section{margin-top:40px}
+.section h2{font-size:22px;margin-bottom:12px}
+.section p{color:var(--sub);line-height:1.7}
+.faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px}
+.faq-item h3{font-size:16px;margin-bottom:8px}
+.faq-item p{color:var(--sub);font-size:14px;line-height:1.6;margin:0}
+.related-tools{margin-top:40px}
+.related-tools h2{font-size:22px;margin-bottom:16px}
+.related-tools a{display:inline-block;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 16px;margin:0 8px 8px 0;color:var(--text);text-decoration:none}
+.related-tools a:hover{border-color:var(--accent);color:var(--accent)}
+footer{margin-top:60px;text-align:center;font-size:13px;color:var(--sub)}
+footer a{color:var(--accent);text-decoration:none}
+.ad-banner{margin:32px 0;text-align:center;min-height:90px}
+</style>
+</head>
+<body>
+<div class="container">
+<a class="back" href="../index.html">← Back to Tools</a>
+
+<h1>UUID Generator</h1>
+<p class="subtitle">Generate universally unique identifiers instantly</p>
+
+<div class="ad-banner">Ad space</div>
+
+<div class="controls">
+<label>UUID Version</label>
+<select id="version">
+<option value="v4">UUID v4 (Random) - Most Common</option>
+<option value="v1">UUID v1 (Timestamp)</option>
+<option value="v7">UUID v7 (Unix Timestamp)</option>
+</select>
+
+<label>Quantity</label>
+<input type="number" id="quantity" value="1" min="1" max="100">
+
+<button onclick="generateUUID()">Generate UUID</button>
+</div>
+
+<div class="output">
+<textarea id="output" placeholder="Generated UUIDs will appear here..."></textarea>
+<button class="btn-copy" onclick="copyOutput()">Copy to Clipboard</button>
+</div>
+
+<div class="section">
+<p><strong>Free UUID Generator</strong> - Generate version 1, 4, and 7 UUIDs instantly. UUIDs are 128-bit unique identifiers widely used in software development, databases, and distributed systems. All generation happens locally in your browser.</p>
+</div>
+
+<div class="section">
+<p><strong>How It Works</strong> - Select UUID version and quantity, then click Generate. UUID v4 uses cryptographically secure random numbers. UUID v1 uses timestamp and node ID. UUID v7 uses Unix timestamp for better database performance.</p>
+</div>
+
+<h2>Frequently Asked Questions</h2>
+
+<div class="faq-item">
+<h3>What is UUID?</h3>
+<p>UUID (Universally Unique Identifier) is a 128-bit identifier formatted as a 36-character string (8-4-4-4-12). Used for unique IDs in databases, APIs, and software.</p>
+</div>
+
+<div class="faq-item">
+<h3>What's the difference between UUID versions?</h3>
+<p>UUID v1 uses timestamp and machine node ID. UUID v4 uses cryptographically random numbers (most common). UUID v7 uses Unix timestamp for better sorting performance.</p>
+</div>
+
+<div class="faq-item">
+<h3>Can I generate multiple UUIDs at once?</h3>
+<p>Yes, generate from 1 to 100 UUIDs in a single click. Useful for batch operations and testing.</p>
+</div>
+
+<div class="related-tools">
+<h2>Related Tools</h2>
+<a href="../random-string-generator/">Random String Generator</a>
+<a href="../hash-generator/">Hash Generator</a>
+<a href="../password-generator/">Password Generator</a>
+</div>
+
+<div class="ad-banner">Ad space</div>
+
+<footer>
+<p>Free online tools for developers, designers, and everyone.</p>
+<p>
+<a href="/about/">About</a>
+<a href="/privacy/">Privacy</a>
+<a href="/terms/">Terms</a>
+<a href="/contact/">Contact</a>
+</p>
+<p>© 2026 Knexio. All rights reserved.</p>
+</footer>
+</div>
+
+<script>
+function generateUUID() {
+  const version = document.getElementById('version').value;
+  const quantity = parseInt(document.getElementById('quantity').value);
+  const uuids = [];
+  
+  for (let i = 0; i < quantity; i++) {
+    if (version === 'v4') {
+      uuids.push(crypto.randomUUID());
+    } else if (version === 'v1') {
+      uuids.push(generateV1());
+    } else if (version === 'v7') {
+      uuids.push(generateV7());
+    }
+  }
+  
+  document.getElementById('output').value = uuids.join('\n');
+}
+
+function generateV1() {
+  const now = Date.now();
+  const timeLow = (now & 0xffffffff).toString(16).padStart(8, '0');
+  const timeMid = ((now >> 32) & 0xffff).toString(16).padStart(4, '0');
+  const timeHiAndVersion = ((now >> 48) & 0x0fff) | 0x1000;
+  const clockSeq = (Math.random() * 0x3fff) | 0x8000;
+  const node = Array.from({length: 6}, () => Math.floor(Math.random() * 256).toString(16).padStart(2, '0')).join('');
+  
+  return `${timeLow}-${timeMid}-${timeHiAndVersion.toString(16).padStart(4, '0')}-${clockSeq.toString(16).padStart(4, '0')}-${node}`;
+}
+
+function generateV7() {
+  const timestamp = Date.now();
+  const timeHi = ((timestamp >> 12) & 0x0fffffff) | 0x70000000;
+  const timeLo = timestamp & 0xffffffff;
+  const clock = (Math.random() * 0x3fff) | 0x8000;
+  const node = Array.from({length: 6}, () => Math.floor(Math.random() * 256).toString(16).padStart(2, '0')).join('');
+  
+  return `${timeLo.toString(16).padStart(8, '0')}-${timeHi.toString(16).padStart(4, '0')}-${clock.toString(16).padStart(4, '0')}-${node}`;
+}
+
+function copyOutput() {
+  const output = document.getElementById('output');
+  output.select();
+  document.execCommand('copy');
+  alert('Copied to clipboard!');
+}
+</script>
+<script src="/knexio-bundle.js"></script>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cron Expression Generator – Build Cron Jobs Online | Knexio</title>
+<meta name="description" content="Free cron generator to create cron expressions visually. Select minute, hour, day, month, weekday. Get human-readable description. Works in your browser.">
+
+<link rel="canonical" href="https://knexio.xyz/tools/cron-generator/">
+
+<meta property="og:title" content="Cron Expression Generator">
+<meta property="og:description" content="Create cron expressions visually. Free online tool.">
+<meta property="og:url" content="https://knexio.xyz/tools/cron-generator/">
+<meta property="og:image" content="https://knexio.xyz/og-image.svg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Cron Generator",
+  "url": "https://knexio.xyz/tools/cron-generator/",
+  "applicationCategory": "UtilitiesApplication",
+  "description": "Visual cron expression generator with human-readable descriptions.",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+}
+</script>
+
+<style>
+:root{--bg:#0b1220;--card:#111a2e;--border:rgba(255,255,255,.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system;background:var(--bg);color:var(--text)}
+.container{max-width:900px;margin:auto;padding:50px 16px}
+.back{display:inline-block;margin-bottom:24px;color:var(--sub);font-size:14px;text-decoration:none}
+h1{font-size:32px;margin-bottom:8px}
+.subtitle{color:var(--sub);margin-bottom:32px}
+.result{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;margin:24px 0;text-align:center}
+.result code{font-size:28px;color:var(--accent);font-family:monospace}
+.desc{color:var(--sub);margin-top:12px;font-size:16px}
+.fields{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:24px 0}
+@media(max-width:768px){.fields{grid-template-columns:1fr 1fr}}
+.field{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px}
+.field label{display:block;margin-bottom:8px;color:var(--sub);font-size:12px;text-align:center}
+.field select{width:100%;padding:10px;background:var(--bg);border:1px solid var(--border);border-radius:6px;color:var(--text)}
+.btn{background:var(--accent);color:#fff;border:none;padding:12px 24px;border-radius:8px;cursor:pointer;font-size:15px;font-weight:600}
+.faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px}
+.faq-item h3{font-size:16px;margin-bottom:8px}
+.faq-item p{color:var(--sub);font-size:14px;line-height:1.6}
+footer{margin-top:60px;text-align:center;font-size:13px;color:var(--sub)}
+.ad-banner{margin:32px 0;text-align:center;min-height:90px}
+</style>
+</head>
+<body>
+<div class="container">
+<a class="back" href="../index.html">← Back to Tools</a>
+
+<h1>Cron Expression Generator</h1>
+<p class="subtitle">Build cron schedules visually</p>
+
+<div class="ad-banner">Ad space</div>
+
+<div class="fields">
+<div class="field">
+<label>Minute (0-59)</label>
+<select id="minute" onchange="updateCron()"><option value="*">Every minute</option><option value="0">At minute 0</option><option value="15">At 15</option><option value="30">At 30</option><option value="45">At 45</option></select>
+</div>
+<div class="field">
+<label>Hour (0-23)</label>
+<select id="hour" onchange="updateCron()"><option value="*">Every hour</option><option value="0">Midnight</option><option value="9">9 AM</option><option value="12">Noon</option><option value="18">6 PM</option></select>
+</div>
+<div class="field">
+<label>Day of Month</label>
+<select id="dom" onchange="updateCron()"><option value="*">Every day</option><option value="1">1st</option><option value="15">15th</option></select>
+</div>
+<div class="field">
+<label>Month (1-12)</label>
+<select id="month" onchange="updateCron()"><option value="*">Every month</option><option value="1">January</option><option value="6">June</option><option value="12">December</option></select>
+</div>
+<div class="field">
+<label>Day of Week</label>
+<select id="dow" onchange="updateCron()"><option value="*">Every day</option><option value="1">Monday</option><option value="5">Friday</option><option value="0,6">Weekend</option></select>
+</div>
+</div>
+
+<div class="result">
+<code id="cron">* * * * *</code>
+<p class="desc" id="desc">Runs every minute</p>
+<button class="btn" onclick="copyCron()">Copy Expression</button>
+</div>
+
+<div class="section">
+<p><strong>Free Cron Generator</strong> - Create cron expressions visually without memorizing syntax. Select minute, hour, day, month, and weekday. Get instant human-readable description. Copy expressions for cron jobs, scheduled tasks, and automation.</p>
+</div>
+
+<div class="section">
+<p><strong>How It Works</strong> - Choose values for each field. The expression updates instantly. Click Copy to use in crontab, cron services, or task schedulers.</p>
+</div>
+
+<h2>Frequently Asked Questions</h2>
+
+<div class="faq-item">
+<h3>What is cron?</h3>
+<p>Cron is a time-based job scheduler on Unix systems. Expressions define when tasks run.</p>
+</div>
+
+<div class="faq-item">
+<h3>What do the 5 fields mean?</h3>
+<p>Minute (0-59), Hour (0-23), Day of month (1-31), Month (1-12), Day of week (0-6).</p>
+</div>
+
+<div class="faq-item">
+<h3>What does * * * * * mean?</h3>
+<p>Runs every minute. First * = every minute, second = every hour, etc.</p>
+</div>
+
+<footer>
+<p>Free online tools. <a href="/about/">About</a> <a href="/privacy/">Privacy</a></p>
+</footer>
+</div>
+
+<script>
+const descs = {
+  '* * * * *': 'Runs every minute',
+  '0 * * * *': 'Runs at the start of every hour',
+  '0 0 * * *': 'Runs at midnight every day',
+  '0 9 * * *': 'Runs at 9 AM every day',
+  '0 12 * * *': 'Runs at noon every day',
+  '0 18 * * *': 'Runs at 6 PM every day',
+  '0 0 1 * *': 'Runs at midnight on the 1st of every month',
+  '0 0 15 * *': 'Runs at midnight on the 15th of every month',
+  '* * 1 * *': 'Runs every minute on the 1st',
+  '* * * 1 *': 'Runs every minute in January',
+  '* * * 6 *': 'Runs every minute in June',
+  '0 9 * 1-5 *': 'Runs at 9 AM on weekdays',
+  '0 0 * * 0,6': 'Runs at midnight on weekends',
+};
+
+function updateCron() {
+  const min = document.getElementById('minute').value;
+  const hr = document.getElementById('hour').value;
+  const dom = document.getElementById('dom').value;
+  const mon = document.getElementById('month').value;
+  const dow = document.getElementById('dow').value;
+  
+  const cron = `${min} ${hr} ${dom} ${mon} ${dow}`;
+  document.getElementById('cron').textContent = cron;
+  
+  document.getElementById('desc').textContent = descs[cron] || 'Custom schedule';
+}
+
+function copyCron() {
+  const cron = document.getElementById('cron').textContent;
+  navigator.clipboard.writeText(cron);
+  alert('Copied: ' + cron);
+}
+</script>
+<script src="/knexio-bundle.js"></script>
+</body>
+</html>

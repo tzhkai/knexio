@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Heart Rate Calculator – Target Heart Rate Zones | Knexio</title>
+<meta name="description" content="Free heart rate calculator to find target heart rate zones for exercise. Calculate max heart rate by age. Find optimal fat burn and cardio zones.">
+
+<link rel="canonical" href="https://knexio.xyz/tools/heart-rate-calculator/">
+
+<meta property="og:title" content="Heart Rate Calculator">
+<meta property="og:description" content="Calculate target heart rate zones for exercise.">
+<meta property="og:url" content="https://knexio.xyz/tools/heart-rate-calculator/">
+<meta property="og:image" content="https://knexio.xyz/og-image.svg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Heart Rate Calculator",
+  "url": "https://knexio.xyz/tools/heart-rate-calculator/",
+  "applicationCategory": "UtilitiesApplication",
+  "description": "Calculate target heart rate zones for exercise and fitness.",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+}
+</script>
+
+<style>
+:root{--bg:#0b1220;--card:#111a2e;--border:rgba(255,255,255,.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff;--green:#34d399}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system;background:var(--bg);color:var(--text)}
+.container{max-width:900px;margin:auto;padding:50px 16px}
+.back{display:inline-block;margin-bottom:24px;color:var(--sub)}
+h1{font-size:32px;margin-bottom:8px}
+.subtitle{color:var(--sub);margin-bottom:32px}
+.controls{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:24px}
+.input-group{margin-bottom:16px}
+.input-group label{display:block;margin-bottom:8px;color:var(--sub)}
+.input-group input{width:100%;padding:12px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:16px}
+.btn{background:var(--accent);color:#fff;border:none;padding:12px 24px;border-radius:8px;cursor:pointer;font-size:16px;font-weight:600;width:100%}
+.results{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px}
+.zone{background:var(--bg);border-radius:8px;padding:16px;margin-bottom:12px}
+.zone-header{display:flex;justify-content:space-between;margin-bottom:8px}
+.zone-name{font-weight:600}
+.zone-range{color:var(--accent)}
+.zone-desc{color:var(--sub);font-size:14px}
+.faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px}
+.faq-item h3{font-size:16px;margin-bottom:8px}
+.faq-item p{color:var(--sub);font-size:14px;line-height:1.6}
+footer{margin-top:60px;text-align:center;font-size:13px;color:var(--sub)}
+.ad-banner{margin:32px 0;text-align:center;min-height:90px}
+</style>
+</head>
+<body>
+<div class="container">
+<a class="back" href="../index.html">← Back to Tools</a>
+
+<h1>Heart Rate Calculator</h1>
+<p class="subtitle">Find your optimal exercise heart rate zones</p>
+
+<div class="ad-banner">Ad space</div>
+
+<div class="controls">
+<div class="input-group">
+<label>Your Age</label>
+<input type="number" id="age" placeholder="Enter your age" value="30">
+</div>
+<div class="input-group">
+<label>Resting Heart Rate (bpm)</label>
+<input type="number" id="resting" placeholder="Typically 60-80" value="70">
+</div>
+<button class="btn" onclick="calculate()">Calculate Zones</button>
+</div>
+
+<div class="results" id="results" style="display:none">
+<h3>Your Heart Rate Zones</h3>
+<div class="zone">
+<div class="zone-header"><span class="zone-name">Maximum Heart Rate</span><span class="zone-range" id="max-hr"></span></div>
+<p class="zone-desc">Do not exceed this rate during exercise</p>
+</div>
+<div class="zone">
+<div class="zone-header"><span class="zone-name">Zone 1 - Warm Up (50-60%)</span><span class="zone-range" id="zone1"></span></div>
+<p class="zone-desc">Light activity for warm-up and recovery</p>
+</div>
+<div class="zone">
+<div class="zone-header"><span class="zone-name">Zone 2 - Fat Burn (60-70%)</span><span class="zone-range" id="zone2"></span></div>
+<p class="zone-desc">Optimal for burning fat and building endurance</p>
+</div>
+<div class="zone">
+<div class="zone-header"><span class="zone-name">Zone 3 - Cardio (70-80%)</span><span class="zone-range" id="zone3"></span></div>
+<p class="zone-desc">Improves cardiovascular fitness</p>
+</div>
+<div class="zone">
+<div class="zone-header"><span class="zone-name">Zone 4 - Hard (80-90%)</span><span class="zone-range" id="zone4"></span></div>
+<p class="zone-desc">High intensity for performance</p>
+</div>
+<div class="zone">
+<div class="zone-header"><span class="zone-name">Zone 5 - Maximum (90-100%)</span><span class="zone-range" id="zone5"></span></div>
+<p class="zone-desc">Maximum effort, short bursts only</p>
+</div>
+</div>
+
+<div class="section">
+<p><strong>Free Heart Rate Calculator</strong> - Calculate your target heart rate zones based on age and resting heart rate. Find optimal exercise intensity for fat burning, cardio, and peak performance. Uses proven heart rate reserve method.</p>
+</div>
+
+<div class="section">
+<p><strong>How It Works</strong> - Enter your age and resting heart rate. The calculator uses the Karvonen formula (heart rate reserve) for accurate zones. Each zone corresponds to different exercise intensities and benefits.</p>
+</div>
+
+<h2>Frequently Asked Questions</h2>
+
+<div class="faq-item">
+<h3>What is my maximum heart rate?</h3>
+<p>Max HR = 220 minus your age. For a 30-year-old, max is 190 bpm.</p>
+</div>
+
+<div class="faq-item">
+<h3>Which zone is best for fat loss?</h3>
+<p>Zone 2 (60-70% of max) is optimal for burning fat through sustained aerobic exercise.</p>
+</div>
+
+<div class="faq-item">
+<h3>Should I exercise in the maximum zone?</h3>
+<p>Only for short bursts. Zone 5 is for athletes doing high-intensity interval training.</p>
+</div>
+
+<footer>
+<p>Free online tools. <a href="/about/">About</a> <a href="/privacy/">Privacy</a></p>
+</footer>
+</div>
+
+<script>
+function calculate() {
+  const age = parseInt(document.getElementById('age').value);
+  const resting = parseInt(document.getElementById('resting').value);
+  
+  if (!age || !resting) {
+    alert('Please enter valid numbers');
+    return;
+  }
+  
+  const maxHR = 220 - age;
+  const hrr = maxHR - resting;
+  
+  document.getElementById('max-hr').textContent = maxHR + ' bpm';
+  document.getElementById('zone1').textContent = Math.round(resting + hrr * 0.5) + '-' + Math.round(resting + hrr * 0.6) + ' bpm';
+  document.getElementById('zone2').textContent = Math.round(resting + hrr * 0.6) + '-' + Math.round(resting + hrr * 0.7) + ' bpm';
+  document.getElementById('zone3').textContent = Math.round(resting + hrr * 0.7) + '-' + Math.round(resting + hrr * 0.8) + ' bpm';
+  document.getElementById('zone4').textContent = Math.round(resting + hrr * 0.8) + '-' + Math.round(resting + hrr * 0.9) + ' bpm';
+  document.getElementById('zone5').textContent = Math.round(resting + hrr * 0.9) + '-' + maxHR + ' bpm';
+  
+  document.getElementById('results').style.display = 'block';
+}
+</script>
+<script src="/knexio-bundle.js"></script>
+</body>
+</html>

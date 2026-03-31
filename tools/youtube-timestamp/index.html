@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>YouTube Timestamp Generator – Add Timestamps to YouTube | Knexio</title>
+<meta name="description" content="Free YouTube timestamp generator. Enter video duration and add timestamps to video descriptions. Create timestamp links for specific moments in YouTube videos.">
+
+<link rel="canonical" href="https://knexio.xyz/tools/youtube-timestamp/">
+
+<meta property="og:title" content="YouTube Timestamp Generator">
+<meta property="og:description" content="Add timestamps to YouTube video descriptions.">
+<meta property="og:image" content="https://knexio.xyz/og-image.svg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "YouTube Timestamp Generator",
+  "url": "https://knexio.xyz/tools/youtube-timestamp/",
+  "applicationCategory": "UtilitiesApplication",
+  "description": "Generate YouTube timestamps and links for video descriptions.",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+}
+</script>
+
+<style>
+:root{--bg:#0b1220;--card:#111a2e;--border:rgba(255,255,255,.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system;background:var(--bg);color:var(--text)}
+.container{max-width:900px;margin:auto;padding:50px 16px}
+.back{display:inline-block;margin-bottom:24px;color:var(--sub)}
+h1{font-size:32px;margin-bottom:8px}
+.subtitle{color:var(--sub);margin-bottom:32px}
+.controls{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:24px}
+.input-row{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:16px}
+.input-row input{flex:1;min-width:200px;padding:12px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text)}
+.timestamps{margin:24px 0}
+.timestamp-row{display:flex;gap:12px;margin-bottom:12px}
+.timestamp-row input{padding:10px;background:var(--bg);border:1px solid var(--border);border-radius:6px;color:var(--text)}
+.timestamp-row input:first-child{width:150px}
+.btn-add{background:var(--accent);color:#fff;border:none;padding:10px 20px;border-radius:6px;cursor:pointer}
+.btn-remove{background:transparent;border:1px solid var(--border);color:var(--red);padding:8px 12px;border-radius:6px;cursor:pointer}
+.output{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px}
+.output textarea{width:100%;min-height:150px;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:16px;color:var(--text);font-family:monospace}
+.faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px}
+.faq-item h3{font-size:16px;margin-bottom:8px}
+footer{margin-top:60px;text-align:center;font-size:13px;color:var(--sub)}
+.ad-banner{margin:32px 0}
+</style>
+</head>
+<body>
+<div class="container">
+<a class="back" href="../index.html">← Back to Tools</a>
+
+<h1>YouTube Timestamp Generator</h1>
+<p class="subtitle">Add timestamps to your video descriptions</p>
+
+<div class="ad-banner">Ad space</div>
+
+<div class="controls">
+<div class="input-row">
+<input type="text" id="videoTitle" placeholder="Video title (optional)">
+<input type="text" id="videoUrl" placeholder="YouTube URL (optional)">
+</div>
+
+<div class="timestamps">
+<div class="timestamp-row">
+<input type="text" placeholder="0:00" value="0:00"><input type="text" placeholder="Description"><button class="btn-remove" onclick="this.parentElement.remove()">✕</button>
+</div>
+<div class="timestamp-row">
+<input type="text" placeholder="1:00"><input type="text" placeholder="Description"><button class="btn-remove" onclick="this.parentElement.remove()">✕</button>
+</div>
+<div class="timestamp-row">
+<input type="text" placeholder="2:00"><input type="text" placeholder="Description"><button class="btn-remove" onclick="this.parentElement.remove()">✕</button>
+</div>
+</div>
+
+<button class="btn-add" onclick="addTimestamp()">+ Add Timestamp</button>
+</div>
+
+<button class="btn-add" style="width:100%;margin-bottom:16px" onclick="generateOutput()">Generate Timestamps</button>
+
+<div class="output">
+<textarea id="output" placeholder="Generated timestamps will appear here..."></textarea>
+<button class="btn-add" style="margin-top:12px" onclick="copyOutput()">Copy to Clipboard</button>
+</div>
+
+<div class="section">
+<p><strong>Free YouTube Timestamp Generator</strong> - Create timestamp lists for YouTube video descriptions. Enter timestamps with descriptions and generate ready-to-paste text. Perfect for tutorials, podcasts, and long-form content.</p>
+</div>
+
+<div class="section">
+<p><strong>How It Works</strong> - Add timestamps by clicking + Add Timestamp. Enter time (0:00 format) and description. Click Generate to create formatted list ready for YouTube description.</p>
+</div>
+
+<h2>Frequently Asked Questions</h2>
+
+<div class="faq-item">
+<h3>How do I add timestamps in YouTube?</h3>
+<p>Paste the generated timestamps into your video description. Viewers can click timestamps to jump to that point.</p>
+</div>
+
+<div class="faq-item">
+<h3>What's the format?</h3>
+<p>0:00 - Introduction\n1:30 - Main Topic\n5:45 - Conclusion</p>
+</div>
+
+<footer>
+<p>Free online tools. <a href="/about/">About</a></p>
+</footer>
+</div>
+
+<script>
+function addTimestamp() {
+  const div = document.createElement('div');
+  div.className = 'timestamp-row';
+  div.innerHTML = '<input type="text" placeholder="0:00"><input type="text" placeholder="Description"><button class="btn-remove" onclick="this.parentElement.remove()">✕</button>';
+  document.querySelector('.timestamps').appendChild(div);
+}
+
+function generateOutput() {
+  const title = document.getElementById('videoTitle').value;
+  const rows = document.querySelectorAll('.timestamp-row');
+  let output = '';
+  
+  if (title) {
+    output = title + '\n\n';
+  }
+  
+  rows.forEach(row => {
+    const time = row.querySelector('input:first-child').value;
+    const desc = row.querySelector('input:nth-child(2)').value;
+    if (time && desc) {
+      output += time + ' ' + desc + '\n';
+    }
+  });
+  
+  document.getElementById('output').value = output;
+}
+
+function copyOutput() {
+  const output = document.getElementById('output');
+  output.select();
+  document.execCommand('copy');
+  alert('Copied!');
+}
+</script>
+<script src="/knexio-bundle.js"></script>
+</body>
+</html>
