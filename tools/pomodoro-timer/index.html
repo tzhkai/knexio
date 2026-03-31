@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pomodoro Timer – Free Online Pomodoro Technique | Knexio</title>
+<meta name="description" content="Free Pomodoro timer online. Use the Pomodoro technique to boost productivity. 25-minute work sessions with 5-minute breaks. No download required.">
+<link rel="canonical" href="https://knexio.xyz/tools/pomodoro-timer/">
+<meta property="og:title" content="Pomodoro Timer">
+<meta property="og:description" content="Free online Pomodoro timer for productivity.">
+<meta property="og:image" content="https://knexio.xyz/og-image.svg">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Pomodoro Timer","url":"https://knexio.xyz/tools/pomodoro-timer/","applicationCategory":"UtilitiesApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<style>
+:root{--bg:#0b1220;--card:#111a2e;--border:rgba(255,255,255,.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff;--red:#f87171;--green:#34d399}
+*{box-sizing:border-box}body{font-family:system-ui;background:var(--bg);color:var(--text)}
+.container{max-width:700px;margin:auto;padding:50px 16px;text-align:center}
+.back{display:inline-block;margin-bottom:24px;color:var(--sub);float:left}
+h1{font-size:32px;margin-bottom:8px}.subtitle{color:var(--sub);margin-bottom:40px}
+.tabs{display:flex;gap:8px;justify-content:center;margin-bottom:32px}
+.tab{padding:10px 24px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--sub);cursor:pointer}
+.tab.active{background:var(--accent);border-color:var(--accent);color:#fff}
+.clock{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:60px 40px;margin-bottom:32px}
+.time{font-size:80px;font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:-2px}
+.session{color:var(--sub);margin-top:12px}
+.btns{display:flex;gap:16px;justify-content:center;margin-bottom:32px}
+.btn{padding:14px 32px;border-radius:12px;border:none;cursor:pointer;font-size:16px;font-weight:600}
+.btn-start{background:var(--accent);color:#fff}
+.btn-reset{background:var(--card);border:1px solid var(--border);color:var(--text)}
+.settings{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;text-align:left}
+.settings label{display:block;margin-bottom:8px;color:var(--sub)}
+.settings input{width:100%;padding:10px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);margin-bottom:16px}
+.faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px;text-align:left}
+.faq-item h3{font-size:16px;margin-bottom:8px}.faq-item p{color:var(--sub);line-height:1.6}
+footer{margin-top:60px;color:var(--sub)}
+</style>
+</head>
+<body>
+<div class="container">
+<a class="back" href="../index.html">← Back to Tools</a>
+<h1>Pomodoro Timer</h1>
+<p class="subtitle">Boost productivity with focused work sessions</p>
+<div class="tabs">
+<button class="tab active" onclick="setMode('work',this)">Work</button>
+<button class="tab" onclick="setMode('short',this)">Short Break</button>
+<button class="tab" onclick="setMode('long',this)">Long Break</button>
+</div>
+<div class="clock">
+<div class="time" id="time">25:00</div>
+<div class="session" id="session">Session 1 of 4</div>
+</div>
+<div class="btns">
+<button class="btn btn-start" id="startBtn" onclick="toggle()">Start</button>
+<button class="btn btn-reset" onclick="reset()">Reset</button>
+</div>
+<div class="settings">
+<label>Work Duration (minutes)</label>
+<input type="number" id="workMin" value="25" min="1" max="60" onchange="reset()">
+<label>Short Break (minutes)</label>
+<input type="number" id="shortMin" value="5" min="1" max="30" onchange="reset()">
+<label>Long Break (minutes)</label>
+<input type="number" id="longMin" value="15" min="1" max="60" onchange="reset()">
+</div>
+<div class="section" style="text-align:left;margin-top:40px">
+<p><strong>Free Pomodoro Timer</strong> - Use the Pomodoro technique to stay focused. Work for 25 minutes, take a 5-minute break. After 4 sessions, take a longer break. Customize durations to fit your workflow.</p>
+</div>
+<div class="section" style="text-align:left">
+<p><strong>How It Works</strong> - Click Start to begin a 25-minute work session. Timer alerts you when done. Take a short break, then repeat. After 4 pomodoros, take a long break.</p>
+</div>
+<h2 style="text-align:left">Frequently Asked Questions</h2>
+<div class="faq-item">
+<h3>What is the Pomodoro Technique?</h3>
+<p>A time management method: work 25 minutes, break 5 minutes. Repeat 4 times, then take a 15-30 minute break.</p>
+</div>
+<div class="faq-item">
+<h3>Can I customize the timer?</h3>
+<p>Yes, adjust work, short break, and long break durations in the settings below the timer.</p>
+</div>
+<footer>Free online tools. <a href="/about/">About</a></footer>
+</div>
+<script>
+let mode = 'work', running = false, interval = null, seconds = 0, session = 1;
+
+const modes = {
+  work: () => parseInt(document.getElementById('workMin').value) * 60,
+  short: () => parseInt(document.getElementById('shortMin').value) * 60,
+  long: () => parseInt(document.getElementById('longMin').value) * 60,
+};
+
+function setMode(m, el) {
+  mode = m;
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  reset();
+}
+
+function reset() {
+  clearInterval(interval);
+  running = false;
+  seconds = modes[mode]();
+  document.getElementById('startBtn').textContent = 'Start';
+  render();
+}
+
+function toggle() {
+  if (running) {
+    clearInterval(interval);
+    running = false;
+    document.getElementById('startBtn').textContent = 'Resume';
+  } else {
+    running = true;
+    document.getElementById('startBtn').textContent = 'Pause';
+    interval = setInterval(() => {
+      seconds--;
+      if (seconds <= 0) {
+        clearInterval(interval);
+        running = false;
+        document.getElementById('startBtn').textContent = 'Start';
+        if (mode === 'work') session = Math.min(session + 1, 4);
+        new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAA==').play().catch(()=>{});
+        alert(mode === 'work' ? 'Work session done! Take a break.' : 'Break over! Back to work.');
+      }
+      render();
+    }, 1000);
+  }
+}
+
+function render() {
+  const m = Math.floor(seconds / 60).toString().padStart(2, '0');
+  const s = (seconds % 60).toString().padStart(2, '0');
+  document.getElementById('time').textContent = m + ':' + s;
+  document.getElementById('session').textContent = 'Session ' + session + ' of 4';
+  document.title = m + ':' + s + ' – Pomodoro Timer';
+}
+
+reset();
+</script>
+<script src="/knexio-bundle.js"></script>
+</body>
+</html>

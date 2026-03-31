@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Markdown to HTML Converter – Convert MD Online | Knexio</title>
+<meta name="description" content="Free Markdown to HTML converter. Convert Markdown text to HTML instantly. Preview rendered output. Copy HTML code for websites and blogs.">
+<link rel="canonical" href="https://knexio.xyz/tools/markdown-to-html/">
+<meta property="og:title" content="Markdown to HTML Converter">
+<meta property="og:description" content="Convert Markdown to HTML instantly.">
+<meta property="og:image" content="https://knexio.xyz/og-image.svg">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Markdown to HTML Converter","url":"https://knexio.xyz/tools/markdown-to-html/","applicationCategory":"UtilitiesApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<style>
+:root{--bg:#0b1220;--card:#111a2e;--border:rgba(255,255,255,.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff}
+*{box-sizing:border-box}body{font-family:system-ui;background:var(--bg);color:var(--text)}
+.container{max-width:900px;margin:auto;padding:50px 16px}
+.back{display:inline-block;margin-bottom:24px;color:var(--sub)}
+h1{font-size:32px;margin-bottom:8px}.subtitle{color:var(--sub);margin-bottom:32px}
+.areas{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+@media(max-width:768px){.areas{grid-template-columns:1fr}}
+textarea{width:100%;min-height:400px;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:16px;color:var(--text);font-family:monospace;font-size:14px;resize:vertical}
+.preview{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:16px;min-height:400px;overflow:auto;color:var(--text);line-height:1.7}
+.preview h1,.preview h2,.preview h3{margin:16px 0 8px}
+.preview p{margin-bottom:12px;color:var(--sub)}
+.preview code{background:rgba(255,255,255,.1);padding:2px 6px;border-radius:4px;font-family:monospace}
+.preview pre{background:rgba(255,255,255,.05);padding:16px;border-radius:8px;overflow:auto}
+.preview a{color:var(--accent)}
+.preview ul,.preview ol{padding-left:24px;margin-bottom:12px;color:var(--sub)}
+.btns{display:flex;gap:8px;margin-bottom:16px}
+.btn{padding:10px 20px;border-radius:8px;border:none;cursor:pointer;font-weight:600}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-secondary{background:var(--card);border:1px solid var(--border);color:var(--text)}
+.faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px}
+.faq-item h3{font-size:16px;margin-bottom:8px}.faq-item p{color:var(--sub);line-height:1.6}
+footer{margin-top:60px;text-align:center;color:var(--sub)}
+</style>
+</head>
+<body>
+<div class="container">
+<a class="back" href="../index.html">← Back to Tools</a>
+<h1>Markdown to HTML Converter</h1>
+<p class="subtitle">Convert Markdown to HTML instantly</p>
+<div class="btns">
+<button class="btn btn-primary" onclick="convert()">Convert</button>
+<button class="btn btn-secondary" onclick="copyHTML()">Copy HTML</button>
+<button class="btn btn-secondary" onclick="clearAll()">Clear</button>
+</div>
+<div class="areas">
+<div>
+<label style="display:block;margin-bottom:8px;color:var(--sub)">Markdown Input</label>
+<textarea id="input" placeholder="# Hello World&#10;&#10;Write your **Markdown** here...&#10;&#10;- Item 1&#10;- Item 2"></textarea>
+</div>
+<div>
+<label style="display:block;margin-bottom:8px;color:var(--sub)">HTML Preview</label>
+<div class="preview" id="preview"></div>
+</div>
+</div>
+<div class="section">
+<p><strong>Free Markdown to HTML Converter</strong> - Convert Markdown to HTML instantly. Preview rendered output. Supports headings, bold, italic, lists, links, code blocks, and more.</p>
+</div>
+<div class="section">
+<p><strong>How It Works</strong> - Type or paste Markdown in the left panel. Click Convert to see HTML preview on the right. Copy the HTML code for use in websites or blogs.</p>
+</div>
+<h2>Frequently Asked Questions</h2>
+<div class="faq-item">
+<h3>What Markdown syntax is supported?</h3>
+<p>Headings (#), bold (**), italic (*), lists (- or 1.), links, code blocks, blockquotes, and horizontal rules.</p>
+</div>
+<div class="faq-item">
+<h3>Can I copy the HTML output?</h3>
+<p>Yes, click "Copy HTML" to copy the raw HTML code to clipboard.</p>
+</div>
+<div class="related-tools">
+<h2>Related Tools</h2>
+<a href="../markdown-preview/">Markdown Preview</a>
+<a href="../html-entity-encoder/">HTML Entity Encoder</a>
+<a href="../code-beautifier/">Code Beautifier</a>
+</div>
+<footer>Free online tools. <a href="/about/">About</a></footer>
+</div>
+<script>
+function convert() {
+  const md = document.getElementById('input').value;
+  let html = md
+    .replace(/^### (.*$)/gm, '<h3>$1</h3>')
+    .replace(/^## (.*$)/gm, '<h2>$1</h2>')
+    .replace(/^# (.*$)/gm, '<h1>$1</h1>')
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.*?)\*/g, '<em>$1</em>')
+    .replace(/`(.*?)`/g, '<code>$1</code>')
+    .replace(/^\- (.*$)/gm, '<li>$1</li>')
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>')
+    .replace(/^---$/gm, '<hr>')
+    .replace(/\n\n/g, '</p><p>')
+    .replace(/^(?!<[h|l|p|u|o|b|i|c|a|h])/gm, '<p>')
+    .replace(/(<li>.*<\/li>)/gs, '<ul>$1</ul>');
+  
+  document.getElementById('preview').innerHTML = html;
+}
+
+function copyHTML() {
+  const html = document.getElementById('preview').innerHTML;
+  navigator.clipboard.writeText(html);
+  alert('HTML copied!');
+}
+
+function clearAll() {
+  document.getElementById('input').value = '';
+  document.getElementById('preview').innerHTML = '';
+}
+
+// Auto-convert on input
+document.getElementById('input').addEventListener('input', convert);
+</script>
+<script src="/knexio-bundle.js"></script>
+</body>
+</html>

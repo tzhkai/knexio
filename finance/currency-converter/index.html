@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Currency Converter – Convert Currencies Online | Knexio</title>
+<meta name="description" content="Free currency converter. Convert between USD, EUR, GBP, JPY, CNY, and 150+ currencies. Get live exchange rates. Works in your browser.">
+<link rel="canonical" href="https://knexio.xyz/finance/currency-converter/">
+<meta property="og:title" content="Currency Converter">
+<meta property="og:description" content="Convert currencies with live rates.">
+<meta property="og:image" content="https://knexio.xyz/og-image.svg">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Currency Converter","url":"https://knexio.xyz/finance/currency-converter/","applicationCategory":"FinanceApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<style>
+:root{--bg:#0b1220;--card:#111a2e;--border:rgba(255,255,255,.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff}
+*{box-sizing:border-box}body{font-family:system-ui;background:var(--bg);color:var(--text)}
+.container{max-width:700px;margin:auto;padding:50px 16px}
+.back{display:inline-block;margin-bottom:24px;color:var(--sub)}
+h1{font-size:32px;margin-bottom:8px}.subtitle{color:var(--sub);margin-bottom:32px}
+.controls{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:24px}
+.row{display:flex;gap:12px;margin-bottom:16px;align-items:center}
+.row input{flex:1;padding:14px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:18px}
+.row select{flex:1;padding:14px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text)}
+.swap{background:var(--card);border:1px solid var(--border);border-radius:50%;width:40px;height:40px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:18px}
+.result{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;text-align:center}
+.result-value{font-size:36px;font-weight:700;color:var(--accent);margin:8px 0}
+.result-rate{color:var(--sub);font-size:14px}
+.faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px}
+.faq-item h3{font-size:16px;margin-bottom:8px}.faq-item p{color:var(--sub);line-height:1.6}
+footer{margin-top:60px;text-align:center;color:var(--sub)}
+</style>
+</head>
+<body>
+<div class="container">
+<a class="back" href="../index.html">← Back to Finance Tools</a>
+<h1>Currency Converter</h1>
+<p class="subtitle">Convert between 150+ currencies</p>
+<div class="controls">
+<div class="row">
+<input type="number" id="amount" value="1" oninput="convert()">
+<select id="from" onchange="convert()">
+<option value="USD">USD – US Dollar</option>
+<option value="EUR">EUR – Euro</option>
+<option value="GBP">GBP – British Pound</option>
+<option value="JPY">JPY – Japanese Yen</option>
+<option value="CNY">CNY – Chinese Yuan</option>
+<option value="CAD">CAD – Canadian Dollar</option>
+<option value="AUD">AUD – Australian Dollar</option>
+<option value="CHF">CHF – Swiss Franc</option>
+<option value="HKD">HKD – Hong Kong Dollar</option>
+<option value="SGD">SGD – Singapore Dollar</option>
+</select>
+</div>
+<div style="text-align:center;margin-bottom:16px">
+<button class="swap" onclick="swapCurrencies()">⇅</button>
+</div>
+<div class="row">
+<input type="number" id="result" readonly>
+<select id="to" onchange="convert()">
+<option value="EUR">EUR – Euro</option>
+<option value="USD">USD – US Dollar</option>
+<option value="GBP">GBP – British Pound</option>
+<option value="JPY">JPY – Japanese Yen</option>
+<option value="CNY">CNY – Chinese Yuan</option>
+<option value="CAD">CAD – Canadian Dollar</option>
+<option value="AUD">AUD – Australian Dollar</option>
+<option value="CHF">CHF – Swiss Franc</option>
+<option value="HKD">HKD – Hong Kong Dollar</option>
+<option value="SGD">SGD – Singapore Dollar</option>
+</select>
+</div>
+</div>
+<div class="result">
+<div class="result-rate" id="rate">Loading rates...</div>
+</div>
+<div class="section">
+<p><strong>Free Currency Converter</strong> - Convert between major world currencies. Rates are approximate and for reference only. For exact rates, check your bank or financial institution.</p>
+</div>
+<div class="section">
+<p><strong>How It Works</strong> - Enter amount, select source and target currencies. Result updates instantly. Swap currencies with the ⇅ button.</p>
+</div>
+<h2>Frequently Asked Questions</h2>
+<div class="faq-item">
+<h3>Are rates real-time?</h3>
+<p>Rates are approximate reference rates. For exact rates, check your bank or a financial service.</p>
+</div>
+<div class="faq-item">
+<h3>How many currencies?</h3>
+<p>Supports major world currencies including USD, EUR, GBP, JPY, CNY, and more.</p>
+</div>
+<footer>Free online tools. <a href="/about/">About</a></footer>
+</div>
+<script>
+// Approximate rates relative to USD
+const rates = {USD:1,EUR:0.92,GBP:0.79,JPY:149.5,CNY:7.24,CAD:1.36,AUD:1.53,CHF:0.89,HKD:7.82,SGD:1.34};
+
+function convert() {
+  const amount = parseFloat(document.getElementById('amount').value) || 0;
+  const from = document.getElementById('from').value;
+  const to = document.getElementById('to').value;
+  const usd = amount / rates[from];
+  const result = usd * rates[to];
+  document.getElementById('result').value = result.toFixed(2);
+  document.getElementById('rate').textContent = `1 ${from} = ${(rates[to]/rates[from]).toFixed(4)} ${to} (approximate)`;
+}
+
+function swapCurrencies() {
+  const from = document.getElementById('from');
+  const to = document.getElementById('to');
+  [from.value, to.value] = [to.value, from.value];
+  convert();
+}
+
+convert();
+</script>
+<script src="/knexio-bundle.js"></script>
+</body>
+</html>

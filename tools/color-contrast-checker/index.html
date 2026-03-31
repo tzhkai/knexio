@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Color Contrast Checker – WCAG Accessibility Tool | Knexio</title>
+<meta name="description" content="Free color contrast checker. Test foreground and background color combinations for WCAG accessibility compliance. Check AA and AAA contrast ratios.">
+<link rel="canonical" href="https://knexio.xyz/tools/color-contrast-checker/">
+<meta property="og:title" content="Color Contrast Checker">
+<meta property="og:description" content="Check WCAG color contrast ratios.">
+<meta property="og:image" content="https://knexio.xyz/og-image.svg">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Color Contrast Checker","url":"https://knexio.xyz/tools/color-contrast-checker/","applicationCategory":"UtilitiesApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<style>
+:root{--bg:#0b1220;--card:#111a2e;--border:rgba(255,255,255,.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff;--green:#34d399;--red:#f87171}
+*{box-sizing:border-box}body{font-family:system-ui;background:var(--bg);color:var(--text)}
+.container{max-width:900px;margin:auto;padding:50px 16px}
+.back{display:inline-block;margin-bottom:24px;color:var(--sub)}
+h1{font-size:32px;margin-bottom:8px}.subtitle{color:var(--sub);margin-bottom:32px}
+.controls{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:24px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.color-group label{display:block;margin-bottom:8px;color:var(--sub)}
+.color-group input[type="color"]{width:100%;height:50px;border:1px solid var(--border);border-radius:8px;cursor:pointer}
+.color-group input[type="text"]{width:100%;padding:10px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);margin-top:8px}
+.preview{height:120px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:600;margin-bottom:24px}
+.result{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px}
+.ratio{font-size:48px;font-weight:700;text-align:center;margin-bottom:16px}
+.badges{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.badge{padding:8px 20px;border-radius:20px;font-weight:600}
+.pass{background:rgba(52,211,153,.2);color:var(--green);border:1px solid var(--green)}
+.fail{background:rgba(248,113,113,.2);color:var(--red);border:1px solid var(--red)}
+.faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px}
+.faq-item h3{font-size:16px;margin-bottom:8px}.faq-item p{color:var(--sub);line-height:1.6}
+footer{margin-top:60px;text-align:center;color:var(--sub)}
+</style>
+</head>
+<body>
+<div class="container">
+<a class="back" href="../index.html">← Back to Tools</a>
+<h1>Color Contrast Checker</h1>
+<p class="subtitle">Test WCAG accessibility compliance</p>
+<div class="controls">
+<div class="row">
+<div class="color-group">
+<label>Text Color</label>
+<input type="color" id="fg" value="#ffffff" oninput="update()">
+<input type="text" id="fgHex" value="#ffffff" oninput="document.getElementById('fg').value=this.value;update()">
+</div>
+<div class="color-group">
+<label>Background Color</label>
+<input type="color" id="bg" value="#0b1220" oninput="update()">
+<input type="text" id="bgHex" value="#0b1220" oninput="document.getElementById('bg').value=this.value;update()">
+</div>
+</div>
+</div>
+<div class="preview" id="preview">Sample Text Preview</div>
+<div class="result">
+<div class="ratio" id="ratio">-</div>
+<div class="badges" id="badges"></div>
+</div>
+<div class="section">
+<p><strong>Free Color Contrast Checker</strong> - Test color combinations for WCAG 2.1 accessibility compliance. Check AA (4.5:1) and AAA (7:1) contrast ratios for normal and large text.</p>
+</div>
+<div class="section">
+<p><strong>How It Works</strong> - Pick text and background colors. The tool calculates contrast ratio and shows WCAG AA/AAA pass/fail status instantly.</p>
+</div>
+<h2>Frequently Asked Questions</h2>
+<div class="faq-item">
+<h3>What is WCAG?</h3>
+<p>Web Content Accessibility Guidelines. AA requires 4.5:1 ratio for normal text, AAA requires 7:1.</p>
+</div>
+<div class="faq-item">
+<h3>What ratio do I need?</h3>
+<p>WCAG AA (minimum): 4.5:1 for normal text, 3:1 for large text. AAA (enhanced): 7:1 for normal text.</p>
+</div>
+<div class="related-tools">
+<h2>Related Tools</h2>
+<a href="../color-picker/">Color Picker</a>
+<a href="../hex-to-rgb/">HEX to RGB</a>
+<a href="../gradient-generator/">Gradient Generator</a>
+</div>
+<footer>Free online tools. <a href="/about/">About</a></footer>
+</div>
+<script>
+function getLuminance(hex) {
+  hex = hex.replace('#','');
+  if (hex.length === 3) hex = hex.split('').map(c=>c+c).join('');
+  const r = parseInt(hex.substr(0,2),16)/255;
+  const g = parseInt(hex.substr(2,2),16)/255;
+  const b = parseInt(hex.substr(4,2),16)/255;
+  const toLinear = c => c <= 0.03928 ? c/12.92 : Math.pow((c+0.055)/1.055, 2.4);
+  return 0.2126*toLinear(r) + 0.7152*toLinear(g) + 0.0722*toLinear(b);
+}
+
+function update() {
+  const fg = document.getElementById('fg').value;
+  const bg = document.getElementById('bg').value;
+  document.getElementById('fgHex').value = fg;
+  document.getElementById('bgHex').value = bg;
+  
+  const preview = document.getElementById('preview');
+  preview.style.color = fg;
+  preview.style.background = bg;
+  
+  const l1 = getLuminance(fg);
+  const l2 = getLuminance(bg);
+  const ratio = (Math.max(l1,l2)+0.05)/(Math.min(l1,l2)+0.05);
+  
+  document.getElementById('ratio').textContent = ratio.toFixed(2) + ':1';
+  
+  const badges = document.getElementById('badges');
+  badges.innerHTML = [
+    {label:'AA Normal', pass: ratio >= 4.5},
+    {label:'AA Large', pass: ratio >= 3},
+    {label:'AAA Normal', pass: ratio >= 7},
+    {label:'AAA Large', pass: ratio >= 4.5},
+  ].map(b => `<span class="badge ${b.pass?'pass':'fail'}">${b.label}: ${b.pass?'Pass':'Fail'}</span>`).join('');
+}
+
+update();
+</script>
+<script src="/knexio-bundle.js"></script>
+</body>
+</html>
