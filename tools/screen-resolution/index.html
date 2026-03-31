@@ -33,6 +33,54 @@
 }
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is screen resolution?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Screen resolution refers to the total number of pixels displayed on your screen, expressed as width × height (e.g., 1920×1080). Higher resolution means more pixels and sharper images. It is determined by your monitor hardware and display settings."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between screen resolution and window size?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Screen resolution is the full size of your physical display. Window size (viewport) is the actual area inside your browser window, which is smaller because of OS toolbars, browser chrome, and scroll bars. Both are shown separately in this tool."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is device pixel ratio (DPR)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Device pixel ratio is the ratio of physical screen pixels to CSS pixels. A DPR of 2 means one CSS pixel equals 2×2 physical pixels — common on Retina and HiDPI displays. This is why images need to be 2× size to look sharp on these screens."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does color depth mean?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Color depth (also called bit depth) indicates how many bits are used to represent the color of each pixel. 24-bit color supports 16.7 million colors (true color), while 32-bit adds an alpha channel for transparency. Most modern displays use 24-bit or 32-bit color depth."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does the resolution change when I resize the browser?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The screen resolution itself does not change — that is fixed by your hardware. The window size updates in real time as you resize your browser. This tool auto-refreshes both values whenever the window is resized."
+      }
+    }
+  ]
+}
+</script>
 <style>
 :root{
   --bg:#0b1220;

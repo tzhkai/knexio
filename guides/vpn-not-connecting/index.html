@@ -27,6 +27,54 @@
     }
   }
   </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why is my VPN stuck on 'Connecting'?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A VPN stuck on Connecting usually means the VPN server is unreachable, your firewall is blocking the connection, or the VPN protocol is being throttled by your network. Try switching to a different VPN server, changing the VPN protocol (e.g., from OpenVPN to WireGuard), or disabling your firewall temporarily to test."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does my VPN keep disconnecting?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Frequent VPN disconnections are caused by an unstable internet connection, power-saving settings turning off the network adapter, or the VPN server being overloaded. Ensure your internet is stable, disable PC sleep/hibernate while connected, and try connecting to a less-loaded server."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why can't I connect to VPN on Windows?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "On Windows, VPN failures are often caused by outdated TAP/TUN drivers, conflicting third-party firewall software, or Windows Firewall blocking VPN ports. Update the VPN app and its drivers, temporarily disable third-party antivirus/firewall to test, and ensure that ports 1194 (OpenVPN), 1723 (PPTP), or 500/4500 (IKEv2) are not blocked by your router."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is VPN not working on mobile data?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Some mobile carriers block VPN protocols, especially PPTP and IKEv2 on certain networks. Try switching to WireGuard or OpenVPN UDP. Also check that your carrier's data plan doesn't restrict VPN usage (some prepaid plans do)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I fix VPN on iPhone?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "On iPhone: go to Settings > General > VPN & Device Management > VPN. Delete any old VPN profiles, then re-add via your VPN app. Toggle Airplane Mode on for 10 seconds, then off. If issues persist, go to Settings > General > Transfer or Reset iPhone > Reset > Reset Network Settings."
+      }
+    }
+  ]
+}
+</script>
 <style>
     :root{--bg:#0b1220;--bg2:#070d1a;--panel:#111a2e;--border:rgba(255,255,255,0.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff}
     *{box-sizing:border-box;margin:0;padding:0}

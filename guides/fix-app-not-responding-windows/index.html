@@ -27,6 +27,54 @@
     }
   }
   </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why does an app keep saying \\"Not Responding\\" on Windows 11 specifically?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Windows 11 has stricter memory management and security features. Apps may freeze due to incompatible drivers, Windows Defender real-time scanning, or conflicts with new UI components like Widgets. Disable experimental features and ensure drivers are Windows 11 certified."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How to fix app freezing only on Windows 10 22H2/23H2?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Recent Windows 10 updates may have compatibility issues. Try: 1) Disable optional updates, 2) Use compatibility mode (right-click app → Properties → Compatibility), 3) Disable Windows Security temporarily, 4) Check for known issues on Microsoft's support site."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is it safe to force close an unresponsive app using Command Prompt?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, taskkill /f /im is safe for terminating processes. However, system processes (svchost.exe, explorer.exe, etc.) should not be terminated unless you know what they do. Always save work before force closing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can registry edits really fix app freezing issues?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, registry tweaks can resolve performance-related freezing. Common fixes include increasing timeouts, disabling visual effects, and optimizing memory management. Always backup the registry before making changes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I prevent apps from freezing in the future on Windows 10/11?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "1) Keep Windows and drivers updated, 2) Use SSD for system drive, 3) Maintain 20%+ free disk space, 4) Regular malware scans, 5) Disable unnecessary startup programs, 6) Monitor temperatures, 7) Use Windows built-in performance troubleshooter, 8) Consider upgrading RAM if consistently above 80% usage."
+      }
+    }
+  ]
+}
+</script>
 <style>
     :root {
       --bg-dark: #0b1220;

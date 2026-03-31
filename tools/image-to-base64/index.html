@@ -33,6 +33,54 @@
 }
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is a Base64 data URI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A data URI embeds file content directly in HTML or CSS as text, in the format data:[mimetype];base64,[data]. This eliminates the need for a separate HTTP request to load the image, which can be useful for small icons or email templates."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When should I use Base64 for images?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Base64 is best for small images under 10–20 KB, such as icons, logos, or inline email graphics. For larger images, using standard URLs is more efficient because Base64 encoding increases file size by ~33%."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my image uploaded to a server?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. All conversion happens entirely inside your browser using JavaScript. Your image file is never sent to any server. The tool works completely offline once the page is loaded."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What image formats are supported?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The tool supports all common image formats: PNG, JPG/JPEG, GIF, WebP, SVG, and BMP. The maximum file size is 10 MB. For very large images, consider using a regular image URL instead of Base64."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I use the Base64 output in HTML?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use the HTML format option to get a ready-to-paste &lt;img&gt; tag. For CSS, use the CSS format option to get a background-image rule. You can also copy the plain Base64 string for use in JSON or JavaScript."
+      }
+    }
+  ]
+}
+</script>
 <style>
 :root{
   --bg:#0b1220;

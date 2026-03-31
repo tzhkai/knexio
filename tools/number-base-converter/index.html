@@ -24,6 +24,54 @@
   "description": "Free number base converter. Convert between binary, decimal, hexadecimal, octal, and any base from 2 to 36. Instant conversion with visual reference."
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What number bases does this converter support?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "This converter supports any integer base from 2 to 36, including binary, octal, decimal, hexadecimal, base 32, and base 36. The upper limit of 36 is due to using 0-9 and A-Z as digits."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I convert decimal to binary?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Simply enter your decimal number in the input field, make sure \\"From Base\\" is set to Decimal (10), and the binary result will appear automatically in the Binary (Base 2) box. Click it to copy."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is hexadecimal used for?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Hexadecimal (base 16) is commonly used in computing for representing memory addresses, color codes in web design (#FF0000 for red), and binary data in a more readable format."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I convert very large numbers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, this converter supports JavaScript's maximum safe integer (9,007,199,254,740,991). For numbers beyond this limit, use BigInt-supporting tools or specialized libraries."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the difference between octal and binary?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Octal uses digits 0-7 and represents 3 bits per digit. Binary uses only 0s and 1s. Octal is sometimes used in Unix file permissions (chmod 755) while binary is the fundamental language of computers."
+      }
+    }
+  ]
+}
+</script>
 <style>
 :root{
   --bg:#0b1220;

@@ -24,6 +24,54 @@
     "description": "Calculate the aspect ratio of any dimensions, scale width or height while keeping the ratio locked."
   }
   </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is aspect ratio?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Aspect ratio is the proportional relationship between width and height of a rectangle, expressed as W:H (width:height). For example, 16:9 means for every 16 units of width, there are 9 units of height. Common ratios include 16:9 (widescreen), 4:3 (standard TV), 1:1 (square), and 9:16 (portrait video)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is 16:9 so common?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "16:9 is the standard widescreen aspect ratio used by most modern displays, including HDTVs, computer monitors, smartphones, and online video platforms. It provides a balanced viewing experience and is the native format for HD video (1920×1080), 4K (3840×2160), and most digital content."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I calculate aspect ratio?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Enter your width and height into the calculator above. The tool finds the greatest common divisor (GCD) and divides both dimensions by it to get the simplified ratio. For example, 1920×1080 has a GCD of 120, so 1920÷120 = 16 and 1080÷120 = 9, giving 16:9."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens if I change one dimension?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "When you enter a new width or height in the Scale Dimensions section, the calculator automatically computes the other dimension to maintain the aspect ratio. For example, with a 16:9 ratio, entering a width of 1280 will give you a height of 720 (1280 ÷ 16 × 9)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use this for video thumbnails?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutely! For YouTube, use 16:9 (widescreen). For Instagram stories and TikTok, use 9:16 (portrait). For Instagram square posts, use 1:1. The calculator helps you resize images while keeping the correct proportions for each platform's requirements."
+      }
+    }
+  ]
+}
+</script>
   <style>
     :root {
       --bg: #0b1220;

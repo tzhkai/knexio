@@ -24,6 +24,54 @@
   "description": "Convert JSON data to CSV format instantly. Transform JSON to CSV with easy controls."
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What JSON format does this converter support?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "This converter expects a JSON array of objects. Each object represents a row, and the keys become the CSV headers. For example: [{\\"name\\":\\"Alice\\",\\"age\\":30},{\\"name\\":\\"Bob\\",\\"age\\":25}]."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How are nested objects handled?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nested objects are automatically flattened using dot notation. For example, {\\"user\\":{\\"name\\":\\"Alice\\"}} becomes a column named \\"user.name\\" with the value \\"Alice\\"."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use different delimiters?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, you can choose between comma (,), semicolon (;), tab (TSV), or pipe (|) delimiters. This is useful for importing into different spreadsheet applications that may require specific formats."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens with special characters?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Special characters, quotes, and newlines are automatically escaped according to CSV standards. This ensures the output can be correctly imported into spreadsheet applications without parsing errors."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there a file size limit?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "There's no strict file size limit, but very large JSON files (over 10MB) may take longer to process due to browser limitations. For larger files, consider using server-side conversion tools."
+      }
+    }
+  ]
+}
+</script>
 <style>
 :root{
   --bg:#0b1220;
