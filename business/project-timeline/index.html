@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Timeline Generator – Create Project Schedules | Knexio</title>
+<meta name="description" content="Free project timeline generator. Create visual project schedules with milestones and deadlines. Generate timeline charts for business and planning.">
+<link rel="canonical" href="https://knexio.xyz/business/project-timeline/">
+<meta property="og:title" content="Project Timeline Generator">
+<meta property="og:description" content="Create project schedules with milestones.">
+<meta property="og:image" content="https://knexio.xyz/og-image.svg">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Project Timeline Generator","url":"https://knexio.xyz/business/project-timeline/","applicationCategory":"UtilitiesApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<style>
+:root{--bg:#0b1220;--card:#111a2e;--border:rgba(255,255,255,.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff}
+*{box-sizing:border-box}body{font-family:system-ui;background:var(--bg);color:var(--text)}
+.container{max-width:900px;margin:auto;padding:50px 16px}
+.back{display:inline-block;margin-bottom:24px;color:var(--sub)}
+h1{font-size:32px;margin-bottom:8px}.subtitle{color:var(--sub);margin-bottom:32px}
+.controls{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:24px}
+input,select,button{width:100%;padding:12px;margin-bottom:12px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text)}
+button{background:var(--accent);color:#fff;border:none;cursor:pointer;font-weight:600}
+.task-row{display:flex;gap:12px;margin-bottom:12px}
+.task-row input:first-child{flex:2}.task-row input:nth-child(2){flex:1}
+.output{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px}
+.output textarea{width:100%;min-height:200px;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:12px;color:var(--text);font-family:monospace}
+.faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px}
+.faq-item h3{font-size:16px;margin-bottom:8px}.faq-item p{color:var(--sub);line-height:1.6}
+footer{margin-top:60px;text-align:center;color:var(--sub)}
+.ad-banner{margin:32px 0;min-height:90px}
+</style>
+</head>
+<body>
+<div class="container">
+<a class="back" href="../index.html">← Back to Business Tools</a>
+<h1>Project Timeline Generator</h1>
+<p class="subtitle">Create project schedules with milestones</p>
+<div class="ad-banner">Ad space</div>
+<div class="controls">
+<label>Project Name</label>
+<input type="text" id="projectName" placeholder="My Project">
+<label>Project Tasks</label>
+<div class="task-row"><input placeholder="Task name"><input placeholder="Duration (days)"></div>
+<div class="task-row"><input placeholder="Task name"><input placeholder="Duration (days)"></div>
+<div class="task-row"><input placeholder="Task name"><input placeholder="Duration (days)"></div>
+<button onclick="addTask()">+ Add Task</button>
+</div>
+<button onclick="generateTimeline()">Generate Timeline</button>
+<div class="output">
+<textarea id="output" placeholder="Timeline will appear here..."></textarea>
+</div>
+<div class="section">
+<p><strong>Free Project Timeline Generator</strong> - Create project schedules with tasks and durations. Generate visual timeline for project planning. Export as text or markdown.</p>
+</div>
+<div class="section">
+<p><strong>How It Works</strong> - Enter project name and add tasks with durations. Click Generate to create timeline with start/end dates and milestones.</p>
+</div>
+<h2>Frequently Asked Questions</h2>
+<div class="faq-item">
+<h3>What format is output?</h3>
+<p>Generates a text timeline with dates and tasks.</p>
+</div>
+<footer>Free online tools. <a href="/about/">About</a></footer>
+</div>
+<script>
+function addTask() {
+  const div = document.createElement('div');
+  div.className = 'task-row';
+  div.innerHTML = '<input placeholder="Task name"><input placeholder="Duration (days)">';
+  document.querySelector('.controls').appendChild(div);
+}
+function generateTimeline() {
+  const name = document.getElementById('projectName').value || 'Project';
+  const rows = document.querySelectorAll('.task-row');
+  let output = '# ' + name + ' Timeline\n\n';
+  let date = new Date();
+  rows.forEach(row => {
+    const task = row.querySelector('input:first-child').value;
+    const days = parseInt(row.querySelector('input:nth-child(2)').value) || 1;
+    if (task) {
+      output += '## ' + task + '\n';
+      output += 'Start: ' + date.toLocaleDateString() + '\n';
+      date.setDate(date.getDays + days);
+      output += 'End: ' + date.toLocaleDateString() + '\n\n';
+    }
+  });
+  document.getElementById('output').value = output;
+}
+</script>
+<script src="/knexio-bundle.js"></script>
+</body>
+</html>

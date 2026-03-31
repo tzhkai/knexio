@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ROI Calculator – Return on Investment Calculator | Knexio</title>
+<meta name="description" content="Free ROI calculator to calculate return on investment. Compute investment profitability, annual ROI, and compare investments. Works in your browser.">
+<link rel="canonical" href="https://knexio.xyz/finance/roi-calculator/">
+<meta property="og:title" content="ROI Calculator">
+<meta property="og:description" content="Calculate return on investment.">
+<meta property="og:image" content="https://knexio.xyz/og-image.svg">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"ROI Calculator","url":"https://knexio.xyz/finance/roi-calculator/","applicationCategory":"FinanceApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<style>
+:root{--bg:#0b1220;--card:#111a2e;--border:rgba(255,255,255,.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff;--green:#34d399}
+*{box-sizing:border-box}body{font-family:system-ui;background:var(--bg);color:var(--text)}
+.container{max-width:900px;margin:auto;padding:50px 16px}
+.back{display:inline-block;margin-bottom:24px;color:var(--sub)}
+h1{font-size:32px;margin-bottom:8px}.subtitle{color:var(--sub);margin-bottom:32px}
+.controls{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:24px}
+.input-group{margin-bottom:16px}
+.input-group label{display:block;margin-bottom:8px;color:var(--sub)}
+.input-group input{width:100%;padding:12px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:16px}
+button{background:var(--accent);color:#fff;border:none;padding:14px 24px;border-radius:8px;cursor:pointer;font-size:16px;font-weight:600;width:100%}
+.result{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;text-align:center}
+.result-value{font-size:42px;font-weight:700;color:var(--green);margin:16px 0}
+.result-label{color:var(--sub)}
+.faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px}
+.faq-item h3{font-size:16px;margin-bottom:8px}.faq-item p{color:var(--sub);line-height:1.6}
+footer{margin-top:60px;text-align:center;color:var(--sub)}
+.ad-banner{margin:32px 0;min-height:90px}
+</style>
+</head>
+<body>
+<div class="container">
+<a class="back" href="../index.html">← Back to Finance Tools</a>
+<h1>ROI Calculator</h1>
+<p class="subtitle">Calculate return on investment</p>
+<div class="ad-banner">Ad space</div>
+<div class="controls">
+<div class="input-group">
+<label>Initial Investment ($)</label>
+<input type="number" id="initial" placeholder="10000">
+</div>
+<div class="input-group">
+<label>Final Value ($)</label>
+<input type="number" id="final" placeholder="15000">
+</div>
+<div class="input-group">
+<label>Investment Period (years)</label>
+<input type="number" id="years" placeholder="2" value="1">
+</div>
+<button onclick="calculateROI()">Calculate ROI</button>
+</div>
+<div class="result" id="result" style="display:none">
+<div class="result-label">Total ROI</div>
+<div class="result-value" id="roiValue">0%</div>
+<div class="result-label" id="annualROI">Annual: 0%</div>
+</div>
+<div class="section">
+<p><strong>Free ROI Calculator</strong> - Calculate return on investment for any investment. Compare investment options, compute annual returns, and analyze profitability. Simple and accurate.</p>
+</div>
+<div class="section">
+<p><strong>How It Works</strong> - Enter your initial investment amount and final value. Enter investment duration in years. Click Calculate to see ROI percentage and annual returns.</p>
+</div>
+<h2>Frequently Asked Questions</h2>
+<div class="faq-item">
+<h3>What is ROI?</h3>
+<p>ROI (Return on Investment) measures profitability: (Gain - Cost) / Cost × 100%</p>
+</div>
+<div class="faq-item">
+<h3>What is a good ROI?</h3>
+<p>Depends on investment type. Generally 15-20% annually is considered good for stocks.</p>
+</div>
+<footer>Free online tools. <a href="/about/">About</a></footer>
+</div>
+<script>
+function calculateROI() {
+  const initial = parseFloat(document.getElementById('initial').value);
+  const final = parseFloat(document.getElementById('final').value);
+  const years = parseFloat(document.getElementById('years').value) || 1;
+  
+  if (!initial || !final) {
+    alert('Please enter valid numbers');
+    return;
+  }
+  
+  const roi = ((final - initial) / initial) * 100;
+  const annualROI = (Math.pow(final / initial, 1 / years) - 1) * 100;
+  
+  document.getElementById('roiValue').textContent = roi.toFixed(1) + '%';
+  document.getElementById('annualROI').textContent = 'Annual: ' + annualROI.toFixed(1) + '%';
+  document.getElementById('result').style.display = 'block';
+}
+</script>
+<script src="/knexio-bundle.js"></script>
+</body>
+</html>

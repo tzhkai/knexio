@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crypto Profit Calculator – Cryptocurrency P&L Calculator | Knexio</title>
+<meta name="description" content="Free crypto profit calculator. Calculate cryptocurrency gains, losses, and ROI. Track Bitcoin, Ethereum, and altcoin investments. Works in your browser.">
+<link rel="canonical" href="https://knexio.xyz/finance/crypto-profit-calculator/">
+<meta property="og:title" content="Crypto Profit Calculator">
+<meta property="og:description" content="Calculate crypto investment profits.">
+<meta property="og:image" content="https://knexio.xyz/og-image.svg">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Crypto Profit Calculator","url":"https://knexio.xyz/finance/crypto-profit-calculator/","applicationCategory":"FinanceApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<style>
+:root{--bg:#0b1220;--card:#111a2e;--border:rgba(255,255,255,.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff;--green:#34d399;--red:#f87171}
+*{box-sizing:border-box}body{font-family:system-ui;background:var(--bg);color:var(--text)}
+.container{max-width:900px;margin:auto;padding:50px 16px}
+.back{display:inline-block;margin-bottom:24px;color:var(--sub)}
+h1{font-size:32px;margin-bottom:8px}.subtitle{color:var(--sub);margin-bottom:32px}
+.controls{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:24px}
+.input-group{margin-bottom:16px}
+.input-group label{display:block;margin-bottom:8px;color:var(--sub)}
+.input-group input{width:100%;padding:12px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:16px}
+button{background:var(--accent);color:#fff;border:none;padding:14px 24px;border-radius:8px;cursor:pointer;font-size:16px;font-weight:600;width:100%}
+.result{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px}
+.result-row{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--border)}
+.result-row:last-child{border:none}
+.result-label{color:var(--sub)}
+.result-value{font-weight:600}
+.positive{color:var(--green)}.negative{color:var(--red)}
+.faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px}
+footer{margin-top:60px;text-align:center;color:var(--sub)}
+</style>
+</head>
+<body>
+<div class="container">
+<a class="back" href="../index.html">← Back to Finance Tools</a>
+<h1>Crypto Profit Calculator</h1>
+<p class="subtitle">Calculate cryptocurrency investment returns</p>
+<div class="ad-banner">Ad space</div>
+<div class="controls">
+<div class="input-group">
+<label>Amount Purchased</label>
+<input type="number" id="amount" placeholder="0.5">
+</div>
+<div class="input-group">
+<label>Purchase Price (per coin)</label>
+<input type="number" id="buyPrice" placeholder="30000">
+</div>
+<div class="input-group">
+<label>Current Price</label>
+<input type="number" id="currentPrice" placeholder="45000">
+</div>
+<button onclick="calculateCrypto()">Calculate Profit</button>
+</div>
+<div class="result" id="result" style="display:none">
+<div class="result-row"><span class="result-label">Total Investment</span><span class="result-value" id="investment"></span></div>
+<div class="result-row"><span class="result-label">Current Value</span><span class="result-value" id="value"></span></div>
+<div class="result-row"><span class="result-label">Profit/Loss</span><span class="result-value" id="profit"></span></div>
+<div class="result-row"><span class="result-label">ROI</span><span class="result-value" id="roi"></span></div>
+</div>
+<div class="section">
+<p><strong>Free Crypto Profit Calculator</strong> - Calculate cryptocurrency investment returns. Enter amount, purchase price, and current price to see profit, loss, and ROI percentage.</p>
+</div>
+<div class="section">
+<p><strong>How It Works</strong> - Enter how much crypto you bought, the price you paid per coin, and the current price. Click Calculate to see your profit or loss.</p>
+</div>
+<h2>FAQ</h2>
+<div class="faq-item">
+<h3>Does this work for any cryptocurrency?</h3>
+<p>Yes, works for Bitcoin, Ethereum, and all altcoins.</p>
+</div>
+<footer>Free online tools. <a href="/about/">About</a></footer>
+</div>
+<script>
+function calculateCrypto() {
+  const amount = parseFloat(document.getElementById('amount').value);
+  const buyPrice = parseFloat(document.getElementById('buyPrice').value);
+  const currentPrice = parseFloat(document.getElementById('currentPrice').value);
+  
+  if (!amount || !buyPrice || !currentPrice) {
+    alert('Please enter all values');
+    return;
+  }
+  
+  const investment = amount * buyPrice;
+  const value = amount * currentPrice;
+  const profit = value - investment;
+  const roi = (profit / investment) * 100;
+  
+  document.getElementById('investment').textContent = '$' + investment.toLocaleString();
+  document.getElementById('value').textContent = '$' + value.toLocaleString();
+  const profitEl = document.getElementById('profit');
+  profitEl.textContent = (profit >= 0 ? '+' : '') + '$' + profit.toLocaleString();
+  profitEl.className = 'result-value ' + (profit >= 0 ? 'positive' : 'negative');
+  const roiEl = document.getElementById('roi');
+  roiEl.textContent = (roi >= 0 ? '+' : '') + roi.toFixed(1) + '%';
+  roiEl.className = 'result-value ' + (roi >= 0 ? 'positive' : 'negative');
+  
+  document.getElementById('result').style.display = 'block';
+}
+</script>
+<script src="/knexio-bundle.js"></script>
+</body>
+</html>

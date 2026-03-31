@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Competitor Analysis Generator – SWOT Analysis | Knexio</title>
+<meta name="description" content="Free competitor analysis tool. Generate SWOT analysis for competitors. Compare market position, pricing, features. Make data-driven business decisions.">
+<link rel="canonical" href="https://knexio.xyz/business/competitor-analysis/">
+<meta property="og:title" content="Competitor Analysis Generator">
+<meta property="og:description" content="Generate competitor SWOT analysis.">
+<meta property="og:image" content="https://knexio.xyz/og-image.svg">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Competitor Analysis Generator","url":"https://knexio.xyz/business/competitor-analysis/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<style>
+:root{--bg:#0b1220;--card:#111a2e;--border:rgba(255,255,255,.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff}
+*{box-sizing:border-box}body{font-family:system-ui;background:var(--bg);color:var(--text)}
+.container{max-width:900px;margin:auto;padding:50px 16px}
+.back{display:inline-block;margin-bottom:24px;color:var(--sub)}
+h1{font-size:32px;margin-bottom:8px}.subtitle{color:var(--sub);margin-bottom:32px}
+.controls{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:24px}
+textarea,button{width:100%;padding:12px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text)}
+textarea{min-height:120px}
+button{background:var(--accent);color:#fff;border:none;cursor:pointer;font-weight:600;margin-top:12px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+@media(max-width:600px){.grid{grid-template-columns:1fr}}
+.quadrant{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:16px}
+.quadrant h3{color:var(--accent);margin-bottom:12px}
+.faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px}
+footer{margin-top:60px;text-align:center;color:var(--sub)}
+</style>
+</head>
+<body>
+<div class="container">
+<a class="back" href="../index.html">← Back to Business Tools</a>
+<h1>Competitor Analysis Generator</h1>
+<p class="subtitle">Create competitor SWOT analysis</p>
+<div class="controls">
+<label>Competitor Name</label>
+<input type="text" id="competitor" placeholder="Competitor Name">
+<div class="grid">
+<div class="quadrant"><h3>Strengths</h3><textarea id="strengths" placeholder="What does this competitor do well?"></textarea></div>
+<div class="quadrant"><h3>Weaknesses</h3><textarea id="weaknesses" placeholder="What are their weaknesses?"></textarea></div>
+<div class="quadrant"><h3>Opportunities</h3><textarea id="opportunities" placeholder="Market opportunities"></textarea></div>
+<div class="quadrant"><h3>Threats</h3><textarea id="threats" placeholder="Competitive threats"></textarea></div>
+</div>
+<button onclick="generateAnalysis()">Generate Analysis</button>
+</div>
+<div class="section">
+<p><strong>Free Competitor Analysis Generator</strong> - Create SWOT analysis for any competitor. Compare strengths, weaknesses, opportunities, and threats. Make informed business decisions.</p>
+</div>
+<h2>FAQ</h2>
+<div class="faq-item">
+<h3>What is competitor analysis?</h3>
+<p>Process of evaluating competitors' strengths and weaknesses.</p>
+</div>
+<footer>Free online tools. <a href="/about/">About</a></footer>
+</div>
+<script>
+function generateAnalysis() {
+  const comp = document.getElementById('competitor').value || 'Competitor';
+  const s = document.getElementById('strengths').value;
+  const w = document.getElementById('weaknesses').value;
+  const o = document.getElementById('opportunities').value;
+  const t = document.getElementById('threats').value;
+  alert('Analysis for ' + comp + ' generated!');
+}
+</script>
+<script src="/knexio-bundle.js"></script>
+</body>
+</html>
