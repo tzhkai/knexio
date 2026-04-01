@@ -341,12 +341,12 @@ function md5(string) {
   function FF(a, b, c, d, x, s, ac) {
     a = addUnsigned(a, ac);
     a = addUnsigned(a, rotateLeft(s, 16));
-    return addUnsigned(addUnsigned(addUnsigned(a, b), d);
+    return addUnsigned(addUnsigned(addUnsigned(a, b), d), rotateLeft(s, 16));
   }
   function GG(a, b, c, d, x, s, ac) {
     a = addUnsigned(a, ac);
     a = addUnsigned(a, rotateLeft(s, 16));
-    return addUnsigned(addUnsigned(addUnsigned(a, b), d);
+    return addUnsigned(addUnsigned(addUnsigned(a, b), d), rotateLeft(s, 16));
   }
   function HH(a, b, c, d, x, s, ac) {
     a = addUnsigned(a, ac);
@@ -359,7 +359,7 @@ function md5(string) {
     return addUnsigned(addUnsigned(a, b), d);
   }
   
-  let k, AA, BB, CC, DD, a, b, c, d;
+  let k, AA, BB, CC, DD;
   let S11, S12, S13, S14, S21, S22, S23, S24, S31, S32, S33, S41, S42, S43, S44;
   
   const utf8 = unescape(encodeURIComponent(string));
@@ -455,7 +455,7 @@ function md5(string) {
   const c = toHex(CC);
   const d = toHex(DD);
   
-  return toHex(addUnsigned(addUnsigned(addUnsigned(addUnsigned(a, b), c), d));
+  return toHex(a);
 }
 
 function toHex(val) {

@@ -643,9 +643,9 @@
           cell.addEventListener('contextmenu', (e) => {
             e.preventDefault();
             handleRightClick(r, c);
-          
-          cell.addEventListener('touchstart', (e) => handleTouchStart(e, r, c), { passive: false 
-          cell.addEventListener('touchend', (e) => handleTouchEnd(e), { passive: false 
+          });
+          cell.addEventListener('touchstart', (e) => handleTouchStart(e, r, c), { passive: false });
+          cell.addEventListener('touchend', (e) => handleTouchEnd(e), { passive: false });
 
           boardEl.appendChild(cell);
         }
@@ -769,7 +769,7 @@
 
     document.addEventListener('DOMContentLoaded', () => {
       initGame();
-    
+    });
   </script></div>
 
 

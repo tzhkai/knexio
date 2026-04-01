@@ -91,7 +91,7 @@ const templates = {
   introduction: (name, tone) => `Subject: Introduction\n\nDear ${name},\n\nI hope this email finds you well. I'm reaching out to introduce myself and explore potential opportunities for collaboration.\n\nI'd welcome the chance to connect and discuss how we might work together.\n\nBest regards`,
   request: (name, tone) => `Subject: Request\n\nDear ${name},\n\nI hope you're doing well. I'm reaching out with a request regarding ${tone === 'formal' ? 'the matter at hand' : 'our recent discussion'}.\n\n[Your request details here]\n\nThank you for your time and consideration.\n\nBest regards`,
   thankyou: (name, tone) => `Subject: Thank You\n\nDear ${name},\n\nI wanted to take a moment to thank you for ${tone === 'friendly' ? 'taking the time to chat' : 'our meeting'}.\n\nI really appreciated your insights and look forward to staying in touch.\n\nBest regards`,
-  meeting: (name, tone) => `Subject: Meeting Request\n\nDear ${name},\n\nI hope you're doing well. I would like to schedule a time to meet and discuss ${tone === 'professional' ? 'a potential opportunity' : 'something I think you'll find interesting'}.\n\nWould you be available for a quick call this week?\n\nBest regards`
+  meeting: (name, tone) => `Subject: Meeting Request\n\nDear ${name},\n\nI hope you're doing well. I would like to schedule a time to meet and discuss ${tone === 'professional' ? 'a potential opportunity' : 'something I think you\'ll find interesting'}.\n\nWould you be available for a quick call this week?\n\nBest regards`
 };
 
 function generateEmail() {

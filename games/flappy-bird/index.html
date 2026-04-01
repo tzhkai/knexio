@@ -634,7 +634,7 @@ loop();
 
 canvas.addEventListener('click', flap);
 canvas.addEventListener('touchstart', e => { e.preventDefault(); flap(); }, {passive:false});
-document.addEventListener('keydown', e => { if (e.code === 'Space') { e.preventDefault(); flap(); }
+document.addEventListener('keydown', e => { if (e.code === 'Space') { e.preventDefault(); flap(); } });
 </script></div>
 
 
