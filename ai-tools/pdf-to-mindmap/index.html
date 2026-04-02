@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PDF to Mind Map – Convert PDF to Mind Map Online | Knexio</title>
+<meta name="description" content="Convert PDF documents to mind maps online. Visualize document structure and key ideas as an interactive mind map diagram. Free tool.">
+<link rel="canonical" href="https://knexio.xyz/ai-tools/pdf-to-mindmap/">
+<meta property="og:title" content="PDF to Mind Map">
+<meta property="og:description" content="Convert PDF to interactive mind map.">
+<meta property="og:image" content="https://knexio.xyz/og-image.svg">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"PDF to Mind Map","url":"https://knexio.xyz/ai-tools/pdf-to-mindmap/","applicationCategory":"UtilitiesApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<style>
+:root{--bg:#0b1220;--card:#111a2e;--border:rgba(255,255,255,.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff;--green:#34d399;--yellow:#fbbf24;--purple:#a78bfa}
+*{box-sizing:border-box}
+body{font-family:system-ui;background:var(--bg);color:var(--text)}
+.container{max-width:900px;margin:auto;padding:50px 16px}
+.back{display:inline-block;margin-bottom:24px;color:var(--sub)}
+h1{font-size:32px;margin-bottom:8px}.subtitle{color:var(--sub);margin-bottom:32px}
+.panel{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:16px}
+textarea{width:100%;min-height:200px;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:16px;color:var(--text);font-size:14px;resize:vertical;display:block;margin-bottom:12px}
+.btn-primary{background:var(--accent);color:#fff;border:none;padding:14px 24px;border-radius:8px;cursor:pointer;font-size:16px;font-weight:600;width:100%}
+.mindmap-container{min-height:400px;background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:24px;overflow-x:auto;display:flex;flex-direction:column;align-items:center;gap:8px}
+.center-node{background:var(--accent);color:#fff;padding:16px 32px;border-radius:12px;font-weight:700;font-size:18px;text-align:center;box-shadow:0 4px 20px rgba(79,140,255,.3)}
+.branch{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:8px}
+.node{background:var(--card);border:1px solid var(--border);padding:10px 16px;border-radius:8px;font-size:14px;cursor:pointer;transition:border-color .2s,transform .2s;max-width:200px;text-align:center}
+.node:hover{border-color:var(--accent);transform:translateY(-2px)}
+.sub-node{background:rgba(167,139,250,.1);border-color:rgba(167,139,250,.3);padding:8px 12px;border-radius:8px;font-size:13px}
+.info-box{background:rgba(79,140,255,.1);border:1px solid rgba(79,140,255,.3);border-radius:8px;padding:16px;margin-top:16px}
+.info-box p{margin:0;color:var(--sub);font-size:14px}
+.faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px}
+.faq-item h3{font-size:16px;margin-bottom:8px}.faq-item p{color:var(--sub);line-height:1.6}
+footer{margin-top:60px;text-align:center;color:var(--sub)}
+</style>
+</head>
+<body>
+<div class="container">
+<a class="back" href="../index.html">← Back to AI Tools</a>
+<h1>PDF to Mind Map</h1>
+<p class="subtitle">Visualize document structure as a mind map</p>
+<div class="ad-banner"></div>
+<div class="panel">
+<label style="display:block;margin-bottom:8px;color:var(--sub)">Paste your text content</label>
+<textarea id="inputText" placeholder="Paste the main topics or sections from your PDF here. Each main topic on a new line..."></textarea>
+<button class="btn-primary" onclick="generateMindMap()">Generate Mind Map</button>
+</div>
+<div class="panel" id="mindmapResult">
+<label style="display:block;margin-bottom:16px;color:var(--sub)">Your Mind Map</label>
+<div class="mindmap-container" id="mindmapOutput">
+<p style="color:var(--sub)">Enter topics above to generate a mind map</p>
+</div>
+</div>
+<div class="info-box">
+<p>Tip: Enter one main topic per line. The tool will visualize them as a central mind map with branches. Click nodes to highlight connections.</p>
+</div>
+<div class="section" style="text-align:left;margin-top:40px">
+<p><strong>Free PDF to Mind Map</strong> - Visualize the structure of any document as an interactive mind map. Perfect for studying, planning, and organizing ideas from PDFs.</p>
+</div>
+<div class="section" style="text-align:left">
+<p><strong>How It Works</strong> - Paste your document topics or section headings, one per line. Click Generate to see them visualized as a mind map.</p>
+</div>
+<h2 style="text-align:left">Frequently Asked Questions</h2>
+<div class="faq-item">
+<h3>Does this read my PDF file?</h3>
+<p>This tool works with text you paste. For full PDF parsing, first copy text from your PDF, then paste it here.</p>
+</div>
+<div class="faq-item">
+<h3>What works best for mind maps?</h3>
+<p>Headings, chapter titles, main topics, or key themes work best. The more structured your input, the better the mind map.</p>
+</div>
+<footer>Free online tools. <a href="/about/">About</a></footer>
+</div>
+<script>
+function generateMindMap() {
+  var text = document.getElementById('inputText').value.trim();
+  if (!text) {
+    document.getElementById('mindmapOutput').innerHTML = '<p style="color:var(--sub)">Please enter some topics first.</p>';
+    return;
+  }
+  var lines = text.split('\n').filter(function(l){ return l.trim().length > 0; });
+  if (lines.length === 0) {
+    document.getElementById('mindmapOutput').innerHTML = '<p style="color:var(--sub)">Please enter some topics.</p>';
+    return;
+  }
+  var mainTopic = lines[0].trim();
+  var subTopics = lines.slice(1, 7);
+  var html = '<div class="center-node">' + escHtml(mainTopic) + '</div>';
+  if (subTopics.length > 0) {
+    html += '<div class="branch">';
+    subTopics.forEach(function(topic) {
+      html += '<div class="node" onclick="this.style.borderColor=\'var(--accent)\'">' + escHtml(topic.trim()) + '</div>';
+    });
+    html += '</div>';
+  }
+  document.getElementById('mindmapOutput').innerHTML = html;
+}
+
+function escHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+</script>
+<script src="/knexio-bundle.js"></script>
+</body>
+</html>

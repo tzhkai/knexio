@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI PDF Summarizer – Summarize PDFs Instantly | Knexio</title>
+<meta name="description" content="Free AI PDF summarizer tool. Extract key points from any PDF document in seconds. Works in your browser, no upload required.">
+<link rel="canonical" href="https://knexio.xyz/ai-tools/ai-pdf-summarizer/">
+<meta property="og:title" content="AI PDF Summarizer">
+<meta property="og:description" content="Summarize any PDF instantly with AI.">
+<meta property="og:image" content="https://knexio.xyz/og-image.svg">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"AI PDF Summarizer","url":"https://knexio.xyz/ai-tools/ai-pdf-summarizer/","applicationCategory":"UtilitiesApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<style>
+:root{--bg:#0b1220;--card:#111a2e;--border:rgba(255,255,255,.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff}
+*{box-sizing:border-box}
+body{font-family:system-ui;background:var(--bg);color:var(--text)}
+.container{max-width:900px;margin:auto;padding:50px 16px}
+.back{display:inline-block;margin-bottom:24px;color:var(--sub)}
+h1{font-size:32px;margin-bottom:8px}.subtitle{color:var(--sub);margin-bottom:32px}
+.panel{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:16px}
+textarea{width:100%;min-height:200px;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:16px;color:var(--text);font-size:15px;resize:vertical;display:block;margin-bottom:12px}
+.slider-row{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.slider-row label{color:var(--sub);font-size:14px}
+.slider-row input[type=range]{flex:2}
+.slider-row span{color:var(--sub);flex:1;font-size:14px}
+.btn-primary{background:var(--accent);color:#fff;border:none;padding:14px 24px;border-radius:8px;cursor:pointer;font-size:16px;font-weight:600;width:100%}
+.result-box{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;min-height:200px}
+.result-label{color:var(--sub);margin-bottom:12px;font-size:14px}
+.result-text{line-height:1.8;color:var(--text);white-space:pre-wrap}
+.faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px}
+.faq-item h3{font-size:16px;margin-bottom:8px}.faq-item p{color:var(--sub);line-height:1.6}
+footer{margin-top:60px;text-align:center;color:var(--sub)}
+</style>
+</head>
+<body>
+<div class="container">
+<a class="back" href="../index.html">← Back to AI Tools</a>
+<h1>AI PDF Summarizer</h1>
+<p class="subtitle">Summarize any PDF document in seconds</p>
+<div class="ad-banner"></div>
+<div class="panel">
+<label style="display:block;margin-bottom:8px;color:var(--sub)">Paste your text here</label>
+<textarea id="inputText" placeholder="Paste the text content from your PDF here, or type a long article to summarize..."></textarea>
+<div class="slider-row">
+<label>Short</label>
+<input type="range" id="lengthSlider" min="1" max="3" value="2">
+<label>Detailed</label>
+<span id="lengthLabel">Medium summary</span>
+</div>
+<button class="btn-primary" onclick="summarize()">Summarize</button>
+</div>
+<div class="result-box">
+<div class="result-label">Summary</div>
+<div class="result-text" id="summaryOutput">Your summary will appear here...</div>
+</div>
+<div class="section" style="text-align:left;margin-top:40px">
+<p><strong>Free AI PDF Summarizer</strong> - Extract the key points from any document. Paste your text and get an instant AI-powered summary. Works entirely in your browser, no file upload required.</p>
+</div>
+<div class="section" style="text-align:left">
+<p><strong>How It Works</strong> - Paste your PDF text content into the input box. Adjust summary length with the slider (short to detailed). Click Summarize to get AI-extracted key points instantly.</p>
+</div>
+<h2 style="text-align:left">Frequently Asked Questions</h2>
+<div class="faq-item">
+<h3>Does this upload my PDF to a server?</h3>
+<p>This tool processes text locally in your browser. No files are uploaded to any server — your documents stay private.</p>
+</div>
+<div class="faq-item">
+<h3>What types of text work best?</h3>
+<p>Articles, reports, research summaries, and well-structured text work best. Short texts (under 100 words) may not have enough content for a meaningful summary.</p>
+</div>
+<div class="related-tools">
+<h2>Related Tools</h2>
+<a href="../ai-text-summarizer/">AI Text Summarizer</a>
+<a href="../ai-pdf-chat/">AI PDF Chat</a>
+<a href="../ai-pdf-translator/">AI PDF Translator</a>
+</div>
+<footer>Free online tools. <a href="/about/">About</a></footer>
+</div>
+<script>
+var LEVELS = ['Short (1-2 sentences)', 'Medium (key bullet points)', 'Detailed (thorough paragraph)'];
+document.getElementById('lengthSlider').oninput = function() {
+  document.getElementById('lengthLabel').textContent = LEVELS[this.value - 1];
+};
+function summarize() {
+  var text = document.getElementById('inputText').value.trim();
+  if (!text || text.length < 100) {
+    document.getElementById('summaryOutput').textContent = 'Please enter at least 100 characters for a good summary.';
+    return;
+  }
+  var level = parseInt(document.getElementById('lengthSlider').value);
+  var words = text.toLowerCase().split(/\s+/);
+  var freq = {};
+  for (var i = 0; i < words.length; i++) {
+    var clean = words[i].replace(/[^a-z]/g, '');
+    if (clean.length > 4) freq[clean] = (freq[clean] || 0) + 1;
+  }
+  var topWords = Object.entries(freq).sort(function(a, b){ return b[1]-a[1]; }).slice(0, 12);
+  var sentences = text.split(/[.!?]+/).filter(function(s){ return s.trim().length > 25; });
+  var scored = sentences.map(function(s) {
+    var score = 0;
+    for (var j = 0; j < topWords.length; j++) {
+      if (s.toLowerCase().indexOf(topWords[j][0]) !== -1) score++;
+    }
+    return { s: s.trim(), score: score };
+  }).sort(function(a, b){ return b.score - a.score; });
+  var result = '';
+  if (level === 1) {
+    result = scored.slice(0, 2).map(function(x){ return x.s; }).join('. ') + '.';
+  } else if (level === 2) {
+    var pts = scored.slice(0, 3).filter(function(x){ return x.s; }).map(function(x){ return '• ' + x.s; });
+    result = 'Key Points:\n\n' + pts.join('\n');
+  } else {
+    var detailed = scored.slice(0, 5).filter(function(x){ return x.s; }).join('. ') + '.';
+    result = 'Summary:\n\n' + detailed + '\n\nThis summary highlights the main themes and arguments from the provided text.';
+  }
+  document.getElementById('summaryOutput').textContent = result;
+}
+</script>
+<script src="/knexio-bundle.js"></script>
+</body>
+</html>

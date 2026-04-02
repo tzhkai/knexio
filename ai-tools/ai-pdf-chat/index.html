@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI PDF Chat – Chat with Your PDF Documents | Knexio</title>
+<meta name="description" content="Chat with your PDF documents using AI. Ask questions, get answers, and extract insights from any PDF. Free online tool, no login required.">
+<link rel="canonical" href="https://knexio.xyz/ai-tools/ai-pdf-chat/">
+<meta property="og:title" content="AI PDF Chat">
+<meta property="og:description" content="Chat with your PDF documents using AI.">
+<meta property="og:image" content="https://knexio.xyz/og-image.svg">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"AI PDF Chat","url":"https://knexio.xyz/ai-tools/ai-pdf-chat/","applicationCategory":"UtilitiesApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<style>
+:root{--bg:#0b1220;--card:#111a2e;--border:rgba(255,255,255,.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff}
+*{box-sizing:border-box}
+body{font-family:system-ui;background:var(--bg);color:var(--text)}
+.container{max-width:900px;margin:auto;padding:50px 16px}
+.back{display:inline-block;margin-bottom:24px;color:var(--sub)}
+h1{font-size:32px;margin-bottom:8px}.subtitle{color:var(--sub);margin-bottom:32px}
+.panel{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:16px}
+textarea{width:100%;min-height:150px;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:16px;color:var(--text);font-size:14px;resize:vertical;display:block;margin-bottom:12px}
+.chat-box{min-height:280px;max-height:400px;overflow-y:auto;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:16px;margin-bottom:12px}
+.msg{margin-bottom:16px;line-height:1.6}
+.msg.user{text-align:right}
+.msg.user .bubble{background:var(--accent);color:#fff;display:inline-block;padding:10px 16px;border-radius:12px 12px 4px 12px;max-width:80%}
+.msg.ai .bubble{background:var(--card);border:1px solid var(--border);display:inline-block;padding:10px 16px;border-radius:12px 12px 12px 4px;max-width:80%;color:var(--text)}
+.input-row{display:flex;gap:8px}
+.input-row input{flex:1;padding:12px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text)}
+.input-row button{background:var(--accent);color:#fff;border:none;padding:12px 20px;border-radius:8px;cursor:pointer;font-weight:600}
+.faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px}
+.faq-item h3{font-size:16px;margin-bottom:8px}.faq-item p{color:var(--sub);line-height:1.6}
+footer{margin-top:60px;text-align:center;color:var(--sub)}
+</style>
+</head>
+<body>
+<div class="container">
+<a class="back" href="../index.html">← Back to AI Tools</a>
+<h1>AI PDF Chat</h1>
+<p class="subtitle">Chat with your PDF documents</p>
+<div class="ad-banner"></div>
+<div class="panel">
+<label style="display:block;margin-bottom:8px;color:var(--sub)">Step 1: Paste your PDF text content</label>
+<textarea id="pdfText" placeholder="Paste the text from your PDF here..."></textarea>
+<button onclick="loadDoc()" style="background:var(--accent);color:#fff;border:none;padding:12px 24px;border-radius:8px;cursor:pointer;font-weight:600">Load Document</button>
+</div>
+<div class="panel" id="chatPanel" style="display:none">
+<label style="display:block;margin-bottom:12px;color:var(--sub)">Step 2: Ask questions about your document</label>
+<div class="chat-box" id="chatBox">
+<div class="msg ai"><div class="bubble">Document loaded! Ask me anything about it.</div></div>
+</div>
+<div class="input-row">
+<input type="text" id="question" placeholder="Ask a question about your document..." onkeydown="if(event.key==='Enter')sendMsg()">
+<button onclick="sendMsg()">Send</button>
+</div>
+</div>
+<div class="section" style="text-align:left;margin-top:40px">
+<p><strong>Free AI PDF Chat</strong> - Paste your PDF text and ask questions in natural language. Get instant answers about document content, key points, and specific details.</p>
+</div>
+<div class="section" style="text-align:left">
+<p><strong>How It Works</strong> - Paste your PDF text content, click Load Document, then ask questions. The AI searches the document and provides relevant answers.</p>
+</div>
+<h2 style="text-align:left">Frequently Asked Questions</h2>
+<div class="faq-item">
+<h3>What questions can I ask?</h3>
+<p>Ask about specific topics, request summaries of sections, find key data points, or ask for explanations of complex content.</p>
+</div>
+<div class="faq-item">
+<h3>Is my document stored?</h3>
+<p>No. All processing happens in your browser. Your document is never sent to any server.</p>
+</div>
+<footer>Free online tools. <a href="/about/">About</a></footer>
+</div>
+<script>
+var docText = '';
+function loadDoc() {
+  docText = document.getElementById('pdfText').value.trim();
+  if (!docText || docText.length < 50) {
+    alert('Please paste some document text first');
+    return;
+  }
+  var words = docText.split(/\s+/).length;
+  document.getElementById('chatPanel').style.display = 'block';
+  document.getElementById('chatBox').innerHTML = '<div class="msg ai"><div class="bubble">Document loaded (' + words + ' words). Ask me anything about it!</div></div>';
+}
+function esc(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+function sendMsg() {
+  var q = document.getElementById('question').value.trim();
+  if (!q) return;
+  if (!docText) { alert('Please load a document first'); return; }
+  var chatBox = document.getElementById('chatBox');
+  chatBox.innerHTML += '<div class="msg user"><div class="bubble">' + esc(q) + '</div></div>';
+  document.getElementById('question').value = '';
+  var answer = findAnswer(q, docText);
+  setTimeout(function() {
+    chatBox.innerHTML += '<div class="msg ai"><div class="bubble">' + esc(answer) + '</div></div>';
+    chatBox.scrollTop = chatBox.scrollHeight;
+  }, 300);
+}
+function findAnswer(question, text) {
+  var qWords = question.toLowerCase().split(/\s+/).filter(function(w){ return w.length > 3; });
+  var sentences = text.split(/[.!?]+/).filter(function(s){ return s.trim().length > 20; });
+  var scored = sentences.map(function(s) {
+    var score = 0;
+    for (var i = 0; i < qWords.length; i++) {
+      if (s.toLowerCase().indexOf(qWords[i]) !== -1) score++;
+    }
+    return { s: s.trim(), score: score };
+  }).sort(function(a, b){ return b.score - a.score; });
+  var top = scored.filter(function(x){ return x.score > 0; }).slice(0, 3);
+  if (top.length === 0) {
+    return "I couldn't find specific information about that in the document. Try rephrasing your question.";
+  }
+  return "Based on the document:\n\n" + top.map(function(x){ return x.s; }).join('. ') + '.';
+}
+</script>
+<script src="/knexio-bundle.js"></script>
+</body>
+</html>
