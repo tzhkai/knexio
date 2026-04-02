@@ -34,11 +34,11 @@ footer a{color:var(--accent);text-decoration:none;margin:0 8px}
 <a class="back" href="/">← Back to Home</a>
 <h1>Knexio Blog</h1>
 <p class="subtitle">AI tools, PDF productivity, and digital workflow guides</p>
-  <div class="search-box" style="margin-bottom:32px">
-    <input type="text" id="searchblogs" placeholder="Search blogs..."
-      style="width:100%;padding:16px 20px;background:var(--card);border:1px solid var(--border);border-radius:12px;color:var(--text);font-size:16px"
-      onkeyup="filterCards()">
-  </div>
+  <div style="margin-bottom:24px;display:flex;gap:12px;max-width:400px">
+  <input type="text" id="searchblogs" placeholder="Search articles..."
+    style="flex:1;padding:10px 14px;background:var(--card);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:14px">
+  <button onclick="doSearch()" style="padding:10px 20px;background:var(--accent);color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:600">Search</button>
+</div>
 
 <div class="grid">
   <a class="card" href="ai-pdf-summarizer.html">
@@ -95,5 +95,30 @@ footer a{color:var(--accent);text-decoration:none;margin:0 8px}
 </footer>
 </div>
 <script src="/knexio-bundle.js"></script>
+<script>
+function doSearch() {
+  var searchTerm = document.getElementById("searchblogs").value.toLowerCase().trim();
+  var cards = document.querySelectorAll(".grid > a.card, .grid > .card, .nav-card");
+  var found = 0;
+  for (var i = 0; i < cards.length; i++) {
+    var card = cards[i];
+    var title = card.querySelector("h2, h3");
+    var desc = card.querySelector("p");
+    var tag = card.querySelector(".tag");
+    var titleText = title ? title.textContent.toLowerCase() : "";
+    var descText = desc ? desc.textContent.toLowerCase() : "";
+    var tagText = tag ? tag.textContent.toLowerCase() : "";
+    if (searchTerm === "" || titleText.indexOf(searchTerm) !== -1 || descText.indexOf(searchTerm) !== -1 || tagText.indexOf(searchTerm) !== -1) {
+      card.style.display = "";
+      if (searchTerm !== "") found++;
+    } else {
+      card.style.display = "none";
+    }
+  }
+}
+document.getElementById("searchblogs").addEventListener("keyup", function(e) {
+  if (e.key === "Enter") doSearch();
+});
+</script>
 </body>
 </html>

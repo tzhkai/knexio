@@ -230,13 +230,13 @@
 
     <!-- Prompt Tools -->
     <div class="section-label">Prompt Generators</div>
-  <div class="search-box" style="margin-bottom:32px">
-    <input type="text" id="toolSearch" placeholder="Search AI tools..."
-      style="width:100%;padding:16px 20px;background:var(--card);border:1px solid var(--border);border-radius:12px;color:var(--text);font-size:16px"
-      onkeyup="filterTools()">
-  </div>
+  <div style="margin-bottom:24px;display:flex;gap:12px;max-width:400px">
+  <input type="text" id="toolSearch" placeholder="Search AI tools..."
+    style="flex:1;padding:10px 14px;background:var(--card);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:14px">
+  <button onclick="doSearch()" style="padding:10px 20px;background:var(--accent);color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:600">Search</button>
+</div>
 
-    <div class="grid">
+<div class="grid">
       <a class="card" href="chatgpt-prompt-generator/">
         <span class="tag">ChatGPT</span>
         <h2>ChatGPT Prompt Generator</h2>
@@ -391,22 +391,31 @@
 
   <script src="/knexio-bundle.js"></script>
 
+
 <script>
-function filterTools() {
-  var searchTerm = document.getElementById("toolSearch").value.toLowerCase();
-  var cards = document.querySelectorAll(".nav-card");
+function doSearch() {
+  var searchTerm = document.getElementById("toolSearch").value.toLowerCase().trim();
+  var cards = document.querySelectorAll(".grid > a.card, .grid > .card, .nav-card");
+  var found = 0;
   for (var i = 0; i < cards.length; i++) {
     var card = cards[i];
-    var title = card.querySelector("h2") ? card.querySelector("h2").textContent.toLowerCase() : "";
-    var desc = card.querySelector("p") ? card.querySelector("p").textContent.toLowerCase() : "";
-    var tag = card.querySelector(".tag") ? card.querySelector(".tag").textContent.toLowerCase() : "";
-    if (title.indexOf(searchTerm) !== -1 || desc.indexOf(searchTerm) !== -1 || tag.indexOf(searchTerm) !== -1) {
+    var title = card.querySelector("h2, h3");
+    var desc = card.querySelector("p");
+    var tag = card.querySelector(".tag");
+    var titleText = title ? title.textContent.toLowerCase() : "";
+    var descText = desc ? desc.textContent.toLowerCase() : "";
+    var tagText = tag ? tag.textContent.toLowerCase() : "";
+    if (searchTerm === "" || titleText.indexOf(searchTerm) !== -1 || descText.indexOf(searchTerm) !== -1 || tagText.indexOf(searchTerm) !== -1) {
       card.style.display = "";
+      if (searchTerm !== "") found++;
     } else {
       card.style.display = "none";
     }
   }
 }
+document.getElementById("toolSearch").addEventListener("keyup", function(e) {
+  if (e.key === "Enter") doSearch();
+});
 </script>
 </body>
 </html>
