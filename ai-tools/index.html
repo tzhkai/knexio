@@ -230,6 +230,12 @@
 
     <!-- Prompt Tools -->
     <div class="section-label">Prompt Generators</div>
+  <div class="search-box" style="margin-bottom:32px">
+    <input type="text" id="toolSearch" placeholder="Search AI tools..."
+      style="width:100%;padding:16px 20px;background:var(--card);border:1px solid var(--border);border-radius:12px;color:var(--text);font-size:16px"
+      onkeyup="filterTools()">
+  </div>
+
     <div class="grid">
       <a class="card" href="chatgpt-prompt-generator/">
         <span class="tag">ChatGPT</span>
@@ -384,5 +390,23 @@
   </div>
 
   <script src="/knexio-bundle.js"></script>
+
+<script>
+function filterTools() {
+  var searchTerm = document.getElementById("toolSearch").value.toLowerCase();
+  var cards = document.querySelectorAll(".nav-card");
+  for (var i = 0; i < cards.length; i++) {
+    var card = cards[i];
+    var title = card.querySelector("h2") ? card.querySelector("h2").textContent.toLowerCase() : "";
+    var desc = card.querySelector("p") ? card.querySelector("p").textContent.toLowerCase() : "";
+    var tag = card.querySelector(".tag") ? card.querySelector(".tag").textContent.toLowerCase() : "";
+    if (title.indexOf(searchTerm) !== -1 || desc.indexOf(searchTerm) !== -1 || tag.indexOf(searchTerm) !== -1) {
+      card.style.display = "";
+    } else {
+      card.style.display = "none";
+    }
+  }
+}
+</script>
 </body>
 </html>

@@ -208,6 +208,12 @@
 
     <!-- Branding & Marketing -->
     <div class="section-label">Branding & Marketing</div>
+  <div class="search-box" style="margin-bottom:32px">
+    <input type="text" id="searchbusiness" placeholder="Search business..."
+      style="width:100%;padding:16px 20px;background:var(--card);border:1px solid var(--border);border-radius:12px;color:var(--text);font-size:16px"
+      onkeyup="filterCards()">
+  </div>
+
     <div class="grid">
       <a class="card" href="brand-name-generator/">
         <span class="tag">Branding</span>
@@ -323,5 +329,23 @@
   </div>
 
   <script src="/knexio-bundle.js"></script>
+
+<script>
+function filterCards() {
+  var searchTerm = document.getElementById("searchInput").value.toLowerCase();
+  var cards = document.querySelectorAll(".nav-card, .card");
+  for (var i = 0; i < cards.length; i++) {
+    var card = cards[i];
+    var title = card.querySelector("h2, h3") ? card.querySelector("h2, h3").textContent.toLowerCase() : "";
+    var desc = card.querySelector("p") ? card.querySelector("p").textContent.toLowerCase() : "";
+    var tag = card.querySelector(".tag") ? card.querySelector(".tag").textContent.toLowerCase() : "";
+    if (title.indexOf(searchTerm) !== -1 || desc.indexOf(searchTerm) !== -1 || tag.indexOf(searchTerm) !== -1) {
+      card.style.display = "";
+    } else {
+      card.style.display = "none";
+    }
+  }
+}
+</script>
 </body>
 </html>

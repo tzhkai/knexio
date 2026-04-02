@@ -34,6 +34,12 @@ footer a{color:var(--accent);text-decoration:none;margin:0 8px}
 <a class="back" href="/">← Back to Home</a>
 <h1>Knexio Blog</h1>
 <p class="subtitle">AI tools, PDF productivity, and digital workflow guides</p>
+  <div class="search-box" style="margin-bottom:32px">
+    <input type="text" id="searchblogs" placeholder="Search blogs..."
+      style="width:100%;padding:16px 20px;background:var(--card);border:1px solid var(--border);border-radius:12px;color:var(--text);font-size:16px"
+      onkeyup="filterCards()">
+  </div>
+
 <div class="grid">
   <a class="card" href="ai-pdf-summarizer.html">
     <span class="tag">AI Tools</span>
