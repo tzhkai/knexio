@@ -16,28 +16,29 @@
 .back{display:inline-block;margin-bottom:20px;color:var(--sub);text-decoration:none}
 h1{font-size:32px;margin-bottom:8px}.subtitle{color:var(--sub);margin-bottom:24px}
 .panel{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:20px}
-textarea{width:100%;min-height:200px;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:16px;color:var(--text);font-size:15px;resize:vertical;margin-bottom:16px}
-.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:16px;margin-top:20px}
-.stat-box{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:16px;text-align:center}
-.stat-value{font-size:28px;font-weight:700;color:var(--accent);margin-bottom:4px}
-.stat-label{font-size:13px;color:var(--sub)}
-.btn-primary{background:var(--accent);color:#fff;border:none;padding:14px 24px;border-radius:8px;cursor:pointer;font-size:16px;font-weight:600}
+textarea{width:100%;min-height:180px;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:16px;color:var(--text);font-size:15px;resize:vertical;margin-bottom:16px}
+.stats-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px;justify-content:center}
+.stat-box{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:12px 16px;text-align:center;min-width:100px;flex:1}
+.stat-value{font-size:24px;font-weight:700;color:var(--accent);margin-bottom:2px}
+.stat-label{font-size:12px;color:var(--sub);white-space:nowrap}
+.btn-primary{background:var(--accent);color:#fff;border:none;padding:12px 24px;border-radius:8px;cursor:pointer;font-size:15px;font-weight:600}
 .faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px}
 .faq-item h3{font-size:16px;margin-bottom:8px}.faq-item p{color:var(--sub);line-height:1.6}
 footer{margin-top:60px;text-align:center;color:var(--sub);font-size:13px}
+@media (max-width:600px){.stat-box{min-width:80px;padding:10px 12px}.stat-value{font-size:20px}}
 </style>
 </head>
 <body>
 <div class="container">
 <a class="back" href="../index.html">← Back to Tools</a>
 <h1>Text Analyzer</h1>
-<p class="subtitle">All-in-one text statistics: words, sentences, characters, paragraphs & syllables</p>
+<p class="subtitle">All-in-one text statistics</p>
 
 <div class="panel">
-<textarea id="textInput" placeholder="Paste or type your text here to analyze..."></textarea>
-<button class="btn-primary" onclick="analyzeText()">Analyze Text</button>
+<textarea id="textInput" placeholder="Paste or type your text here..."></textarea>
+<button class="btn-primary" onclick="analyzeText()">Analyze</button>
 
-<div class="stats-grid">
+<div class="stats-row">
 <div class="stat-box">
 <div class="stat-value" id="wordCount">0</div>
 <div class="stat-label">Words</div>
@@ -48,7 +49,7 @@ footer{margin-top:60px;text-align:center;color:var(--sub);font-size:13px}
 </div>
 <div class="stat-box">
 <div class="stat-value" id="charCountNoSpace">0</div>
-<div class="stat-label">Characters (no spaces)</div>
+<div class="stat-label">No Spaces</div>
 </div>
 <div class="stat-box">
 <div class="stat-value" id="sentenceCount">0</div>
@@ -60,24 +61,20 @@ footer{margin-top:60px;text-align:center;color:var(--sub);font-size:13px}
 </div>
 <div class="stat-box">
 <div class="stat-value" id="syllableCount">0</div>
-<div class="stat-label">Syllables (est.)</div>
+<div class="stat-label">Syllables</div>
 </div>
 </div>
 </div>
 
 <div class="panel">
 <h2>How It Works</h2>
-<p style="color:var(--sub);line-height:1.7">Paste any text into the input box above and click "Analyze Text". Our tool instantly calculates all statistics including word count, character count (with and without spaces), sentence count, paragraph count, and estimated syllable count.</p>
+<p style="color:var(--sub);line-height:1.7">Paste any text and click "Analyze" to see word count, character count (with and without spaces), sentences, paragraphs, and estimated syllables.</p>
 </div>
 
-<h2>Frequently Asked Questions</h2>
+<h2>FAQ</h2>
 <div class="faq-item">
-<h3>What's the difference between this and Word Counter?</h3>
-<p>This tool provides comprehensive text analysis including syllable count and paragraph count, while <a href="../word-counter/">Word Counter</a> focuses on detailed word analysis with reading level estimates.</p>
-</div>
-<div class="faq-item">
-<h3>Is there a character limit?</h3>
-<p>No, you can analyze texts of any length. The tool works entirely in your browser for privacy.</p>
+<h3>What's the difference from Word Counter?</h3>
+<p><a href="../word-counter/">Word Counter</a> focuses on detailed word analysis with reading time estimates. This tool provides comprehensive text statistics all at once.</p>
 </div>
 
 <footer>
@@ -97,28 +94,16 @@ function countSyllables(word) {
 
 function analyzeText() {
   var text = document.getElementById('textInput').value;
-  
-  // Words
   var words = text.trim().split(/\s+/).filter(function(w) { return w.length > 0; });
   document.getElementById('wordCount').textContent = words.length;
-  
-  // Characters
   document.getElementById('charCount').textContent = text.length;
   document.getElementById('charCountNoSpace').textContent = text.replace(/\s/g, '').length;
-  
-  // Sentences
   var sentences = text.split(/[.!?]+/).filter(function(s) { return s.trim().length > 0; });
   document.getElementById('sentenceCount').textContent = sentences.length;
-  
-  // Paragraphs
   var paragraphs = text.split(/\n\n+/).filter(function(p) { return p.trim().length > 0; });
   document.getElementById('paragraphCount').textContent = paragraphs.length || (text.length > 0 ? 1 : 0);
-  
-  // Syllables
   var totalSyllables = 0;
-  words.forEach(function(word) {
-    totalSyllables += countSyllables(word);
-  });
+  words.forEach(function(word) { totalSyllables += countSyllables(word); });
   document.getElementById('syllableCount').textContent = totalSyllables;
 }
 </script>
