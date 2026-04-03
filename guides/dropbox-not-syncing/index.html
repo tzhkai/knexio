@@ -34,10 +34,42 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Why does Dropbox say \\"Up to date\\" but files aren't there?",
+      "name": "Why does Dropbox say \"Up to date\" but files aren't there?",
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "This usually means the files are excluded by Selective Sync. Open Preferences → Sync → Selective Sync and enable the missing folders."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is Dropbox using too much CPU or memory?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Dropbox indexing a large number of new files can spike CPU usage. This is temporary. If it persists, check for file sync conflicts, reset the Dropbox cache, or reduce the number of files in your Dropbox folder."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I pause Dropbox sync temporarily?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Click the Dropbox icon in the system tray/menu bar → click the pause icon (two vertical bars). Sync will resume automatically after 30 minutes, or you can click Resume manually."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why are my Dropbox files showing as \"conflicted copies\"?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Conflicted copies appear when the same file was edited on two devices before either could sync. Dropbox saves both versions with '(conflicted copy)' in the filename. You need to manually compare and merge the versions you want to keep."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I fix Dropbox not syncing on my phone?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "On iPhone: Settings → Dropbox → enable Background App Refresh. On Android: Settings → Apps → Dropbox → Battery → select 'Unrestricted'. Also ensure the Dropbox app has permission to access files and photos."
       }
     }
   ]
@@ -233,35 +265,92 @@
 <div class="container">
   <a class="back" href="../index.html">← Back to Guides</a>
   <h1>Dropbox Not Syncing? Here's How to Fix It</h1>
-  <div class="intro">When Dropbox stops syncing, it's usually one of a few things: sync was paused, your storage quota is full, a specific file has an invalid name, or a firewall is blocking the connection. These fixes cover all the common causes on Windows and Mac.</div>
+  <div class="intro">When Dropbox stops syncing, it's usually one of a few things: sync was paused, your storage quota is full, a specific file has an invalid name, or a firewall is blocking the connection. These fixes cover all the common causes on Windows, Mac, and mobile devices.</div>
 
-  <div class="notice"><strong>Check status first:</strong> Visit <strong>status.dropbox.com</strong> to confirm there's no ongoing Dropbox outage. If the service is down, your only option is to wait.</div>
+  <div class="notice"><strong>Check status first:</strong> Visit <strong>status.dropbox.com</strong> to confirm there's no ongoing Dropbox outage. If the service is down, your only option is to wait. Dropbox occasionally experiences partial outages that affect syncing while the website still works.</div>
+
+  <h2>Common Causes of Dropbox Sync Issues</h2>
+
+  <ul>
+    <li><strong>Sync is paused</strong> — Dropbox auto-pauses on low battery, metered Wi-Fi, or when you manually pause it</li>
+    <li><strong>Storage quota exceeded</strong> — Free (2 GB), Plus (2 TB), or Professional (3 TB) plan limits reached</li>
+    <li><strong>Problematic file names</strong> — Characters like <code>\ / : * ? " &lt; &gt; |</code> or file paths exceeding 260 characters on Windows</li>
+    <li><strong>Firewall or antivirus blocking</strong> — Corporate networks and security software may block Dropbox ports (443, 17500)</li>
+    <li><strong>Conflicted copies</strong> — Same file edited simultaneously on multiple devices</li>
+    <li><strong>Selective Sync excludes folders</strong> — Folders unchecked in Selective Sync won't download to your device</li>
+    <li><strong>Outdated Dropbox desktop app</strong> — Old versions may have known sync bugs</li>
+  </ul>
 
   <h2>Quick Fixes</h2>
-  <div class="step-block"><h3>Step 1 — Resume Syncing</h3><p>Click the Dropbox icon in the system tray (Windows) or menu bar (Mac). If you see <strong>"Syncing is paused"</strong>, click <strong>Resume syncing</strong>. Dropbox pauses automatically on low battery or when you manually pause it.</p></div>
-  <div class="step-block"><h3>Step 2 — Quit and Relaunch Dropbox</h3><p>Click Dropbox icon → click your profile photo or initials → Quit Dropbox. Then relaunch Dropbox from the Start menu or Applications folder. This clears most temporary sync glitches.</p></div>
-  <div class="step-block"><h3>Step 3 — Restart Your Computer</h3><p>A restart clears cached states, refreshes network connections, and resolves file locking issues — all common sync blockers.</p></div>
-  <div class="step-block"><h3>Step 4 — Check Your Dropbox Storage Quota</h3><p>Visit <strong>dropbox.com/account/plan</strong> while signed in. If your storage is full (100%), Dropbox cannot upload new files. Delete files or upgrade your plan.</p></div>
+
+  <div class="step-block"><h3>Step 1 — Resume Syncing</h3><p>Click the Dropbox icon in the system tray (Windows, bottom-right) or menu bar (Mac, top-right). If you see <strong>"Syncing is paused"</strong>, click <strong>Resume syncing</strong>. Dropbox pauses automatically on low battery or when you manually pause it. Also check if your computer is on a <strong>metered Wi-Fi connection</strong> — Dropbox pauses on these networks by default. On Windows: Settings → Network → your Wi-Fi → set to "Non-metered".</p></div>
+
+  <div class="step-block"><h3>Step 2 — Quit and Relaunch Dropbox</h3><p>Click the Dropbox icon → click your profile photo or initials → <strong>Quit Dropbox</strong>. Then relaunch Dropbox from the Start menu (Windows) or Applications folder (Mac). This clears most temporary sync glitches and re-establishes the connection to Dropbox servers.</p></div>
+
+  <div class="step-block"><h3>Step 3 — Restart Your Computer</h3><p>A restart clears cached states, refreshes network connections, and resolves file locking issues — all common sync blockers. This is especially helpful after a Dropbox app crash or after waking from sleep mode.</p></div>
+
+  <div class="step-block"><h3>Step 4 — Check Your Dropbox Storage Quota</h3><p>Visit <strong>dropbox.com/account/plan</strong> while signed in. If your storage is full (100%), Dropbox cannot upload new files. You'll see a banner in the Dropbox desktop app warning you. Delete unnecessary files, empty the Dropbox trash (files stay in trash for 30 days on free plans, indefinitely on paid plans), or upgrade your plan.</p></div>
 
   <h2>Advanced Fixes</h2>
-  <div class="step-block"><h3>Step 5 — Find the Problem File</h3><p>Click the Dropbox icon → look for a red X or warning. Hover over it for details. Problematic files often have: names with special characters like <code>\ / : * ? " &lt; &gt; |</code>, paths longer than 260 characters (Windows), or the file is open and locked by another application.</p></div>
-  <div class="step-block"><h3>Step 6 — Check Antivirus / Firewall Settings</h3><p>Temporarily disable your antivirus or firewall and check if Dropbox resumes. If it does, add Dropbox to the allowed applications list. Dropbox uses port 443 (HTTPS) and port 17500 for LAN sync.</p></div>
-  <div class="step-block"><h3>Step 7 — Update Dropbox</h3><p>Click Dropbox icon → Help → Check for updates. Running an outdated version can cause sync errors that are fixed in newer releases.</p></div>
-  <div class="step-block"><h3>Step 8 — Sign Out and Sign Back In</h3><p>Click Dropbox icon → your name/icon → Preferences → Account → Unlink this Dropbox. Sign back in to re-establish authentication. This resets credentials without deleting your local files.</p></div>
-  <div class="step-block"><h3>Step 9 — Reinstall Dropbox</h3><p>Uninstall Dropbox completely (do not delete the Dropbox folder — just the app). Reinstall from <strong>dropbox.com/install</strong>. Your files remain on disk and will re-sync to the existing folder after login.</p></div>
 
-    <!-- AdSense – in-article (auto-inserted) -->
-    <div style="margin: 32px 0; text-align: center;">
-      <!-- Ad space -->
-    </div>
+  <div class="step-block"><h3>Step 5 — Find the Problem File</h3><p>Click the Dropbox icon → look for a red X or warning. Hover over it for details. Problematic files often have: names with special characters like <code>\ / : * ? " &lt; &gt; |</code>, paths longer than 260 characters (Windows), file names ending with a space or period, or the file is open and locked by another application (like Microsoft Word or Excel).</p></div>
 
+  <div class="step-block"><h3>Step 6 — Check Antivirus / Firewall Settings</h3><p>Temporarily disable your antivirus or firewall and check if Dropbox resumes. If it does, add Dropbox to the allowed applications list. Dropbox uses port <strong>443</strong> (HTTPS) and port <strong>17500</strong> for LAN sync discovery. On Windows Defender: Settings → Firewall → Allow an app → find Dropbox and check both Private and Public boxes. On corporate networks, you may need to ask your IT department to whitelist Dropbox.</p></div>
 
+  <div class="step-block"><h3>Step 7 — Update Dropbox</h3><p>Click Dropbox icon → click your profile → <strong>Preferences</strong> (Windows) or <strong>Settings</strong> (Mac) → <strong>General</strong> tab → check for "Check for updates" or click the dropdown menu → <strong>Help</strong> → <strong>Check for Updates</strong>. Running an outdated version can cause sync errors that are fixed in newer releases.</p></div>
+
+  <div class="step-block"><h3>Step 8 — Sign Out and Sign Back In</h3><p>Click Dropbox icon → your name/icon → Preferences/Settings → <strong>Account</strong> tab → <strong>Unlink this Dropbox</strong>. Sign back in with your email and password to re-establish authentication. This resets credentials and sync tokens without deleting your local files. Your Dropbox folder and all its contents remain untouched on your computer.</p></div>
+
+  <div class="step-block"><h3>Step 9 — Reinstall Dropbox</h3><p>Uninstall Dropbox completely: on Windows, Settings → Apps → Dropbox → Uninstall. On Mac, drag Dropbox from Applications to Trash. <strong>Do not delete the Dropbox folder</strong> — just the app. Reinstall from <strong>dropbox.com/install</strong>. Your files remain on disk and will re-sync to the existing folder after login. During installation, choose "Advanced Setup" if you want to select a specific Dropbox folder location.</p></div>
 
   <h2>Selective Sync Issues</h2>
-  <div class="step-block"><h3>Folder Not Appearing After Selective Sync Change</h3><p>Dropbox icon → Preferences → Sync → Selective Sync → Click "Choose folders". Ensure the folder you need is checked. Unchecked folders are removed from local storage but remain in the cloud.</p></div>
+
+  <div class="step-block"><h3>Folder Not Appearing After Selective Sync Change</h3><p>Dropbox icon → Preferences/Settings → <strong>Sync</strong> tab → <strong>Selective Sync</strong> → Click "Change Settings" or "Choose folders". Ensure the folder you need is checked. Unchecked folders are removed from local storage but remain in the cloud. After changing selections, Dropbox needs time to download or remove files — check the sync status for progress.</p></div>
+
+  <h2>Mobile Sync Issues</h2>
+
+  <div class="step-block"><h3>On iPhone:</h3><p>Open <strong>Settings → Dropbox</strong> → enable <strong>Background App Refresh</strong>. Also go to Settings → Dropbox → ensure <strong>Cellular Data</strong> is enabled if you need to sync on mobile data. To manually sync: open the Dropbox app, pull down on the file list to refresh. If camera uploads aren't working: Dropbox app → Account icon (top-left) → Camera Uploads toggle → ensure it's on.</p></div>
+
+  <div class="step-block"><h3>On Android:</h3><p>Open <strong>Settings → Apps → Dropbox → Battery</strong> → select <strong>Unrestricted</strong>. Many Android phones (Samsung, Xiaomi) aggressively kill background apps to save battery. Also ensure Dropbox has storage permission: Settings → Apps → Dropbox → Permissions → Files and Media → Allow. For camera uploads: Dropbox app → menu → Camera Uploads → toggle on.</p></div>
+
+  <!-- AdSense – in-article (auto-inserted) -->
+  <div style="margin: 32px 0; text-align: center;">
+    <!-- Ad space -->
+  </div>
+
+  <h2>Specific Sync Error Messages</h2>
+
+  <div class="step-block"><h3>"Syncing paused (computer name)"</h3><p>This means Dropbox is paused either manually or because of system conditions. Click the Dropbox icon → Resume. If it re-pauses, check your battery settings (Windows: Settings → Battery → Battery saver — exclude Dropbox from battery saver).</p></div>
+
+  <div class="step-block"><h3>"File is locked" or "File in use"</h3><p>Another application has the file open. Close the file in the other app (Word, Excel, Photoshop, etc.) and Dropbox will resume syncing it. If you can't find which app has it open, restart your computer.</p></div>
+
+  <div class="step-block"><h3>"Dropbox cannot establish a secure connection"</h3><p>This is a network or firewall issue. Check if your system clock is correct (wrong time can break SSL certificates). Try disabling any VPN. If you're on a corporate network, contact IT to ensure proxy settings allow Dropbox traffic.</p></div>
+
+  <div class="step-block"><h3>"Insufficient disk space"</h3><p>Your hard drive is full. Free up space on the drive where your Dropbox folder is located. Use Selective Sync to uncheck large folders you don't need locally. On macOS, go to Apple Menu → About This Mac → Storage to check available space.</p></div>
+
+  <h2>How to Clear the Dropbox Cache</h2>
+
+  <p>If Dropbox is stuck syncing despite trying the above fixes, the local cache may be corrupted:</p>
+
+  <div class="step-block"><h3>On Windows:</h3><p>Press <strong>Win+R</strong> → type <code>%HOMEPATH%\Dropbox\.dropbox.cache</code> → press Enter. Delete all files and folders inside this folder. Then restart Dropbox. This forces Dropbox to re-index your files from scratch, which can take time depending on the size of your Dropbox.</p></div>
+
+  <div class="step-block"><h3>On Mac:</h3><p>Open Finder → Go → Go to Folder → type <code>~/.dropbox.cache</code> → press Enter. Delete all contents. Then restart Dropbox from the Applications folder. Re-indexing will begin automatically.</p></div>
 
   <h2>Frequently Asked Questions</h2>
-  <div class="faq-item"><strong>Why does Dropbox say "Up to date" but files aren't there?</strong><p>This usually means the files are excluded by Selective Sync. Open Preferences → Sync → Selective Sync and enable the missing folders.</p></div>
+
+  <div class="faq-item"><strong>Why does Dropbox say "Up to date" but files aren't there?</strong><p>This usually means the files are excluded by Selective Sync. Open Preferences → Sync → Selective Sync and enable the missing folders. Also check if you're looking in the right Dropbox folder location — you may have multiple Dropbox folders if you use both a personal and a work account.</p></div>
+
+  <div class="faq-item"><strong>Why is Dropbox using too much CPU or memory?</strong><p>Dropbox indexing a large number of new files can spike CPU usage. This is temporary and usually resolves within a few hours. If it persists, check for file sync conflicts, clear the Dropbox cache (see above), or reduce the number of files in your Dropbox folder by moving rarely-used files to Dropbox online-only mode.</p></div>
+
+  <div class="faq-item"><strong>Can I pause Dropbox sync temporarily?</strong><p>Yes. Click the Dropbox icon in the system tray (Windows) or menu bar (Mac) → click the pause icon (two vertical bars). Sync will resume automatically after 30 minutes, or you can click Resume manually. This is useful when you need to conserve bandwidth or battery.</p></div>
+
+  <div class="faq-item"><strong>Why are my files showing as "conflicted copies"?</strong><p>Conflicted copies appear when the same file was edited on two devices before either could sync. Dropbox saves both versions with "(conflicted copy)" in the filename. You need to manually compare and merge the versions, then delete the conflicted copy you don't need.</p></div>
+
+  <div class="faq-item"><strong>How do I fix Dropbox not syncing on my phone?</strong><p>On iPhone: Settings → Dropbox → enable Background App Refresh and ensure Cellular Data is on. On Android: Settings → Apps → Dropbox → Battery → select "Unrestricted" and grant Files/Media permission. Also make sure you're using the latest version of the Dropbox app from the App Store or Google Play.</p></div>
+
+  <h2>When to Contact Dropbox Support</h2>
+
+  <p>If you've tried all the steps above and Dropbox still isn't syncing, contact Dropbox support at <strong>dropbox.com/support</strong>. Before reaching out, prepare your Dropbox desktop app build number (click the Dropbox icon → your avatar → Preferences → General), your operating system version, and a description of the exact error message or behavior you're seeing. Dropbox support can check server-side sync logs and identify issues that aren't visible from your end.</p>
 
     </div>
     <div class="ad-banner" style="margin-top:40px">

@@ -47,6 +47,30 @@
         "@type": "Answer",
         "text": "Yes, especially unpowered hubs. High-power devices like external drives need a powered USB hub or direct connection to the computer."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I recover data from a USB drive that shows as RAW?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use data recovery software like Recuva (free) or EaseUS Data Recovery. Do not format the drive before recovering data — formatting erases the file system index and makes recovery harder."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does my USB disconnect randomly?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Random disconnections are usually caused by a loose cable, failing USB port, power management settings, or a failing USB drive. Try a different cable first, then disable USB Selective Suspend in Windows Power Options."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can a USB device be repaired if Windows says it's not recognized?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The USB device itself may be fine — the error is usually on the computer's side (driver, port, or power). Test the device on another computer. If it works elsewhere, the problem is with your computer, not the device."
+      }
     }
   ]
 }
@@ -241,33 +265,89 @@
 <div class="container">
   <a class="back" href="../index.html">← Back to Guides</a>
   <h1>USB Not Recognized? Here's How to Fix It</h1>
-  <div class="intro">When Windows shows "USB device not recognized" or a USB drive simply doesn't appear, it's usually a driver, power, or file system issue — not a permanently broken device. Here's how to diagnose and fix it.</div>
+  <div class="intro">When Windows shows "USB device not recognized" or a USB drive simply doesn't appear, it's usually a driver, power, or file system issue — not a permanently broken device. Here's how to diagnose and fix it step by step.</div>
 
-  <div class="notice"><strong>First step:</strong> Try a different USB port and a different computer. This tells you whether the problem is with the port, the cable, or the USB device itself.</div>
+  <div class="notice"><strong>First step:</strong> Try a different USB port and a different computer. This tells you whether the problem is with the port, the cable, or the USB device itself. If the device works on another computer, the issue is on your computer's side.</div>
+
+  <h2>Common Causes of USB Recognition Issues</h2>
+
+  <ul>
+    <li><strong>Faulty or loose cable</strong> — The most common cause, especially with USB-C cables which vary in quality</li>
+    <li><strong>Corrupted or outdated USB drivers</strong> — Windows may have installed a generic or wrong driver</li>
+    <li><strong>Insufficient power</strong> — External hard drives and high-power devices need direct USB 3.0 ports, not hubs</li>
+    <li><strong>Damaged USB port</strong> — Physical wear, bent pins, or a broken connector inside the port</li>
+    <li><strong>File system corruption</strong> — The drive's partition or file system (NTFS/FAT32/exFAT) is damaged</li>
+    <li><strong>USB Selective Suspend</strong> — Windows power management can disable USB ports to save energy</li>
+    <li><strong>Conflicting devices</strong> — Too many USB devices sharing the same controller can cause recognition failures</li>
+  </ul>
 
   <h2>Fixes for Windows</h2>
-  <div class="step-block"><h3>Step 1 — Try Different Ports and Cables</h3><p>Plug the USB device into a different port. If using USB-C, try a different cable. Avoid USB hubs for initial testing — connect directly.</p></div>
-  <div class="step-block"><h3>Step 2 — Check Device Manager</h3><p>Right-click Start → Device Manager → Look for yellow warning icons under Universal Serial Bus Controllers or Other Devices. Right-click → Update Driver or Uninstall Device → scan for hardware changes.</p></div>
-  <div class="step-block"><h3>Step 3 — Reinstall USB Controllers</h3><p>In Device Manager → Universal Serial Bus Controllers → Right-click each item → Uninstall → Restart PC. Windows will automatically reinstall them on reboot.</p></div>
-  <div class="step-block"><h3>Step 4 — Disable USB Selective Suspend</h3><p>Control Panel → Power Options → Change plan settings → Change advanced power settings → USB Settings → USB Selective Suspend Setting → Set to Disabled.</p></div>
-  <div class="step-block"><h3>Step 5 — Check Disk Management (for USB drives)</h3><p>Press Win+X → Disk Management. If your USB drive appears here without a drive letter: right-click → Change Drive Letter → Assign a letter. If it says "Not Initialized," right-click → Initialize Disk (this will erase data).</p></div>
-  <div class="step-block"><h3>Step 6 — Update Windows</h3><p>Settings → Windows Update → Check for updates. Some USB recognition issues are resolved in Windows patches.</p></div>
+
+  <div class="step-block"><h3>Step 1 — Try Different Ports and Cables</h3><p>Plug the USB device into a different port. Prefer USB ports directly on the motherboard (back panel on desktops) rather than front panel ports. If using USB-C, try a different cable — not all USB-C cables support data transfer (some are charge-only). Avoid USB hubs for initial testing — connect directly to the computer. For USB 3.0 drives, use a blue USB 3.0 port for best power delivery.</p></div>
+
+  <div class="step-block"><h3>Step 2 — Check Device Manager for Errors</h3><p>Right-click <strong>Start</strong> → <strong>Device Manager</strong>. Look for yellow warning icons (⚠) under <strong>Universal Serial Bus Controllers</strong> or <strong>Other Devices</strong>. If you see your USB device with a warning, right-click it → <strong>Update Driver</strong> → <strong>Search automatically</strong>. If that fails, right-click → <strong>Uninstall Device</strong> → restart your computer — Windows will reinstall the driver fresh.</p></div>
+
+  <div class="step-block"><h3>Step 3 — Reinstall All USB Controllers</h3><p>In Device Manager → Expand <strong>Universal Serial Bus Controllers</strong> → Right-click each item (USB Root Hub, USB Host Controller, etc.) → <strong>Uninstall</strong>. Don't worry — these are software drivers, not hardware. After uninstalling all USB controllers, restart your PC. Windows will automatically reinstall all USB drivers from scratch on boot. This fixes most driver-related USB recognition issues.</p></div>
+
+  <div class="step-block"><h3>Step 4 — Disable USB Selective Suspend</h3><p>USB Selective Suspend lets Windows turn off individual USB ports to save power, but it can cause recognition issues. To disable: <strong>Control Panel → Power Options → Change plan settings → Change advanced power settings → USB Settings → USB Selective Suspend Setting</strong> → Set to <strong>Disabled</strong>. Click OK. This setting persists even after restarts.</p></div>
+
+  <div class="step-block"><h3>Step 5 — Check Disk Management (for USB Drives)</h3><p>Press <strong>Win+X → Disk Management</strong>. If your USB drive appears here without a drive letter: right-click the partition → <strong>Change Drive Letter and Paths</strong> → <strong>Add</strong> → Assign a letter (e.g., E:). If the drive shows as "RAW" or "Unallocated," the file system is corrupted. For RAW drives, try data recovery before formatting. If it says "Not Initialized," right-click the disk → Initialize Disk → choose GPT.</p></div>
+
+  <div class="step-block"><h3>Step 6 — Run Windows Hardware Troubleshooter</h3><p>Press <strong>Win+R</strong> → type <code>msdt.exe -id DeviceDiagnostic</code> → press Enter → Click <strong>Next</strong> to run the hardware troubleshooter. Windows will scan for USB-related issues and apply fixes automatically. This tool can detect problems that aren't obvious in Device Manager.</p></div>
+
+  <div class="step-block"><h3>Step 7 — Update Windows</h3><p><strong>Settings → Windows Update → Check for updates</strong>. Install all available updates. Microsoft regularly releases USB driver fixes and improvements through Windows Update. Also check your motherboard manufacturer's website for the latest chipset and USB controller drivers.</p></div>
+
+  <div class="step-block"><h3>Step 8 — Fix USB Power Settings via Registry</h3><p>If the above steps don't work, you can disable USB power management via the Registry (advanced users). Press Win+R → type <code>regedit</code> → navigate to <code>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\USB\DisableSelectiveSuspend</code> — if this key doesn't exist, create it as a DWORD value and set it to <strong>1</strong>. Restart your computer. <strong>Warning:</strong> Be careful editing the Registry — incorrect changes can cause system instability.</p></div>
+
+  <!-- AdSense – in-article (auto-inserted) -->
+  <div style="margin: 32px 0; text-align: center;">
+    <!-- Ad space -->
+  </div>
 
   <h2>Fixes for Mac</h2>
-  <div class="step-block"><h3>Step 1 — Check Finder Preferences</h3><p>Finder → Preferences → General → Ensure "External disks" is checked under "Show these items on the desktop."</p></div>
-  <div class="step-block"><h3>Step 2 — Check Disk Utility</h3><p>Open Disk Utility (Spotlight → "Disk Utility"). If the drive appears but is grayed out: select it → click Mount. If it shows errors: click First Aid.</p></div>
-  <div class="step-block"><h3>Step 3 — Reset SMC</h3><p>Resetting the SMC on Intel Macs can fix USB port power issues. Shut down → Hold Shift+Control+Option+Power for 10 seconds → Release → Power on.</p></div>
 
-    <!-- AdSense – in-article (auto-inserted) -->
-    <div style="margin: 32px 0; text-align: center;">
-      <!-- Ad space -->
-    </div>
+  <div class="step-block"><h3>Step 1 — Check Finder Preferences</h3><p>Open <strong>Finder → Finder menu → Settings → General</strong> tab. Ensure <strong>"External disks"</strong> is checked under "Show these items on the desktop." Also go to the <strong>Sidebar</strong> tab and check "External disks" under "Locations." If these are unchecked, your USB drive may be connected but simply hidden from view.</p></div>
 
+  <div class="step-block"><h3>Step 2 — Check Disk Utility</h3><p>Open <strong>Disk Utility</strong> (Spotlight → Cmd+Space → type "Disk Utility"). Look in the left sidebar under "External" — your USB drive should appear there. If it's grayed out, select it → click <strong>Mount</strong>. If it shows errors or won't mount, select it → click <strong>First Aid</strong> → Run. First Aid checks and repairs file system errors. If First Aid fails, you may need to reformat the drive.</p></div>
 
+  <div class="step-block"><h3>Step 3 — Reset SMC (Intel Macs)</h3><p>Resetting the System Management Controller (SMC) can fix USB port power issues on Intel-based Macs. <strong>For Macs with T2 chip:</strong> Shut down → hold <strong>Power button for 10 seconds</strong> → release → wait 5 seconds → power on. <strong>For Macs without T2:</strong> Shut down → hold <strong>Shift+Control+Option+Power</strong> for 10 seconds → release → power on. <strong>For Apple Silicon Macs (M1/M2/M3):</strong> Simply restart — there's no SMC to reset.</p></div>
+
+  <div class="step-block"><h3>Step 4 — Reset NVRAM/PRAM (Intel Macs)</h3><p>Shut down your Mac → press the power button, then immediately hold <strong>Option+Command+P+R</strong> for about 20 seconds, then release. The Mac will restart. This resets USB-related firmware settings stored in NVRAM. Not needed for Apple Silicon Macs.</p></div>
+
+  <h2>Fixes for USB Flash Drives Showing as RAW</h2>
+
+  <p>A RAW file system means Windows can't read the drive's partition structure. This happens due to unsafe ejection, power failures, or file system corruption:</p>
+
+  <div class="step-block"><h3>Option A — Run CHKDSK</h3><p>Open Command Prompt as Administrator → type <code>chkdsk X: /f /r</code> (replace X with your drive letter). CHKDSK scans for and repairs file system errors. This may take several minutes depending on drive size. If CHKDSK says the drive is RAW, proceed to Option B.</p></div>
+
+  <div class="step-block"><h3>Option B — Data Recovery First, Then Format</h3><p>Before formatting a RAW drive, recover your data: download <strong>Recuva</strong> (free from ccleaner.com) or <strong>EaseUS Data Recovery</strong>. These tools can scan the RAW drive and recover files even when the file system is unreadable. After recovering data, format the drive: Disk Management → right-click the RAW drive → <strong>Format</strong> → choose <strong>exFAT</strong> (works on both Windows and Mac) or NTFS (Windows only).</p></div>
+
+  <h2>Preventing USB Issues</h2>
+
+  <ul>
+    <li>Always <strong>safely eject</strong> USB drives: right-click the drive → Eject, or click the USB icon in the system tray → Eject</li>
+    <li>Use <strong>quality USB-C cables</strong> from reputable brands — cheap cables often have data pin issues</li>
+    <li>For external hard drives, use the <strong>included power adapter</strong> if one was provided</li>
+    <li>Don't force USB connectors into ports — if it doesn't fit easily, check the orientation</li>
+    <li>Keep USB ports clean and free of dust — compressed air can help on desktop front-panel ports</li>
+    <li>Avoid daisy-chaining multiple USB hubs — each hub reduces available power to connected devices</li>
+  </ul>
 
   <h2>Frequently Asked Questions</h2>
-  <div class="faq-item"><strong>Why does USB work on one port but not another?</strong><p>Individual USB ports can fail due to physical damage or driver issues. If only one port doesn't work, it may need hardware repair.</p></div>
-  <div class="faq-item"><strong>Can a USB hub cause recognition issues?</strong><p>Yes, especially unpowered hubs. High-power devices like external drives need a powered USB hub or direct connection to the computer.</p></div>
+
+  <div class="faq-item"><strong>Why does USB work on one port but not another?</strong><p>Individual USB ports can fail due to physical damage (worn contacts, bent pins), driver issues affecting specific controller channels, or power delivery problems. On desktops, front-panel USB ports are connected to the motherboard via internal cables that can come loose. Try a rear-panel port (directly on the motherboard) to isolate the issue.</p></div>
+
+  <div class="faq-item"><strong>Can a USB hub cause recognition issues?</strong><p>Yes, especially unpowered (bus-powered) hubs. High-power devices like external hard drives, optical drives, and some webcams need more power than a USB hub can provide. Use a powered USB hub (one with its own AC adapter) or connect the device directly to the computer.</p></div>
+
+  <div class="faq-item"><strong>How do I recover data from a USB drive that shows as RAW?</strong><p>Use data recovery software like Recuva (free), EaseUS Data Recovery, or PhotoRec (open-source). Connect the RAW drive, run the recovery software, select the drive, and scan for recoverable files. Save recovered files to a different drive — never save them to the RAW drive itself. After recovering your data, format the drive to make it usable again.</p></div>
+
+  <div class="faq-item"><strong>Why does my USB disconnect randomly?</strong><p>Random disconnections are typically caused by a loose cable connection, a damaged USB port with worn contacts, USB power management (Selective Suspend on Windows) turning the port off, or a failing USB controller on the drive itself. Try a different cable first, then disable USB Selective Suspend in Windows Power Options. If the problem persists, the USB drive's controller chip may be failing.</p></div>
+
+  <div class="faq-item"><strong>Can a USB device be repaired if Windows says it's not recognized?</strong><p>The USB device itself may be perfectly fine — the error is usually on the computer's side (driver issue, port problem, or power management). Test the device on another computer. If it works there, the problem is with your computer. If it doesn't work on any computer, the USB device's controller may have failed. Flash drives with failed controllers generally cannot be repaired — only the data can sometimes be recovered by a professional service.</p></div>
+
+  <h2>When to Seek Professional Help</h2>
+
+  <p>If you've exhausted all the software and driver fixes above and your USB device still isn't recognized, consider the following: for USB drives containing critical data that aren't recognized by any computer, professional data recovery services (like DriveSavers or Ontrack) can attempt to recover data by directly reading the flash memory chips. This is expensive ($200–$1000+) but may be worth it for irreplaceable files. For physical USB port damage on laptops, a repair shop can replace the USB port board or resolder connections.</p>
 
     </div>
     <div class="ad-banner" style="margin-top:40px">

@@ -47,6 +47,30 @@
         "@type": "Answer",
         "text": "Yes, if RAM usage is consistently above 85%. Check in Task Manager → Performance → Memory. 16GB is recommended for modern Windows 11."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I upgrade to an SSD?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — upgrading from an HDD to an SSD is the single most impactful upgrade for older computers. It reduces boot time from minutes to seconds and dramatically improves app loading times."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How often should I restart my computer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Restart at least once a week. A restart clears temporary files, frees up RAM, and applies pending Windows/macOS updates that can't install while the computer is running."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is it safe to use registry cleaners?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No, we generally don't recommend registry cleaners. They can cause more problems than they solve. Windows' built-in tools are safer and more effective for performance optimization."
+      }
     }
   ]
 }
@@ -241,47 +265,85 @@
 <div class="container">
   <a class="back" href="../index.html">← Back to Guides</a>
   <h1>Computer Running Slow? Here's How to Speed It Up</h1>
-  <div class="intro">A slow computer doesn't always need a fresh OS install. In most cases, a few targeted tweaks can dramatically improve performance. This guide covers Windows and Mac.</div>
+  <div class="intro">A slow computer doesn't always need a fresh OS install. In most cases, a few targeted tweaks can dramatically improve performance. This guide covers Windows and Mac with step-by-step instructions.</div>
 
-  <div class="notice"><strong>First step:</strong> Open Task Manager (Ctrl+Shift+Esc on Windows) or Activity Monitor (Mac). Check CPU and Memory usage to identify the culprit process.</div>
+  <div class="notice"><strong>First step:</strong> Open Task Manager (Ctrl+Shift+Esc on Windows) or Activity Monitor (Mac). Check CPU and Memory usage to identify the culprit process. If a single process is using over 50% CPU, that's your problem.</div>
 
   <h2>Common Causes of Slow Computers</h2>
 
   <ul>
-    <li>Too many startup programs launching at boot</li>
-    <li>Hard drive nearly full (less than 10% free space)</li>
-    <li>RAM fully utilized — too many tabs and apps open</li>
-    <li>Malware or adware running in background</li>
-    <li>Outdated drivers, especially GPU and chipset</li>
-    <li>Overheating CPU causing thermal throttling</li>
-    <li>Fragmented hard disk drive (HDD)</li>
-    <li>Corrupted system files</li>
+    <li><strong>Too many startup programs</strong> — Apps configured to launch at boot consume memory and CPU before you even open them</li>
+    <li><strong>Hard drive nearly full</strong> — Less than 10% free space (or under 20GB) significantly degrades performance, especially on SSDs</li>
+    <li><strong>RAM fully utilized</strong> — Too many browser tabs and apps open force Windows/Mac to use disk as virtual memory</li>
+    <li><strong>Malware or adware</strong> — Background processes from malicious software drain resources</li>
+    <li><strong>Outdated drivers</strong> — Especially GPU and chipset drivers, causing poor hardware utilization</li>
+    <li><strong>Overheating CPU</strong> — Thermal throttling reduces clock speed to prevent damage</li>
+    <li><strong>Fragmented hard disk drive (HDD)</strong> — Mechanical HDDs slow down as files become scattered</li>
+    <li><strong>Corrupted system files</strong> — Windows system file corruption causes instability and slowdowns</li>
   </ul>
 
   <h2>Windows Speed-Up Fixes</h2>
-  <div class="step-block"><h3>Step 1 — Disable Startup Programs</h3><p>Press <strong>Ctrl+Shift+Esc</strong> → Startup tab → Disable anything not essential. Focus on high-impact items.</p></div>
-  <div class="step-block"><h3>Step 2 — Free Up Disk Space</h3><p>Open File Explorer → Right-click C: → Properties → Disk Cleanup → check all boxes including System Files. Also go to Settings → System → Storage → Cleanup Recommendations.</p></div>
-  <div class="step-block"><h3>Step 3 — Scan for Malware</h3><p>Run Windows Defender: <strong>Settings → Update & Security → Windows Security → Quick Scan</strong>. For deeper scans, use Malwarebytes Free.</p></div>
-  <div class="step-block"><h3>Step 4 — Adjust Power Plan</h3><p>Search "Power Plan" → Choose "High Performance" or "Balanced" (not Power Saver). Power Saver throttles CPU performance.</p></div>
-  <div class="step-block"><h3>Step 5 — Update Windows & Drivers</h3><p>Settings → Windows Update → Check for Updates. Also update GPU drivers from NVIDIA/AMD website.</p></div>
-  <div class="step-block"><h3>Step 6 — Run SFC Scan</h3><p>Open Command Prompt as Admin → type <code>sfc /scannow</code> → press Enter. This repairs corrupted system files automatically.</p></div>
 
-    <!-- AdSense – in-article (auto-inserted) -->
-    <div style="margin: 32px 0; text-align: center;">
-      <!-- Ad space -->
-    </div>
+  <div class="step-block"><h3>Step 1 — Disable Startup Programs</h3><p>Press <strong>Ctrl+Shift+Esc</strong> to open Task Manager → Click the <strong>Startup</strong> tab → Disable anything not essential by right-clicking → Disable. Focus on high-impact items shown in the "Startup impact" column. Common culprits: Microsoft Teams, Spotify, Steam, Discord, OneDrive. Keep your antivirus enabled.</p></div>
 
+  <div class="step-block"><h3>Step 2 — Free Up Disk Space</h3><p>Open File Explorer → Right-click your C: drive → Properties → Click <strong>Disk Cleanup</strong> → Check all boxes including "System files" → Click Clean up system files → Select all categories again → OK. Also go to <strong>Settings → System → Storage → Cleanup Recommendations</strong> to see large files, unused apps, and temporary files you can remove. Aim for at least 20GB free on your system drive.</p></div>
 
+  <div class="step-block"><h3>Step 3 — Scan for Malware</h3><p>Run Windows Defender: <strong>Settings → Update & Security → Windows Security → Virus & threat protection → Quick Scan</strong>. For deeper scans, use <strong>Malwarebytes Free</strong> (download from malwarebytes.com) for a second opinion. Malwarebytes detects adware and potentially unwanted programs that Windows Defender may miss.</p></div>
+
+  <div class="step-block"><h3>Step 4 — Adjust Power Plan</h3><p>Press Win+R → type <code>powercfg.cpl</code> → press Enter → Choose <strong>High Performance</strong> or <strong>Balanced</strong> (not Power Saver). Power Saver mode intentionally throttles CPU speed to extend battery life. On laptops, "Balanced" is usually the best compromise between performance and battery.</p></div>
+
+  <div class="step-block"><h3>Step 5 — Update Windows & Drivers</h3><p><strong>Settings → Update & Security → Windows Update → Check for Updates</strong>. Install all pending updates and restart. Then update GPU drivers: for NVIDIA cards, download GeForce Experience from nvidia.com; for AMD, download AMD Software from amd.com. These tools automatically detect and install the latest drivers for your GPU.</p></div>
+
+  <div class="step-block"><h3>Step 6 — Run SFC and DISM Scans</h3><p>Open Command Prompt as Administrator (search "cmd" → right-click → Run as administrator) → type the following commands one at a time, pressing Enter after each:</p><p><code>DISM /Online /Cleanup-Image /RestoreHealth</code><br><code>sfc /scannow</code></p><p>The DISM command repairs the Windows component store. The SFC command scans and repairs corrupted system files. Each can take 15–30 minutes. Restart when both complete.</p></div>
+
+  <div class="step-block"><h3>Step 7 — Defragment Your Hard Drive (HDD Only)</h3><p>If your computer has a mechanical hard drive (not an SSD), fragmentation can cause significant slowdown. Search for <strong>"Defragment and Optimize Drives"</strong> → Select your C: drive → Click <strong>Optimize</strong>. Do NOT defragment an SSD — Windows automatically optimizes SSDs with TRIM.</p></div>
+
+  <div class="step-block"><h3>Step 8 — Check for Failing Hardware</h3><p>A failing hard drive can cause extreme slowdowns. Download <strong>CrystalDiskInfo</strong> (free) from crystaldewd.info to check your drive health. Look for "Good" status. If you see "Caution" or "Bad," back up your data immediately and replace the drive.</p></div>
+
+  <!-- AdSense – in-article (auto-inserted) -->
+  <div style="margin: 32px 0; text-align: center;">
+    <!-- Ad space -->
+  </div>
 
   <h2>Mac Speed-Up Fixes</h2>
-  <div class="step-block"><h3>Step 1 — Check Activity Monitor</h3><p>Open Spotlight → search "Activity Monitor" → click CPU tab → sort by CPU%. Force-quit any process using unusually high CPU.</p></div>
-  <div class="step-block"><h3>Step 2 — Remove Login Items</h3><p><strong>System Settings → General → Login Items</strong> → Remove apps you don't need at startup.</p></div>
-  <div class="step-block"><h3>Step 3 — Free Up Storage</h3><p>Apple menu → About This Mac → Storage → Manage. Delete large unused files, empty Trash, and clear Downloads folder.</p></div>
-  <div class="step-block"><h3>Step 4 — Reset SMC / PRAM</h3><p>For Intel Macs: Shut down → hold Shift+Control+Option+Power for 10 seconds. This resets power management controller. For Apple Silicon, simply restart.</p></div>
+
+  <div class="step-block"><h3>Step 1 — Check Activity Monitor</h3><p>Open Spotlight (Cmd+Space) → search <strong>"Activity Monitor"</strong> → click the <strong>CPU</strong> tab → sort by % CPU by clicking the column header. If a process is using over 50–70% CPU consistently, select it → click the X button → Force Quit. Common macOS resource hogs: WindowServer (graphics issues), kernel_task (overheating), browser processes.</p></div>
+
+  <div class="step-block"><h3>Step 2 — Remove Login Items</h3><p><strong>System Settings → General → Login Items</strong> → Click the minus button (−) to remove apps you don't need at startup. On older macOS versions (Ventura and earlier): System Preferences → Users & Groups → select your user → Login Items tab → remove items.</p></div>
+
+  <div class="step-block"><h3>Step 3 — Free Up Storage</h3><p>Apple menu → <strong>About This Mac → Storage → Manage</strong>. Use the built-in tools to: delete large unused files, empty Trash automatically, reduce clutter, and clear the Downloads folder. macOS needs at least 15–20GB free to operate smoothly. The storage management tool also shows "System Data" — if this is huge (over 100GB), you may have Time Machine local snapshots. In Terminal, run: <code>tmutil listlocalsnapshots /</code> then <code>tmutil deletelocalsnapshots [snapshot-date]</code>.</p></div>
+
+  <div class="step-block"><h3>Step 4 — Reset SMC and NVRAM</h3><p>For Intel Macs: Reset SMC (System Management Controller) by shutting down → hold <strong>Shift+Control+Option+Power</strong> for 10 seconds → release → power on. Reset NVRAM by restarting and holding <strong>Option+Command+P+R</strong> for about 20 seconds. For Apple Silicon Macs (M1/M2/M3), a simple restart clears these — no special key combination needed.</p></div>
+
+  <div class="step-block"><h3>Step 5 — Repair Disk Permissions</h3><p>Open <strong>Disk Utility</strong> (Cmd+Space → search "Disk Utility") → Select your startup disk → Click <strong>First Aid</strong> → Run. This checks for and repairs disk errors. On macOS Catalina and later, the system volume is read-only and protected, but First Aid can still fix errors on the data volume and external drives.</p></div>
+
+  <div class="step-block"><h3>Step 6 — Clear Browser Cache</h3><p>Browsers accumulate huge caches over time. In Safari: Safari menu → Settings → Privacy → Manage Website Data → Remove All. In Chrome: Settings → Privacy and Security → Clear Browsing Data → select "Cached images and files" and "Cookies" → Clear data.</p></div>
+
+  <h2>When to Consider a Hardware Upgrade</h2>
+
+  <p>If the software fixes above don't help, your computer may need hardware upgrades:</p>
+
+  <ul>
+    <li><strong>Upgrade to an SSD</strong> — If your computer has a mechanical hard drive (HDD), replacing it with an SSD is the single most impactful upgrade. Boot time goes from minutes to seconds, and apps launch almost instantly. SATA SSDs are inexpensive; NVMe SSDs are even faster if your system supports them.</li>
+    <li><strong>Add more RAM</strong> — Check current RAM usage in Task Manager (Windows) or Activity Monitor (Mac). If it's consistently above 85% with just your normal apps open, you need more RAM. 8GB is the minimum for modern usage; 16GB is recommended for most users; 32GB+ for video editing, gaming, or running virtual machines.</li>
+    <li><strong>Reapply thermal paste</strong> — On older laptops (4+ years), dried thermal paste causes overheating and throttling. This is an advanced procedure — consider taking it to a repair shop.</li>
+  </ul>
 
   <h2>Frequently Asked Questions</h2>
-  <div class="faq-item"><strong>Why did my computer become slow suddenly?</strong><p>A background Windows Update, malware, or a failing hard drive are common sudden-slowdown causes. Check Task Manager and disk health first.</p></div>
-  <div class="faq-item"><strong>Does adding RAM help?</strong><p>Yes, if RAM usage is consistently above 85%. Check in Task Manager → Performance → Memory. 16GB is recommended for modern Windows 11.</p></div>
+
+  <div class="faq-item"><strong>Why did my computer become slow suddenly?</strong><p>A background Windows Update (check for pending updates in Settings), malware infection (run a full scan with Windows Defender and Malwarebytes), a failing hard drive (check with CrystalDiskInfo), or a runaway background process are common sudden-slowdown causes. Check Task Manager and disk health first.</p></div>
+
+  <div class="faq-item"><strong>Does adding RAM help?</strong><p>Yes, if RAM usage is consistently above 85%. Check in Task Manager → Performance → Memory (Windows) or Activity Monitor → Memory (Mac). 16GB is recommended for modern Windows 11. If you have 4GB or less, upgrading to 8GB or 16GB will make a noticeable difference.</p></div>
+
+  <div class="faq-item"><strong>Should I upgrade to an SSD?</strong><p>Absolutely — upgrading from an HDD to an SSD is the single most impactful upgrade for older computers. It reduces boot time from minutes to seconds, makes apps launch almost instantly, and dramatically improves overall responsiveness. SATA SSDs (2.5" form factor) are compatible with most laptops and desktops from the past 10 years.</p></div>
+
+  <div class="faq-item"><strong>How often should I restart my computer?</strong><p>Restart at least once a week. A restart clears temporary files cached in RAM, frees up memory, applies pending Windows/macOS updates that can't install while the computer is running, and resets processes that may have memory leaks. Many users who never restart accumulate performance issues over time.</p></div>
+
+  <div class="faq-item"><strong>Is it safe to use registry cleaners?</strong><p>No, we generally don't recommend registry cleaners like CCleaner's registry cleaner. They often delete entries that seem unused but are actually needed, causing system instability or app crashes. Windows' built-in tools (Disk Cleanup, Storage Sense, SFC, DISM) are safer and more effective for performance optimization.</p></div>
+
+  <h2>When to Consider a Clean Install</h2>
+
+  <p>If none of the above fixes help, a clean install of Windows or macOS can restore performance. Back up your personal files first (documents, photos, etc.) to an external drive or cloud storage. On Windows, you can reset without losing personal files: Settings → Update & Security → Recovery → Reset this PC → Keep my files. On Mac, restart → hold Cmd+R → Reinstall macOS. Note: you'll need to reinstall all your apps after a clean install.</p>
 
     </div>
     <div class="ad-banner" style="margin-top:40px">

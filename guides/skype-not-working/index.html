@@ -200,12 +200,52 @@
     }
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Why won't Skype connect?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Skype connection issues are usually caused by network problems, firewall blocking, outdated app version, or server outages. Check status.skype.com for server status, then try clearing cache and restarting."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why can't I hear or be heard on Skype calls?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Audio problems usually stem from incorrect device selection in Skype settings, muted microphone, or lack of permissions. Go to Settings → Audio & Video to select correct speakers and microphone."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is my video not showing on Skype?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Camera issues occur when another app is using the camera, camera permissions are denied, or the wrong camera is selected. Close other apps, check permissions in your OS, and select the correct camera in Skype settings."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I fix 'Cannot sign in' error on Skype?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Login failures can occur due to incorrect credentials, account lockout, or network issues. Verify your Microsoft account credentials, try the web version, and ensure your network allows Skype connections."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body><a href="../../cdn-cgi/content-DJQqhiYISScACQjlikWn0Wh7Wxe8gGSV0A9azZjoVE0.html" aria-hidden="true" rel="nofollow noopener" style="display: none !important; visibility: hidden !important"></a>
 <div class="wrap">
   <a class="back" href="../index.html">← Back to Guides</a>
   <h1>Skype Not Working? How to Fix Common Skype Problems</h1>
-  <div class="meta">Updated March 2026 · 7 min read</div>
+  <div class="meta">Updated April 2026 · 8 min read</div>
   <div class="ad-slot"><script>
     </script></div>
     <div class="ad-banner" style="margin-top:40px">
@@ -227,16 +267,38 @@
 
   <p>Skype remains a popular communication tool for video calls, voice calls, and instant messaging. When it stops working, these fixes will help you get back to connecting with friends, family, and colleagues.</p>
 
+  <h2>Common Causes of Skype Problems</h2>
+  <ul>
+    <li><strong>Network connectivity issues:</strong> Unstable internet or firewall blocking Skype ports</li>
+    <li><strong>Outdated Skype application:</strong> Older versions may have compatibility issues</li>
+    <li><strong>Camera or microphone in use:</strong> Other apps may be using your devices</li>
+    <li><strong>Incorrect device settings:</strong> Wrong speakers or microphone selected</li>
+    <li><strong>Account or authentication problems:</strong> Microsoft account issues</li>
+    <li><strong>Server outages:</strong> Check status.skype.com for known issues</li>
+  </ul>
+
   <h2 id="not-connecting">Fix 1: Skype Not Connecting</h2>
   <p>If Skype won't sign in or shows connection errors:</p>
   <div class="step-box">
     <ol>
       <li>Check if Skype servers are down at <a href="https://status.skype.com" target="_blank" rel="noopener">status.skype.com</a></li>
-      <li>Restart Skype completely and try again</li>
-      <li>Check your internet connection with other apps</li>
-      <li>Switch from Wi-Fi to mobile data or vice versa</li>
-      <li>Clear Skype cache (see below)</li>
+      <li>Restart Skype completely (right-click in taskbar → Quit) and reopen</li>
+      <li>Check your internet connection by opening other websites or apps</li>
+      <li>Switch from Wi-Fi to mobile data or vice versa to test different network</li>
+      <li>Clear Skype cache (see cache section below)</li>
       <li>Reinstall Skype if issues persist</li>
+    </ol>
+  </div>
+
+  <h2>Fix 2: Check for Updates</h2>
+  <p>Outdated Skype versions often cause connection and performance issues:</p>
+  <div class="step-box">
+    <ol>
+      <li>Open Skype and click your profile picture</li>
+      <li>Select "Check for Skype updates"</li>
+      <li>If an update is available, it will download automatically</li>
+      <li>Restart Skype to apply updates</li>
+      <li>Alternatively, download the latest version from <strong>skype.com/download</strong></li>
     </ol>
   </div>
 
@@ -247,17 +309,17 @@
 
 
 
-  <h2 id="audio-video">Skype Audio/Video Troubleshooting</h2>
+  <h2 id="audio-video">Fix 3: Audio/Video Troubleshooting</h2>
   <p>If you can connect but can't hear or see others:</p>
 
   <div class="step-box">
     <h3>No Audio Output</h3>
     <ol>
       <li>Click the "+" button in a call → Audio settings</li>
-      <li>Select the correct speaker from the dropdown</li>
-      <li>Check Windows/macOS volume settings</li>
-      <li>Ensure you're not muted (look for the microphone icon)</li>
-      <li>Test with "Make a test call" in Skype settings</li>
+      <li>Select the correct speaker from the dropdown (check it's not "None")</li>
+      <li>Check Windows/macOS volume settings (System Preferences → Sound on Mac)</li>
+      <li>Ensure you're not muted (look for the microphone icon with a line through it)</li>
+      <li>Test with "Make a test call" in Skype settings → Audio & Video</li>
     </ol>
   </div>
 
@@ -266,41 +328,44 @@
     <ol>
       <li>Click the "+" button → Audio settings</li>
       <li>Select your microphone from the dropdown</li>
-      <li>Allow microphone access in Windows/macOS settings</li>
-      <li>Close other apps that might be using the microphone</li>
-      <li>Try a different microphone to test</li>
+      <li><strong>On Windows:</strong> Go to Settings → Privacy & Security → Microphone → Enable "Let apps access your microphone" → Find Skype and enable</li>
+      <li><strong>On Mac:</strong> Go to System Settings → Privacy & Security → Microphone → Enable Skype</li>
+      <li>Close other apps that might be using the microphone (Zoom, Teams, Discord)</li>
+      <li>Try a different microphone to test if hardware is working</li>
     </ol>
   </div>
 
   <div class="step-box">
     <h3>Camera/Video Not Working</h3>
     <ol>
-      <li>Click the video icon to enable video</li>
-      <li>Check camera is selected in call settings</li>
-      <li>Allow camera access in OS privacy settings</li>
-      <li>Close other apps using the camera (Zoom, Teams, etc.)</li>
-      <li>Test camera in other apps to confirm it works</li>
+      <li>Click the video icon to enable video (it must be turned on manually)</li>
+      <li>Check camera is selected in call settings (click arrow next to camera icon)</li>
+      <li><strong>On Windows:</strong> Settings → Privacy & Security → Camera → Enable "Let apps access your camera" → Enable Skype</li>
+      <li><strong>On Mac:</strong> System Settings → Privacy & Security → Camera → Enable Skype</li>
+      <li>Close other apps using the camera (Zoom, Teams, OBS, FaceTime)</li>
+      <li>Test camera in other apps (e.g., Windows Camera app or Photo Booth on Mac) to confirm it works</li>
     </ol>
   </div>
 
   <div class="step-box">
     <h3>Echo and Audio Feedback</h3>
     <ul>
-      <li>Use headphones instead of speakers</li>
+      <li>Use headphones instead of speakers (speakers pick up mic audio and create echo)</li>
       <li>Lower speaker volume</li>
       <li>Mute yourself when not speaking</li>
       <li>Ask others to mute if they're causing echo</li>
+      <li>Move microphone away from speakers</li>
     </ul>
   </div>
 
   <div class="tip"><strong>Tip:</strong> Use Ctrl+Shift+M to mute/unmute quickly during calls on Windows, Cmd+Shift+M on Mac.</strong></div>
 
-  <h2 id="firewall">Skype Connection & Firewall Issues</h2>
+  <h2 id="firewall">Fix 4: Connection & Firewall Issues</h2>
   <p>Network problems often cause Skype connection failures:</p>
 
   <div class="step-box">
     <h3>Required Ports</h3>
-    <p>Skype requires these ports to function:</p>
+    <p>Skype requires these ports to function properly:</p>
     <ul>
       <li><strong>TCP 443</strong> — For authentication and signaling</li>
       <li><strong>UDP 3478, 3479, 3480</strong> — For audio/video connections</li>
@@ -309,34 +374,46 @@
   </div>
 
   <div class="step-box">
-    <h3>Allow Skype Through Firewall</h3>
+    <h3>Allow Skype Through Firewall (Windows)</h3>
     <ol>
-      <li>Open Windows Defender Firewall</li>
+      <li>Open Windows Security → Firewall & network protection</li>
       <li>Click "Allow an app through firewall"</li>
-      <li>Find Skype and enable both Private and Public</li>
-      <li>If not listed, add Skype manually from Program Files</li>
+      <li>Click "Change settings" → Find "Skype" in the list</li>
+      <li>Enable both Private and Public for Skype</li>
+      <li>If not listed, click "Allow another app" → Browse to where Skype is installed (usually C:\Program Files\Skype\Phone)</li>
+    </ol>
+  </div>
+
+  <div class="step-box">
+    <h3>Allow Skype Through Firewall (Mac)</h3>
+    <ol>
+      <li>Go to System Settings → Network → Firewall</li>
+      <li>If enabled, click "Firewall Options"</li>
+      <li>Add "Skype" to the allowed apps list</li>
+      <li>Or go to System Settings → Privacy & Security → Full Disk Access → Add Skype</li>
     </ol>
   </div>
 
   <div class="step-box">
     <h3>VPN and Proxy Issues</h3>
     <ol>
-      <li>Disconnect VPN temporarily to test</li>
-      <li>Try bypassing proxy in Skype settings</li>
-      <li>Corporate networks may block Skype — contact IT</li>
-      <li>Try using a different network (mobile hotspot)</li>
+      <li>Disconnect VPN temporarily to test if it's blocking Skype</li>
+      <li>Try bypassing proxy in Skype settings → Advanced → Connection</li>
+      <li>Corporate networks may block Skype — contact your IT department</li>
+      <li>Try using a different network (mobile hotspot) to isolate the issue</li>
     </ol>
   </div>
 
-  <h2 id="login">Skype Login Problems</h2>
+  <h2 id="login">Fix 5: Login Problems</h2>
 
   <div class="step-box">
     <h3>Can't Sign In</h3>
     <ol>
-      <li>Verify your Microsoft account credentials</li>
-      <li>Use the correct Skype name or email</li>
-      <li>Reset password at <a href="https://account.microsoft.com" target="_blank" rel="noopener">account.microsoft.com</a></li>
-      <li>Try the web version at web.skype.com</li>
+      <li>Verify your Microsoft account credentials at <a href="https://account.microsoft.com" target="_blank" rel="noopener">account.microsoft.com</a></li>
+      <li>Use the correct Skype name or email associated with your account</li>
+      <li>Reset password at <a href="https://account.microsoft.com/password" target="_blank" rel="noopener">account.microsoft.com/password</a></li>
+      <li>Try the web version at <strong>web.skype.com</strong></li>
+      <li>Clear browser cookies and try again</li>
     </ol>
   </div>
 
@@ -345,15 +422,25 @@
     <p>If your account is locked for security reasons:</p>
     <ol>
       <li>Wait 24 hours and try again</li>
-      <li>Use the account recovery option</li>
+      <li>Use the account recovery option at <strong>account.microsoft.com</strong></li>
       <li>Contact Skype support for account restoration</li>
+      <li>Check your email for any security alerts from Microsoft</li>
     </ol>
   </div>
 
-  <h2 id="updates">Skype Update Procedures</h2>
+  <div class="step-box">
+    <h3>Two-Factor Authentication Issues</h3>
+    <ol>
+      <li>If you have 2FA enabled, you'll need your authenticator app code</li>
+      <li>If you lost access to your 2FA device, use a backup code</li>
+      <li>Contact Microsoft account support if you have no backup codes</li>
+    </ol>
+  </div>
+
+  <h2 id="updates">Fix 6: Update Procedures</h2>
 
   <div class="step-box">
-    <h3>Check for Updates</h3>
+    <h3>Check for Updates (Desktop)</h3>
     <ol>
       <li>Open Skype and click your profile picture</li>
       <li>Select "Check for Skype updates"</li>
@@ -367,16 +454,24 @@
     <p>Download the latest Skype from <a href="https://skype.com/download" target="_blank" rel="noopener">skype.com/download</a> for Windows, Mac, Linux, iOS, or Android.</p>
   </div>
 
-  <h2 id="cache">Skype Cache Clearing Steps</h2>
-  <p>Clearing Skype cache resolves many issues:</p>
+  <div class="step-box">
+    <h3>Update on Mobile</h3>
+    <ol>
+      <li><strong>iOS:</strong> Open App Store → Tap profile → Scroll to Updates → Update Skype</li>
+      <li><strong>Android:</strong> Open Play Store → Tap profile → Manage apps → Updates available → Update Skype</li>
+    </ol>
+  </div>
+
+  <h2 id="cache">Fix 7: Cache Clearing</h2>
+  <p>Clearing Skype cache resolves many issues including slow performance and connection problems:</p>
 
   <div class="step-box">
     <h3>Clear Cache on Windows</h3>
     <ol>
-      <li>Close Skype completely</li>
+      <li>Close Skype completely (right-click taskbar icon → Quit)</li>
       <li>Press <strong>Win + R</strong>, type <code>%AppData%\Skype</code>, press Enter</li>
-      <li>Delete the cache folder if it exists</li>
-      <li>Also check <code>%LocalAppData%\Skype</code></li>
+      <li>Delete the "Cache" folder if it exists</li>
+      <li>Also check <code>%LocalAppData%\Skype</code> and delete cache folders there</li>
       <li>Restart Skype</li>
     </ol>
   </div>
@@ -386,7 +481,7 @@
     <ol>
       <li>Quit Skype (Cmd + Q)</li>
       <li>Open Finder → Go → Go to Folder → type <code>~/Library/Application Support/Skype</code></li>
-      <li>Delete cache folders</li>
+      <li>Delete the "Cache" folder</li>
       <li>Also clear <code>~/Library/Caches/com.skype</code></li>
       <li>Restart Skype</li>
     </ol>
@@ -395,18 +490,17 @@
   <div class="step-box">
     <h3>Clear Cache on Mobile</h3>
     <ol>
-      <li>iOS: Delete and reinstall the app</li>
-      <li>Android: Settings → Apps → Skype → Storage → Clear Cache</li>
+      <li><strong>iOS:</strong> Delete and reinstall the app (iOS doesn't allow individual cache clearing)</li>
+      <li><strong>Android:</strong> Settings → Apps → Skype → Storage → Clear Cache</li>
     </ol>
   </div>
 
-  <h2>Additional Tips</h2>
-  <ul>
-    <li>Use the web version at <a href="https://web.skype.com" target="_blank" rel="noopener">web.skype.com</a> as a backup</li>
-    <li>Keep your operating system updated</li>
-    <li>Ensure sufficient bandwidth for video calls</li>
-    <li>Try classic Skype (Skype Classic) if the new version has issues</li>
-  </ul>
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-item"><strong>Why does Skype keep disconnecting during calls?</strong><p>Skype disconnections are usually caused by unstable internet, firewall blocking, or too many applications using bandwidth. Try using a wired Ethernet connection instead of Wi-Fi, close other bandwidth-heavy applications, and ensure your firewall allows Skype.</p></div>
+  <div class="faq-item"><strong>Why can't I see my contacts on Skype?</strong><p>If contacts aren't showing, sign out and sign back in. Also check that you're viewing the correct contact list (some accounts have multiple contact lists). If the issue persists, clear cache or reinstall Skype.</p></div>
+  <div class="faq-item"><strong>How do I fix poor call quality on Skype?</strong><p>Poor call quality can be improved by: using a wired connection instead of Wi-Fi, closing other applications using internet, moving closer to your router, using headphones to avoid echo, and lowering video quality in call settings.</p></div>
+  <div class="faq-item"><strong>Can I use Skype without a Microsoft account?</strong><p>Yes, you can create a Skype-specific account at skype.com. However, linking your Microsoft account provides additional features and makes account recovery easier. Some features require a Microsoft account.</p></div>
+  <div class="faq-item"><strong>Why does Skype say "Searching" and not connect?</strong><p>This usually indicates a network issue. Check your internet connection, try clearing your cache, restart Skype, or try a different network. If using a corporate VPN, contact your IT department.</p></div>
 
   <div class="ad-slot"><script>
     </script>

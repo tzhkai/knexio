@@ -47,11 +47,27 @@
         "@type": "Answer",
         "text": "This is usually caused by Discord's noise suppression incorrectly identifying your voice as noise, or a USB device losing connection. Disable Krisp/Noise Suppression in Advanced settings."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Discord mic work in browser vs the desktop app?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — the browser version requires microphone permission from the browser itself in addition to OS permissions. Grant permission when the browser prompts, or check browser Settings → Site Permissions → Microphone."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does my mic work in other apps but not Discord?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Discord sometimes uses a different audio API than other apps. On Windows, check that Discord isn't set to use a restricted audio device. In Discord settings, try switching Input Mode from Voice Activity to Push-to-Talk."
+      }
     }
   ]
 }
 </script>
-<style>
+  <style>
     :root{--bg-dark:#0b1220;--bg-dark-2:#070d1a;--panel:#111a2e;--border:rgba(255,255,255,0.08);--text-main:#fff;--text-sub:#aab3c5;--accent:#4f8cff}
     *{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:linear-gradient(180deg,var(--bg-dark),var(--bg-dark-2));color:var(--text-main)}
     a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
@@ -71,169 +87,47 @@
     
     /* 平板和手机 (≤768px) */
     @media (max-width: 768px) {
-      /* 容器布局优化 */
       .container, .wrap {
         padding: 40px 15px 80px !important;
         max-width: 100% !important;
-      
-      /* 标题字体优化 */
-      h1 {
-        font-size: 28px !important;
-        line-height: 1.3 !important;
       }
-      
-      h2 {
-        font-size: 20px !important;
-        margin-top: 36px !important;
-        margin-bottom: 10px !important;
-      }
-      
-      h3 {
-        font-size: 17px !important;
-      }
-      
-      /* 正文内容优化 */
-      p, li, .intro, .subtitle {
-        font-size: 14px !important;
-        line-height: 1.7 !important;
-      }
-      
-      /* 段落间距优化 */
-      p, ul, ol {
-        margin-bottom: 16px !important;
-      }
-      
-      /* 列表优化 */
-      ul, ol {
-        padding-left: 18px !important;
-      }
-      
-      li {
-        margin-bottom: 6px !important;
-      }
-      
-      /* 内容块优化 */
-      .main-panel, .step-block, .notice, .extra-info {
-        padding: 16px !important;
-        border-radius: 12px !important;
-        margin: 16px 0 !important;
-      }
-      
-      /* 按钮和输入框优化 */
-      .btn {
-        padding: 14px !important;
-        font-size: 15px !important;
-        min-height: 48px !important;
-      }
-      
-      .input-group input {
-        padding: 12px !important;
-        font-size: 15px !important;
-      }
-      
-      /* 网格系统优化 */
-      .age-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 12px !important;
-      }
-      
-      /* 广告位优化 */
-      .ad-banner {
-        margin: 16px 0 !important;
-        min-height: 50px !important;
-      }
-      
-      /* 游戏页面优化 */
-      .grid-container {
-        padding: 8px !important;
-      }
-      
-      .grid {
-        gap: 8px !important;
-      }
-      
-      .cell {
-        font-size: 20px !important;
-        border-radius: 6px !important;
-      }
-      
-      .score-box {
-        min-width: 70px !important;
-        padding: 6px 12px !important;
-      }
-      
-      .score-val {
-        font-size: 18px !important;
-      }
-      
-      /* 工具页面优化 */
-      .age-main {
-        font-size: 36px !important;
-      }
-      
-      .age-value {
-        font-size: 24px !important;
-      }
-      
-      .age-label {
-        font-size: 11px !important;
-      }
-      
-      /* 引导页面优化 */
-      .intro {
-        border-left-width: 2px !important;
-        padding-left: 12px !important;
-        margin-bottom: 32px !important;
-      }
-      
-      .faq-item {
-        margin-bottom: 20px !important;
-      }
-      
-      .faq-item strong {
-        font-size: 15px !important;
-      }
+      h1 { font-size: 28px !important; line-height: 1.3 !important; }
+      h2 { font-size: 20px !important; margin-top: 36px !important; margin-bottom: 10px !important; }
+      h3 { font-size: 17px !important; }
+      p, li, .intro, .subtitle { font-size: 14px !important; line-height: 1.7 !important; }
+      p, ul, ol { margin-bottom: 16px !important; }
+      ul, ol { padding-left: 18px !important; }
+      li { margin-bottom: 6px !important; }
+      .main-panel, .step-block, .notice, .extra-info { padding: 16px !important; border-radius: 12px !important; margin: 16px 0 !important; }
+      .btn { padding: 14px !important; font-size: 15px !important; min-height: 48px !important; }
+      .input-group input { padding: 12px !important; font-size: 15px !important; }
+      .age-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; }
+      .ad-banner { margin: 16px 0 !important; min-height: 50px !important; }
+      .grid-container { padding: 8px !important; }
+      .grid { gap: 8px !important; }
+      .cell { font-size: 20px !important; border-radius: 6px !important; }
+      .score-box { min-width: 70px !important; padding: 6px 12px !important; }
+      .score-val { font-size: 18px !important; }
+      .age-main { font-size: 36px !important; }
+      .age-value { font-size: 24px !important; }
+      .age-label { font-size: 11px !important; }
+      .intro { border-left-width: 2px !important; padding-left: 12px !important; margin-bottom: 32px !important; }
+      .faq-item { margin-bottom: 20px !important; }
+      .faq-item strong { font-size: 15px !important; }
     }
     
-    /* 小手机优化 (≤480px) */
     @media (max-width: 480px) {
-      h1 {
-        font-size: 24px !important;
-      }
-      
-      h2 {
-        font-size: 18px !important;
-      }
-      
-      .container, .wrap {
-        padding: 32px 12px 60px !important;
-      }
-      
-      .main-panel, .step-block, .notice {
-        padding: 14px !important;
-      }
-      
-      .btn {
-        padding: 12px !important;
-        font-size: 14px !important;
-      }
-      
-      .age-grid {
-        grid-template-columns: 1fr !important;
-      }
+      h1 { font-size: 24px !important; }
+      h2 { font-size: 18px !important; }
+      .container, .wrap { padding: 32px 12px 60px !important; }
+      .main-panel, .step-block, .notice { padding: 14px !important; }
+      .btn { padding: 12px !important; font-size: 14px !important; }
+      .age-grid { grid-template-columns: 1fr !important; }
     }
     
-    /* 触摸设备优化 */
     @media (hover: none) and (pointer: coarse) {
-      button, .btn, a[onclick], .cell {
-        min-height: 44px !important;
-        min-width: 44px !important;
-      }
-      
-      input, select, textarea {
-        font-size: 16px !important;
-      }
-    }      .container { padding: 40px 15px 80px; }
+      button, .btn, a[onclick], .cell { min-height: 44px !important; min-width: 44px !important; }
+      input, select, textarea { font-size: 16px !important; }
     }
     </style>
 </head>
@@ -241,23 +135,65 @@
 <div class="container">
   <a class="back" href="../index.html">← Back to Guides</a>
   <h1>Discord Mic Not Working? Here's How to Fix It</h1>
-  <div class="intro">If your microphone isn't working on Discord, others can't hear you in voice channels or calls. This usually comes down to wrong settings in Discord or missing OS permissions. Here's how to fix it fast.</div>
+  <div class="intro">If your microphone isn't working on Discord, others can't hear you in voice channels or calls. This guide covers every common cause — from incorrect input device selection and OS-level permission denials to hardware conflicts and Discord-specific settings. Solutions work for the Discord desktop app on Windows and Mac, as well as the browser version.</div>
 
-  <div class="notice"><strong>Quick check:</strong> Make sure you're not muted — look for the microphone icon in the bottom-left of Discord. A red line through it means you're muted. Click to unmute.</div>
+  <div class="notice"><strong>Quick check before anything else:</strong> Look at the bottom-left of Discord for the microphone icon. A red diagonal line through it means you're muted. Click it once to unmute. Also check the keyboard shortcut — Ctrl+Shift+M (Windows) or Cmd+Shift+M (Mac) toggles mute instantly and can accidentally silence you.</div>
 
-  <h2>Step-by-Step Fixes</h2>
-  <div class="step-block"><h3>Step 1 — Check Microphone Selection in Discord</h3><p>Go to <strong>Discord Settings (gear icon) → Voice & Video</strong>. Under "Input Device," make sure your actual microphone is selected — not "Default" if that's the wrong device.</p></div>
-  <div class="step-block"><h3>Step 2 — Check Input Volume</h3><p>In the same Voice & Video settings, check the Input Volume slider isn't at zero. Also click "Let's Check" to run the mic test.</p></div>
-  <div class="step-block"><h3>Step 3 — Grant Microphone Permission (Windows)</h3><p><strong>Settings → Privacy & Security → Microphone</strong> → Make sure "Allow apps to access your microphone" is On, and Discord is in the list with access enabled.</p></div>
-  <div class="step-block"><h3>Step 4 — Grant Permission on Mac</h3><p><strong>System Settings → Privacy & Security → Microphone</strong> → Enable Discord in the list. Restart Discord after granting permission.</p></div>
-  <div class="step-block"><h3>Step 5 — Disable Exclusive Mode (Windows)</h3><p>Right-click speaker icon in taskbar → Sounds → Recording tab → Right-click your microphone → Properties → Advanced tab → Uncheck "Allow applications to take exclusive control."</p></div>
-  <div class="step-block"><h3>Step 6 — Disable Noise Suppression / Krisp</h3><p>In Discord Voice & Video settings → scroll to "Advanced" → Disable Noise Suppression and Echo Cancellation temporarily. These AI features sometimes block mic input incorrectly.</p></div>
-  <div class="step-block"><h3>Step 7 — Reset Voice Settings</h3><p>In Voice & Video settings → scroll to the bottom → <strong>Reset Voice Settings</strong>. This returns all audio settings to Discord defaults.</p></div>
-  <div class="step-block"><h3>Step 8 — Run as Administrator</h3><p>Close Discord → Right-click the Discord shortcut → "Run as administrator." This bypasses some permission issues on Windows.</p></div>
+  <h2>Introduction: Why Discord Mic Issues Are Common</h2>
+  <p>Discord uses its own audio subsystem and handles microphone input differently from most other applications. It can override your system's default audio device, use advanced noise suppression that sometimes breaks legitimate audio, and operate with a separate permission layer that doesn't always sync with Windows or Mac OS permissions. This means your mic can work perfectly in Zoom, Skype, or Steam calls but fail entirely in Discord — and both apps use the same physical microphone.</p>
+
+  <h2>Common Causes of Discord Mic Problems</h2>
+  <ul>
+    <li><strong>Wrong input device selected</strong> — Discord may default to your monitor speakers, webcam mic, or Bluetooth headset instead of your actual headset</li>
+    <li><strong>Muted at OS level</strong> — Windows and Mac each have their own mute toggle that Discord respects</li>
+    <li><strong>Missing microphone permission</strong> — Discord needs explicit permission from your operating system to access the microphone</li>
+    <li><strong>Exclusive mode enabled (Windows)</strong> — some audio drivers lock the microphone to a single application</li>
+    <li><strong>Overly aggressive noise suppression</strong> — Discord's AI noise cancellation sometimes suppresses your voice entirely</li>
+    <li><strong>USB device briefly disconnecting</strong> — USB headsets that momentarily lose connection reset their Discord input settings</li>
+  </ul>
+
+  <h2>Fix: Check Discord's Input Settings First</h2>
+  <div class="step-block"><h3>Step 1 — Open Discord Voice & Video Settings</h3><p>Click the <strong>gear icon</strong> (⚙️) next to your username in the bottom-left panel. In the left menu, click <strong>Voice & Video</strong>. This is where all Discord audio input and output is controlled. Never change audio settings from the system control panel when fixing Discord — Discord has its own independent settings that override the OS defaults.</p></div>
+  <div class="step-block"><h3>Step 2 — Select the Correct Input Device</h3><p>Under "Input Device," click the dropdown and ensure your actual microphone is selected. Common pitfalls: "Default" may pick a different device than you expect, "Monitor" or "Speaker" options in the list aren't microphones, and Bluetooth headsets often appear with a different name than expected. If your headset has a separate USB sound card, select that specific device, not the built-in laptop microphone.</p></div>
+  <div class="step-block"><h3>Step 3 — Test the Input Volume</h3><p>While in Voice & Video settings, speak normally into your microphone. Watch the <strong>input volume meter</strong> — the bar should pulse green as you speak. If the bar stays gray or flat, Discord isn't receiving your voice. Adjust the "Input Volume" slider upward until the meter responds. Click <strong>"Let's Check"</strong> to run Discord's built-in mic test, which walks you through speaking and shows whether your voice is being detected.</p></div>
+  <div class="step-block"><h3>Step 4 — Switch to Push-to-Talk</h3><p>If your voice isn't triggering the input meter at all, switch from <strong>Voice Activity</strong> mode to <strong>Push-to-Talk</strong> mode. In Voice & Video settings, under "Input Mode," select <strong>Push-to-Talk</strong>. Assign a key (the default is usually good) and press it while watching the volume meter — the bar should activate when you hold the key, even if it doesn't respond to voice. This tells you whether the issue is with detection sensitivity or the mic itself.</p></div>
+
+  <div class="ad-banner"></div>
+
+  <h2>Fix: Grant OS-Level Microphone Permissions</h2>
+  <div class="step-block"><h3>On Windows — Check Privacy Settings</h3><p>Press <strong>Win+I</strong> to open Settings → <strong>Privacy & Security</strong> → scroll down to <strong>Microphone</strong> → Ensure "Microphone access" is turned on at the top. Below that, scroll to "Allow apps to access your microphone" and ensure it's on. In the list below, find Discord and make sure it's toggled to <strong>On</strong>. If Discord isn't listed, scroll to the bottom and click "Reset permissions on this page," then restart Discord.</p></div>
+  <div class="step-block"><h3>On Mac — Grant Permission in System Settings</h3><p>Open <strong>System Settings → Privacy & Security → Microphone</strong>. In the list, find Discord and ensure the checkbox is ticked. If Discord isn't in the list, quit Discord completely (from the menu bar → Discord → Quit), then relaunch it — this often triggers the permission prompt to appear. If the permission is granted but the mic still doesn't work, also check <strong>System Settings → Sound → Input</strong> to confirm the correct device is selected at the system level.</p></div>
+  <div class="step-block"><h3>On Browser — Check Site Permissions</h3><p>If you're using Discord in a browser (Chrome, Firefox, Edge, or Safari), the browser itself needs permission to access your microphone. When you first join a voice channel, the browser will prompt for microphone access — click <strong>Allow</strong>. If you accidentally clicked Block, go to browser Settings → Privacy and security → Site settings → Microphone. Find Discord in the list and set it to Allow. In Chrome, you can also click the padlock icon in the address bar → Site permissions → Microphone → Allow.</p></div>
+
+  <h2>Fix: Windows-Specific Audio Settings</h2>
+  <div class="step-block"><h3>Step 1 — Disable Exclusive Mode for Your Microphone</h3><p>Some audio drivers enable "exclusive mode," which lets only one app at a time use the microphone. This can block Discord from accessing it even when other settings are correct. Right-click the <strong>speaker icon</strong> in the Windows taskbar → <strong>Sound</strong> → <strong>Recording</strong> tab → right-click your microphone → <strong>Properties</strong> → <strong>Advanced</strong> tab → Under "Exclusive Mode," uncheck both <strong>"Allow applications to take exclusive control of this device"</strong> and <strong>"Give exclusive mode applications priority"</strong> → Click Apply → OK.</p></div>
+  <div class="step-block"><h3>Step 2 — Set Discord as Default Communication Device</h3><p>Windows separates audio devices into two categories: playback (speakers) and communication. Discord may be using the wrong category. Right-click the speaker icon → <strong>Sound</strong> → <strong>Recording</strong> tab → right-click your microphone → <strong>Set as Default Device</strong>. Then right-click it again → <strong>Set as Default Communication Device</strong>. Both should be set to your actual microphone.</p></div>
+  <div class="step-block"><h3>Step 3 — Run Discord as Administrator</h3><p>Some applications with elevated security requirements (games, developer tools) can conflict with Discord's audio access when Discord isn't running with full permissions. Close Discord → right-click the Discord shortcut or exe → <strong>Run as administrator</strong>. In the Discord login screen, go to the settings gear icon and verify the microphone is working. To always run Discord as admin: right-click the shortcut → Properties → Compatibility tab → check "Run this program as administrator."</p></div>
+
+  <div class="ad-banner"></div>
+
+  <h2>Fix: Noise Suppression and Advanced Audio Settings</h2>
+  <div class="step-block"><h3>Step 1 — Disable Krisp Noise Cancellation</h3><p>Discord's built-in Krisp add-on (offered with Nitro or as a separate subscription) processes your audio to remove background noise. When Krisp malfunctions or conflicts with certain USB headsets, it can cut your microphone entirely. In Discord Voice & Video settings, look for <strong>"Krisp"</strong> in the left menu (if available) → click <strong>"Disable Noise Cancellation"</strong>. Alternatively, scroll to the bottom of Voice & Video → <strong>Advanced</strong> → toggle off <strong>"Noise Suppression"</strong> and <strong>"Echo Cancellation"</strong>. Test your mic after each change.</p></div>
+  <div class="step-block"><h3>Step 2 — Check Your Bitrate Setting</h3><p>In Voice & Video settings → scroll down to <strong>"Advanced"</strong>. Check the "Automatic bandwidth mode" setting — if it's set to "Manual" and you've set a very low custom bitrate (below 48 kbps), your audio quality will be too low for Discord to process it. Reset to "Automatic" for best results. Also ensure "Opus" is selected as the audio codec if given a choice.</p></div>
+  <div class="step-block"><h3>Step 3 — Reset Voice Settings to Default</h3><p>If you've made many changes trying to fix the issue, you may have inadvertently made things worse. At the bottom of Voice & Video settings, click <strong>"Reset Voice Settings"</strong>. This returns all Discord audio settings to their defaults without affecting your server or account. After resetting, configure only the input device and try again.</p></div>
+
+  <h2>Fix: Hardware and USB Issues</h2>
+  <div class="step-block"><h3>For USB Headsets</h3><p>USB headsets have their own internal sound processing, and Windows or Discord may not always handle the handoff correctly. Unplug the USB headset, wait 10 seconds, and plug it back into a different USB port (preferably a USB 2.0 port for maximum compatibility, not USB-C unless your headset specifically uses it). In Discord, reselect the headset from the input device dropdown. If the headset has a physical mute button on the ear cup, make sure it isn't pressed.</p></div>
+  <div class="step-block"><h3>For Bluetooth Headsets</h3><p>Bluetooth headsets often have significant audio latency and can disconnect momentarily during operation. In Windows Settings → Bluetooth & devices → check that Discord isn't set to use a Hands-Free profile for voice (which has very low quality). Remove and re-pair the Bluetooth device from Windows Settings. In Discord, also check that the selected input device matches the Bluetooth headset's name exactly — Windows sometimes creates multiple audio device entries for one headset.</p></div>
+
+  <h2>Fix: Specific Discord Error Messages</h2>
+  <div class="step-block"><h3>"Microphone not detected" in Discord</h3><p>This means Discord can't see any microphone connected to your system. Check that the microphone is visible in Windows Sound settings (Control Panel → Sound → Recording tab). If it's visible there but not in Discord, try toggling Discord off and on again. If it's not visible anywhere, the issue is with the microphone itself — test it in another application like Voice Memos (Mac) or Windows Voice Recorder.</p></div>
+  <div class="step-block"><h3>Mic cuts out every few seconds</h3><p>This is almost always a USB connection issue with headsets or an overaggressive Push-to-Talk key binding. If using a wired USB headset, try a different USB port. If using a Bluetooth headset, disable Bluetooth power saving mode in Windows Settings → Bluetooth & devices → Device settings → your headset → Additional Bluetooth settings → untick "Allow Bluetooth devices to turn off this device." Also check that Discord's Push-to-Talk key isn't accidentally bound to a key that frequently gets pressed.</p></div>
 
   <h2>Frequently Asked Questions</h2>
-  <div class="faq-item"><strong>Why can no one hear me on Discord?</strong><p>Most commonly: wrong input device selected, mic muted, or Windows/Mac microphone permission denied. Check all three before anything else.</p></div>
-  <div class="faq-item"><strong>Why does my mic cut out during calls?</strong><p>This is usually caused by Discord's noise suppression incorrectly identifying your voice as noise, or a USB device losing connection. Disable Krisp/Noise Suppression in Advanced settings.</p></div>
+  <div class="faq-item"><strong>Why can no one hear me on Discord?</strong><p>Most commonly: wrong input device selected, mic muted at Discord or OS level, or Windows/Mac microphone permission denied. Check the Discord mic icon in the bottom-left first (red line = muted). Then open Discord Voice & Video settings and confirm the correct device is selected in the Input Device dropdown.</p></div>
+  <div class="faq-item"><strong>Why does my mic cut out during calls?</strong><p>This is usually caused by Discord's noise suppression incorrectly identifying your voice as noise, or a USB device momentarily losing its connection. Disable Krisp/Noise Suppression in Voice & Video → Advanced settings. If using a USB headset, try a different USB port. For Bluetooth headsets, make sure the headset isn't entering power-save mode mid-call.</p></div>
+  <div class="faq-item"><strong>Does Discord mic work in browser vs the desktop app?</strong><p>Yes, but the browser version requires microphone permission from the browser itself in addition to your OS permissions. When you first join a voice channel in the browser, grant permission when prompted. If you accidentally denied it, go to browser Settings → Site Permissions → Microphone → find Discord → Allow.</p></div>
+  <div class="faq-item"><strong>Why does my mic work in other apps but not Discord?</strong><p>Discord sometimes uses a different audio API than other apps, particularly on Windows. Try switching Input Mode from Voice Activity to Push-to-Talk in Discord Voice & Video settings. Also check that Windows hasn't set Discord's audio to Hands-Free mode (which has very limited quality) — right-click your microphone in Sound settings → Properties → Advanced tab → ensure the format is set to "16 bit, 48000 Hz (Studio Quality)."</p></div>
+  <div class="faq-item"><strong>My headset mic works in games but not in Discord — why?</strong><p>Many gaming headsets with USB connections present themselves as a separate audio device for gaming software and a different one for standard applications. Open Discord Voice & Video settings → Input Device dropdown, and scroll through all available options to find the one that corresponds to your headset specifically (it may be named differently than the gaming software's label). The "Default" option often doesn't pick the right one.</p></div>
+
+  <h2>When to Contact Discord Support</h2>
+  <p>If you've worked through all steps above and Discord still can't detect or use your microphone, the issue may be with Discord's backend servers or your account status. Contact Discord support at <strong>dis.gd/contact</strong> if you have an active Discord Nitro subscription and still experience issues, your account has been flagged for suspicious activity which can sometimes affect voice features, the Discord app is crashing specifically when you try to access voice settings (which can indicate a corrupted installation), or you are experiencing this issue across multiple devices simultaneously (suggesting a server-side issue rather than a device problem).</p>
 
     </div>
     <div class="ad-banner" style="margin-top:40px">
@@ -279,3 +215,4 @@
   <!-- 中间广告 -->
   <div class="ad-banner"></div>
 </body>
+</html>

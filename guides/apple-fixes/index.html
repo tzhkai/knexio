@@ -6,6 +6,22 @@
 <title>Apple Device Fixes – iPhone, iPad, Mac Troubleshooting | Knexio</title>
 <meta name="description" content="Fix common Apple device problems. Solutions for Apple ID verification, iCloud issues, App Store problems, and iOS errors.">
 <link rel="canonical" href="https://knexio.xyz/guides/apple-fixes/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why is my Apple ID verification failing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Common causes include incorrect password, outdated iOS, network issues, or Apple server outages. Try updating iOS, checking your internet, and verifying your Apple ID credentials."
+      }
+    }
+  ]
+}
+</script>
 <style>
 :root{--bg:#0b1220;--card:#111a2e;--border:rgba(255,255,255,.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff}
 *{box-sizing:border-box}body{font-family:system-ui;background:var(--bg);color:var(--text);margin:0}
@@ -18,6 +34,12 @@ h1{font-size:32px;margin-bottom:8px}.subtitle{color:var(--sub);margin-bottom:24p
 .steps{background:var(--bg);border-radius:8px;padding:16px}
 .steps ol{margin:0;padding-left:20px}
 .steps li{margin-bottom:8px;color:var(--text);line-height:1.6}
+.faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px}
+.faq-item h3{font-size:16px;margin-bottom:8px;color:var(--text)}
+.faq-item p{color:var(--sub);line-height:1.6}
+.notice{background:rgba(79,140,255,.1);border:1px solid rgba(79,140,255,.3);border-radius:8px;padding:16px;margin-bottom:20px;color:var(--sub)}
+.notice strong{color:var(--text)}
+kbd{background:rgba(255,255,255,.1);padding:3px 8px;border-radius:4px;font-family:monospace;font-size:13px}
 footer{margin-top:60px;text-align:center;color:var(--sub);font-size:13px}
 </style>
 </head>
@@ -26,59 +48,271 @@ footer{margin-top:60px;text-align:center;color:var(--sub);font-size:13px}
 <a class="back" href="../index.html">← Back to Guides</a>
 <h1>Apple Device Fixes</h1>
 <p class="subtitle">Solutions for iPhone, iPad, and Mac common problems</p>
+<div class="ad-banner"></div>
+
+<div class="notice"><strong>Quick Tip:</strong> Many Apple issues can be resolved by restarting your device. Hold the power button, slide to power off, then turn your device back on.</div>
 
 <div class="problem-card">
 <h2>🔐 Apple ID Verification Failed</h2>
-<p>If you're seeing "Apple ID Verification Failed" when trying to sign in or download apps, here are the solutions:</p>
+<p>If you're seeing "Apple ID Verification Failed" when trying to sign in or download apps, this can be caused by incorrect credentials, network issues, Apple server outages, or outdated iOS software.</p>
+
+<h3>Common Causes</h3>
+<ul>
+<li>Incorrect password or email address</li>
+<li>Network connectivity issues</li>
+<li>Apple's authentication servers are down</li>
+<li>Outdated iOS or macOS software</li>
+<li>Two-factor authentication issues</li>
+<li>Device date/time is incorrect</li>
+</ul>
+
+<h3>Step-by-Step Fixes</h3>
 <div class="steps">
 <ol>
-<li><strong>Check your internet connection</strong> – Make sure you have stable Wi-Fi or cellular data</li>
-<li><strong>Update iOS/macOS</strong> – Go to Settings > General > Software Update</li>
-<li><strong>Sign out and back in</strong> – Settings > [Your Name] > Sign Out, then sign back in</li>
-<li><strong>Check Apple's system status</strong> – Visit <a href="https://www.apple.com/support/systemstatus/">Apple System Status</a></li>
-<li><strong>Reset network settings</strong> – Settings > General > Transfer or Reset > Reset > Reset Network Settings</li>
+<li><strong>Check your internet connection</strong> — Make sure you have stable Wi-Fi or cellular data. Try turning Wi-Fi off and on, or switch to a different network.</li>
+<li><strong>Verify your credentials</strong> — Double-check your email and password. Use the "Forgot Password" option if needed at appleid.apple.com</li>
+<li><strong>Update iOS/macOS</strong> — Go to Settings → General → Software Update (iPhone) or System Settings → Software Update (Mac)</li>
+<li><strong>Check Apple System Status</strong> — Visit <a href="https://www.apple.com/support/systemstatus/" style="color:var(--accent)">apple.com/support/systemstatus</a> to see if Apple's services are operational</li>
+<li><strong>Sign out and back in</strong> — Settings → [Your Name] → Sign Out, then sign back in with your credentials</li>
+<li><strong>Reset network settings</strong> — Settings → General → Transfer or Reset → Reset → Reset Network Settings (this removes Wi-Fi passwords)</li>
+<li><strong>Check date and time</strong> — Settings → General → Date & Time → Set Automatically should be ON</li>
+<li><strong>Disable VPN</strong> — If you use a VPN, try disabling it temporarily</li>
 </ol>
 </div>
 </div>
 
 <div class="problem-card">
 <h2>☁️ iCloud Sync Not Working</h2>
-<p>When your photos, contacts, or files aren't syncing across devices:</p>
+<p>When your photos, contacts, or files aren't syncing across devices, iCloud sync issues can be frustrating. This affects iCloud Drive, Photos, Notes, Contacts, and other synced data.</p>
+
+<h3>Common Causes</h3>
+<ul>
+<li>Insufficient iCloud storage</li>
+<li>iCloud sync disabled for specific apps</li>
+<li>Poor internet connection</li>
+<li>iCloud account issues</li>
+<li>iOS or macOS bugs</li>
+<li>Date/time settings incorrect</li>
+</ul>
+
+<h3>Step-by-Step Fixes</h3>
 <div class="steps">
 <ol>
-<li><strong>Check iCloud storage</strong> – Settings > [Your Name] > iCloud > Manage Storage</li>
-<li><strong>Toggle iCloud off and on</strong> – For the specific app that's not syncing</li>
-<li><strong>Restart your device</strong> – Power off completely and turn back on</li>
-<li><strong>Check date and time</strong> – Settings > General > Date & Time > Set Automatically</li>
+<li><strong>Check iCloud storage</strong> — Go to Settings → [Your Name] → iCloud → Manage Storage to see available space. Free up storage by deleting unused files or buying more iCloud+ storage.</li>
+<li><strong>Verify iCloud is enabled</strong> — Go to Settings → [Your Name] → iCloud — ensure the apps you want to sync are toggled ON</li>
+<li><strong>Toggle iCloud off and on</strong> — For the specific app that's not syncing, turn it OFF, wait 30 seconds, then turn it back ON</li>
+<li><strong>Restart your device</strong> — Power off completely and turn back on to refresh the iCloud connection</li>
+<li><strong>Check date and time</strong> — Settings → General → Date & Time → Set Automatically should be ON</li>
+<li><strong>Sign out of iCloud and back in</strong> — Settings → [Your Name] → Sign Out (don't delete data), then sign back in</li>
+<li><strong>Check Apple System Status</strong> — Some iCloud features may be temporarily unavailable</li>
+</ol>
+</div>
+
+<div class="problem-card">
+<h3>iCloud Photos Not Syncing</h3>
+<p>If iCloud Photos isn't working:</p>
+<div class="steps">
+<ol>
+<li>Go to Settings → Photos → Make sure iCloud Photos is ON</li>
+<li>Check "Upload to My Photo Stream" if using older iOS</li>
+<li>Ensure you have enough iCloud storage</li>
+<li>Force close Photos and reopen</li>
 </ol>
 </div>
 </div>
 
 <div class="problem-card">
 <h2>📱 App Store Won't Download Apps</h2>
-<p>If apps won't download or update:</p>
+<p>If apps won't download or update from the App Store, this can prevent you from getting new apps or important updates.</p>
+
+<h3>Common Causes</h3>
+<ul>
+<li>No internet connection</li>
+<li>Insufficient device storage</li>
+<li>Apple ID issues</li>
+<li>App Store server problems</li>
+<li>Date/time misconfigured</li>
+<li>Restrictions enabled</li>
+</ul>
+
+<h3>Step-by-Step Fixes</h3>
 <div class="steps">
 <ol>
-<li><strong>Pause and resume download</strong> – Tap the app icon to pause, tap again to resume</li>
-<li><strong>Check storage space</strong> – Settings > General > iPhone Storage</li>
-<li><strong>Sign out of App Store</strong> – Settings > [Your Name] > Media & Purchases > Sign Out</li>
-<li><strong>Check restrictions</strong> – Settings > Screen Time > Content & Privacy Restrictions</li>
+<li><strong>Check your internet</strong> — Make sure you're connected to Wi-Fi or have mobile data enabled. Try loading a webpage to verify.</li>
+<li><strong>Pause and resume download</strong> — Tap the app icon in the download queue to pause, then tap again to resume</li>
+<li><strong>Check storage space</strong> — Settings → General → iPhone Storage shows available space. Free up space if below 1GB.</li>
+<li><strong>Sign out of App Store</strong> — Settings → [Your Name] → Media & Purchases → Sign Out, then sign back in</li>
+<li><strong>Check restrictions</strong> — Settings → Screen Time → Content & Privacy Restrictions — ensure App Store purchases are allowed</li>
+<li><strong>Check date and time</strong> — Incorrect date/time can cause App Store authentication issues</li>
+<li><strong>Force close App Store</strong> — Swipe up from bottom (or double-click home), swipe away App Store, then reopen</li>
+<li><strong>Restart your device</strong> — Hold power button, slide to power off, turn back on</li>
 </ol>
 </div>
 </div>
 
 <div class="problem-card">
 <h2>🔋 Battery Draining Too Fast</h2>
-<p>If your iPhone battery is draining faster than usual:</p>
+<p>If your iPhone battery is draining faster than usual, several factors could be responsible — from app activity to system settings.</p>
+
+<h3>Common Causes</h3>
+<ul>
+<li>Apps running in background</li>
+<li>Screen brightness too high</li>
+<li>Location services active</li>
+<li>Push notifications</li>
+<li>Old battery health</li>
+<li>Constant cellular/Wi-Fi searching</li>
+<li>iOS bugs</li>
+</ul>
+
+<h3>Step-by-Step Fixes</h3>
 <div class="steps">
 <ol>
-<li><strong>Check battery health</strong> – Settings > Battery > Battery Health</li>
-<li><strong>Identify battery hogs</strong> – Settings > Battery shows apps using most power</li>
-<li><strong>Turn off Background App Refresh</strong> – Settings > General > Background App Refresh</li>
-<li><strong>Reduce screen brightness</strong> – Or enable Auto-Brightness</li>
-<li><strong>Disable location services</strong> – For apps that don't need it: Settings > Privacy > Location Services</li>
+<li><strong>Check battery health</strong> — Settings → Battery → Battery Health shows maximum capacity. Below 80% may need replacement.</li>
+<li><strong>Identify battery hogs</strong> — Settings → Battery shows apps using most power in the last 24 hours</li>
+<li><strong>Turn off Background App Refresh</strong> — Settings → General → Background App Refresh — disable for apps that don't need it</li>
+<li><strong>Reduce screen brightness</strong> — Swipe down from top-right to access Control Center and lower brightness, or enable Auto-Brightness in Settings</li>
+<li><strong>Disable location services</strong> — Settings → Privacy → Location Services — set to "While Using" or disable for apps that don't need it</li>
+<li><strong>Turn off Push email</strong> — Settings → Mail → Accounts → Fetch New Data → set to "Manual" or "Hourly" instead of "Push"</li>
+<li><strong>Disable Wi-Fi and Bluetooth when not in use</strong> — Swipe down from top-right to access quick toggles</li>
+<li><strong>Update iOS</strong> — Newer iOS versions often include battery optimizations</li>
+<li><strong>Reset all settings</strong> — Settings → General → Transfer or Reset → Reset → Reset All Settings (last resort)</li>
 </ol>
 </div>
+</div>
+
+<div class="problem-card">
+<h2>📶 Wi-Fi Not Connecting or Dropping</h2>
+<p>Wi-Fi connectivity issues can prevent you from accessing the internet, syncing data, and using online features.</p>
+
+<h3>Step-by-Step Fixes</h3>
+<div class="steps">
+<ol>
+<li><strong>Toggle Wi-Fi off and on</strong> — Settings → Wi-Fi — turn off, wait 10 seconds, turn back on</li>
+<li><strong>Forget the network</strong> — Settings → Wi-Fi → Tap network → Forget This Network, then rejoin by entering password</li>
+<li><strong>Restart your router</strong> — Unplug router for 30 seconds, plug back in</li>
+<li><strong>Reset network settings</strong> — Settings → General → Transfer or Reset → Reset → Reset Network Settings</li>
+<li><strong>Update iOS</strong> — Sometimes Wi-Fi bugs are fixed in iOS updates</li>
+<li><strong>Check router settings</strong> — Ensure MAC filtering isn't blocking your device</li>
+</ol>
+</div>
+</div>
+
+<div class="problem-card">
+<h2>🎵 iTunes Store or Apple Music Not Working</h2>
+<p>If you can't play music, purchase items, or access the iTunes Store:</p>
+
+<h3>Step-by-Step Fixes</h3>
+<div class="steps">
+<ol>
+<li><strong>Check Apple Music subscription</strong> — Settings → [Your Name] → Subscriptions</li>
+<li><strong>Sign out and back in</strong> — Settings → [Your Name] → Media & Purchases → Sign Out, then sign back in</li>
+<li><strong>Force close Music app</strong> — Swipe up from bottom, swipe away Music, reopen</li>
+<li><strong>Check cellular data settings</strong> — Settings → Cellular → Make sure Apple Music is allowed</li>
+<li><strong>Reset DRM</strong> — On Mac, open Music → Account → Authorize This Computer</li>
+</ol>
+</div>
+</div>
+
+<div class="problem-card">
+<h2>🔊 No Sound or Audio Issues</h2>
+<p>If your iPhone has no sound, ringer issues, or audio problems:</p>
+
+<h3>Step-by-Step Fixes</h3>
+<div class="steps">
+<ol>
+<li><strong>Check silent mode</strong> — Physical mute switch on the side should not show orange</li>
+<li><strong>Check volume level</strong> — Use volume buttons to increase volume</li>
+<li><strong>Check specific app volume</strong> — Some apps have separate volume controls</li>
+<li><strong>Restart your device</strong> — Often fixes audio glitches</li>
+<li><strong>Check audio output</strong> — Swipe down from top-right to see if audio is routed to HomePod or other device</li>
+<li><strong>Clean speaker grille</strong> — Gently clean with soft brush</li>
+</ol>
+</div>
+</div>
+
+<div class="problem-card">
+<h2>📞 Phone Calls Not Working</h2>
+<p>If you can't make or receive calls:</p>
+
+<h3>Step-by-Step Fixes</h3>
+<div class="steps">
+<ol>
+<li><strong>Check signal bars</strong> — Ensure you have cellular service</li>
+<li><strong>Toggle Airplane mode</strong> — Turn on Airplane mode for 30 seconds, turn off</li>
+<li><strong>Remove and reinsert SIM card</strong> — Turn off phone, remove SIM, reinsert, turn on</li>
+<li><strong>Reset network settings</strong> — Settings → General → Transfer or Reset → Reset Network Settings</li>
+<li><strong>Contact carrier</strong> — There may be account or network issues</li>
+</ol>
+</div>
+</div>
+
+<div class="problem-card">
+<h2>🖥️ Mac Issues</h2>
+
+<h3>Mac Won't Turn On</h3>
+<div class="steps">
+<ol>
+<li>Check power cable connection</li>
+<li>Try a different outlet</li>
+<li>Press and hold power button for 10 seconds, then press again</li>
+<li>Reset SMC (System Management Controller)</li>
+<li>Reset NVRAM (Option + Command + P + R at startup)</li>
+</ol>
+</div>
+
+<h3>Mac Running Slow</h3>
+<div class="steps">
+<ol>
+<li>Check Activity Monitor (Applications → Utilities) for resource-heavy processes</li>
+<li>Free up disk space — keep at least 10-15% free</li>
+<li>Restart your Mac</li>
+<li>Update macOS</li>
+<li>Disable login items (System Settings → General → Login Items)</li>
+</ol>
+</div>
+
+<h3>MacBook Keyboard Not Working</h3>
+<div class="steps">
+<ol>
+<li>Clean keyboard with compressed air</li>
+<li>Restart Mac</li>
+<li>Reset NVRAM</li>
+<li>Reset SMC</li>
+</ol>
+</div>
+</div>
+
+<h2>Frequently Asked Questions</h2>
+
+<div class="faq-item">
+<h3>How do I check my Apple ID verification status?</h3>
+<p>Visit appleid.apple.com and sign in. You'll see your account status and can manage security settings, two-factor authentication, and trusted devices from there.</p>
+</div>
+
+<div class="faq-item">
+<h3>What's the difference between iCloud and iCloud+?</h3>
+<p>iCloud is Apple's cloud storage service. iCloud+ is the subscription plan that provides more storage (200GB, 2TB, 6TB) plus additional features like HomeKit Secure Video support.</p>
+</div>
+
+<div class="faq-item">
+<h3>Why do apps keep crashing on my iPhone?</h3>
+<p>Common causes include insufficient storage, outdated iOS, corrupted app data, or software bugs. Try updating iOS, deleting and reinstalling the app, or restarting your device.</p>
+</div>
+
+<div class="faq-item">
+<h3>How do I backup my iPhone?</h3>
+<p>The easiest way is to use iCloud: Settings → [Your Name] → iCloud → iCloud Backup → Back Up Now. You can also backup to a Mac or PC using Finder (Mac) or iTunes (Windows).</p>
+</div>
+
+<div class="faq-item">
+<h3>What should I do if my iPhone is lost or stolen?</h3>
+<p>Use Find My iPhone (findmyiphone.com or the Find My app) to locate, lock, or erase your device remotely. You can also put it in Lost Mode to display a message with your phone number.</p>
+</div>
+
+<div class="faq-item">
+<h3>How do I free up iCloud storage?</h3>
+<p>Go to Settings → [Your Name] → iCloud → Manage Storage to see what's using space. Delete old backups, large files, or reduce the size of your Photo Library. Consider upgrading to iCloud+ for more storage.</p>
 </div>
 
 <footer>

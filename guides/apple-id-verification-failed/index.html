@@ -324,59 +324,76 @@
 
     <div class="intro">
       Apple ID verification errors can appear during device setup, App Store sign-in,
-      or iCloud access. This guide covers every known cause and the fastest way to resolve it.
+      iCloud access, or when making purchases. These errors are usually caused by network issues,
+      incorrect credentials, or temporary authentication problems. This guide covers every known cause and the fastest fixes.
     </div>
 
     <div class="notice">
-      <strong>Quick check:</strong> Visit <a href="https://www.apple.com/support/systemstatus/" target="_blank" rel="noopener">Apple System Status</a> first. If Apple's servers are down, you simply need to wait.
+      <strong>Quick check:</strong> Visit <a href="https://www.apple.com/support/systemstatus/" target="_blank" rel="noopener">Apple System Status</a> first. If Apple's servers (Apple ID, iCloud, App Store) show any incidents, you simply need to wait.
     </div>
 
     <h2>Why Apple ID Verification Fails</h2>
-
-  <ul>
-      <li>Unstable or blocked internet connection</li>
-      <li>Wrong Apple ID email or password</li>
-      <li>Apple authentication servers are temporarily down</li>
-      <li>Two-factor authentication code not arriving</li>
-      <li>VPN or firewall blocking Apple servers</li>
-      <li>Device date/time set incorrectly</li>
+    <ul>
+      <li><strong>Unstable or blocked internet connection:</strong> Network issues prevent Apple servers from responding</li>
+      <li><strong>Wrong Apple ID email or password:</strong> Typos or outdated credentials</li>
+      <li><strong>Apple authentication servers are temporarily down:</strong> Service outages</li>
+      <li><strong>Two-factor authentication code not arriving:</strong> Trust device issues</li>
+      <li><strong>VPN or firewall blocking Apple servers:</strong> Network restrictions</li>
+      <li><strong>Device date/time set incorrectly:</strong> Breaks SSL certificate validation</li>
+      <li><strong>Account security flags:</strong> Suspicious activity triggers lockout</li>
+      <li><strong>Outdated iOS or macOS:</strong> Compatibility issues</li>
     </ul>
 
     <h2>Step-by-Step Fixes</h2>
 
     <div class="step-block">
       <h3>Step 1 — Check Apple System Status</h3>
-      <p>Go to <a href="https://www.apple.com/support/systemstatus/" target="_blank" rel="noopener">apple.com/support/systemstatus</a> and look for any incidents affecting Apple ID, iCloud, or the App Store.</p>
+      <p>Go to <a href="https://www.apple.com/support/systemstatus/" target="_blank" rel="noopener">apple.com/support/systemstatus</a> and look for any red indicators next to Apple ID, iCloud, App Store, or iTunes Store. If there's an outage, wait — these usually resolve within an hour.</p>
     </div>
 
     <div class="step-block">
       <h3>Step 2 — Check Your Internet Connection</h3>
-      <p>Switch between Wi-Fi and mobile data. If using a VPN, disable it — VPNs often block Apple authentication.</p>
+      <p>Switch between Wi-Fi and mobile data (if on iPhone). If using a VPN, disable it — VPNs frequently interfere with Apple's authentication servers. Try loading other websites to confirm your connection works.</p>
     </div>
 
     <div class="step-block">
       <h3>Step 3 — Restart Your Device</h3>
-      <p>A simple restart clears temporary authentication errors on both iPhone and Mac.</p>
+      <p>A simple restart clears temporary authentication errors on both iPhone and Mac. <strong>iPhone with Face ID:</strong> Press and hold power + volume down → slide to power off. <strong>iPhone with Home button:</strong> Press and hold power → slide to power off. <strong>Mac:</strong> Apple menu → Restart.</p>
     </div>
 
     <div class="step-block">
       <h3>Step 4 — Verify Date & Time Settings</h3>
-      <p>Incorrect date or time breaks SSL certificate validation. Go to <strong>Settings → General → Date &amp; Time</strong> and enable <em>Set Automatically</em>.</p>
+      <p>Incorrect date or time breaks SSL certificate validation and prevents Apple from verifying your account. Go to <strong>Settings → General → Date & Time</strong> and enable <em>Set Automatically</em> (or System Settings → General → Date & Time on newer iOS).</p>
     </div>
 
     <div class="step-block">
       <h3>Step 5 — Sign In via appleid.apple.com</h3>
-      <p>Try signing into your Apple ID from a web browser at <a href="https://appleid.apple.com" target="_blank" rel="noopener">appleid.apple.com</a>. This rules out device-specific issues.</p>
+      <p>Try signing into your Apple ID from a web browser at <a href="https://appleid.apple.com" target="_blank" rel="noopener">appleid.apple.com</a>. This rules out device-specific issues. If you can sign in on the web but not on your device, the problem is with your device settings.</p>
     </div>
 
     <div class="step-block">
       <h3>Step 6 — Reset Your Apple ID Password</h3>
-      <p>If the credentials are the issue, go to <a href="https://iforgot.apple.com" target="_blank" rel="noopener">iforgot.apple.com</a> to reset your password, then sign in again.</p>
+      <p>If you're unsure your password is correct, go to <a href="https://iforgot.apple.com" target="_blank" rel="noopener">iforgot.apple.com</a> to reset it. Enter your Apple ID email, follow the verification steps, and create a new password. Then try signing in again.</p>
     </div>
 
     <div class="step-block">
       <h3>Step 7 — Sign Out and Sign Back In</h3>
-      <p>On iPhone: <strong>Settings → [Your Name] → Sign Out</strong>. Restart, then sign back in. On Mac: <strong>System Settings → Apple ID → Sign Out</strong>.</p>
+      <p><strong>On iPhone:</strong> Settings → [Your Name] → Scroll down → Sign Out. Enter your password, then sign back in. <strong>On Mac:</strong> System Settings → Apple ID → Sign Out. Restart and sign back in.</p>
+    </div>
+
+    <div class="step-block">
+      <h3>Step 8 — Check for iOS/macOS Updates</h3>
+      <p>Outdated operating systems can have authentication bugs. Go to <strong>Settings → General → Software Update</strong> on iPhone, or <strong>System Settings → General → Software Update</strong> on Mac. Install any available updates.</p>
+    </div>
+
+    <div class="step-block">
+      <h3>Step 9 — Disable VPN</h3>
+      <p>If you're using a VPN, disconnect it and try again. Many VPNs route traffic through third-party servers that Apple blocks for security reasons. You can re-enable the VPN after verification succeeds.</p>
+    </div>
+
+    <div class="step-block">
+      <h3>Step 10 — Remove Network Configuration Profiles</h3>
+      <p>If you're on a corporate or school network with custom network profiles, these can interfere. Go to <strong>Settings → General → VPN & Device Management</strong> (or "Profiles" on older iOS). Remove any unknown profiles.</p>
     </div>
 
     <!-- AdSense – in-article (auto-inserted) -->
@@ -386,23 +403,112 @@
 
 
 
+    <h2>Fixing Two-Factor Authentication Issues</h2>
+    <div class="step-block">
+      <h3>Verification Code Not Arriving</h3>
+      <ol>
+        <li>Make sure your trusted device is connected to the internet</li>
+        <li>Check that your phone number is verified in Apple ID settings</li>
+        <li>Go to appleid.apple.com → Sign-In and Security → Account Security and check verified phone numbers</li>
+        <li>Try requesting the code via "Call" instead of SMS</li>
+        <li>If you have a trusted phone number, you can receive code via text message</li>
+      </ol>
+    </div>
+
+    <div class="step-block">
+      <h3>No Access to Trusted Devices</h3>
+      <ol>
+        <li>Go to iforgot.apple.com</li>
+        <li>Enter your Apple ID email</li>
+        <li>Select "Don't have access to your Apple device?"</li>
+        <li>Choose recovery options: email authentication or account recovery</li>
+        <li>Follow the steps to regain access to your account</li>
+      </ol>
+    </div>
+
+    <h2>Fixing Account Security Issues</h2>
+    <div class="step-block">
+      <h3>Account Locked for Security Reasons</h3>
+      <p>If Apple detects suspicious activity, your account may be locked:</p>
+      <ol>
+        <li>Go to iforgot.apple.com</li>
+        <li>Enter your Apple ID and continue</li>
+        <li>Select "Unlock with security questions" or "Account recovery"</li>
+        <li>Follow the verification steps</li>
+        <li>Once unlocked, update your password</li>
+      </ol>
+    </div>
+
+    <div class="step-block">
+      <h3>Too Many Failed Attempts</h3>
+      <p>If you've tried incorrect passwords too many times:</p>
+      <ol>
+        <li>Wait 15 minutes before trying again</li>
+        <li>Use iforgot.apple.com to reset your password</li>
+        <li>After resetting, try signing in again</li>
+      </ol>
+    </div>
+
+    <h2>Fixing on Specific Devices</h2>
+    <div class="step-block">
+      <h3>iPhone or iPad</h3>
+      <ol>
+        <li>Go to Settings → App Store</li>
+        <li>Tap your Apple ID</li>
+        <li>Select "Sign Out"</li>
+        <li>Restart your iPhone</li>
+        <li>Go back to App Store and sign in</li>
+      </ol>
+    </div>
+
+    <div class="step-block">
+      <h3>Mac</h3>
+      <ol>
+        <li>Go to System Settings → Apple ID</li>
+        <li>Click "Sign Out"</li>
+        <li>Restart your Mac</li>
+        <li>Go back to Apple ID and sign in</li>
+        <li>If issues persist, try: System Settings → Network → Wi-Fi → Advanced → Remove network</li>
+      </ol>
+    </div>
+
+    <div class="step-block">
+      <h3>Windows (iTunes)</h3>
+      <ol>
+        <li>Open iTunes for Windows</li>
+        <li>Go to Account → Sign Out</li>
+        <li>Close iTunes completely</li>
+        <li>Reopen iTunes and sign back in</li>
+        <li>Make sure iTunes is updated to the latest version</li>
+      </ol>
+    </div>
+
     <h2>Frequently Asked Questions</h2>
 
     <div class="faq-item">
       <strong>Why does Apple ID verification keep failing?</strong>
-      <p>Most often caused by network issues, wrong credentials, or Apple server outages. Check Apple System Status first.</p>
+      <p>Most often caused by network issues, wrong credentials, or Apple server outages. Check Apple System Status first. Then verify your internet connection, date/time settings, and try disabling any VPN.</p>
     </div>
 
     <div class="faq-item">
       <strong>Can a VPN cause verification to fail?</strong>
-      <p>Yes. VPNs frequently interfere with Apple's authentication. Disable your VPN and try again.</p>
+      <p>Yes. VPNs frequently interfere with Apple's authentication servers because they route traffic through different IP addresses. Disable your VPN and try again.</p>
     </div>
 
     <div class="faq-item">
       <strong>What if the 2FA code never arrives?</strong>
-      <p>Make sure your trusted device is online. You can also request the code via a phone call, or use the Apple ID website to verify instead.</p>
+      <p>Make sure your trusted device is online. You can request the code via a phone call by selecting "Call me" instead of "Text message" when verifying. You can also use the Apple ID website to get a verification code.</p>
+    </div>
 
-  </div>
+    <div class="faq-item">
+      <strong>Why does my iPhone say "Verification Failed" repeatedly?</strong>
+      <p>This usually indicates either a network issue, an incorrect password, or a server outage. Try resetting your network settings: Settings → General → Transfer or Reset iPhone → Reset → Reset Network Settings.</p>
+    </div>
+
+    <div class="faq-item">
+      <strong>Can I use Apple ID without two-factor authentication?</strong>
+      <p>Apple now requires two-factor authentication for most accounts. If you're using an older account, you may be prompted to enable it during sign-in. This is a security requirement and cannot be bypassed.</p>
+    </div>
 
   <div class="ad-banner" style="margin-top:40px">
       <!-- Ad space -->

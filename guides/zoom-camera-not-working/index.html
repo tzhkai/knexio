@@ -39,6 +39,30 @@
         "@type": "Answer",
         "text": "This usually means another participant or the host has disabled video for everyone, or your video was muted when joining. In the meeting, click the video camera icon at the bottom left to enable your video."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is my camera showing a black screen in Zoom?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Black screen usually occurs when another app is using the camera, camera permissions are denied, or there's a driver issue. Close other apps, check permissions, and try updating your camera driver."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I fix Zoom camera not detected error?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "This typically means Zoom can't access the camera. Check Device Manager to see if the camera is recognized, ensure Zoom has permission, and try reinstalling the camera driver."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does Zoom say camera is in use when it's not?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "This happens when another application is secretly using the camera or the camera driver is stuck. Close all other apps, restart your computer, and check Task Manager for any camera-using processes."
+      }
     }
   ]
 }
@@ -67,188 +91,200 @@
       .container, .wrap {
         padding: 40px 15px 80px !important;
         max-width: 100% !important;
-      
+      }
+
       /* 标题字体优化 */
       h1 {
         font-size: 28px !important;
         line-height: 1.3 !important;
       }
-      
+
       h2 {
         font-size: 20px !important;
         margin-top: 36px !important;
         margin-bottom: 10px !important;
       }
-      
+
       h3 {
         font-size: 17px !important;
       }
-      
+
       /* 正文内容优化 */
       p, li, .intro, .subtitle {
         font-size: 14px !important;
         line-height: 1.7 !important;
       }
-      
+
       /* 段落间距优化 */
       p, ul, ol {
         margin-bottom: 16px !important;
       }
-      
+
       /* 列表优化 */
       ul, ol {
         padding-left: 18px !important;
       }
-      
+
       li {
         margin-bottom: 6px !important;
       }
-      
+
       /* 内容块优化 */
       .main-panel, .step-block, .notice, .extra-info {
         padding: 16px !important;
         border-radius: 12px !important;
-        margin: 16px 0 !important;
+        margin: 16px !important;
       }
-      
+
       /* 按钮和输入框优化 */
       .btn {
         padding: 14px !important;
         font-size: 15px !important;
         min-height: 48px !important;
       }
-      
+
       .input-group input {
         padding: 12px !important;
         font-size: 15px !important;
       }
-      
+
       /* 网格系统优化 */
       .age-grid {
         grid-template-columns: repeat(2, 1fr) !important;
         gap: 12px !important;
       }
-      
+
       /* 广告位优化 */
       .ad-banner {
         margin: 16px 0 !important;
         min-height: 50px !important;
       }
-      
+
       /* 游戏页面优化 */
       .grid-container {
         padding: 8px !important;
       }
-      
+
       .grid {
         gap: 8px !important;
       }
-      
+
       .cell {
         font-size: 20px !important;
         border-radius: 6px !important;
       }
-      
+
       .score-box {
         min-width: 70px !important;
         padding: 6px 12px !important;
       }
-      
+
       .score-val {
         font-size: 18px !important;
       }
-      
+
       /* 工具页面优化 */
       .age-main {
         font-size: 36px !important;
       }
-      
+
       .age-value {
         font-size: 24px !important;
       }
-      
+
       .age-label {
         font-size: 11px !important;
       }
-      
+
       /* 引导页面优化 */
       .intro {
         border-left-width: 2px !important;
         padding-left: 12px !important;
         margin-bottom: 32px !important;
       }
-      
+
       .faq-item {
         margin-bottom: 20px !important;
       }
-      
+
       .faq-item strong {
         font-size: 15px !important;
       }
     }
-    
+
     /* 小手机优化 (≤480px) */
     @media (max-width: 480px) {
       h1 {
         font-size: 24px !important;
       }
-      
+
       h2 {
         font-size: 18px !important;
       }
-      
+
       .container, .wrap {
         padding: 32px 12px 60px !important;
       }
-      
+
       .main-panel, .step-block, .notice {
         padding: 14px !important;
       }
-      
+
       .btn {
         padding: 12px !important;
         font-size: 14px !important;
       }
-      
+
       .age-grid {
         grid-template-columns: 1fr !important;
       }
     }
-    
+
     /* 触摸设备优化 */
     @media (hover: none) and (pointer: coarse) {
       button, .btn, a[onclick], .cell {
         min-height: 44px !important;
         min-width: 44px !important;
       }
-      
+
       input, select, textarea {
         font-size: 16px !important;
       }
-    }      .container { padding: 40px 15px 80px; }
     }
-    </style>
+  </style>
 </head>
 <body><a href="../../cdn-cgi/content-NPDWy_u0bgU_X7piCu0NaRDlNCqs9d_Jllw3tfcz5zI.html" aria-hidden="true" rel="nofollow noopener" style="display: none !important; visibility: hidden !important"></a>
 <div class="container">
   <a class="back" href="../index.html">← Back to Guides</a>
   <h1>Zoom Camera Not Working? Here's How to Fix It</h1>
-  <div class="intro">Zoom camera issues — black screen, "camera in use" errors, or video not starting — are almost always caused by another app occupying the camera, a permissions issue, or the wrong camera being selected. Here's how to fix it on Windows, Mac, iPhone, and Android.</div>
+  <div class="intro">Zoom camera issues — black screen, "camera in use" errors, or video not starting — are almost always caused by another app occupying the camera, a permissions issue, or the wrong camera being selected. This guide covers fixes for Windows, Mac, iPhone, iPad, and Android.</div>
 
-  <div class="notice"><strong>Test your camera first:</strong> Visit <strong>zoom.us/test</strong> to run a Zoom camera and audio test before your meeting. This tells you whether the camera works with Zoom specifically.</div>
+  <div class="notice"><strong>Test your camera first:</strong> Visit <strong>zoom.us/test</strong> to run a Zoom camera and audio test before your meeting. This tells you whether the camera works with Zoom specifically, or if it's a general camera issue.</div>
+
+  <h2>Common Causes of Zoom Camera Problems</h2>
+  <ul>
+    <li><strong>Camera already in use:</strong> Another app (Teams, Skype, Discord, FaceTime, OBS) is using the camera</li>
+    <li><strong>Permission denied:</strong> Zoom doesn't have permission to access your camera</li>
+    <li><strong>Wrong camera selected:</strong> Zoom is using a different camera than your default</li>
+    <li><strong>Outdated camera driver:</strong> Your camera driver needs updating or reinstalling</li>
+    <li><strong>Zoom outdated:</strong> Older Zoom versions have known camera bugs</li>
+    <li><strong>Hardware issues:</strong> Camera is physically disconnected or disabled</li>
+  </ul>
 
   <h2>Fixes for Windows</h2>
-  <div class="step-block"><h3>Step 1 — Close Other Apps Using the Camera</h3><p>Camera access is exclusive on most systems. Close Teams, Skype, Discord, OBS, and any browser tabs that may be using your webcam. Then restart Zoom and try enabling video.</p></div>
-  <div class="step-block"><h3>Step 2 — Check Camera Permissions</h3><p>Settings → Privacy & Security → Camera → Enable "Let apps access your camera" → Scroll down and ensure Zoom is toggled on.</p></div>
-  <div class="step-block"><h3>Step 3 — Select the Correct Camera in Zoom</h3><p>In Zoom: click the arrow next to the video camera button → Select Camera → Choose your correct camera. If you have multiple cameras (built-in + external), Zoom may be pointing to the wrong one.</p></div>
-  <div class="step-block"><h3>Step 4 — Update or Reinstall Camera Driver</h3><p>Device Manager → Cameras → Right-click your camera → Update driver → Search automatically. If the issue persists, right-click → Uninstall device → Restart PC to reinstall automatically.</p></div>
-  <div class="step-block"><h3>Step 5 — Update Zoom</h3><p>In Zoom: click your profile photo → Check for Updates → Install if available. Old Zoom versions can have camera compatibility bugs.</p></div>
+  <div class="step-block"><h3>Step 1 — Close Other Apps Using the Camera</h3><p>Camera access is exclusive on most systems. Press <strong>Ctrl+Shift+Esc</strong> to open Task Manager → Look for camera-using apps like Teams, Skype, Discord, OBS, Chrome (with camera tabs), and FaceTime. Right-click and "End task" for any that are running. Then restart Zoom and try enabling video.</p></div>
+  <div class="step-block"><h3>Step 2 — Check Camera Permissions</h3><p>Go to <strong>Settings → Privacy & Security → Camera</strong>. Make sure "Let apps access your camera" is enabled at the top. Scroll down to "Let desktop apps access your camera" and ensure it's on. Find "Zoom" in the list and enable it.</p></div>
+  <div class="step-block"><h3>Step 3 — Select the Correct Camera in Zoom</h3><p>In Zoom: click the arrow next to the video camera button (top right of video area) → Select Camera → Choose your correct camera from the dropdown. If you have multiple cameras (built-in laptop camera + external webcam), Zoom may be pointing to the wrong one.</p></div>
+  <div class="step-block"><h3>Step 4 — Update or Reinstall Camera Driver</h3><p>Press <strong>Win + X</strong> → Device Manager → Expand "Cameras" → Right-click your camera → "Update driver" → "Search automatically for drivers". If the issue persists, right-click → "Uninstall device" → Restart PC to reinstall automatically.</p></div>
+  <div class="step-block"><h3>Step 5 — Update Zoom</h3><p>In Zoom: click your profile photo → "Check for Updates" → "Download and Install" if available. Old Zoom versions can have camera compatibility bugs that are fixed in newer releases.</p></div>
+  <div class="step-block"><h3>Step 6 — Check Windows Camera Settings</h3><p>Open the pre-installed Windows Camera app (search "Camera" in Start menu). If it shows a black screen or error, the issue is with your camera itself, not Zoom. Try the Device Manager troubleshooting above.</p></div>
 
   <h2>Fixes for Mac</h2>
-  <div class="step-block"><h3>Step 1 — Grant Camera Permission</h3><p>System Settings → Privacy & Security → Camera → Toggle on Zoom. If Zoom isn't listed, start a test meeting to trigger the permission prompt.</p></div>
-  <div class="step-block"><h3>Step 2 — Quit Competing Apps</h3><p>Force quit FaceTime, Photo Booth, and any browser with camera access: Cmd+Option+Esc → select app → Force Quit. Only one app can use the camera at a time on Mac.</p></div>
-  <div class="step-block"><h3>Step 3 — Reset SMC (Intel Macs)</h3><p>Shut down → hold Shift+Control+Option+Power for 10 seconds → Release → Turn on. SMC controls hardware components including the camera. Skip this on Apple Silicon Macs (just restart normally).</p></div>
-  <div class="step-block"><h3>Step 4 — Reinstall Zoom</h3><p>Download Zoom's official uninstaller at <strong>zoom.us/download</strong>, run it, then reinstall. This resets all Zoom settings and permissions.</p></div>
+  <div class="step-block"><h3>Step 1 — Grant Camera Permission</h3><p>Go to <strong>System Settings → Privacy & Security → Camera</strong>. Toggle ON Zoom. If Zoom isn't listed, start a test meeting at <strong>zoom.us/test</strong> — this will trigger the permission prompt. Click "Allow" when asked.</p></div>
+  <div class="step-block"><h3>Step 2 — Quit Competing Apps</h3><p>Force quit FaceTime, Photo Booth, and any browser with camera access: Press <strong>Cmd+Option+Esc</strong> → select app → "Force Quit". Only one app can use the camera at a time on Mac. Also check menu bar for video call indicators.</p></div>
+  <div class="step-block"><h3>Step 3 — Check Safari/Chrome Camera Permissions</h3><p>If using Zoom in browser: Safari → Settings → Camera → Select "Ask" or "Allow" for zoom.us. Chrome → Settings → Privacy → Site Settings → Camera → Allow zoom.us.</p></div>
+  <div class="step-block"><h3>Step 4 — Reset SMC (Intel Macs Only)</h3><p>Shut down your Mac → hold Shift+Control+Option+Power for 10 seconds → Release all keys → Turn on. SMC controls hardware components including the camera. <strong>Skip this on Apple Silicon Macs</strong> (M1/M2) — just restart normally.</p></div>
+  <div class="step-block"><h3>Step 5 — Reinstall Zoom</h3><p>Download Zoom's official uninstaller at <strong>zoom.us/download</strong>, run it, then reinstall the latest version. This resets all Zoom settings and permissions.</p></div>
 
     <!-- AdSense – in-article (auto-inserted) -->
     <div style="margin: 32px 0; text-align: center;">
@@ -257,13 +293,40 @@
 
 
 
-  <h2>Fixes for iPhone and Android</h2>
-  <div class="step-block"><h3>Check Camera Permission (iPhone)</h3><p>Settings → Privacy & Security → Camera → Enable Zoom. Then open Zoom, join a meeting, and tap the video button.</p></div>
-  <div class="step-block"><h3>Check Camera Permission (Android)</h3><p>Settings → Apps → Zoom → Permissions → Camera → Allow. Restart Zoom.</p></div>
-  <div class="step-block"><h3>Force Close Other Video Apps</h3><p>Close any other apps using the camera (Snapchat, Instagram, Teams) before opening Zoom. Mobile systems also have exclusive camera access.</p></div>
+  <h2>Fixes for iPhone and iPad</h2>
+  <div class="step-block"><h3>Step 1 — Check Camera Permission</h3><p>Go to <strong>Settings → Privacy & Security → Camera</strong>. Scroll down and enable Zoom. Then open Zoom, join a meeting, and tap the video button to enable camera.</p></div>
+  <div class="step-block"><h3>Step 2 — Force Close and Reopen Zoom</h3><p>Swipe up from bottom (iPhone with Face ID) or double-press home button (iPhone with Home button) → Swipe up on Zoom to close → Reopen the app.</p></div>
+  <div class="step-block"><h3>Step 3 — Check for iOS Updates</h3><p>Go to <strong>Settings → General → Software Update</strong>. Apple frequently fixes camera bugs in iOS updates. Make sure you're on the latest iOS version.</p></div>
+  <div class="step-block"><h3>Step 4 — Restart iPhone</h3><p>Hold power + volume down → Slide to power off → Turn back on. A restart fixes most temporary app and camera glitches.</p></div>
+
+  <h2>Fixes for Android</h2>
+  <div class="step-block"><h3>Step 1 — Check Camera Permission</h3><p>Go to <strong>Settings → Apps → Zoom → Permissions</strong>. Tap "Camera" and select "Allow". Also check <strong>Settings → Privacy → Camera</strong> to ensure camera access is enabled globally.</p></div>
+  <div class="step-block"><h3>Step 2 — Force Close Other Video Apps</h3><p>Close any other apps using the camera (Snapchat, Instagram, TikTok, WhatsApp, Teams) before opening Zoom. Android also has exclusive camera access — only one app can use it at a time.</p></div>
+  <div class="step-block"><h3>Step 3 — Update Zoom</h3><p>Open Play Store → Search Zoom → Tap "Update". Older Android versions of Zoom may have camera bugs fixed in newer releases.</p></div>
+  <div class="step-block"><h3>Step 4 — Clear Zoom Cache</h3><p>Go to <strong>Settings → Apps → Zoom → Storage</strong>. Tap "Clear Cache". If problems persist, tap "Clear Data" (this will require you to sign in again).</p></div>
+
+  <h2>Fixes for External Webcams</h2>
+  <div class="step-block"><h3>USB Webcam Not Detected</h3><p>If using an external webcam (Logitech, Razer, etc.): unplug and replug the USB connector, try a different USB port (preferably USB 3.0 on the back of your PC), check Device Manager to see if it's recognized, and install the manufacturer's software.</p></div>
+  <div class="step-block"><h3>Webcam Driver Issues</h3><p>For Logitech webcams, download Logitech G HUB or Logitech Camera Settings from logitech.com. For other brands, search for "[brand] camera settings" and download their software.</p></div>
+
+  <h2>Troubleshooting "Camera in Use" Error</h2>
+  <div class="step-block"><h3>What to Do When Zoom Says Camera is Already in Use</h3>
+    <ol>
+      <li>Close all video conferencing apps (Teams, Skype, Discord, Google Meet)</li>
+      <li>Close browser tabs that might use camera (Google Meet, Whereby, any site with video)</li>
+      <li>Check system tray/notification area for hidden video apps</li>
+      <li>Open Task Manager and end any camera-related processes</li>
+      <li>Unplug external webcams and try built-in camera only</li>
+      <li>Restart your computer</li>
+    </ol>
+  </div>
 
   <h2>Frequently Asked Questions</h2>
   <div class="faq-item"><strong>Why does my Zoom camera work in Settings but not in meetings?</strong><p>This usually means another participant or the host has disabled video for everyone, or your video was muted when joining. In the meeting, click the video camera icon at the bottom left to enable your video.</p></div>
+  <div class="faq-item"><strong>Why is my camera showing a black screen?</strong><p>Black screen usually occurs when another app is using the camera, camera permissions are denied, or there's a driver issue. Close other apps, check permissions in Settings, and try updating your camera driver.</p></div>
+  <div class="faq-item"><strong>Why does Zoom say "Unable to start video"?</strong><p>This error appears when Zoom can't access your camera. Check that camera permissions are granted in your OS, close other apps using the camera, and make sure your camera is selected correctly in Zoom settings.</p></div>
+  <div class="faq-item"><strong>Can I use Zoom without a camera?</strong><p>Yes! You can join meetings with audio only. Click "Join Audio" when prompted, or click the microphone and camera icons to remain muted and without video. You can also blur your background or use a virtual background.</p></div>
+  <div class="faq-item"><strong>Why is my video quality poor in Zoom?</strong><p>Poor video quality is usually due to slow internet, not camera issues. Try moving closer to your Wi-Fi router, using a wired connection, closing other bandwidth-heavy applications, or reducing video quality in Zoom settings.</p></div>
 
     </div>
     <div class="ad-banner" style="margin-top:40px">

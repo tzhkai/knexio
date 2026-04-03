@@ -55,9 +55,10 @@
     .step-block h3{font-size:17px;margin:0 0 10px;color:var(--accent)}.step-block p,.step-block li{font-size:14px;color:var(--text-sub);margin:0}
     .ad-top{margin:0 0 40px;text-align:center;min-height:90px}.ad-mid{margin:48px 0;text-align:center;min-height:250px}
     .faq-item{margin-bottom:28px}.faq-item strong{display:block;font-size:16px;margin-bottom:6px;color:var(--text-main)}
+    .faq-item p{color:var(--text-sub);line-height:1.7}
     footer{margin-top:100px;font-size:13px;text-align:center;color:var(--text-sub);border-top:1px solid var(--border);padding-top:30px}footer a{color:var(--accent)}
   .ad-banner{margin:24px 0;text-align:center;min-height:90px}
-  
+  kbd{background:rgba(255,255,255,.1);padding:3px 8px;border-radius:4px;font-family:monospace;font-size:13px}
     
     /* ==================== 移动端优化 ==================== */
     
@@ -229,7 +230,7 @@
     }
     </style>
 </head>
-<body><a href="../../cdn-cgi/content-6buPWfoLuRgNvEAYbncc61WcE1XSTH_FknvZ8ThkmtY.html" aria-hidden="true" rel="nofollow noopener" style="display: none !important; visibility: hidden !important"></a>
+<body>
 <div class="container">
   <a class="back" href="../index.html">← Back to Guides</a>
   <h1>Windows Boot Loop? Here's How to Fix It</h1>
@@ -237,41 +238,262 @@
 
   <div class="notice"><strong>First:</strong> Interrupt the boot process 3 times (press power button during Windows logo) to trigger Recovery Mode. This is your gateway to all repair tools.</div>
 
+  <h2>What Causes a Windows Boot Loop?</h2>
+  <p>Understanding the cause helps you apply the right fix:</p>
+  <ul>
+    <li><strong>Failed Windows Update</strong> — Most common cause; corrupted update files or incomplete installation</li>
+    <li><strong>Corrupted Boot Files</strong> — Essential system files needed for startup are damaged</li>
+    <li><strong>Bad Driver</strong> — Newly installed driver (often graphics or storage) is incompatible</li>
+    <li><strong>Hardware Failure</strong> — Failing hard drive, RAM, or power supply</li>
+    <li><strong>BIOS/UEFI Issues</strong> — Incorrect boot settings or corrupted firmware</li>
+    <li><strong>Malware</strong> — Rare but possible; malicious software corrupting system files</li>
+  </ul>
+
   <h2>Step 1 — Enter Windows Recovery Mode</h2>
 
+  <p>Windows Recovery Mode is your central hub for troubleshooting boot issues. There are several ways to access it:</p>
+  
+  <h3>Method 1: Interrupt Startup 3 Times</h3>
   <p>During the restart loop, press the power button as soon as the Windows logo appears to interrupt startup. Do this <strong>3 times</strong>. On the 4th attempt, Windows will boot into "Automatic Repair" / "Recovery Mode" automatically.</p>
-  <p>Alternatively: If you can't interrupt, use a <strong>Windows 10/11 USB installation drive</strong> → Boot from USB → Choose "Repair your computer."</p>
+  
+  <h3>Method 2: Using USB Recovery Drive</h3>
+  <p>If you can't interrupt the cycle:</p>
+  <ul>
+    <li>Create a Windows 10/11 installation USB on another computer</li>
+    <li>Boot from USB (usually press F2, F12, or Del during startup to access boot menu)</li>
+    <li>Choose "Repair your computer" → Troubleshoot → Advanced options</li>
+  </ul>
+  
+  <h3>Method 3: Using Windows Installation Media</h3>
+  <p>If you have Windows installation disc or ISO:</p>
+  <ul>
+    <li>Boot from the disc/USB</li>
+    <li>Select "Repair your computer"</li>
+    <li>Go to Troubleshoot → Advanced options</li>
+  </ul>
 
   <h2>Step 2 — Try Automatic Startup Repair</h2>
-  <div class="step-block"><h3>Run Startup Repair</h3><p>In Recovery → <strong>Advanced Options → Startup Repair</strong>. Windows will scan and try to fix boot files automatically. This resolves most update-related boot loops.</p></div>
+  <div class="step-block">
+    <h3>Run Startup Repair</h3>
+    <p>In Recovery → <strong>Advanced Options → Startup Repair</strong>. Windows will scan and try to fix boot files automatically. This resolves most update-related boot loops.</p>
+    <ul>
+      <li>Select your account</li>
+      <li>Enter your password (if required)</li>
+      <li>Wait for the diagnostic to complete</li>
+      <li>Restart your computer</li>
+    </ul>
+  </div>
 
-    <!-- AdSense – in-article (auto-inserted) -->
-    <div style="margin: 32px 0; text-align: center;">
-      <!-- Ad space -->
-    </div>
-
-
+  <div class="step-block">
+    <h3>If Startup Repair Fails</h3>
+    <p>If Startup Repair can't fix the issue, try running it again — sometimes it needs multiple attempts. If it still fails, proceed to Safe Mode methods below.</p>
+  </div>
 
   <h2>Step 3 — Boot into Safe Mode</h2>
-  <div class="step-block"><h3>Enable Safe Mode</h3><p>Recovery → Advanced Options → <strong>Startup Settings → Restart → Press 4 (Safe Mode)</strong> or <strong>5 (Safe Mode with Networking)</strong>. In Safe Mode, Windows runs with minimal drivers — if it boots successfully, a driver is causing the loop.</p></div>
-  <div class="step-block"><h3>Remove Recent Updates in Safe Mode</h3><p>In Safe Mode: Settings → Update & Security → Windows Update → View Update History → Uninstall Updates → Remove the most recent update.</p></div>
-  <div class="step-block"><h3>Remove Recent Driver in Safe Mode</h3><p>Device Manager → Find recently installed drivers → Right-click → Roll Back Driver or Uninstall.</p></div>
+  <p>Safe Mode loads Windows with minimal drivers and services. If it boots successfully, the problem is software (drivers or apps), not hardware.</p>
+
+  <div class="step-block">
+    <h3>Access Safe Mode from Recovery</h3>
+    <p>In Recovery → Advanced Options → <strong>Startup Settings → Restart</strong>. After restart, press:</p>
+    <ul>
+      <li>Press <kbd>4</kbd> for Safe Mode</li>
+      <li>Press <kbd>5</kbd> for Safe Mode with Networking</li>
+    </ul>
+  </div>
+
+  <div class="step-block">
+    <h3>Remove Recent Updates in Safe Mode</h3>
+    <p>In Safe Mode:</p>
+    <ul>
+      <li>Settings → Update & Security → Windows Update</li>
+      <li>Click "View update history"</li>
+      <li>Click "Uninstall updates"</li>
+      <li>Select the most recent update and click "Uninstall"</li>
+      <li>Restart computer</li>
+    </ul>
+  </div>
+
+  <div class="step-block">
+    <h3>Remove Recent Driver in Safe Mode</h3>
+    <p>If a driver is causing the issue:</p>
+    <ul>
+      <li>Press <kbd>Win+X</kbd> → Device Manager</li>
+      <li>Expand categories (especially Display adapters, Storage controllers)</li>
+      <li>Right-click recently installed drivers</li>
+      <li>Select "Roll Back Driver" or "Uninstall device"</li>
+      <li>Restart computer</li>
+    </ul>
+  </div>
+
+  <div class="step-block">
+    <h3>Disable Startup Programs in Safe Mode</h3>
+    <p>Third-party startup programs can cause boot issues:</p>
+    <ul>
+      <li>Press <kbd>Ctrl+Shift+Esc</kbd> to open Task Manager</li>
+      <li>Go to Startup tab</li>
+      <li>Right-click and disable recently added programs</li>
+      <li>Restart normally</li>
+    </ul>
+  </div>
 
   <h2>Step 4 — System Restore</h2>
-  <div class="step-block"><h3>Restore to a Previous Point</h3><p>Recovery → Advanced Options → <strong>System Restore</strong>. Choose a restore point from before the problem started. This reverts system changes without deleting personal files.</p></div>
+  <div class="step-block">
+    <h3>Restore to a Previous Point</h3>
+    <p>System Restore reverts system changes without deleting personal files:</p>
+    <ul>
+      <li>Recovery → Advanced Options → System Restore</li>
+      <li>Select your account and enter password</li>
+      <li>Choose a restore point from before the problem started</li>
+      <li>Click "Scan for affected programs" to see what will change</li>
+      <li>Click "Finish" to begin restore</li>
+      <li>Restart when complete</li>
+    </ul>
+    <p>System Restore doesn't affect personal files, but removes recently installed apps and drivers.</p>
+  </div>
 
   <h2>Step 5 — Command Prompt Repairs</h2>
-  <div class="step-block"><h3>Repair Boot Configuration</h3><p>Recovery → Advanced Options → Command Prompt. Type these commands one by one:<br><code>bootrec /fixmbr</code><br><code>bootrec /fixboot</code><br><code>bootrec /rebuildbcd</code><br>Type <code>exit</code> and restart.</p></div>
+  <div class="step-block">
+    <h3>Repair Boot Configuration</h3>
+    <p>In Recovery → Advanced Options → Command Prompt. Type these commands one by one:</p>
+    <ul>
+      <li><code>bootrec /fixmbr</code> — Repairs Master Boot Record</li>
+      <li><code>bootrec /fixboot</code> — Repairs boot sector</li>
+      <li><code>bootrec /rebuildbcd</code> — Rebuilds Boot Configuration Data</li>
+      <li><code>chkdsk /r c:</code> — Checks and repairs disk errors</li>
+      <li>Type <code>exit</code> and press Enter</li>
+      <li>Restart your computer</li>
+    </ul>
+  </div>
+
+  <div class="step-block">
+    <h3>Run Disk Check</h3>
+    <p>Corrupted files on your hard drive can cause boot issues:</p>
+    <ul>
+      <li>In Command Prompt, type: <code>sfc /scannow /offbootdir=c:\ /offwindir=c:\windows</code></li>
+      <li>This runs System File Checker from the recovery environment</li>
+      <li>Wait for completion — may take 30+ minutes</li>
+      <li>Restart after completion</li>
+    </ul>
+  </div>
+
+  <h2>Step 6 — Check Hardware</h2>
+  <div class="step-block">
+    <h3>Memory (RAM) Issues</h3>
+    <p>If boot issues are hardware-related, RAM problems are common:</p>
+    <ul>
+      <li>Try booting with only one RAM stick (if you have multiple)</li>
+      <li>Try different RAM slots</li>
+      <li>If you have integrated graphics, try booting without dedicated GPU</li>
+    </ul>
+  </div>
+
+  <div class="step-block">
+    <h3>Hard Drive Issues</h3>
+    <p>Check if your hard drive is failing:</p>
+    <ul>
+      <li>Listen for unusual clicking or grinding sounds</li>
+      <li>In Command Prompt, run: <code>chkdsk /r c:</code></li>
+      <li>If disk errors are found, consider replacing the drive</li>
+      <li>If using SSD, check for firmware updates</li>
+    </ul>
+  </div>
+
+  <div class="step-block">
+    <h3>BIOS/UEFI Reset</h3>
+    <p>Resetting BIOS can fix boot issues:</p>
+    <ul>
+      <li>Enter BIOS during startup (press F2, Delete, or F12)</li>
+      <li>Look for "Load Setup Defaults" or "Reset to Factory"</li>
+      <li>Save and exit</li>
+      <li>Alternatively, remove CMOS battery for 5 minutes</li>
+    </ul>
+  </div>
 
   <h2>Last Resort — Reset Windows</h2>
-  <div class="step-block"><h3>Keep Files Option</h3><p>Recovery → Advanced Options → Troubleshoot → <strong>Reset this PC → Keep my files</strong>. This reinstalls Windows but keeps your personal files. Apps will be removed.</p></div>
+  <div class="step-block">
+    <h3>Keep Files Option</h3>
+    <p>Reset PC keeps your personal files but reinstalls Windows:</p>
+    <ul>
+      <li>Recovery → Advanced Options → Troubleshoot → Reset this PC</li>
+      <li>Choose "Keep my files"</li>
+      <li>Select your account and enter password</li>
+      <li>Choose "Local reinstall" or "Cloud download"</li>
+      <li>Click "Reset" to begin</li>
+    </ul>
+    <p>This takes 30-60 minutes and reinstalls Windows while keeping your documents, pictures, and music.</p>
+  </div>
+
+  <div class="step-block">
+    <h3>Clean Install (Complete Reset)</h3>
+    <p>If all else fails:</p>
+    <ul>
+      <li>Create Windows installation USB on another computer</li>
+      <li>Boot from USB</li>
+      <li>Select "Custom: Install Windows only (advanced)"</li>
+      <li>Delete all partitions on your main drive</li>
+      <li>Select "Unallocated Space" and click "New"</li>
+      <li>Proceed with installation</li>
+      <li>IMPORTANT: Back up important data first if possible</li>
+    </ul>
+  </div>
+
+  <h2>Recovering Data Before Fixing</h2>
+  <div class="step-block">
+    <h3>Access Files Without Booting</h3>
+    <p>If you need to recover data first:</p>
+    <ul>
+      <li>Use Windows installation USB to access Command Prompt</li>
+      <li>Use a Linux live USB to access your files</li>
+      <li>Remove the hard drive and connect to another PC as external drive</li>
+      <li>Use a USB enclosure or SATA adapter</li>
+    </ul>
+  </div>
+
+  <h2>Preventing Future Boot Loops</h2>
+  <div class="step-block">
+    <h3>Best Practices</h3>
+    <ul>
+      <li><strong>Create a recovery drive</strong> — Before problems occur, create a Windows recovery USB</li>
+      <li><strong>Backup regularly</strong> — Use File History, OneDrive, or external drive</li>
+      <li><strong>Update carefully</strong> — Wait a week after major Windows updates before installing</li>
+      <li><strong>Update drivers from manufacturer</strong> — Not Windows Update (can have outdated drivers)</li>
+      <li><strong>Don't shut down during updates</strong> — Let updates complete naturally</li>
+    </ul>
+  </div>
 
   <h2>Frequently Asked Questions</h2>
-  <div class="faq-item"><strong>Why is Windows stuck in a boot loop after an update?</strong><p>Windows updates sometimes install corrupted files or incompatible drivers. Boot into Safe Mode and uninstall the recent update to fix this.</p></div>
+  <div class="faq-item">
+    <strong>Why is Windows stuck in a boot loop after an update?</strong>
+    <p>Windows updates sometimes install corrupted files or incompatible drivers. Boot into Safe Mode and uninstall the recent update to fix this. Go to Settings → Update & Security → Windows Update → View Update History → Uninstall Updates.</p>
+  </div>
 
-    </div>
+  <div class="faq-item">
+    <strong>How do I stop the automatic repair loop?</strong>
+    <p>Press and hold the power button to force shutdown during the automatic repair screen. On the next boot, you'll have access to recovery options. Alternatively, boot from Windows installation media to access recovery tools.</p>
+  </div>
+
+  <div class="faq-item">
+    <strong>Will I lose my files if I reset Windows?</strong>
+    <p>If you choose "Keep my files," your personal files remain. However, installed apps and system settings are reset. It's always best to backup important files before attempting any repairs.</p>
+  </div>
+
+  <div class="faq-item">
+    <strong>What if none of these fixes work?</strong>
+    <p>If all troubleshooting fails, the issue is likely hardware — either a failing hard drive or motherboard problem. Consider taking your computer to a repair shop for professional diagnosis, or if under warranty, contact your manufacturer.</p>
+  </div>
+
+  <div class="faq-item">
+    <strong>Can a boot loop cause data loss?</strong>
+    <p>Usually no — the data is still on your hard drive. However, if the drive is failing, continuing to force boot attempts could make recovery harder. If you suspect hard drive failure, remove the drive and connect it to another PC to backup data first.</p>
+  </div>
+
+  <div class="faq-item">
+    <strong>How long does Startup Repair take?</strong>
+    <p>Startup Repair typically takes 15-45 minutes. It may appear stuck — don't turn off your computer. If it runs for more than 2 hours, the issue likely requires other solutions.</p>
+  </div>
+
+  </div>
     <div class="ad-banner" style="margin-top:40px">
-      <!-- Ad space -->
     </div>
 
       <footer>
@@ -285,7 +507,4 @@
       <p>© 2026 Knexio. All rights reserved.</p>
     </footer>
 <script src="/knexio-bundle.js"></script>
-  <script src="../../cookie-consent.js"></script>
-  <!-- 中间广告 -->
-  <div class="ad-banner"></div>
 </body>

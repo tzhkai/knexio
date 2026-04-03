@@ -27,184 +27,223 @@
     }
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Why is Telegram not connecting?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Connection issues are usually caused by network problems, regional blocking, or server outages. Check your internet, try using a VPN if in a restricted region, or check Telegram's status."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why are my messages not sending?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Messages may get stuck if you're offline, the recipient has blocked you, or there's a network issue. Check your connection, verify the recipient hasn't blocked you, and try resending."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is Telegram not sending the verification code?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "SMS delivery issues can occur due to network problems, rate limiting, or phone number issues. Try the 'Call me' option instead of SMS, wait a few minutes, and ensure your number includes the country code."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why are Telegram calls not working?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call issues are typically caused by poor network connection, missing permissions, or firewall restrictions. Ensure you have microphone and camera permissions and try switching between Wi-Fi and mobile data."
+        }
+      }
+    ]
+  }
+  </script>
 <style>:root{--bg:#0b1220;--bg2:#070d1a;--panel:#111a2e;--border:rgba(255,255,255,0.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff}*{box-sizing:border-box;margin:0;padding:0}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:linear-gradient(180deg,var(--bg),var(--bg2));color:var(--text);min-height:100vh;line-height:1.7}a{color:var(--accent);text-decoration:none}.wrap{max-width:860px;margin:0 auto;padding:32px 20px 80px}.back{display:inline-block;margin-bottom:24px;color:var(--sub);font-size:14px}h1{font-size:36px;margin-bottom:12px;line-height:1.25}.meta{color:var(--sub);font-size:14px;margin-bottom:28px}.ad-slot{margin:24px 0;text-align:center}.summary-box{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:22px 24px;margin-bottom:32px}.summary-box h2{font-size:16px;margin-bottom:12px;color:var(--sub)}.summary-box ul{padding-left:18px;color:var(--sub);font-size:14px}h2{font-size:24px;margin:40px 0 14px;padding-top:8px;border-top:1px solid var(--border)}p{color:var(--sub);margin-bottom:14px;font-size:15px}ol,ul{color:var(--sub);font-size:15px;padding-left:22px;margin-bottom:16px}li{margin-bottom:8px}.step-box{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:22px 24px;margin:20px 0}.tip{background:rgba(79,140,255,.08);border:1px solid rgba(79,140,255,.25);border-radius:10px;padding:14px 18px;font-size:14px;color:var(--sub);margin:18px 0}.tip strong{color:var(--accent)}footer{margin-top:80px;text-align:center;font-size:13px;color:var(--sub)}.ad-banner{margin:24px 0;text-align:center;min-height:90px}
-  
-    
+
     /* ==================== 移动端优化 ==================== */
-    
+
     /* 平板和手机 (≤768px) */
     @media (max-width: 768px) {
       /* 容器布局优化 */
       .container, .wrap {
         padding: 40px 15px 80px !important;
         max-width: 100% !important;
-      
+      }
+
       /* 标题字体优化 */
       h1 {
         font-size: 28px !important;
         line-height: 1.3 !important;
       }
-      
+
       h2 {
         font-size: 20px !important;
         margin-top: 36px !important;
         margin-bottom: 10px !important;
       }
-      
+
       h3 {
         font-size: 17px !important;
       }
-      
+
       /* 正文内容优化 */
       p, li, .intro, .subtitle {
         font-size: 14px !important;
         line-height: 1.7 !important;
       }
-      
+
       /* 段落间距优化 */
       p, ul, ol {
         margin-bottom: 16px !important;
       }
-      
+
       /* 列表优化 */
       ul, ol {
         padding-left: 18px !important;
       }
-      
+
       li {
         margin-bottom: 6px !important;
       }
-      
+
       /* 内容块优化 */
       .main-panel, .step-block, .notice, .extra-info {
         padding: 16px !important;
         border-radius: 12px !important;
         margin: 16px 0 !important;
       }
-      
+
       /* 按钮和输入框优化 */
       .btn {
         padding: 14px !important;
         font-size: 15px !important;
         min-height: 48px !important;
       }
-      
+
       .input-group input {
         padding: 12px !important;
         font-size: 15px !important;
       }
-      
+
       /* 网格系统优化 */
       .age-grid {
         grid-template-columns: repeat(2, 1fr) !important;
         gap: 12px !important;
       }
-      
+
       /* 广告位优化 */
       .ad-banner {
         margin: 16px 0 !important;
         min-height: 50px !important;
       }
-      
+
       /* 游戏页面优化 */
       .grid-container {
         padding: 8px !important;
       }
-      
+
       .grid {
         gap: 8px !important;
       }
-      
+
       .cell {
         font-size: 20px !important;
         border-radius: 6px !important;
       }
-      
+
       .score-box {
         min-width: 70px !important;
         padding: 6px 12px !important;
       }
-      
+
       .score-val {
         font-size: 18px !important;
       }
-      
+
       /* 工具页面优化 */
       .age-main {
         font-size: 36px !important;
       }
-      
+
       .age-value {
         font-size: 24px !important;
       }
-      
+
       .age-label {
         font-size: 11px !important;
       }
-      
+
       /* 引导页面优化 */
       .intro {
         border-left-width: 2px !important;
         padding-left: 12px !important;
         margin-bottom: 32px !important;
       }
-      
+
       .faq-item {
         margin-bottom: 20px !important;
       }
-      
+
       .faq-item strong {
         font-size: 15px !important;
       }
     }
-    
+
     /* 小手机优化 (≤480px) */
     @media (max-width: 480px) {
       h1 {
         font-size: 24px !important;
       }
-      
+
       h2 {
         font-size: 18px !important;
       }
-      
+
       .container, .wrap {
         padding: 32px 12px 60px !important;
       }
-      
+
       .main-panel, .step-block, .notice {
         padding: 14px !important;
       }
-      
+
       .btn {
         padding: 12px !important;
         font-size: 14px !important;
       }
-      
+
       .age-grid {
         grid-template-columns: 1fr !important;
       }
     }
-    
+
     /* 触摸设备优化 */
     @media (hover: none) and (pointer: coarse) {
       button, .btn, a[onclick], .cell {
         min-height: 44px !important;
         min-width: 44px !important;
       }
-      
+
       input, select, textarea {
         font-size: 16px !important;
       }
-    }      .container { padding: 40px 15px 80px; }
     }
-    </style>
+  </style>
 </head>
 <body><a href="../../cdn-cgi/content-n2DikuhufzDrlGDtt54dZ0msYaFSwLSdE9ssYRe8FFY.html" aria-hidden="true" rel="nofollow noopener" style="display: none !important; visibility: hidden !important"></a>
 <div class="wrap">
   <a class="back" href="../index.html">← Back to Guides</a>
   <h1>Telegram Not Working? How to Fix Common Telegram Problems</h1>
-  <div class="meta">Updated March 2026 · 6 min read</div>
+  <div class="meta">Updated April 2026 · 7 min read</div>
   <div class="ad-slot"><script>
     </script></div>
     <div class="ad-banner" style="margin-top:40px">
@@ -213,9 +252,77 @@
   <div class="summary-box"><h2>Quick Fixes</h2>
 
   <ul><li><a href="index.html#not-connecting">Check internet connection</a></li><li><a href="index.html#cache">Clear Telegram cache</a></li><li><a href="index.html#audio-video">Audio/Video calls</a></li><li><a href="index.html#firewall">Connection & Firewall</a></li><li><a href="index.html#login">Login problems</a></li><li><a href="index.html#updates">Update procedures</a></li><li>Restart your device</li></ul></div>
-  <p>Telegram is known for reliability, but sometimes connection issues occur. Here's how to fix common problems.</p>
+  <p>Telegram is known for reliability, but sometimes connection issues occur. Here's how to fix common problems on all platforms.</p>
 
-  <h2 id="audio-video">Telegram Audio/Video Call Troubleshooting</h2>
+  <h2>Common Causes of Telegram Problems</h2>
+  <ul>
+    <li><strong>Network connectivity issues:</strong> Slow or unstable internet</li>
+    <li><strong>Regional blocking:</strong> Telegram is restricted in some countries</li>
+    <li><strong>Outdated app:</strong> Older versions may have bugs</li>
+    <li><strong>Permission issues:</strong> Missing notifications, camera, or microphone permissions</li>
+    <li><strong>Account issues:</strong> Verification code problems or account lock</li>
+    <li><strong>Server issues:</strong> Check for Telegram server outages</li>
+  </ul>
+
+  <h2 id="not-connecting">Fix 1: Telegram Not Connecting</h2>
+  <p>If Telegram won't connect or messages won't send:</p>
+  <div class="step-box">
+    <ol>
+      <li>Check your internet connection by loading other websites or apps</li>
+      <li>Toggle airplane mode on and off to reset your network</li>
+      <li>Try using a VPN if Telegram is restricted in your region (use a server in a country where Telegram is available)</li>
+      <li>Switch between Wi-Fi and mobile data</li>
+      <li>Check Telegram server status online at downdetector.com/telegram</li>
+      <li>Restart your device</li>
+      <li>Clear Telegram cache (see below)</li>
+    </ol>
+  </div>
+
+  <h2>Fix 2: Messages Not Sending</h2>
+  <p>If messages show one check mark and won't deliver:</p>
+  <div class="step-box">
+    <ol>
+      <li>Check if you're connected (look for connection status in settings)</li>
+      <li>Check if the recipient has blocked you (you won't see a specific indicator, but messages will stay at one check)</li>
+      <li>Verify you're not in a region blocking Telegram</li>
+      <li>Clear Telegram cache: Settings → Data and Storage → Storage Usage → Clear Cache</li>
+      <li>Log out of Telegram and log back in</li>
+      <li>Try sending a message to a different contact</li>
+    </ol>
+  </div>
+
+  <h2>Fix 3: Notifications Not Working</h2>
+  <div class="step-box">
+    <ol>
+      <li>Check that Telegram notifications are enabled in device settings</li>
+      <li>Check if Do Not Disturb or Focus mode is on</li>
+      <li>Go to Telegram Settings → Notifications → ensure notifications are enabled</li>
+      <li>On Android: Settings → Apps → Telegram → Notifications → make sure they're allowed</li>
+      <li>On iOS: Settings → Notifications → Telegram → Enable notifications</li>
+      <li>Check battery optimization settings (battery savers may block notifications)</li>
+    </ol>
+  </div>
+
+  <h2>Fix 4: Telegram Crashes or Freezes</h2>
+  <div class="step-box">
+    <ol>
+      <li>Update to the latest Telegram version</li>
+      <li>Restart your device</li>
+      <li>Clear app data: Settings → Data and Storage → Storage Usage → Clear Cache</li>
+      <li>On Android, if crashes continue, try Settings → Apps → Telegram → Storage → Clear Data</li>
+      <li>On iOS, delete and reinstall the app</li>
+      <li>Check available storage space</li>
+    </ol>
+  </div>
+
+    <!-- AdSense – in-article (auto-inserted) -->
+    <div style="margin: 32px 0; text-align: center;">
+      <!-- Ad space -->
+    </div>
+
+
+
+  <h2 id="audio-video">Fix 5: Audio/Video Call Troubleshooting</h2>
   <p>Telegram supports voice and video calls. Here's how to fix issues:</p>
 
   <div class="step-box">
@@ -226,6 +333,7 @@
       <li>Check microphone permissions in your device settings</li>
       <li>Switch between Wi-Fi and mobile data</li>
       <li>Try using headphones to test</li>
+      <li>Ensure the recipient also has Telegram calls enabled</li>
     </ol>
   </div>
 
@@ -235,8 +343,9 @@
       <li>Tap the camera icon in a call to enable video</li>
       <li>Ensure camera permissions are granted to Telegram</li>
       <li>Close other apps using the camera</li>
-      <li>Check your internet speed (video calls need more bandwidth)</li>
+      <li>Check your internet speed (video calls need more bandwidth, at least 1 Mbps)</li>
       <li>Try switching to audio call and back to video</li>
+      <li>Make sure both parties have the latest Telegram version</li>
     </ol>
   </div>
 
@@ -247,26 +356,21 @@
       <li>Close other bandwidth-heavy applications</li>
       <li>Use headphones for better audio</li>
       <li>Move to an area with better signal</li>
+      <li>Turn off video if connection is poor and use voice only</li>
     </ul>
   </div>
 
-    <!-- AdSense – in-article (auto-inserted) -->
-    <div style="margin: 32px 0; text-align: center;">
-      <!-- Ad space -->
-    </div>
-
-
-
-  <h2 id="firewall">Telegram Connection & Firewall Issues</h2>
+  <h2 id="firewall">Fix 6: Connection & Firewall Issues</h2>
   <p>Telegram may not connect due to network restrictions:</p>
 
   <div class="step-box">
     <h3>Region Blocking</h3>
-    <p>Telegram is blocked in some countries (e.g., Iran, China, Pakistan). To use Telegram:</p>
+    <p>Telegram is blocked in some countries (e.g., Iran, China, Pakistan, Nigeria). To use Telegram:</p>
     <ol>
       <li>Use a VPN service to bypass restrictions</li>
       <li>Connect to a server in a country where Telegram is available</li>
-      <li>Use Telegram's built-in proxy: Settings → Data and Storage → Proxy</li>
+      <li>Use Telegram's built-in proxy: Settings → Data and Storage → Proxy → Add Proxy</li>
+      <li>Some Telegram MTProto proxies are publicly available — search for free proxy addresses</li>
     </ol>
   </div>
 
@@ -276,7 +380,8 @@
     <ol>
       <li>Try using a VPN to test if firewall is the issue</li>
       <li>Contact network administrator to allow Telegram domains</li>
-      <li>Telegram uses ports: TCP 443, 80, 5222, 5223</li>
+      <li>Telegram uses ports: TCP 443, 80, 5222, 5223 for connections</li>
+      <li>If on corporate network, contact IT for access</li>
     </ol>
   </div>
 
@@ -287,18 +392,21 @@
       <li>Check if mobile data is enabled</li>
       <li>Verify you haven't exceeded your data limit</li>
       <li>Try switching between Wi-Fi and mobile data</li>
+      <li>Check if your carrier blocks certain ports</li>
     </ul>
   </div>
 
-  <h2 id="login">Telegram Login Problems</h2>
+  <h2 id="login">Fix 7: Login Problems</h2>
 
   <div class="step-box">
     <h3>Can't Receive Verification Code</h3>
     <ol>
       <li>Ensure your phone can receive SMS</li>
-      <li>Check if your number is correct with country code</li>
+      <li>Check if your number is correct with country code (e.g., +1 for US, +44 for UK)</li>
       <li>Try "Call Me" option instead of SMS</li>
-      <li>Wait a few minutes and try again (rate limiting)</li>
+      <li>Wait a few minutes and try again (rate limiting applies)</li>
+      <li>Ensure you're not in airplane mode</li>
+      <li>Try a different phone number if possible</li>
     </ol>
   </div>
 
@@ -307,9 +415,10 @@
     <p>If Telegram locks your account:</p>
     <ol>
       <li>Wait 24-48 hours for automatic unlock</li>
-      <li>Use the "Forgot password?" flow if you set up 2FA</li>
+      <li>Use the "Forgot password?" flow if you set up 2FA with a recovery email</li>
       <li>Contact Telegram support if the issue persists</li>
       <li>Try logging in from a different device</li>
+      <li>Don't attempt to register multiple times quickly — this triggers blocks</li>
     </ol>
   </div>
 
@@ -320,18 +429,20 @@
       <li>Enter your phone number</li>
       <li>Click "Forgot password?" when prompted</li>
       <li>Telegram will email you a recovery link (if you set up recovery email)</li>
+      <li>Check your email (including spam folder) for the recovery link</li>
       <li>Create a new password</li>
     </ol>
   </div>
 
-  <h2 id="updates">Telegram Update Procedures</h2>
+  <h2 id="updates">Fix 8: Update Procedures</h2>
 
   <div class="step-box">
     <h3>Update on Mobile</h3>
     <ol>
-      <li>iOS: Open App Store → Search Telegram → Update</li>
-      <li>Android: Open Play Store → Search Telegram → Update</li>
+      <li><strong>iOS:</strong> Open App Store → Search Telegram → Update</li>
+      <li><strong>Android:</strong> Open Play Store → Search Telegram → Update</li>
       <li>Enable auto-updates to get future updates automatically</li>
+      <li>Always update to the latest version for security and bug fixes</li>
     </ol>
   </div>
 
@@ -352,10 +463,11 @@
       <li>Clear app data/cache</li>
       <li>Download fresh installer</li>
       <li>Reinstall</li>
+      <li>Ensure you have sufficient storage space</li>
     </ol>
   </div>
 
-  <h2 id="cache">Telegram Cache Clearing Steps</h2>
+  <h2 id="cache">Fix 9: Cache Clearing Steps</h2>
   <p>Clearing cache frees up storage and resolves issues:</p>
 
   <div class="step-box">
@@ -363,7 +475,7 @@
     <ol>
       <li>Open Telegram → Settings → Data and Storage</li>
       <li>Tap "Storage Usage"</li>
-      <li>Tap "Clear Cache"</li>
+      <li>Tap "Clear Cache" (this removes temporary files but keeps messages)</li>
       <li>Or: Settings → Apps → Telegram → Storage → Clear Cache</li>
     </ol>
   </div>
@@ -384,19 +496,20 @@
       <li>Open Telegram Desktop</li>
       <li>Settings → Advanced → Clear Local Data</li>
       <li>Or navigate to Telegram data folder and delete Cache folder</li>
-      <li>On Windows: %AppData%\Telegram Desktop</li>
+      <li><strong>On Windows:</strong> %AppData%\Telegram Desktop</li>
+      <li><strong>On Mac:</strong> ~/Library/Application Support/Telegram Desktop</li>
+      <li>Restart Telegram</li>
     </ol>
   </div>
 
-  <h2 id="not-connecting">1. Telegram Not Connecting</h2>
-  <div class="step-box"><ol><li>Check your internet connection works in other apps.</li><li>Toggle airplane mode on/off to reset network.</li><li>Try using a VPN if Telegram is restricted in your region.</li><li>Switch between Wi-Fi and mobile data.</li><li>Check Telegram server status online.</li></ol></div>
-  <h2 id="messages">2. Messages Not Sending</h2>
-  <p>If messages show one check mark and won't deliver:</p>
-  <ul><li>Check if the recipient has blocked you.</li><li>Verify you're not in a region blocking Telegram.</li><li>Clear Telegram cache: Settings → Data and Storage → Storage Usage → Clear Cache.</li><li>Log out and log back in.</li></ul>
-  <h2 id="crashes">3. Telegram Crashes</h2>
-  <ol><li>Update to the latest Telegram version.</li><li>Restart your device.</li><li>Clear app data (Android) or reinstall (iOS).</li><li>Check available storage space.</li></ol>
   <div class="tip"><strong>Tip:</strong> Use Telegram Web (web.telegram.org) as a backup when the mobile app has issues.</div>
-  <h2 id="notifications">4. Notifications Not Working</h2>
+
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-item"><strong>Why does Telegram show "typing" but messages don't send?</strong><p>This can happen when your connection is unstable. Try switching between Wi-Fi and mobile data, or restart the app.</p></div>
+  <div class="faq-item"><strong>Can I use Telegram on multiple devices?</strong><p>Yes, Telegram supports multi-device usage. You can be logged in on phone, tablet, and desktop simultaneously.</p></div>
+  <div class="faq-item"><strong>Why does Telegram need so many permissions?</strong><p>Telegram needs camera and microphone for calls, contacts to find friends, and storage to send files. You can manage permissions in your device settings.</p></div>
+  <div class="faq-item"><strong>How do I backup my Telegram chats?</strong><p>Go to Settings → Chat Settings → Chat Backup → Enable. On iOS, it uses iCloud; on Android, it uses Google Drive or local storage.</p></div>
+  <div class="faq-item"><strong>Is Telegram safe and private?</strong><p>Telegram offers end-to-end encryption for secret chats, but regular chats use server-client encryption. For maximum privacy, use "Secret Chat" feature.</p></div>
 
     </div>
     <div class="ad-banner" style="margin-top:40px">

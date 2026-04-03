@@ -39,11 +39,35 @@
         "@type": "Answer",
         "text": "Frequent crashes usually indicate a corrupted app installation or the app is outdated. Clear cache, update the app, and if crashes continue, reinstall Google Maps."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is my location wrong on Google Maps?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Incorrect blue dot positioning is caused by GPS drift, weak satellite signal, or compass misalignment. Calibrate your phone's compass by moving it in a figure-8 pattern, and ensure you're outdoors with a clear sky view."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I fix Google Maps on a browser?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most browser issues are solved by clearing cache, disabling extensions, enabling JavaScript, and confirming Location permissions are granted to the browser."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Google Maps work offline?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — you can download maps for offline use before you lose connectivity. In the Google Maps app, search for your destination → tap Download or tap your profile → Offline maps. Note that offline maps expire after about 30 days unless you refresh them while online."
+      }
     }
   ]
 }
 </script>
-<style>
+  <style>
     :root{--bg-dark:#0b1220;--bg-dark-2:#070d1a;--panel:#111a2e;--border:rgba(255,255,255,0.08);--text-main:#fff;--text-sub:#aab3c5;--accent:#4f8cff}
     *{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:linear-gradient(180deg,var(--bg-dark),var(--bg-dark-2));color:var(--text-main)}
     a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
@@ -58,174 +82,35 @@
     footer{margin-top:100px;font-size:13px;text-align:center;color:var(--text-sub);border-top:1px solid var(--border);padding-top:30px}footer a{color:var(--accent)}
   .ad-banner{margin:24px 0;text-align:center;min-height:90px}
   
-    
-    /* ==================== 移动端优化 ==================== */
-    
-    /* 平板和手机 (≤768px) */
     @media (max-width: 768px) {
-      /* 容器布局优化 */
-      .container, .wrap {
-        padding: 40px 15px 80px !important;
-        max-width: 100% !important;
-      
-      /* 标题字体优化 */
-      h1 {
-        font-size: 28px !important;
-        line-height: 1.3 !important;
-      }
-      
-      h2 {
-        font-size: 20px !important;
-        margin-top: 36px !important;
-        margin-bottom: 10px !important;
-      }
-      
-      h3 {
-        font-size: 17px !important;
-      }
-      
-      /* 正文内容优化 */
-      p, li, .intro, .subtitle {
-        font-size: 14px !important;
-        line-height: 1.7 !important;
-      }
-      
-      /* 段落间距优化 */
-      p, ul, ol {
-        margin-bottom: 16px !important;
-      }
-      
-      /* 列表优化 */
-      ul, ol {
-        padding-left: 18px !important;
-      }
-      
-      li {
-        margin-bottom: 6px !important;
-      }
-      
-      /* 内容块优化 */
-      .main-panel, .step-block, .notice, .extra-info {
-        padding: 16px !important;
-        border-radius: 12px !important;
-        margin: 16px 0 !important;
-      }
-      
-      /* 按钮和输入框优化 */
-      .btn {
-        padding: 14px !important;
-        font-size: 15px !important;
-        min-height: 48px !important;
-      }
-      
-      .input-group input {
-        padding: 12px !important;
-        font-size: 15px !important;
-      }
-      
-      /* 网格系统优化 */
-      .age-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 12px !important;
-      }
-      
-      /* 广告位优化 */
-      .ad-banner {
-        margin: 16px 0 !important;
-        min-height: 50px !important;
-      }
-      
-      /* 游戏页面优化 */
-      .grid-container {
-        padding: 8px !important;
-      }
-      
-      .grid {
-        gap: 8px !important;
-      }
-      
-      .cell {
-        font-size: 20px !important;
-        border-radius: 6px !important;
-      }
-      
-      .score-box {
-        min-width: 70px !important;
-        padding: 6px 12px !important;
-      }
-      
-      .score-val {
-        font-size: 18px !important;
-      }
-      
-      /* 工具页面优化 */
-      .age-main {
-        font-size: 36px !important;
-      }
-      
-      .age-value {
-        font-size: 24px !important;
-      }
-      
-      .age-label {
-        font-size: 11px !important;
-      }
-      
-      /* 引导页面优化 */
-      .intro {
-        border-left-width: 2px !important;
-        padding-left: 12px !important;
-        margin-bottom: 32px !important;
-      }
-      
-      .faq-item {
-        margin-bottom: 20px !important;
-      }
-      
-      .faq-item strong {
-        font-size: 15px !important;
-      }
+      .container, .wrap { padding: 40px 15px 80px !important; max-width: 100% !important; }
+      h1 { font-size: 28px !important; line-height: 1.3 !important; }
+      h2 { font-size: 20px !important; margin-top: 36px !important; margin-bottom: 10px !important; }
+      h3 { font-size: 17px !important; }
+      p, li, .intro, .subtitle { font-size: 14px !important; line-height: 1.7 !important; }
+      p, ul, ol { margin-bottom: 16px !important; }
+      ul, ol { padding-left: 18px !important; }
+      li { margin-bottom: 6px !important; }
+      .main-panel, .step-block, .notice, .extra-info { padding: 16px !important; border-radius: 12px !important; margin: 16px 0 !important; }
+      .btn { padding: 14px !important; font-size: 15px !important; min-height: 48px !important; }
+      .input-group input { padding: 12px !important; font-size: 15px !important; }
+      .age-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; }
+      .ad-banner { margin: 16px 0 !important; min-height: 50px !important; }
+      .intro { border-left-width: 2px !important; padding-left: 12px !important; margin-bottom: 32px !important; }
+      .faq-item { margin-bottom: 20px !important; }
+      .faq-item strong { font-size: 15px !important; }
     }
-    
-    /* 小手机优化 (≤480px) */
     @media (max-width: 480px) {
-      h1 {
-        font-size: 24px !important;
-      }
-      
-      h2 {
-        font-size: 18px !important;
-      }
-      
-      .container, .wrap {
-        padding: 32px 12px 60px !important;
-      }
-      
-      .main-panel, .step-block, .notice {
-        padding: 14px !important;
-      }
-      
-      .btn {
-        padding: 12px !important;
-        font-size: 14px !important;
-      }
-      
-      .age-grid {
-        grid-template-columns: 1fr !important;
-      }
+      h1 { font-size: 24px !important; }
+      h2 { font-size: 18px !important; }
+      .container, .wrap { padding: 32px 12px 60px !important; }
+      .main-panel, .step-block, .notice { padding: 14px !important; }
+      .btn { padding: 12px !important; font-size: 14px !important; }
+      .age-grid { grid-template-columns: 1fr !important; }
     }
-    
-    /* 触摸设备优化 */
     @media (hover: none) and (pointer: coarse) {
-      button, .btn, a[onclick], .cell {
-        min-height: 44px !important;
-        min-width: 44px !important;
-      }
-      
-      input, select, textarea {
-        font-size: 16px !important;
-      }
-    }      .container { padding: 40px 15px 80px; }
+      button, .btn, a[onclick], .cell { min-height: 44px !important; min-width: 44px !important; }
+      input, select, textarea { font-size: 16px !important; }
     }
     </style>
 </head>
@@ -233,38 +118,64 @@
 <div class="container">
   <a class="back" href="../index.html">← Back to Guides</a>
   <h1>Google Maps Not Working? Here's How to Fix It</h1>
-  <div class="intro">Google Maps problems — blank maps, location not found, directions not loading — usually come down to internet connectivity, GPS permissions, or a cache issue. Here are the fixes for Android, iPhone, and browser.</div>
+  <div class="intro">Google Maps problems — blank maps, location not found, directions not loading, wrong position, or the app crashing — usually stem from internet connectivity, GPS permissions, cached data corruption, or an outdated app version. This guide covers fixes for Android, iPhone (iOS), and desktop browsers. Each platform has its own quirks, so use the section that matches your device.</div>
 
-  <div class="notice"><strong>Check Google Maps status:</strong> Visit <strong>maps.google.com</strong> on a different device or browser to confirm if the issue is with Google's service or your device specifically.</div>
+  <div class="notice"><strong>Check Google Maps status first:</strong> Visit <strong>downdetector.com/status/google-maps</strong> or search "Google Maps down" to confirm whether Google's servers are experiencing an outage. If the service is down globally, your device settings won't matter — you'll need to wait for Google to resolve it.</div>
+
+  <h2>Introduction: Understanding Google Maps Architecture</h2>
+  <p>Google Maps operates through three interconnected systems: the map tile server (which delivers map images and data), the GPS satellite system (which determines your physical location), and Google's routing engine (which calculates directions). Problems can occur in any of these three layers. Location errors often point to GPS issues, blank maps usually indicate connectivity problems, and direction failures are typically routing engine issues — though all three can be affected by app-level problems simultaneously.</p>
+
+  <h2>Common Causes of Google Maps Problems</h2>
+  <ul>
+    <li><strong>No internet connection</strong> — Live Google Maps requires an active data connection; offline maps must be downloaded in advance</li>
+    <li><strong>Location services disabled</strong> — Google Maps can't show your position without GPS and location permissions</li>
+    <li><strong>Corrupted app cache</strong> — Stored temporary data can become corrupted after app updates or low storage situations</li>
+    <li><strong>Outdated Google Maps version</strong> — Older versions may be incompatible with current map data or routing algorithms</li>
+    <li><strong>Compass not calibrated</strong> — The blue location dot pointing the wrong direction is almost always a compass issue</li>
+    <li><strong>Low storage space</strong> — Google Maps needs working space to download map tiles; if storage is nearly full, tiles fail to load</li>
+    <li><strong>Browser extensions blocking scripts</strong> — Ad blockers, script blockers, and privacy extensions can prevent Google Maps from loading</li>
+  </ul>
 
   <h2>Fixes for Android</h2>
-  <div class="step-block"><h3>Step 1 — Check Internet Connection</h3><p>Google Maps requires internet for live maps and directions. Open a browser and load any website. If internet is broken, fix connectivity first.</p></div>
-  <div class="step-block"><h3>Step 2 — Enable Location / GPS</h3><p>Settings → Location → Turn on location. Also check: Settings → Location → App permissions → Maps → Set to "While using the app" or "All the time" for navigation.</p></div>
-  <div class="step-block"><h3>Step 3 — Clear Cache and Data</h3><p>Settings → Apps → Google Maps → Storage → <strong>Clear Cache</strong>. If the problem persists, tap <strong>Clear Data</strong> (this resets offline maps and preferences). Relaunch Maps.</p></div>
-  <div class="step-block"><h3>Step 4 — Update Google Maps</h3><p>Open Play Store → search Google Maps → Update if available. Outdated versions can break against newer API changes.</p></div>
-  <div class="step-block"><h3>Step 5 — Calibrate Compass</h3><p>If your location is wrong on the map, open Maps → blue dot → Calibrate compass → Move phone in figure-8 pattern until calibration completes.</p></div>
+  <div class="step-block"><h3>Step 1 — Verify Mobile Data or Wi-Fi Is Active</h3><p>Google Maps needs an active internet connection for live navigation and map tiles. Open Chrome and load any website to confirm connectivity. If the internet is unavailable, troubleshoot your Wi-Fi or mobile data first. Note: Google Maps can work offline if you've previously downloaded maps for your area. Open Google Maps → tap your profile photo → <strong>Offline maps</strong> to see downloaded areas. If you have no downloaded maps and no connection, Google Maps simply won't work.</p></div>
+  <div class="step-block"><h3>Step 2 — Enable Location Services System-Wide</h3><p>Open <strong>Settings → Location</strong> → ensure the Location toggle at the top is ON. Then scroll to <strong>Location access</strong> or <strong>App-level permissions</strong> → find <strong>Google Maps</strong> → set to <strong>"Allow all the time"</strong> or <strong>"While using the app"</strong>. For real-time turn-by-turn navigation (which runs in the background), you need "Allow all the time." Without this, Maps can't update your location when the screen is off during navigation.</p></div>
+  <div class="step-block"><h3>Step 3 — Clear the Google Maps Cache and Data</h3><p>Open <strong>Settings → Apps → Google Maps</strong> → <strong>Storage</strong>. First, tap <strong>Clear Cache</strong> — this removes temporary files without deleting your saved places or preferences. Wait a moment, then open Google Maps and try again. If the problem persists, tap <strong>Clear Data</strong> — this resets the app completely, which means you'll lose offline maps, saved places, and any downloaded areas. Sign in again to restore your account data. Clear data only if the cache clear didn't work.</p></div>
+  <div class="step-block"><h3>Step 4 — Update Google Maps from Play Store</h3><p>Open the <strong>Google Play Store</strong> → tap your profile icon → <strong>Manage apps & devices</strong> → find <strong>Google Maps</strong>. If an update is available, tap <strong>Update</strong>. Running an outdated version of Google Maps after a server-side update can cause rendering issues, incorrect routing, and app crashes. Enable automatic updates in Play Store settings to avoid this going forward.</p></div>
+  <div class="step-block"><h3>Step 5 — Calibrate the Compass</h3><p>If the blue dot shows your location but the map is oriented incorrectly (or the blue arrow points the wrong direction), your phone's compass needs calibration. Open Google Maps → wait for the blue dot to appear → tap it → look for <strong>"Calibrate compass"</strong> and tap it. Alternatively, open Google Search and type "Compass" to launch Google's compass app. Hold your phone flat and move it in a slow figure-8 pattern for 30 seconds. The compass should recalibrate. Do this outdoors with a clear view of the sky for best GPS accuracy.</p></div>
+  <div class="step-block"><h3>Step 6 — Check for a Damaged Google Maps App Installation</h3><p>Open <strong>Settings → Apps → Google Maps → App info</strong>. Scroll down and look at the version number. Then go to the Play Store and confirm the latest version matches. If the Play Store shows a newer version than what's installed, update it. If they match but the app is still broken, tap <strong>Uninstall updates</strong> (three-dot menu in the app info screen) to reset to the factory version — this can fix bugs introduced by recent updates.</p></div>
 
-  <h2>Fixes for iPhone</h2>
-  <div class="step-block"><h3>Step 1 — Grant Location Permission</h3><p>Settings → Privacy & Security → Location Services → Google Maps → Select <strong>While Using the App</strong> or <strong>Always</strong>. Ensure Location Services is on at the top of this screen.</p></div>
-  <div class="step-block"><h3>Step 2 — Force Quit and Reopen</h3><p>Swipe up from the bottom (or double-click Home button) → swipe Google Maps up to close it → Reopen Maps.</p></div>
-  <div class="step-block"><h3>Step 3 — Update the App</h3><p>App Store → profile icon → Check for Google Maps updates and install.</p></div>
-  <div class="step-block"><h3>Step 4 — Reinstall Google Maps</h3><p>Delete Maps and reinstall from the App Store. This resolves corrupted data that clearing cache can't fix on iOS.</p></div>
+  <div class="ad-banner"></div>
 
-    <!-- AdSense – in-article (auto-inserted) -->
-    <div style="margin: 32px 0; text-align: center;">
-      <!-- Ad space -->
-    </div>
+  <h2>Fixes for iPhone (iOS)</h2>
+  <div class="step-block"><h3>Step 1 — Grant Location Services Permission to Google Maps</h3><p>Open <strong>Settings → Privacy & Security → Location Services</strong>. At the top, ensure <strong>Location Services</strong> is toggled ON. Scroll down to find <strong>Google Maps</strong> in the list → tap it → select <strong>"While Using the App"</strong> or <strong>"Always"</strong>. "While Using" is sufficient for navigation, but "Always" allows background location tracking. If Google Maps isn't listed at all, it means the app may not have requested permission yet — open Google Maps and try to get directions, which will trigger the permission request.</p></div>
+  <div class="step-block"><h3>Step 2 — Force Quit and Relaunch Google Maps</h3><p>iOS apps sometimes freeze in a bad state. Swipe up from the bottom of the screen (or double-click the Home button on older iPhones) to show the app switcher → find the Google Maps card → swipe it up to close it. Wait 5 seconds, then open Google Maps fresh. This clears any in-memory errors and forces the app to reload map data from scratch.</p></div>
+  <div class="step-block"><h3>Step 3 — Update Google Maps from the App Store</h3><p>Open the <strong>App Store</strong> → tap your profile icon (top right) → scroll to see pending updates → if Google Maps is listed, tap <strong>Update</strong>. On iOS, Google Maps updates automatically by default, but disabling automatic updates in Settings → App Store → Automatic Downloads will mean you need to update manually. Always keep Google Maps on the latest version.</p></div>
+  <div class="step-block"><h3>Step 4 — Reinstall Google Maps</h3><p>iOS doesn't give apps the ability to clear data in the same way Android does, so sometimes reinstalling is the most effective fix for persistent issues. Long-press the Google Maps app icon on your home screen → tap <strong>Remove App → Delete App</strong>. Then open the App Store → search <strong>Google Maps</strong> → tap the cloud icon or <strong>Get</strong> to reinstall. Sign in with your Google account after installation. Note: uninstalling removes all offline maps — you'll need to download them again.</p></div>
+  <div class="step-block"><h3>Step 5 — Reset Location & Privacy Settings</h3><p>If your iPhone consistently reports the wrong location to Google Maps, resetting location services can fix calibration drift. Go to <strong>Settings → General → Transfer or Reset iPhone → Reset → Reset Location & Privacy</strong>. This will require you to re-enable all location permissions for all apps. After the reset, re-grant location access to Google Maps specifically and test.</p></div>
 
+  <div class="ad-banner"></div>
 
+  <h2>Fixes for Browser (Chrome, Firefox, Edge, Safari)</h2>
+  <div class="step-block"><h3>Step 1 — Allow Location Access for maps.google.com</h3><p>In <strong>Chrome</strong>: Click the padlock icon in the address bar → Site settings → Location → Allow. In <strong>Firefox</strong>: Click the shield icon → Cookies and Site Data → Manage Permissions → Location → Allow maps.google.com. In <strong>Safari</strong>: Open Safari Preferences → Websites → Location Websites → Find maps.google.com → set to "Allow." In <strong>Edge</strong>: Click the lock icon → Site permissions → Location → Allow. Without this permission, Google Maps can't show your location on the web version.</p></div>
+  <div class="step-block"><h3>Step 2 — Clear Browser Cache</h3><p>Open Google Maps in your browser. If tiles are missing, blank, or showing old data, the cached version is stale. In <strong>Chrome</strong>: Press <strong>Ctrl+Shift+Delete</strong> → select <strong>All time</strong> → check only <strong>Cached images and files</strong> → click <strong>Clear data</strong>. In <strong>Firefox</strong>: Ctrl+Shift+Delete → select <strong>Everything</strong> → check <strong>Cache</strong> → Clear Now. In <strong>Edge</strong>: Ctrl+Shift+Delete → select <strong>All time</strong> → check <strong>Cached images and files</strong> → Clear now. Then reload maps.google.com.</p></div>
+  <div class="step-block"><h3>Step 3 — Disable Browser Extensions</h3><p>Ad blockers (uBlock Origin, AdBlock Plus), privacy extensions (Privacy Badger, Ghostery), and script blockers can block Google Maps' map tile requests, causing blank or gray areas on the map. Open a new <strong>Incognito/Private window</strong> (which disables extensions by default) and navigate to maps.google.com. If the map loads correctly in Incognito mode, one of your extensions is the culprit. Go to browser settings → Extensions → disable extensions one by one to identify the problem extension.</p></div>
+  <div class="step-block"><h3>Step 4 — Enable JavaScript</h3><p>Google Maps is a JavaScript-heavy application and requires JavaScript to be enabled to function. In <strong>Chrome</strong>: Settings → Privacy and Security → Site Settings → JavaScript → Sites can use Javascript (ensure this is on). In <strong>Firefox</strong>: Type <strong>about:config</strong> in the address bar → search for <strong>javascript.enabled</strong> → ensure it's set to <strong>true</strong>. If JavaScript is disabled, Google Maps will show only a blank white page or a message asking to enable JavaScript.</p></div>
+  <div class="step-block"><h3>Step 5 — Update Your Browser</h3><p>Using an outdated browser can cause Google Maps to render incorrectly or fail entirely. In <strong>Chrome</strong>: Menu → Help → About Google Chrome → it will auto-check and install updates. In <strong>Firefox</strong>: Menu → Help → About Firefox → Updates will download automatically. In <strong>Edge</strong>: Menu → Help and feedback → About Microsoft Edge. Restart the browser after updating.</p></div>
+  <div class="step-block"><h3>Step 6 — Check Your Internet Connection Speed</h3><p>Google Maps downloads map tiles dynamically as you scroll. A slow connection (below 1 Mbps) will cause tiles to load incompletely, appear as gray squares, or fail to update as you move. Run a speed test at <strong>speedtest.net</strong>. If your connection is slow, try moving closer to your router, switching from Wi-Fi to a wired connection, or using a different network. Google Maps does not provide good offline support in the browser — unlike the mobile app, you can't download browser maps for offline use.</p></div>
 
-  <h2>Fixes for Browser (maps.google.com)</h2>
-  <div class="step-block"><h3>Step 1 — Clear Browser Cache</h3><p>Chrome: Ctrl+Shift+Delete → Select "Cached images and files" → Clear data. Reload maps.google.com.</p></div>
-  <div class="step-block"><h3>Step 2 — Disable Browser Extensions</h3><p>Ad blockers and privacy extensions can block Google Maps scripts. Try opening Maps in an Incognito/Private window to bypass extensions.</p></div>
-  <div class="step-block"><h3>Step 3 — Enable JavaScript</h3><p>Chrome: Settings → Privacy and Security → Site Settings → JavaScript → Ensure it's allowed. Google Maps is JavaScript-heavy and won't work without it.</p></div>
-  <div class="step-block"><h3>Step 4 — Update Your Browser</h3><p>Chrome: Menu → Help → About Google Chrome → Update if available. Firefox: Menu → Help → About Firefox → Update.</p></div>
+  <h2>Fixes for Offline Maps</h2>
+  <div class="step-block"><h3>Download Maps Before Going Offline</h3><p>Google Maps can work without internet if you download the area in advance. Open Google Maps on mobile → search for a city or region → tap the area name at the bottom → tap <strong>Download</strong>. Alternatively, tap your <strong>profile photo → Offline maps</strong> → tap <strong>Select your own map</strong> → zoom to the area you need → Download. Downloaded maps expire after approximately 30 days and require a brief online connection to refresh. Make sure you have enough storage space before downloading — a city-sized area typically requires 100-500MB.</p></div>
+  <div class="step-block"><h3>Manage and Delete Offline Maps</h3><p>To free up storage, open Google Maps → your profile photo → <strong>Offline maps</strong>. Tap the three dots next to any downloaded map → <strong>Delete</strong>. Offline maps don't update automatically if road names or routes change — if you notice outdated information while navigating offline, connect to the internet briefly to trigger a refresh of your downloaded area.</p></div>
 
   <h2>Frequently Asked Questions</h2>
-  <div class="faq-item"><strong>Why does Google Maps keep crashing?</strong><p>Frequent crashes usually indicate a corrupted app installation or the app is outdated. Clear cache, update the app, and if crashes continue, reinstall Google Maps.</p></div>
+  <div class="faq-item"><strong>Why does Google Maps keep crashing?</strong><p>Frequent crashes usually indicate a corrupted app installation or the app is outdated. Clear the cache first (Settings → Apps → Google Maps → Storage → Clear Cache). Update Google Maps from your app store. If crashes continue, uninstall and reinstall the app. On iPhone, reinstalling is the only way to fully clear corrupted data since iOS doesn't provide a "Clear Data" option.</p></div>
+  <div class="faq-item"><strong>Why is my location wrong on Google Maps?</strong><p>Incorrect blue dot positioning is typically caused by GPS drift (obscured sky view), a miscalibrated compass, or Wi-Fi positioning errors. Move to an open outdoor area with a clear view of the sky, then calibrate the compass by opening Google Maps → tapping the blue dot → "Calibrate compass" → moving your phone in a figure-8 pattern. If the issue persists indoors, know that GPS accuracy is significantly reduced inside buildings — outdoor use is required for precise positioning.</p></div>
+  <div class="faq-item"><strong>How do I fix Google Maps on a browser?</strong><p>Most browser issues are resolved by clearing cache, disabling extensions (test in Incognito/Private mode), enabling JavaScript, and granting Location permissions to the browser. If none of those work, try a different browser to determine if the issue is browser-specific. Updating your browser to the latest version often fixes compatibility issues with Google Maps' current web interface.</p></div>
+  <div class="faq-item"><strong>Does Google Maps work offline?</strong><p>Yes, on the mobile app. Download maps before you lose connectivity by opening Google Maps → tapping your profile → Offline maps → Select your own map → zoom to and download the area. Offline maps typically expire after 30 days and need a brief online connection to refresh. The web browser version does not support offline maps.</p></div>
+  <div class="faq-item"><strong>Why are directions not loading on Google Maps?</strong><p>If you can see the map but can't get directions, it may be a routing server issue — try a different destination to test. If specific routes consistently fail, the start or end point may be in an area with incomplete map data. Try adding a known nearby landmark as the start or end point. Also ensure your Google Maps is fully updated, as routing algorithms are frequently updated by Google and older app versions may not support new roads.</p></div>
+
+  <h2>When to Contact Google Maps Support</h2>
+  <p>Contact Google support if you encounter persistent issues that aren't resolved by any of the steps above: if Google Maps consistently crashes on a specific route or destination (indicating a map data error that only Google can fix), if your saved places or account data is missing after reinstalling the app (signing in should restore it, but sometimes manual recovery is needed), if you've discovered an incorrect address or road on Google Maps (use the "Report a problem" option by clicking the three dots on a location pin), or if offline maps fail to download despite having sufficient storage and a stable internet connection (this can indicate a Google account sync issue).</p>
 
     </div>
     <div class="ad-banner" style="margin-top:40px">
@@ -286,3 +197,4 @@
   <!-- 中间广告 -->
   <div class="ad-banner"></div>
 </body>
+</html>

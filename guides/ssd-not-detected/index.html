@@ -39,6 +39,38 @@
         "@type": "Answer",
         "text": "Yes. Initializing and formatting erases all data on the drive. Only do this with a new drive or one you don't need data from. If you need data recovery, stop and use recovery software first."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does my SSD show in BIOS but not Windows?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The drive likely needs to be initialized in Disk Management. Press Win+X → Disk Management → find the SSD → right-click → Initialize Disk. Then create a new volume and format it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use an NVMe SSD on any motherboard?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. NVMe SSDs require an M.2 slot that supports PCIe NVMe, not just any M.2 slot. Check your motherboard manual for M.2 slot specifications. Some M.2 slots only support SATA M.2 SSDs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is my SSD slower than advertised?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "SSD speeds depend on the interface (SATA vs NVMe), PCIe generation, and whether the slot is full-speed. Some M.2 slots share bandwidth with SATA ports. Also check if your SSD is overheating and throttling."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I check my SSD health?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use CrystalDiskInfo (free) to check SMART data. Look for 'Good' health status. Windows also shows estimated remaining life in Settings → System → Storage → Advanced storage settings → Disks & volumes."
+      }
     }
   ]
 }
@@ -235,29 +267,81 @@
   <h1>SSD Not Detected? Here's How to Fix It</h1>
   <div class="intro">An SSD that doesn't show up is usually a physical connection issue, an unformatted new drive, or a BIOS/driver compatibility problem. The fix depends on whether the SSD appears in BIOS but not Windows, or is missing entirely.</div>
 
-  <div class="notice"><strong>Diagnose first:</strong> Enter BIOS (press F2, Del, or F10 at startup) and check if the SSD appears there. If yes, the issue is in Windows. If no, it's a hardware or BIOS issue.</div>
+  <div class="notice"><strong>Diagnose first:</strong> Enter BIOS (press F2, Del, or F10 at startup) and check if the SSD appears there. If yes, the issue is in Windows. If no, it's a hardware or BIOS issue. This distinction is crucial for troubleshooting.</div>
+
+  <h2>Common Reasons an SSD Isn't Detected</h2>
+
+  <ul>
+    <li><strong>Not initialized or formatted</strong> — New SSDs arrive unformatted and won't appear in File Explorer until initialized</li>
+    <li><strong>Missing drive letter</strong> — The SSD has no assigned letter, so Windows doesn't show it in Explorer</li>
+    <li><strong>Loose or faulty cable</strong> — SATA data or power cables can come loose or fail</li>
+    <li><strong>BIOS doesn't detect NVMe</strong> — Older BIOS versions may not support NVMe SSDs</li>
+    <li><strong>M.2 slot incompatibility</strong> — Some M.2 slots only support SATA, not NVMe PCIe SSDs</li>
+    <li><strong>SATA port disabled</strong> — Some SATA ports disable when M.2 slots are populated</li>
+    <li><strong>Outdated drivers</strong> — NVMe SSDs may need specific drivers on older Windows versions</li>
+    <li><strong>Failed SSD</strong> — The drive itself may be dead or malfunctioning</li>
+  </ul>
 
   <h2>If SSD Is Not Detected in BIOS</h2>
-  <div class="step-block"><h3>Step 1 — Check Physical Connections</h3><p>Power off and open the case. For SATA SSDs: check both the SATA data cable and SATA power cable are firmly seated. For M.2: remove the SSD, check for bent pins, reinsert firmly, and secure the retaining screw.</p></div>
-  <div class="step-block"><h3>Step 2 — Try a Different SATA Port or M.2 Slot</h3><p>Some SATA ports disable when M.2 slots are occupied (check motherboard manual). Try SATA port 1 directly. For M.2, try a different slot if your board has two.</p></div>
-  <div class="step-block"><h3>Step 3 — Check M.2 Key Compatibility</h3><p>M.2 SSDs come in B-key, M-key, and B+M-key. NVMe SSDs require M-key slots. Check your motherboard manual and SSD specs to confirm compatibility. Some motherboards only support SATA M.2, not NVMe M.2.</p></div>
-  <div class="step-block"><h3>Step 4 — Update BIOS</h3><p>Older BIOS versions may not support newer NVMe SSDs. Download the latest BIOS from your motherboard manufacturer's website and flash it. Do not interrupt this process.</p></div>
-  <div class="step-block"><h3>Step 5 — Check BIOS Storage Controller Mode</h3><p>In BIOS settings, look for SATA Controller Mode. Try switching between <strong>AHCI</strong> and <strong>Intel RST/RAID</strong>. NVMe SSDs need the PCIe/NVMe option where available.</p></div>
+
+  <div class="step-block"><h3>Step 1 — Check Physical Connections (Desktop)</h3><p>Power off your computer completely and unplug the power cord. Open the case. For <strong>SATA SSDs</strong>: check both the SATA data cable (connects to motherboard) and SATA power cable (from power supply) are firmly seated. Try different cables if available. For <strong>M.2 SSDs</strong>: remove the SSD, check for bent pins or debris in the slot, reinsert firmly at a 30-degree angle, and secure with the retaining screw. Don't overtighten.</p></div>
+
+  <div class="step-block"><h3>Step 2 — Try a Different SATA Port or M.2 Slot</h3><p>Some SATA ports disable automatically when M.2 slots are occupied — check your motherboard manual for port sharing information. Try SATA port 1 or 2 directly connected to the chipset (usually ports closest to the CPU). For M.2, if your board has two M.2 slots, try the other slot. Some motherboards have one NVMe-capable slot and one SATA-only M.2 slot.</p></div>
+
+  <div class="step-block"><h3>Step 3 — Check M.2 Key Compatibility</h3><p>M.2 SSDs come in different key types: <strong>B-key</strong> (NVMe SATA), <strong>M-key</strong> (NVMe PCIe), and <strong>B+M key</strong> (compatible with both slot types). NVMe PCIe SSDs require an M-key slot. Check your motherboard manual to see what your M.2 slot supports. Some budget motherboards only support SATA M.2 SSDs, not faster NVMe drives. Also check that your M.2 SSD size (2280, 2260, 2242, 2230) matches what your motherboard supports — 2280 (80mm) is most common.</p></div>
+
+  <div class="step-block"><h3>Step 4 — Update BIOS to Support NVMe</h3><p>Older BIOS versions (especially pre-2016) may not support NVMe SSDs natively. Download the latest BIOS from your motherboard manufacturer's website (ASUS, MSI, Gigabyte, ASRock, etc.). Flash the BIOS using the manufacturer's update tool. <strong>Warning:</strong> Do not interrupt a BIOS update — it can brick your motherboard. Keep the computer plugged into a UPS or reliable power during the update.</p></div>
+
+  <div class="step-block"><h3>Step 5 — Check BIOS Storage Controller Mode</h3><p>Enter BIOS → Look for <strong>SATA Controller Mode</strong> or <strong>Storage Configuration</strong> (usually under Advanced or Storage settings). Options typically include <strong>AHCI</strong> (Advanced Host Controller Interface) and <strong>RAID/Intel RST</strong> (Rapid Storage Technology). If you're installing a fresh Windows, AHCI is recommended. If your existing Windows was installed in RAID mode, switching to AHCI will cause boot failure. For NVMe SSDs, ensure the BIOS has <strong>PCIe NVMe</strong> mode enabled where available.</p></div>
+
+  <div class="step-block"><h3>Step 6 — Check for M.2 vs SATA Port Conflicts</h3><p>Many motherboards share bandwidth between M.2 slots and SATA ports. For example, using an NVMe SSD in M.2 slot 1 may disable SATA ports 5 and 6. Consult your motherboard manual's storage configuration section. If your SATA SSD isn't detected after installing an M.2 SSD, this bandwidth sharing is often the cause.</p></div>
 
   <h2>If SSD Shows in BIOS but Not Windows</h2>
-  <div class="step-block"><h3>Step 6 — Initialize in Disk Management</h3><p>Press <strong>Win+X → Disk Management</strong>. Look for a disk labeled "Unknown" or "Not Initialized" with unallocated space. Right-click it → <strong>Initialize Disk</strong> → choose GPT (for modern systems) → then right-click the unallocated space → <strong>New Simple Volume</strong> to format it.</p></div>
-  <div class="step-block"><h3>Step 7 — Assign a Drive Letter</h3><p>If the SSD shows in Disk Management but not File Explorer, it may be missing a drive letter. Right-click the volume → <strong>Change Drive Letter and Paths</strong> → Add → Assign a letter (e.g., D:).</p></div>
-  <div class="step-block"><h3>Step 8 — Update NVMe Drivers</h3><p>Device Manager → Disk drives → Right-click your SSD → Update driver → Search automatically. For Samsung, WD, or Crucial SSDs, also check their official software (Samsung Magician, WD Dashboard) for driver and firmware updates.</p></div>
 
-    <!-- AdSense – in-article (auto-inserted) -->
-    <div style="margin: 32px 0; text-align: center;">
-      <!-- Ad space -->
-    </div>
+  <div class="step-block"><h3>Step 7 — Initialize in Disk Management</h3><p>Press <strong>Win+X → Disk Management</strong> (or right-click Start → Disk Management). Look for a disk labeled "Unknown" or "Not Initialized" with unallocated space — this is your undetected SSD. Right-click where it says "Disk 1, Disk 2, etc." → <strong>Initialize Disk</strong> → choose <strong>GPT</strong> (GUID Partition Table) for modern systems (Windows 10/11, UEFI boot) or <strong>MBR</strong> (Master Boot Record) only for very old legacy systems. After initializing, right-click the unallocated space → <strong>New Simple Volume</strong> → follow the wizard to assign a drive letter and format (NTFS is standard for Windows).</p></div>
 
+  <div class="step-block"><h3>Step 8 — Assign a Drive Letter</h3><p>If the SSD shows in Disk Management with a partition but doesn't appear in File Explorer, it may be missing a drive letter. Right-click the volume → <strong>Change Drive Letter and Paths</strong> → Click <strong>Add</strong> → Select a letter (e.g., D:, E:, F:) → OK. The drive should now appear in File Explorer.</p></div>
 
+  <div class="step-block"><h3>Step 9 — Update NVMe Drivers</h3><p>Open <strong>Device Manager</strong> (Win+X → Device Manager) → Expand <strong>Disk drives</strong> → Right-click your SSD → <strong>Update driver</strong> → Search automatically for drivers. For brand-name NVMe SSDs (Samsung 970/980/990, WD Black, Crucial P5, Seagate FireCuda), also check the manufacturer's software: Samsung Magician, WD Dashboard, Crucial Storage Executive. These tools provide driver updates, firmware updates, and health monitoring.</p></div>
+
+  <div class="step-block"><h3>Step 10 — Check for Windows Installation Issues</h3><p>If you're trying to install Windows on a new NVMe SSD and Windows setup doesn't detect the drive, you may need to load NVMe drivers during installation. On the "Where do you want to install Windows?" screen, click <strong>Load driver</strong> → Browse to the NVMe driver (downloaded from your motherboard or SSD manufacturer's website, extracted to a USB drive). Select the driver → Windows will then detect your NVMe SSD.</p></div>
+
+  <!-- AdSense – in-article (auto-inserted) -->
+  <div style="margin: 32px 0; text-align: center;">
+    <!-- Ad space -->
+  </div>
+
+  <h2>Laptop SSD Issues</h2>
+
+  <div class="step-block"><h3>SSD Not Detected After Upgrade (Laptop)</h3><p>Some laptops (especially HP, Dell, Lenovo business models) have whitelists that only accept specific SSD models. If you installed an SSD that isn't on the manufacturer's approved list, the BIOS may refuse to detect it. Check your laptop model's official documentation for compatible SSDs. Also, some laptops use proprietary SSD form factors (like Apple's proprietary SSDs in MacBooks) that aren't interchangeable with standard M.2 drives.</p></div>
+
+  <div class="step-block"><h3>SSD Not Detected After Sleep/Hibernation</h3><p>This is a known issue with some NVMe SSDs and certain power management configurations. In Windows: Control Panel → Power Options → Choose what the power buttons do → Change settings currently unavailable → Uncheck <strong>Turn on fast startup</strong>. Also, update your NVMe SSD firmware through the manufacturer's software (Samsung Magician, WD Dashboard, etc.) — firmware updates often fix sleep/wake issues.</p></div>
+
+  <h2>How to Check SSD Health</h2>
+
+  <p>Even if your SSD is detected, it's worth checking its health periodically:</p>
+
+  <div class="step-block"><h3>Using CrystalDiskInfo (Windows)</h3><p>Download <strong>CrystalDiskInfo</strong> (free) from crystaldewd.info. Run it — it reads the SSD's SMART (Self-Monitoring, Analysis and Reporting Technology) data. Look for "Good" health status in blue. If you see "Caution" (yellow) or "Bad" (red), the SSD is failing and you should back up your data immediately. Pay attention to "Reallocated Sectors Count" and "Current Pending Sector Count" — these indicate bad blocks being replaced.</p></div>
+
+  <div class="step-block"><h3>Using Windows Built-in Tools</h3><p><strong>Settings → System → Storage → Advanced storage settings → Disks & volumes</strong> → Select your SSD → Properties. Windows shows estimated remaining life based on writes. This is less detailed than CrystalDiskInfo but gives a quick overview.</p></div>
+
+  <div class="step-block"><h3>Using macOS</h3><p>Open <strong>Disk Utility</strong> → Select your SSD in the sidebar → Click "Info" or look at the bottom of the window for SMART status. On newer Macs with Apple Silicon, SSD health info is limited in Disk Utility. Third-party tools like DriveDx provide more detailed SMART data for Mac SSDs.</p></div>
 
   <h2>Frequently Asked Questions</h2>
-  <div class="faq-item"><strong>Will initializing an SSD erase my data?</strong><p>Yes. Initializing and formatting erases all data on the drive. Only do this with a new drive or one you don't need data from. If you need data recovery, stop and use recovery software first.</p></div>
+
+  <div class="faq-item"><strong>Will initializing an SSD erase my data?</strong><p>Yes. Initializing and formatting erases all data on the drive. Only do this with a new drive or one you don't need data from. If you have important data on an undetected SSD, stop and use data recovery software like Recuva (free), EaseUS Data Recovery, or consult a professional data recovery service before initializing.</p></div>
+
+  <div class="faq-item"><strong>Why does my SSD show in BIOS but not Windows?</strong><p>The drive likely needs to be initialized in Disk Management. Press Win+X → Disk Management → find the SSD (shown as "Unknown" or "Not Initialized") → right-click the disk number → Initialize Disk → choose GPT → then create a new volume. After formatting, it will appear in File Explorer.</p></div>
+
+  <div class="faq-item"><strong>Can I use an NVMe SSD on any motherboard?</strong><p>No. NVMe SSDs require an M.2 slot that supports PCIe NVMe, not just any M.2 slot. Many budget motherboards have M.2 slots that only support SATA M.2 SSDs. Check your motherboard manual for M.2 slot specifications. You can also use an NVMe-to-PCIe adapter card if your motherboard lacks an M.2 slot but has a free PCIe x4 slot.</p></div>
+
+  <div class="faq-item"><strong>Why is my SSD slower than advertised?</strong><p>SSD speeds depend on multiple factors: the interface (SATA III maxes at ~550 MB/s; NVMe PCIe 3.0 at ~3500 MB/s; PCIe 4.0 at ~7000 MB/s), whether the M.2 slot runs at full x4 speed or reduced x2, thermal throttling (NVMe SSDs slow down when they overheat), and whether the slot shares bandwidth with other devices. Also, SSDs have a cache — after writing more than the cache size (varies by model), speeds drop to the slower native flash speed.</p></div>
+
+  <div class="faq-item"><strong>How do I check if my SSD is failing?</strong><p>Use CrystalDiskInfo (Windows) to check SMART data. Look for "Good" health status. Warning signs include: "Caution" or "Bad" health status, increasing reallocated sector count, frequent file corruption, blue screens (BSOD), the drive disappearing after waking from sleep, or extremely slow performance. If you see these signs, back up your data immediately and replace the drive.</p></div>
+
+  <h2>When to Replace Your SSD</h2>
+
+  <p>If your SSD has "Caution" or "Bad" health in SMART monitoring, or if you experience frequent crashes, file corruption, or the drive intermittently disappears, it's time to replace it. SSDs have no moving parts and are generally reliable, but flash memory cells wear out after a finite number of writes. Most modern SSDs are rated for 150–600 TBW (terabytes written) before failure. If your SSD is over 5 years old or showing SMART warnings, proactively replace it before data loss occurs.</p>
 
     </div>
     <div class="ad-banner" style="margin-top:40px">

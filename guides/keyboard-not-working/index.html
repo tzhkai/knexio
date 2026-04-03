@@ -55,9 +55,10 @@
     .step-block h3{font-size:17px;margin:0 0 10px;color:var(--accent)}.step-block p,.step-block li{font-size:14px;color:var(--text-sub);margin:0}
     .ad-top{margin:0 0 40px;text-align:center;min-height:90px}.ad-mid{margin:48px 0;text-align:center;min-height:250px}
     .faq-item{margin-bottom:28px}.faq-item strong{display:block;font-size:16px;margin-bottom:6px;color:var(--text-main)}
+    .faq-item p{color:var(--text-sub);line-height:1.7}
     footer{margin-top:100px;font-size:13px;text-align:center;color:var(--text-sub);border-top:1px solid var(--border);padding-top:30px}footer a{color:var(--accent)}
   .ad-banner{margin:24px 0;text-align:center;min-height:90px}
-  
+  kbd{background:rgba(255,255,255,.1);padding:3px 8px;border-radius:4px;font-family:monospace;font-size:13px}
     
     /* ==================== 移动端优化 ==================== */
     
@@ -229,40 +230,283 @@
     }
     </style>
 </head>
-<body><a href="../../cdn-cgi/content-TQk_NAdiQcfebAwzAjvYLQh1bVrd_31hTkR9VHBpT0k.html" aria-hidden="true" rel="nofollow noopener" style="display: none !important; visibility: hidden !important"></a>
+<body>
 <div class="container">
   <a class="back" href="../index.html">← Back to Guides</a>
   <h1>Keyboard Not Working? Here's How to Fix It</h1>
   <div class="intro">A non-responsive keyboard is usually caused by a software issue — a corrupted driver, an accidental accessibility setting, or a stuck system process. Hardware failure is less common. Start with these software fixes.</div>
 
-  <div class="notice"><strong>Use On-Screen Keyboard:</strong> Press <strong>Win+Ctrl+O</strong> or search "On-Screen Keyboard" in Start Menu to type while you fix the hardware keyboard.</div>
+  <div class="notice"><strong>Use On-Screen Keyboard:</strong> Press <kbd>Win+Ctrl+O</kbd> or search "On-Screen Keyboard" in Start Menu to type while you fix the hardware keyboard.</div>
+
+  <h2>Common Keyboard Problems</h2>
+  <p>Before diving into fixes, identify which issue you're experiencing:</p>
+  <ul>
+    <li><strong>Entire keyboard not working</strong> — Usually a connection or driver issue</li>
+    <li><strong>Some keys not working</strong> — Often debris or hardware damage</li>
+    <li><strong>Keys typing wrong characters</strong> — Language or layout settings issue</li>
+    <li><strong>Laptop keyboard not working</strong> — May need function key (Fn) combination</li>
+    <li><strong>Wireless keyboard not connecting</strong> — Battery or pairing issues</li>
+  </ul>
 
   <h2>Fixes for Windows</h2>
-  <div class="step-block"><h3>Step 1 — Check Filter Keys</h3><p>Filter Keys is a Windows accessibility feature that ignores brief keystrokes. If accidentally enabled, it makes the keyboard seem broken. Go to <strong>Settings → Accessibility → Keyboard</strong> → Make sure Filter Keys is Off.</p></div>
-  <div class="step-block"><h3>Step 2 — Check Connection (External Keyboards)</h3><p>For USB keyboards: Unplug and replug into a different USB port. For Bluetooth: Go to Settings → Bluetooth → Remove the keyboard → Re-pair it.</p></div>
-  <div class="step-block"><h3>Step 3 — Reinstall Keyboard Driver</h3><p>Device Manager → Keyboards → Right-click your keyboard → <strong>Uninstall device</strong> → Restart PC. Windows will automatically reinstall the correct driver.</p></div>
-  <div class="step-block"><h3>Step 4 — Run Keyboard Troubleshooter</h3><p>Settings → System → Troubleshoot → Other troubleshooters → Keyboard → Run.</p></div>
-  <div class="step-block"><h3>Step 5 — Check for Windows Updates</h3><p>Settings → Windows Update → Check for updates. Driver issues introduced by updates are sometimes fixed in subsequent patches.</p></div>
-  <div class="step-block"><h3>Step 6 — Boot in Safe Mode</h3><p>If keyboard works in Safe Mode but not normally, a third-party program is interfering. Boot normally and disable startup programs via Task Manager.</p></div>
+
+  <div class="step-block">
+    <h3>Step 1 — Check Filter Keys</h3>
+    <p>Filter Keys is a Windows accessibility feature that ignores brief keystrokes. If accidentally enabled, it makes the keyboard seem broken.</p>
+    <ul>
+      <li>Go to Settings → Accessibility → Keyboard</li>
+      <li>Make sure "Filter Keys" is turned OFF</li>
+      <li>Also check "Sticky Keys" and "Toggle Keys" — turn these OFF too</li>
+    </ul>
+    <p>Quick check: Press and hold the right Shift key for 8 seconds to see if a dialog appears about Filter Keys.</p>
+  </div>
+
+  <div class="step-block">
+    <h3>Step 2 — Check Connection (External Keyboards)</h3>
+    <p>For USB keyboards:</p>
+    <ul>
+      <li>Unplug and replug the keyboard into a different USB port</li>
+      <li>Try a USB port on the back of your computer instead of the front</li>
+      <li>If using a USB hub, try connecting directly to the computer</li>
+    </ul>
+    <p>For Bluetooth keyboards:</p>
+    <ul>
+      <li>Go to Settings → Bluetooth → Remove the keyboard</li>
+      <li>Put your keyboard in pairing mode (check the manual)</li>
+      <li>Re-pair the keyboard</li>
+      <li>Make sure Bluetooth is enabled on your PC</li>
+    </ul>
+  </div>
+
+  <div class="step-block">
+    <h3>Step 3 — Reinstall Keyboard Driver</h3>
+    <p>Corrupted or outdated drivers can cause keyboard issues:</p>
+    <ul>
+      <li>Press <kbd>Win+X</kbd> → Device Manager</li>
+      <li>Expand "Keyboards" category</li>
+      <li>Right-click your keyboard (usually "Standard PS/2 Keyboard" or HID Keyboard Device)</li>
+      <li>Select "Uninstall device"</li>
+      <li>Restart your PC — Windows will automatically reinstall the correct driver</li>
+    </ul>
+  </div>
+
+  <div class="step-block">
+    <h3>Step 4 — Run Keyboard Troubleshooter</h3>
+    <p>Windows has a built-in troubleshooter:</p>
+    <ul>
+      <li>Go to Settings → System → Troubleshoot</li>
+      <li>Click "Other troubleshooters"</li>
+      <li>Find "Keyboard" and click "Run"</li>
+      <li>Follow the on-screen instructions</li>
+    </ul>
+  </div>
+
+  <div class="step-block">
+    <h3>Step 5 — Check for Windows Updates</h3>
+    <p>Sometimes keyboard issues are caused by bugs that get fixed in updates:</p>
+    <ul>
+      <li>Go to Settings → Windows Update</li>
+      <li>Click "Check for updates"</li>
+      <li>Install any available updates</li>
+      <li>Restart your computer if prompted</li>
+    </ul>
+  </div>
+
+  <div class="step-block">
+    <h3>Step 6 — Boot in Safe Mode</h3>
+    <p>If your keyboard works in Safe Mode but not normally, a third-party program is interfering:</p>
+    <ul>
+      <li>Boot into Safe Mode: Press <kbd>Win+I</kbd> during startup or use System Configuration (msconfig)</li>
+      <li>If keyboard works in Safe Mode, the issue is software</li>
+      <li>Disable startup programs via Task Manager → Startup tab</li>
+      <li>Try disabling recently installed software</li>
+    </ul>
+  </div>
+
+  <div class="step-block">
+    <h3>Step 7 — Check BIOS Settings</h3>
+    <p>Sometimes keyboard settings in BIOS get changed:</p>
+    <ul>
+      <li>Restart your computer and enter BIOS (press <kbd>F2</kbd>, <kbd>Delete</kbd>, or <kbd>F12</kbd> during boot)</li>
+      <li>Look for "USB Keyboard Support" or "PS/2 Keyboard Support" in settings</li>
+      <li>Ensure it's enabled</li>
+      <li>Exit and save changes</li>
+    </ul>
+  </div>
+
+  <div class="step-block">
+    <h3>Step 8 — Check for Hardware Issues</h3>
+    <p>Test if your keyboard works on another computer or if another keyboard works on your computer:</p>
+    <ul>
+      <li>Try your keyboard on another PC/laptop</li>
+      <li>If it works elsewhere, the issue is your computer's ports or software</li>
+      <li>If another keyboard works on your PC, your keyboard may be faulty</li>
+    </ul>
+  </div>
 
   <h2>Fixes for Mac</h2>
-  <div class="step-block"><h3>Step 1 — Check Slow Keys</h3><p>System Settings → Accessibility → Keyboard → Turn off Slow Keys. This setting makes the Mac wait before registering a keypress, appearing as broken.</p></div>
-  <div class="step-block"><h3>Step 2 — Reset NVRAM</h3><p>Shut down → hold <strong>Option+Command+P+R</strong> at startup for 20 seconds. NVRAM stores keyboard settings and resetting can fix layout issues.</p></div>
-  <div class="step-block"><h3>Step 3 — Delete Keyboard Preference File</h3><p>Go to ~/Library/Preferences → Delete <code>com.apple.keyboardtype.plist</code> → Restart. Mac will recreate the file with defaults.</p></div>
 
-    <!-- AdSense – in-article (auto-inserted) -->
-    <div style="margin: 32px 0; text-align: center;">
-      <!-- Ad space -->
-    </div>
+  <div class="step-block">
+    <h3>Step 1 — Check Slow Keys</h3>
+    <p>Mac's accessibility features can make keyboards appear broken:</p>
+    <ul>
+      <li>Go to System Settings → Accessibility → Keyboard</li>
+      <li>Turn OFF "Slow Keys"</li>
+      <li>Also check "Sticky Keys" and turn it OFF if enabled</li>
+    </ul>
+  </div>
 
+  <div class="step-block">
+    <h3>Step 2 — Reset NVRAM</h3>
+    <p>NVRAM stores keyboard-related settings. Resetting can fix persistent issues:</p>
+    <ul>
+      <li>Shut down your Mac</li>
+      <li>Press the power button, then immediately hold <kbd>Option + Command + P + R</kbd></li>
+      <li>Hold for about 20 seconds until you hear the startup sound twice</li>
+      <li>Let go and let your Mac boot normally</li>
+    </ul>
+  </div>
 
+  <div class="step-block">
+    <h3>Step 3 — Delete Keyboard Preference File</h3>
+    <p>Corrupted preferences can cause keyboard issues:</p>
+    <ul>
+      <li>Go to ~/Library/Preferences</li>
+      <li>Find and delete <code>com.apple.keyboardtype.plist</code></li>
+      <li>Restart your Mac — it will recreate the file with defaults</li>
+    </ul>
+  </div>
+
+  <div class="step-block">
+    <h3>Step 4 — Check Keyboard Language Settings</h3>
+    <p>Wrong keyboard layout can cause typing issues:</p>
+    <ul>
+      <li>Go to System Settings → Keyboard → Input Sources</li>
+      <li>Ensure only the keyboards you use are listed</li>
+      <li>Remove any unfamiliar keyboards</li>
+      <li>Make sure "Show Input menu in menu bar" is checked</li>
+    </ul>
+  </div>
+
+  <div class="step-block">
+    <h3>Step 5 — Reset SMC (for MacBooks)</h3>
+    <p>The System Management Controller handles keyboard power:</p>
+    <ul>
+      <li>Shut down your Mac</li>
+      <li>Press <kbd>Control + Option + Shift</kbd> + Power button</li>
+      <li>Hold for 10 seconds</li>
+      <li>Press Power again to turn on</li>
+    </ul>
+  </div>
+
+  <h2>Laptop-Specific Fixes</h2>
+
+  <div class="step-block">
+    <h3>Laptop Keyboard Not Working</h3>
+    <p>If your laptop's built-in keyboard isn't working:</p>
+    <ul>
+      <li><strong>Check Fn key lock</strong> — Some laptops have an Fn lock (usually Fn+Esc or a dedicated key)</li>
+      <li><strong>Try external keyboard</strong> — If external works, the laptop keyboard may be damaged</li>
+      <li><strong>Check function keys</strong> — Some keys work only with Fn held</li>
+      <li><strong>Update touchpad driver</strong> — Sometimes touchpad drivers affect keyboard</li>
+      <li><strong>Check for physical damage</strong> — Inspect for spills or damage</li>
+    </ul>
+  </div>
+
+  <div class="step-block">
+    <h3>Keyboard Backlight Not Working</h3>
+    <p>For laptops with backlit keyboards:</p>
+    <ul>
+      <li>Check function key combination (often Fn + F5/F6/F7 or a dedicated key)</li>
+      <li>Update keyboard/fn+ driver from manufacturer website</li>
+      <li>Check BIOS settings for keyboard backlight options</li>
+      <li>On Dell: Open Dell SupportAssist or BIOS</li>
+      <li>On HP: Open HP Support Assistant</li>
+      <li>On Lenovo: Use Vantage or ThinkPad Settings</li>
+    </ul>
+  </div>
+
+  <h2>Wireless Keyboard Fixes</h2>
+
+  <div class="step-block">
+    <h3>Wireless Keyboard Not Connecting</h3>
+    <p>For Bluetooth and RF wireless keyboards:</p>
+    <ul>
+      <li><strong>Check batteries</strong> — Replace with fresh batteries</li>
+      <li><strong>Check pairing</strong> — Re-pair the keyboard to your computer</li>
+      <li><strong>Check USB receiver</strong> — For RF keyboards, try a different USB port</li>
+      <li><strong>Check for interference</strong> — Move away from other wireless devices</li>
+      <li><strong>Check distance</strong> — Keep keyboard within 10 feet of the receiver</li>
+    </ul>
+  </div>
+
+  <h2>Specific Keyboard Problems</h2>
+
+  <div class="step-block">
+    <h3>Some Keys Not Working</h3>
+    <p>If only specific keys don't respond:</p>
+    <ul>
+      <li><strong>Clean under the keys</strong> — Use compressed air to blow out debris</li>
+      <li><strong>Check for liquid damage</strong> — If exposed to liquid, let dry 24-48 hours</li>
+      <li><strong>Test the keys</strong> — Use an online keyboard tester to identify which keys are dead</li>
+      <li><strong>Physical damage</strong> — Dropped keyboards often have broken key switches</li>
+    </ul>
+  </div>
+
+  <div class="step-block">
+    <h3>Keys Typing Wrong Characters</h3>
+    <p>If keys produce unexpected output:</p>
+    <ul>
+      <li><strong>Check language settings</strong> — Windows: Settings → Time & Language → Language → Language options</li>
+      <li><strong>Check keyboard layout</strong> — Make sure it's set to your region (US, UK, etc.)</li>
+      <li><strong>Switch keyboard</strong> — Press Win+Space (Windows) or Cmd+Space (Mac) to switch layouts</li>
+    </ul>
+  </div>
+
+  <div class="step-block">
+    <h3>Spacebar or Enter Not Working</h3>
+    <p>Common problem keys that get heavy use:</p>
+    <ul>
+      <li>Clean around these keys — they get more debris</li>
+      <li>Try cleaning with isopropyl alcohol on a cotton swab</li>
+      <li>Check if the keycap is loose or misaligned</li>
+      <li>If software fixes don't work, the key switch may need replacement</li>
+    </ul>
+  </div>
 
   <h2>Frequently Asked Questions</h2>
-  <div class="faq-item"><strong>Why is only part of my keyboard working?</strong><p>If only some keys work, clean under the non-functional keycaps with compressed air. Dirt and debris is a common cause. For liquid damage, let the keyboard dry completely (24-48 hours) before testing again.</p></div>
+  <div class="faq-item">
+    <strong>Why is only part of my keyboard working?</strong>
+    <p>If only some keys work, clean under the non-functional keycaps with compressed air. Dirt and debris is a common cause. For liquid damage, let the keyboard dry completely (24-48 hours) before testing again.</p>
+  </div>
 
-    </div>
+  <div class="faq-item">
+    <strong>Why does my laptop keyboard stop working when I plug in a USB keyboard?</strong>
+    <p>This is usually a driver conflict. Try plugging in the USB keyboard before your laptop boots, or update both keyboard drivers. Some laptops automatically disable the built-in keyboard when external input is detected.</p>
+  </div>
+
+  <div class="faq-item">
+    <strong>How do I type if my keyboard isn't working?</strong>
+    <p>Use the on-screen keyboard: Press <kbd>Win+Ctrl+O</kbd> (Windows) or click the Input menu in the menu bar → Show Keyboard Viewer (Mac). You can also use voice typing: Win+H (Windows) or Cmd+Shift+Space (Mac).</p>
+  </div>
+
+  <div class="faq-item">
+    <strong>Can a virus cause keyboard issues?</strong>
+    <p>Yes, some malware can interfere with input devices. Run a full antivirus scan to check for infections. If your keyboard works in Safe Mode but not normally, malware is likely the cause.</p>
+  </div>
+
+  <div class="faq-item">
+    <strong>Why do certain keys type numbers instead of letters?</strong>
+    <p>Num Lock is likely enabled. Press the Num Lock key to turn it off. On some laptops, you may need to press Fn+Num Lock.</p>
+  </div>
+
+  <div class="faq-item">
+    <strong>Should I replace my keyboard or buy a new computer?</strong>
+    <p>If the keyboard is built into your laptop and other fixes haven't worked, consider professional repair or an external keyboard. For desktop keyboards, they're usually replaceable. Weigh the cost of repair vs. replacement.</p>
+  </div>
+
+  </div>
     <div class="ad-banner" style="margin-top:40px">
-      <!-- Ad space -->
     </div>
 
       <footer>
@@ -276,7 +520,4 @@
       <p>© 2026 Knexio. All rights reserved.</p>
     </footer>
 <script src="/knexio-bundle.js"></script>
-  <script src="../../cookie-consent.js"></script>
-  <!-- 中间广告 -->
-  <div class="ad-banner"></div>
 </body>
