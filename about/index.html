@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>About Knexio - Free Online Tools & Games</title>
-  <meta name="description" content="Knexio provides free online tools, calculators, games, and guides. Our mission is to make useful utilities accessible to everyone." />
+  <title>About Knexio - Free Online Tools, Games & AI Utilities</title>
+  <meta name="description" content="Knexio provides free online tools, calculators, games, and guides. Our mission is to make useful digital utilities accessible to everyone." />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="canonical" href="https://knexio.xyz/about/" />
   <meta property="og:title" content="About Knexio" />
@@ -12,6 +12,27 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Knexio" />
   <meta property="og:image" content="https://knexio.xyz/og-image.svg" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Knexio",
+    "url": "https://knexio.xyz",
+    "logo": "https://knexio.xyz/logo.svg",
+    "email": "support@knexio.xyz",
+    "description": "Free online tools, calculators, games, and troubleshooting guides for everyone.",
+    "sameAs": [
+      "https://twitter.com/knexio",
+      "https://github.com/knexio"
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebPage","name":"About Knexio","url":"https://knexio.xyz/about/","publisher":{"@type":"Organization","name":"Knexio","url":"https://knexio.xyz"}}
+  </script>
+
   <style>
     :root {
       --bg-dark: #0b1220;
@@ -42,14 +63,15 @@
       font-size: 14px;
       margin-bottom: 30px;
     }
-    .back:hover { color: var(--accent); }
+    .back:hover { color: var(--accent); text-decoration: none; }
     h1 {
       font-size: 42px;
       font-weight: 700;
       margin-bottom: 20px;
+      line-height: 1.2;
     }
     h2 {
-      font-size: 28px;
+      font-size: 24px;
       font-weight: 600;
       margin: 40px 0 20px;
       color: var(--accent);
@@ -58,27 +80,46 @@
       color: var(--text-sub);
       margin-bottom: 20px;
       font-size: 16px;
+      line-height: 1.7;
     }
     ul {
       color: var(--text-sub);
       margin-left: 25px;
       margin-bottom: 20px;
     }
-    li { margin-bottom: 10px; }
+    li { margin-bottom: 10px; line-height: 1.6; }
+    .highlight-box {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      margin: 30px 0;
+    }
+    .highlight-box h3 {
+      font-size: 18px;
+      color: var(--text-main);
+      margin-bottom: 12px;
+    }
+    .highlight-box p {
+      margin-bottom: 0;
+      font-size: 15px;
+    }
     footer {
       margin-top: 60px;
       text-align: center;
       color: var(--text-sub);
       font-size: 14px;
+      padding-top: 30px;
+      border-top: 1px solid var(--border);
     }
     footer a { color: var(--accent); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+    @media (max-width: 768px) {
+      h1 { font-size: 32px; }
+      h2 { font-size: 20px; }
+      .container { padding: 40px 15px 80px; }
+    }
   </style>
-
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebPage","name":"Knexio","url":"https://knexio.xyz","publisher":{"@type":"Organization","name":"Knexio","url":"https://knexio.xyz"}}
-  </script>
-
-
 </head>
 <body>
   <div class="container">
@@ -86,31 +127,41 @@
     
     <h1>About Knexio</h1>
     
-
+    <p>Knexio is a free online platform offering useful tools, calculators, games, and troubleshooting guides. Our mission is to make everyday digital tasks easier and more accessible — no registration required, no data stored, just open and use.</p>
     
-    <p>Knexio is a free online platform providing useful tools, calculators, games, and guides for everyone. Our mission is to make everyday digital tasks easier and more accessible.</p>
+    <div class="highlight-box">
+      <h3>🎯 Our Mission</h3>
+      <p>We believe everyone deserves access to free, high-quality digital tools. Whether you need to count words, generate a QR code, play a quick game, or fix a tech problem — Knexio has you covered.</p>
+    </div>
     
     <h2>What We Offer</h2>
     <ul>
-      <li><strong>Online Tools:</strong> Word counters, calculators, converters, generators, and more</li>
-      <li><strong>AI Tools:</strong> Prompt generators, text analyzers, and AI-powered utilities</li>
-      <li><strong>Games:</strong> Classic arcade games, puzzles, and brain teasers</li>
-      <li><strong>Guides:</strong> Step-by-step tutorials for common tech problems</li>
-      <li><strong>Business Tools:</strong> Document generators, calculators, and templates</li>
-      <li><strong>Finance Calculators:</strong> Loan calculators, investment tools, and budgeting aids</li>
+      <li><strong>💻 Online Tools:</strong> Word counters, calculators, converters, code formatters, generators, and more</li>
+      <li><strong>🤖 AI Tools:</strong> Prompt generators, text analyzers, and AI-powered utilities for content creators</li>
+      <li><strong>🎮 Games:</strong> Classic arcade games, puzzles, brain teasers, and casual games</li>
+      <li><strong>📖 Guides:</strong> Step-by-step tutorials for fixing common tech problems</li>
+      <li><strong>💼 Business Tools:</strong> Invoice generators, loan calculators, and productivity utilities</li>
+      <li><strong>📊 Finance Calculators:</strong> Loan calculators, compound interest tools, and budgeting aids</li>
     </ul>
     
-    <h2>Our Values</h2>
+    <h2>Why Choose Knexio?</h2>
     <ul>
-      <li><strong>Free Forever:</strong> All tools are completely free to use</li>
-      <li><strong>No Registration:</strong> Use any tool without signing up</li>
-      <li><strong>Privacy First:</strong> We don't store your data</li>
-      <li><strong>User Friendly:</strong> Clean, intuitive interfaces</li>
+      <li><strong>✅ 100% Free:</strong> All tools are completely free to use</li>
+      <li><strong>🔒 Privacy First:</strong> We don't store your data. All processing happens in your browser</li>
+      <li><strong>📱 No Sign-Up:</strong> Use any tool instantly without creating an account</li>
+      <li><strong>⚡ Fast & Light:</strong> No bloatware, no ads in the tools themselves</li>
+      <li><strong>🌐 Works Everywhere:</strong> Fully responsive design for desktop, tablet, and mobile</li>
     </ul>
+    
+    <h2>Who Runs Knexio?</h2>
+    <p>Knexio is an independent project run by a small team of developers and designers passionate about creating useful free utilities. We operate entirely online and are committed to keeping Knexio free and accessible.</p>
+    
+    <p>If you have questions, feedback, or suggestions for new tools, we'd love to hear from you!</p>
     
     <h2>Contact Us</h2>
-    <p>Have questions, suggestions, or feedback? We'd love to hear from you!</p>
-    <p>Email: <a href="mailto:support@knexio.xyz" style="color: var(--accent);">support@knexio.xyz</a></p>
+    <p>Have questions or suggestions? Reach us at:</p>
+    <p>📧 <strong>Email:</strong> <a href="mailto:support@knexio.xyz" style="color: var(--accent);">support@knexio.xyz</a></p>
+    <p>🌐 <strong>Website:</strong> <a href="https://knexio.xyz" style="color: var(--accent);">knexio.xyz</a></p>
     
     <footer>
       <p>© 2026 Knexio. All rights reserved.</p>
