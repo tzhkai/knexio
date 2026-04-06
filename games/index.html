@@ -13,7 +13,624 @@
   <meta property="og:site_name" content="Knexio" />
   <meta property="og:image" content="https://knexio.xyz/og-image.svg" />
 
-  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Knexio Free Browser Games",
+    "url": "https://knexio.xyz/games/",
+    "description": "A collection of 50+ free browser-based games. No download, no login required.",
+    "publisher": { "@type": "Organization", "name": "Knexio", "url": "https://knexio.xyz" }
+  }
+  </script>
+<style>
+
+    :root {
+      --bg-dark: #0b1220;
+      --bg-dark-2: #070d1a;
+      --panel: #111a2e;
+      --border: rgba(255,255,255,0.08);
+      --text-main: #ffffff;
+      --text-sub: #aab3c5;
+      --accent: #4f8cff;
+      --orange: #f97316;
+      --green: #22c55e;
+      --purple: #a78bfa;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
+      background: linear-gradient(180deg, var(--bg-dark), var(--bg-dark-2));
+      color: var(--text-main);
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 70px 20px 100px;
+    }
+
+    .back {
+      display: inline-block;
+      margin-bottom: 28px;
+      font-size: 14px;
+      color: var(--text-sub);
+    }
+    .back:hover { color: var(--accent); }
+
+    h1 { font-size: 38px; margin-bottom: 12px; }
+
+    .subtitle {
+      font-size: 17px;
+      color: var(--text-sub);
+      max-width: 820px;
+      line-height: 1.6;
+      margin-bottom: 50px;
+    }
+
+    .ad-banner {
+      margin: 0 0 50px;
+      text-align: center;
+      min-height: 90px;
+    }
+
+    .ad-mid {
+      margin: 60px 0 50px;
+      text-align: center;
+      min-height: 90px;
+    }
+
+    .section-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+      margin-top: 50px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 20px 22px 22px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      min-height: 160px;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 40px rgba(0,0,0,0.35);
+    }
+
+    .card-icon { font-size: 22px; margin-bottom: 6px; line-height: 1; }
+
+    .card .tag {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      border-radius: 6px;
+      padding: 2px 8px;
+      margin-bottom: 6px;
+    }
+
+    .tag-puzzle  { color: var(--accent); background: rgba(79,140,255,0.12); }
+    .tag-reflex  { color: var(--orange); background: rgba(249,115,22,0.12); }
+    .tag-word    { color: var(--green);  background: rgba(34,197,94,0.12); }
+    .tag-memory  { color: var(--purple); background: rgba(167,139,250,0.12); }
+    .tag-board   { color: #00d4aa;       background: rgba(0,212,170,0.12); }
+    .tag-classic { color: #f87171;       background: rgba(248,113,113,0.12); }
+
+    .card h2 {
+      font-size: 16px;
+      margin: 0 0 6px;
+      line-height: 1.35;
+    }
+
+    .card p {
+      font-size: 12.5px;
+      color: var(--text-sub);
+      line-height: 1.5;
+      margin-bottom: 14px;
+      flex: 1;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .card .btn {
+      display: inline-block;
+      padding: 8px 18px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 500;
+      transition: opacity 0.15s;
+      align-self: flex-start;
+    }
+
+    .card .btn:hover { opacity: 0.85; }
+    .card .btn.orange { background: var(--orange); }
+    .card .btn.green  { background: var(--green); }
+    .card .btn.purple { background: var(--purple); }
+
+    .seo-section {
+      margin-top: 80px;
+      max-width: 860px;
+    }
+
+    .seo-section h2 { font-size: 26px; margin-bottom: 14px; }
+
+    .seo-section p {
+      font-size: 15px;
+      color: var(--text-sub);
+      line-height: 1.8;
+    }
+
+    footer {
+      margin-top: 100px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-sub);
+      border-top: 1px solid var(--border);
+      padding-top: 30px;
+    }
+
+    footer a { color: var(--accent); }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 28px; }
+      .grid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+      .card { padding: 16px 14px 18px; min-height: 140px; }
+    }
+
+    @media (max-width: 480px) {
+      h1 { font-size: 24px; }
+      .grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    }
+
+</style>
+</head>
+
+<body>
+  <div class="container">
+    <a class="back" href="../index.html">← Back to Home</a>
+
+    <h1>Free Browser Games</h1>
+    <p class="subtitle">Play 50+ free games directly in your browser. No download, no login, no install — just click and play.</p>
+
+    <div class="ad-banner">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="5794572171" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+    <!-- Puzzle & Strategy -->
+    <div class="section-label">Puzzle & Strategy</div>
+  <div style="margin-bottom:24px;display:flex;gap:12px;max-width:400px">
+  <input type="text" id="searchgames" placeholder="Search games..."
+    style="flex:1;padding:10px 14px;background:var(--card);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:14px">
+  <button onclick="doSearch()" style="padding:10px 20px;background:var(--accent);color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:600">Search</button>
+</div>
+
+<div class="grid">
+      <a class="card" href="2048/">
+        <div class="card-icon">🔢</div>
+        <span class="tag tag-puzzle">Puzzle</span>
+        <h2>2048</h2>
+        <p>Slide tiles and combine numbers to reach 2048.</p>
+        <span class="btn">Play</span>
+      </a>
+      <a class="card" href="sudoku/">
+        <div class="card-icon">🧩</div>
+        <span class="tag tag-puzzle">Puzzle</span>
+        <h2>Sudoku</h2>
+        <p>Classic number puzzle with multiple difficulty levels.</p>
+        <span class="btn">Play</span>
+      </a>
+      <a class="card" href="minesweeper/">
+        <div class="card-icon">💣</div>
+        <span class="tag tag-puzzle">Puzzle</span>
+        <h2>Minesweeper</h2>
+        <p>Classic mine-sweeping puzzle game.</p>
+        <span class="btn">Play</span>
+      </a>
+      <a class="card" href="sliding-puzzle/">
+        <div class="card-icon">🔀</div>
+        <span class="tag tag-puzzle">Puzzle</span>
+        <h2>Sliding Puzzle</h2>
+        <p>Rearrange tiles to complete the picture.</p>
+        <span class="btn">Play</span>
+      </a>
+      <a class="card" href="tower-of-hanoi/">
+        <div class="card-icon">🗼</div>
+        <span class="tag tag-puzzle">Puzzle</span>
+        <h2>Tower of Hanoi</h2>
+        <p>Move disks to solve the classic logic puzzle.</p>
+        <span class="btn">Play</span>
+      </a>
+      <a class="card" href="number-puzzle/">
+        <div class="card-icon">🔣</div>
+        <span class="tag tag-puzzle">Puzzle</span>
+        <h2>Number Puzzle</h2>
+        <p>Solve number-based logic puzzles.</p>
+        <span class="btn">Play</span>
+      </a>
+      <a class="card" href="maze-runner/">
+        <div class="card-icon">🌀</div>
+        <span class="tag tag-puzzle">Puzzle</span>
+        <h2>Maze Runner</h2>
+        <p>Navigate through increasingly complex mazes.</p>
+        <span class="btn">Play</span>
+      </a>
+      <a class="card" href="color-flood/">
+        <div class="card-icon">🎨</div>
+        <span class="tag tag-puzzle">Puzzle</span>
+        <h2>Color Flood</h2>
+        <p>Flood the board with one color in limited moves.</p>
+        <span class="btn">Play</span>
+      </a>
+    </div>
+
+    <!-- Board & Classic -->
+    <div class="section-label">Board & Classic</div>
+    <div class="grid">
+      <a class="card" href="chess/">
+        <div class="card-icon">♟️</div>
+        <span class="tag tag-board">Board</span>
+        <h2>Chess</h2>
+        <p>Play chess against the computer at various difficulty levels.</p>
+        <span class="btn" style="background:#00d4aa">Play</span>
+      </a>
+      <a class="card" href="checkers/">
+        <div class="card-icon">🔴</div>
+        <span class="tag tag-board">Board</span>
+        <h2>Checkers</h2>
+        <p>Classic draughts game against the computer.</p>
+        <span class="btn" style="background:#00d4aa">Play</span>
+      </a>
+      <a class="card" href="gomoku/">
+        <div class="card-icon">⚫</div>
+        <span class="tag tag-board">Board</span>
+        <h2>Gomoku</h2>
+        <p>Five in a row — get five stones in a line to win.</p>
+        <span class="btn" style="background:#00d4aa">Play</span>
+      </a>
+      <a class="card" href="connect-four/">
+        <div class="card-icon">🟡</div>
+        <span class="tag tag-board">Board</span>
+        <h2>Connect Four</h2>
+        <p>Drop discs to connect four in a row before your opponent.</p>
+        <span class="btn" style="background:#00d4aa">Play</span>
+      </a>
+      <a class="card" href="tic-tac-toe/">
+        <div class="card-icon">❌</div>
+        <span class="tag tag-board">Board</span>
+        <h2>Tic-Tac-Toe</h2>
+        <p>Classic X and O game against the computer.</p>
+        <span class="btn" style="background:#00d4aa">Play</span>
+      </a>
+      <a class="card" href="solitaire/">
+        <div class="card-icon">🃏</div>
+        <span class="tag tag-board">Board</span>
+        <h2>Solitaire</h2>
+        <p>Classic Klondike solitaire card game.</p>
+        <span class="btn" style="background:#00d4aa">Play</span>
+      </a>
+    </div>
+
+    <div class="ad-mid">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+    <!-- Action & Reflex -->
+    <div class="section-label">Action & Reflex</div>
+    <div class="grid">
+      <a class="card" href="snake/">
+        <div class="card-icon">🐍</div>
+        <span class="tag tag-reflex">Action</span>
+        <h2>Snake</h2>
+        <p>Classic snake game — eat food and grow without hitting walls.</p>
+        <span class="btn orange">Play</span>
+      </a>
+      <a class="card" href="tetris/">
+        <div class="card-icon">🟦</div>
+        <span class="tag tag-reflex">Action</span>
+        <h2>Tetris</h2>
+        <p>Stack falling blocks and clear lines in this timeless classic.</p>
+        <span class="btn orange">Play</span>
+      </a>
+      <a class="card" href="flappy-bird/">
+        <div class="card-icon">🐦</div>
+        <span class="tag tag-reflex">Action</span>
+        <h2>Flappy Bird</h2>
+        <p>Tap to fly through pipes without crashing.</p>
+        <span class="btn orange">Play</span>
+      </a>
+      <a class="card" href="breakout/">
+        <div class="card-icon">🧱</div>
+        <span class="tag tag-reflex">Action</span>
+        <h2>Breakout</h2>
+        <p>Bounce the ball to break all the bricks.</p>
+        <span class="btn orange">Play</span>
+      </a>
+      <a class="card" href="whack-a-mole/">
+        <div class="card-icon">🔨</div>
+        <span class="tag tag-reflex">Reflex</span>
+        <h2>Whack-a-Mole</h2>
+        <p>Hit the moles as fast as you can before they disappear.</p>
+        <span class="btn orange">Play</span>
+      </a>
+      <a class="card" href="reaction-speed/">
+        <div class="card-icon">⚡</div>
+        <span class="tag tag-reflex">Reflex</span>
+        <h2>Reaction Speed Test</h2>
+        <p>Test your reaction time and compare with others.</p>
+        <span class="btn orange">Play</span>
+      </a>
+      <a class="card" href="space-shooter/">
+        <div class="card-icon">🚀</div>
+        <span class="tag tag-reflex">Action</span>
+        <h2>Space Shooter</h2>
+        <p>Shoot down waves of enemies in space.</p>
+        <span class="btn orange">Play</span>
+      </a>
+      <a class="card" href="asteroids/">
+        <div class="card-icon">☄️</div>
+        <span class="tag tag-reflex">Action</span>
+        <h2>Asteroids</h2>
+        <p>Destroy asteroids and survive as long as possible.</p>
+        <span class="btn orange">Play</span>
+      </a>
+      <a class="card" href="frogger/">
+        <div class="card-icon">🐸</div>
+        <span class="tag tag-reflex">Action</span>
+        <h2>Frogger</h2>
+        <p>Guide the frog across traffic and rivers safely.</p>
+        <span class="btn orange">Play</span>
+      </a>
+      <a class="card" href="traffic-racer/">
+        <div class="card-icon">🚗</div>
+        <span class="tag tag-reflex">Action</span>
+        <h2>Traffic Racer</h2>
+        <p>Dodge traffic and race as far as you can.</p>
+        <span class="btn orange">Play</span>
+      </a>
+      <a class="card" href="ping-pong/">
+        <div class="card-icon">🏓</div>
+        <span class="tag tag-reflex">Action</span>
+        <h2>Ping Pong</h2>
+        <p>Classic table tennis game against the computer.</p>
+        <span class="btn orange">Play</span>
+      </a>
+      <a class="card" href="balloon-pop/">
+        <div class="card-icon">🎈</div>
+        <span class="tag tag-reflex">Reflex</span>
+        <h2>Balloon Pop</h2>
+        <p>Pop balloons as fast as possible before time runs out.</p>
+        <span class="btn orange">Play</span>
+      </a>
+      <a class="card" href="bubble-shooter/">
+        <div class="card-icon">🫧</div>
+        <span class="tag tag-reflex">Action</span>
+        <h2>Bubble Shooter</h2>
+        <p>Shoot bubbles to match colors and clear the board.</p>
+        <span class="btn orange">Play</span>
+      </a>
+      <a class="card" href="doodle-jump/">
+        <div class="card-icon">🦘</div>
+        <span class="tag tag-reflex">Action</span>
+        <h2>Doodle Jump</h2>
+        <p>Jump on platforms and climb as high as possible.</p>
+        <span class="btn orange">Play</span>
+      </a>
+      <a class="card" href="flappy-plane/">
+        <div class="card-icon">✈️</div>
+        <span class="tag tag-reflex">Action</span>
+        <h2>Flappy Plane</h2>
+        <p>Fly a plane through obstacles without crashing.</p>
+        <span class="btn orange">Play</span>
+      </a>
+      <a class="card" href="jump-block/">
+        <div class="card-icon">🟩</div>
+        <span class="tag tag-reflex">Action</span>
+        <h2>Jump Block</h2>
+        <p>Jump over obstacles and survive as long as possible.</p>
+        <span class="btn orange">Play</span>
+      </a>
+      <a class="card" href="stack-tower/">
+        <div class="card-icon">🏗️</div>
+        <span class="tag tag-reflex">Action</span>
+        <h2>Stack Tower</h2>
+        <p>Stack blocks perfectly to build the tallest tower.</p>
+        <span class="btn orange">Play</span>
+      </a>
+      <a class="card" href="falling-blocks/">
+        <div class="card-icon">🟫</div>
+        <span class="tag tag-reflex">Action</span>
+        <h2>Falling Blocks</h2>
+        <p>Catch falling blocks and keep the stack balanced.</p>
+        <span class="btn orange">Play</span>
+      </a>
+      <a class="card" href="idle-clicker/">
+        <div class="card-icon">👆</div>
+        <span class="tag tag-reflex">Clicker</span>
+        <h2>Idle Clicker</h2>
+        <p>Click to earn points and unlock upgrades.</p>
+        <span class="btn orange">Play</span>
+      </a>
+      <a class="card" href="color-switch/">
+        <div class="card-icon">🌈</div>
+        <span class="tag tag-reflex">Reflex</span>
+        <h2>Color Switch</h2>
+        <p>Pass through matching color sections to survive.</p>
+        <span class="btn orange">Play</span>
+      </a>
+      <a class="card" href="color-match/">
+        <div class="card-icon">🎯</div>
+        <span class="tag tag-reflex">Reflex</span>
+        <h2>Color Match</h2>
+        <p>Match colors quickly before the timer runs out.</p>
+        <span class="btn orange">Play</span>
+      </a>
+    </div>
+
+    <!-- Word & Trivia -->
+    <div class="section-label">Word & Trivia</div>
+    <div class="grid">
+      <a class="card" href="wordle/">
+        <div class="card-icon">🟩</div>
+        <span class="tag tag-word">Word</span>
+        <h2>Wordle</h2>
+        <p>Guess the 5-letter word in 6 tries.</p>
+        <span class="btn green">Play</span>
+      </a>
+      <a class="card" href="word-guess/">
+        <div class="card-icon">💬</div>
+        <span class="tag tag-word">Word</span>
+        <h2>Word Guess</h2>
+        <p>Guess the hidden word letter by letter.</p>
+        <span class="btn green">Play</span>
+      </a>
+      <a class="card" href="hangman/">
+        <div class="card-icon">🪢</div>
+        <span class="tag tag-word">Word</span>
+        <h2>Hangman</h2>
+        <p>Guess the word before the hangman is complete.</p>
+        <span class="btn green">Play</span>
+      </a>
+      <a class="card" href="word-scramble/">
+        <div class="card-icon">🔤</div>
+        <span class="tag tag-word">Word</span>
+        <h2>Word Scramble</h2>
+        <p>Unscramble the letters to find the hidden word.</p>
+        <span class="btn green">Play</span>
+      </a>
+      <a class="card" href="word-search/">
+        <div class="card-icon">🔍</div>
+        <span class="tag tag-word">Word</span>
+        <h2>Word Search</h2>
+        <p>Find hidden words in a grid of letters.</p>
+        <span class="btn green">Play</span>
+      </a>
+      <a class="card" href="mini-crossword/">
+        <div class="card-icon">📰</div>
+        <span class="tag tag-word">Word</span>
+        <h2>Mini Crossword</h2>
+        <p>Solve a quick crossword puzzle.</p>
+        <span class="btn green">Play</span>
+      </a>
+      <a class="card" href="typing-speed/">
+        <div class="card-icon">⌨️</div>
+        <span class="tag tag-word">Typing</span>
+        <h2>Typing Speed Test</h2>
+        <p>Test your typing speed and accuracy in WPM.</p>
+        <span class="btn green">Play</span>
+      </a>
+      <a class="card" href="trivia-quiz/">
+        <div class="card-icon">❓</div>
+        <span class="tag tag-word">Trivia</span>
+        <h2>Trivia Quiz</h2>
+        <p>Test your knowledge across multiple categories.</p>
+        <span class="btn green">Play</span>
+      </a>
+    </div>
+
+    <!-- Memory & Math -->
+    <div class="section-label">Memory & Math</div>
+    <div class="grid">
+      <a class="card" href="memory-match/">
+        <div class="card-icon">🃏</div>
+        <span class="tag tag-memory">Memory</span>
+        <h2>Memory Match</h2>
+        <p>Flip cards and match pairs to clear the board.</p>
+        <span class="btn purple">Play</span>
+      </a>
+      <a class="card" href="memory-test/">
+        <div class="card-icon">🧠</div>
+        <span class="tag tag-memory">Memory</span>
+        <h2>Memory Test</h2>
+        <p>Test and train your short-term memory.</p>
+        <span class="btn purple">Play</span>
+      </a>
+      <a class="card" href="simon-says/">
+        <div class="card-icon">🔵</div>
+        <span class="tag tag-memory">Memory</span>
+        <h2>Simon Says</h2>
+        <p>Repeat the color sequence — how long can you go?</p>
+        <span class="btn purple">Play</span>
+      </a>
+      <a class="card" href="math-quiz/">
+        <div class="card-icon">➕</div>
+        <span class="tag tag-memory">Math</span>
+        <h2>Math Quiz</h2>
+        <p>Solve math problems as fast as you can.</p>
+        <span class="btn purple">Play</span>
+      </a>
+      <a class="card" href="math-challenge/">
+        <div class="card-icon">🔢</div>
+        <span class="tag tag-memory">Math</span>
+        <h2>Math Challenge</h2>
+        <p>Race against the clock to solve math equations.</p>
+        <span class="btn purple">Play</span>
+      </a>
+      <a class="card" href="puzzle-slide/">
+        <div class="card-icon">🧩</div>
+        <span class="tag tag-memory">Puzzle</span>
+        <h2>Puzzle Slide</h2>
+        <p>Slide pieces into the correct positions.</p>
+        <span class="btn purple">Play</span>
+      </a>
+      <a class="card" href="rock-paper-scissors/">
+        <div class="card-icon">✊</div>
+        <span class="tag tag-memory">Classic</span>
+        <h2>Rock Paper Scissors</h2>
+        <p>Classic hand game against the computer.</p>
+        <span class="btn purple">Play</span>
+      </a>
+      <a class="card" href="dice-roller/">
+        <div class="card-icon">🎲</div>
+        <span class="tag tag-memory">Classic</span>
+        <h2>Dice Roller</h2>
+        <p>Roll virtual dice for games and decisions.</p>
+        <span class="btn purple">Play</span>
+      </a>
+    </div>
+
+    <div class="seo-section">
+      <h2>About Knexio Games</h2>
+      <p>Knexio offers a growing collection of free browser games — no downloads, no accounts, no ads blocking your gameplay. From classic puzzles like Sudoku and 2048 to action games like Snake and Tetris, there's something for everyone. All games run directly in your browser on desktop and mobile.</p>
+    </div>
+
+    <footer>
+      <p>Free online games to play anytime. Enjoy classic games, puzzles, and entertainment.</p>
+            <p style="margin: 8px 0; font-size: 13px;">
+        <a href="/about/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">About</a>
+        <a href="/privacy/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Privacy</a>
+        <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
+        <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
+      </p>
+      <p>© 2026 Knexio. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script src="/knexio-bundle.js"></script>
 
 
 <script>
@@ -41,11 +658,5 @@ document.getElementById("searchgames").addEventListener("keyup", function(e) {
   if (e.key === "Enter") doSearch();
 });
 </script>
-<div class="ad-banner"></div>
-
-<footer>
-  <p>© 2026 Knexio · <a href="/about/">About</a> · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a></p>
-</footer>
-  <script src="/knexio-bundle.js"></script>
 </body>
 </html>
