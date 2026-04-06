@@ -12,6 +12,17 @@
   <meta property="og:type" content="Game" />
   <meta property="og:site_name" content="Knexio" />
   <meta property="og:image" content="https://knexio.xyz/og-image.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Color Flood",
+    "description": "Fill the entire board with one color. Start from the top-left, pick a color to expand your region. Fewest moves wins.",
+    "url": "https://knexio.xyz/games/color-flood/",
+    "publisher": { "@type": "Organization", "name": "Knexio" }
+  }
+  </script>
 <style>
     :root{--bg:#0b1220;--bg2:#070d1a;--panel:#111a2e;--border:rgba(255,255,255,0.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff;--text-main:#fff;--text-sub:#aab3c5}
     *{box-sizing:border-box;margin:0;padding:0}
@@ -21,7 +32,7 @@
     .back{display:inline-block;margin-bottom:20px;color:var(--sub);font-size:14px;float:left}
     h1{font-size:28px;margin-bottom:6px;clear:both}
     .subtitle{color:var(--sub);font-size:14px;margin-bottom:16px}
-    .ad-slot{margin:14px 0;text-align:center}
+    .ad-slot{margin:24px 0;text-align:center;min-height:90px}
     .diff-row{display:flex;gap:8px;justify-content:center;margin-bottom:14px}
     .diff-btn{padding:6px 16px;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--sub);font-size:13px;cursor:pointer;transition:.15s}
     .diff-btn.active,.diff-btn:hover{border-color:var(--accent);color:var(--accent)}
