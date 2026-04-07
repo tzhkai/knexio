@@ -12,17 +12,6 @@
   <meta property="og:type" content="Game" />
   <meta property="og:site_name" content="Knexio" />
   <meta property="og:image" content="https://knexio.xyz/og-image.png" />
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Flappy Bird",
-    "description": "Play Flappy Bird free online. Tap or press Space to flap and avoid the pipes. Classic arcade game in your browser.",
-    "url": "https://knexio.xyz/games/flappy-bird/",
-    "publisher": { "@type": "Organization", "name": "Knexio" }
-  }
-  </script>
 <style>
     :root{--bg:#0b1220;--bg2:#070d1a;--panel:#111a2e;--border:rgba(255,255,255,0.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff;--green:#22c55e;;--text-main:#fff;--text-sub:#aab3c5}
     *{box-sizing:border-box;margin:0;padding:0;}
@@ -34,7 +23,7 @@
     h1{font-size:28px;margin-bottom:4px;text-align:center;}
     .subtitle{font-size:14px;color:var(--sub);margin-bottom:20px;text-align:center;}
 
-    .ad-banner{margin:24px 0;text-align:center;min-height:90px}
+    .ad-banner{margin-bottom:22px;text-align:center;min-height:90px;background:rgba(255,255,255,0.02);border:1px dashed rgba(255,255,255,0.08);border-radius:8px;display:flex;align-items:center;justify-content:center;}
 
     .hud{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;padding:0 4px;}
     .hud-stat{text-align:center;}
@@ -48,8 +37,8 @@
     .btn-primary{background:var(--accent);color:#fff;}
     .btn-secondary{background:var(--panel);border:1px solid var(--border);color:var(--sub);}
 
-    .ad-mid{margin:24px 0;text-align:center;min-height:90px}
-    footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;font-size:13px;color:var(--sub);border-top:1px solid var(--border);}
+    .ad-mid{margin:22px 0;text-align:center;min-height:90px;background:rgba(255,255,255,0.02);border:1px dashed rgba(255,255,255,0.08);border-radius:8px;display:flex;align-items:center;justify-content:center;}
+    footer{margin-top:60px;text-align:center;font-size:13px;color:var(--sub);border-top:1px solid var(--border);}
     footer a{color:var(--sub);margin:0 8px;}footer a:hover{color:var(--accent);}
   
     /* ==================== 移动端优化 ==================== */
@@ -222,7 +211,430 @@
     }
     }
     </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoGame",
+  "name": "Flappy Bird",
+  "url": "https://knexio.xyz/games/flappy-bird/",
+  "description": "Tap or press Space to flap · avoid the pipes · beat your high score",
+  "genre": "Game",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+</head>
+<body><div class="wrap">
+  <a class="back" href="../index.html">← Back to Games</a>
+  <h1>Flappy Bird</h1>
+  <p class="subtitle">Tap or press Space to flap · avoid the pipes · beat your high score</p>
+
+  <!-- Ad Slot 1: Top -->
+
+  <div class="hud">
+    <div class="hud-stat"><div class="hud-val" id="scoreVal">0</div><div class="hud-lbl">Score</div></div>
+    <div class="hud-stat"><div class="hud-val" id="bestVal">0</div><div class="hud-lbl">Best</div></div>
+  </div>
+
+  <canvas id="canvas" width="380" height="500"></canvas>
+
+  <div class="controls">
+    <button class="btn btn-primary" onclick="restartGame()">Restart</button>
+
+  </div>
+
+  <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="5794572171" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+<!-- ==================== 游戏玩法说明 - SEO优化内容 ==================== -->
+<div class="gameplay-section" style="margin: 60px auto 0; max-width: 800px; padding: 32px 24px; background: var(--panel); border-radius: 18px; border: 1px solid var(--border); text-align: left;">
+    <h2 style="font-size: 28px; margin-bottom: 30px; color: var(--text-main); display: flex; align-items: center;">
+        <span style="background: var(--accent); color: white; width: 36px; height: 36px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 15px; font-size: 18px;">🎮</span>
+        How to Play Flappy Bird
+    </h2>
+
+    <div style="margin-bottom: 30px;">
+        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--text-main);">Game Description</h3>
+        <p style="font-size: 15px; color: var(--text-sub); line-height: 1.7; margin-bottom: 20px;">
+            Flappy Bird is an addictive arcade game where you control a bird flying through pipes. Tap to make the bird flap and navigate through gaps between pipes without hitting them.
+        </p>
+    </div>
+
+    <div style="margin-bottom: 30px;">
+        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--text-main);">Basic Rules & Controls</h3>
+        <ol style="font-size: 15px; color: var(--text-sub); line-height: 1.7; padding-left: 25px; margin-bottom: 20px;">
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">Click/tap anywhere on the screen to make the bird flap upward</strong>
+            </li>
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">Each tap gives the bird a small upward boost</strong>
+            </li>
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">Release to let gravity pull the bird downward</strong>
+            </li>
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">Navigate through the gaps between pipes</strong>
+            </li>
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">Each pipe passed gives you 1 point</strong>
+            </li>
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">The game ends if the bird hits a pipe or the ground</strong>
+            </li>
+
+        </ol>
+    </div>
+
+    <div style="margin-bottom: 30px;">
+        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--text-main);">Pro Tips & Strategies</h3>
+        <ul style="font-size: 15px; color: var(--text-sub); line-height: 1.7; padding-left: 25px; margin-bottom: 20px;">
+
+            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;">
+                <span style="position: absolute; left: -15px; color: var(--accent);">✓</span>
+                Tap lightly and rhythmically rather than frantically
+            </li>
+
+            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;">
+                <span style="position: absolute; left: -15px; color: var(--accent);">✓</span>
+                Try to maintain a consistent altitude
+            </li>
+
+            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;">
+                <span style="position: absolute; left: -15px; color: var(--accent);">✓</span>
+                Time your flaps to pass through the center of pipe gaps
+            </li>
+
+            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;">
+                <span style="position: absolute; left: -15px; color: var(--accent);">✓</span>
+                Stay calm - panicking leads to over-tapping
+            </li>
+
+            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;">
+                <span style="position: absolute; left: -15px; color: var(--accent);">✓</span>
+                Practice consistency over speed
+            </li>
+
+        </ul>
+    </div>
+
+    <div style="background: rgba(79, 140, 255, 0.1); padding: 20px; border-radius: 12px; border-left: 4px solid var(--accent);">
+        <p style="font-size: 15px; color: var(--text-sub); margin: 0;">
+            <strong style="color: var(--accent);">💡 Quick Start:</strong> Just click/tap to begin! No registration required. 
+            All Knexio games work directly in your browser with no downloads needed.
+        </p>
+    </div>
 </div>
+
+<!-- ==================== 广告位优化 ==================== -->
+<div class="ad-section" style="margin-top: 40px; text-align: center;">
+    <ins class="adsbygoogle" 
+         style="display:block; background: var(--panel); border-radius: 12px; padding: 15px;"
+         data-ad-client="ca-pub-2596567349043393" 
+         data-ad-slot="9504968504" 
+         data-ad-format="auto" 
+         data-full-width-responsive="true">
+    </ins>
+    <p style="font-size: 12px; color: var(--text-sub); margin-top: 8px; opacity: 0.7;">
+        Advertisement supports free games development
+    </p>
+</div>
+
+<!-- ==================== 游戏常见问题 (FAQ) ==================== -->
+<div class="faq-section" style="margin: 60px auto 0; max-width: 800px; padding: 32px 24px; background: var(--panel); border-radius: 18px; text-align: left;">
+    <h2 style="font-size: 28px; margin-bottom: 30px; color: var(--text-main);">Frequently Asked Questions</h2>
+
+    <div class="faq-list">
+        <div class="faq-item" style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid var(--border);">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                Is this game free to play?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                Yes, all games on Knexio are completely free to play. There are no hidden charges, subscription fees, or in-app purchases. We support our games through non-intrusive advertisements.
+            </p>
+        </div>
+
+        <div class="faq-item" style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid var(--border);">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                Do I need to download anything to play?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                No downloads required! All our games run directly in your web browser. They work on desktop computers, laptops, tablets, and smartphones. Just visit the page and start playing.
+            </p>
+        </div>
+
+        <div class="faq-item" style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid var(--border);">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                How do I save my game progress?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                Most games automatically save your high scores and progress in your browser's local storage. Your best scores will be remembered even if you close the browser, as long as you don't clear your browsing data.
+            </p>
+        </div>
+
+        <div class="faq-item" style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid var(--border);">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                Can I play on mobile devices?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                Absolutely! All Knexio games are fully responsive and optimized for mobile devices. Touch controls are implemented for games that require precise input. The interface automatically adapts to your screen size.
+            </p>
+        </div>
+
+        <div class="faq-item" style="margin-bottom: 25px;">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                Is there sound in the games?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                Most games include optional sound effects. Look for a sound/mute button in the game interface. You can enable or disable sound based on your preference. We keep sound subtle and non-intrusive.
+            </p>
+        </div>
+    </div>
+</div>
+
+
+<script>
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+const W = canvas.width, H = canvas.height;
+
+let bird, pipes, score, best, state, frame, raf;
+
+// Sky gradient colors
+const SKY_TOP = '#1a3a6b';
+const SKY_BTN = '#0b1220';
+
+function Bird() {
+  this.x = 90;
+  this.y = H / 2;
+  this.vy = 0;
+  this.r = 16;
+  this.flap = () => { this.vy = -7.5; };
+  this.update = () => {
+    this.vy += 0.42;
+    this.y += this.vy;
+  };
+  this.draw = () => {
+    // Body
+    ctx.save();
+    ctx.translate(this.x, this.y);
+    const tilt = Math.min(Math.max(this.vy * 3, -30), 80);
+    ctx.rotate((tilt * Math.PI) / 180);
+    // body circle
+    ctx.beginPath();
+    ctx.arc(0, 0, this.r, 0, Math.PI * 2);
+    ctx.fillStyle = '#facc15';
+    ctx.fill();
+    // wing
+    ctx.beginPath();
+    ctx.ellipse(-4, 4, 10, 6, -0.3, 0, Math.PI * 2);
+    ctx.fillStyle = '#fde68a';
+    ctx.fill();
+    // eye
+    ctx.beginPath();
+    ctx.arc(8, -5, 5, 0, Math.PI * 2);
+    ctx.fillStyle = '#fff';
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(9, -5, 2.5, 0, Math.PI * 2);
+    ctx.fillStyle = '#111';
+    ctx.fill();
+    // beak
+    ctx.beginPath();
+    ctx.moveTo(12, 0);
+    ctx.lineTo(20, 2);
+    ctx.lineTo(12, 5);
+    ctx.closePath();
+    ctx.fillStyle = '#f97316';
+    ctx.fill();
+    ctx.restore();
+  };
+  this.hitbox = () => ({x:this.x - this.r + 4, y:this.y - this.r + 4, w: this.r*2-8, h: this.r*2-8});
+}
+
+function Pipe(x) {
+  this.x = x;
+  this.gap = 145;
+  this.gapY = 100 + Math.random() * (H - 230);
+  this.w = 56;
+  this.passed = false;
+  this.update = () => { this.x -= 2.8; };
+  this.draw = () => {
+    // Top pipe
+    const pipeColor = '#22c55e';
+    const pipeDark = '#16a34a';
+    ctx.fillStyle = pipeColor;
+    ctx.fillRect(this.x, 0, this.w, this.gapY - this.gap / 2);
+    ctx.fillStyle = pipeDark;
+    ctx.fillRect(this.x - 4, this.gapY - this.gap/2 - 22, this.w + 8, 22);
+    // Bottom pipe
+    ctx.fillStyle = pipeColor;
+    ctx.fillRect(this.x, this.gapY + this.gap / 2, this.w, H - (this.gapY + this.gap/2));
+    ctx.fillStyle = pipeDark;
+    ctx.fillRect(this.x - 4, this.gapY + this.gap/2, this.w + 8, 22);
+  };
+  this.collides = (hb) => {
+    const topH = this.gapY - this.gap / 2;
+    const botY = this.gapY + this.gap / 2;
+    const overlapX = hb.x < this.x + this.w && hb.x + hb.w > this.x;
+    if (!overlapX) return false;
+    if (hb.y < topH) return true;
+    if (hb.y + hb.h > botY) return true;
+    return false;
+  };
+}
+
+// Ground
+function drawGround() {
+  ctx.fillStyle = '#92400e';
+  ctx.fillRect(0, H - 40, W, 40);
+  ctx.fillStyle = '#78350f';
+  ctx.fillRect(0, H - 40, W, 6);
+  // grass
+  for (let x = 0; x < W; x += 16) {
+    ctx.fillStyle = '#22c55e';
+    ctx.fillRect(x, H - 40, 8, 6);
+  }
+}
+
+function drawBg() {
+  const grad = ctx.createLinearGradient(0, 0, 0, H);
+  grad.addColorStop(0, SKY_TOP);
+  grad.addColorStop(1, SKY_BTN);
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, W, H);
+}
+
+let clouds = [{x:80,y:80,s:1},{x:240,y:130,s:0.7},{x:340,y:60,s:0.9}];
+function drawClouds() {
+  clouds.forEach(c => {
+    ctx.save();
+    ctx.translate(c.x, c.y);
+    ctx.scale(c.s, c.s);
+    ctx.fillStyle = 'rgba(255,255,255,0.08)';
+    ctx.beginPath();ctx.arc(0,0,22,0,Math.PI*2);ctx.fill();
+    ctx.beginPath();ctx.arc(25,5,18,0,Math.PI*2);ctx.fill();
+    ctx.beginPath();ctx.arc(-20,5,16,0,Math.PI*2);ctx.fill();
+    ctx.restore();
+    c.x -= 0.4;
+    if (c.x < -60) c.x = W + 60;
+  });
+}
+
+function initGame() {
+  bird = new Bird();
+  pipes = [new Pipe(W + 100), new Pipe(W + 360)];
+  score = 0;
+  state = 'idle'; // idle, playing, dead
+  frame = 0;
+  updateHUD();
+}
+
+function flap() {
+  if (state === 'idle') { state = 'playing'; bird.flap(); }
+  else if (state === 'playing') { bird.flap(); }
+  else if (state === 'dead') { restartGame(); }
+}
+
+function update() {
+  frame++;
+  if (state !== 'playing') return;
+  bird.update();
+  pipes.forEach(p => {
+    p.update();
+    if (!p.passed && p.x + p.w < bird.x) { p.passed = true; score++; updateHUD(); }
+    if (p.collides(bird.hitbox())) { die(); }
+  });
+  // Recycle pipes
+  pipes = pipes.map(p => p.x < -80 ? new Pipe(W + 100) : p);
+  // Ground collision
+  if (bird.y + bird.r > H - 40) { die(); }
+  // Ceiling
+  if (bird.y - bird.r < 0) { bird.y = bird.r; bird.vy = 0; }
+}
+
+function die() {
+  state = 'dead';
+  if (score > best) { best = score; localStorage.setItem('fb_best', best); }
+  updateHUD();
+}
+
+function draw() {
+  drawBg();
+  drawClouds();
+  pipes.forEach(p => p.draw());
+  drawGround();
+  bird.draw();
+
+  // Overlay messages
+  if (state === 'idle') {
+    ctx.fillStyle = 'rgba(0,0,0,0.45)';
+    ctx.fillRect(0, 0, W, H);
+    ctx.fillStyle = '#fff';
+    ctx.font = 'bold 22px system-ui';
+    ctx.textAlign = 'center';
+    ctx.fillText('Tap or press Space to Start', W/2, H/2);
+    ctx.font = '15px system-ui';
+    ctx.fillStyle = 'rgba(255,255,255,0.5)';
+    ctx.fillText('Avoid the green pipes', W/2, H/2 + 30);
+  }
+  if (state === 'dead') {
+    ctx.fillStyle = 'rgba(0,0,0,0.6)';
+    ctx.fillRect(0, 0, W, H);
+    ctx.fillStyle = '#f87171';
+    ctx.font = 'bold 34px system-ui';
+    ctx.textAlign = 'center';
+    ctx.fillText('Game Over', W/2, H/2 - 30);
+    ctx.fillStyle = '#fff';
+    ctx.font = 'bold 20px system-ui';
+    ctx.fillText('Score: ' + score, W/2, H/2 + 8);
+    ctx.font = '15px system-ui';
+    ctx.fillStyle = 'rgba(255,255,255,0.6)';
+    ctx.fillText('Tap or Space to restart', W/2, H/2 + 40);
+  }
+}
+
+function loop() {
+  update();
+  draw();
+  raf = requestAnimationFrame(loop);
+}
+
+function restartGame() {
+  if (raf) cancelAnimationFrame(raf);
+  initGame();
+  state = 'idle';
+  loop();
+}
+
+function updateHUD() {
+  document.getElementById('scoreVal').textContent = score;
+  document.getElementById('bestVal').textContent = best;
+}
+
+// Init
+best = parseInt(localStorage.getItem('fb_best') || '0');
+initGame();
+loop();
+
+canvas.addEventListener('click', flap);
+canvas.addEventListener('touchstart', e => { e.preventDefault(); flap(); }, {passive:false});
+document.addEventListener('keydown', e => { if (e.code === 'Space') { e.preventDefault(); flap(); } });
+</script></div>
 
 
 <script src="/knexio-bundle.js"></script>
@@ -237,5 +649,6 @@
       </p>
       <p>© 2026 Knexio. All rights reserved.</p>
     </footer>
+
+  <script src="../../cookie-consent.js"></script>
 </body>
-</html>

@@ -14,17 +14,6 @@
   <meta property="og:image" content="https://knexio.xyz/og-image.svg" />
   <meta name="robots" content="index, follow" />
 
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Frogger - Free Online Game | Play Now",
-    "description": "Play Frogger free online. Help the frog cross busy roads and rivers safely. Works in your browser.",
-    "url": "https://knexio.xyz/games/frogger/",
-    "publisher": { "@type": "Organization", "name": "Knexio" }
-  }
-  </script>
 <style>
 
     :root{--bg:#0b1220;--bg2:#070d1a;--panel:#111a2e;--border:rgba(255,255,255,0.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff;--green:#34d399;--red:#f87171;--text-main:#fff;--text-sub:#aab3c5}
@@ -36,7 +25,7 @@
     .clearfix::after{content:'';display:table;clear:both}
     h1{font-size:30px;margin-bottom:6px}
     .subtitle{color:var(--sub);font-size:14px;margin-bottom:16px}
-    .ad-banner{margin:24px 0;text-align:center;min-height:90px}
+    .ad-banner{margin:12px 0}
     .hud{display:flex;justify-content:space-between;padding:10px 16px;background:var(--panel);border:1px solid var(--border);border-radius:12px;margin-bottom:10px;font-size:14px}
     .hud span{color:var(--sub)}.hud b{color:#fff}
     canvas{display:block;margin:0 auto;border-radius:12px;border:1px solid var(--border);max-width:100%}
@@ -48,7 +37,7 @@
     .seo{margin-top:60px;text-align:left}
     .seo h2{font-size:22px;margin-bottom:10px}
     .seo p{font-size:14px;color:var(--sub);line-height:1.8;margin-bottom:12px}
-    footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;font-size:13px;color:var(--sub);text-align:center;border-top:1px solid var(--border);}footer a{color:var(--accent)}
+    footer{margin-top:60px;font-size:13px;color:var(--sub);text-align:center;border-top:1px solid var(--border);}footer a{color:var(--accent)}
 
     /* ==================== 移动端优化 ==================== */
 
@@ -220,13 +209,381 @@
         }
 
 </style>
-  <meta name="keywords" content="frogger game, free online game, browser game, play online, casual game" /></div>
+  <meta name="keywords" content="frogger game, free online game, browser game, play online, casual game" /><script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoGame",
+  "name": "Frogger",
+  "url": "https://knexio.xyz/games/frogger/",
+  "description": "Play Frogger free online. Frogger is a fun browser game that you can play for free. Enjoy this entertaining game with simple controls and engaging... No download required. Works on all devices.",
+  "genre": "Game",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+</head>
+<body><div class="wrap">
+  <div class="clearfix"><a class="back" href="../index.html">← Back to Games</a></div>
+  <h1>Frogger</h1>
+  <div class="subtitle">Cross the road without getting squashed!</div>
+
+  <div class="hud">
+    <div><span>Score: </span><b id="scoreDisp">0</b></div>
+    <div><span>Best: </span><b id="bestDisp">0</b></div>
+    <div><span>Lives: </span><b id="livesDisp">🐸🐸🐸</b></div>
+    <div><span>Level: </span><b id="levelDisp">1</b></div>
+  </div>
+
+  <canvas id="gameCanvas" width="520" height="480"></canvas>
+  <div class="controls"><b>Arrow Keys</b> or <b>WASD</b> to move · <b>Enter</b> to start</div>
+
+  <div class="d-pad">
+    <div></div>
+    <div class="d-btn" onpointerdown="moveDir(0,-1)">⬆️</div>
+    <div></div>
+    <div class="d-btn" onpointerdown="moveDir(-1,0)">⬅️</div>
+    <div class="d-btn" onpointerdown="moveDir(0,1)">⬇️</div>
+    <div class="d-btn" onpointerdown="moveDir(1,0)">➡️</div>
+
+  </div>
+
+  <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="5794572171" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+<!-- ==================== 游戏玩法说明 - SEO优化内容 ==================== -->
+<div class="gameplay-section" style="margin: 60px auto 0; max-width: 800px; padding: 32px 24px; background: var(--panel); border-radius: 18px; border: 1px solid var(--border); text-align: left;">
+    <h2 style="font-size: 28px; margin-bottom: 30px; color: var(--text-main); display: flex; align-items: center;">
+        <span style="background: var(--accent); color: white; width: 36px; height: 36px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 15px; font-size: 18px;">🎮</span>
+        How to Play Frogger
+    </h2>
+
+    <div style="margin-bottom: 30px;">
+        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--text-main);">Game Description</h3>
+        <p style="font-size: 15px; color: var(--text-sub); line-height: 1.7; margin-bottom: 20px;">
+            Frogger is a fun browser game that you can play for free. Enjoy this entertaining game with simple controls and engaging gameplay.
+        </p>
+    </div>
+
+    <div style="margin-bottom: 30px;">
+        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--text-main);">Basic Rules & Controls</h3>
+        <ol style="font-size: 15px; color: var(--text-sub); line-height: 1.7; padding-left: 25px; margin-bottom: 20px;">
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">Use your mouse, keyboard, or touch controls to play</strong>
+            </li>
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">Follow the on-screen instructions</strong>
+            </li>
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">Try to achieve the highest score possible</strong>
+            </li>
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">The game may have different modes or difficulty levels</strong>
+            </li>
+
+        </ol>
+    </div>
+
+    <div style="margin-bottom: 30px;">
+        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--text-main);">Pro Tips & Strategies</h3>
+        <ul style="font-size: 15px; color: var(--text-sub); line-height: 1.7; padding-left: 25px; margin-bottom: 20px;">
+
+            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;">
+                <span style="position: absolute; left: -15px; color: var(--accent);">✓</span>
+                Read the instructions carefully before playing
+            </li>
+
+            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;">
+                <span style="position: absolute; left: -15px; color: var(--accent);">✓</span>
+                Practice to improve your skills
+            </li>
+
+            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;">
+                <span style="position: absolute; left: -15px; color: var(--accent);">✓</span>
+                Take breaks if you get frustrated
+            </li>
+
+            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;">
+                <span style="position: absolute; left: -15px; color: var(--accent);">✓</span>
+                Try different strategies to find what works best
+            </li>
+
+        </ul>
+    </div>
+
+    <div style="background: rgba(79, 140, 255, 0.1); padding: 20px; border-radius: 12px; border-left: 4px solid var(--accent);">
+        <p style="font-size: 15px; color: var(--text-sub); margin: 0;">
+            <strong style="color: var(--accent);">💡 Quick Start:</strong> Just click/tap to begin! No registration required. 
+            All Knexio games work directly in your browser with no downloads needed.
+        </p>
+    </div>
+</div>
+
+<!-- ==================== 广告位优化 ==================== -->
+<div class="ad-section" style="margin-top: 40px; text-align: center;">
+    <ins class="adsbygoogle" 
+         style="display:block; background: var(--panel); border-radius: 12px; padding: 15px;"
+         data-ad-client="ca-pub-2596567349043393" 
+         data-ad-slot="9504968504" 
+         data-ad-format="auto" 
+         data-full-width-responsive="true">
+    </ins>
+    <p style="font-size: 12px; color: var(--text-sub); margin-top: 8px; opacity: 0.7;">
+        Advertisement supports free games development
+    </p>
+</div>
+
+<!-- ==================== 游戏常见问题 (FAQ) ==================== -->
+<div class="faq-section" style="margin: 60px auto 0; max-width: 800px; padding: 32px 24px; background: var(--panel); border-radius: 18px; text-align: left;">
+    <h2 style="font-size: 28px; margin-bottom: 30px; color: var(--text-main);">Frequently Asked Questions</h2>
+
+    <div class="faq-list">
+        <div class="faq-item" style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid var(--border);">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                Is this game free to play?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                Yes, all games on Knexio are completely free to play. There are no hidden charges, subscription fees, or in-app purchases. We support our games through non-intrusive advertisements.
+            </p>
+        </div>
+
+        <div class="faq-item" style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid var(--border);">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                Do I need to download anything to play?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                No downloads required! All our games run directly in your web browser. They work on desktop computers, laptops, tablets, and smartphones. Just visit the page and start playing.
+            </p>
+        </div>
+
+        <div class="faq-item" style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid var(--border);">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                How do I save my game progress?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                Most games automatically save your high scores and progress in your browser's local storage. Your best scores will be remembered even if you close the browser, as long as you don't clear your browsing data.
+            </p>
+        </div>
+
+        <div class="faq-item" style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid var(--border);">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                Can I play on mobile devices?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                Absolutely! All Knexio games are fully responsive and optimized for mobile devices. Touch controls are implemented for games that require precise input. The interface automatically adapts to your screen size.
+            </p>
+        </div>
+
+        <div class="faq-item" style="margin-bottom: 25px;">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                Is there sound in the games?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                Most games include optional sound effects. Look for a sound/mute button in the game interface. You can enable or disable sound based on your preference. We keep sound subtle and non-intrusive.
+            </p>
+        </div>
+    </div>
+</div>
+
+
+    <footer>
+      <p>Free online games to play anytime. Enjoy classic games, puzzles, and entertainment.</p>
+      <p style="margin: 8px 0; font-size: 13px;">
+        <a href="/about/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">About</a>
+        <a href="/privacy/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Privacy</a>
+        <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
+        <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
+      </p>
+      <p>© 2026 Knexio. All rights reserved.</p>
+    </footer>
+
+  
+<script>
+const canvas=document.getElementById('gameCanvas');
+const ctx=canvas.getContext('2d');
+const W=canvas.width,H=canvas.height;
+const CELL=40,COLS=W/CELL,ROWS=H/CELL;
+
+const LANE_CONFIG=[
+  // row from bottom (0=bottom), type, speed, dir (+1 right -1 left), items
+  {row:1,type:'road',speed:2.5,dir:1,color:'#1a2540',vehicles:[{emoji:'🚗',w:2},{emoji:'🚕',w:2},{emoji:'🚙',w:2}],count:3},
+  {row:2,type:'road',speed:3,dir:-1,color:'#1a2540',vehicles:[{emoji:'🚛',w:3},{emoji:'🚌',w:3}],count:2},
+  {row:3,type:'road',speed:2,dir:1,color:'#1a2540',vehicles:[{emoji:'🚗',w:2},{emoji:'🏎️',w:2},{emoji:'🚗',w:2}],count:3},
+  {row:4,type:'road',speed:3.5,dir:-1,color:'#1a2540',vehicles:[{emoji:'🚛',w:3},{emoji:'🚗',w:2}],count:3},
+  {row:5,type:'road',speed:2,dir:1,color:'#1a2540',vehicles:[{emoji:'🚗',w:2},{emoji:'🚕',w:2}],count:2},
+  {row:6,type:'safe',color:'#0d2a14'},
+];
+
+let frog={x:6,y:11},lives,score,best=0,level,gameState='start',obstacles=[],safeZones,safeFilled=new Set();
+
+function initGame(){
+  lives=3;score=0;level=1;
+  frog={x:Math.floor(COLS/2),y:ROWS-1};
+  safeZones=[1,3,5,7,9];
+  safeFilled=new Set();
+  buildObstacles();
+  gameState='playing';
+  updateHUD();
+}
+
+function buildObstacles(){
+  obstacles=[];
+  const spd=1+level*0.3;
+  const LANES=[
+    {row:ROWS-2,dir:1,speed:2*spd,count:3,vehicles:['🚗','🚕','🚙'],wArr:[2,2,2]},
+    {row:ROWS-3,dir:-1,speed:2.5*spd,count:2,vehicles:['🚛','🚌'],wArr:[3,3]},
+    {row:ROWS-4,dir:1,speed:1.8*spd,count:3,vehicles:['🏎️','🚗','🚕'],wArr:[2,2,2]},
+    {row:ROWS-5,dir:-1,speed:3*spd,count:2,vehicles:['🚛','🚗'],wArr:[3,2]},
+    {row:ROWS-6,dir:1,speed:2.2*spd,count:3,vehicles:['🚗','🚙','🚕'],wArr:[2,2,2]},
+  ];
+  LANES.forEach(lane=>{
+    for(let i=0;i<lane.count;i++){
+      const v=lane.vehicles[i%lane.vehicles.length];
+      const w=lane.wArr[i%lane.wArr.length];
+      obstacles.push({x:(i*(COLS/lane.count))*CELL,y:lane.row*CELL,w:w*CELL,dir:lane.dir,speed:lane.speed,emoji:v,row:lane.row,cellW:w});
+    }
+  });
+}
+
+function updateHUD(){
+  document.getElementById('scoreDisp').textContent=score;
+  document.getElementById('bestDisp').textContent=best;
+  document.getElementById('livesDisp').textContent='🐸'.repeat(Math.max(0,lives))+'💀'.repeat(Math.max(0,3-lives));
+  document.getElementById('levelDisp').textContent=level;
+}
+
+function moveDir(dx,dy){
+  if(gameState!=='playing')return;
+  const nx=frog.x+dx,ny=frog.y+dy;
+  if(nx>=0&&nx<COLS&&ny>=0&&ny<ROWS){frog.x=nx;frog.y=ny;}
+  checkCollision();
+  checkWin();
+}
+
+let lastT=0;
+function update(t){
+  if(gameState==='playing'){
+    const dt=(t-lastT)/1000;lastT=t;
+    obstacles.forEach(o=>{
+      o.x+=o.dir*o.speed;
+      if(o.dir>0&&o.x>W)o.x=-o.w;
+      if(o.dir<0&&o.x<-o.w)o.x=W;
+    });
+    checkCollision();
+  }
+  draw();
+  requestAnimationFrame(update);
+}
+
+function checkCollision(){
+  if(frog.y===0)return;
+  const fx=frog.x*CELL,fy=frog.y*CELL;
+  const roadRows=[ROWS-2,ROWS-3,ROWS-4,ROWS-5,ROWS-6];
+  if(roadRows.includes(frog.y)){
+    // Check if frog is hit by a vehicle
+    for(const o of obstacles){
+      if(o.row===frog.y){
+        if(fx+CELL>o.x&&fx<o.x+o.w){
+          die();return;
+        }
+      }
+    }
+  }
+}
+
+function checkWin(){
+  if(frog.y===0){
+    const slotIdx=Math.round(frog.x/(COLS/5));
+    if(!safeFilled.has(slotIdx)){
+      safeFilled.add(slotIdx);
+      score+=100;
+      if(score>best)best=score;
+      frog={x:Math.floor(COLS/2),y:ROWS-1};
+      if(safeFilled.size>=5){level++;safeFilled=new Set();buildObstacles();score+=500;}
+    } else {
+      die();
+    }
+    updateHUD();
+  }
+}
+
+function die(){
+  lives--;
+  frog={x:Math.floor(COLS/2),y:ROWS-1};
+  if(lives<=0){gameState='over';if(score>best)best=score;}
+  updateHUD();
+}
+
+function draw(){
+  ctx.clearRect(0,0,W,H);
+  // Ground
+  ctx.fillStyle='#0d2a14';ctx.fillRect(0,0,W,CELL);
+  // Safe zones
+  [1,3,5,7,9].forEach((sx,i)=>{
+    ctx.fillStyle=safeFilled.has(i)?'#22c55e':'#16a34a';
+    ctx.fillRect(sx*CELL,0,CELL,CELL);
+    ctx.font='22px serif';ctx.textAlign='center';ctx.textBaseline='middle';
+    ctx.fillText(safeFilled.has(i)?'🐸':'🏠',sx*CELL+CELL/2,CELL/2);
+  });
+  // Road rows
+  for(let r=1;r<ROWS;r++){
+    const y=r*CELL;
+    if(r===Math.floor(ROWS/2)){ctx.fillStyle='#0a1e0a';ctx.fillRect(0,y,W,CELL);}
+    else if(r<ROWS-1){ctx.fillStyle='#1a2540';ctx.fillRect(0,y,W,CELL);
+      if(r%2){ctx.strokeStyle='rgba(255,255,255,0.06)';ctx.setLineDash([20,15]);ctx.beginPath();ctx.moveTo(0,y+CELL/2);ctx.lineTo(W,y+CELL/2);ctx.stroke();ctx.setLineDash([]);}}
+    else{ctx.fillStyle='#0d2a14';ctx.fillRect(0,y,W,CELL);}
+  }
+  // Obstacles
+  obstacles.forEach(o=>{
+    ctx.font=(o.cellW>2?'28px':'22px')+' serif';ctx.textAlign='left';ctx.textBaseline='middle';
+    ctx.fillText(o.emoji,o.x+4,o.y+CELL/2);
+    if(o.cellW>2)ctx.fillText(o.emoji,o.x+CELL+4,o.y+CELL/2);
+  });
+  // Frog
+  ctx.font='26px serif';ctx.textAlign='center';ctx.textBaseline='middle';
+  ctx.fillText('🐸',frog.x*CELL+CELL/2,frog.y*CELL+CELL/2);
+  // Overlay
+  if(gameState==='start'){
+    ctx.fillStyle='rgba(0,0,0,0.75)';ctx.fillRect(0,0,W,H);
+    ctx.fillStyle='#34d399';ctx.font='bold 30px sans-serif';ctx.textAlign='center';
+    ctx.fillText('FROGGER',W/2,H/2-20);
+    ctx.fillStyle='#aab3c5';ctx.font='16px sans-serif';
+    ctx.fillText('Press ENTER or tap to start',W/2,H/2+18);
+  }
+  if(gameState==='over'){
+    ctx.fillStyle='rgba(0,0,0,0.75)';ctx.fillRect(0,0,W,H);
+    ctx.fillStyle='#f87171';ctx.font='bold 30px sans-serif';ctx.textAlign='center';
+    ctx.fillText('GAME OVER',W/2,H/2-20);
+    ctx.fillStyle='#aab3c5';ctx.font='16px sans-serif';
+    ctx.fillText('Score: '+score+' · Press ENTER',W/2,H/2+18);
+  }
+}
+
+document.addEventListener('keydown',e=>{
+  if(gameState!=='playing'){if(e.key==='Enter')initGame();return;}
+  if(e.key==='ArrowUp'||e.key==='w'){moveDir(0,-1);e.preventDefault();}
+  if(e.key==='ArrowDown'||e.key==='s'){moveDir(0,1);e.preventDefault();}
+  if(e.key==='ArrowLeft'||e.key==='a'){moveDir(-1,0);e.preventDefault();}
+  if(e.key==='ArrowRight'||e.key==='d'){moveDir(1,0);e.preventDefault();}
+});
+canvas.addEventListener('click',()=>{if(gameState!=='playing')initGame();});
+
+requestAnimationFrame(update);
+</script></div>
 
 
 <script src="/knexio-bundle.js"></script>
-
-<footer>
-  <p>© 2026 Knexio · <a href="/about/">About</a> · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a></p>
-</footer>
 </body>
 </html>

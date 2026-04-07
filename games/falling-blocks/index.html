@@ -14,17 +14,6 @@
   <meta property="og:image" content="https://knexio.xyz/og-image.svg" />
   <meta name="robots" content="index, follow" />
 
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Falling Blocks - Free Online Game | Play Now",
-    "description": "Play Falling Blocks free online. Stack falling blocks and build the tallest tower. Works in your browser.",
-    "url": "https://knexio.xyz/games/falling-blocks/",
-    "publisher": { "@type": "Organization", "name": "Knexio" }
-  }
-  </script>
 <style>
 
     :root{--bg:#0b1220;--bg2:#070d1a;--panel:#111a2e;--border:rgba(255,255,255,0.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff;--text-main:#fff;--text-sub:#aab3c5}
@@ -36,7 +25,7 @@
     .clearfix::after{content:'';display:table;clear:both}
     h1{font-size:30px;margin-bottom:6px}
     .subtitle{color:var(--sub);font-size:14px;margin-bottom:16px}
-    .ad-banner{margin:24px 0;text-align:center;min-height:90px}
+    .ad-banner{margin:12px 0}
     .game-layout{display:flex;gap:16px;align-items:flex-start;justify-content:center}
     .side-panel{width:120px;background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:14px 10px;display:flex;flex-direction:column;gap:14px}
     .side-label{font-size:11px;color:var(--sub);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:4px}
@@ -48,7 +37,7 @@
     .seo{margin-top:60px;text-align:left}
     .seo h2{font-size:22px;margin-bottom:10px}
     .seo p{font-size:14px;color:var(--sub);line-height:1.8;margin-bottom:12px}
-    footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;font-size:13px;color:var(--sub);text-align:center;border-top:1px solid var(--border);}footer a{color:var(--accent)}
+    footer{margin-top:60px;font-size:13px;color:var(--sub);text-align:center;border-top:1px solid var(--border);}footer a{color:var(--accent)}
 
     /* ==================== 移动端优化 ==================== */
 
@@ -220,13 +209,364 @@
         }
 
 </style>
-  <meta name="keywords" content="falling blocks game, free online game, browser game, play online, casual game" /></div>
+  <meta name="keywords" content="falling blocks game, free online game, browser game, play online, casual game" /><script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoGame",
+  "name": "Falling Blocks",
+  "url": "https://knexio.xyz/games/falling-blocks/",
+  "description": "Play Falling Blocks free online. Falling Blocks is a fun browser game that you can play for free. Enjoy this entertaining game with simple controls and e... No download required. Works on all devices.",
+  "genre": "Game",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+</head>
+<body><div class="wrap">
+  <div class="clearfix"><a class="back" href="../index.html">← Back to Games</a></div>
+  <h1>Falling Blocks</h1>
+  <div class="subtitle">Stack and clear rows to score!</div>
+
+  <div class="game-layout">
+    <div class="side-panel">
+      <div>
+        <div class="side-label">Score</div>
+        <div class="side-val" id="scoreDisp">0</div>
+      </div>
+      <div>
+        <div class="side-label">Lines</div>
+        <div class="side-val" id="linesDisp">0</div>
+      </div>
+      <div>
+        <div class="side-label">Level</div>
+        <div class="side-val" id="levelDisp">1</div>
+      </div>
+      <div>
+        <div class="side-label">Best</div>
+        <div class="side-val" id="bestDisp">0</div>
+      </div>
+      <div>
+        <div class="side-label">Hold</div>
+        <canvas id="holdCanvas" width="80" height="80"></canvas>
+      </div>
+    </div>
+    <canvas id="gameCanvas" width="200" height="400"></canvas>
+    <div class="side-panel">
+      <div>
+        <div class="side-label">Next</div>
+        <canvas id="nextCanvas" width="80" height="200"></canvas>
+      </div>
+    </div>
+  </div>
+  <div class="controls">
+    <b>←→</b> Move · <b>↑ / Z</b> Rotate · <b>↓</b> Soft Drop · <b>Space</b> Hard Drop<br>
+    <b>C</b> Hold · <b>P</b> Pause · <b>Enter</b> Start/Restart
+
+  </div>
+
+  <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="5794572171" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+<!-- ==================== 游戏玩法说明 - SEO优化内容 ==================== -->
+<div class="gameplay-section" style="margin: 60px auto 0; max-width: 800px; padding: 32px 24px; background: var(--panel); border-radius: 18px; border: 1px solid var(--border); text-align: left;">
+    <h2 style="font-size: 28px; margin-bottom: 30px; color: var(--text-main); display: flex; align-items: center;">
+        <span style="background: var(--accent); color: white; width: 36px; height: 36px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 15px; font-size: 18px;">🎮</span>
+        How to Play Falling Blocks
+    </h2>
+
+    <div style="margin-bottom: 30px;">
+        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--text-main);">Game Description</h3>
+        <p style="font-size: 15px; color: var(--text-sub); line-height: 1.7; margin-bottom: 20px;">
+            Falling Blocks is a fun browser game that you can play for free. Enjoy this entertaining game with simple controls and engaging gameplay.
+        </p>
+    </div>
+
+    <div style="margin-bottom: 30px;">
+        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--text-main);">Basic Rules & Controls</h3>
+        <ol style="font-size: 15px; color: var(--text-sub); line-height: 1.7; padding-left: 25px; margin-bottom: 20px;">
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">Use your mouse, keyboard, or touch controls to play</strong>
+            </li>
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">Follow the on-screen instructions</strong>
+            </li>
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">Try to achieve the highest score possible</strong>
+            </li>
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">The game may have different modes or difficulty levels</strong>
+            </li>
+
+        </ol>
+    </div>
+
+    <div style="margin-bottom: 30px;">
+        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--text-main);">Pro Tips & Strategies</h3>
+        <ul style="font-size: 15px; color: var(--text-sub); line-height: 1.7; padding-left: 25px; margin-bottom: 20px;">
+
+            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;">
+                <span style="position: absolute; left: -15px; color: var(--accent);">✓</span>
+                Read the instructions carefully before playing
+            </li>
+
+            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;">
+                <span style="position: absolute; left: -15px; color: var(--accent);">✓</span>
+                Practice to improve your skills
+            </li>
+
+            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;">
+                <span style="position: absolute; left: -15px; color: var(--accent);">✓</span>
+                Take breaks if you get frustrated
+            </li>
+
+            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;">
+                <span style="position: absolute; left: -15px; color: var(--accent);">✓</span>
+                Try different strategies to find what works best
+            </li>
+
+        </ul>
+    </div>
+
+    <div style="background: rgba(79, 140, 255, 0.1); padding: 20px; border-radius: 12px; border-left: 4px solid var(--accent);">
+        <p style="font-size: 15px; color: var(--text-sub); margin: 0;">
+            <strong style="color: var(--accent);">💡 Quick Start:</strong> Just click/tap to begin! No registration required. 
+            All Knexio games work directly in your browser with no downloads needed.
+        </p>
+    </div>
+</div>
+
+<!-- ==================== 广告位优化 ==================== -->
+<div class="ad-section" style="margin-top: 40px; text-align: center;">
+    <ins class="adsbygoogle" 
+         style="display:block; background: var(--panel); border-radius: 12px; padding: 15px;"
+         data-ad-client="ca-pub-2596567349043393" 
+         data-ad-slot="9504968504" 
+         data-ad-format="auto" 
+         data-full-width-responsive="true">
+    </ins>
+    <p style="font-size: 12px; color: var(--text-sub); margin-top: 8px; opacity: 0.7;">
+        Advertisement supports free games development
+    </p>
+</div>
+
+<!-- ==================== 游戏常见问题 (FAQ) ==================== -->
+<div class="faq-section" style="margin: 60px auto 0; max-width: 800px; padding: 32px 24px; background: var(--panel); border-radius: 18px; text-align: left;">
+    <h2 style="font-size: 28px; margin-bottom: 30px; color: var(--text-main);">Frequently Asked Questions</h2>
+
+    <div class="faq-list">
+        <div class="faq-item" style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid var(--border);">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                Is this game free to play?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                Yes, all games on Knexio are completely free to play. There are no hidden charges, subscription fees, or in-app purchases. We support our games through non-intrusive advertisements.
+            </p>
+        </div>
+
+        <div class="faq-item" style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid var(--border);">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                Do I need to download anything to play?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                No downloads required! All our games run directly in your web browser. They work on desktop computers, laptops, tablets, and smartphones. Just visit the page and start playing.
+            </p>
+        </div>
+
+        <div class="faq-item" style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid var(--border);">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                How do I save my game progress?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                Most games automatically save your high scores and progress in your browser's local storage. Your best scores will be remembered even if you close the browser, as long as you don't clear your browsing data.
+            </p>
+        </div>
+
+        <div class="faq-item" style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid var(--border);">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                Can I play on mobile devices?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                Absolutely! All Knexio games are fully responsive and optimized for mobile devices. Touch controls are implemented for games that require precise input. The interface automatically adapts to your screen size.
+            </p>
+        </div>
+
+        <div class="faq-item" style="margin-bottom: 25px;">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                Is there sound in the games?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                Most games include optional sound effects. Look for a sound/mute button in the game interface. You can enable or disable sound based on your preference. We keep sound subtle and non-intrusive.
+            </p>
+        </div>
+    </div>
+</div>
+
+
+    <footer>
+      <p>Free online games to play anytime. Enjoy classic games, puzzles, and entertainment.</p>
+      <p style="margin: 8px 0; font-size: 13px;">
+        <a href="/about/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">About</a>
+        <a href="/privacy/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Privacy</a>
+        <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
+        <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
+      </p>
+      <p>© 2026 Knexio. All rights reserved.</p>
+    </footer>
+
+  
+<script>
+const canvas=document.getElementById('gameCanvas');
+const ctx=canvas.getContext('2d');
+const nextCtx=document.getElementById('nextCanvas').getContext('2d');
+const holdCtx=document.getElementById('holdCanvas').getContext('2d');
+const CELL=20,COLS=10,ROWS=20;
+const COLORS={I:'#22d3ee',O:'#facc15',T:'#a78bfa',S:'#34d399',Z:'#f87171',J:'#60a5fa',L:'#f97316'};
+const PIECES={
+  I:[[0,0,0,0],[1,1,1,1],[0,0,0,0],[0,0,0,0]],
+  O:[[1,1],[1,1]],
+  T:[[0,1,0],[1,1,1],[0,0,0]],
+  S:[[0,1,1],[1,1,0],[0,0,0]],
+  Z:[[1,1,0],[0,1,1],[0,0,0]],
+  J:[[1,0,0],[1,1,1],[0,0,0]],
+  L:[[0,0,1],[1,1,1],[0,0,0]]
+};
+const TYPES=Object.keys(PIECES);
+
+let board,current,next,hold,canHold,score,lines,level,best=0,drop,gameState='start',paused=false;
+
+function newBoard(){return Array.from({length:ROWS},()=>Array(COLS).fill(null));}
+function randPiece(){
+  const t=TYPES[Math.floor(Math.random()*TYPES.length)];
+  return{type:t,matrix:PIECES[t].map(r=>[...r]),x:Math.floor(COLS/2)-Math.ceil(PIECES[t][0].length/2),y:0};
+}
+function rotate(m){return m[0].map((_,i)=>m.map(r=>r[i]).reverse());}
+function valid(m,x,y){
+  for(let r=0;r<m.length;r++)for(let c=0;c<m[r].length;c++){
+    if(!m[r][c])continue;
+    const nx=x+c,ny=y+r;
+    if(nx<0||nx>=COLS||ny>=ROWS)return false;
+    if(ny>=0&&board[ny][nx])return false;
+  }return true;
+}
+function place(){
+  for(let r=0;r<current.matrix.length;r++)for(let c=0;c<current.matrix[r].length;c++){
+    if(current.matrix[r][c]){
+      if(current.y+r<0){endGame();return;}
+      board[current.y+r][current.x+c]=current.type;
+    }
+  }
+  clearLines();current=next;next=randPiece();canHold=true;
+  if(!valid(current.matrix,current.x,current.y))endGame();
+}
+function clearLines(){
+  const full=[];
+  for(let r=ROWS-1;r>=0;r--){if(board[r].every(c=>c))full.push(r);}
+  if(!full.length)return;
+  full.forEach(r=>board.splice(r,1));
+  while(board.length<ROWS)board.unshift(Array(COLS).fill(null));
+  const pts=[0,100,300,500,800];lines+=full.length;score+=pts[Math.min(full.length,4)]*level;
+  level=Math.floor(lines/10)+1;drop=Math.max(100,800-level*70);
+  if(score>best)best=score;
+  updateHUD();
+}
+function ghost(){let gy=current.y;while(valid(current.matrix,current.x,gy+1))gy++;return gy;}
+function hardDrop(){while(valid(current.matrix,current.x,current.y+1))current.y++;place();}
+function holdPiece(){
+  if(!canHold)return;canHold=false;
+  const h=hold;hold={type:current.type,matrix:PIECES[current.type].map(r=>[...r])};
+  if(h){current={...h,x:Math.floor(COLS/2)-Math.ceil(h.matrix[0].length/2),y:0};}
+  else{current=next;next=randPiece();}
+}
+function initGame(){
+  board=newBoard();current=randPiece();next=randPiece();hold=null;canHold=true;
+  score=0;lines=0;level=1;drop=800;paused=false;gameState='playing';
+  updateHUD();
+}
+function endGame(){gameState='over';if(score>best)best=score;updateHUD();}
+function updateHUD(){
+  document.getElementById('scoreDisp').textContent=score;
+  document.getElementById('linesDisp').textContent=lines;
+  document.getElementById('levelDisp').textContent=level;
+  document.getElementById('bestDisp').textContent=best;
+}
+function drawCell(c,x,y,alpha=1){
+  if(!c)return;
+  ctx.globalAlpha=alpha;
+  ctx.fillStyle=COLORS[c];
+  ctx.fillRect(x*CELL+1,y*CELL+1,CELL-2,CELL-2);
+  ctx.globalAlpha=1;
+}
+function drawMini(c,matrix,miniCtx,cw,ch){
+  miniCtx.fillStyle='rgba(0,0,0,0.5)';miniCtx.fillRect(0,0,cw,ch);
+  if(!c)return;
+  const mc=matrix[0].length,mr=matrix.length;
+  const cs=Math.min(cw/mc,ch/mr)*0.9;
+  const ox=(cw-mc*cs)/2,oy=(ch-mr*cs)/2;
+  miniCtx.fillStyle=COLORS[c];
+  for(let r=0;r<mr;r++)for(let col=0;col<mc;col++)if(matrix[r][col])miniCtx.fillRect(ox+col*cs+1,oy+r*cs+1,cs-2,cs-2);
+}
+
+let lastDrop=0;
+function gameLoop(t){
+  if(gameState==='playing'&&!paused){
+    if(t-lastDrop>drop){lastDrop=t;if(valid(current.matrix,current.x,current.y+1))current.y++;else place();}
+  }
+  // Draw
+  ctx.fillStyle='#050c1a';ctx.fillRect(0,0,canvas.width,canvas.height);
+  // Grid
+  ctx.strokeStyle='rgba(255,255,255,0.03)';ctx.lineWidth=0.5;
+  for(let c=1;c<COLS;c++){ctx.beginPath();ctx.moveTo(c*CELL,0);ctx.lineTo(c*CELL,ROWS*CELL);ctx.stroke();}
+  for(let r=1;r<ROWS;r++){ctx.beginPath();ctx.moveTo(0,r*CELL);ctx.lineTo(COLS*CELL,r*CELL);ctx.stroke();}
+  // Board
+  for(let r=0;r<ROWS;r++)for(let c=0;c<COLS;c++)drawCell(board[r][c],c,r);
+  if(gameState==='playing'){
+    // Ghost
+    const gy=ghost();
+    for(let r=0;r<current.matrix.length;r++)for(let c=0;c<current.matrix[r].length;c++){if(current.matrix[r][c])drawCell(current.type,current.x+c,gy+r,0.25);}
+    // Piece
+    for(let r=0;r<current.matrix.length;r++)for(let c=0;c<current.matrix[r].length;c++){if(current.matrix[r][c])drawCell(current.type,current.x+c,current.y+r);}
+  }
+  // Mini canvases
+  if(next)drawMini(next.type,PIECES[next.type],nextCtx,80,80);
+  if(hold)drawMini(hold.type,PIECES[hold.type],holdCtx,80,80);
+  else{holdCtx.fillStyle='rgba(0,0,0,0.5)';holdCtx.fillRect(0,0,80,80);}
+  // Overlay
+  if(gameState==='start'){ctx.fillStyle='rgba(0,0,0,0.7)';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.fillStyle='#fff';ctx.font='bold 18px sans-serif';ctx.textAlign='center';ctx.fillText('FALLING BLOCKS',canvas.width/2,canvas.height/2-14);ctx.font='13px sans-serif';ctx.fillStyle='#aab3c5';ctx.fillText('Press ENTER to start',canvas.width/2,canvas.height/2+12);}
+  if(paused){ctx.fillStyle='rgba(0,0,0,0.5)';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.fillStyle='#fff';ctx.font='bold 18px sans-serif';ctx.textAlign='center';ctx.fillText('PAUSED',canvas.width/2,canvas.height/2);}
+  if(gameState==='over'){ctx.fillStyle='rgba(0,0,0,0.75)';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.fillStyle='#f87171';ctx.font='bold 18px sans-serif';ctx.textAlign='center';ctx.fillText('GAME OVER',canvas.width/2,canvas.height/2-16);ctx.fillStyle='#aab3c5';ctx.font='13px sans-serif';ctx.fillText('Score: '+score,canvas.width/2,canvas.height/2+8);ctx.fillText('Press ENTER to restart',canvas.width/2,canvas.height/2+28);}
+  requestAnimationFrame(gameLoop);
+}
+
+let softDropInterval=null;
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'){if(gameState!=='playing'){initGame();}return;}
+  if(e.key==='p'||e.key==='P'){paused=!paused;return;}
+  if(gameState!=='playing'||paused)return;
+  if(e.key==='ArrowLeft'){if(valid(current.matrix,current.x-1,current.y))current.x--;e.preventDefault();}
+  else if(e.key==='ArrowRight'){if(valid(current.matrix,current.x+1,current.y))current.x++;e.preventDefault();}
+  else if(e.key==='ArrowUp'||e.key==='z'||e.key==='Z'){const r=rotate(current.matrix);if(valid(r,current.x,current.y)){current.matrix=r;}e.preventDefault();}
+  else if(e.key==='ArrowDown'){if(valid(current.matrix,current.x,current.y+1))current.y++;else place();e.preventDefault();}
+  else if(e.key===' '){hardDrop();e.preventDefault();}
+  else if(e.key==='c'||e.key==='C'){holdPiece();}
+});
+
+requestAnimationFrame(gameLoop);
+</script></div>
 
 
 <script src="/knexio-bundle.js"></script>
-
-<footer>
-  <p>© 2026 Knexio · <a href="/about/">About</a> · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a></p>
-</footer>
 </body>
 </html>

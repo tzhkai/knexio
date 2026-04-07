@@ -11,17 +11,6 @@
   <meta property="og:url" content="https://knexio.xyz/games/word-guess/" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://knexio.xyz/og-image.svg" />
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Word Guess - Free Online Game | Play Now",
-    "description": "Play Word Guess free online. Guess the hidden word with limited attempts. Works in your browser.",
-    "url": "https://knexio.xyz/games/word-guess/",
-    "publisher": { "@type": "Organization", "name": "Knexio" }
-  }
-  </script>
 <style>
 
     :root{--bg:#0b1220;--bg2:#070d1a;--panel:#111a2e;--border:rgba(255,255,255,0.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff;--green:#22c55e;--yellow:#eab308;--gray:#374151;;--text-main:#fff;--text-sub:#aab3c5}
@@ -33,7 +22,7 @@
     .header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
     h1{font-size:32px;font-weight:800;}
     .streak{font-size:13px;color:var(--sub);}
-    .ad-banner{margin:24px 0;text-align:center;min-height:90px}
+    .ad-banner{margin-bottom:20px;text-align:center;}
     #board{display:flex;flex-direction:column;gap:6px;align-items:center;margin-bottom:20px;}
     .row{display:flex;gap:6px;}
     .tile{width:56px;height:56px;border:2px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:800;text-transform:uppercase;transition:background 0.3s,border-color 0.3s,transform 0.1s;background:transparent;}
@@ -66,7 +55,7 @@
     .seo{margin-top:60px;}
     .seo h2{font-size:20px;margin-bottom:10px;}
     .seo p{font-size:14px;color:var(--sub);line-height:1.8;}
-    footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;font-size:13px;color:var(--sub);border-top:1px solid var(--border);}
+    footer{margin-top:60px;text-align:center;font-size:13px;color:var(--sub);border-top:1px solid var(--border);}
 
     /* ==================== 移动端优化 ==================== */
 
@@ -239,7 +228,367 @@
 
 </style>
 
-  <meta name="keywords" content="word guess game, free online game, browser game, play online, casual game" /></div>
+  <meta name="keywords" content="word guess game, free online game, browser game, play online, casual game" /><script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoGame",
+  "name": "Word Guess",
+  "url": "https://knexio.xyz/games/word-guess/",
+  "description": "Play Word Guess free online. Word Guess is a fun browser game that you can play for free. Enjoy this entertaining game with simple controls and engag... No download required. Works on all devices.",
+  "genre": "Game",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+</head>
+<body><div class="wrap">
+  <a class="back" href="../index.html">← Back to Games</a>
+  <div class="header">
+    <h1>Word Guess 🔤</h1>
+    <div class="streak" id="streak"></div>
+  </div>
+
+  <div class="msg" id="msg">Guess the 5-letter word in 6 tries</div>
+  <div id="board"></div>
+
+  <div class="result-panel" id="resultPanel">
+    <h2 id="resultTitle"></h2>
+    <div class="answer">The word was: <span id="answerReveal"></span></div>
+    <button class="play-btn" onclick="newGame()">New Word</button>
+  </div>
+
+  <div class="keyboard" id="keyboard"></div>
+
+  <div class="legend">
+    <div class="leg"><div class="leg-box" style="background:var(--green)"></div> Correct position</div>
+    <div class="leg"><div class="leg-box" style="background:var(--yellow)"></div> Wrong position</div>
+    <div class="leg"><div class="leg-box" style="background:var(--gray)"></div> Not in word</div>
+
+  </div>
+
+  <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="5794572171" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+<!-- ==================== 游戏玩法说明 - SEO优化内容 ==================== -->
+<div class="gameplay-section" style="margin: 60px auto 0; max-width: 800px; padding: 32px 24px; background: var(--panel); border-radius: 18px; border: 1px solid var(--border); text-align: left;">
+    <h2 style="font-size: 28px; margin-bottom: 30px; color: var(--text-main); display: flex; align-items: center;">
+        <span style="background: var(--accent); color: white; width: 36px; height: 36px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 15px; font-size: 18px;">🎮</span>
+        How to Play Word Guess
+    </h2>
+
+    <div style="margin-bottom: 30px;">
+        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--text-main);">Game Description</h3>
+        <p style="font-size: 15px; color: var(--text-sub); line-height: 1.7; margin-bottom: 20px;">
+            Word Guess is a fun browser game that you can play for free. Enjoy this entertaining game with simple controls and engaging gameplay.
+        </p>
+    </div>
+
+    <div style="margin-bottom: 30px;">
+        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--text-main);">Basic Rules & Controls</h3>
+        <ol style="font-size: 15px; color: var(--text-sub); line-height: 1.7; padding-left: 25px; margin-bottom: 20px;">
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">Use your mouse, keyboard, or touch controls to play</strong>
+            </li>
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">Follow the on-screen instructions</strong>
+            </li>
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">Try to achieve the highest score possible</strong>
+            </li>
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">The game may have different modes or difficulty levels</strong>
+            </li>
+
+        </ol>
+    </div>
+
+    <div style="margin-bottom: 30px;">
+        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--text-main);">Pro Tips & Strategies</h3>
+        <ul style="font-size: 15px; color: var(--text-sub); line-height: 1.7; padding-left: 25px; margin-bottom: 20px;">
+
+            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;">
+                <span style="position: absolute; left: -15px; color: var(--accent);">✓</span>
+                Read the instructions carefully before playing
+            </li>
+
+            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;">
+                <span style="position: absolute; left: -15px; color: var(--accent);">✓</span>
+                Practice to improve your skills
+            </li>
+
+            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;">
+                <span style="position: absolute; left: -15px; color: var(--accent);">✓</span>
+                Take breaks if you get frustrated
+            </li>
+
+            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;">
+                <span style="position: absolute; left: -15px; color: var(--accent);">✓</span>
+                Try different strategies to find what works best
+            </li>
+
+        </ul>
+    </div>
+
+    <div style="background: rgba(79, 140, 255, 0.1); padding: 20px; border-radius: 12px; border-left: 4px solid var(--accent);">
+        <p style="font-size: 15px; color: var(--text-sub); margin: 0;">
+            <strong style="color: var(--accent);">💡 Quick Start:</strong> Just click/tap to begin! No registration required. 
+            All Knexio games work directly in your browser with no downloads needed.
+        </p>
+    </div>
+</div>
+
+<!-- ==================== 广告位优化 ==================== -->
+<div class="ad-section" style="margin-top: 40px; text-align: center;">
+    <ins class="adsbygoogle" 
+         style="display:block; background: var(--panel); border-radius: 12px; padding: 15px;"
+         data-ad-client="ca-pub-2596567349043393" 
+         data-ad-slot="9504968504" 
+         data-ad-format="auto" 
+         data-full-width-responsive="true">
+    </ins>
+    <p style="font-size: 12px; color: var(--text-sub); margin-top: 8px; opacity: 0.7;">
+        Advertisement supports free games development
+    </p>
+</div>
+
+<!-- ==================== 游戏常见问题 (FAQ) ==================== -->
+<div class="faq-section" style="margin: 60px auto 0; max-width: 800px; padding: 32px 24px; background: var(--panel); border-radius: 18px; text-align: left;">
+    <h2 style="font-size: 28px; margin-bottom: 30px; color: var(--text-main);">Frequently Asked Questions</h2>
+
+    <div class="faq-list">
+        <div class="faq-item" style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid var(--border);">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                Is this game free to play?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                Yes, all games on Knexio are completely free to play. There are no hidden charges, subscription fees, or in-app purchases. We support our games through non-intrusive advertisements.
+            </p>
+        </div>
+
+        <div class="faq-item" style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid var(--border);">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                Do I need to download anything to play?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                No downloads required! All our games run directly in your web browser. They work on desktop computers, laptops, tablets, and smartphones. Just visit the page and start playing.
+            </p>
+        </div>
+
+        <div class="faq-item" style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid var(--border);">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                How do I save my game progress?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                Most games automatically save your high scores and progress in your browser's local storage. Your best scores will be remembered even if you close the browser, as long as you don't clear your browsing data.
+            </p>
+        </div>
+
+        <div class="faq-item" style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid var(--border);">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                Can I play on mobile devices?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                Absolutely! All Knexio games are fully responsive and optimized for mobile devices. Touch controls are implemented for games that require precise input. The interface automatically adapts to your screen size.
+            </p>
+        </div>
+
+        <div class="faq-item" style="margin-bottom: 25px;">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                Is there sound in the games?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                Most games include optional sound effects. Look for a sound/mute button in the game interface. You can enable or disable sound based on your preference. We keep sound subtle and non-intrusive.
+            </p>
+        </div>
+    </div>
+</div>
+
+<script>// Game init //
+  const WORDS = ['about','above','abuse','actor','acute','admit','adopt','adult','after','again','agent','agree','ahead','alarm','album','alert','alien','align','alike','alive','alley','allow','alone','along','aloud','alter','angel','anger','angle','angry','anime','ankle','annex','apart','apple','apply','arena','argue','arise','armor','array','arrow','aside','asset','atlas','attic','audio','audit','avoid','awake','award','aware','awful','badly','baker','basic','basis','batch','beach','beard','beast','begin','being','below','bench','bible','birth','black','blade','blame','bland','blank','blast','blaze','bleed','blend','bless','blind','block','blood','blown','board','bonus','boost','booth','bound','brain','brand','brave','bread','break','breed','brick','bride','brief','bring','broad','broke','brook','brown','brush','buddy','build','built','buyer','cabin','camel','candy','cargo','carry','catch','cause','cease','chair','chaos','chart','chase','cheap','check','cheek','cheer','chess','chest','chief','child','china','choir','chunk','civil','claim','clash','class','clean','clear','clerk','click','cliff','climb','clock','clone','close','cloud','coach','coast','cocoa','color','comic','comma','coral','count','court','craft','crazy','cream','creek','crisp','cross','crowd','crown','cruel','crush','curly','curve','cycle','daily','dance','death','debut','decay','delay','depot','depth','derby','devil','digit','dizzy','dodge','doing','donor','doubt','dough','draft','drama','draw','dream','dried','drink','drive','drone','drove','drown','drunk','dryer','duchy','dunno','dwarf','dying','eager','eagle','early','earth','eight','elect','elite','email','empty','enemy','enjoy','enter','entry','error','essay','event','every','exact','exist','extra','fable','faith','false','fancy','fatal','favor','feast','feels','fence','ferry','fever','fiber','field','fifth','fifty','fight','final','first','fixed','fizzy','flame','flash','fleet','flesh','float','flood','floor','floss','flour','fluid','flush','focal','focus','force','forge','found','frame','frank','fraud','fresh','front','frost','fruit','fully','funny','giant','given','glaze','globe','gloom','glory','glove','going','grace','grade','grain','grand','grant','graph','grasp','grass','grave','great','greed','greet','grief','grind','groan','groin','gross','group','grove','grown','gruel','guess','guide','guild','guilt','gusto','hasty','haven','heart','heavy','helix','hence','herbs','hippo','hobby','holly','honor','hotel','house','human','humor','husky','hyper','ideal','image','imply','inbox','index','indie','inner','input','issue','ivory','juice','juicy','juror','knack','kneel','knife','knock','known','label','large','laser','later','laugh','layer','learn','least','leave','legal','lemon','level','light','limit','linen','liver','local','logic','loose','lover','lower','loyal','lucky','magic','major','maker','manor','maple','march','match','mercy','merit','metal','miles','mimic','minor','minus','minus','mixed','model','money','month','moral','moose','motor','mount','mouse','movie','nasty','naval','nerve','never','night','noble','noise','north','noted','novel','nurse','nymph','ocean','offer','often','omega','onset','opera','order','other','ought','outer','owner','oxide','ozone','paint','panel','panic','paper','party','pasta','patch','pause','peace','pedal','penny','phase','phone','photo','piano','piece','pilot','pixel','pizza','place','plain','plane','plant','plate','plaza','plead','plumb','plume','point','polar','polka','popup','porch','pound','power','press','price','pride','prime','print','prior','prize','probe','proof','prose','proud','prove','proxy','psalm','pulse','pupil','purse','quest','queue','quiet','quota','quote','radar','radio','raise','rally','ranch','range','rapid','reach','ready','realm','rebel','refer','reign','relay','renew','repay','reply','rider','ridge','right','risky','river','rocky','rouge','rough','round','route','rowdy','royal','ruler','rural','safer','saint','salad','sauce','scale','scare','scene','scope','score','scout','seize','sense','serve','setup','seven','shade','shake','shall','shame','shape','share','shark','sharp','shift','shirt','shoot','shore','short','shout','siege','sight','sigma','silly','since','sixth','sixty','skill','slate','sleep','slice','slide','smile','smoke','solid','solve','sorry','south','space','spare','spark','speak','speed','spell','spend','spice','spill','spine','spite','split','spoke','spoon','spray','squad','stack','staff','stage','stain','stake','stale','stall','stare','start','state','steal','steam','steel','steep','steer','stern','stick','stiff','still','sting','stock','stone','storm','story','stove','strap','straw','strip','stuck','study','style','sugar','suite','super','surge','swamp','swear','sweat','sweet','swept','swift','swing','sword','table','taste','teach','teeth','thank','thick','thing','think','third','those','three','threw','throw','tiger','tight','timer','tired','title','today','token','topic','total','touch','tough','tower','toxic','trace','track','trade','trail','train','trait','treat','trial','tribe','tried','troop','truck','truly','trust','truth','tumor','tuner','twice','twist','under','unify','union','unlit','until','upper','upset','urban','usage','usher','usual','utter','valid','valor','value','vault','video','vigil','viral','virus','visit','visor','vital','vivid','voice','voter','waist','waste','watch','water','weary','weave','wedge','weigh','weird','whale','wheat','wheel','where','which','white','whole','wider','widow','witch','world','worry','worse','worst','worth','would','wound','wrath','write','wrote','yacht','yield','young','yours','youth','zebra','zero'];
+
+  const KEYS = [
+    ['q','w','e','r','t','y','u','i','o','p'],
+    ['a','s','d','f','g','h','j','k','l'],
+    ['Enter','z','x','c','v','b','n','m','⌫']
+  ];
+
+  let target, guesses, currentGuess, gameOver, wins, streak;
+
+  function newGame() {
+    target = WORDS[Math.floor(Math.random()*WORDS.length)].toUpperCase();
+    guesses = [];
+    currentGuess = '';
+    gameOver = false;
+    wins = parseInt(localStorage.getItem('wg_wins')||'0');
+    streak = parseInt(localStorage.getItem('wg_streak')||'0');
+    document.getElementById('streak').textContent = `Wins: ${wins} · Streak: ${streak}`;
+    document.getElementById('msg').textContent = 'Guess the 5-letter word in 6 tries';
+    document.getElementById('msg').className = 'msg';
+    document.getElementById('resultPanel').style.display = 'none';
+    buildBoard();
+    buildKeyboard();
+  }
+
+  function buildBoard() {
+    const board = document.getElementById('board');
+    board.innerHTML = '';
+    for(let r=0;r<6;r++){
+      const row = document.createElement('div');
+      row.className = 'row';
+      row.id = 'row'+r;
+      for(let c=0;c<5;c++){
+        const tile = document.createElement('div');
+        tile.className = 'tile';
+        tile.id = `t${r}${c}`;
+        row.appendChild(tile);
+      }
+      board.appendChild(row);
+    }
+  }
+
+  function buildKeyboard() {
+    const kb = document.getElementById('keyboard');
+    kb.innerHTML = '';
+    KEYS.forEach(row=>{
+      const r = document.createElement('div');
+      r.className = 'kb-row';
+      row.forEach(k=>{
+        const btn = document.createElement('button');
+        btn.className = 'key' + (k==='Enter'||k==='⌫'?' wide':'');
+        btn.textContent = k;
+        btn.id = 'key_'+k;
+        btn.addEventListener('click',()=>handleKey(k));
+        r.appendChild(btn);
+      });
+      kb.appendChild(r);
+    });
+  }
+
+  function handleKey(k) {
+    if (gameOver) return;
+    if (k === '⌫' || k === 'Backspace') {
+      currentGuess = currentGuess.slice(0,-1);
+    } else if (k === 'Enter') {
+      submitGuess();
+      return;
+    } else if (/^[a-zA-Z]$/.test(k) && currentGuess.length < 5) {
+      currentGuess += k.toUpperCase();
+    }
+    renderCurrentRow();
+  }
+
+  function renderCurrentRow() {
+    const r = guesses.length;
+    if (r >= 6) return;
+    for(let c=0;c<5;c++){
+      const t = document.getElementById(`t${r}${c}`);
+      t.textContent = currentGuess[c] || '';
+      t.className = 'tile' + (currentGuess[c]?' filled':'');
+    }
+  }
+
+  function submitGuess() {
+    if (currentGuess.length < 5) {
+      shakeRow(guesses.length);
+      setMsg('Word must be 5 letters!','');
+      return;
+    }
+    const row = guesses.length;
+    const result = evaluate(currentGuess, target);
+    guesses.push({word:currentGuess, result});
+    revealRow(row, currentGuess, result);
+    currentGuess = '';
+    if (currentGuess.length===0) renderCurrentRow();
+
+    setTimeout(()=>{
+      if (result.every(r=>r==='correct')) {
+        gameOver = true;
+        wins++; streak++;
+        localStorage.setItem('wg_wins',wins);
+        localStorage.setItem('wg_streak',streak);
+        document.getElementById('streak').textContent = `Wins: ${wins} · Streak: ${streak}`;
+        showResult(true, guesses[guesses.length-1].word);
+      } else if (guesses.length >= 6) {
+        gameOver = true;
+        streak = 0;
+        localStorage.setItem('wg_streak','0');
+        showResult(false, target);
+      }
+    }, 1600);
+  }
+
+  function evaluate(guess, target) {
+    const result = Array(5).fill('absent');
+    const targetArr = target.split('');
+    const guessArr = guess.split('');
+    // Pass 1: correct
+    guessArr.forEach((l,i)=>{ if(l===targetArr[i]){ result[i]='correct'; targetArr[i]=null; guessArr[i]=null; } });
+    // Pass 2: present
+    guessArr.forEach((l,i)=>{ if(l===null) return; const idx=targetArr.indexOf(l); if(idx!==-1){ result[i]='present'; targetArr[idx]=null; } });
+    return result;
+  }
+
+  function revealRow(row, word, result) {
+    word.split('').forEach((l,i)=>{
+      const t = document.getElementById(`t${row}${i}`);
+      setTimeout(()=>{
+        t.textContent = l;
+        t.className = 'tile flip ' + result[i];
+        updateKey(l, result[i]);
+      }, i * 300);
+    });
+  }
+
+  const KEY_PRIORITY = {correct:3,present:2,absent:1};
+  const keyState = {};
+  function updateKey(letter, state) {
+    const el = document.getElementById('key_'+letter);
+    if (!el) return;
+    const cur = keyState[letter] || 0;
+    if ((KEY_PRIORITY[state]||0) > cur) {
+      keyState[letter] = KEY_PRIORITY[state];
+      el.className = 'key ' + state;
+    }
+  }
+
+  function shakeRow(r) {
+    const row = document.getElementById('row'+r);
+    row.querySelectorAll('.tile').forEach(t=>{ t.classList.add('shake'); setTimeout(()=>t.classList.remove('shake'),400); });
+  }
+
+  function setMsg(text, cls) {
+    const m = document.getElementById('msg');
+    m.textContent = text;
+    m.className = 'msg ' + cls;
+  }
+
+  function showResult(won, word) {
+    document.getElementById('resultTitle').textContent = won ? `You got it in ${guesses.length}! 🎉` : "Better luck next time!";
+    document.getElementById('answerReveal').textContent = word;
+    document.getElementById('resultPanel').style.display = 'block';
+  }
+
+  document.addEventListener('keydown', e=>{
+    if(e.ctrlKey||e.metaKey||e.altKey) return;
+    if(e.key==='Backspace') { e.preventDefault(); handleKey('Backspace'); }
+    else if(e.key==='Enter') { e.preventDefault(); handleKey('Enter'); }
+    else if(/^[a-zA-Z]$/.test(e.key)) { e.preventDefault(); handleKey(e.key); }
+  });
+
+  newGame();</script></div>
 
 
 <script src="/knexio-bundle.js"></script>
@@ -254,5 +603,7 @@
       </p>
       <p>© 2026 Knexio. All rights reserved.</p>
     </footer>
+
+  <script src="../../cookie-consent.js"></script>
 </body>
 </html>

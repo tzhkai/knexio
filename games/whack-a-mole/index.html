@@ -11,17 +11,6 @@
   <meta property="og:url" content="https://knexio.xyz/games/whack-a-mole/" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://knexio.xyz/og-image.svg" />
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Whack A Mole - Free Online Game | Play Now",
-    "description": "Play Whack A Mole free online. Whack moles as they pop up from holes. Works in your browser.",
-    "url": "https://knexio.xyz/games/whack-a-mole/",
-    "publisher": { "@type": "Organization", "name": "Knexio" }
-  }
-  </script>
 <style>
 
     :root{--bg:#0b1220;--bg2:#070d1a;--panel:#111a2e;--border:rgba(255,255,255,0.08);--text:#fff;--sub:#aab3c5;--accent:#f97316;--green:#22c55e;;--text-main:#fff;--text-sub:#aab3c5}
@@ -41,7 +30,7 @@
     .btn:hover{opacity:0.85;}
     .btn.ghost{background:transparent;border:1px solid var(--border);color:var(--sub);}
     .btn.ghost.active{border-color:var(--accent);color:var(--accent);}
-    .ad-banner{margin:24px 0;text-align:center;min-height:90px}
+    .ad-banner{margin-bottom:24px;text-align:center;}
     .arena{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:0 auto;max-width:400px;}
     .hole{aspect-ratio:1;background:#0d1526;border:2px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:52px;cursor:pointer;transition:background 0.1s,transform 0.1s;position:relative;overflow:hidden;}
     .hole:hover{background:#131f36;}
@@ -58,7 +47,7 @@
     .seo{margin-top:60px;}
     .seo h2{font-size:20px;margin-bottom:10px;}
     .seo p{font-size:14px;color:var(--sub);line-height:1.8;}
-    footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;font-size:13px;color:var(--sub);border-top:1px solid var(--border);}
+    footer{margin-top:60px;text-align:center;font-size:13px;color:var(--sub);border-top:1px solid var(--border);}
 
     /* ==================== 移动端优化 ==================== */
 
@@ -231,7 +220,296 @@
 
 </style>
 
-  <meta name="keywords" content="whack a mole game, free online game, browser game, play online, casual game" /></div>
+  <meta name="keywords" content="whack a mole game, free online game, browser game, play online, casual game" /><script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoGame",
+  "name": "Whack A Mole",
+  "url": "https://knexio.xyz/games/whack-a-mole/",
+  "description": "Play Whack A Mole free online. Whack A Mole is a fun browser game that you can play for free. Enjoy this entertaining game with simple controls and eng... No download required. Works on all devices.",
+  "genre": "Game",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+</head>
+<body><div class="wrap">
+  <a class="back" href="../index.html">← Back to Games</a>
+  <div class="header">
+    <h1>Whack-a-Mole 🐭</h1>
+    <div class="stats">
+      <div class="stat-box"><div class="stat-label">Score</div><div class="stat-val" id="score">0</div></div>
+      <div class="stat-box"><div class="stat-label">Time</div><div class="stat-val" id="timer">30</div></div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button class="btn" id="startBtn" onclick="startGame()">Start Game</button>
+    <button class="btn ghost" id="modeEasy" onclick="setMode('easy')" class="active">Easy</button>
+    <button class="btn ghost active" id="modeMed" onclick="setMode('medium')">Medium</button>
+    <button class="btn ghost" id="modeHard" onclick="setMode('hard')">Hard</button>
+  </div>
+
+  <div class="arena" id="arena">
+    <!-- 9 holes -->
+  </div>
+
+  <div class="status-bar" id="statusBar">Choose difficulty and press Start!</div>
+
+  <div class="result-msg" id="resultMsg">
+    <h2>Time's Up! ⏱</h2>
+    <p id="finalScore">You scored 0 points.</p>
+    <button class="btn" onclick="startGame()">Play Again</button>
+
+  </div>
+
+  <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="5794572171" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+<!-- ==================== 游戏玩法说明 - SEO优化内容 ==================== -->
+<div class="gameplay-section" style="margin: 60px auto 0; max-width: 800px; padding: 32px 24px; background: var(--panel); border-radius: 18px; border: 1px solid var(--border); text-align: left;">
+    <h2 style="font-size: 28px; margin-bottom: 30px; color: var(--text-main); display: flex; align-items: center;">
+        <span style="background: var(--accent); color: white; width: 36px; height: 36px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 15px; font-size: 18px;">🎮</span>
+        How to Play Whack A Mole
+    </h2>
+
+    <div style="margin-bottom: 30px;">
+        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--text-main);">Game Description</h3>
+        <p style="font-size: 15px; color: var(--text-sub); line-height: 1.7; margin-bottom: 20px;">
+            Whack A Mole is a fun browser game that you can play for free. Enjoy this entertaining game with simple controls and engaging gameplay.
+        </p>
+    </div>
+
+    <div style="margin-bottom: 30px;">
+        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--text-main);">Basic Rules & Controls</h3>
+        <ol style="font-size: 15px; color: var(--text-sub); line-height: 1.7; padding-left: 25px; margin-bottom: 20px;">
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">Use your mouse, keyboard, or touch controls to play</strong>
+            </li>
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">Follow the on-screen instructions</strong>
+            </li>
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">Try to achieve the highest score possible</strong>
+            </li>
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">The game may have different modes or difficulty levels</strong>
+            </li>
+
+        </ol>
+    </div>
+
+    <div style="margin-bottom: 30px;">
+        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--text-main);">Pro Tips & Strategies</h3>
+        <ul style="font-size: 15px; color: var(--text-sub); line-height: 1.7; padding-left: 25px; margin-bottom: 20px;">
+
+            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;">
+                <span style="position: absolute; left: -15px; color: var(--accent);">✓</span>
+                Read the instructions carefully before playing
+            </li>
+
+            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;">
+                <span style="position: absolute; left: -15px; color: var(--accent);">✓</span>
+                Practice to improve your skills
+            </li>
+
+            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;">
+                <span style="position: absolute; left: -15px; color: var(--accent);">✓</span>
+                Take breaks if you get frustrated
+            </li>
+
+            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;">
+                <span style="position: absolute; left: -15px; color: var(--accent);">✓</span>
+                Try different strategies to find what works best
+            </li>
+
+        </ul>
+    </div>
+
+    <div style="background: rgba(79, 140, 255, 0.1); padding: 20px; border-radius: 12px; border-left: 4px solid var(--accent);">
+        <p style="font-size: 15px; color: var(--text-sub); margin: 0;">
+            <strong style="color: var(--accent);">💡 Quick Start:</strong> Just click/tap to begin! No registration required. 
+            All Knexio games work directly in your browser with no downloads needed.
+        </p>
+    </div>
+</div>
+
+<!-- ==================== 广告位优化 ==================== -->
+<div class="ad-section" style="margin-top: 40px; text-align: center;">
+    <ins class="adsbygoogle" 
+         style="display:block; background: var(--panel); border-radius: 12px; padding: 15px;"
+         data-ad-client="ca-pub-2596567349043393" 
+         data-ad-slot="9504968504" 
+         data-ad-format="auto" 
+         data-full-width-responsive="true">
+    </ins>
+    <p style="font-size: 12px; color: var(--text-sub); margin-top: 8px; opacity: 0.7;">
+        Advertisement supports free games development
+    </p>
+</div>
+
+<!-- ==================== 游戏常见问题 (FAQ) ==================== -->
+<div class="faq-section" style="margin: 60px auto 0; max-width: 800px; padding: 32px 24px; background: var(--panel); border-radius: 18px; text-align: left;">
+    <h2 style="font-size: 28px; margin-bottom: 30px; color: var(--text-main);">Frequently Asked Questions</h2>
+
+    <div class="faq-list">
+        <div class="faq-item" style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid var(--border);">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                Is this game free to play?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                Yes, all games on Knexio are completely free to play. There are no hidden charges, subscription fees, or in-app purchases. We support our games through non-intrusive advertisements.
+            </p>
+        </div>
+
+        <div class="faq-item" style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid var(--border);">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                Do I need to download anything to play?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                No downloads required! All our games run directly in your web browser. They work on desktop computers, laptops, tablets, and smartphones. Just visit the page and start playing.
+            </p>
+        </div>
+
+        <div class="faq-item" style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid var(--border);">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                How do I save my game progress?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                Most games automatically save your high scores and progress in your browser's local storage. Your best scores will be remembered even if you close the browser, as long as you don't clear your browsing data.
+            </p>
+        </div>
+
+        <div class="faq-item" style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid var(--border);">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                Can I play on mobile devices?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                Absolutely! All Knexio games are fully responsive and optimized for mobile devices. Touch controls are implemented for games that require precise input. The interface automatically adapts to your screen size.
+            </p>
+        </div>
+
+        <div class="faq-item" style="margin-bottom: 25px;">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                Is there sound in the games?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                Most games include optional sound effects. Look for a sound/mute button in the game interface. You can enable or disable sound based on your preference. We keep sound subtle and non-intrusive.
+            </p>
+        </div>
+    </div>
+</div>
+
+
+<script>
+let score = 0, timeLeft = 30, running = false, mode = 'medium';
+  let moleTimer = null, countTimer = null, activeHoles = new Set();
+  const SPEEDS = { easy: {show:1400,min:1000}, medium: {show:900,min:600}, hard: {show:600,min:350} };
+
+  // Build holes
+  const arena = document.getElementById('arena');
+  for(let i=0;i<9;i++){
+    const h = document.createElement('div');
+    h.className = 'hole';
+    h.dataset.id = i;
+    h.innerHTML = '<div class="mole">🐭</div><div class="score-pop" id="pop'+i+'">+1</div>';
+    h.addEventListener('click', ()=>whack(i));
+    h.addEventListener('touchstart', e=>{e.preventDefault();whack(i);},{passive:false});
+    arena.appendChild(h);
+  }
+
+  function setMode(m) {
+    mode = m;
+    ['easy','medium','hard'].forEach(x=>{
+      document.getElementById('mode'+x.charAt(0).toUpperCase()+x.slice(1)).classList.toggle('active', x===m);
+    });
+  }
+
+  function startGame() {
+    if (running) { stopGame(); }
+    score = 0; timeLeft = 30; activeHoles.clear();
+    document.getElementById('score').textContent = '0';
+    document.getElementById('timer').textContent = '30';
+    document.getElementById('resultMsg').style.display = 'none';
+    document.getElementById('statusBar').textContent = 'Whack those moles!';
+    running = true;
+    document.getElementById('startBtn').textContent = 'Restart';
+    scheduleMole();
+    countTimer = setInterval(()=>{
+      timeLeft--;
+      document.getElementById('timer').textContent = timeLeft;
+      if (timeLeft <= 0) endGame();
+    }, 1000);
+  }
+
+  function stopGame() {
+    running = false;
+    clearTimeout(moleTimer);
+    clearInterval(countTimer);
+    document.querySelectorAll('.hole').forEach(h=>h.classList.remove('up','bonk'));
+    activeHoles.clear();
+  }
+
+  function scheduleMole() {
+    if (!running) return;
+    const sp = SPEEDS[mode];
+    const delay = sp.min + Math.random()*(sp.show-sp.min);
+    moleTimer = setTimeout(()=>{
+      showMole();
+      scheduleMole();
+    }, 400 + Math.random()*300);
+  }
+
+  function showMole() {
+    const holes = document.querySelectorAll('.hole');
+    const available = [...holes].filter(h=>!h.classList.contains('up') && !h.classList.contains('bonk'));
+    if (!available.length) return;
+    const h = available[Math.floor(Math.random()*available.length)];
+    const id = +h.dataset.id;
+    h.classList.add('up');
+    activeHoles.add(id);
+    const sp = SPEEDS[mode];
+    const stayTime = sp.min + Math.random()*(sp.show - sp.min);
+    setTimeout(()=>{
+      if(h.classList.contains('up')){ h.classList.remove('up'); activeHoles.delete(id); }
+    }, stayTime);
+  }
+
+  function whack(id) {
+    if (!running) return;
+    const h = document.querySelector(`.hole[data-id="${id}"]`);
+    if (!h.classList.contains('up')) return;
+    h.classList.remove('up');
+    h.classList.add('bonk');
+    activeHoles.delete(id);
+    score++;
+    document.getElementById('score').textContent = score;
+    const pop = document.getElementById('pop'+id);
+    pop.classList.add('show');
+    setTimeout(()=>{ h.classList.remove('bonk'); pop.classList.remove('show'); }, 300);
+  }
+
+  function endGame() {
+    stopGame();
+    document.getElementById('statusBar').textContent = '';
+    document.getElementById('finalScore').textContent = `You scored ${score} point${score===1?'':'s'}. ${score>=20?'Amazing!':score>=10?'Nice!':'Keep practicing!'}`;
+    document.getElementById('resultMsg').style.display = 'block';
+    document.getElementById('startBtn').textContent = 'Start Game';
+  }
+</script></div>
 
 
 <script src="/knexio-bundle.js"></script>
@@ -246,5 +524,7 @@
       </p>
       <p>© 2026 Knexio. All rights reserved.</p>
     </footer>
+
+  <script src="../../cookie-consent.js"></script>
 </body>
 </html>

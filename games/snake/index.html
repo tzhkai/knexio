@@ -12,17 +12,6 @@
   <meta property="og:type" content="Game" />
   <meta property="og:site_name" content="Knexio" />
   <meta property="og:image" content="https://knexio.xyz/og-image.png" />
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Snake",
-    "description": "Play Snake free online. Eat food, grow longer, avoid walls and yourself. Classic arcade game in your browser.",
-    "url": "https://knexio.xyz/games/snake/",
-    "publisher": { "@type": "Organization", "name": "Knexio" }
-  }
-  </script>
 <style>
     :root{--bg:#0b1220;--bg2:#070d1a;--panel:#111a2e;--border:rgba(255,255,255,0.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff;--green:#34d399;--text-main:#fff;--text-sub:#aab3c5}
     *{box-sizing:border-box;margin:0;padding:0}
@@ -33,7 +22,7 @@
     .clearfix::after{content:'';display:table;clear:both}
     h1{font-size:30px;margin-bottom:6px}
     .subtitle{color:var(--sub);font-size:14px;margin-bottom:20px}
-    .ad-slot{margin:24px 0;text-align:center;min-height:90px}
+    .ad-slot{margin:16px 0}
     .score-bar{display:flex;justify-content:center;gap:40px;margin-bottom:16px}
     .score-item{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:12px 24px}
     .score-label{font-size:11px;color:var(--sub);text-transform:uppercase;letter-spacing:.5px}
@@ -53,7 +42,7 @@
     .mobile-controls{display:none;grid-template-columns:repeat(3,56px);grid-template-rows:repeat(2,56px);gap:8px;justify-content:center;margin-top:16px}
     .dpad{width:56px;height:56px;background:var(--panel);border:1px solid var(--border);border-radius:10px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:22px;user-select:none}
     .dpad:active{background:rgba(79,140,255,.2)}
-    footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;font-size:13px;color:var(--sub);text-align:center;border-top:1px solid var(--border);}
+    footer{margin-top:60px;font-size:13px;color:var(--sub);text-align:center;border-top:1px solid var(--border);}
   .ad-banner{margin:24px 0;text-align:center;min-height:90px}
   
     /* ==================== 移动端优化 ==================== */
@@ -225,14 +214,332 @@
       }
     }
     </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoGame",
+  "name": "Snake",
+  "url": "https://knexio.xyz/games/snake/",
+  "description": "Eat the food, grow longer, avoid the walls and yourself",
+  "genre": "Game",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+</head>
+<body><div class="wrap">
+  <div class="clearfix">
+    <a class="back" href="../index.html">← Back to Games</a>
+  </div>
+  <h1>Snake</h1>
+  <div class="subtitle">Eat the food, grow longer, avoid the walls and yourself</div>
 
+  <div class="difficulty">
+    <button class="diff-btn" onclick="setSpeed(200,'Slow')">Slow</button>
+    <button class="diff-btn active" onclick="setSpeed(120,'Normal')">Normal</button>
+    <button class="diff-btn" onclick="setSpeed(70,'Fast')">Fast</button>
+    <button class="diff-btn" onclick="setSpeed(40,'Insane')">Insane</button>
+  </div>
+
+  <div class="score-bar">
+    <div class="score-item"><div class="score-label">Score</div><div class="score-val" id="score">0</div></div>
+    <div class="score-item"><div class="score-label">Best</div><div class="score-val" id="best">0</div></div>
+  </div>
+
+  <div class="canvas-wrap">
+    <canvas id="canvas" width="480" height="480"></canvas>
+    <div class="overlay" id="overlay">
+      <h2>🐍 Snake</h2>
+      <p>Use arrow keys or swipe to control</p>
+      <button class="btn" onclick="startGame()">Start Game</button>
+    </div>
+  </div>
+
+  <div class="controls-hint">Arrow keys to move · P to pause · R to restart</div>
+
+  <div class="mobile-controls">
+    <div></div>
+    <div class="dpad" ontouchstart="setDir(0,-1)">▲</div>
+    <div></div>
+    <div class="dpad" ontouchstart="setDir(-1,0)">◀</div>
+    <div class="dpad" ontouchstart="setDir(0,1)">▼</div>
+    <div class="dpad" ontouchstart="setDir(1,0)">▶</div>
+  </div>
+
+  <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="5794572171" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+<!-- ==================== 游戏玩法说明 - SEO优化内容 ==================== -->
+<div class="gameplay-section" style="margin: 60px auto 0; max-width: 800px; padding: 32px 24px; background: var(--panel); border-radius: 18px; border: 1px solid var(--border); text-align: left;">
+    <h2 style="font-size: 28px; margin-bottom: 30px; color: var(--text-main); display: flex; align-items: center;">
+        <span style="background: var(--accent); color: white; width: 36px; height: 36px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 15px; font-size: 18px;">🎮</span>
+        How to Play Snake
+    </h2>
+
+    <div style="margin-bottom: 30px;">
+        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--text-main);">Game Description</h3>
+        <p style="font-size: 15px; color: var(--text-sub); line-height: 1.7; margin-bottom: 20px;">
+            Snake is a classic arcade game where you control a growing snake to collect food while avoiding collisions with walls and your own tail.
+        </p>
+    </div>
+
+    <div style="margin-bottom: 30px;">
+        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--text-main);">Basic Rules & Controls</h3>
+        <ol style="font-size: 15px; color: var(--text-sub); line-height: 1.7; padding-left: 25px; margin-bottom: 20px;">
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">Use arrow keys (↑, ↓, ←, →) to control the snake's direction</strong>
+            </li>
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">Move the snake to eat the food (red dot) that appears randomly</strong>
+            </li>
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">Each piece of food makes the snake grow longer</strong>
+            </li>
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">Avoid hitting the walls or the snake's own body</strong>
+            </li>
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">The game gets progressively harder as the snake grows longer</strong>
+            </li>
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">Your score increases with each piece of food collected</strong>
+            </li>
+
+        </ol>
+    </div>
+
+    <div style="margin-bottom: 30px;">
+        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--text-main);">Pro Tips & Strategies</h3>
+        <ul style="font-size: 15px; color: var(--text-sub); line-height: 1.7; padding-left: 25px; margin-bottom: 20px;">
+
+            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;">
+                <span style="position: absolute; left: -15px; color: var(--accent);">✓</span>
+                Plan your path before making turns
+            </li>
+
+            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;">
+                <span style="position: absolute; left: -15px; color: var(--accent);">✓</span>
+                Try to keep the snake in open areas
+            </li>
+
+            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;">
+                <span style="position: absolute; left: -15px; color: var(--accent);">✓</span>
+                Use the walls to your advantage for tight turns
+            </li>
+
+            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;">
+                <span style="position: absolute; left: -15px; color: var(--accent);">✓</span>
+                Don't get trapped in corners
+            </li>
+
+            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;">
+                <span style="position: absolute; left: -15px; color: var(--accent);">✓</span>
+                Stay calm as the snake gets longer
+            </li>
+
+        </ul>
+    </div>
+
+    <div style="background: rgba(79, 140, 255, 0.1); padding: 20px; border-radius: 12px; border-left: 4px solid var(--accent);">
+        <p style="font-size: 15px; color: var(--text-sub); margin: 0;">
+            <strong style="color: var(--accent);">💡 Quick Start:</strong> Just click/tap to begin! No registration required. 
+            All Knexio games work directly in your browser with no downloads needed.
+        </p>
+    </div>
+</div>
+
+<!-- ==================== 广告位优化 ==================== -->
+<div class="ad-section" style="margin-top: 40px; text-align: center;">
+    <ins class="adsbygoogle" 
+         style="display:block; background: var(--panel); border-radius: 12px; padding: 15px;"
+         data-ad-client="ca-pub-2596567349043393" 
+         data-ad-slot="9504968504" 
+         data-ad-format="auto" 
+         data-full-width-responsive="true">
+    </ins>
+    <p style="font-size: 12px; color: var(--text-sub); margin-top: 8px; opacity: 0.7;">
+        Advertisement supports free games development
+    </p>
+</div>
+
+<!-- ==================== 游戏常见问题 (FAQ) ==================== -->
+<div class="faq-section" style="margin: 60px auto 0; max-width: 800px; padding: 32px 24px; background: var(--panel); border-radius: 18px; text-align: left;">
+    <h2 style="font-size: 28px; margin-bottom: 30px; color: var(--text-main);">Frequently Asked Questions</h2>
+
+    <div class="faq-list">
+        <div class="faq-item" style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid var(--border);">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                Is this game free to play?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                Yes, all games on Knexio are completely free to play. There are no hidden charges, subscription fees, or in-app purchases. We support our games through non-intrusive advertisements.
+            </p>
+        </div>
+
+        <div class="faq-item" style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid var(--border);">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                Do I need to download anything to play?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                No downloads required! All our games run directly in your web browser. They work on desktop computers, laptops, tablets, and smartphones. Just visit the page and start playing.
+            </p>
+        </div>
+
+        <div class="faq-item" style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid var(--border);">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                How do I save my game progress?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                Most games automatically save your high scores and progress in your browser's local storage. Your best scores will be remembered even if you close the browser, as long as you don't clear your browsing data.
+            </p>
+        </div>
+
+        <div class="faq-item" style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid var(--border);">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                Can I play on mobile devices?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                Absolutely! All Knexio games are fully responsive and optimized for mobile devices. Touch controls are implemented for games that require precise input. The interface automatically adapts to your screen size.
+            </p>
+        </div>
+
+        <div class="faq-item" style="margin-bottom: 25px;">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                Is there sound in the games?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                Most games include optional sound effects. Look for a sound/mute button in the game interface. You can enable or disable sound based on your preference. We keep sound subtle and non-intrusive.
+            </p>
+        </div>
+    </div>
+</div>
+
+
+<script>
+const GRID=20, CELL=24;
+const canvas=document.getElementById('canvas');
+const ctx=canvas.getContext('2d');
+canvas.width=canvas.height=GRID*CELL;
+
+let snake,dir,nextDir,food,score,gameLoop,running,paused,speed=120;
+const best=()=>parseInt(localStorage.getItem('snakeBest')||'0');
+document.getElementById('best').textContent=best();
+
+function setSpeed(s,label){
+  speed=s;
+  document.querySelectorAll('.diff-btn').forEach(b=>b.classList.toggle('active',b.textContent===label));
+  if(running&&!paused){clearInterval(gameLoop);gameLoop=setInterval(tick,speed)}
+}
+
+function setDir(dx,dy){
+  if(!running||paused)return;
+  if(snake.length>1&&dx===-dir.x&&dy===-dir.y)return;
+  nextDir={x:dx,y:dy};
+}
+
+function randFood(){
+  let pos;
+  do{pos={x:Math.floor(Math.random()*GRID),y:Math.floor(Math.random()*GRID)}}
+  while(snake.some(s=>s.x===pos.x&&s.y===pos.y));
+  return pos;
+}
+
+function startGame(){
+  document.getElementById('overlay').style.display='none';
+  snake=[{x:10,y:10},{x:9,y:10},{x:8,y:10}];
+  dir={x:1,y:0};nextDir={x:1,y:0};
+  food=randFood();score=0;running=true;paused=false;
+  document.getElementById('score').textContent=0;
+  clearInterval(gameLoop);gameLoop=setInterval(tick,speed);
+  draw();
+}
+
+function tick(){
+  if(paused)return;
+  dir=nextDir;
+  const head={x:snake[0].x+dir.x,y:snake[0].y+dir.y};
+  if(head.x<0||head.x>=GRID||head.y<0||head.y>=GRID||snake.some(s=>s.x===head.x&&s.y===head.y)){
+    gameOver();return;
+  }
+  snake.unshift(head);
+  if(head.x===food.x&&head.y===food.y){
+    score++;
+    document.getElementById('score').textContent=score;
+    if(score>best())localStorage.setItem('snakeBest',score);
+    document.getElementById('best').textContent=Math.max(score,best());
+    food=randFood();
+  }else{snake.pop()}
+  draw();
+}
+
+function draw(){
+  ctx.fillStyle='#0d1829';ctx.fillRect(0,0,canvas.width,canvas.height);
+  // grid dots
+  ctx.fillStyle='rgba(255,255,255,0.04)';
+  for(let x=0;x<GRID;x++)for(let y=0;y<GRID;y++){ctx.beginPath();ctx.arc(x*CELL+CELL/2,y*CELL+CELL/2,1,0,Math.PI*2);ctx.fill()}
+  // food
+  const fx=food.x*CELL,fy=food.y*CELL;
+  ctx.fillStyle='#f87171';ctx.shadowColor='#f87171';ctx.shadowBlur=10;
+  ctx.beginPath();ctx.arc(fx+CELL/2,fy+CELL/2,CELL/2-3,0,Math.PI*2);ctx.fill();
+  ctx.shadowBlur=0;
+  // snake
+  snake.forEach((seg,i)=>{
+    const grad=ctx.createLinearGradient(seg.x*CELL,seg.y*CELL,seg.x*CELL+CELL,seg.y*CELL+CELL);
+    grad.addColorStop(0,i===0?'#4f8cff':'#34d399');
+    grad.addColorStop(1,i===0?'#7dd3fc':'#6ee7b7');
+    ctx.fillStyle=grad;
+    const r=i===0?8:6;
+    ctx.beginPath();ctx.roundRect(seg.x*CELL+1,seg.y*CELL+1,CELL-2,CELL-2,r);ctx.fill();
+  });
+}
+
+function gameOver(){
+  running=false;clearInterval(gameLoop);
+  const ov=document.getElementById('overlay');
+  ov.style.display='flex';
+  ov.innerHTML=`<div class="final-score">${score}</div></div><h2>Game Over</h2><p>Best: ${best()}</p><button class="btn" onclick="startGame()">Play Again</button>`;
+}
+
+// keyboard
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowUp'||e.key==='w')setDir(0,-1);
+  else if(e.key==='ArrowDown'||e.key==='s')setDir(0,1);
+  else if(e.key==='ArrowLeft'||e.key==='a')setDir(-1,0);
+  else if(e.key==='ArrowRight'||e.key==='d')setDir(1,0);
+  else if(e.key==='p'||e.key==='P'){paused=!paused}
+  else if(e.key==='r'||e.key==='R')startGame();
+  if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.key))e.preventDefault();
+});
+
+// swipe
+let tx=0,ty=0;
+canvas.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;ty=e.touches[0].clientY},false);
+canvas.addEventListener('touchend',e=>{
+  const dx=e.changedTouches[0].clientX-tx,dy=e.changedTouches[0].clientY-ty;
+  if(Math.abs(dx)>Math.abs(dy)){setDir(dx>0?1:-1,0)}else{setDir(0,dy>0?1:-1)}
+  e.preventDefault();
+},{passive:false});
+</script>
 
 
 <script src="/knexio-bundle.js"></script>
   
-    
-</div>
-<footer>
+    <footer>
       <p>Free online games to play anytime. Enjoy classic games, puzzles, and entertainment.</p>
       <p style="margin: 8px 0; font-size: 13px;">
         <a href="/about/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">About</a>
@@ -242,5 +549,7 @@
       </p>
       <p>© 2026 Knexio. All rights reserved.</p>
     </footer>
+</div>
+
+  <script src="../../cookie-consent.js"></script>
 </body>
-</html>

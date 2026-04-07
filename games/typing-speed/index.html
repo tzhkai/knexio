@@ -12,17 +12,6 @@
   <meta property="og:type" content="Game" />
   <meta property="og:site_name" content="Knexio" />
   <meta property="og:image" content="https://knexio.xyz/og-image.png" />
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Typing Speed Test",
-    "description": "Play Typing Speed free online. Measure your words per minute and accuracy. Improve typing skills in your browser.",
-    "url": "https://knexio.xyz/games/typing-speed/",
-    "publisher": { "@type": "Organization", "name": "Knexio" }
-  }
-  </script>
 <style>
     :root{--bg:#0b1220;--bg2:#070d1a;--panel:#111a2e;--border:rgba(255,255,255,0.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff;--green:#34d399;--red:#f87171;--yellow:#fbbf24;--text-main:#fff;--text-sub:#aab3c5}
     *{box-sizing:border-box;margin:0;padding:0}
@@ -32,7 +21,7 @@
     .back{display:inline-block;margin-bottom:20px;color:var(--sub);font-size:14px}
     h1{font-size:30px;margin-bottom:6px;text-align:center}
     .subtitle{color:var(--sub);font-size:14px;margin-bottom:20px;text-align:center}
-    .ad-slot{margin:24px 0;text-align:center;min-height:90px}
+    .ad-slot{margin:16px 0;text-align:center}
     .time-select{display:flex;gap:10px;justify-content:center;margin-bottom:20px}
     .time-btn{padding:8px 20px;border-radius:9px;border:1px solid var(--border);background:transparent;color:var(--sub);cursor:pointer;font-size:13px;font-weight:600}
     .time-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
@@ -62,7 +51,7 @@
     .result-stat .rv{font-size:36px;font-weight:900}
     .result-stat .rl{font-size:12px;color:var(--sub);margin-top:4px}
     .wpm-grade{font-size:14px;margin-bottom:20px;color:var(--sub)}
-    footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;font-size:13px;color:var(--sub);border-top:1px solid var(--border);}
+    footer{margin-top:60px;text-align:center;font-size:13px;color:var(--sub)border-top:1px solid var(--border);}
   .ad-banner{margin:24px 0;text-align:center;min-height:90px}
   
     /* ==================== 移动端优化 ==================== */
@@ -235,7 +224,346 @@
     }
     }
     </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoGame",
+  "name": "Typing Speed Test",
+  "url": "https://knexio.xyz/games/typing-speed/",
+  "description": "Measure your WPM and accuracy. Click the text area to start.",
+  "genre": "Game",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+</head>
+<body><div class="wrap">
+  <a class="back" href="../index.html">← Back to Games</a>
+  <h1>Typing Speed Test</h1>
+  <div class="subtitle">Measure your WPM and accuracy. Click the text area to start.</div>
+
+  <div class="time-select">
+    <button class="time-btn" onclick="setDuration(30)">30s</button>
+    <button class="time-btn active" onclick="setDuration(60)">60s</button>
+    <button class="time-btn" onclick="setDuration(120)">120s</button>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat"><div class="stat-val" id="timer-val">60</div><div class="stat-label">Time</div></div>
+    <div class="stat"><div class="stat-val" id="wpm-val">0</div><div class="stat-label">WPM</div></div>
+    <div class="stat"><div class="stat-val" id="acc-val">100%</div><div class="stat-label">Accuracy</div></div>
+    <div class="stat"><div class="stat-val" id="errors-val">0</div><div class="stat-label">Errors</div></div>
+  </div>
+
+  <div class="text-display" id="textDisplay" onclick="focusInput()">
+    <div class="start-hint" id="startHint">Click here or press any key to start</div>
+    <div id="wordSpans"></div>
+    <input type="text" id="typingInput" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+  </div>
+
+  <div class="action-row">
+    <button class="btn btn-outline" onclick="resetTest()">↺ Restart</button>
+  </div>
+
+  <div class="result-overlay" id="resultOverlay">
+    <h2>Test Complete!</h2>
+    <div class="result-grid">
+      <div class="result-stat"><div class="rv" id="r-wpm" style="color:var(--accent)">0</div><div class="rl">WPM</div></div>
+      <div class="result-stat"><div class="rv" id="r-acc" style="color:var(--green)">0%</div><div class="rl">Accuracy</div></div>
+      <div class="result-stat"><div class="rv" id="r-chars" style="color:var(--yellow)">0</div><div class="rl">Characters</div></div>
+      <div class="result-stat"><div class="rv" id="r-err" style="color:var(--red)">0</div><div class="rl">Errors</div></div>
+    </div>
+    <div class="wpm-grade" id="wpmGrade">
+  </div>
+
+  <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="5794572171" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+<!-- ==================== 游戏玩法说明 - SEO优化内容 ==================== -->
+<div class="gameplay-section" style="margin: 60px auto 0; max-width: 800px; padding: 32px 24px; background: var(--panel); border-radius: 18px; border: 1px solid var(--border); text-align: left;">
+    <h2 style="font-size: 28px; margin-bottom: 30px; color: var(--text-main); display: flex; align-items: center;">
+        <span style="background: var(--accent); color: white; width: 36px; height: 36px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 15px; font-size: 18px;">🎮</span>
+        How to Play Typing Speed
+    </h2>
+
+    <div style="margin-bottom: 30px;">
+        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--text-main);">Game Description</h3>
+        <p style="font-size: 15px; color: var(--text-sub); line-height: 1.7; margin-bottom: 20px;">
+            Typing Speed is a fun browser game that you can play for free. Enjoy this entertaining game with simple controls and engaging gameplay.
+        </p>
+    </div>
+
+    <div style="margin-bottom: 30px;">
+        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--text-main);">Basic Rules & Controls</h3>
+        <ol style="font-size: 15px; color: var(--text-sub); line-height: 1.7; padding-left: 25px; margin-bottom: 20px;">
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">Use your mouse, keyboard, or touch controls to play</strong>
+            </li>
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">Follow the on-screen instructions</strong>
+            </li>
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">Try to achieve the highest score possible</strong>
+            </li>
+
+            <li style="margin-bottom: 12px;">
+                <strong style="color: var(--text-main);">The game may have different modes or difficulty levels</strong>
+            </li>
+
+        </ol>
+    </div>
+
+    <div style="margin-bottom: 30px;">
+        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--text-main);">Pro Tips & Strategies</h3>
+        <ul style="font-size: 15px; color: var(--text-sub); line-height: 1.7; padding-left: 25px; margin-bottom: 20px;">
+
+            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;">
+                <span style="position: absolute; left: -15px; color: var(--accent);">✓</span>
+                Read the instructions carefully before playing
+            </li>
+
+            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;">
+                <span style="position: absolute; left: -15px; color: var(--accent);">✓</span>
+                Practice to improve your skills
+            </li>
+
+            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;">
+                <span style="position: absolute; left: -15px; color: var(--accent);">✓</span>
+                Take breaks if you get frustrated
+            </li>
+
+            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;">
+                <span style="position: absolute; left: -15px; color: var(--accent);">✓</span>
+                Try different strategies to find what works best
+            </li>
+
+        </ul>
+    </div>
+
+    <div style="background: rgba(79, 140, 255, 0.1); padding: 20px; border-radius: 12px; border-left: 4px solid var(--accent);">
+        <p style="font-size: 15px; color: var(--text-sub); margin: 0;">
+            <strong style="color: var(--accent);">💡 Quick Start:</strong> Just click/tap to begin! No registration required. 
+            All Knexio games work directly in your browser with no downloads needed.
+        </p>
+    </div>
 </div>
+
+<!-- ==================== 广告位优化 ==================== -->
+<div class="ad-section" style="margin-top: 40px; text-align: center;">
+    <ins class="adsbygoogle" 
+         style="display:block; background: var(--panel); border-radius: 12px; padding: 15px;"
+         data-ad-client="ca-pub-2596567349043393" 
+         data-ad-slot="9504968504" 
+         data-ad-format="auto" 
+         data-full-width-responsive="true">
+    </ins>
+    <p style="font-size: 12px; color: var(--text-sub); margin-top: 8px; opacity: 0.7;">
+        Advertisement supports free games development
+    </p>
+</div>
+
+<!-- ==================== 游戏常见问题 (FAQ) ==================== -->
+<div class="faq-section" style="margin: 60px auto 0; max-width: 800px; padding: 32px 24px; background: var(--panel); border-radius: 18px; text-align: left;">
+    <h2 style="font-size: 28px; margin-bottom: 30px; color: var(--text-main);">Frequently Asked Questions</h2>
+
+    <div class="faq-list">
+        <div class="faq-item" style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid var(--border);">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                Is this game free to play?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                Yes, all games on Knexio are completely free to play. There are no hidden charges, subscription fees, or in-app purchases. We support our games through non-intrusive advertisements.
+            </p>
+        </div>
+
+        <div class="faq-item" style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid var(--border);">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                Do I need to download anything to play?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                No downloads required! All our games run directly in your web browser. They work on desktop computers, laptops, tablets, and smartphones. Just visit the page and start playing.
+            </p>
+        </div>
+
+        <div class="faq-item" style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid var(--border);">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                How do I save my game progress?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                Most games automatically save your high scores and progress in your browser's local storage. Your best scores will be remembered even if you close the browser, as long as you don't clear your browsing data.
+            </p>
+        </div>
+
+        <div class="faq-item" style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid var(--border);">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                Can I play on mobile devices?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                Absolutely! All Knexio games are fully responsive and optimized for mobile devices. Touch controls are implemented for games that require precise input. The interface automatically adapts to your screen size.
+            </p>
+        </div>
+
+        <div class="faq-item" style="margin-bottom: 25px;">
+            <h3 style="font-size: 18px; margin-bottom: 10px; color: var(--text-main);">
+                <span style="color: var(--accent); margin-right: 10px;">Q:</span>
+                Is there sound in the games?
+            </h3>
+            <p style="font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-left: 30px;">
+                Most games include optional sound effects. Look for a sound/mute button in the game interface. You can enable or disable sound based on your preference. We keep sound subtle and non-intrusive.
+            </p>
+        </div>
+    </div>
+</div>
+
+<script>
+const WORDS=['the','be','to','of','and','a','in','that','have','it','for','not','on','with','he','as','you','do','at','this','but','his','by','from','they','we','say','her','she','or','an','will','my','one','all','would','there','their','what','so','up','out','if','about','who','get','which','go','me','when','make','can','like','time','no','just','him','know','take','people','into','year','your','good','some','could','them','see','other','than','then','now','look','only','come','its','over','think','also','back','after','use','two','how','our','work','first','well','way','even','new','want','because','any','these','give','day','most','us','great','between','need','large','often','hand','high','place','hold','turn','with','same','tell','does','set','three','air','play','small','number','off','always','move','try','kind','hand','picture','again','change','off','play','spell','air','away','animal','house','point','page','letter','mother','answer','found','still','learn','should','America','world'];
+
+let text=[],typed=[],current=0,errors=0,started=false,finished=false,timerInt=null,duration=60,remaining=60,keystrokes=0,correctKeys=0;
+
+function setDuration(d){
+  duration=d;remaining=d;
+  document.querySelectorAll('.time-btn').forEach(b=>b.classList.toggle('active',b.textContent===d+'s'));
+  resetTest();
+}
+
+function generateText(){
+  const arr=[];
+  for(let i=0;i<60;i++)arr.push(WORDS[Math.floor(Math.random()*WORDS.length)]);
+  return arr;
+}
+
+function render(){
+  const container=document.getElementById('wordSpans');
+  container.innerHTML='';
+  text.forEach((word,wi)=>{
+    word.split('').forEach((ch,ci)=>{
+      const flat=text.slice(0,wi).join(' ').length+(wi>0?1:0)+ci;
+      const span=document.createElement('span');
+      span.textContent=ch;
+      if(flat<typed.length){span.className=typed[flat]===ch?'correct':'wrong'}
+      else if(flat===typed.length){span.className='current'}
+      else{span.className='untyped'}
+      container.appendChild(span);
+    });
+    if(wi<text.length-1){
+      const flat=text.slice(0,wi+1).join(' ').length;
+      const sp=document.createElement('span');sp.textContent=' ';
+      if(flat<typed.length){sp.className=typed[flat]===' '?'correct':'wrong'}
+      else if(flat===typed.length){sp.className='current'}
+      else{sp.className='untyped'}
+      container.appendChild(sp);
+    }
+  });
+  // scroll current into view
+  const cur=container.querySelector('.current');
+  if(cur)cur.scrollIntoView({block:'nearest',behavior:'smooth'});
+}
+
+function calcWPM(){
+  if(!started)return 0;
+  const elapsed=(duration-remaining)||1;
+  const words=typed.join('').trim().split(/\s+/).filter(w=>w).length;
+  return Math.round(words/(elapsed/60));
+}
+
+function calcAcc(){
+  if(keystrokes===0)return 100;
+  return Math.round(correctKeys/keystrokes*100);
+}
+
+function updateStats(){
+  document.getElementById('wpm-val').textContent=calcWPM();
+  document.getElementById('acc-val').textContent=calcAcc()+'%';
+  document.getElementById('errors-val').textContent=errors;
+}
+
+function focusInput(){document.getElementById('typingInput').focus()}
+
+function startTest(){
+  if(started)return;
+  started=true;
+  document.getElementById('startHint').style.display='none';
+  remaining=duration;
+  timerInt=setInterval(()=>{
+    remaining--;
+    document.getElementById('timer-val').textContent=remaining;
+    updateStats();
+    if(remaining<=0){endTest();}
+  },1000);
+}
+
+function endTest(){
+  clearInterval(timerInt);finished=true;
+  document.getElementById('resultOverlay').style.display='block';
+  const wpm=calcWPM(),acc=calcAcc();
+  document.getElementById('r-wpm').textContent=wpm;
+  document.getElementById('r-acc').textContent=acc+'%';
+  document.getElementById('r-chars').textContent=correctKeys;
+  document.getElementById('r-err').textContent=errors;
+  let grade='Keep practicing!';
+  if(wpm>=100)grade='Expert Typist! Outstanding speed.';
+  else if(wpm>=80)grade='Advanced Typist. Excellent!';
+  else if(wpm>=60)grade='Proficient Typist. Above average!';
+  else if(wpm>=40)grade='Average Typist. You\'re doing well!';
+  document.getElementById('wpmGrade').textContent=grade;
+}
+
+function resetTest(){
+  clearInterval(timerInt);
+  text=generateText();typed=[];current=0;errors=0;started=false;finished=false;keystrokes=0;correctKeys=0;
+  remaining=duration;
+  document.getElementById('timer-val').textContent=duration;
+  document.getElementById('wpm-val').textContent='0';
+  document.getElementById('acc-val').textContent='100%';
+  document.getElementById('errors-val').textContent='0';
+  document.getElementById('startHint').style.display='flex';
+  document.getElementById('resultOverlay').style.display='none';
+  document.getElementById('typingInput').value='';
+  render();
+}
+
+document.getElementById('typingInput').addEventListener('keydown',e=>{
+  if(finished)return;
+  if(e.key==='Tab'){e.preventDefault();return}
+  if(!started&&e.key.length===1)startTest();
+});
+
+document.getElementById('typingInput').addEventListener('input',e=>{
+  if(finished)return;
+  const fullText=text.join(' ');
+  const val=e.target.value;
+  keystrokes++;
+  if(val.length<=fullText.length){
+    const lastCh=val[val.length-1];
+    const expected=fullText[val.length-1];
+    if(lastCh===expected)correctKeys++;
+    else errors++;
+    typed=val.split('');
+  }else{
+    e.target.value=e.target.value.slice(0,-1);
+  }
+  render();updateStats();
+});
+
+document.addEventListener('keydown',e=>{
+  if(!['INPUT','TEXTAREA'].includes(document.activeElement.tagName)){
+    if(e.key.length===1)focusInput();
+  }
+});
+
+resetTest();
+</script></div>
 
 
 <script src="/knexio-bundle.js"></script>
@@ -250,5 +578,6 @@
       </p>
       <p>© 2026 Knexio. All rights reserved.</p>
     </footer>
+
+  <script src="../../cookie-consent.js"></script>
 </body>
-</html>
