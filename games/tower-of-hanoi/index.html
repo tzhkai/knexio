@@ -329,9 +329,9 @@
   .related-card .card-desc { color: var(--sub); font-size: 12px; line-height: 1.5; }
 
   /* ---- Footer ---- */
-  footer { margin-top:60px; text-align: center; font-size: 13px; color: var(--sub); padding: 30px 0; border-top: 1px solid var(--border); }
-  footer a { color: var(--sub); margin: 0 8px; }
-  footer a:hover { color: var(--accent); text-decoration: none; }
+  footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}
+  footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}
+  footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}
 
   /* ---- Mobile ---- */
   @media (max-width: 600px) {
@@ -505,48 +505,7 @@
            data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins>
     </div>
 
-    <footer>
-  <p>Free online games — play anytime, no download needed.</p>
-  <p>
-    <a href="/about/" style="color:var(--accent);text-decoration:none;margin:0 8px;">About</a>
-    <a href="/privacy/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Privacy</a>
-    <a href="/terms/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Terms</a>
-    <a href="/contact/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Contact</a>
-  </p>
-  <p>© 2026 Knexio. All rights reserved.</p>
-</footer>
-  </div>
-
-  <script>// Game init //
-  let numDisks = 4;
-    let towers = [[], [], []];
-    let selectedTower = null;
-    let moves = 0;
-    let timerInterval = null;
-    let seconds = 0;
-    let isAutoSolving = false;
-    let timerStarted = false;
-
-    const diskColors = [
-      '#ef4444','#f97316','#f59e0b','#84cc16',
-      '#10b981','#06b6d4','#3b82f6','#8b5cf6'
-    ];
-
-    function initGame() {
-      towers = [[], [], []];
-      for (let i = numDisks; i >= 1; i--) towers[0].push(i);
-      selectedTower = null;
-      moves = 0;
-      seconds = 0;
-      isAutoSolving = false;
-      timerStarted = false;
-      clearInterval(timerInterval);
-      timerInterval = null;
-      document.getElementById('winMessage').classList.remove('show');
-      hideHint();
-      updateStats();
-      render();
-    }
+    <footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}
 
     function render() {
       for (let i = 0; i < 3; i++) {

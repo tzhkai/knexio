@@ -40,7 +40,7 @@
     .upgrade-name{font-size:14px;font-weight:600;display:flex;align-items:center;gap:6px}
     .upgrade-owned{background:rgba(79,140,255,0.15);color:var(--accent);font-size:11px;padding:2px 8px;border-radius:20px}
     .upgrade-desc{font-size:12px;color:var(--sub)}
-    .upgrade-footer{display:flex;justify-content:space-between;align-items:centertext-align:center;border-top:1px solid var(--border);}
+    .upgrade-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}
     .upgrade-cps{font-size:12px;color:var(--green)}
     .buy-btn{padding:6px 14px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;transition:opacity 0.15s}
     .buy-btn:disabled{background:rgba(255,255,255,0.1);color:var(--sub);cursor:not-allowed}
@@ -53,7 +53,7 @@
     .seo{margin-top:60px;text-align:left}
     .seo h2{font-size:22px;margin-bottom:10px}
     .seo p{font-size:14px;color:var(--sub);line-height:1.8;margin-bottom:12px}
-    footer{margin-top:60px;font-size:13px;color:var(--sub);text-align:centerborder-top:1px solid var(--border);}footer a{color:var(--accent)}
+    footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}
 
     /* ==================== 移动端优化 ==================== */
 
@@ -409,20 +409,7 @@
 </div>
 
 
-    <footer>
-  <p>Free online games — play anytime, no download needed.</p>
-  <p>
-    <a href="/about/" style="color:var(--accent);text-decoration:none;margin:0 8px;">About</a>
-    <a href="/privacy/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Privacy</a>
-    <a href="/terms/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Terms</a>
-    <a href="/contact/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Contact</a>
-  </p>
-  <p>© 2026 Knexio. All rights reserved.</p>
-</footer>
-
-  <script>
-const UPGRADES=[
-  {id:'cursor',name:'Cursor',emoji:'👆',desc:'Auto-clicks once per second',baseCost:15,baseCPS:1},
+    <footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px},
   {id:'mine',name:'Mine',emoji:'⛏️',desc:'Digs up coins from the ground',baseCost:100,baseCPS:5},
   {id:'farm',name:'Farm',emoji:'🌾',desc:'Grows money trees',baseCost:500,baseCPS:20},
   {id:'factory',name:'Factory',emoji:'🏭',desc:'Mass-produces coins',baseCost:2000,baseCPS:80},
@@ -479,8 +466,7 @@ function updateUI(){
         <div class="upgrade-name">${u.emoji} ${u.name} <span class="upgrade-owned">${owned[u.id]}</span></div>
       </div>
       <div class="upgrade-desc">${u.desc}</div>
-      <div class="upgrade-footer">
-        <span class="cost-text">🪙 ${fmt(cost)}</span>
+      <div class="upgrade-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}</span>
         ${owned[u.id]>0?`<span class="upgrade-cps">+${fmt(getCPS(u))}/sec</span>`:''}
         <button class="buy-btn" onclick="buyUpgrade('${u.id}')" ${canBuy?'':'disabled'}>Buy</button>
       </div>

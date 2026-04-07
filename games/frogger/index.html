@@ -37,7 +37,7 @@
     .seo{margin-top:60px;text-align:left}
     .seo h2{font-size:22px;margin-bottom:10px}
     .seo p{font-size:14px;color:var(--sub);line-height:1.8;margin-bottom:12px}
-    footer{margin-top:60px;font-size:13px;color:var(--sub);text-align:center;border-top:1px solid var(--border);}footer a{color:var(--accent)}
+    footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}
 
     /* ==================== 移动端优化 ==================== */
 
@@ -398,27 +398,7 @@
 </div>
 
 
-    <footer>
-  <p>Free online games — play anytime, no download needed.</p>
-  <p>
-    <a href="/about/" style="color:var(--accent);text-decoration:none;margin:0 8px;">About</a>
-    <a href="/privacy/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Privacy</a>
-    <a href="/terms/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Terms</a>
-    <a href="/contact/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Contact</a>
-  </p>
-  <p>© 2026 Knexio. All rights reserved.</p>
-</footer>
-
-  
-<script>
-const canvas=document.getElementById('gameCanvas');
-const ctx=canvas.getContext('2d');
-const W=canvas.width,H=canvas.height;
-const CELL=40,COLS=W/CELL,ROWS=H/CELL;
-
-const LANE_CONFIG=[
-  // row from bottom (0=bottom), type, speed, dir (+1 right -1 left), items
-  {row:1,type:'road',speed:2.5,dir:1,color:'#1a2540',vehicles:[{emoji:'🚗',w:2},{emoji:'🚕',w:2},{emoji:'🚙',w:2}],count:3},
+    <footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px},{emoji:'🚕',w:2},{emoji:'🚙',w:2}],count:3},
   {row:2,type:'road',speed:3,dir:-1,color:'#1a2540',vehicles:[{emoji:'🚛',w:3},{emoji:'🚌',w:3}],count:2},
   {row:3,type:'road',speed:2,dir:1,color:'#1a2540',vehicles:[{emoji:'🚗',w:2},{emoji:'🏎️',w:2},{emoji:'🚗',w:2}],count:3},
   {row:4,type:'road',speed:3.5,dir:-1,color:'#1a2540',vehicles:[{emoji:'🚛',w:3},{emoji:'🚗',w:2}],count:3},

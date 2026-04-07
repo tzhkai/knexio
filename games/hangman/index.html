@@ -53,8 +53,8 @@
     .seo{margin-top:60px;text-align:left}
     .seo h2{font-size:22px;margin-bottom:10px}
     .seo p{font-size:14px;color:var(--sub);line-height:1.8;margin-bottom:12px}
-    footer{margin-top:60px;font-size:13px;color:var(--sub);text-align:center;border-top:1px solid var(--border);}
-    footer a{color:var(--accent)}
+    footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}
+    footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}
 
     /* ==================== 移动端优化 ==================== */
 
@@ -431,25 +431,7 @@
 </div>
 
 
-    <footer>
-  <p>Free online games — play anytime, no download needed.</p>
-  <p>
-    <a href="/about/" style="color:var(--accent);text-decoration:none;margin:0 8px;">About</a>
-    <a href="/privacy/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Privacy</a>
-    <a href="/terms/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Terms</a>
-    <a href="/contact/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Contact</a>
-  </p>
-  <p>© 2026 Knexio. All rights reserved.</p>
-</footer>
-
-  <script>
-const WORDS = {
-  Animals: ['elephant','dolphin','penguin','giraffe','butterfly','crocodile','rhinoceros','cheetah','kangaroo','flamingo','chameleon','porcupine','armadillo','platypus','salamander'],
-  Countries: ['australia','argentina','portugal','indonesia','netherlands','switzerland','mozambique','azerbaijan','kazakhstan','kyrgyzstan','madagascar','philippines','zimbabwe','cameroon','venezuela'],
-  Food: ['spaghetti','chocolate','avocado','cinnamon','raspberry','watermelon','pineapple','broccoli','mushroom','eggplant','asparagus','artichoke','quesadilla','blueberry','croissant'],
-  Sports: ['volleyball','badminton','swimming','gymnastics','basketball','skateboard','snowboard','wrestling','archery','fencing','lacrosse','handball','triathlon','marathon','decathlon'],
-  Technology: ['javascript','algorithm','database','interface','framework','encryption','artificial','bluetooth','bandwidth','debugging','recursion','blockchain','container','parameter','repository']
-};
+    <footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px};
 const PARTS = ['hm-head','hm-body','hm-larm','hm-rarm','hm-lleg','hm-rleg'];
 
 let word = '', guessed = new Set(), wrong = 0, wins = 0, losses = 0, streak = 0, gameOver = false;
