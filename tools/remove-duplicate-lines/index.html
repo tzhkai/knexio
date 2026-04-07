@@ -173,10 +173,24 @@ textarea:focus{outline:none;border-color:var(--accent)}
   text-align: center;
 }
 
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}
+footer {
+  margin-top: 40px;
+  text-align: center;
+  color: var(--sub);
+  font-size: 13px;
+border-top:1px solid var(--border);}
+footer p {
+  margin-bottom: 8px;
+}
+footer a {
+  color: var(--sub);
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color 0.2s;
+}
+footer a:hover {
+  color: var(--accent);
+}
 
 @media(max-width:600px){
   .editor-layout{grid-template-columns:1fr}
@@ -194,7 +208,7 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
 .stat label,.stat-label,.result-label,.age-label{font-size:12px;color:var(--sub);display:block}
 .result-box{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;margin-top:16px;min-height:100px;white-space:pre-wrap;word-break:break-all;font-size:15px;line-height:1.7;box-sizing:border-box}
 @media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.btn-row{flex-direction:column}}
-  </style>
+  footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
 </head>
 
 <body><div class="container">
@@ -263,10 +277,19 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
 </div>
 
 <div class="ad-banner" style="margin-top:40px">
-      
+      <!-- Ad space -->
     </div>
 
-
+<footer>
+  <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
+  <p style="margin: 8px 0; font-size: 13px;">
+    <a href="/about/" style="color:var(--accent);text-decoration:none;margin:0 8px;">About</a>
+    <a href="/privacy/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Privacy</a>
+    <a href="/terms/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Terms</a>
+    <a href="/contact/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Contact</a>
+  </p>
+  <p>© 2026 Knexio. All rights reserved.</p>
+</footer>
 
 </div>
 
@@ -344,15 +367,5 @@ function copyOutput(){
 <script>
 </script>
 <script src="/knexio-bundle.js"></script>
-<footer>
-  <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
-  <p>
-    <a href="/about/" style="color:var(--accent);text-decoration:none;margin:0 8px;">About</a>
-    <a href="/privacy/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Privacy</a>
-    <a href="/terms/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Terms</a>
-    <a href="/contact/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Contact</a>
-  </p>
-  <p>© 2026 Knexio. All rights reserved.</p>
-</footer>
 </body>
 </html>

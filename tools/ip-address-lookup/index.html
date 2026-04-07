@@ -28,8 +28,8 @@ h1{font-size:32px;margin-bottom:8px}.subtitle{color:var(--sub);margin-bottom:32p
 .my-ip-value{font-size:28px;font-weight:700;color:var(--accent);margin:8px 0}
 .faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px}
 .faq-item h3{font-size:16px;margin-bottom:8px}.faq-item p{color:var(--sub);line-height:1.6}
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}
-</style>
+
+footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
 </head>
 <body>
 <div class="container">
@@ -73,7 +73,16 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 <a href="../hash-generator/">Hash Generator</a>
 <a href="../base64-encoder-decoder/">Base64 Encoder</a>
 </div>
-
+<footer>
+  <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
+  <p style="margin: 8px 0; font-size: 13px;">
+    <a href="/about/" style="color:var(--accent);text-decoration:none;margin:0 8px;">About</a>
+    <a href="/privacy/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Privacy</a>
+    <a href="/terms/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Terms</a>
+    <a href="/contact/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Contact</a>
+  </p>
+  <p>© 2026 Knexio. All rights reserved.</p>
+</footer>
 </div>
 <script>
 async function getMyIP() {
@@ -107,15 +116,5 @@ async function lookupIP() {
 getMyIP();
 </script>
 <script src="/knexio-bundle.js"></script>
-<footer>
-  <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
-  <p>
-    <a href="/about/" style="color:var(--accent);text-decoration:none;margin:0 8px;">About</a>
-    <a href="/privacy/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Privacy</a>
-    <a href="/terms/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Terms</a>
-    <a href="/contact/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Contact</a>
-  </p>
-  <p>© 2026 Knexio. All rights reserved.</p>
-</footer>
 </body>
 </html>

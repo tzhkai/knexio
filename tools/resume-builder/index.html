@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Resume Builder – Create Professional Resume | Knexio</title>
+<meta name="description" content="Free online resume builder. Create professional resumes with customizable templates, download as PDF instantly.">
+
+<link rel="canonical" href="https://knexio.xyz/tools/resume-builder/">
+
+<meta property="og:title" content="Resume Builder – Create Professional Resume">
+<meta property="og:description" content="Create professional resumes online for free. Generate, customize, and download resumes quickly.">
+<meta property="og:url" content="https://knexio.xyz/tools/resume-builder/">
+<meta property="og:type" content="WebApplication">
+<meta property="og:site_name" content="Knexio">
+<meta property="og:image" content="https://knexio.xyz/og-image.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Resume Builder",
+  "url": "https://knexio.xyz/tools/resume-builder/",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "All",
+  "description": "Free online resume builder. Create professional resumes with customizable templates."
+}
+</script>
+
+<style>
+:root{
+  --bg:#0b1220;
+  --card:#111a2e;
+  --border:rgba(255,255,255,.08);
+  --text:#fff;
+  --sub:#aab3c5;
+  --accent:#4f8cff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:system-ui,-apple-system;
+  background:var(--bg);
+  color:var(--text);
+}
+.container{max-width:900px;margin:auto;padding:50px 16px}
+
+.back{
+  display:inline-block;
+  color:var(--sub);
+  text-decoration:none;
+  font-size:14px;
+  margin-bottom:24px;
+  transition:color 0.2s;
+}
+.back:hover{color:var(--accent)}
+
+h1{font-size:32px;margin-bottom:8px}
+h2{font-size:22px;margin-top:30px;margin-bottom:10px}
+.subtitle{color:var(--sub);margin-bottom:24px}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:20px;
+  margin-bottom:20px;
+}
+
+label{
+  display:block;
+  font-size:14px;
+  color:var(--sub);
+  margin-bottom:8px;
+}
+
+input,textarea{
+  width:100%;
+  padding:12px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  background:var(--bg);
+  color:var(--text);
+  font-size:15px;
+  margin-bottom:16px;
+}
+
+input:focus,textarea:focus{
+  outline:none;
+  border-color:var(--accent);
+}
+
+textarea{
+  min-height:100px;
+  resize:vertical;
+}
+
+button{
+  padding:12px 24px;
+  border:none;
+  border-radius:10px;
+  background:var(--accent);
+  color:#fff;
+  cursor:pointer;
+  font-size:15px;
+  transition:opacity 0.2s;
+}
+
+button:hover{opacity:0.9}
+
+button.secondary{
+  background:transparent;
+  border:1px solid var(--border);
+  color:var(--sub);
+}
+
+button.secondary:hover{
+  border-color:var(--accent);
+  color:var(--accent);
+}
+
+.btn-row{
+  display:flex;
+  gap:10px;
+  margin-top:16px;
+  flex-wrap:wrap;
+}
+
+.section p{color:var(--sub);line-height:1.7;margin-bottom:10px}
+
+.tools a{
+  display:inline-block;
+  margin:6px;
+  padding:8px 14px;
+  border-radius:8px;
+  border:1px solid var(--border);
+  color:var(--sub);
+  text-decoration:none;
+}
+
+.tools a:hover{border-color:var(--accent);color:var(--accent)}
+
+.resume-preview{
+  background:#fff;
+  color:#333;
+  padding:40px;
+  border-radius:10px;
+  margin-top:20px;
+}
+
+.resume-preview h3{
+  color:#333;
+  border-bottom:2px solid #4f8cff;
+  padding-bottom:8px;
+  margin-bottom:16px;
+}
+
+.resume-preview p,.resume-preview li{
+  color:#555;
+  line-height:1.6;
+}
+
+footer{
+  max-width:900px;
+  margin-left:auto;
+  margin-right:auto;
+  display:block;
+  margin-top:60px;
+  text-align:center;
+  color:var(--sub);
+  font-size:13px;
+  border-top:1px solid var(--border);
+  padding-top:30px;
+}
+
+footer p{margin:0}
+
+@media(max-width:600px){
+  .btn-row{flex-direction:column}
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<a class="back" href="../index.html">← Back to Tools</a>
+
+<h1>Resume Builder</h1>
+<p class="subtitle">Create professional resumes with customizable templates. Download as PDF instantly.</p>
+
+<div class="card">
+  <h2>Personal Information</h2>
+  <input type="text" id="fullName" placeholder="Full Name">
+  <input type="text" id="email" placeholder="Email Address">
+  <input type="text" id="phone" placeholder="Phone Number">
+  <input type="text" id="location" placeholder="Location (City, State)">
+  <input type="text" id="linkedin" placeholder="LinkedIn URL (optional)">
+</div>
+
+<div class="card">
+  <h2>Professional Summary</h2>
+  <textarea id="summary" placeholder="Brief summary of your professional background and key strengths..."></textarea>
+</div>
+
+<div class="card">
+  <h2>Work Experience</h2>
+  <div id="experienceList">
+    <div class="experience-item">
+      <input type="text" class="job-title" placeholder="Job Title">
+      <input type="text" class="company" placeholder="Company Name">
+      <input type="text" class="job-date" placeholder="Date Range (e.g., Jan 2020 - Present)">
+      <textarea class="job-desc" placeholder="Key responsibilities and achievements..."></textarea>
+    </div>
+  </div>
+  <button type="button" class="secondary" onclick="addExperience()">+ Add Experience</button>
+</div>
+
+<div class="card">
+  <h2>Education</h2>
+  <div id="educationList">
+    <div class="education-item">
+      <input type="text" class="degree" placeholder="Degree / Certificate">
+      <input type="text" class="school" placeholder="School / University">
+      <input type="text" class="edu-date" placeholder="Graduation Year">
+    </div>
+  </div>
+  <button type="button" class="secondary" onclick="addEducation()">+ Add Education</button>
+</div>
+
+<div class="card">
+  <h2>Skills</h2>
+  <textarea id="skills" placeholder="List your key skills (e.g., Project Management, JavaScript, Data Analysis...)"></textarea>
+</div>
+
+<div class="btn-row">
+  <button onclick="generateResume()">Generate Resume Preview</button>
+  <button class="secondary" onclick="clearForm()">Clear All</button>
+</div>
+
+<div id="resumeOutput" class="resume-preview" style="display:none;">
+  <div id="resumeContent"></div>
+  <div class="btn-row" style="margin-top:20px;">
+    <button onclick="downloadPDF()">Download as PDF</button>
+    <button class="secondary" onclick="printResume()">Print</button>
+  </div>
+</div>
+
+<h2>How to Use</h2>
+<div class="section">
+<p>Fill in your personal information, work experience, education, and skills in the form above. Click "Generate Resume Preview" to see how your resume will look. You can then download it as a PDF or print it directly.</p>
+</div>
+
+<h2>Related Tools</h2>
+<div class="tools">
+<a href="/tools/invoice-generator/">Invoice Generator</a>
+<a href="/business/email-signature-generator/">Email Signature Generator</a>
+<a href="/business/letter-template/">Letter Template</a>
+</div>
+
+<footer>
+  <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
+  <p style="margin: 8px 0; font-size: 13px;">
+    <a href="/about/" style="color:var(--accent);text-decoration:none;margin:0 8px;">About</a>
+    <a href="/privacy/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Privacy</a>
+    <a href="/terms/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Terms</a>
+    <a href="/contact/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Contact</a>
+  </p>
+  <p>© 2026 Knexio. All rights reserved.</p>
+</footer>
+
+</div>
+
+<script>
+function addExperience(){
+  const list = document.getElementById('experienceList');
+  const item = document.createElement('div');
+  item.className = 'experience-item';
+  item.innerHTML = `
+    <input type="text" class="job-title" placeholder="Job Title">
+    <input type="text" class="company" placeholder="Company Name">
+    <input type="text" class="job-date" placeholder="Date Range (e.g., Jan 2020 - Present)">
+    <textarea class="job-desc" placeholder="Key responsibilities and achievements..."></textarea>
+    <button type="button" class="secondary" onclick="this.parentElement.remove()">Remove</button>
+  `;
+  list.appendChild(item);
+}
+
+function addEducation(){
+  const list = document.getElementById('educationList');
+  const item = document.createElement('div');
+  item.className = 'education-item';
+  item.innerHTML = `
+    <input type="text" class="degree" placeholder="Degree / Certificate">
+    <input type="text" class="school" placeholder="School / University">
+    <input type="text" class="edu-date" placeholder="Graduation Year">
+    <button type="button" class="secondary" onclick="this.parentElement.remove()">Remove</button>
+  `;
+  list.appendChild(item);
+}
+
+function generateResume(){
+  const name = document.getElementById('fullName').value;
+  const email = document.getElementById('email').value;
+  const phone = document.getElementById('phone').value;
+  const location = document.getElementById('location').value;
+  const linkedin = document.getElementById('linkedin').value;
+  const summary = document.getElementById('summary').value;
+  const skills = document.getElementById('skills').value;
+  
+  let html = `<h1 style="color:#333;margin-bottom:5px;">${name}</h1>`;
+  html += `<p style="color:#666;margin-bottom:20px;">${email} | ${phone} | ${location}`;
+  if(linkedin) html += ` | <a href="${linkedin}">LinkedIn</a>`;
+  html += `</p>`;
+  
+  if(summary){
+    html += `<h3>Professional Summary</h3>`;
+    html += `<p>${summary.replace(/\n/g,'<br>')}</p>`;
+  }
+  
+  const expItems = document.querySelectorAll('.experience-item');
+  if(expItems.length > 0 && expItems[0].querySelector('.job-title').value){
+    html += `<h3>Work Experience</h3>`;
+    expItems.forEach(item => {
+      const title = item.querySelector('.job-title').value;
+      const company = item.querySelector('.company').value;
+      const date = item.querySelector('.job-date').value;
+      const desc = item.querySelector('.job-desc').value;
+      if(title){
+        html += `<p><strong>${title}</strong> at ${company}<br><em>${date}</em></p>`;
+        if(desc) html += `<p>${desc.replace(/\n/g,'<br>')}</p>`;
+      }
+    });
+  }
+  
+  const eduItems = document.querySelectorAll('.education-item');
+  if(eduItems.length > 0 && eduItems[0].querySelector('.degree').value){
+    html += `<h3>Education</h3>`;
+    eduItems.forEach(item => {
+      const degree = item.querySelector('.degree').value;
+      const school = item.querySelector('.school').value;
+      const date = item.querySelector('.edu-date').value;
+      if(degree){
+        html += `<p><strong>${degree}</strong>, ${school}<br><em>${date}</em></p>`;
+      }
+    });
+  }
+  
+  if(skills){
+    html += `<h3>Skills</h3>`;
+    html += `<p>${skills.replace(/\n/g,', ')}</p>`;
+  }
+  
+  document.getElementById('resumeContent').innerHTML = html;
+  document.getElementById('resumeOutput').style.display = 'block';
+  document.getElementById('resumeOutput').scrollIntoView({behavior:'smooth'});
+}
+
+function clearForm(){
+  if(confirm('Are you sure you want to clear all fields?')){
+    document.querySelectorAll('input,textarea').forEach(el => el.value = '');
+    document.getElementById('resumeOutput').style.display = 'none';
+  }
+}
+
+function downloadPDF(){
+  window.print();
+}
+
+function printResume(){
+  window.print();
+}
+</script>
+
+<script src="/knexio-bundle.js"></script>
+</body>
+</html>

@@ -248,7 +248,7 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{
 }
 .tools a:hover{border-color:var(--accent);color:var(--accent)}
 
-.ad-banner{margin:24px 0;text-align:center;min-height:90px}
+.ad-banner{margin:32px 0;text-align:center}
 
 .faq-item{
   background:var(--card);
@@ -260,16 +260,21 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{
 .faq-item h3{font-size:16px;margin-bottom:8px;color:var(--text)}
 .faq-item p{color:var(--sub);font-size:14px;line-height:1.7;margin:0}
 
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}
+
+footer p{margin-bottom:8px}
+footer a{
+  color:var(--sub);
+  text-decoration:none;
+  margin:0 10px;
+  transition:color 0.2s;
+}
+footer a:hover{color:var(--accent)}
 
 @media(max-width:600px){
   .height-inputs{flex-direction:column}
   .bmi-value{font-size:36px}
 }
-</style>
+footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
 </head>
 
 <body><div class="container">
@@ -387,7 +392,16 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 
 <div class="ad-banner"></div>
 
-
+<footer>
+  <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
+  <p style="margin: 8px 0; font-size: 13px;">
+    <a href="/about/" style="color:var(--accent);text-decoration:none;margin:0 8px;">About</a>
+    <a href="/privacy/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Privacy</a>
+    <a href="/terms/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Terms</a>
+    <a href="/contact/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Contact</a>
+  </p>
+  <p>© 2026 Knexio. All rights reserved.</p>
+</footer>
 </div>
 
 <script>
@@ -510,15 +524,5 @@ document.querySelectorAll('input').forEach(input => {
 calculateBMI();
 </script>
 <script src="/knexio-bundle.js"></script>
-<footer>
-  <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
-  <p>
-    <a href="/about/" style="color:var(--accent);text-decoration:none;margin:0 8px;">About</a>
-    <a href="/privacy/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Privacy</a>
-    <a href="/terms/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Terms</a>
-    <a href="/contact/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Contact</a>
-  </p>
-  <p>© 2026 Knexio. All rights reserved.</p>
-</footer>
 </body>
 </html>
