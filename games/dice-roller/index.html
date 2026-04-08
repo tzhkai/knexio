@@ -422,30 +422,12 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
         </div>
     </div>
 </div>
+<script src="/knexio-bundle.js"></script>
 
 
-    <footer p{margin:0}
 
-function changeQty(d){
-  qty=Math.max(1,Math.min(10,qty+d));
-  document.getElementById('qtyVal').textContent=qty;
-}
-
-function rollDice(){
-  const results=Array.from({length:qty},()=>Math.floor(Math.random()*selectedSides)+1);
-  const total=results.reduce((a,b)=>a+b,0);
-  document.getElementById('diceResults').innerHTML=results.map(r=>`<div class="die-result">${r}</div>`).join('');
-  document.getElementById('totalRow').innerHTML=qty>1?`Total: <span>${total}</span>`:`Result: <span>${results[0]}</span>`;
-  const entry=`${qty}D${selectedSides}: [${results.join(', ')}]`+(qty>1?` = ${total}`:'');
-  history.unshift(entry);
-  if(history.length>20)history.pop();
-  const hl=document.getElementById('historyList');
-  hl.innerHTML=history.map(h=>`<div class="history-item">${h}</div>`).join('');
-}
-</script></div>
-
-
-<footer>
+    <style>p{margin:0}</style>
+  <footer>
   <p>Free online games to play anytime. Enjoy classic games, puzzles, and entertainment.</p>
   <p style="margin: 8px 0; font-size: 13px;">
     <a href="/about/" style="color:var(--accent);text-decoration:none;margin:0 8px;">About</a>
@@ -456,6 +438,8 @@ function rollDice(){
   <p>© 2026 Knexio. All rights reserved.</p>
 </footer>
 
-</script>
+</script>
 </body>
 </html>
+
+</div>

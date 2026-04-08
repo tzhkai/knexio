@@ -3,15 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Meta Tags Generator – Free SEO Meta Tags Generator | Knexio</title>
-<meta name="description" content="${desc}">
-
-<link rel="canonical" href="">
+<title>Meta Tag Generator – SEO Meta Tags Online | Knexio</title>
+<meta name="description" content="Free meta tag generator for SEO. Create title, description, keywords, Open Graph, Twitter Cards, and more. Instant preview included.">
+<link rel="canonical" href="https://knexio.xyz/tools/meta-tag-generator/">
 
 <!-- Open Graph -->
-<meta property="og:title" content="${title}">
-<meta property="og:description" content="${desc}">
+<meta property="og:title" content="Meta Tag Generator – SEO Meta Tags Online">
+<meta property="og:description" content="Create title, description, keywords, Open Graph, Twitter Cards, and more. Instant preview included.">
 <meta property="og:url" content="https://knexio.xyz/tools/meta-tag-generator/">
 <meta property="og:type" content="WebApplication">
 <meta property="og:site_name" content="Knexio">
@@ -19,26 +17,66 @@
 
 <!-- Structured Data -->
 <script type="application/ld+json">
-
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What is this tool for?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "This is a free online tool for [purpose]. It helps you [function] quickly and easily."
-        }
-      }
-    ]
-  }
-  
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Meta Tag Generator",
+  "url": "https://knexio.xyz/tools/meta-tag-generator/",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "All",
+  "description": "Free meta tag generator for SEO. Create title, description, keywords, Open Graph, Twitter Cards, and more."
+}
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What are meta tags?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Meta tags are HTML snippets that describe a page's content. They don't appear on the visible page but provide information to search engines and social media platforms about your page's topic, description, and appearance when shared."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why are meta tags important for SEO?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Meta tags help search engines understand your page content and display it correctly in search results. Well-optimized title and description tags can improve click-through rates, while Open Graph tags ensure your content looks attractive when shared on social media."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the ideal length for meta titles and descriptions?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Meta titles should be 50-60 characters for optimal display in search results. Meta descriptions should be 150-160 characters to ensure the full description appears without being truncated. This tool includes character limits to help you stay within these guidelines."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are Open Graph tags?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Open Graph tags are meta tags that control how your content appears when shared on Facebook, LinkedIn, and other social platforms. They define the title, description, image, and URL that appear in social media previews, making your shared content more engaging and clickable."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are Twitter Cards?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Twitter Cards are specialized meta tags that enable rich media attachments in tweets. They allow you to add images, videos, and other media to your tweets when your content is shared, increasing engagement and click-through rates."
+      }
+    }
+  ]
+}
+</script>
 <style>
-
 :root{
   --bg:#0b1220;
   --card:#111a2e;
@@ -55,7 +93,6 @@ body{
 }
 .container{max-width:900px;margin:auto;padding:50px 16px}
 
-/* 统一的返回按钮样式 */
 .back {
   display: inline-block;
   color: var(--sub);
@@ -70,17 +107,8 @@ body{
 
 h1{font-size:32px;margin-bottom:8px}
 h2{font-size:22px;margin-top:30px;margin-bottom:10px}
+h3{font-size:18px;margin-bottom:8px}
 .subtitle{color:var(--sub);margin-bottom:24px}
-
-.badge{
-  display:inline-block;
-  padding:4px 10px;
-  border-radius:20px;
-  background:rgba(79,140,255,.15);
-  color:var(--accent);
-  font-size:12px;
-  margin-bottom:10px;
-}
 
 .card{
   background:var(--card);
@@ -90,97 +118,122 @@ h2{font-size:22px;margin-top:30px;margin-bottom:10px}
   margin-bottom:20px;
 }
 
-textarea{
-  width:100%;
-  min-height:180px;
-  background:var(--bg);
-  border:1px solid var(--border);
-  border-radius:12px;
-  color:var(--text);
-  padding:14px;
-  font-size:15px;
-}
-textarea:focus{outline:none;border-color:var(--accent)}
-
-.btn-row{display:flex;gap:10px;margin-top:12px}
-button{
-  flex:1;
-  padding:10px;
-  border-radius:10px;
-  border:none;
-  background:var(--accent);
-  color:#fff;
-  cursor:pointer;
-}
-button.secondary{
-  background:transparent;
-  border:1px solid var(--border);
-  color:var(--sub);
+label {
+  display: block;
+  color: var(--sub);
+  font-size: 14px;
+  margin-bottom: 8px;
 }
 
-.stats{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-  margin-top:16px;
+input[type="text"], textarea, input[type="url"] {
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: var(--text);
+  padding: 12px 16px;
+  font-size: 15px;
+  margin-bottom: 16px;
 }
-.stat{
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+.result-box {
   background:var(--bg);
   border:1px solid var(--border);
   border-radius:10px;
   padding:16px;
-  text-align:center;
-}
-.stat span{
-  font-size:24px;
-  font-weight:700;
-  color:var(--accent);
-}
-.stat label{
-  display:block;
-  font-size:12px;
-  color:var(--sub);
+  margin-top:16px;
+  min-height:100px;
 }
 
-.tip{
-  font-size:13px;
-  color:var(--sub);
-  margin-top:10px;
+.result-box h3 {
+  font-size: 16px;
+  color: var(--text);
+  margin-bottom: 12px;
 }
 
-.section p{
-  color:var(--sub);
-  line-height:1.7;
-  margin-bottom:10px;
+.code-block {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  padding: 12px;
+  overflow-x: auto;
+  margin-bottom: 16px;
 }
 
-.tools a{
-  display:inline-block;
-  margin:6px;
-  padding:8px 14px;
-  border-radius:8px;
-  border:1px solid var(--border);
-  color:var(--sub);
-  text-decoration:none;
-}
-.tools a:hover{
-  border-color:var(--accent);
-  color:var(--accent);
+.code-block code {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 12px;
+  color: var(--sub);
+  white-space: pre-wrap;
+  word-break: break-all;
 }
 
-/* 广告样式 */
+.section p {
+  color: var(--sub);
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+
+.faq-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 12px;
+}
+
+.faq-item h3 {
+  font-size: 16px;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.faq-item p {
+  color: var(--sub);
+  line-height: 1.7;
+  font-size: 14px;
+}
+
+.tools a {
+  display: inline-block;
+  margin: 6px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  color: var(--sub);
+  text-decoration: none;
+}
+.tools a:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
 .ad-banner {
   margin: 32px 0;
   text-align: center;
 }
 
-/* 统一的 Footer 样式 */
 footer {
   margin-top: 40px;
   text-align: center;
   color: var(--sub);
   font-size: 13px;
-}
+border-top:1px solid var(--border);}
 footer p {
   margin-bottom: 8px;
 }
@@ -195,222 +248,227 @@ footer a:hover {
 }
 
 @media(max-width:600px){
-  .stats{grid-template-columns:1fr 1fr}
+  .form-grid{grid-template-columns:1fr}
 }
-
-</style>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2596567349043393" crossorigin="anonymous"></script>
+.btn-row{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+button,.btn,.btn-row button{flex:1;padding:10px;border-radius:10px;border:none;background:var(--accent);color:#fff;cursor:pointer;font-size:14px;transition:opacity 0.2s;box-sizing:border-box}
+button:hover,.btn:hover{opacity:0.9}
+button.secondary,.btn.secondary,.btn-outline,.btn-row button.secondary{background:transparent;border:1px solid var(--border);color:var(--sub)}
+button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
 </head>
 
 <body><div class="container">
 
 <a class="back" href="../index.html">← Back to Tools</a>
 
-<h1>🏷️ Meta Tags Generator</h1>
-<p class="subtitle">Generate SEO meta tags for your website. Create meta titles, descriptions, Open Graph tags, and Twitter Cards instantly.</p>
+<h1>Meta Tag Generator</h1>
+<p class="subtitle">Create SEO meta tags for your website. Generate title, description, keywords, Open Graph, and Twitter Card tags instantly.</p>
 
-<div class="ad-banner">
-  <ins class="adsbygoogle" style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="3153457922"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
+<div class="ad-banner"></div>
+
+<h2>Free Online Meta Tag Generator</h2>
+<div class="section">
+<p>This free online meta tag generator helps you create essential SEO meta tags for your website. Simply fill in your page details, and the tool instantly generates optimized meta tags including basic metadata, Open Graph tags for social media, Twitter Card tags, and canonical links. Perfect for improving your search engine rankings and social media presence.</p>
+<p>The generator supports all major meta tag types and provides character count recommendations to help you stay within SEO best practices. All processing happens in your browser — your data never leaves your device, ensuring complete privacy and security.</p>
 </div>
 
-<div class="container">
-  <a class="back" href="../index.html">← Back to Tools</a>
-  <h1>🏷️ Meta Tags Generator</h1>
-  <p class="subtitle">Generate SEO meta tags for your website. Create meta titles, descriptions, Open Graph tags, and Twitter Cards instantly.</p>
-
-  <div class="ad-slot">
-
-  </div>
-    <div class="ad-banner" style="margin-top:40px">
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3153457922" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<div class="card">
+  <div class="form-grid">
+    <div class="field">
+      <label>Page Title (50-60 chars recommended)</label>
+      <input type="text" id="pageTitle" placeholder="Your Page Title" maxlength="60">
     </div>
-
-  <div class="panel">
-    <h2>Page Information</h2>
-    <div class="form-group">
-      <label>Page Title *</label>
-      <input type="text" id="pageTitle" placeholder="Your Page Title" maxlength="60" oninput="updateCount('titleCount', this.value, 60)">
-      <div class="char-count" id="titleCount">0 / 60 characters</div>
+    <div class="field">
+      <label>Meta Description (150-160 chars recommended)</label>
+      <textarea id="metaDescription" placeholder="A compelling description of your page content..." maxlength="160"></textarea>
     </div>
-    <div class="form-group">
-      <label>Page Description *</label>
-      <textarea class="text-area" id="pageDesc" placeholder="Your page description (150-160 characters recommended)" maxlength="160" oninput="updateCount('descCount', this.value, 160)"></textarea>
-      <div class="char-count" id="descCount">0 / 160 characters</div>
+    <div class="field">
+      <label>Meta Keywords (comma-separated)</label>
+      <input type="text" id="metaKeywords" placeholder="keyword1, keyword2, keyword3">
     </div>
-    <div class="form-group">
+    <div class="field">
       <label>Page URL</label>
-      <input type="text" id="pageUrl" placeholder="https://example.com/page">
+      <input type="url" id="pageUrl" placeholder="https://yoursite.com/page">
     </div>
-    <div class="form-group">
+    <div class="field">
+      <label>OG Image URL</label>
+      <input type="url" id="ogImage" placeholder="https://yoursite.com/image.jpg">
+    </div>
+    <div class="field">
       <label>Site Name</label>
-      <input type="text" id="siteName" placeholder="Your Website Name">
-    </div>
-    <div class="form-group">
-      <label>Image URL (for social sharing)</label>
-      <input type="text" id="imageUrl" placeholder="https://example.com/image.jpg">
-    </div>
-    <div class="form-group">
-      <label>Twitter Handle</label>
-      <input type="text" id="twitterHandle" placeholder="@yourhandle">
-    </div>
-    <button class="btn" onclick="generateTags()">Generate Meta Tags</button>
-
-    <div class="output-section" id="outputSection" style="display:none;">
-      <div class="output-header">
-        <span class="output-label">Generated Meta Tags</span>
-        <button class="copy-btn" onclick="copyAll()">📋 Copy All</button>
-      </div>
-      <pre id="outputCode"></pre>
+      <input type="text" id="siteName" placeholder="Your Site Name">
     </div>
   </div>
-
-  <div class="tips">
-    <h3>💡 SEO Tips</h3>
-    <ul>
-      <li><strong>Title Tag:</strong> Keep it under 60 characters for best display in search results</li>
-      <li><strong>Meta Description:</strong> Aim for 150-160 characters. Include your main keyword</li>
-      <li><strong>Open Graph:</strong> Used when sharing on Facebook, LinkedIn, etc.</li>
-      <li><strong>Twitter Cards:</strong> Appear when sharing on Twitter/X</li>
-      <li><strong>Image:</strong> Use 1200x630 pixels for best social sharing results</li>
-    </ul>
+  
+  <div class="btn-row">
+    <button class="btn" onclick="generateTags()">Generate Tags</button>
+    <button class="btn secondary" onclick="clearAll()">Clear</button>
   </div>
 </div>
 
-<script>
-function updateCount(id, text, max) {
-  const el = document.getElementById(id);
-  el.textContent = `${text.length} / ${max} characters`;
-  el.className = 'char-count';
-  if (text.length > max) el.classList.add('error');
-  else if (text.length > max * 0.9) el.classList.add('warning');
-}
-
-function generateTags() {
-  const title = document.getElementById('pageTitle').value.trim();
-  const desc = document.getElementById('pageDesc').value.trim();
-  const url = document.getElementById('pageUrl').value.trim();
-  const siteName = document.getElementById('siteName').value.trim() || 'Website';
-  const image = document.getElementById('imageUrl').value.trim();
-  const twitter = document.getElementById('twitterHandle').value.trim();
-
-  if (!title || !desc) {
-    alert('Please enter a title and description.');
-    return;
-  }
-
-  let tags = `<!-- Primary Meta Tags -->
-<title>${title}</title>
-<meta name="title" content="${title}">
-<meta name="description" content="${desc}">`;
-
-  if (url) {
-    tags += `
-
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://knexio.xyz/tools/meta-tag-generator/">
-<meta property="og:title" content="${title}">
-<meta property="og:description" content="${desc}">`;
-    if (image) tags += `
-<meta property="og:image" content="${image}">`;
-    tags += `
-<meta property="og:site_name" content="${siteName}">`;
-  }
-
-  if (url || twitter) {
-    tags += `
-
-<!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image">`;
-    if (url) tags += `
-<meta property="twitter:url" content="${url}">`;
-    tags += `
-<meta property="twitter:title" content="${title}">
-<meta property="twitter:description" content="${desc}">`;
-    if (image) tags += `
-<meta property="twitter:image" content="${image}">`;
-    if (twitter) tags += `
-<meta property="twitter:site" content="${twitter}">
-<meta property="twitter:creator" content="${twitter}">`;
-  }
-
-  document.getElementById('outputCode').textContent = tags;
-  document.getElementById('outputSection').style.display = 'block';
-}
-
-function copyAll() {
-  const text = document.getElementById('outputCode').textContent;
-  navigator.clipboard.writeText(text).then(() => {
-    const btn = document.querySelector('.copy-btn');
-    btn.textContent = '✅ Copied!';
-    setTimeout(() => btn.textContent = '📋 Copy All', 2000);
-  });
-}
-</script>
-  <!-- Schema: FAQ -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What is this tool for?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "This is a free online tool for [purpose]. It helps you [function] quickly and easily."
-        }
-      }
-    ]
-  }
-  </script>
-
+<div class="result-box" id="resultBox" style="display:none;">
+  <h3>Basic Meta Tags</h3>
+  <div class="code-block">
+    <code id="basicTags"></code>
+  </div>
   
-  <div class="seo-section">
-    <h2>How to Use the Meta Tag Generator</h2>
-    <div class="step-block">
-      <h3>Step 1: Fill in page details</h3>
-      <p>Enter the title, description, author, and target keywords for your page.</p>
-    </div>
-    <div class="step-block">
-      <h3>Step 2: Configure Open Graph</h3>
-      <p>Add OG title, description, and image URL for social media preview.</p>
-    </div>
-    <div class="step-block">
-      <h3>Step 3: Generate tags</h3>
-      <p>Click Generate to create all the <meta> tags needed in your HTML <head>.</p>
-    </div>
-    <div class="step-block">
-      <h3>Step 4: Copy and paste into your site</h3>
-      <p>Use the Copy button to grab all tags at once.</p>
-    </div>
+  <h3>Open Graph Tags</h3>
+  <div class="code-block">
+    <code id="ogTags"></code>
+  </div>
+  
+  <h3>Twitter Card Tags</h3>
+  <div class="code-block">
+    <code id="twitterTags"></code>
+  </div>
+  
+  <h3>Canonical Link</h3>
+  <div class="code-block">
+    <code id="canonicalTag"></code>
+  </div>
+  
+  <div class="btn-row">
+    <button class="btn" onclick="copyAllTags()">Copy All Tags</button>
+  </div>
+</div>
+
+<h2>How It Works</h2>
+<div class="section">
+<p>This meta tag generator simplifies the process of creating SEO-friendly meta tags for your web pages. Simply enter your page title, description, keywords, URL, image, and site name, then click "Generate Tags" to instantly create all the necessary HTML code.</p>
+<p>The tool generates four types of meta tags: basic metadata for search engines, Open Graph tags for Facebook and other social platforms, Twitter Card tags for Twitter sharing, and a canonical link to prevent duplicate content issues. Each set of tags is formatted according to current SEO best practices and can be copied directly into your website's HTML.</p>
+</div>
+
+<h2>Frequently Asked Questions</h2>
+
+<div class="faq-item">
+  <h3>What are meta tags?</h3>
+  <p>Meta tags are HTML snippets that describe a page's content. They don't appear on the visible page but provide information to search engines and social media platforms about your page's topic, description, and appearance when shared.</p>
+</div>
+
+<div class="faq-item">
+  <h3>Why are meta tags important for SEO?</h3>
+  <p>Meta tags help search engines understand your page content and display it correctly in search results. Well-optimized title and description tags can improve click-through rates, while Open Graph tags ensure your content looks attractive when shared on social media.</p>
+</div>
+
+<div class="faq-item">
+  <h3>What is the ideal length for meta titles and descriptions?</h3>
+  <p>Meta titles should be 50-60 characters for optimal display in search results. Meta descriptions should be 150-160 characters to ensure the full description appears without being truncated. This tool includes character limits to help you stay within these guidelines.</p>
+</div>
+
+<div class="faq-item">
+  <h3>What are Open Graph tags?</h3>
+  <p>Open Graph tags are meta tags that control how your content appears when shared on Facebook, LinkedIn, and other social platforms. They define the title, description, image, and URL that appear in social media previews, making your shared content more engaging and clickable.</p>
+</div>
+
+<div class="faq-item">
+  <h3>What are Twitter Cards?</h3>
+  <p>Twitter Cards are specialized meta tags that enable rich media attachments in tweets. They allow you to add images, videos, and other media to your tweets when your content is shared, increasing engagement and click-through rates.</p>
+</div>
+
+<div class="faq-item">
+  <h3>What is a canonical link?</h3>
+  <p>A canonical link tells search engines which version of a page should be indexed when multiple versions exist (e.g., HTTP vs HTTPS, or with/without www). This prevents duplicate content issues and ensures SEO authority is consolidated to your preferred URL.</p>
+</div>
+
+<h2>Related Tools</h2>
+<div class="tools">
+<a href="/tools/keyword-density-checker/">Keyword Density Checker</a>
+<a href="/tools/slug-generator/">Slug Generator</a>
+<a href="/tools/sitemap-generator/">Sitemap Generator</a>
+</div>
 
 <div class="ad-banner" style="margin-top:40px">
-  <ins class="adsbygoogle" style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="3153457922"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-</div>
+      <!-- Ad space -->
+    </div>
 
 <footer>
   <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
-  <p>
-    <a href="/about/">About</a> •
-    <a href="/privacy/">Privacy Policy</a> •
-    <a href="/terms/">Terms of Service</a>
+  <p style="margin: 8px 0; font-size: 13px;">
+    <a href="/about/" style="color:var(--accent);text-decoration:none;margin:0 8px;">About</a>
+    <a href="/privacy/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Privacy</a>
+    <a href="/terms/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Terms</a>
+    <a href="/contact/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Contact</a>
   </p>
+  <p>© 2026 Knexio. All rights reserved.</p>
 </footer>
 
 </div>
 
 <script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-(adsbygoogle = window.adsbygoogle || []).push({});
+function generateTags() {
+  const title = document.getElementById('pageTitle').value.trim();
+  const description = document.getElementById('metaDescription').value.trim();
+  const keywords = document.getElementById('metaKeywords').value.trim();
+  const url = document.getElementById('pageUrl').value.trim() || 'https://yoursite.com/page';
+  const ogImage = document.getElementById('ogImage').value.trim() || 'https://yoursite.com/image.jpg';
+  const siteName = document.getElementById('siteName').value.trim() || 'Your Site Name';
+
+  if (!title || !description) {
+    alert('Please fill in at least title and description');
+    return;
+  }
+
+  // Basic Meta Tags
+  const basicTags = `<meta name="title" content="${title}">
+<meta name="description" content="${description}">
+${keywords ? `<meta name="keywords" content="${keywords}">` : ''}`;
+
+  // Open Graph Tags
+  const ogTags = `<meta property="og:title" content="${title}">
+<meta property="og:description" content="${description}">
+<meta property="og:url" content="${url}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="${siteName}">
+<meta property="og:image" content="${ogImage}">`;
+
+  // Twitter Card Tags
+  const twitterTags = `<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${title}">
+<meta name="twitter:description" content="${description}">
+<meta name="twitter:image" content="${ogImage}">
+<meta name="twitter:url" content="${url}">`;
+
+  // Canonical Link
+  const canonicalTag = `<link rel="canonical" href="${url}">`;
+
+  document.getElementById('basicTags').textContent = basicTags;
+  document.getElementById('ogTags').textContent = ogTags;
+  document.getElementById('twitterTags').textContent = twitterTags;
+  document.getElementById('canonicalTag').textContent = canonicalTag;
+  
+  document.getElementById('resultBox').style.display = 'block';
+}
+
+function clearAll() {
+  document.getElementById('pageTitle').value = '';
+  document.getElementById('metaDescription').value = '';
+  document.getElementById('metaKeywords').value = '';
+  document.getElementById('pageUrl').value = '';
+  document.getElementById('ogImage').value = '';
+  document.getElementById('siteName').value = '';
+  document.getElementById('resultBox').style.display = 'none';
+}
+
+function copyAllTags() {
+  const allTags = `<!-- Basic Meta Tags -->
+${document.getElementById('basicTags').textContent}
+
+<!-- Open Graph Tags -->
+${document.getElementById('ogTags').textContent}
+
+<!-- Twitter Card Tags -->
+${document.getElementById('twitterTags').textContent}
+
+<!-- Canonical Link -->
+${document.getElementById('canonicalTag').textContent}`;
+  
+  navigator.clipboard.writeText(allTags).then(() => {
+    alert('All meta tags copied to clipboard!');
+  });
+}
 </script>
+
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>

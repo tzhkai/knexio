@@ -3,27 +3,32 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>CSS Minifier – Minify CSS Online Free | Knexio</title>
-<meta name="description" content="">
-
-<link rel="canonical" href="">
+<meta name="description" content="Free online CSS minifier tool. Paste your CSS and instantly remove whitespace, comments, and redundant code. See exact file size savings.">
+<link rel="canonical" href="https://knexio.xyz/tools/css-minifier/">
 
 <!-- Open Graph -->
 <meta property="og:title" content="CSS Minifier">
-<meta property="og:description" content="">
-<meta property="og:url" content="">
+<meta property="og:description" content="Free online CSS minifier tool. Paste your CSS and instantly remove whitespace, comments, and redundant code.">
+<meta property="og:url" content="https://knexio.xyz/tools/css-minifier/">
 <meta property="og:type" content="WebApplication">
 <meta property="og:site_name" content="Knexio">
 <meta property="og:image" content="https://knexio.xyz/og-image.png">
 
 <!-- Structured Data -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"SoftwareApplication","name":"CSS Minifier","applicationCategory":"DeveloperApplication","operatingSystem":"All","url":"https://knexio.xyz/tools/css-minifier/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "CSS Minifier",
+  "url": "https://knexio.xyz/tools/css-minifier/",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "All",
+  "description": "Free online CSS minifier tool. Paste your CSS and instantly remove whitespace, comments, and redundant code."
+}
 </script>
 
 <style>
-
 :root{
   --bg:#0b1220;
   --card:#111a2e;
@@ -55,17 +60,8 @@ body{
 
 h1{font-size:32px;margin-bottom:8px}
 h2{font-size:22px;margin-top:30px;margin-bottom:10px}
+h3{font-size:18px;margin-bottom:8px}
 .subtitle{color:var(--sub);margin-bottom:24px}
-
-.badge{
-  display:inline-block;
-  padding:4px 10px;
-  border-radius:20px;
-  background:rgba(79,140,255,.15);
-  color:var(--accent);
-  font-size:12px;
-  margin-bottom:10px;
-}
 
 .card{
   background:var(--card);
@@ -75,62 +71,151 @@ h2{font-size:22px;margin-top:30px;margin-bottom:10px}
   margin-bottom:20px;
 }
 
-textarea{
+
+
+
+button:hover{opacity:0.9}
+button:disabled{opacity:0.5;cursor:not-allowed}
+
+
+.btn-primary {
+  background:var(--accent);
+  color:#fff;
+}
+.btn-green {
+  background:#22c55e;
+  color:#fff;
+}
+
+.btn-sm {
+  padding:6px 12px;
+  font-size:12px;
+}
+.btn-outline:hover {
+  border-color:var(--accent);
+  color:var(--accent);
+}
+
+
+textarea:focus{outline:none;border-color:var(--accent)}
+
+.check-label {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  color:var(--sub);
+  font-size:13px;
+  margin-left:10px;
+}
+.check-label input[type="checkbox"] {
+  width:16px;
+  height:16px;
+  cursor:pointer;
+}
+
+.toolbar {
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  align-items:center;
+  margin-bottom:16px;
+}
+
+.editor-layout {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+  margin-top:16px;
+}
+
+.pane-label {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:8px;
+  font-size:14px;
+  color:var(--sub);
+  font-weight:500;
+}
+
+
+
+.output-box {
   width:100%;
-  min-height:180px;
+  min-height:300px;
   background:var(--bg);
   border:1px solid var(--border);
   border-radius:12px;
   color:var(--text);
   padding:14px;
-  font-size:15px;
+  font-size:14px;
+  font-family:Monaco,Menlo,monospace;
+  white-space:pre-wrap;
+  word-break:break-all;
+  overflow:auto;
 }
-textarea:focus{outline:none;border-color:var(--accent)}
 
-.btn-row{display:flex;gap:10px;margin-top:12px}
-button{
-  flex:1;
+.status-bar {
+  margin-top:12px;
   padding:10px;
-  border-radius:10px;
-  border:none;
-  background:var(--accent);
-  color:#fff;
-  cursor:pointer;
-}
-button.secondary{
-  background:transparent;
-  border:1px solid var(--border);
-  color:var(--sub);
-}
-
-.stats{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-  margin-top:16px;
-}
-.stat{
-  background:var(--bg);
-  border:1px solid var(--border);
-  border-radius:10px;
-  padding:16px;
+  background:rgba(79,140,255,.1);
+  border-radius:8px;
+  color:var(--accent);
+  font-size:13px;
   text-align:center;
 }
-.stat span{
-  font-size:24px;
-  font-weight:700;
-  color:var(--accent);
-}
-.stat label{
-  display:block;
-  font-size:12px;
-  color:var(--sub);
+
+.savings-bar-wrap {
+  margin-top:16px;
+  padding:16px;
+  background:rgba(34,197,94,.1);
+  border:1px solid rgba(34,197,94,.3);
+  border-radius:12px;
 }
 
-.tip{
+.savings-header {
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:10px;
+  font-size:14px;
+}
+.savings-header strong {
+  color:var(--accent);
+}
+
+.bar-track {
+  width:100%;
+  height:8px;
+  background:rgba(255,255,255,.1);
+  border-radius:4px;
+  margin:10px 0;
+  overflow:hidden;
+}
+
+.bar-mini {
+  height:100%;
+  background:linear-gradient(90deg, var(--accent), #22c55e);
+  border-radius:4px;
+  transition: width 0.5s ease;
+}
+
+.stats-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin-top:12px;
   font-size:13px;
+}
+.stats-grid div {
   color:var(--sub);
-  margin-top:10px;
+}
+.stats-grid span {
+  color:var(--text);
+  font-weight:600;
+}
+
+.green {
+  color:#22c55e;
 }
 
 .section p{
@@ -138,6 +223,18 @@ button.secondary{
   line-height:1.7;
   margin-bottom:10px;
 }
+
+.seo-section {
+  margin-top:30px;
+}
+
+
+
+
+
+
+
+
 
 .tools a{
   display:inline-block;
@@ -165,7 +262,7 @@ footer {
   text-align: center;
   color: var(--sub);
   font-size: 13px;
-}
+border-top:1px solid var(--border);}
 footer p {
   margin-bottom: 8px;
 }
@@ -179,12 +276,26 @@ footer a:hover {
   color: var(--accent);
 }
 
-@media(max-width:600px){
-  .stats{grid-template-columns:1fr 1fr}
+@media(max-width:768px){
+  .editor-layout{grid-template-columns:1fr}
+  .toolbar{flex-direction:column;align-items:stretch}
+  
+  .stats-grid{grid-template-columns:1fr}
 }
-
-</style>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2596567349043393" crossorigin="anonymous"></script>
+textarea,.text-area{width:100%;min-height:180px;background:var(--bg);border:1px solid var(--border);border-radius:12px;color:var(--text);padding:14px;font-size:15px;resize:vertical;box-sizing:border-box}
+textarea:focus,.text-area:focus{outline:none;border-color:var(--accent)}
+.btn-row{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+button,.btn,.btn-row button{flex:1;padding:10px;border-radius:10px;border:none;background:var(--accent);color:#fff;cursor:pointer;font-size:14px;transition:opacity 0.2s;box-sizing:border-box}
+button:hover,.btn:hover{opacity:0.9}
+button.secondary,.btn.secondary,.btn-outline,.btn-row button.secondary{background:transparent;border:1px solid var(--border);color:var(--sub)}
+button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.stat{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center}
+.stat span,.stat-value,.result-value,.age-value{font-size:24px;font-weight:700;color:var(--accent);display:block}
+.stat label,.stat-label,.result-label,.age-label{font-size:12px;color:var(--sub);display:block}
+.result-box{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;margin-top:16px;min-height:100px;white-space:pre-wrap;word-break:break-all;font-size:15px;line-height:1.7;box-sizing:border-box}
+@media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.btn-row{flex-direction:column}}
+  footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
 </head>
 
 <body><div class="container">
@@ -194,48 +305,25 @@ footer a:hover {
 <h1>CSS Minifier</h1>
 <p class="subtitle">Paste your CSS and minify it instantly. Removes whitespace, comments, and redundant semicolons. See exactly how much file size you save.</p>
 
-<div class="ad-banner">
-  <ins class="adsbygoogle" style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="3153457922"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-</div>
+<div class="ad-banner"></div>
 
-<div class="container">
-  <a class="back" href="../index.html">← Back to Tools</a>
-  <h1>CSS Minifier</h1>
-      <p class="subtitle">Paste your CSS and minify it instantly. Removes whitespace, comments, and redundant semicolons. See exactly how much file size you save.</p>
-
-  <div class="seo-section">
-    <h2>How to Use This Tool</h2>
-    <div class="step-block">
-      <h3>Step 1: Enter your input</h3>
-      <p>Type or paste your data into the input field.</p>
-    </div>
-    <div class="step-block">
-      <h3>Step 2: Click the action button</h3>
-      <p>Press the main action button to process your input.</p>
-    </div>
-    <div class="step-block">
-      <h3>Step 3: Copy or download results</h3>
-      <p>Use the Copy button to copy results, or Download to save.</p>
-    </div>
-  </div>
-
+<div class="card">
   <div class="toolbar">
-    <div class="btn-row">
-      <button class="btn btn-primary" onclick="minifyCSS()">Minify CSS</button>
+    <button class="btn btn-primary" onclick="minifyCSS()">Minify CSS</button>
     <button class="btn btn-green" onclick="downloadCSS()" id="dlBtn" disabled>Download .css</button>
     <button class="btn btn-outline" onclick="copyOutput()">Copy Output</button>
     <button class="btn btn-outline" onclick="clearAll()">Clear</button>
-    </div><label class="check-label"><input type="checkbox" id="removeCommentsChk" checked /> Remove comments</label>
-    <label class="check-label"><input type="checkbox" id="removeEmptyChk" checked /> Remove empty rules</label>
   </div>
+  
+  <label class="check-label"><input type="checkbox" id="removeCommentsChk" checked> Remove comments</label>
+  <label class="check-label"><input type="checkbox" id="removeEmptyChk" checked> Remove empty rules</label>
 
   <div class="editor-layout">
     <div>
-      <div class="pane-label"><span>Original CSS</span><button class="btn btn-outline btn-sm" onclick="pasteClipboard()">Paste</button></div>
+      <div class="pane-label">
+        <span>Original CSS</span>
+        <button class="btn btn-outline btn-sm" onclick="pasteClipboard()">Paste</button>
+      </div>
       <textarea class="text-area" id="input" placeholder="/* Paste your CSS here */
 body {
   font-family: Arial, sans-serif;
@@ -256,12 +344,12 @@ body {
     </div>
   </div>
 
-  <div id="statusBar" class="status-bar"></div>
+  <div id="statusBar" class="status-bar" style="display:none"></div>
 
   <div class="savings-bar-wrap" id="savingsBox" style="display:none">
     <div class="savings-header">
       <span>Size reduction: <strong id="savingsPct">0%</strong></span>
-      <span id="savingsBytes" style="color:var(--green)"></span>
+      <span id="savingsBytes" style="color:#22c55e"></span>
     </div>
     <div class="bar-track"><div class="bar-mini" id="barMini" style="width:0%"></div></div>
     <div class="stats-grid">
@@ -269,60 +357,158 @@ body {
       <div>Minified: <span id="miniSize">—</span></div>
       <div>Saved: <span id="savedSize">—</span></div>
     </div>
-
   </div>
+</div>
 
-  <div class="ad-banner" style="margin-top:40px">
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3153457922" data-ad-format="auto" data-full-width-responsive="true"></ins>
-    </div>
+<h2>How to Use</h2>
+<div class="section">
+<p>Paste your CSS code into the input area and click "Minify CSS". The tool will instantly remove all unnecessary characters including whitespace, comments, and redundant semicolons. You can then copy the minified output or download it as a .css file.</p>
+</div>
 
-  <section class="seo-section">
-    <h2>How to Use the CSS Minifier</h2>
-      <div class="step-block">
-        <h3>Step 1: Paste Your CSS</h3>
-        <p>Copy your stylesheet code into the input area.</p>
-      </div>
-      <div class="step-block">
-        <h3>Step 2: Click Minify</h3>
-        <p>The tool strips all unnecessary characters instantly.</p>
-      </div>
-      <div class="step-block">
-        <h3>Step 3: Copy the Output</h3>
-        <p>Use the Copy button to grab the minified CSS for your project.</p>
-      </div>
+<h2>How It Works</h2>
+<div class="section">
+<p>The CSS minifier parses your stylesheet and removes:</p>
+<p>• Whitespace (spaces, tabs, line breaks)</p>
+<p>• CSS comments (/* ... */)</p>
+<p>• Redundant semicolons and properties</p>
+<p>• Empty CSS rules</p>
+<p>This reduces file size without changing how your styles work, leading to faster page load times.</p>
+</div>
 
-    <h2>What Is a CSS Minifier?</h2>
-    <p>A CSS minifier removes whitespace, comments, and redundant characters from your stylesheet, reducing file size and improving page load speed.</p>
-
-    <h2>Frequently Asked Questions</h2>
-      <div class="faq-item">
-        <h3>Does minifying CSS break my styles?</h3>
-        <p>No. Minification only removes whitespace and comments — it does not change how the CSS works.</p>
-      </div>
-  </section>
+<h2>Related Tools</h2>
+<div class="tools">
+<a href="/tools/code-beautifier/">Code Beautifier</a>
+<a href="/tools/css-minifier/">Javascript Minifier</a>
+<a href="/tools/code-beautifier/">Html Minifier</a>
+</div>
 
 <div class="ad-banner" style="margin-top:40px">
-  <ins class="adsbygoogle" style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="3153457922"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-</div>
+      <!-- Ad space -->
+    </div>
 
 <footer>
   <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
-  <p>
-    <a href="/about/">About</a> •
-    <a href="/privacy/">Privacy Policy</a> •
-    <a href="/terms/">Terms of Service</a>
+  <p style="margin: 8px 0; font-size: 13px;">
+    <a href="/about/" style="color:var(--accent);text-decoration:none;margin:0 8px;">About</a>
+    <a href="/privacy/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Privacy</a>
+    <a href="/terms/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Terms</a>
+    <a href="/contact/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Contact</a>
   </p>
+  <p>© 2026 Knexio. All rights reserved.</p>
 </footer>
 
 </div>
 
 <script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-(adsbygoogle = window.adsbygoogle || []).push({});
+let minifiedCode = '';
+
+function minifyCSS() {
+  const input = document.getElementById('input').value;
+  const removeComments = document.getElementById('removeCommentsChk').checked;
+  const removeEmpty = document.getElementById('removeEmptyChk').checked;
+  const statusBar = document.getElementById('statusBar');
+  
+  if (!input.trim()) {
+    showStatus('Please paste CSS code first', true);
+    return;
+  }
+  
+  let result = input;
+  
+  if (removeComments) {
+    result = result.replace(/\/\*[\s\S]*?\*\//g, '');
+  }
+  
+  result = result
+    .replace(/\s+/g, ' ')
+    .replace(/\s*([{}:;,])\s*/g, '$1')
+    .replace(/;\}/g, '}')
+    .trim();
+  
+  if (removeEmpty) {
+    result = result.replace(/[^{}]+\{}/g, '');
+  }
+  
+  minifiedCode = result;
+  document.getElementById('output').textContent = result;
+  
+  const originalSize = input.length;
+  const minifiedSize = result.length;
+  const savedSize = originalSize - minifiedSize;
+  const savingsPct = originalSize > 0 ? ((savedSize / originalSize) * 100).toFixed(2) : 0;
+  
+  document.getElementById('origSize').textContent = formatBytes(originalSize);
+  document.getElementById('miniSize').textContent = formatBytes(minifiedSize);
+  document.getElementById('savedSize').textContent = formatBytes(savedSize);
+  document.getElementById('savingsPct').textContent = savingsPct + '%';
+  document.getElementById('savingsBytes').textContent = '-' + formatBytes(savedSize);
+  document.getElementById('barMini').style.width = savingsPct + '%';
+  document.getElementById('savingsBox').style.display = 'block';
+  document.getElementById('dlBtn').disabled = false;
+  
+  showStatus('CSS minified successfully! Saved ' + savingsPct + '%');
+}
+
+function copyOutput() {
+  if (!minifiedCode) {
+    showStatus('No minified code to copy', true);
+    return;
+  }
+  navigator.clipboard.writeText(minifiedCode).then(() => {
+    showStatus('Copied to clipboard!');
+  });
+}
+
+function downloadCSS() {
+  if (!minifiedCode) {
+    showStatus('No minified code to download', true);
+    return;
+  }
+  const blob = new Blob([minifiedCode], { type: 'text/css' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'styles.min.css';
+  a.click();
+  URL.revokeObjectURL(url);
+  showStatus('Downloaded styles.min.css');
+}
+
+function clearAll() {
+  document.getElementById('input').value = '';
+  document.getElementById('output').textContent = '';
+  document.getElementById('savingsBox').style.display = 'none';
+  document.getElementById('dlBtn').disabled = true;
+  document.getElementById('statusBar').style.display = 'none';
+  minifiedCode = '';
+}
+
+function pasteClipboard() {
+  navigator.clipboard.readText().then(text => {
+    document.getElementById('input').value = text;
+    showStatus('Pasted from clipboard');
+  }).catch(err => {
+    showStatus('Could not paste: ' + err.message, true);
+  });
+}
+
+function showStatus(message, isError = false) {
+  const statusBar = document.getElementById('statusBar');
+  statusBar.textContent = message;
+  statusBar.style.display = 'block';
+  statusBar.style.color = isError ? '#ef4444' : 'var(--accent)';
+  statusBar.style.background = isError ? 'rgba(239,68,68,.1)' : 'rgba(79,140,255,.1)';
+}
+
+function formatBytes(bytes) {
+  if (bytes === 0) return '0 B';
+  const k = 1024;
+  const sizes = ['B', 'KB', 'MB'];
+  const i = Math.floor(Math.log(bytes) / Math.log(k));
+  return (bytes / Math.pow(k, i)).toFixed(2) + ' ' + sizes[i];
+}
 </script>
+
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>

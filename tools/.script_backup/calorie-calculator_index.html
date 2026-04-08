@@ -4,26 +4,33 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calorie Calculator – Calculate Daily Calorie Needs (BMR & TDEE) | Knexio</title>
-<meta name="description" content="">
+<title>Calorie Calculator – Daily Calorie Needs (BMR & TDEE) | Knexio</title>
+<meta name="description" content="Free calorie calculator to estimate your daily calorie needs based on age, weight, height, and activity level. Includes BMR and TDEE calculations.">
 
-<link rel="canonical" href="">
+<link rel="canonical" href="https://knexio.xyz/tools/calorie-calculator/">
 
 <!-- Open Graph -->
-<meta property="og:title" content="Calorie Calculator">
-<meta property="og:description" content="">
-<meta property="og:url" content="">
+<meta property="og:title" content="Calorie Calculator – Daily Calorie Needs (BMR & TDEE)">
+<meta property="og:description" content="Free calorie calculator to estimate your daily calorie needs based on age, weight, height, and activity level. Includes BMR and TDEE calculations.">
+<meta property="og:url" content="https://knexio.xyz/tools/calorie-calculator/">
 <meta property="og:type" content="WebApplication">
 <meta property="og:site_name" content="Knexio">
 <meta property="og:image" content="https://knexio.xyz/og-image.png">
 
 <!-- Structured Data -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Calorie Calculator","applicationCategory":"HealthApplication","operatingSystem":"All","url":"https://knexio.xyz/tools/calorie-calculator/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Calorie Calculator",
+  "url": "https://knexio.xyz/tools/calorie-calculator/",
+  "applicationCategory": "HealthApplication",
+  "operatingSystem": "All",
+  "description": "Free tool to calculate daily calorie needs based on age, weight, height, gender, and activity level."
+}
 </script>
 
 <style>
-
 :root{
   --bg:#0b1220;
   --card:#111a2e;
@@ -31,6 +38,8 @@
   --text:#fff;
   --sub:#aab3c5;
   --accent:#4f8cff;
+  --yellow:#ffd700;
+  --purple:#a855f7;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{
@@ -57,16 +66,6 @@ h1{font-size:32px;margin-bottom:8px}
 h2{font-size:22px;margin-top:30px;margin-bottom:10px}
 .subtitle{color:var(--sub);margin-bottom:24px}
 
-.badge{
-  display:inline-block;
-  padding:4px 10px;
-  border-radius:20px;
-  background:rgba(79,140,255,.15);
-  color:var(--accent);
-  font-size:12px;
-  margin-bottom:10px;
-}
-
 .card{
   background:var(--card);
   border:1px solid var(--border);
@@ -75,62 +74,167 @@ h2{font-size:22px;margin-top:30px;margin-bottom:10px}
   margin-bottom:20px;
 }
 
-textarea{
+.form-group{
+  margin-bottom:16px;
+}
+.form-group label{
+  display:block;
+  margin-bottom:8px;
+  color:var(--sub);
+  font-size:14px;
+}
+.form-group input,
+.form-group select{
   width:100%;
-  min-height:180px;
+  padding:10px;
   background:var(--bg);
   border:1px solid var(--border);
-  border-radius:12px;
+  border-radius:8px;
   color:var(--text);
-  padding:14px;
-  font-size:15px;
+  font-size:14px;
 }
-textarea:focus{outline:none;border-color:var(--accent)}
+.form-group input:focus,
+.form-group select:focus{
+  outline:none;
+  border-color:var(--accent);
+}
 
-.btn-row{display:flex;gap:10px;margin-top:12px}
-button{
-  flex:1;
-  padding:10px;
-  border-radius:10px;
-  border:none;
-  background:var(--accent);
-  color:#fff;
+.radio-group{
+  display:flex;
+  gap:16px;
+}
+.radio-option{
+  display:flex;
+  align-items:center;
+  gap:6px;
   cursor:pointer;
 }
-button.secondary{
-  background:transparent;
-  border:1px solid var(--border);
-  color:var(--sub);
+.radio-option input[type="radio"]{
+  width:18px;
+  height:18px;
+  cursor:pointer;
+}
+.radio-option label{
+  color:var(--text);
+  cursor:pointer;
 }
 
-.stats{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-  margin-top:16px;
+
+button:hover{
+  opacity:0.9;
 }
-.stat{
-  background:var(--bg);
-  border:1px solid var(--border);
-  border-radius:10px;
-  padding:16px;
-  text-align:center;
-}
-.stat span{
-  font-size:24px;
+
+
+.result-number{
+  font-size:36px;
   font-weight:700;
   color:var(--accent);
 }
-.stat label{
-  display:block;
-  font-size:12px;
+.result-label{
   color:var(--sub);
+  font-size:14px;
+  margin-top:4px;
 }
 
-.tip{
+.result-detail{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-bottom:20px;
+}
+.detail-item{
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:14px;
+  text-align:center;
+}
+.detail-value{
+  font-size:20px;
+  font-weight:600;
+  color:var(--accent);
+}
+.detail-label{
+  color:var(--sub);
+  font-size:12px;
+  margin-top:4px;
+}
+
+.goals-section{
+  margin-top:20px;
+}
+.goals-section h3{
+  font-size:16px;
+  margin-bottom:12px;
+  color:var(--text);
+}
+.goal-item{
+  display:flex;
+  justify-content:space-between;
+  padding:12px;
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:8px;
+  margin-bottom:8px;
+}
+.goal-name{
+  color:var(--sub);
+  font-size:14px;
+}
+.goal-cal{
+  font-weight:600;
+  color:var(--accent);
+}
+
+.macro-section{
+  margin-top:20px;
+}
+.macro-section h3{
+  font-size:16px;
+  margin-bottom:12px;
+  color:var(--text);
+}
+.macro-bar{
+  display:flex;
+  height:30px;
+  border-radius:8px;
+  overflow:hidden;
+  margin-bottom:12px;
+}
+.macro-segment{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:12px;
+  font-weight:600;
+  color:#fff;
+}
+.macro-carb{
+  background:var(--yellow);
+  color:#000;
+}
+.macro-protein{
+  background:var(--accent);
+}
+.macro-fat{
+  background:var(--purple);
+}
+.macro-legend{
+  display:flex;
+  gap:16px;
+  flex-wrap:wrap;
+}
+.legend-item{
+  display:flex;
+  align-items:center;
+  gap:6px;
   font-size:13px;
   color:var(--sub);
-  margin-top:10px;
+}
+.legend-dot{
+  width:12px;
+  height:12px;
+  border-radius:50%;
 }
 
 .section p{
@@ -138,6 +242,8 @@ button.secondary{
   line-height:1.7;
   margin-bottom:10px;
 }
+
+
 
 .tools a{
   display:inline-block;
@@ -165,7 +271,7 @@ footer {
   text-align: center;
   color: var(--sub);
   font-size: 13px;
-}
+border-top:1px solid var(--border);}
 footer p {
   margin-bottom: 8px;
 }
@@ -180,11 +286,22 @@ footer a:hover {
 }
 
 @media(max-width:600px){
-  .stats{grid-template-columns:1fr 1fr}
+  .result-detail{grid-template-columns:1fr}
 }
-
-</style>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2596567349043393" crossorigin="anonymous"></script>
+textarea,.text-area{width:100%;min-height:180px;background:var(--bg);border:1px solid var(--border);border-radius:12px;color:var(--text);padding:14px;font-size:15px;resize:vertical;box-sizing:border-box}
+textarea:focus,.text-area:focus{outline:none;border-color:var(--accent)}
+.btn-row{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+button,.btn,.btn-row button{flex:1;padding:10px;border-radius:10px;border:none;background:var(--accent);color:#fff;cursor:pointer;font-size:14px;transition:opacity 0.2s;box-sizing:border-box}
+button:hover,.btn:hover{opacity:0.9}
+button.secondary,.btn.secondary,.btn-outline,.btn-row button.secondary{background:transparent;border:1px solid var(--border);color:var(--sub)}
+button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.stat{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center}
+.stat span,.stat-value,.result-value,.age-value{font-size:24px;font-weight:700;color:var(--accent);display:block}
+.stat label,.stat-label,.result-label,.age-label{font-size:12px;color:var(--sub);display:block}
+.result-box{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;margin-top:16px;min-height:100px;white-space:pre-wrap;word-break:break-all;font-size:15px;line-height:1.7;box-sizing:border-box}
+@media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.btn-row{flex-direction:column}}
+  footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
 </head>
 
 <body><div class="container">
@@ -194,201 +311,248 @@ footer a:hover {
 <h1>Calorie Calculator</h1>
 <p class="subtitle">Calculate your daily calorie needs based on age, weight, height, gender, and activity level. Get your BMR, TDEE, and personalized recommendations for weight goals.</p>
 
-<div class="ad-banner">
-  <ins class="adsbygoogle" style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="3153457922"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
+<div class="ad-banner"></div>
+
+<div class="card">
+<div class="form-group">
+  <label>Gender</label>
+  <div class="radio-group">
+    <div class="radio-option">
+      <input type="radio" name="gender" id="male" value="male" checked>
+      <label for="male">Male</label>
+    </div>
+    <div class="radio-option">
+      <input type="radio" name="gender" id="female" value="female">
+      <label for="female">Female</label>
+    </div>
+  </div>
 </div>
 
-<div class="container">
-  <a class="back" href="../index.html">← Back to Tools</a>
-  <h1>Calorie Calculator</h1>
-      <p class="subtitle">Calculate your daily calorie needs based on age, weight, height, gender, and activity level. Get your BMR, TDEE, and personalized recommendations for weight goals.</p>
+<div class="form-group">
+  <label>Age (years)</label>
+  <input type="number" id="age" placeholder="25" min="10" max="100">
+</div>
 
-  <div class="seo-section">
-    <h2>How to Use This Tool</h2>
-    <div class="step-block">
-      <h3>Step 1: Enter your input</h3>
-      <p>Type or paste your data into the input field.</p>
+<div class="form-group">
+  <label>Weight</label>
+  <div style="display:flex;gap:10px">
+    <input type="number" id="weight" placeholder="70" style="flex:1">
+    <select id="weightUnit" style="width:100px">
+      <option value="kg">kg</option>
+      <option value="lbs">lbs</option>
+    </select>
+  </div>
+</div>
+
+<div class="form-group">
+  <label>Height</label>
+  <div style="display:flex;gap:10px">
+    <input type="number" id="height" placeholder="175" style="flex:1">
+    <select id="heightUnit" style="width:100px">
+      <option value="cm">cm</option>
+      <option value="ft">ft/in</option>
+    </select>
+  </div>
+</div>
+
+<div class="form-group">
+  <label>Activity Level</label>
+  <select id="activity">
+    <option value="1.2">Sedentary (little or no exercise)</option>
+    <option value="1.375">Lightly active (1-3 days/week)</option>
+    <option value="1.55" selected>Moderately active (3-5 days/week)</option>
+    <option value="1.725">Very active (6-7 days/week)</option>
+    <option value="1.9">Super active (physical job/training)</option>
+  </select>
+</div>
+
+<button onclick="calculateCalories()">Calculate</button>
+
+<div id="resultContainer" style="display:none;margin-top:24px">
+  <div class="result-box">
+    <div class="result-number" id="tdeeResult">0</div>
+    <div class="result-label">Daily Calories (TDEE)</div>
+  </div>
+
+  <div class="result-detail">
+    <div class="detail-item">
+      <div class="detail-value" id="bmrResult">0</div>
+      <div class="detail-label">BMR</div>
     </div>
-    <div class="step-block">
-      <h3>Step 2: Click the action button</h3>
-      <p>Press the main action button to process your input.</p>
+    <div class="detail-item">
+      <div class="detail-value" id="bmiResult">0</div>
+      <div class="detail-label">BMI</div>
     </div>
-    <div class="step-block">
-      <h3>Step 3: Copy or download results</h3>
-      <p>Use the Copy button to copy results, or Download to save.</p>
+    <div class="detail-item">
+      <div class="detail-value" id="idealWeight">0</div>
+      <div class="detail-label">Ideal Weight</div>
     </div>
   </div>
 
-  <div class="calculator-grid">
-    <div class="panel">
-      <h2>📊 Your Information</h2>
-      <div class="form-group">
-        <label>Gender</label>
-        <div class="radio-group">
-          <div class="radio-option">
-            <input type="radio" name="gender" id="male" value="male" checked>
-            <label for="male">Male</label>
-          </div>
-          <div class="radio-option">
-            <input type="radio" name="gender" id="female" value="female">
-            <label for="female">Female</label>
-          </div>
-        </div>
-      </div>
-      <div class="form-group">
-        <label>Age (years)</label>
-        <input type="number" id="age" placeholder="25" min="10" max="100">
-      </div>
-      <div class="form-group">
-        <label>Weight</label>
-        <div style="display:flex;gap:10px">
-          <input type="number" id="weight" placeholder="70" style="flex:1">
-          <select id="weightUnit" style="width:100px">
-            <option value="kg">kg</option>
-            <option value="lbs">lbs</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-group">
-        <label>Height</label>
-        <div style="display:flex;gap:10px">
-          <input type="number" id="height" placeholder="175" style="flex:1">
-          <select id="heightUnit" style="width:100px">
-            <option value="cm">cm</option>
-            <option value="ft">ft/in</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-group">
-        <label>Activity Level</label>
-        <select id="activity">
-          <option value="1.2">Sedentary (little or no exercise)</option>
-          <option value="1.375">Lightly active (1-3 days/week)</option>
-          <option value="1.55" selected>Moderately active (3-5 days/week)</option>
-          <option value="1.725">Very active (6-7 days/week)</option>
-          <option value="1.9">Super active (physical job/training)</option>
-        </select>
-      </div>
-      <button class="btn" onclick="calculateCalories()">Calculate</button>
+  <div class="goals-section">
+    <h3>🎯 Daily Calories for Different Goals</h3>
+    <div class="goal-item">
+      <span class="goal-name">Maintain Weight</span>
+      <span class="goal-cal" id="maintainCal">0</span>
     </div>
-
-    <div class="panel">
-      <h2>📈 Your Results</h2>
-      <div id="resultContainer" style="display:none">
-        <div class="result-box">
-          <div class="result-number" id="tdeeResult">0</div>
-          <div class="result-label">Daily Calories (TDEE)</div>
-        </div>
-        <div class="result-detail">
-          <div class="detail-item">
-            <div class="detail-value" id="bmrResult">0</div>
-            <div class="detail-label">BMR</div>
-          </div>
-          <div class="detail-item">
-            <div class="detail-value" id="bmiResult">0</div>
-            <div class="detail-label">BMI</div>
-          </div>
-          <div class="detail-item">
-            <div class="detail-value" id="idealWeight">0</div>
-            <div class="detail-label">Ideal Weight</div>
-          </div>
-        </div>
-        <div class="goals-section">
-          <h3>🎯 Daily Calories for Different Goals</h3>
-          <div class="goal-item">
-            <span class="goal-name">Maintain Weight</span>
-            <span class="goal-cal" id="maintainCal">0</span>
-          </div>
-          <div class="goal-item">
-            <span class="goal-name">Lose 0.5kg/week</span>
-            <span class="goal-cal" id="loseHalfCal">0</span>
-          </div>
-          <div class="goal-item">
-            <span class="goal-name">Lose 1kg/week</span>
-            <span class="goal-cal" id="loseOneCal">0</span>
-          </div>
-          <div class="goal-item">
-            <span class="goal-name">Gain 0.5kg/week</span>
-            <span class="goal-cal" id="gainHalfCal">0</span>
-          </div>
-        </div>
-        <div class="macro-section">
-          <h3>🥗 Suggested Macronutrients</h3>
-          <div class="macro-bar">
-            <div class="macro-segment macro-carb" id="carbBar" style="width:50%">Carbs</div>
-            <div class="macro-segment macro-protein" id="proteinBar" style="width:25%">Protein</div>
-            <div class="macro-segment macro-fat" id="fatBar" style="width:25%">Fat</div>
-          </div>
-          <div class="macro-legend">
-            <div class="legend-item"><div class="legend-dot" style="background:var(--yellow)"></div><span id="carbGrams">0g carbs</span></div>
-            <div class="legend-item"><div class="legend-dot" style="background:var(--accent)"></div><span id="proteinGrams">0g protein</span></div>
-            <div class="legend-item"><div class="legend-dot" style="background:var(--purple)"></div><span id="fatGrams">0g fat</span></div>
-          </div>
-        </div>
-      </div>
-      <div id="emptyState" style="text-align:center;padding:60px 20px;color:var(--sub)">
-        <div style="font-size:48px;margin-bottom:16px">🧮</div>
-        <div>Fill in your details and click Calculate to see your results</div>
-      </div>
+    <div class="goal-item">
+      <span class="goal-name">Lose 0.5kg/week</span>
+      <span class="goal-cal" id="loseHalfCal">0</span>
     </div>
-
+    <div class="goal-item">
+      <span class="goal-name">Lose 1kg/week</span>
+      <span class="goal-cal" id="loseOneCal">0</span>
+    </div>
+    <div class="goal-item">
+      <span class="goal-name">Gain 0.5kg/week</span>
+      <span class="goal-cal" id="gainHalfCal">0</span>
+    </div>
   </div>
 
-  <div class="ad-banner" style="margin-top:40px">
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3153457922" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <div class="macro-section">
+    <h3>🥗 Suggested Macronutrients</h3>
+    <div class="macro-bar">
+      <div class="macro-segment macro-carb" id="carbBar" style="width:50%">Carbs</div>
+      <div class="macro-segment macro-protein" id="proteinBar" style="width:25%">Protein</div>
+      <div class="macro-segment macro-fat" id="fatBar" style="width:25%">Fat</div>
     </div>
+    <div class="macro-legend">
+      <div class="legend-item"><div class="legend-dot" style="background:var(--yellow)"></div><span id="carbGrams">0g carbs</span></div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--accent)"></div><span id="proteinGrams">0g protein</span></div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--purple)"></div><span id="fatGrams">0g fat</span></div>
+    </div>
+  </div>
+</div>
 
-  <section class="seo-section">
-    <h2>How to Use the Calorie Calculator</h2>
-      <div class="step-block">
-        <h3>Step 1: Enter Your Details</h3>
-        <p>Fill in age, gender, height, and weight.</p>
-      </div>
-      <div class="step-block">
-        <h3>Step 2: Select Activity Level</h3>
-        <p>Choose from sedentary to very active to match your lifestyle.</p>
-      </div>
-      <div class="step-block">
-        <h3>Step 3: Get Your Daily Calories</h3>
-        <p>See your maintenance calories plus targets for weight loss or gain.</p>
-      </div>
+<div id="emptyState" style="text-align:center;padding:40px 20px;color:var(--sub)">
+  <div style="font-size:40px;margin-bottom:12px">🧮</div>
+  <div>Fill in your details and click Calculate to see your results</div>
+</div>
 
-    <h2>What Is a Calorie Calculator?</h2>
-    <p>A calorie calculator estimates your daily caloric needs based on age, gender, height, weight, and activity level using the Mifflin-St Jeor equation.</p>
+</div>
 
-    <h2>Frequently Asked Questions</h2>
-      <div class="faq-item">
-        <h3>How many calories should I eat to lose weight?</h3>
-        <p>A deficit of 500 calories per day typically leads to about 0.5 kg (1 lb) of weight loss per week.</p>
-      </div>
-  </section>
+<h2>Free Online Calorie Calculator</h2>
+<div class="section">
+<p>Calculate your daily calorie needs based on age, weight, height, gender, and activity level. Get your BMR, TDEE, and personalized recommendations for weight goals.</p>
+</div>
+
+<h2>How It Works</h2>
+<div class="section">
+<p>The calculator uses the Mifflin-St Jeor equation to compute Basal Metabolic Rate (BMR), then applies activity level factors to determine Total Daily Energy Expenditure (TDEE). Results include BMI, suggested calorie targets for weight loss/gain, and macronutrient breakdown (carbs, protein, fat). Supports metric (kg/cm) and imperial (lbs/ft) units.</p>
+</div>
+
+<h2>Related Tools</h2>
+<div class="tools">
+<a href="/tools/bmi-calculator/">BMI Calculator</a>
+<a href="/tools/weight-converter/">Weight Converter</a>
+<a href="/tools/macro-calculator/">Macro Calculator</a>
+</div>
 
 <div class="ad-banner" style="margin-top:40px">
-  <ins class="adsbygoogle" style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="3153457922"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-</div>
+      <!-- Ad space -->
+    </div>
 
 <footer>
   <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
-  <p>
-    <a href="/about/">About</a> •
-    <a href="/privacy/">Privacy Policy</a> •
-    <a href="/terms/">Terms of Service</a>
+  <p style="margin: 8px 0; font-size: 13px;">
+    <a href="/about/" style="color:var(--accent);text-decoration:none;margin:0 8px;">About</a>
+    <a href="/privacy/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Privacy</a>
+    <a href="/terms/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Terms</a>
+    <a href="/contact/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Contact</a>
   </p>
+  <p>© 2026 Knexio. All rights reserved.</p>
 </footer>
 
 </div>
 
 <script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-(adsbygoogle = window.adsbygoogle || []).push({});
+function calculateCalories(){
+  const gender = document.querySelector('input[name="gender"]:checked').value;
+  const age = parseFloat(document.getElementById('age').value);
+  let weight = parseFloat(document.getElementById('weight').value);
+  const weightUnit = document.getElementById('weightUnit').value;
+  let height = parseFloat(document.getElementById('height').value);
+  const heightUnit = document.getElementById('heightUnit').value;
+  const activity = parseFloat(document.getElementById('activity').value);
+
+  if(!age || !weight || !height){
+    alert('Please fill in all fields');
+    return;
+  }
+
+  // Convert to metric if needed
+  if(weightUnit === 'lbs'){
+    weight = weight * 0.453592;
+  }
+  if(heightUnit === 'ft'){
+    // Assuming input is in feet (e.g., 5.8 for 5'8")
+    const feet = Math.floor(height);
+    const inches = Math.round((height - feet) * 10);
+    height = (feet * 30.48) + (inches * 2.54);
+  }
+
+  // Calculate BMR using Mifflin-St Jeor equation
+  let bmr;
+  if(gender === 'male'){
+    bmr = (10 * weight) + (6.25 * height) - (5 * age) + 5;
+  }else{
+    bmr = (10 * weight) + (6.25 * height) - (5 * age) - 161;
+  }
+
+  // Calculate TDEE
+  const tdee = Math.round(bmr * activity);
+
+  // Calculate BMI
+  const heightM = height / 100;
+  const bmi = (weight / (heightM * heightM)).toFixed(1);
+
+  // Calculate ideal weight (BMI 18.5-24.9)
+  const minIdealWeight = (18.5 * heightM * heightM).toFixed(1);
+  const maxIdealWeight = (24.9 * heightM * heightM).toFixed(1);
+  const idealWeightDisplay = `${minIdealWeight}-${maxIdealWeight}`;
+
+  // Calculate calorie targets
+  const maintainCal = tdee;
+  const loseHalfCal = tdee - 500;
+  const loseOneCal = tdee - 1000;
+  const gainHalfCal = tdee + 500;
+
+  // Calculate macros (50% carbs, 25% protein, 25% fat)
+  const carbCal = Math.round(tdee * 0.5);
+  const proteinCal = Math.round(tdee * 0.25);
+  const fatCal = Math.round(tdee * 0.25);
+
+  const carbGrams = Math.round(carbCal / 4);
+  const proteinGrams = Math.round(proteinCal / 4);
+  const fatGrams = Math.round(fatCal / 9);
+
+  // Display results
+  document.getElementById('tdeeResult').textContent = tdee.toLocaleString();
+  document.getElementById('bmrResult').textContent = Math.round(bmr).toLocaleString();
+  document.getElementById('bmiResult').textContent = bmi;
+  document.getElementById('idealWeight').textContent = idealWeightDisplay + ' kg';
+
+  document.getElementById('maintainCal').textContent = maintainCal.toLocaleString();
+  document.getElementById('loseHalfCal').textContent = loseHalfCal.toLocaleString();
+  document.getElementById('loseOneCal').textContent = loseOneCal.toLocaleString();
+  document.getElementById('gainHalfCal').textContent = gainHalfCal.toLocaleString();
+
+  document.getElementById('carbBar').style.width = '50%';
+  document.getElementById('proteinBar').style.width = '25%';
+  document.getElementById('fatBar').style.width = '25%';
+
+  document.getElementById('carbGrams').textContent = carbGrams + 'g carbs';
+  document.getElementById('proteinGrams').textContent = proteinGrams + 'g protein';
+  document.getElementById('fatGrams').textContent = fatGrams + 'g fat';
+
+  document.getElementById('resultContainer').style.display = 'block';
+  document.getElementById('emptyState').style.display = 'none';
+}
 </script>
+
+<script>
+</script>
+
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>

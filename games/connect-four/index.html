@@ -255,7 +255,6 @@
         font-size: 16px !important;
       }
     }
-    }
     footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
 </head>
 <body><div class="wrap">
@@ -326,242 +325,9 @@
           <div class="ad-banner" style="margin-top:40px">
       <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins>
     </div>
-    <footer p{margin:0};
+<script src="/knexio-bundle.js"></script>
 
-  function setMode(m) {
-    mode = m;
-    document.getElementById('btn-vs-ai').classList.toggle('active', m==='ai');
-    document.getElementById('btn-vs-player').classList.toggle('active', m==='2p');
-    document.getElementById('diff-seg').style.opacity = m==='ai' ? '1' : '0.4';
-    newGame();
-  }
-
-  function setDiff(d) {
-    difficulty = d;
-    document.querySelectorAll('#diff-seg button').forEach((b,i) => b.classList.toggle('active', ['easy','medium','hard'][i]===d));
-    newGame();
-  }
-
-  function newGame() {
-    board = Array.from({length:ROWS}, ()=>Array(COLS).fill(0));
-    currentPlayer = 1; gameOver = false;
-    render(); updateStatus(); closeModal();
-  }
-
-  function render() {
-    const grid = document.getElementById('boardGrid');
-    grid.innerHTML = '';
-    for(let r=0;r<ROWS;r++) for(let c=0;c<COLS;c++){
-      const cell=document.createElement('div');
-      cell.className='cell'+(board[r][c]===1?' red':board[r][c]===2?' yellow':'');
-      grid.appendChild(cell);
-    }
-    const hover=document.getElementById('hoverRow');
-    hover.innerHTML='';
-    for(let c=0;c<COLS;c++){
-      const hc=document.createElement('div');
-      hc.className='hover-cell';
-      hc.dataset.col=c;
-      hover.appendChild(hc);
-    }
-  }
-
-  function updateStatus() {
-    const disc=document.getElementById('turnDisc');
-    disc.className='disc-indicator '+(currentPlayer===1?'disc-red':'disc-yellow');
-    document.getElementById('statusText').textContent = gameOver ? '' : (currentPlayer===1?'Red':'Yellow')+"'s turn" + (mode==='ai'&&currentPlayer===2?' (AI)':'');
-    document.getElementById('scoreRed').textContent=scores.red;
-    document.getElementById('scoreYellow').textContent=scores.yellow;
-    document.getElementById('scoreDraws').textContent=scores.draws;
-  }
-
-  function dropDisc(col) {
-    if(gameOver) return;
-    if(mode==='ai' && currentPlayer===2) return;
-    const row = getRow(col);
-    if(row===-1) return;
-    board[row][col]=currentPlayer;
-    const win=checkWin(row,col);
-    render();
-    if(win){endGame(currentPlayer); return;}
-    if(isDraw()){endGame(0); return;}
-    currentPlayer=currentPlayer===1?2:1;
-    updateStatus();
-    if(mode==='ai' && currentPlayer===2) setTimeout(aiMove,400);
-  }
-
-  function getRow(col){for(let r=ROWS-1;r>=0;r--)if(board[r][col]===0)return r;return -1;}
-
-  function checkWin(row,col){
-    const p=board[row][col];
-    const dirs=[[0,1],[1,0],[1,1],[1,-1]];
-    for(const[dr,dc]of dirs){
-      let count=1,cells=[[row,col]];
-      for(let d=-1;d<=1;d+=2) for(let i=1;i<4;i++){
-        const r=row+dr*i*d,c=col+dc*i*d;
-        if(r<0||r>=ROWS||c<0||c>=COLS||board[r][c]!==p) break;
-        count++;cells.push([r,c]);
-      }
-      if(count>=4){highlightWin(cells);return true;}
-    }
-    return false;
-  }
-
-  function highlightWin(cells){
-    const grid=document.getElementById('boardGrid');
-    cells.forEach(([r,c])=>grid.children[r*COLS+c].classList.add('win'));
-  }
-
-  function isDraw(){return board[0].every(v=>v!==0);}
-
-  function endGame(winner){
-    gameOver=true;
-    if(winner===1)scores.red++;
-    else if(winner===2)scores.yellow++;
-    else scores.draws++;
-    updateStatus();
-    const titles={1:'🔴 Red Wins!',2:'🟡 Yellow Wins!',0:'🤝 Draw!'};
-    const subs={1:'Great move! Red connected 4 in a row.',2:'Excellent! Yellow connected 4 in a row.',0:'The board is full — nobody wins this time.'};
-    document.getElementById('modalTitle').textContent=titles[winner];
-    document.getElementById('modalSub').textContent=subs[winner];
-    setTimeout(()=>document.getElementById('modal').classList.add('show'),600);
-  }
-
-  function closeModal(){document.getElementById('modal').classList.remove('show');}
-
-  // AI Logic
-  function aiMove(){
-    let col;
-    if(difficulty==='easy') col=randomMove();
-    else if(difficulty==='medium') col=mediumMove();
-    else col=minimaxMove();
-    const row=getRow(col);
-    if(row===-1) return;
-    board[row][col]=2;
-    const win=checkWin(row,col);
-    render();
-    if(win){endGame(2);return;}
-    if(isDraw()){endGame(0);return;}
-    currentPlayer=1;updateStatus();
-  }
-
-  function randomMove(){
-    const valid=[];for(let c=0;c<COLS;c++)if(getRow(c)!==-1)valid.push(c);
-    return valid[Math.floor(Math.random()*valid.length)];
-  }
-
-  function mediumMove(){
-    // Block player win, or take AI win
-    for(let p=2;p>=1;p--){
-      for(let c=0;c<COLS;c++){
-        const r=getRow(c);if(r===-1)continue;
-        board[r][c]=p;
-        if(checkWinSilent(r,c)){board[r][c]=0;return c;}
-        board[r][c]=0;
-      }
-    }
-    return randomMove();
-  }
-
-  function checkWinSilent(row,col){
-    const p=board[row][col];
-    const dirs=[[0,1],[1,0],[1,1],[1,-1]];
-    for(const[dr,dc]of dirs){
-      let count=1;
-      for(let d=-1;d<=1;d+=2)for(let i=1;i<4;i++){
-        const r=row+dr*i*d,c=col+dc*i*d;
-        if(r<0||r>=ROWS||c<0||c>=COLS||board[r][c]!==p)break;
-        count++;
-      }
-      if(count>=4)return true;
-    }
-    return false;
-  }
-
-  function minimaxMove(){
-    let best=-Infinity,bestCol=randomMove();
-    for(let c=0;c<COLS;c++){
-      const r=getRow(c);if(r===-1)continue;
-      board[r][c]=2;
-      const score=minimax(board,5,false,-Infinity,Infinity);
-      board[r][c]=0;
-      if(score>best){best=score;bestCol=c;}
-    }
-    return bestCol;
-  }
-
-  function minimax(b,depth,isMax,alpha,beta){
-    // Check terminal
-    for(let r=0;r<ROWS;r++)for(let c=0;c<COLS;c++){
-      if(b[r][c]&&checkWinSilent(r,c)) return b[r][c]===2?(depth+1)*100:-(depth+1)*100;
-    }
-    if(depth===0||isDraw()) return evaluateBoard();
-    if(isMax){
-      let best=-Infinity;
-      for(let c=0;c<COLS;c++){
-        const r=getRow(c);if(r===-1)continue;
-        board[r][c]=2;const score=minimax(board,depth-1,false,alpha,beta);board[r][c]=0;
-        best=Math.max(best,score);alpha=Math.max(alpha,score);if(beta<=alpha)break;
-      }
-      return best;
-    }else{
-      let best=Infinity;
-      for(let c=0;c<COLS;c++){
-        const r=getRow(c);if(r===-1)continue;
-        board[r][c]=1;const score=minimax(board,depth-1,true,alpha,beta);board[r][c]=0;
-        best=Math.min(best,score);beta=Math.min(beta,score);if(beta<=alpha)break;
-      }
-      return best;
-    }
-  }
-
-  function evaluateBoard(){
-    let score=0;
-    // Center column preference
-    const center=Math.floor(COLS/2);
-    for(let r=0;r<ROWS;r++){if(board[r][center]===2)score+=3;else if(board[r][center]===1)score-=3;}
-    return score;
-  }
-
-  // Event listeners
-  document.getElementById('boardWrap').addEventListener('click', e=>{
-    if(gameOver)return;
-    const grid=document.getElementById('boardGrid');
-    const cells=[...grid.children];
-    const clicked=e.target.closest('.cell') || e.target;
-    const idx=cells.indexOf(clicked);
-    if(idx!==-1)dropDisc(idx%COLS);
-    else{
-      const rect=document.getElementById('boardWrap').getBoundingClientRect();
-      const cellW=rect.width/COLS;
-      const col=Math.floor((e.clientX-rect.left)/cellW);
-      dropDisc(col);
-    }
-  });
-
-  document.getElementById('hoverRow').addEventListener('click',e=>{
-    const col=e.target.dataset.col;
-    if(col!==undefined)dropDisc(+col);
-  });
-
-  document.getElementById('hoverRow').addEventListener('mouseover',e=>{
-    if(gameOver)return;
-    const col=e.target.dataset.col;
-    if(col===undefined)return;
-    document.querySelectorAll('.hover-cell').forEach(h=>h.className='hover-cell');
-    e.target.className='hover-cell '+(currentPlayer===1?'show-red':'show-yellow');
-  });
-
-  document.getElementById('hoverRow').addEventListener('mouseleave',()=>{
-    document.querySelectorAll('.hover-cell').forEach(h=>h.className='hover-cell');
-  });
-
-  // Init
-  mode='ai'; difficulty='medium';
-  newGame();
-</script></div>
-
-
+    <style>p{margin:0}</style>
   <footer>
   <p>Free online games to play anytime. Enjoy classic games, puzzles, and entertainment.</p>
   <p style="margin: 8px 0; font-size: 13px;">
@@ -573,7 +339,9 @@
   <p>© 2026 Knexio. All rights reserved.</p>
 </footer>
 
-</script>
+</script>
   <script src="/cookie-consent.js"></script>
 </body>
 </html>
+
+</div>

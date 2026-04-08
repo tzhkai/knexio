@@ -5,40 +5,83 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Tip Calculator – Calculate Tips & Split Bills | Knexio</title>
-<meta name="description" content="">
+<meta name="description" content="Free tip calculator. Calculate tips based on percentage, split bills between people, and see per-person totals.">
 
-<link rel="canonical" href="">
+<link rel="canonical" href="https://knexio.xyz/tools/tip-calculator/">
 
-<!-- Open Graph -->
-<meta property="og:title" content="Tip Calculator">
-<meta property="og:description" content="">
-<meta property="og:url" content="">
+<meta property="og:title" content="Tip Calculator – Calculate Tips & Split Bills">
+<meta property="og:description" content="Calculate tips based on percentage, split bills between people, and see per-person totals.">
+<meta property="og:url" content="https://knexio.xyz/tools/tip-calculator/">
 <meta property="og:type" content="WebApplication">
 <meta property="og:site_name" content="Knexio">
 <meta property="og:image" content="https://knexio.xyz/og-image.png">
 
-<!-- Structured Data -->
 <script type="application/ld+json">
-
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What is this tool for?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "This is a free online tool for [purpose]. It helps you [function] quickly and easily."
-        }
-      }
-    ]
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Tip Calculator",
+  "url": "https://knexio.xyz/tools/tip-calculator/",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "All",
+  "description": "Free tip calculator to calculate tips based on percentage, split bills between people, and see per-person totals.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
-  
+}
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I calculate a tip?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "To calculate a tip, multiply the bill amount by the tip percentage. For example, a 15% tip on a ¥100 bill is ¥15. This calculator automates this calculation for you with preset percentages."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a good tip percentage?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tip percentages vary by region. In many countries, 15-20% is standard for good service at restaurants. Some restaurants include a service charge. Adjust the percentage based on your local customs and service quality."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I split the bill between multiple people?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Enter the number of people sharing the bill, and the calculator will show both the tip per person and the total per person. This makes splitting bills at restaurants or group outings easy."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need to include tax in the bill amount?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Usually, tips are calculated based on the pre-tax amount, but customs vary by location. You can choose whether to include tax in your bill amount based on your personal preference and local customs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this tip calculator free to use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, this tip calculator is completely free. No registration or signup is required. Just open the page and start calculating tips."
+      }
+    }
+  ]
+}
+</script>
 <style>
-
 :root{
   --bg:#0b1220;
   --card:#111a2e;
@@ -55,32 +98,19 @@ body{
 }
 .container{max-width:900px;margin:auto;padding:50px 16px}
 
-/* 统一的返回按钮样式 */
-.back {
-  display: inline-block;
-  color: var(--sub);
-  text-decoration: none;
-  font-size: 14px;
-  margin-bottom: 24px;
-  transition: color 0.2s;
+.back{
+  display:inline-block;
+  color:var(--sub);
+  text-decoration:none;
+  font-size:14px;
+  margin-bottom:24px;
+  transition:color 0.2s;
 }
-.back:hover {
-  color: var(--accent);
-}
+.back:hover{color:var(--accent)}
 
 h1{font-size:32px;margin-bottom:8px}
 h2{font-size:22px;margin-top:30px;margin-bottom:10px}
 .subtitle{color:var(--sub);margin-bottom:24px}
-
-.badge{
-  display:inline-block;
-  padding:4px 10px;
-  border-radius:20px;
-  background:rgba(79,140,255,.15);
-  color:var(--accent);
-  font-size:12px;
-  margin-bottom:10px;
-}
 
 .card{
   background:var(--card);
@@ -90,69 +120,17 @@ h2{font-size:22px;margin-top:30px;margin-bottom:10px}
   margin-bottom:20px;
 }
 
-textarea{
-  width:100%;
-  min-height:180px;
-  background:var(--bg);
-  border:1px solid var(--border);
-  border-radius:12px;
-  color:var(--text);
-  padding:14px;
-  font-size:15px;
-}
-textarea:focus{outline:none;border-color:var(--accent)}
+.input-group{margin-bottom:16px}
+.input-group label{display:block;font-size:13px;color:var(--sub);margin-bottom:8px}
+.input{width:100%;padding:12px 16px;background:var(--bg);border:1px solid var(--border);border-radius:12px;color:var(--text);font-size:15px;box-sizing:border-box}
+.input:focus{outline:none;border-color:var(--accent)}
 
-.btn-row{display:flex;gap:10px;margin-top:12px}
-button{
-  flex:1;
-  padding:10px;
-  border-radius:10px;
-  border:none;
-  background:var(--accent);
-  color:#fff;
-  cursor:pointer;
-}
-button.secondary{
-  background:transparent;
-  border:1px solid var(--border);
-  color:var(--sub);
-}
+.tip-buttons{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.tip-btn{padding:8px 16px;border-radius:10px;border:1px solid var(--border);background:transparent;color:var(--sub);font-size:13px;cursor:pointer;transition:all 0.2s}
+.tip-btn:hover{border-color:var(--accent);color:var(--accent)}
+.tip-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
 
-.stats{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-  margin-top:16px;
-}
-.stat{
-  background:var(--bg);
-  border:1px solid var(--border);
-  border-radius:10px;
-  padding:16px;
-  text-align:center;
-}
-.stat span{
-  font-size:24px;
-  font-weight:700;
-  color:var(--accent);
-}
-.stat label{
-  display:block;
-  font-size:12px;
-  color:var(--sub);
-}
-
-.tip{
-  font-size:13px;
-  color:var(--sub);
-  margin-top:10px;
-}
-
-.section p{
-  color:var(--sub);
-  line-height:1.7;
-  margin-bottom:10px;
-}
+.section p{color:var(--sub);line-height:1.7;margin-bottom:10px}
 
 .tools a{
   display:inline-block;
@@ -163,43 +141,55 @@ button.secondary{
   color:var(--sub);
   text-decoration:none;
 }
-.tools a:hover{
-  border-color:var(--accent);
-  color:var(--accent);
-}
+.tools a:hover{border-color:var(--accent);color:var(--accent)}
 
-/* 广告样式 */
-.ad-banner {
-  margin: 32px 0;
-  text-align: center;
-}
+.ad-banner{margin:32px 0;text-align:center}
 
-/* 统一的 Footer 样式 */
-footer {
-  margin-top: 40px;
-  text-align: center;
-  color: var(--sub);
-  font-size: 13px;
+.faq-item{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:20px;
+  margin-bottom:12px;
 }
-footer p {
-  margin-bottom: 8px;
+.faq-item h3{font-size:16px;margin-bottom:8px;color:var(--text)}
+.faq-item p{color:var(--sub);font-size:14px;line-height:1.7;margin:0}
+
+
+footer p{margin-bottom:8px}
+footer a{
+  color:var(--sub);
+  text-decoration:none;
+  margin:0 10px;
+  transition:color 0.2s;
 }
-footer a {
-  color: var(--sub);
-  text-decoration: none;
-  margin: 0 10px;
-  transition: color 0.2s;
-}
-footer a:hover {
-  color: var(--accent);
-}
+footer a:hover{color:var(--accent)}
+
+.input-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:20px}
+
+.btn-row{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+button,.btn,.btn-row button{flex:1;padding:10px;border-radius:10px;border:none;background:var(--accent);color:#fff;cursor:pointer;font-size:14px;transition:opacity 0.2s;box-sizing:border-box}
+button:hover,.btn:hover{opacity:0.9}
+button.secondary,.btn.secondary,.btn-outline,.btn-row button.secondary{background:transparent;border:1px solid var(--border);color:var(--sub)}
+button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+
+.results{display:none;margin-top:20px;padding-top:20px;border-top:1px solid var(--border)}
+.results.active{display:block}
+
+.result-row{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--border);font-size:14px}
+.result-row:last-child{border-bottom:none}
+.result-label{color:var(--sub)}
+.result-value{color:var(--text);font-weight:600}
+.result-value.total{color:var(--accent);font-size:18px}
+
+.per-person{margin-top:20px;padding:20px;background:rgba(79,140,255,.1);border-radius:10px;border:1px solid rgba(79,140,255,.2)}
+.per-person h3{color:var(--accent);margin-bottom:12px}
 
 @media(max-width:600px){
-  .stats{grid-template-columns:1fr 1fr}
+  .input-grid{grid-template-columns:1fr}
+  .btn-row{flex-direction:column}
 }
-
-</style>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2596567349043393" crossorigin="anonymous"></script>
+footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
 </head>
 
 <body><div class="container">
@@ -207,199 +197,184 @@ footer a:hover {
 <a class="back" href="../index.html">← Back to Tools</a>
 
 <h1>Tip Calculator</h1>
-<p class="subtitle">Calculate tips and split bills easily. Perfect for restaurants, dining out, and group payments.</p>
+<p class="subtitle">Calculate tips based on percentage, split bills between people, and see per-person totals.</p>
 
-<div class="ad-banner">
-  <ins class="adsbygoogle" style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="3153457922"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-</div>
+<div class="ad-banner"></div>
 
-<div class="container">
-  <a class="back" href="../index.html">← Back to Tools</a>
-  <h1>Tip Calculator</h1>
-      <p class="subtitle">Calculate tips and split bills easily. Perfect for restaurants, dining out, and group payments.</p>
-
-  <div class="seo-section">
-    <h2>How to Use This Tool</h2>
-    <div class="step-block">
-      <h3>Step 1: Enter your input</h3>
-      <p>Type or paste your data into the input field.</p>
+<div class="card">
+  <div class="input-grid">
+    <div class="input-group">
+      <label>Bill Amount (¥)</label>
+      <input type="number" class="input" id="billAmount" placeholder="100" step="0.01" min="0">
     </div>
-    <div class="step-block">
-      <h3>Step 2: Click the action button</h3>
-      <p>Press the main action button to process your input.</p>
-    </div>
-    <div class="step-block">
-      <h3>Step 3: Copy or download results</h3>
-      <p>Use the Copy button to copy results, or Download to save.</p>
+    <div class="input-group">
+      <label>Number of People</label>
+      <input type="number" class="input" id="numPeople" value="1" min="1">
     </div>
   </div>
 
-  <div class="main-panel">
-    <div class="input-group">
-      <label>Bill Amount ($)</label>
-      <input type="number" id="billAmount" placeholder="0.00" min="0" step="0.01" oninput="calculate()">
-    </div>
-
-    <div class="input-group">
-      <label>Tip Percentage</label>
-      <div class="tip-presets">
-        <div class="btn-row">
-      <button class="tip-btn" onclick="setTip(15)">15%</button>
-        <button class="tip-btn active" onclick="setTip(18)">18%</button>
-        <button class="tip-btn" onclick="setTip(20)">20%</button>
-        <button class="tip-btn" onclick="setTip(25)">25%</button>
-    </div></div>
-      <div class="custom-tip">
-        <input type="number" id="customTip" placeholder="Custom %" oninput="setCustomTip()">
-        <span>%</span>
+  <div class="input-group">
+    <label>Tip Percentage</label>
+    <div class="tip-buttons">
+      <button class="tip-btn" data-tip="10">10%</button>
+      <button class="tip-btn active" data-tip="15">15%</button>
+      <button class="tip-btn" data-tip="18">18%</button>
+      <button class="tip-btn" data-tip="20">20%</button>
+      <button class="tip-btn" data-tip="25">25%</button>
+      <div style="width:100px;">
+        <input type="number" class="input" id="customTip" placeholder="Custom %" min="0" max="100">
       </div>
     </div>
-
-    <div class="split-section">
-      <label>Split Among</label>
-      <div class="split-controls">
-        <button class="split-btn" onclick="changeSplit(-1)">−</button>
-        <span class="split-count" id="splitCount">1</span>
-        <button class="split-btn" onclick="changeSplit(1)">+</button>
-        <span style="color:var(--sub)">people</span>
-      </div>
-    </div>
-
-    <div class="results">
-      <div class="result-row">
-        <span class="result-label">Tip Amount</span>
-        <span class="result-value" id="tipAmount">$0.00</span>
-      </div>
-      <div class="result-row">
-        <span class="result-label">Total Bill</span>
-        <span class="result-value" id="totalBill">$0.00</span>
-      </div>
-      <div class="result-row total">
-        <span class="result-label">Per Person</span>
-        <span class="result-value" id="perPerson">$0.00</span>
-      </div>
-    </div>
-
   </div>
 
-  <div class="ad-banner" style="margin-top:40px">
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3153457922" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <div class="btn-row">
+    <button onclick="calculateTip()">Calculate Tip</button>
+  </div>
+
+  <div id="results" class="results">
+    <div class="result-row">
+      <span class="result-label">Bill Amount</span>
+      <span class="result-value" id="resultBill">¥0.00</span>
+    </div>
+    <div class="result-row">
+      <span class="result-label">Tip Amount</span>
+      <span class="result-value" id="resultTip">¥0.00</span>
+    </div>
+    <div class="result-row">
+      <span class="result-label total">Total</span>
+      <span class="result-value total" id="resultTotal">¥0.00</span>
     </div>
 
+    <div class="per-person" id="perPersonBox" style="display: none;">
+      <h3>Per Person</h3>
+      <div class="result-row">
+        <span class="result-label">Tip Per Person</span>
+        <span class="result-value" id="tipPerPerson">¥0.00</span>
+      </div>
+      <div class="result-row">
+        <span class="result-label">Total Per Person</span>
+        <span class="result-value total" id="totalPerPerson">¥0.00</span>
+      </div>
+    </div>
+  </div>
 </div>
 
-<script>
-let tipPercent = 18;
-let splitPeople = 1;
+<h2>Free Online Tip Calculator</h2>
+<div class="section">
+<p>This tip calculator helps you quickly calculate tips and split bills between multiple people. Simply enter your bill amount, choose a tip percentage, and specify how many people are sharing the bill.</p>
+<p>Perfect for dining out, group meals, taxi rides, or any situation where you need to calculate tips and divide costs. All calculations happen instantly in your browser.</p>
+</div>
 
-function setTip(percent) {
-  tipPercent = percent;
-  document.querySelectorAll('.tip-btn').forEach(btn => {
-    btn.classList.remove('active');
-    if (btn.textContent === percent + '%') btn.classList.add('active');
-  });
-  document.getElementById('customTip').value = '';
-  calculate();
-}
+<h2>How It Works</h2>
+<div class="section">
+<p>Enter the total bill amount and the number of people sharing it. Choose a tip percentage from the preset buttons (10%, 15%, 18%, 20%, 25%) or enter a custom percentage. The calculator shows the tip amount, total, and per-person breakdown.</p>
+<p>If multiple people are sharing, the tool displays both the tip per person and the total per person, making it easy to split bills fairly.</p>
+</div>
 
-function setCustomTip() {
-  const custom = parseFloat(document.getElementById('customTip').value);
-  if (!isNaN(custom) && custom >= 0) {
-    tipPercent = custom;
-    document.querySelectorAll('.tip-btn').forEach(btn => btn.classList.remove('active'));
-    calculate();
-  }
-}
+<h2>Frequently Asked Questions</h2>
 
-function changeSplit(delta) {
-  splitPeople = Math.max(1, splitPeople + delta);
-  document.getElementById('splitCount').textContent = splitPeople;
-  calculate();
-}
+<div class="faq-item">
+  <h3>How do I calculate a tip?</h3>
+  <p>To calculate a tip, multiply the bill amount by the tip percentage. For example, a 15% tip on a ¥100 bill is ¥15. This calculator automates this calculation for you with preset percentages.</p>
+</div>
 
-function calculate() {
-  const bill = parseFloat(document.getElementById('billAmount').value) || 0;
-  const tip = bill * (tipPercent / 100);
-  const total = bill + tip;
-  const perPerson = total / splitPeople;
+<div class="faq-item">
+  <h3>What is a good tip percentage?</h3>
+  <p>Tip percentages vary by region. In many countries, 15-20% is standard for good service at restaurants. Some restaurants include a service charge. Adjust the percentage based on your local customs and service quality.</p>
+</div>
 
-  document.getElementById('tipAmount').textContent = '$' + tip.toFixed(2);
-  document.getElementById('totalBill').textContent = '$' + total.toFixed(2);
-  document.getElementById('perPerson').textContent = '$' + perPerson.toFixed(2);
-}
+<div class="faq-item">
+  <h3>Can I split the bill between multiple people?</h3>
+  <p>Yes. Enter the number of people sharing the bill, and the calculator will show both the tip per person and the total per person. This makes splitting bills at restaurants or group outings easy.</p>
+</div>
 
-calculate();
-</script>
-<script src="../../knexio-bundle.js"></script>
-  <script src="../../cookie-consent.js"></script>
-  <!-- Schema: FAQ -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What is this tool for?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "This is a free online tool for [purpose]. It helps you [function] quickly and easily."
-        }
-      }
-    ]
-  }
-  </script>
+<div class="faq-item">
+  <h3>Do I need to include tax in the bill amount?</h3>
+  <p>Usually, tips are calculated based on the pre-tax amount, but customs vary by location. You can choose whether to include tax in your bill amount based on your personal preference and local customs.</p>
+</div>
 
+<div class="faq-item">
+  <h3>Is this tip calculator free to use?</h3>
+  <p>Yes, this tip calculator is completely free. No registration or signup is required. Just open the page and start calculating tips.</p>
+</div>
 
-  <section class="seo-section">
-    <h2>How to Use the Tip Calculator</h2>
-      <div class="step-block">
-        <h3>Step 1: Enter the Bill Amount</h3>
-        <p>Type the total before tip.</p>
-      </div>
-      <div class="step-block">
-        <h3>Step 2: Select a Tip Percentage</h3>
-        <p>Choose 10%, 15%, 18%, 20%, or enter a custom amount.</p>
-      </div>
-      <div class="step-block">
-        <h3>Step 3: Set the Number of People</h3>
-        <p>The tool divides the total evenly and shows each person's share.</p>
-      </div>
+<div class="faq-item">
+  <h3>Are my calculations saved or stored anywhere?</h3>
+  <p>No. All calculations happen entirely in your browser. No data is sent to any server or stored anywhere.</p>
+</div>
 
-    <h2>What Is a Tip Calculator?</h2>
-    <p>A tip calculator helps you quickly work out how much to tip at a restaurant, split the bill among friends, and see the total amount per person.</p>
-
-    <h2>Frequently Asked Questions</h2>
-      <div class="faq-item">
-        <h3>What is a standard tip?</h3>
-        <p>15–20% is customary in the US. In other countries, tipping norms vary — always check local customs.</p>
+<h2>Related Tools</h2>
+<div class="tools">
+<a href="/tools/percentage-calculator/">Percentage Calculator</a>
+<a href="/tools/loan-calculator/">Loan Calculator</a>
+<a href="/tools/salary-calculator/">Salary Calculator</a>
+</div>
 
 <div class="ad-banner" style="margin-top:40px">
-  <ins class="adsbygoogle" style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="3153457922"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-</div>
+      <!-- Ad space -->
+    </div>
 
 <footer>
   <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
-  <p>
-    <a href="/about/">About</a> •
-    <a href="/privacy/">Privacy Policy</a> •
-    <a href="/terms/">Terms of Service</a>
+  <p style="margin: 8px 0; font-size: 13px;">
+    <a href="/about/" style="color:var(--accent);text-decoration:none;margin:0 8px;">About</a>
+    <a href="/privacy/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Privacy</a>
+    <a href="/terms/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Terms</a>
+    <a href="/contact/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Contact</a>
   </p>
+  <p>© 2026 Knexio. All rights reserved.</p>
 </footer>
 
 </div>
 
 <script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-(adsbygoogle = window.adsbygoogle || []).push({});
+let selectedTip = 15;
+
+document.querySelectorAll('.tip-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.tip-btn').forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
+    selectedTip = parseInt(this.dataset.tip);
+    document.getElementById('customTip').value = '';
+  });
+});
+
+document.getElementById('customTip').addEventListener('input', function() {
+  if (this.value) {
+    document.querySelectorAll('.tip-btn').forEach(b => b.classList.remove('active'));
+    selectedTip = parseFloat(this.value) || 0;
+  }
+});
+
+function calculateTip() {
+  const bill = parseFloat(document.getElementById('billAmount').value) || 0;
+  const numPeople = parseInt(document.getElementById('numPeople').value) || 1;
+  
+  if (bill <= 0) {
+    alert('Please enter a valid bill amount');
+    return;
+  }
+  
+  const tipAmount = bill * (selectedTip / 100);
+  const total = bill + tipAmount;
+  
+  document.getElementById('resultBill').textContent = '¥' + bill.toFixed(2);
+  document.getElementById('resultTip').textContent = '¥' + tipAmount.toFixed(2);
+  document.getElementById('resultTotal').textContent = '¥' + total.toFixed(2);
+  
+  if (numPeople > 1) {
+    document.getElementById('perPersonBox').style.display = 'block';
+    const tipPerPerson = tipAmount / numPeople;
+    const totalPerPerson = total / numPeople;
+    document.getElementById('tipPerPerson').textContent = '¥' + tipPerPerson.toFixed(2);
+    document.getElementById('totalPerPerson').textContent = '¥' + totalPerPerson.toFixed(2);
+  } else {
+    document.getElementById('perPersonBox').style.display = 'none';
+  }
+  
+  document.getElementById('results').classList.add('active');
+}
 </script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>

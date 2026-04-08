@@ -231,6 +231,9 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
   }
 }
 </script>
+
+<!-- Open Graph -->
+<meta property="og:site_name" content="Knexio">
 </head>
 <body><div class="wrap">
   <a class="back" href="../index.html">← Back to Games</a>
@@ -543,7 +546,8 @@ document.getElementById('gridContainer').addEventListener('touchend',e=>{
 best = parseInt(localStorage.getItem('2048best')||'0');
 document.getElementById('best').textContent = best;
 
-newGame();</script></div>
+newGame();
+</script></div>
 
 
 <script src="/knexio-bundle.js"></script>

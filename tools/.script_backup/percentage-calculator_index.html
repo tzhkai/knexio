@@ -4,41 +4,84 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Percentage Calculator – Calculate Percentages Online | Knexio</title>
-<meta name="description" content="">
+<title>Percentage Calculator – Calculate Percentages Free | Knexio</title>
+<meta name="description" content="Free online percentage calculator. Calculate percentages, percentage increase/decrease, and find what percentage one number is of another.">
 
-<link rel="canonical" href="">
+<link rel="canonical" href="https://knexio.xyz/tools/percentage-calculator/">
 
-<!-- Open Graph -->
-<meta property="og:title" content="Percentage Calculator">
-<meta property="og:description" content="">
-<meta property="og:url" content="">
+<meta property="og:title" content="Percentage Calculator – Calculate Percentages Free">
+<meta property="og:description" content="Calculate percentages, percentage increase/decrease, and find what percentage one number is of another.">
+<meta property="og:url" content="https://knexio.xyz/tools/percentage-calculator/">
 <meta property="og:type" content="WebApplication">
 <meta property="og:site_name" content="Knexio">
 <meta property="og:image" content="https://knexio.xyz/og-image.png">
 
-<!-- Structured Data -->
 <script type="application/ld+json">
-
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What is this tool for?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "This is a free online tool for [purpose]. It helps you [function] quickly and easily."
-        }
-      }
-    ]
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Percentage Calculator",
+  "url": "https://knexio.xyz/tools/percentage-calculator/",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "All",
+  "description": "Free online percentage calculator. Calculate percentages, percentage increase/decrease, and find what percentage one number is of another.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
-  
+}
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I calculate a percentage of a number?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "To calculate a percentage of a number, multiply the number by the percentage divided by 100. For example, to find 20% of 100, calculate (20 ÷ 100) × 100 = 20."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I find what percentage one number is of another?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Divide the first number (the part) by the second number (the whole), then multiply by 100. For example, 25 is 25% of 100 because (25 ÷ 100) × 100 = 25."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I calculate percentage increase or decrease?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Subtract the original value from the new value, divide by the original value, then multiply by 100. For example, going from 100 to 150 is a 50% increase because ((150 - 100) ÷ 100) × 100 = 50."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this percentage calculator free to use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, this percentage calculator is completely free. No registration or signup is required. Just open the page and start calculating."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use this for calculating discounts?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutely. To calculate a discounted price, use the \\"What is X% of Y?\\" calculator to find the discount amount, then subtract it from the original price. For example, 20% off $100 means the discount is $20, so the final price is $80."
+      }
+    }
+  ]
+}
+</script>
 <style>
-
 :root{
   --bg:#0b1220;
   --card:#111a2e;
@@ -55,32 +98,19 @@ body{
 }
 .container{max-width:900px;margin:auto;padding:50px 16px}
 
-/* 统一的返回按钮样式 */
-.back {
-  display: inline-block;
-  color: var(--sub);
-  text-decoration: none;
-  font-size: 14px;
-  margin-bottom: 24px;
-  transition: color 0.2s;
+.back{
+  display:inline-block;
+  color:var(--sub);
+  text-decoration:none;
+  font-size:14px;
+  margin-bottom:24px;
+  transition:color 0.2s;
 }
-.back:hover {
-  color: var(--accent);
-}
+.back:hover{color:var(--accent)}
 
 h1{font-size:32px;margin-bottom:8px}
 h2{font-size:22px;margin-top:30px;margin-bottom:10px}
 .subtitle{color:var(--sub);margin-bottom:24px}
-
-.badge{
-  display:inline-block;
-  padding:4px 10px;
-  border-radius:20px;
-  background:rgba(79,140,255,.15);
-  color:var(--accent);
-  font-size:12px;
-  margin-bottom:10px;
-}
 
 .card{
   background:var(--card);
@@ -90,69 +120,12 @@ h2{font-size:22px;margin-top:30px;margin-bottom:10px}
   margin-bottom:20px;
 }
 
-textarea{
-  width:100%;
-  min-height:180px;
-  background:var(--bg);
-  border:1px solid var(--border);
-  border-radius:12px;
-  color:var(--text);
-  padding:14px;
-  font-size:15px;
-}
-textarea:focus{outline:none;border-color:var(--accent)}
+.input{width:100%;padding:12px 16px;background:var(--bg);border:1px solid var(--border);border-radius:12px;color:var(--text);font-size:15px;box-sizing:border-box}
+.input:focus{outline:none;border-color:var(--accent)}
 
-.btn-row{display:flex;gap:10px;margin-top:12px}
-button{
-  flex:1;
-  padding:10px;
-  border-radius:10px;
-  border:none;
-  background:var(--accent);
-  color:#fff;
-  cursor:pointer;
-}
-button.secondary{
-  background:transparent;
-  border:1px solid var(--border);
-  color:var(--sub);
-}
+.tip{font-size:13px;color:var(--sub);margin-top:10px}
 
-.stats{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-  margin-top:16px;
-}
-.stat{
-  background:var(--bg);
-  border:1px solid var(--border);
-  border-radius:10px;
-  padding:16px;
-  text-align:center;
-}
-.stat span{
-  font-size:24px;
-  font-weight:700;
-  color:var(--accent);
-}
-.stat label{
-  display:block;
-  font-size:12px;
-  color:var(--sub);
-}
-
-.tip{
-  font-size:13px;
-  color:var(--sub);
-  margin-top:10px;
-}
-
-.section p{
-  color:var(--sub);
-  line-height:1.7;
-  margin-bottom:10px;
-}
+.section p{color:var(--sub);line-height:1.7;margin-bottom:10px}
 
 .tools a{
   display:inline-block;
@@ -163,43 +136,59 @@ button.secondary{
   color:var(--sub);
   text-decoration:none;
 }
-.tools a:hover{
-  border-color:var(--accent);
-  color:var(--accent);
-}
+.tools a:hover{border-color:var(--accent);color:var(--accent)}
 
-/* 广告样式 */
-.ad-banner {
-  margin: 32px 0;
-  text-align: center;
-}
+.ad-banner{margin:32px 0;text-align:center}
 
-/* 统一的 Footer 样式 */
-footer {
-  margin-top: 40px;
-  text-align: center;
-  color: var(--sub);
-  font-size: 13px;
+.faq-item{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:20px;
+  margin-bottom:12px;
 }
-footer p {
-  margin-bottom: 8px;
+.faq-item h3{font-size:16px;margin-bottom:8px;color:var(--text)}
+.faq-item p{color:var(--sub);font-size:14px;line-height:1.7;margin:0}
+
+
+footer p{margin-bottom:8px}
+footer a{
+  color:var(--sub);
+  text-decoration:none;
+  margin:0 10px;
+  transition:color 0.2s;
 }
-footer a {
-  color: var(--sub);
-  text-decoration: none;
-  margin: 0 10px;
-  transition: color 0.2s;
-}
-footer a:hover {
-  color: var(--accent);
-}
+footer a:hover{color:var(--accent)}
+
+.calc-tabs{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}
+.tab{padding:10px 16px;border-radius:10px;border:1px solid var(--border);background:transparent;color:var(--sub);cursor:pointer;font-size:14px;transition:all 0.2s}
+.tab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.tab:hover:not(.active){border-color:var(--accent);color:var(--accent)}
+
+.calc-section{display:none}
+.calc-section.active{display:block}
+
+.input-row{display:flex;align-items:center;gap:10px;margin-bottom:16px;flex-wrap:wrap}
+.input-row .input{flex:1;min-width:80px}
+.input-row span{color:var(--sub);font-size:15px}
+
+.formula{font-size:13px;color:var(--sub);margin-bottom:16px;padding:10px;background:var(--bg);border-radius:10px;border:1px solid var(--border)}
+
+.btn-row{display:flex;gap:10px;margin-top:12px}
+button,.btn,.btn-row button{flex:1;padding:10px;border-radius:10px;border:none;background:var(--accent);color:#fff;cursor:pointer;font-size:14px;transition:opacity 0.2s}
+button:hover,.btn:hover{opacity:0.9}
+
+.result-box{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:20px;margin-top:16px;text-align:center;min-height:80px;display:flex;align-items:center;justify-content:center;flex-direction:column}
+.result-value{font-size:36px;font-weight:700;color:var(--accent)}
+.result-label{font-size:14px;color:var(--sub);margin-top:8px}
 
 @media(max-width:600px){
-  .stats{grid-template-columns:1fr 1fr}
+  .input-row{flex-direction:column;align-items:stretch}
+  .btn-row{flex-direction:column}
+  .calc-tabs{flex-direction:column}
+  .tab{text-align:center}
 }
-
-</style>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2596567349043393" crossorigin="anonymous"></script>
+footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
 </head>
 
 <body><div class="container">
@@ -209,94 +198,133 @@ footer a:hover {
 <h1>Percentage Calculator</h1>
 <p class="subtitle">Calculate percentages, percentage increase/decrease, and find what percentage one number is of another.</p>
 
-<div class="ad-banner">
-  <ins class="adsbygoogle" style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="3153457922"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
+<div class="ad-banner"></div>
+
+<div class="card">
+  <div class="calc-tabs">
+    <button class="tab active" onclick="showCalc('what-is')">What is X% of Y?</button>
+    <button class="tab" onclick="showCalc('percentage-of')">X is what % of Y?</button>
+    <button class="tab" onclick="showCalc('increase')">% Increase/Decrease</button>
+  </div>
+
+  <div class="calc-section active" id="calc-what-is">
+    <div class="formula">Formula: (Percentage ÷ 100) × Value</div>
+    <div class="input-row">
+      <span>What is</span>
+      <input type="number" class="input" id="whatIsPercent" placeholder="20">
+      <span>% of</span>
+      <input type="number" class="input" id="whatIsValue" placeholder="100">
+      <span>?</span>
+    </div>
+    <div class="btn-row">
+      <button onclick="calcWhatIs()">Calculate</button>
+    </div>
+    <div class="result-box">
+      <div class="result-value" id="valueWhatIs">0</div>
+      <div class="result-label">Result</div>
+    </div>
+  </div>
+
+  <div class="calc-section" id="calc-percentage-of">
+    <div class="formula">Formula: (Part ÷ Whole) × 100</div>
+    <div class="input-row">
+      <input type="number" class="input" id="partValue" placeholder="25">
+      <span>is what % of</span>
+      <input type="number" class="input" id="wholeValue" placeholder="100">
+      <span>?</span>
+    </div>
+    <div class="btn-row">
+      <button onclick="calcPercentageOf()">Calculate</button>
+    </div>
+    <div class="result-box">
+      <div class="result-value" id="valuePercentageOf">0%</div>
+      <div class="result-label">Percentage</div>
+    </div>
+  </div>
+
+  <div class="calc-section" id="calc-increase">
+    <div class="formula">Formula: ((New - Old) ÷ Old) × 100</div>
+    <div class="input-row">
+      <span>From</span>
+      <input type="number" class="input" id="oldValue" placeholder="100">
+      <span>to</span>
+      <input type="number" class="input" id="newValue" placeholder="150">
+    </div>
+    <div class="btn-row">
+      <button onclick="calcChange()">Calculate</button>
+    </div>
+    <div class="result-box">
+      <div class="result-value" id="valueChange">0%</div>
+      <div class="result-label" id="labelChange">Change</div>
+    </div>
+  </div>
 </div>
 
-<div class="container">
-  <a class="back" href="../index.html">← Back to Tools</a>
-  <h1>Percentage Calculator</h1>
-      <p class="subtitle">Calculate percentages, percentage increase/decrease, and find what percentage one number is of another.</p>
+<h2>Free Online Percentage Calculator</h2>
+<div class="section">
+<p>This percentage calculator helps you quickly solve common percentage problems. Calculate what percentage one number is of another, find a percentage of a value, or determine percentage increase or decrease.</p>
+<p>Perfect for shopping discounts, tax calculations, grade calculations, and financial planning. All calculations happen instantly in your browser.</p>
+</div>
 
-  <div class="seo-section">
-    <h2>How to Use This Tool</h2>
-    <div class="step-block">
-      <h3>Step 1: Enter your input</h3>
-      <p>Type or paste your data into the input field.</p>
-    </div>
-    <div class="step-block">
-      <h3>Step 2: Click the action button</h3>
-      <p>Press the main action button to process your input.</p>
-    </div>
-    <div class="step-block">
-      <h3>Step 3: Copy or download results</h3>
-      <p>Use the Copy button to copy results, or Download to save.</p>
-    </div>
-  </div>
+<h2>How It Works</h2>
+<div class="section">
+<p>The calculator provides three common percentage formulas. For "What is X% of Y?", it multiplies the percentage by the value. For "X is what % of Y?", it divides the part by the whole and multiplies by 100. For percentage change, it calculates the difference between two values relative to the original.</p>
+<p>All calculations are performed instantly when you click the Calculate button. Results are displayed with two decimal places for accuracy.</p>
+</div>
 
-  <div class="main-panel">
-    <div class="calc-tabs">
-      <div class="btn-row">
-      <button class="tab active" onclick="showCalc('what-is')">What is X% of Y?</button>
-      <button class="tab" onclick="showCalc('percentage-of')">X is what % of Y?</button>
-      <button class="tab" onclick="showCalc('increase')">% Increase/Decrease</button>
-    </div></div>
+<h2>Frequently Asked Questions</h2>
 
-    <div class="calc-section active" id="calc-what-is">
-      <div class="calc-formula">Formula: (Percentage ÷ 100) × Value</div>
-      <div class="input-row">
-        <span>What is</span>
-        <input type="number" id="whatIsPercent" placeholder="20">
-        <span>% of</span>
-        <input type="number" id="whatIsValue" placeholder="100">
-        <span>?</span>
-      </div>
-      <button class="btn" onclick="calcWhatIs()">Calculate</button>
-      <div class="result" id="resultWhatIs" style="display:none">
-        <div class="result-value" id="valueWhatIs">0</div>
-        <div class="result-label">Result</div>
-      </div>
-    </div>
+<div class="faq-item">
+  <h3>How do I calculate a percentage of a number?</h3>
+  <p>To calculate a percentage of a number, multiply the number by the percentage divided by 100. For example, to find 20% of 100, calculate (20 ÷ 100) × 100 = 20.</p>
+</div>
 
-    <div class="calc-section" id="calc-percentage-of">
-      <div class="calc-formula">Formula: (Part ÷ Whole) × 100</div>
-      <div class="input-row">
-        <input type="number" id="partValue" placeholder="25">
-        <span>is what % of</span>
-        <input type="number" id="wholeValue" placeholder="100">
-        <span>?</span>
-      </div>
-      <button class="btn" onclick="calcPercentageOf()">Calculate</button>
-      <div class="result" id="resultPercentageOf" style="display:none">
-        <div class="result-value" id="valuePercentageOf">0%</div>
-        <div class="result-label">Percentage</div>
-      </div>
+<div class="faq-item">
+  <h3>How do I find what percentage one number is of another?</h3>
+  <p>Divide the first number (the part) by the second number (the whole), then multiply by 100. For example, 25 is 25% of 100 because (25 ÷ 100) × 100 = 25.</p>
+</div>
+
+<div class="faq-item">
+  <h3>How do I calculate percentage increase or decrease?</h3>
+  <p>Subtract the original value from the new value, divide by the original value, then multiply by 100. For example, going from 100 to 150 is a 50% increase because ((150 - 100) ÷ 100) × 100 = 50.</p>
+</div>
+
+<div class="faq-item">
+  <h3>Is this percentage calculator free to use?</h3>
+  <p>Yes, this percentage calculator is completely free. No registration or signup is required. Just open the page and start calculating.</p>
+</div>
+
+<div class="faq-item">
+  <h3>Can I use this for calculating discounts?</h3>
+  <p>Absolutely. To calculate a discounted price, use the "What is X% of Y?" calculator to find the discount amount, then subtract it from the original price. For example, 20% off $100 means the discount is $20, so the final price is $80.</p>
+</div>
+
+<div class="faq-item">
+  <h3>Are my calculations saved or stored anywhere?</h3>
+  <p>No. All calculations happen entirely in your browser. No data is sent to any server or stored anywhere.</p>
+</div>
+
+<h2>Related Tools</h2>
+<div class="tools">
+<a href="/tools/age-calculator/">Age Calculator</a>
+<a href="/tools/bmi-calculator/">BMI Calculator</a>
+<a href="/tools/calorie-calculator/">Calorie Calculator</a>
+</div>
+
+<div class="ad-banner" style="margin-top:40px">
+      <!-- Ad space -->
     </div>
 
-    <div class="calc-section" id="calc-increase">
-      <div class="calc-formula">Formula: ((New - Old) ÷ Old) × 100</div>
-      <div class="input-row">
-        <span>From</span>
-        <input type="number" id="oldValue" placeholder="100">
-        <span>to</span>
-        <input type="number" id="newValue" placeholder="150">
-      </div>
-      <button class="btn" onclick="calcChange()">Calculate</button>
-      <div class="result" id="resultChange" style="display:none">
-        <div class="result-value" id="valueChange">0%</div>
-        <div class="result-label" id="labelChange">Change</div>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="ad-banner" style="margin-top:40px">
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3153457922" data-ad-format="auto" data-full-width-responsive="true"></ins>
-    </div>
+<footer>
+  <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
+  <p style="margin: 8px 0; font-size: 13px;">
+    <a href="/about/" style="color:var(--accent);text-decoration:none;margin:0 8px;">About</a>
+    <a href="/privacy/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Privacy</a>
+    <a href="/terms/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Terms</a>
+    <a href="/contact/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Contact</a>
+  </p>
+  <p>© 2026 Knexio. All rights reserved.</p>
+</footer>
 
 </div>
 
@@ -311,104 +339,46 @@ function showCalc(type) {
 function calcWhatIs() {
   const percent = parseFloat(document.getElementById('whatIsPercent').value);
   const value = parseFloat(document.getElementById('whatIsValue').value);
-  if (isNaN(percent) || isNaN(value)) return;
-
+  if (isNaN(percent) || isNaN(value)) {
+    document.getElementById('valueWhatIs').textContent = '0';
+    return;
+  }
+  
   const result = (percent / 100) * value;
   document.getElementById('valueWhatIs').textContent = result.toFixed(2);
-  document.getElementById('resultWhatIs').style.display = 'block';
 }
 
 function calcPercentageOf() {
   const part = parseFloat(document.getElementById('partValue').value);
   const whole = parseFloat(document.getElementById('wholeValue').value);
-  if (isNaN(part) || isNaN(whole) || whole === 0) return;
-
+  if (isNaN(part) || isNaN(whole) || whole === 0) {
+    document.getElementById('valuePercentageOf').textContent = '0%';
+    return;
+  }
+  
   const result = (part / whole) * 100;
   document.getElementById('valuePercentageOf').textContent = result.toFixed(2) + '%';
-  document.getElementById('resultPercentageOf').style.display = 'block';
 }
 
 function calcChange() {
   const oldVal = parseFloat(document.getElementById('oldValue').value);
   const newVal = parseFloat(document.getElementById('newValue').value);
-  if (isNaN(oldVal) || isNaN(newVal) || oldVal === 0) return;
-
+  if (isNaN(oldVal) || isNaN(newVal) || oldVal === 0) {
+    document.getElementById('valueChange').textContent = '0%';
+    document.getElementById('labelChange').textContent = 'Change';
+    document.getElementById('valueChange').style.color = 'var(--accent)';
+    return;
+  }
+  
   const change = ((newVal - oldVal) / oldVal) * 100;
   const resultEl = document.getElementById('valueChange');
   const labelEl = document.getElementById('labelChange');
-
+  
   resultEl.textContent = (change > 0 ? '+' : '') + change.toFixed(2) + '%';
-  resultEl.style.color = change >= 0 ? 'var(--green)' : '#f87171';
+  resultEl.style.color = change >= 0 ? 'var(--accent)' : '#f87171';
   labelEl.textContent = change >= 0 ? 'Increase' : 'Decrease';
-  document.getElementById('resultChange').style.display = 'block';
 }
 </script>
-<script src="../../knexio-bundle.js"></script>
-  <script src="../../cookie-consent.js"></script>
-  <!-- Schema: FAQ -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What is this tool for?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "This is a free online tool for [purpose]. It helps you [function] quickly and easily."
-        }
-      }
-    ]
-  }
-  </script>
-
-
-  <section class="seo-section">
-    <h2>How to Use the Percentage Calculator</h2>
-      <div class="step-block">
-        <h3>Step 1: Choose the Calculation Type</h3>
-        <p>Select from "X% of Y", "X is what % of Y", or "% change".</p>
-      </div>
-      <div class="step-block">
-        <h3>Step 2: Enter the Values</h3>
-        <p>Fill in the required numbers in the input fields.</p>
-      </div>
-      <div class="step-block">
-        <h3>Step 3: Read the Result</h3>
-        <p>The answer appears instantly below the inputs.</p>
-      </div>
-
-    <h2>What Is a Percentage Calculator?</h2>
-    <p>A percentage calculator solves common percentage problems: finding what percent one number is of another, calculating percentage increase/decrease, and working out a percentage of a value.</p>
-
-    <h2>Frequently Asked Questions</h2>
-      <div class="faq-item">
-        <h3>How do I calculate a percentage increase?</h3>
-        <p>Subtract the old value from the new value, divide by the old value, then multiply by 100.</p>
-
-<div class="ad-banner" style="margin-top:40px">
-  <ins class="adsbygoogle" style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="3153457922"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-</div>
-
-<footer>
-  <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
-  <p>
-    <a href="/about/">About</a> •
-    <a href="/privacy/">Privacy Policy</a> •
-    <a href="/terms/">Terms of Service</a>
-  </p>
-</footer>
-
-</div>
-
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>

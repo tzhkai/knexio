@@ -3,55 +3,71 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Word Wrap Tool – Wrap Text to Any Width | Knexio</title>
-<meta name="description" content="">
-
-<link rel="canonical" href="">
+<title>Word Wrap Tool – Wrap Text at Custom Width | Knexio</title>
+<meta name="description" content="Free word wrap tool to wrap or unwrap text to custom character width. Perfect for code comments, emails, and terminal formatting.">
+<link rel="canonical" href="https://knexio.xyz/tools/word-wrap/">
 
 <!-- Open Graph -->
-<meta property="og:title" content="Word Wrap Tool">
-<meta property="og:description" content="">
-<meta property="og:url" content="">
+<meta property="og:title" content="Word Wrap Tool – Wrap Text at Custom Width">
+<meta property="og:description" content="Wrap or unwrap text to a custom character width. Perfect for code comments, emails, and terminal formatting.">
+<meta property="og:url" content="https://knexio.xyz/tools/word-wrap/">
 <meta property="og:type" content="WebApplication">
 <meta property="og:site_name" content="Knexio">
 <meta property="og:image" content="https://knexio.xyz/og-image.png">
 
 <!-- Structured Data -->
 <script type="application/ld+json">
-
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Word Wrap Tool",
-    "url": "https://knexio.xyz/tools/word-wrap/",
-    "applicationCategory": "DeveloperApplication",
-    "operatingSystem": "Any",
-    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
-    "description": "Wrap or unwrap text to a custom character width. Perfect for code comments, emails, and terminal formatting."
-  }
-  
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I wrap text?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Enter your text, set the character width, and click 'Wrap Text'. The tool will break lines at the specified width."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I unwrap text?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, click 'Unwrap Text' to remove all line breaks and join text into a single paragraph."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the maximum width I can set?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can set any width from 1 to 9999 characters, depending on your needs."
+      }
+    }
+  ]
+}
 </script>
 
 <style>
-
-:root{
-  --bg:#0b1220;
-  --card:#111a2e;
-  --border:rgba(255,255,255,.08);
-  --text:#fff;
-  --sub:#aab3c5;
-  --accent:#4f8cff;
+:root {
+  --bg: #0b1220;
+  --card: #111a2e;
+  --border: rgba(255,255,255,0.08);
+  --text: #fff;
+  --sub: #aab3c5;
+  --accent: #4f8cff;
 }
-*{box-sizing:border-box;margin:0;padding:0}
-body{
-  font-family:system-ui,-apple-system;
-  background:var(--bg);
-  color:var(--text);
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
 }
-.container{max-width:900px;margin:auto;padding:50px 16px}
+.container { max-width: 900px; margin: 0 auto; padding: 50px 16px; }
 
-/* 统一的返回按钮样式 */
+/* Back Button */
 .back {
   display: inline-block;
   color: var(--sub);
@@ -60,122 +76,134 @@ body{
   margin-bottom: 24px;
   transition: color 0.2s;
 }
-.back:hover {
+.back:hover { color: var(--accent); }
+
+h1 { font-size: 32px; margin-bottom: 8px; font-weight: 700; }
+h2 { font-size: 22px; margin-top: 40px; margin-bottom: 16px; font-weight: 600; }
+h3 { font-size: 16px; margin-bottom: 10px; font-weight: 600; }
+.subtitle { color: var(--sub); margin-bottom: 24px; font-size: 16px; }
+
+/* Card */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+/* Textarea */
+
+textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+/* Toolbar */
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  gap: 16px;
+}
+
+/* Input Group */
+.input-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.input-group label {
+  font-size: 13px;
+  color: var(--sub);
+}
+.input-group input {
+  width: 80px;
+  padding: 8px 12px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 14px;
+}
+.input-group input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+/* Button Row */
+
+
+.btn:hover {
+  background: #3a7bff;
+  transform: translateY(-1px);
+}
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn.secondary:hover {
+  border-color: var(--accent);
   color: var(--accent);
 }
 
-h1{font-size:32px;margin-bottom:8px}
-h2{font-size:22px;margin-top:30px;margin-bottom:10px}
-.subtitle{color:var(--sub);margin-bottom:24px}
+/* Stats */
 
-.badge{
-  display:inline-block;
-  padding:4px 10px;
-  border-radius:20px;
-  background:rgba(79,140,255,.15);
-  color:var(--accent);
-  font-size:12px;
-  margin-bottom:10px;
+
+
+.stat-label {
+  font-size: 12px;
+  color: var(--sub);
+  margin-top: 4px;
 }
 
-.card{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:14px;
-  padding:20px;
-  margin-bottom:20px;
+/* Step Blocks */
+
+
+
+
+/* FAQ */
+
+
+
+
+/* Related Tools */
+.tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+.tools a {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  color: var(--sub);
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+.tools a:hover {
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
-textarea{
-  width:100%;
-  min-height:180px;
-  background:var(--bg);
-  border:1px solid var(--border);
-  border-radius:12px;
-  color:var(--text);
-  padding:14px;
-  font-size:15px;
-}
-textarea:focus{outline:none;border-color:var(--accent)}
-
-.btn-row{display:flex;gap:10px;margin-top:12px}
-button{
-  flex:1;
-  padding:10px;
-  border-radius:10px;
-  border:none;
-  background:var(--accent);
-  color:#fff;
-  cursor:pointer;
-}
-button.secondary{
-  background:transparent;
-  border:1px solid var(--border);
-  color:var(--sub);
-}
-
-.stats{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-  margin-top:16px;
-}
-.stat{
-  background:var(--bg);
-  border:1px solid var(--border);
-  border-radius:10px;
-  padding:16px;
-  text-align:center;
-}
-.stat span{
-  font-size:24px;
-  font-weight:700;
-  color:var(--accent);
-}
-.stat label{
-  display:block;
-  font-size:12px;
-  color:var(--sub);
-}
-
-.tip{
-  font-size:13px;
-  color:var(--sub);
-  margin-top:10px;
-}
-
-.section p{
-  color:var(--sub);
-  line-height:1.7;
-  margin-bottom:10px;
-}
-
-.tools a{
-  display:inline-block;
-  margin:6px;
-  padding:8px 14px;
-  border-radius:8px;
-  border:1px solid var(--border);
-  color:var(--sub);
-  text-decoration:none;
-}
-.tools a:hover{
-  border-color:var(--accent);
-  color:var(--accent);
-}
-
-/* 广告样式 */
+/* Ad Banner */
 .ad-banner {
   margin: 32px 0;
   text-align: center;
 }
 
-/* 统一的 Footer 样式 */
+/* Footer */
 footer {
   margin-top: 40px;
   text-align: center;
   color: var(--sub);
   font-size: 13px;
+  padding-top: 30px;
+  border-top: 1px solid var(--border);
 }
 footer p {
   margin-bottom: 8px;
@@ -190,166 +218,189 @@ footer a:hover {
   color: var(--accent);
 }
 
-@media(max-width:600px){
-  .stats{grid-template-columns:1fr 1fr}
+/* Responsive */
+@media (max-width: 600px) {
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  
+  
 }
-
-</style>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2596567349043393" crossorigin="anonymous"></script>
+textarea,.text-area{width:100%;min-height:180px;background:var(--bg);border:1px solid var(--border);border-radius:12px;color:var(--text);padding:14px;font-size:15px;resize:vertical;box-sizing:border-box}
+textarea:focus,.text-area:focus{outline:none;border-color:var(--accent)}
+.btn-row{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+button,.btn,.btn-row button{flex:1;padding:10px;border-radius:10px;border:none;background:var(--accent);color:#fff;cursor:pointer;font-size:14px;transition:opacity 0.2s;box-sizing:border-box}
+button:hover,.btn:hover{opacity:0.9}
+button.secondary,.btn.secondary,.btn-outline,.btn-row button.secondary{background:transparent;border:1px solid var(--border);color:var(--sub)}
+button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.stat{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center}
+.stat span,.stat-value,.result-value,.age-value{font-size:24px;font-weight:700;color:var(--accent);display:block}
+.stat label,.stat-label,.result-label,.age-label{font-size:12px;color:var(--sub);display:block}
+.result-box{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;margin-top:16px;min-height:100px;white-space:pre-wrap;word-break:break-all;font-size:15px;line-height:1.7;box-sizing:border-box}
+@media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.btn-row{flex-direction:column}}
+  footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
 </head>
 
-<body><div class="container">
+<body>
+<div class="container">
 
 <a class="back" href="../index.html">← Back to Tools</a>
 
 <h1>Word Wrap Tool</h1>
-<p class="subtitle">Wrap long lines to a fixed column width, unwrap paragraphs into single lines, or remove hard line breaks. Great for email clients, code review, and terminal output.</p>
+<p class="subtitle">Wrap or unwrap text to a custom character width. Perfect for code comments, emails, and terminal formatting.</p>
 
-<div class="ad-banner">
-  <ins class="adsbygoogle" style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="3153457922"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-</div>
+<div class="ad-banner"></div>
 
-<div class="container">
-  <a class="back" href="../index.html">← Back to Tools</a>
-  <h1>Word Wrap Tool</h1>
-  <div class="ad-banner">
-    <ins class="adsbygoogle" style="display:block"
-         data-ad-client="ca-pub-2596567349043393"
-         data-ad-slot="3153457922"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
-  </div>
-
-      <p class="subtitle">Wrap long lines to a fixed column width, unwrap paragraphs into single lines, or remove hard line breaks. Great for email clients, code review, and terminal output.</p>
-
-  <div class="seo-section">
-    <h2>How to Use This Tool</h2>
-    <div class="step-block">
-      <h3>Step 1: Enter your input</h3>
-      <p>Type or paste your data into the input field.</p>
+<div class="card">
+  <div class="toolbar">
+    <div class="input-group">
+      <label>Width:</label>
+      <input type="number" id="charWidth" value="80" min="1" max="9999">
+      <label>characters</label>
     </div>
-    <div class="step-block">
-      <h3>Step 2: Click the action button</h3>
-      <p>Press the main action button to process your input.</p>
-    </div>
-    <div class="step-block">
-      <h3>Step 3: Copy or download results</h3>
-      <p>Use the Copy button to copy results, or Download to save.</p>
-    </div>
-  </div>
-
-  <div class="options">
-    <div class="opt-group">
-      <span class="opt-label">Line Width</span>
-      <input class="opt-input" type="number" id="opt-width" value="80" min="10" max="1000" oninput="process()" />
-    </div>
-    <div class="opt-group">
-      <span class="opt-label">Mode</span>
-      <select class="opt-input" id="opt-mode" onchange="process()">
-        <option value="wrap">Wrap text</option>
-        <option value="unwrap">Unwrap (join lines)</option>
-        <option value="trim">Remove all line breaks</option>
-      </select>
-    </div>
-    <div class="opt-group">
-      <span class="opt-label">Line Ending</span>
-      <select class="opt-input" id="opt-le" onchange="process()">
-        <option value="lf">LF (Unix)</option>
-        <option value="crlf">CRLF (Windows)</option>
-      </select>
-    </div>
-    <label class="opt-check">
-      <input type="checkbox" id="opt-preserve" checked onchange="process()" />
-      <span>Preserve blank lines</span>
-    </label>
-  </div>
-
-  <div class="panes">
-    <div class="pane">
-      <div class="pane-label">Input</div>
-      
-    <div class="stats" id="input-stats">0 characters · 0 lines</div>
-
     <div class="btn-row">
-      <button class="btn btn-primary" onclick="copyOutput()">Copy Output</button>
-    <button class="btn btn-secondary" onclick="clearAll()">Clear</button>
-    <button class="btn btn-secondary" onclick="swapIO()">⇄ Swap</button>
-    </div>
-    <textarea class="text-area" id="input-ta" placeholder="Paste text here to wrap or unwrap it..." oninput="process()"></textarea>
-      
-    </div>
-    <div class="pane">
-      <div class="pane-label">Output</div>
-      <textarea class="readonly-ta" id="output-ta" readonly placeholder="Output will appear here..."></textarea>
-      
+      <button class="btn" onclick="wrapText()">Wrap Text</button>
+      <button class="btn secondary" onclick="unwrapText()">Unwrap Text</button>
+      <button class="btn secondary" onclick="copyText()">Copy</button>
+      <button class="btn secondary" onclick="clearText()">Clear</button>
     </div>
   </div>
 
-  <div class="actions">
-    </div>
+  <textarea id="textInput" placeholder="Enter your text here...
 
-  <div style="margin-top:60px;text-align:center;">
+Example:
+This is a long line of text that needs to be wrapped to a specific character width. You can use this tool to format code comments, emails, or any text that needs to fit within a certain width."></textarea>
 
+  <div class="stats">
+    <div class="stat"><span id="charCount">0</span><label>Characters</label></div>
+    <div class="stat"><span id="lineCount">0</span><label>Lines</label></div>
+    <div class="stat"><span id="maxLineLength">0</span><label>Max Line Length</label></div>
   </div>
-    <div class="ad-banner" style="margin-top:40px">
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3153457922" data-ad-format="auto" data-full-width-responsive="true"></ins>
-    </div>
-
-  <div class="ad-banner" style="margin-top:40px">
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3153457922" data-ad-format="auto" data-full-width-responsive="true"></ins>
-    </div>
-
-  <section class="seo-section">
-    <h2>How to Use the Word Wrap Tool</h2>
-      <div class="step-block">
-        <h3>Step 1: Paste Your Text</h3>
-        <p>Enter the long text or code you want to wrap.</p>
-      </div>
-      <div class="step-block">
-        <h3>Step 2: Set the Column Width</h3>
-        <p>Enter the maximum number of characters per line (default: 80).</p>
-      </div>
-      <div class="step-block">
-        <h3>Step 3: Copy the Wrapped Text</h3>
-        <p>Click Copy to grab the formatted output.</p>
-      </div>
-
-    <h2>What Is a Word Wrap Tool?</h2>
-    <p>A word wrap tool automatically inserts line breaks into long lines of text at a specified column width — useful for formatting code, emails, and terminal output.</p>
-
-    <h2>Frequently Asked Questions</h2>
-      <div class="faq-item">
-        <h3>Does word wrap break words mid-character?</h3>
-        <p>No. It wraps at word boundaries to keep words intact.</p>
-      </div>
-  </section>
-
-<div class="ad-banner" style="margin-top:40px">
-  <ins class="adsbygoogle" style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="3153457922"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
 </div>
+
+<h2>How to Use Word Wrap Tool</h2>
+
+
+
+
+<div class="section">
+      <p><strong>How It Works</strong> - Paste your text and set the maximum line width. The tool wraps long lines at the specified column without breaking words. Adjust wrap width and see instant results.</p>
+    </div>
+<h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>Does it break words?</h3>
+      <p>No, words are kept intact and only broken at word boundaries.</p>
+    </div>
+
+    <h2>Related Tools</h2>
+<div class="tools">
+  <a href="../word-counter/">Word Counter</a>
+  <a href="../character-counter/">Character Counter</a>
+  <a href="../text-to-binary/">Text to Binary</a>
+</div>
+
+<div class="ad-banner"></div>
 
 <footer>
-  <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
-  <p>
-    <a href="/about/">About</a> •
-    <a href="/privacy/">Privacy Policy</a> •
-    <a href="/terms/">Terms of Service</a>
-  </p>
-</footer>
+    <p>Free online tools for developers, designers, and everyone.</p>
+    <p style="margin: 8px 0; font-size: 13px;">
+      <a href="/about/" style="color:var(--accent);text-decoration:none;margin:0 8px;">About</a>
+      <a href="/privacy/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Privacy</a>
+      <a href="/terms/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Terms</a>
+      <a href="/contact/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Contact</a>
+    </p>
+    <p>© 2026 Knexio. All rights reserved.</p>
+  </footer>
 
 </div>
 
 <script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-(adsbygoogle = window.adsbygoogle || []).push({});
+const textInput = document.getElementById('textInput');
+const charWidth = document.getElementById('charWidth');
+
+textInput.addEventListener('input', updateStats);
+
+function updateStats() {
+  const text = textInput.value;
+  const lines = text.split('\n');
+  
+  document.getElementById('charCount').textContent = text.length;
+  document.getElementById('lineCount').textContent = lines.length;
+  
+  let maxLen = 0;
+  lines.forEach(line => {
+    if (line.length > maxLen) maxLen = line.length;
+  });
+  document.getElementById('maxLineLength').textContent = maxLen;
+}
+
+function wrapText() {
+  const width = parseInt(charWidth.value) || 80;
+  let text = textInput.value;
+  
+  // Split into paragraphs
+  const paragraphs = text.split(/\n\n+/);
+  
+  const wrappedParagraphs = paragraphs.map(para => {
+    // Split words
+    const words = para.split(/\s+/);
+    let result = '';
+    let currentLine = '';
+    
+    words.forEach(word => {
+      if (!word.trim()) return;
+      
+      if (currentLine.length === 0) {
+        currentLine = word;
+      } else if (currentLine.length + 1 + word.length <= width) {
+        currentLine += ' ' + word;
+      } else {
+        result += currentLine + '\n';
+        currentLine = word;
+      }
+    });
+    
+    if (currentLine) {
+      result += currentLine;
+    }
+    
+    return result;
+  });
+  
+  textInput.value = wrappedParagraphs.join('\n\n');
+  updateStats();
+}
+
+function unwrapText() {
+  const text = textInput.value;
+  // Remove all line breaks but preserve paragraph breaks
+  const unwrapped = text.replace(/([^\n])\n(?=[^\n])/g, '$1 ');
+  textInput.value = unwrapped;
+  updateStats();
+}
+
+function copyText() {
+  navigator.clipboard.writeText(textInput.value).then(() => {
+    alert('Text copied to clipboard!');
+  }).catch(err => {
+    alert('Failed to copy text.');
+  });
+}
+
+function clearText() {
+  textInput.value = '';
+  updateStats();
+}
+
+// Initialize stats
+updateStats();
+
 </script>
+<script src="/knexio-bundle.js"></script>
+<script src="../../cookie-consent.js"></script>
+
 </body>
 </html>

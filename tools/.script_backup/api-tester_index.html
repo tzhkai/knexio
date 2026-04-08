@@ -3,377 +3,245 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>API测试工具</title>
-<meta name="description" content="">
-
-<link rel="canonical" href="">
-
-<!-- Open Graph -->
-<meta property="og:title" content="API测试工具">
-<meta property="og:description" content="">
-<meta property="og:url" content="">
+<title>API Tester – Send HTTP Requests Online | Knexio</title>
+<meta name="description" content="Test APIs online for free. Send GET, POST, PUT, DELETE requests, view response status, headers, and body. No installation required.">
+<link rel="canonical" href="https://knexio.xyz/tools/api-tester/">
+<meta property="og:title" content="API Tester">
+<meta property="og:description" content="Send HTTP requests online. Test GET, POST, PUT, DELETE endpoints instantly.">
+<meta property="og:url" content="https://knexio.xyz/tools/api-tester/">
 <meta property="og:type" content="WebApplication">
 <meta property="og:site_name" content="Knexio">
 <meta property="og:image" content="https://knexio.xyz/og-image.png">
-
-<!-- Structured Data -->
 <script type="application/ld+json">
-
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "API测试工具",
-    "description": "Test APIs online for free. Send GET, POST, PUT, DELETE requests, view responses, headers, and status codes. No installation required.",
-    "url": "https://knexio.xyz/tools/api-tester/",
-    "publisher": {
-      "@type": "Organization",
-      "name": "Knexio",
-      "url": "https://knexio.xyz"
-    }
-  }
-  
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "API Tester",
+  "description": "Send HTTP requests online. Test GET, POST, PUT, DELETE endpoints instantly.",
+  "url": "https://knexio.xyz/tools/api-tester/",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "All",
+  "publisher": {"@type": "Organization", "name": "Knexio", "url": "https://knexio.xyz"}
+}
 </script>
-
 <style>
-
-:root{
-  --bg:#0b1220;
-  --card:#111a2e;
-  --border:rgba(255,255,255,.08);
-  --text:#fff;
-  --sub:#aab3c5;
-  --accent:#4f8cff;
-}
+:root{--bg:#0b1220;--card:#111a2e;--border:rgba(255,255,255,.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff}
 *{box-sizing:border-box;margin:0;padding:0}
-body{
-  font-family:system-ui,-apple-system;
-  background:var(--bg);
-  color:var(--text);
-}
-.container{max-width:900px;margin:auto;padding:50px 16px}
-
-/* 统一的返回按钮样式 */
-.back {
-  display: inline-block;
-  color: var(--sub);
-  text-decoration: none;
-  font-size: 14px;
-  margin-bottom: 24px;
-  transition: color 0.2s;
-}
-.back:hover {
-  color: var(--accent);
-}
-
+body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+a{text-decoration:none;color:var(--accent)}
+.container{max-width:900px;margin:0 auto;padding:50px 16px}
+.back{display:inline-block;color:var(--sub);text-decoration:none;font-size:14px;margin-bottom:24px;transition:color .2s}
+.back:hover{color:var(--accent)}
 h1{font-size:32px;margin-bottom:8px}
 h2{font-size:22px;margin-top:30px;margin-bottom:10px}
 .subtitle{color:var(--sub);margin-bottom:24px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;margin-bottom:20px}
+textarea,.text-area{width:100%;min-height:180px;background:var(--bg);border:1px solid var(--border);border-radius:12px;color:var(--text);padding:14px;font-size:15px;resize:vertical;box-sizing:border-box;font-family:monospace}
+textarea:focus,.text-area:focus{outline:none;border-color:var(--accent)}
+.btn-row{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+button,.btn{flex:1;padding:10px;border-radius:10px;border:none;background:var(--accent);color:#fff;cursor:pointer;font-size:14px;font-family:inherit;transition:opacity .2s;box-sizing:border-box}
+button:hover,.btn:hover{opacity:.9}
+button.secondary,.btn.secondary,.btn-outline{background:transparent;border:1px solid var(--border);color:var(--sub)}
+button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.stat{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center}
+.stat span,.stat-value,.result-value,.age-value{font-size:24px;font-weight:700;color:var(--accent);display:block}
+.stat label,.stat-label,.result-label,.age-label{font-size:12px;color:var(--sub);display:block}
+.result-box{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;margin-top:16px;min-height:100px;white-space:pre-wrap;word-break:break-all;font-size:15px;line-height:1.7}
+.form-group{margin-bottom:16px}
+label{display:block;font-size:14px;color:var(--text);font-weight:500;margin-bottom:6px}
+select,input[type=text],input[type=number],input[type=email],input[type=url],input[type=password],input[type=date]{width:100%;padding:10px 14px;background:var(--bg);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:14px;font-family:inherit}
+select:focus,input:focus{outline:none;border-color:var(--accent)}
+.field,.input-group{display:flex;gap:10px;align-items:flex-end}
+.field input,.field select,.input-group input,.input-group select{flex:1}
+.section p{color:var(--sub);line-height:1.7;margin-bottom:10px}
+.panel{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;margin-bottom:20px}
+.panel h3{font-size:16px;margin-bottom:8px}
+.tools a{display:inline-block;margin:6px;padding:8px 14px;border-radius:8px;border:1px solid var(--border);color:var(--sub);text-decoration:none}
+.tools a:hover{border-color:var(--accent);color:var(--accent)}
+.ad-banner{margin:32px 0;text-align:center}
+.faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:12px}
+.faq-item h3{font-size:16px;margin-bottom:8px}
+.faq-item p{color:var(--sub);font-size:14px;line-height:1.7;margin:0}
 
-.badge{
-  display:inline-block;
-  padding:4px 10px;
-  border-radius:20px;
-  background:rgba(79,140,255,.15);
-  color:var(--accent);
-  font-size:12px;
-  margin-bottom:10px;
-}
-
-.card{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:14px;
-  padding:20px;
-  margin-bottom:20px;
-}
-
-textarea{
-  width:100%;
-  min-height:180px;
-  background:var(--bg);
-  border:1px solid var(--border);
-  border-radius:12px;
-  color:var(--text);
-  padding:14px;
-  font-size:15px;
-}
-textarea:focus{outline:none;border-color:var(--accent)}
-
-.btn-row{display:flex;gap:10px;margin-top:12px}
-button{
-  flex:1;
-  padding:10px;
-  border-radius:10px;
-  border:none;
-  background:var(--accent);
-  color:#fff;
-  cursor:pointer;
-}
-button.secondary{
-  background:transparent;
-  border:1px solid var(--border);
-  color:var(--sub);
-}
-
-.stats{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-  margin-top:16px;
-}
-.stat{
-  background:var(--bg);
-  border:1px solid var(--border);
-  border-radius:10px;
-  padding:16px;
-  text-align:center;
-}
-.stat span{
-  font-size:24px;
-  font-weight:700;
-  color:var(--accent);
-}
-.stat label{
-  display:block;
-  font-size:12px;
-  color:var(--sub);
-}
-
-.tip{
-  font-size:13px;
-  color:var(--sub);
-  margin-top:10px;
-}
-
-.section p{
-  color:var(--sub);
-  line-height:1.7;
-  margin-bottom:10px;
-}
-
-.tools a{
-  display:inline-block;
-  margin:6px;
-  padding:8px 14px;
-  border-radius:8px;
-  border:1px solid var(--border);
-  color:var(--sub);
-  text-decoration:none;
-}
-.tools a:hover{
-  border-color:var(--accent);
-  color:var(--accent);
-}
-
-/* 广告样式 */
-.ad-banner {
-  margin: 32px 0;
-  text-align: center;
-}
-
-/* 统一的 Footer 样式 */
-footer {
-  margin-top: 40px;
-  text-align: center;
-  color: var(--sub);
-  font-size: 13px;
-}
-footer p {
-  margin-bottom: 8px;
-}
-footer a {
-  color: var(--sub);
-  text-decoration: none;
-  margin: 0 10px;
-  transition: color 0.2s;
-}
-footer a:hover {
-  color: var(--accent);
-}
-
-@media(max-width:600px){
-  .stats{grid-template-columns:1fr 1fr}
-}
-
-</style>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2596567349043393" crossorigin="anonymous"></script>
+footer p{margin-bottom:8px}
+footer a{color:var(--accent);text-decoration:none;margin:0 8px}
+footer a:hover{opacity:.8}
+.method-tabs{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+.method-tab{padding:8px 16px;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--sub);cursor:pointer;font-size:14px;font-family:inherit;transition:all .2s}
+.method-tab:hover{border-color:var(--accent);color:var(--accent)}
+.method-tab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.response-meta{display:flex;gap:16px;flex-wrap:wrap;margin-top:16px}
+.meta-item{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-size:13px;color:var(--sub)}
+.meta-item strong{color:var(--accent)}
+@media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.btn-row{flex-direction:column}.method-tabs{flex-wrap:wrap}}
+footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
 </head>
-
-<body><div class="container">
-
-<a class="back" href="../index.html">← Back to Tools</a>
-
-<h1>API测试工具</h1>
-<p class="subtitle">Instantly count words, characters, sentences, paragraphs, and reading time in your text.</p>
-
-<div class="ad-banner">
-  <ins class="adsbygoogle" style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="3153457922"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-</div>
-
+<body>
 <div class="container">
-    <a class="back" href="../index.html">← Back to Tools</a>
+  <a class="back" href="../index.html">← Back to Tools</a>
 
-    <h1>API测试工具</h1>
-  <div class="ad-banner">
-    <ins class="adsbygoogle" style="display:block"
-         data-ad-client="ca-pub-2596567349043393"
-         data-ad-slot="3153457922"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
-  </div>
+  <h1>API Tester</h1>
+  <p class="subtitle">Send HTTP requests online. Test GET, POST, PUT, DELETE endpoints and view responses instantly.</p>
 
-        <p class="subtitle">Instantly count words, characters, sentences, paragraphs, and reading time in your text.</p>
+  <div class="ad-banner"></div>
 
-  <div class="seo-section">
-    <h2>How to Use This Tool</h2>
-    <div class="step-block">
-      <h3>Step 1: Enter the API endpoint URL</h3>
-      <p>Paste the API URL you want to test in the URL field.</p>
+  <div class="card">
+    <div class="method-tabs">
+      <button class="method-tab active" onclick="setMethod('GET', this)">GET</button>
+      <button class="method-tab" onclick="setMethod('POST', this)">POST</button>
+      <button class="method-tab" onclick="setMethod('PUT', this)">PUT</button>
+      <button class="method-tab" onclick="setMethod('DELETE', this)">DELETE</button>
     </div>
-    <div class="step-block">
-      <h3>Step 2: Choose HTTP method</h3>
-      <p>Select GET, POST, PUT, DELETE, or PATCH.</p>
-    </div>
-    <div class="step-block">
-      <h3>Step 3: Send the request</h3>
-      <p>Click Send to see the response status, headers, and body.</p>
-    </div>
-  </div>
-  <div class="step-block">
-    <h3>Step 2: Adjust settings</h3>
-    <p>Use the available options to customize the processing.</p>
-  </div>
-  <div class="step-block">
-    <h3>Step 3: Get results</h3>
-    <p>View the processed output in the result area.</p>
-  </div>
-</div>
 
-    <!-- AdSense top -->
+    <div class="form-group">
+      <label for="urlInput">Endpoint URL</label>
+      <input type="url" id="urlInput" placeholder="https://api.example.com/data" value="https://jsonplaceholder.typicode.com/posts/1">
+    </div>
 
-    
-    <div class="stats" style="margin-bottom:16px;">
-      <div class="stat" style="padding:10px 12px;"><span id="words" style="font-size:20px;">0</span><label>Words</label></div>
+    <div class="form-group" id="bodyGroup">
+      <label for="reqBody">Request Body (JSON)</label>
+      <textarea class="text-area" id="reqBody" placeholder='{"title": "Hello", "body": "World", "userId": 1}' style="min-height:120px;font-family:monospace"></textarea>
+    </div>
 
     <div class="btn-row">
-      <button class="btn" onclick="document.getElementById('textInput').value=''; updateStats();">Clear</button>
-      <button class="btn" onclick="navigator.clipboard.writeText(document.getElementById('textInput').value)">Copy Text</button>
+      <button class="btn" onclick="sendRequest()">Send Request</button>
+      <button class="btn secondary" onclick="clearRequest()">Clear</button>
     </div>
-    <textarea class="text-area" id="textInput" placeholder="Enter API endpoint URL"></textarea>
-
-    
-
-    
-      <div class="stat"><span id="characters">0</span><label>Characters</label></div>
-      <div class="stat"><span id="charactersNoSpace">0</span><label>Characters (no spaces)</label></div>
-      <div class="stat"><span id="sentences">0</span><label>Sentences</label></div>
-      <div class="stat"><span id="paragraphs">0</span><label>Paragraphs</label></div>
-      <div class="stat"><span id="readingTime">0 min</span><label>Reading Time</label></div>
-    </div>
-
-    <!-- AdSense mid -->
-
-    <div class="section">
-      <h2>What Is a Word Counter?</h2>
-      <p>
-        A word counter is a writing utility that measures the length and structure of a text.
-        It helps writers, students, and professionals track word limits, sentence counts, and paragraph structure
-        when creating essays, articles, academic papers, or SEO content.
-      </p>
-    </div>
-
-    <div class="section">
-      <h2>Who Should Use This Tool?</h2>
-      <p>
-        This word counter is designed for students working on essays, writers editing articles,
-        marketers preparing SEO content, and anyone who needs accurate word and character counts.
-      </p>
-    </div>
-
-    <div class="faq">
-      <h2>Frequently Asked Questions</h2>
-      <div class="faq-item">
-        <h3>What is a word counter?</h3>
-        <p>A word counter is an online tool that counts the number of words, characters, sentences, and paragraphs in a given text.</p>
-      </div>
-      <div class="faq-item">
-        <h3>Does this word counter count characters without spaces?</h3>
-        <p>Yes. This word counter shows both total characters and characters without spaces.</p>
-      </div>
-      <div class="faq-item">
-        <h3>Is this word counter suitable for essays and academic writing?</h3>
-        <p>Yes. Students and researchers can use this tool to meet word and sentence limits for essays and assignments.</p>
-      </div>
-      <div class="faq-item">
-        <h3>Is the word counter free to use?</h3>
-        <p>Yes. The tool is completely free and works directly in your browser.</p>
-      </div>
-    </div>
-
-    <div class="section">
-      <h2>Related Writing Tools</h2>
-      <div class="tools">
-        <a href="../sentence-counter/index.html">Sentence Counter</a>
-        <a href="../character-counter/index.html">Character Counter</a>
-        <a href="../reading-time/index.html">Reading Time Calculator</a>
-        <a href="../case-converter/index.html">Case Converter</a>
-      </div>  </div>
-
-  <div class="ad-banner" style="margin-top:40px">
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3153457922" data-ad-format="auto" data-full-width-responsive="true"></ins>
-    </div>
-
   </div>
 
-  <script>
-    const input = document.getElementById("textInput");
+  <div id="responseSection" style="display:none">
+    <div class="card">
+      <h2>Response</h2>
+      <div class="response-meta">
+        <div class="meta-item"><strong>Status:</strong> <span id="resStatus"></span></div>
+        <div class="meta-item"><strong>Time:</strong> <span id="resTime"></span></div>
+        <div class="meta-item"><strong>Size:</strong> <span id="resSize"></span></div>
+      </div>
+      <div class="form-group" style="margin-top:14px">
+        <label for="resBody">Response Body</label>
+        <textarea class="text-area" id="resBody" readonly style="min-height:200px;font-family:monospace"></textarea>
+      </div>
+      <div class="btn-row">
+        <button class="btn secondary" onclick="copyResponse()">Copy Response</button>
+      </div>
+    </div>
+  </div>
 
-    function updateStats() {
-      const text = input.value;
-      const wordCount = text.trim() ? text.trim().split(/\s+/).length : 0;
+  <div class="ad-banner"></div>
 
-      document.getElementById("words").textContent = wordCount;
-      document.getElementById("characters").textContent = text.length;
-      document.getElementById("charactersNoSpace").textContent = text.replace(/\s+/g, "").length;
-      document.getElementById("sentences").textContent = text.split(/[.!?]+/).filter(s => s.trim()).length;
-      document.getElementById("paragraphs").textContent = text.split(/\n+/).filter(p => p.trim()).length;
+  <div class="section">
+    <h2>About API Testing</h2>
+    <p>API Tester lets you send HTTP requests to any web endpoint directly from your browser. Test REST APIs, check server responses, and debug integration issues without installing any software or browser extensions.</p>
+    <p>Supports GET, POST, PUT, and DELETE methods. Request body accepts JSON format. Responses are displayed with status code, response time, and formatted body.</p>
+  </div>
 
-      const mins = Math.round(wordCount / 200) || 0;
-      document.getElementById("readingTime").textContent = mins < 1 ? "< 1 min" : mins + " min";
-    }
+  <div class="section">
+    <h2>How to Use</h2>
+    <p><strong>Step 1:</strong> Enter the API endpoint URL in the input field above.</p>
+    <p><strong>Step 2:</strong> Select the HTTP method (GET, POST, PUT, or DELETE).</p>
+    <p><strong>Step 3:</strong> For POST and PUT, enter JSON body content.</p>
+    <p><strong>Step 4:</strong> Click "Send Request" to receive the API response.</p>
+  </div>
 
-    input.addEventListener("input", updateStats);
-  </script>
-  <script src="../../knexio-bundle.js"></script>
-  <script src="../../cookie-consent.js"></script>
+  <div class="section">
+    <div class="section">
+      <p><strong>How It Works</strong> - Enter any API endpoint URL, select the HTTP method (GET, POST, PUT, DELETE), add headers and body content if needed, then click Send. View the response status, headers, and body in the results section below.</p>
+    </div>
+<h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>What HTTP methods are supported?</h3>
+      <p>We support GET, POST, PUT, PATCH, DELETE, and HEAD methods for testing any REST API.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Can I add custom headers?</h3>
+      <p>Yes, add any custom headers in the headers section including authorization tokens, content-type, and custom fields.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Is my data secure?</h3>
+      <p>All requests are made directly from your browser. We don't store any of your API calls or credentials.</p>
+    </div>
 
-<div class="ad-banner" style="margin-top:40px">
-  <ins class="adsbygoogle" style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="3153457922"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-</div>
+    <h2>Related Tools</h2>
+    <div class="tools">
+      <a href="/tools/json-formatter/">JSON Formatter</a>
+      <a href="/tools/hex-to-rgb/">Color Converter</a>
+      <a href="/tools/password-generator/">Password Generator</a>
+      <a href="/tools/url-encoder-decoder/">URL Encoder</a>
+    </div>
+  </div>
 
-<footer>
-  <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
-  <p>
-    <a href="/about/">About</a> •
-    <a href="/privacy/">Privacy Policy</a> •
-    <a href="/terms/">Terms of Service</a>
-  </p>
-</footer>
-
+  <footer>
+    <p>Free online tools for developers, designers, and everyone.</p>
+    <p style="margin: 8px 0; font-size: 13px;">
+      <a href="/about/" style="color:var(--accent);text-decoration:none;margin:0 8px;">About</a>
+      <a href="/privacy/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Privacy</a>
+      <a href="/terms/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Terms</a>
+      <a href="/contact/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Contact</a>
+    </p>
+    <p>© 2026 Knexio. All rights reserved.</p>
+  </footer>
 </div>
 
 <script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-(adsbygoogle = window.adsbygoogle || []).push({});
+var currentMethod = 'GET';
+
+function setMethod(method, btn) {
+  currentMethod = method;
+  document.querySelectorAll('.method-tab').forEach(function(t){ t.classList.remove('active'); });
+  btn.classList.add('active');
+  var bodyGroup = document.getElementById('bodyGroup');
+  bodyGroup.style.display = (method === 'GET' || method === 'DELETE') ? 'none' : 'block';
+}
+
+function sendRequest() {
+  var url = document.getElementById('urlInput').value;
+  if (!url) { alert('Please enter a URL'); return; }
+  var start = Date.now();
+  var body = (currentMethod === 'GET' || currentMethod === 'DELETE') ? null : document.getElementById('reqBody').value;
+  var options = { method: currentMethod, headers: { 'Content-Type': 'application/json' } };
+  if (body) options.body = body;
+  fetch(url, options)
+    .then(function(res) {
+      var time = Date.now() - start;
+      document.getElementById('resStatus').textContent = res.status + ' ' + res.statusText;
+      document.getElementById('resTime').textContent = time + 'ms';
+      return res.text().then(function(text) {
+        document.getElementById('resSize').textContent = formatBytes(text.length);
+        document.getElementById('resBody').value = text;
+        document.getElementById('responseSection').style.display = 'block';
+        try { document.getElementById('resBody').value = JSON.stringify(JSON.parse(text), null, 2); } catch(e){}
+      });
+    })
+    .catch(function(err) {
+      document.getElementById('responseSection').style.display = 'block';
+      document.getElementById('resStatus').textContent = 'Error';
+      document.getElementById('resTime').textContent = '-';
+      document.getElementById('resSize').textContent = '-';
+      document.getElementById('resBody').value = 'Error: ' + err.message;
+    });
+}
+
+function clearRequest() {
+  document.getElementById('urlInput').value = '';
+  document.getElementById('reqBody').value = '';
+  document.getElementById('resBody').value = '';
+  document.getElementById('responseSection').style.display = 'none';
+}
+
+function copyResponse() {
+  navigator.clipboard.writeText(document.getElementById('resBody').value);
+}
+
+function formatBytes(bytes) {
+  if (bytes < 1024) return bytes + ' B';
+  if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
+  return (bytes / 1048576).toFixed(1) + ' MB';
+}
+
+// Init
+document.getElementById('bodyGroup').style.display = 'none';
 </script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>

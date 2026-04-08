@@ -1,25 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Free CSV to JSON Converter – Convert CSV Online</title>
-<meta name="description" content="">
-
-<link rel="canonical" href="">
-
-<!-- Open Graph -->
-<meta property="og:title" content="CSV to JSON Converter">
-<meta property="og:description" content="">
-<meta property="og:url" content="">
-<meta property="og:type" content="WebApplication">
-<meta property="og:site_name" content="Knexio">
-<meta property="og:image" content="https://knexio.xyz/og-image.png">
-
-<!-- Structured Data -->
-<script type="application/ld+json">
-
+  <meta charset="UTF-8" />
+  <title>CSV to JSON Converter – Convert CSV Online Free | Knexio</title>
+  <meta name="description" content="Convert CSV files to JSON format instantly. Paste or upload CSV data and get formatted JSON output." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="canonical" href="https://knexio.xyz/tools/csv-to-json-converter/" />
+  <meta property="og:title" content="CSV to JSON Converter – Convert CSV Online Free" />
+  <meta property="og:description" content="Convert CSV to JSON instantly. Paste or upload your data." />
+  <meta property="og:url" content="https://knexio.xyz/tools/csv-to-json-converter/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Knexio" />
+  <meta property="og:image" content="https://knexio.xyz/og-image.svg" />
+  
+  <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
@@ -30,209 +24,60 @@
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
     "description": "Free online CSV to JSON converter. Transform CSV data into JSON format."
   }
-  
-</script>
-
-<style>
-
-:root{
-  --bg:#0b1220;
-  --card:#111a2e;
-  --border:rgba(255,255,255,.08);
-  --text:#fff;
-  --sub:#aab3c5;
-  --accent:#4f8cff;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-body{
-  font-family:system-ui,-apple-system;
-  background:var(--bg);
-  color:var(--text);
-}
-.container{max-width:900px;margin:auto;padding:50px 16px}
-
-/* 统一的返回按钮样式 */
-.back {
-  display: inline-block;
-  color: var(--sub);
-  text-decoration: none;
-  font-size: 14px;
-  margin-bottom: 24px;
-  transition: color 0.2s;
-}
-.back:hover {
-  color: var(--accent);
-}
-
-h1{font-size:32px;margin-bottom:8px}
-h2{font-size:22px;margin-top:30px;margin-bottom:10px}
-.subtitle{color:var(--sub);margin-bottom:24px}
-
-.badge{
-  display:inline-block;
-  padding:4px 10px;
-  border-radius:20px;
-  background:rgba(79,140,255,.15);
-  color:var(--accent);
-  font-size:12px;
-  margin-bottom:10px;
-}
-
-.card{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:14px;
-  padding:20px;
-  margin-bottom:20px;
-}
-
-textarea{
-  width:100%;
-  min-height:180px;
-  background:var(--bg);
-  border:1px solid var(--border);
-  border-radius:12px;
-  color:var(--text);
-  padding:14px;
-  font-size:15px;
-}
-textarea:focus{outline:none;border-color:var(--accent)}
-
-.btn-row{display:flex;gap:10px;margin-top:12px}
-button{
-  flex:1;
-  padding:10px;
-  border-radius:10px;
-  border:none;
-  background:var(--accent);
-  color:#fff;
-  cursor:pointer;
-}
-button.secondary{
-  background:transparent;
-  border:1px solid var(--border);
-  color:var(--sub);
-}
-
-.stats{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-  margin-top:16px;
-}
-.stat{
-  background:var(--bg);
-  border:1px solid var(--border);
-  border-radius:10px;
-  padding:16px;
-  text-align:center;
-}
-.stat span{
-  font-size:24px;
-  font-weight:700;
-  color:var(--accent);
-}
-.stat label{
-  display:block;
-  font-size:12px;
-  color:var(--sub);
-}
-
-.tip{
-  font-size:13px;
-  color:var(--sub);
-  margin-top:10px;
-}
-
-.section p{
-  color:var(--sub);
-  line-height:1.7;
-  margin-bottom:10px;
-}
-
-.tools a{
-  display:inline-block;
-  margin:6px;
-  padding:8px 14px;
-  border-radius:8px;
-  border:1px solid var(--border);
-  color:var(--sub);
-  text-decoration:none;
-}
-.tools a:hover{
-  border-color:var(--accent);
-  color:var(--accent);
-}
-
-/* 广告样式 */
-.ad-banner {
-  margin: 32px 0;
-  text-align: center;
-}
-
-/* 统一的 Footer 样式 */
-footer {
-  margin-top: 40px;
-  text-align: center;
-  color: var(--sub);
-  font-size: 13px;
-}
-footer p {
-  margin-bottom: 8px;
-}
-footer a {
-  color: var(--sub);
-  text-decoration: none;
-  margin: 0 10px;
-  transition: color 0.2s;
-}
-footer a:hover {
-  color: var(--accent);
-}
-
-@media(max-width:600px){
-  .stats{grid-template-columns:1fr 1fr}
-}
-
-</style>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2596567349043393" crossorigin="anonymous"></script>
-</head>
-
+  </script>
+  <style>
+    :root { --bg-dark: #0b1220; --bg-dark-2: #070d1a; --panel: #111a2e; --border: rgba(255,255,255,0.08); --text-main: #ffffff; --text-sub: #aab3c5; --accent: #4f8cff; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: linear-gradient(180deg, var(--bg-dark), var(--bg-dark-2)); color: var(--text-main); min-height: 100vh; }
+    a { color: var(--accent); text-decoration: none; }
+    .container { max-width: 900px; margin: 0 auto; padding: 60px 20px 100px; }
+    .back { font-size: 14px; color: var(--text-sub); margin-bottom: 24px; display: inline-block; }
+    h1 { font-size: 36px; margin-bottom: 16px; }
+    .intro { font-size: 17px; color: var(--text-sub); line-height: 1.7; margin-bottom: 40px; border-left: 3px solid var(--accent); padding-left: 16px; }
+    .main-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    @media (max-width: 768px) { .main-grid { grid-template-columns: 1fr; } }
+    .panel { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 24px; }
+    .panel h2 { font-size: 20px; margin: 0 0 20px; color: var(--accent); }
+    textarea { width: 100%; min-height: 250px; padding: 14px; background: var(--bg-dark); border: 1px solid var(--border); border-radius: 10px; color: var(--text-main); font-family: monospace; font-size: 13px; resize: vertical; }
+    textarea:focus { border-color: var(--accent); outline: none; }
+    .btn-row { display: flex; gap: 12px; margin-top: 16px; flex-wrap: wrap; }
+    .btn { padding: 12px 24px; background: var(--accent); color: #fff; border: none; border-radius: 8px; font-size: 14px; cursor: pointer; transition: all 0.2s; }
+    .btn:hover { box-shadow: 0 4px 12px rgba(79,140,255,0.3); }
+    .btn-outline { background: transparent; border: 1px solid var(--accent); color: var(--accent); }
+    .btn-outline:hover { background: var(--accent); color: #fff; }
+    .upload-area { background: var(--bg-dark); border: 2px dashed var(--border); border-radius: 10px; padding: 20px; text-align: center; cursor: pointer; margin-bottom: 16px; }
+    .upload-area:hover { border-color: var(--accent); }
+    .options { display: flex; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; }
+    .option { display: flex; align-items: center; gap: 8px; }
+    .option input[type="checkbox"] { width: auto; }
+    .option label { color: var(--text-sub); font-size: 14px; cursor: pointer; }
+    .ad-top { margin: 0 0 40px; text-align: center; min-height: 90px; }
+    .ad-mid { margin: 48px 0; text-align: center; min-height: 250px; }
+    footer { margin-top: 100px; font-size: 13px; text-align: center; color: var(--text-sub); border-top: 1px solid var(--border); padding-top: 30px; }
+    footer a { color: var(--accent); }
+  .ad-banner{margin:24px 0;text-align:center;min-height:90px}
+  footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
+  <!-- AdSense 由 adsense-optimize.js 管理 -->
+  </head>
 <body><div class="container">
-
-<a class="back" href="../index.html">← Back to Tools</a>
-
-<h1>CSV to JSON Converter</h1>
-<p class="subtitle">Free online csv to json converter tool. No signup required, works in your browser.</p>
-
-<div class="ad-banner">
-  <ins class="adsbygoogle" style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="3153457922"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-</div>
-
-<div class="container">
     <a class="back" href="../index.html">← Back to Tools</a>
     <h1>CSV to JSON Converter</h1>
-    <p class="subtitle">Free online csv to json converter tool. No signup required, works in your browser.</p>
-    <div class="intro">Convert CSV data to JSON format instantly. Paste your CSV or upload a file.
-  </div>
+    <div class="intro">Convert CSV data to JSON format instantly. Paste your CSV or upload a file.</div>
+    
     <div class="upload-area" onclick="document.getElementById('fileInput').click()">
-      <span style="color: var(--sub);">Click to upload CSV file</span>
+      <span style="color: var(--text-sub);">Click to upload CSV file</span>
       <input type="file" id="fileInput" accept=".csv" style="display:none;" onchange="handleFile(event)" />
     </div>
     <div class="main-grid">
       <div class="panel">
         <h2>CSV Input</h2>
-        <textarea class="text-area" id="csvInput" placeholder="name,age,city
+        <textarea id="csvInput" placeholder="name,age,city
 John,30,New York
 Jane,25,Los Angeles"></textarea>
         <div class="btn-row">
-      <button class="btn" onclick="convertToJSON()">Convert to JSON</button>
+          <button class="btn" onclick="convertToJSON()">Convert to JSON</button>
           <button class="btn btn-outline" onclick="clearAll()">Clear</button>
-    </div></div>
+        </div>
       </div>
       <div class="panel">
         <h2>JSON Output</h2>
@@ -246,50 +91,133 @@ Jane,25,Los Angeles"></textarea>
             <label for="parseNumbers">Parse numbers</label>
           </div>
         </div>
-        <textarea class="text-area" id="jsonOutput" readonly placeholder="JSON output will appear here..."></textarea>
+        <textarea id="jsonOutput" readonly placeholder="JSON output will appear here..."></textarea>
+        <div class="btn-row">
+          <button class="btn" onclick="copyJSON()">Copy JSON</button>
+          <button class="btn btn-outline" onclick="downloadJSON()">Download</button>
         </div>
-
+      
   </div>
 
-<h2>How to Use This Tool</h2>
-  <div class="step-block">
-    <h3>Step 1: Enter your input</h3>
-    <p>Type or paste your content into the input field above.</p>
-  </div>
-  <div class="step-block">
-    <h3>Step 2: Adjust settings</h3>
-    <p>Use the available options to customize the processing.</p>
-  </div>
-  <div class="step-block">
-    <h3>Step 3: Get results</h3>
-    <p>View the processed output in the result area.</p>
-  </div>
+  <div class="ad-banner" style="margin-top:40px">
+      <!-- Ad space -->
+    </div>
 
-<div class="ad-banner" style="margin-top:40px">
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3153457922" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<div class="section">
+      <p><strong>How It Works</strong> - Paste your CSV data or upload a CSV file. The converter parses the data and outputs JSON in real-time. Choose between array of objects or nested structure format. Copy the result or download as a JSON file.</p>
+    </div>
+<h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>How are headers handled?</h3>
+      <p>By default, the first row of CSV is used as property names. You can toggle this option if your CSV doesn't have headers.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Can I handle nested CSV data?</h3>
+      <p>The converter creates flat JSON by default. For nested structures, use our advanced options or preprocess your CSV.</p>
+    </div>
 
-<div class="ad-banner" style="margin-top:40px">
-  <ins class="adsbygoogle" style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="3153457922"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
+    <h2>Related Tools</h2>
+<div class="tools">
+<a href="/tools/word-counter/">Word Counter</a>
+<a href="/tools/character-counter/">Character Counter</a>
+<a href="/tools/json-formatter/">Json Formatter</a>
+<a href="/tools/password-generator/">Password Generator</a>
 </div>
 
-<footer>
-  <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
-  <p>
-    <a href="/about/">About</a> •
-    <a href="/privacy/">Privacy Policy</a> •
-    <a href="/terms/">Terms of Service</a>
-  </p>
-</footer>
+    <div class="ad-banner"></div>
 
+    <footer>
+    <p>Free online tools for developers, designers, and everyone.</p>
+    <p style="margin: 8px 0; font-size: 13px;">
+      <a href="/about/" style="color:var(--accent);text-decoration:none;margin:0 8px;">About</a>
+      <a href="/privacy/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Privacy</a>
+      <a href="/terms/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Terms</a>
+      <a href="/contact/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Contact</a>
+    </p>
+    <p>© 2026 Knexio. All rights reserved.</p>
+  </footer>
+  </div>
+  <script>
+    function handleFile(event) {
+      const file = event.target.files[0];
+      if(!file) return;
+      const reader = new FileReader();
+      reader.onload = e => {
+        document.getElementById('csvInput').value = e.target.result;
+        convertToJSON();
+      };
+      reader.readAsText(file);
+    }
+    function convertToJSON() {
+      const csv = document.getElementById('csvInput').value.trim();
+      if(!csv) return;
+      const lines = csv.split('\n');
+      if(lines.length < 2) return alert('CSV must have at least a header row and one data row');
+      const headers = parseCSVLine(lines[0]);
+      const parseNumbers = document.getElementById('parseNumbers').checked;
+      const result = [];
+      for(let i = 1; i < lines.length; i++) {
+        if(!lines[i].trim()) continue;
+        const values = parseCSVLine(lines[i]);
+        const obj = {};
+        headers.forEach((header, index) => {
+          let value = values[index] || '';
+          if(parseNumbers && !isNaN(value) && value !== '') {
+            value = Number(value);
+          }
+          obj[header] = value;
+        });
+        result.push(obj);
+      }
+      const prettyPrint = document.getElementById('prettyPrint').checked;
+      document.getElementById('jsonOutput').value = JSON.stringify(result, null, prettyPrint ? 2 : 0);
+    }
+    function parseCSVLine(line) {
+      const result = [];
+      let current = '';
+      let inQuotes = false;
+      for(let i = 0; i < line.length; i++) {
+        const char = line[i];
+        if(char === '"') {
+          if(inQuotes && line[i + 1] === '"') {
+            current += '"';
+            i++;
+          } else {
+            inQuotes = !inQuotes;
+          }
+        } else if(char === ',' && !inQuotes) {
+          result.push(current.trim());
+          current = '';
+        } else {
+          current += char;
+        }
+      }
+      result.push(current.trim());
+      return result;
+    }
+    function copyJSON() {
+      const output = document.getElementById('jsonOutput');
+      output.select();
+      document.execCommand('copy');
+      alert('JSON copied to clipboard!');
+    }
+    function downloadJSON() {
+      const json = document.getElementById('jsonOutput').value;
+      if(!json) return;
+      const blob = new Blob([json], {type: 'application/json'});
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = 'converted.json';
+      link.click();
+    }
+    function clearAll() {
+      document.getElementById('csvInput').value = '';
+      document.getElementById('jsonOutput').value = '';
+    }
+  </script>
+  <script src="/knexio-bundle.js"></script>
+  <script src="../../cookie-consent.js"></script>
+<script src="/knexio-bundle.js"></script>
 </div>
-
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
 </body>
 </html>

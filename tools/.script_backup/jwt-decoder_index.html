@@ -1,379 +1,300 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>JWT解码器</title>
-<meta name="description" content="">
-
-<link rel="canonical" href="">
-
-<!-- Open Graph -->
-<meta property="og:title" content="JWT解码器">
-<meta property="og:description" content="">
-<meta property="og:url" content="">
-<meta property="og:type" content="WebApplication">
-<meta property="og:site_name" content="Knexio">
-<meta property="og:image" content="https://knexio.xyz/og-image.png">
-
-<!-- Structured Data -->
-<script type="application/ld+json">
-
+  <meta charset="UTF-8">
+  <title>JWT Decoder – Decode JSON Web Tokens Online | Knexio</title>
+  <meta name="description" content="Decode JWT tokens online. View payload, header, and signature. Validate JWT and check expiration. Free tool.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://knexio.xyz/tools/jwt-decoder/">
+  
+  <meta property="og:title" content="JWT Decoder – Decode JSON Web Tokens Online">
+  <meta property="og:description" content="Decode JWT tokens online. View payload, header, and signature. Validate JWT and check expiration. Free tool.">
+  <meta property="og:url" content="https://knexio.xyz/tools/jwt-decoder/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Knexio">
+  <meta property="og:image" content="https://knexio.xyz/images/og-tools.png">
+  
+  <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "JWT解码器",
+    "name": "JWT Decoder",
     "description": "Decode JWT tokens online. View payload, header, and signature. Validate JWT and check expiration. Free tool.",
     "url": "https://knexio.xyz/tools/jwt-decoder/",
-    "publisher": {
-      "@type": "Organization",
-      "name": "Knexio",
-      "url": "https://knexio.xyz"
-    }
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
   }
-  
-</script>
-
-<style>
-
-:root{
-  --bg:#0b1220;
-  --card:#111a2e;
-  --border:rgba(255,255,255,.08);
-  --text:#fff;
-  --sub:#aab3c5;
-  --accent:#4f8cff;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-body{
-  font-family:system-ui,-apple-system;
-  background:var(--bg);
-  color:var(--text);
-}
-.container{max-width:900px;margin:auto;padding:50px 16px}
-
-/* 统一的返回按钮样式 */
-.back {
-  display: inline-block;
-  color: var(--sub);
-  text-decoration: none;
-  font-size: 14px;
-  margin-bottom: 24px;
-  transition: color 0.2s;
-}
-.back:hover {
-  color: var(--accent);
-}
-
-h1{font-size:32px;margin-bottom:8px}
-h2{font-size:22px;margin-top:30px;margin-bottom:10px}
-.subtitle{color:var(--sub);margin-bottom:24px}
-
-.badge{
-  display:inline-block;
-  padding:4px 10px;
-  border-radius:20px;
-  background:rgba(79,140,255,.15);
-  color:var(--accent);
-  font-size:12px;
-  margin-bottom:10px;
-}
-
-.card{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:14px;
-  padding:20px;
-  margin-bottom:20px;
-}
-
-textarea{
-  width:100%;
-  min-height:180px;
-  background:var(--bg);
-  border:1px solid var(--border);
-  border-radius:12px;
-  color:var(--text);
-  padding:14px;
-  font-size:15px;
-}
-textarea:focus{outline:none;border-color:var(--accent)}
-
-.btn-row{display:flex;gap:10px;margin-top:12px}
-button{
-  flex:1;
-  padding:10px;
-  border-radius:10px;
-  border:none;
-  background:var(--accent);
-  color:#fff;
-  cursor:pointer;
-}
-button.secondary{
-  background:transparent;
-  border:1px solid var(--border);
-  color:var(--sub);
-}
-
-.stats{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-  margin-top:16px;
-}
-.stat{
-  background:var(--bg);
-  border:1px solid var(--border);
-  border-radius:10px;
-  padding:16px;
-  text-align:center;
-}
-.stat span{
-  font-size:24px;
-  font-weight:700;
-  color:var(--accent);
-}
-.stat label{
-  display:block;
-  font-size:12px;
-  color:var(--sub);
-}
-
-.tip{
-  font-size:13px;
-  color:var(--sub);
-  margin-top:10px;
-}
-
-.section p{
-  color:var(--sub);
-  line-height:1.7;
-  margin-bottom:10px;
-}
-
-.tools a{
-  display:inline-block;
-  margin:6px;
-  padding:8px 14px;
-  border-radius:8px;
-  border:1px solid var(--border);
-  color:var(--sub);
-  text-decoration:none;
-}
-.tools a:hover{
-  border-color:var(--accent);
-  color:var(--accent);
-}
-
-/* 广告样式 */
-.ad-banner {
-  margin: 32px 0;
-  text-align: center;
-}
-
-/* 统一的 Footer 样式 */
-footer {
-  margin-top: 40px;
-  text-align: center;
-  color: var(--sub);
-  font-size: 13px;
-}
-footer p {
-  margin-bottom: 8px;
-}
-footer a {
-  color: var(--sub);
-  text-decoration: none;
-  margin: 0 10px;
-  transition: color 0.2s;
-}
-footer a:hover {
-  color: var(--accent);
-}
-
-@media(max-width:600px){
-  .stats{grid-template-columns:1fr 1fr}
-}
-
-</style>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2596567349043393" crossorigin="anonymous"></script>
-</head>
-
-<body><div class="container">
-
-<a class="back" href="../index.html">← Back to Tools</a>
-
-<h1>JWT解码器</h1>
-<p class="subtitle">Instantly count words, characters, sentences, paragraphs, and reading time in your text.</p>
-
-<div class="ad-banner">
-  <ins class="adsbygoogle" style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="3153457922"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-</div>
-
-<div class="container">
-    <a class="back" href="../index.html">← Back to Tools</a>
-
-    <h1>JWT解码器</h1>
-  <div class="ad-banner">
-    <ins class="adsbygoogle" style="display:block"
-         data-ad-client="ca-pub-2596567349043393"
-         data-ad-slot="3153457922"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
-  </div>
-
-        <p class="subtitle">Instantly count words, characters, sentences, paragraphs, and reading time in your text.</p>
-
-  <div class="seo-section">
-    <h2>How to Use This Tool</h2>
-    <div class="step-block">
-      <h3>Step 1: Paste a JWT token</h3>
-      <p>Enter a JSON Web Token in the input field.</p>
-    </div>
-    <div class="step-block">
-      <h3>Step 2: View decoded header and payload</h3>
-      <p>See the decoded header, payload, and signature instantly.</p>
-    </div>
-    <div class="step-block">
-      <h3>Step 3: Check expiry and claims</h3>
-      <p>Verify token claims like exp, iat, sub, and iss.</p>
-    </div>
-  </div>
-  <div class="step-block">
-    <h3>Step 2: Adjust settings</h3>
-    <p>Use the available options to customize the processing.</p>
-  </div>
-  <div class="step-block">
-    <h3>Step 3: Get results</h3>
-    <p>View the processed output in the result area.</p>
-  </div>
-</div>
-
-    <!-- AdSense top -->
-
-    
-    <div class="stats" style="margin-bottom:16px;">
-      <div class="stat" style="padding:10px 12px;"><span id="words" style="font-size:20px;">0</span><label>Words</label></div>
-
-    <div class="btn-row">
-      <button class="btn" onclick="document.getElementById('textInput').value=''; updateStats();">Clear</button>
-      <button class="btn" onclick="navigator.clipboard.writeText(document.getElementById('textInput').value)">Copy Text</button>
-    </div>
-    <textarea class="text-area" id="textInput" placeholder="Paste your JWT token here"></textarea>
-
-    
-
-    
-      <div class="stat"><span id="characters">0</span><label>Characters</label></div>
-      <div class="stat"><span id="charactersNoSpace">0</span><label>Characters (no spaces)</label></div>
-      <div class="stat"><span id="sentences">0</span><label>Sentences</label></div>
-      <div class="stat"><span id="paragraphs">0</span><label>Paragraphs</label></div>
-      <div class="stat"><span id="readingTime">0 min</span><label>Reading Time</label></div>
-    </div>
-
-    <!-- AdSense mid -->
-
-    <div class="section">
-      <h2>What Is a Word Counter?</h2>
-      <p>
-        A word counter is a writing utility that measures the length and structure of a text.
-        It helps writers, students, and professionals track word limits, sentence counts, and paragraph structure
-        when creating essays, articles, academic papers, or SEO content.
-      </p>
-    </div>
-
-    <div class="section">
-      <h2>Who Should Use This Tool?</h2>
-      <p>
-        This word counter is designed for students working on essays, writers editing articles,
-        marketers preparing SEO content, and anyone who needs accurate word and character counts.
-      </p>
-    </div>
-
-    <div class="faq">
-      <h2>Frequently Asked Questions</h2>
-      <div class="faq-item">
-        <h3>What is a word counter?</h3>
-        <p>A word counter is an online tool that counts the number of words, characters, sentences, and paragraphs in a given text.</p>
-      </div>
-      <div class="faq-item">
-        <h3>Does this word counter count characters without spaces?</h3>
-        <p>Yes. This word counter shows both total characters and characters without spaces.</p>
-      </div>
-      <div class="faq-item">
-        <h3>Is this word counter suitable for essays and academic writing?</h3>
-        <p>Yes. Students and researchers can use this tool to meet word and sentence limits for essays and assignments.</p>
-      </div>
-      <div class="faq-item">
-        <h3>Is the word counter free to use?</h3>
-        <p>Yes. The tool is completely free and works directly in your browser.</p>
-      </div>
-    </div>
-
-    <div class="section">
-      <h2>Related Writing Tools</h2>
-      <div class="tools">
-        <a href="../sentence-counter/index.html">Sentence Counter</a>
-        <a href="../character-counter/index.html">Character Counter</a>
-        <a href="../reading-time/index.html">Reading Time Calculator</a>
-        <a href="../case-converter/index.html">Case Converter</a>
-      </div>  </div>
-
-  <div class="ad-banner" style="margin-top:40px">
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3153457922" data-ad-format="auto" data-full-width-responsive="true"></ins>
-    </div>
-
-  </div>
-
-  <script>
-    const input = document.getElementById("textInput");
-
-    function updateStats() {
-      const text = input.value;
-      const wordCount = text.trim() ? text.trim().split(/\s+/).length : 0;
-
-      document.getElementById("words").textContent = wordCount;
-      document.getElementById("characters").textContent = text.length;
-      document.getElementById("charactersNoSpace").textContent = text.replace(/\s+/g, "").length;
-      document.getElementById("sentences").textContent = text.split(/[.!?]+/).filter(s => s.trim()).length;
-      document.getElementById("paragraphs").textContent = text.split(/\n+/).filter(p => p.trim()).length;
-
-      const mins = Math.round(wordCount / 200) || 0;
-      document.getElementById("readingTime").textContent = mins < 1 ? "< 1 min" : mins + " min";
-    }
-
-    input.addEventListener("input", updateStats);
   </script>
-  <script src="../../knexio-bundle.js"></script>
-  <script src="../../cookie-consent.js"></script>
-
-<div class="ad-banner" style="margin-top:40px">
-  <ins class="adsbygoogle" style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="3153457922"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-</div>
-
-<footer>
-  <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
-  <p>
-    <a href="/about/">About</a> •
-    <a href="/privacy/">Privacy Policy</a> •
-    <a href="/terms/">Terms of Service</a>
-  </p>
-</footer>
-
-</div>
-
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+  
+  <style>
+:root{--bg:#0b1220;--card:#111a2e;--border:rgba(255,255,255,.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff  --text-sub:#aab3c5;
+  }
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system;background:var(--bg);color:var(--text);line-height:1.6}
+.container{max-width:900px;margin:auto;padding:50px 16px}
+.back{display:inline-block;color:var(--sub);text-decoration:none;margin-bottom:16px;font-size:14px}
+.back:hover{color:var(--accent)}
+h1{font-size:32px;margin-bottom:12px;font-weight:700}
+.subtitle{font-size:16px;color:var(--sub);margin-bottom:24px;line-height:1.6}
+h2{font-size:24px;margin:40px 0 16px;font-weight:600}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:24px}
+label{display:block;margin-bottom:8px;font-weight:500;color:var(--sub);font-size:14px}
+textarea{width:100%;min-height:150px;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:12px;color:var(--text);font-family:'Monaco','Menlo',monospace;font-size:14px;resize:vertical;margin-bottom:16px}
+textarea:focus{outline:none;border-color:var(--accent)}
+.btn-row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px}
+.btn{background:var(--accent);color:#fff;border:none;padding:12px 24px;border-radius:8px;font-size:15px;cursor:pointer;font-weight:500;transition:opacity .2s}
+.btn:hover{opacity:.9}
+.btn.secondary{background:var(--card);border:1px solid var(--border);color:var(--text)}
+.btn.secondary:hover{border-color:var(--accent)}
+.section{margin-top:20px}
+.result-box{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:16px;font-family:'Monaco','Menlo',monospace;font-size:13px;overflow-x:auto;margin-bottom:16px;max-height:400px;overflow-y:auto}
+.result-box pre{margin:0;color:var(--sub)}
+.result-title{font-weight:600;color:var(--text);margin-bottom:12px;font-size:15px}
+.token-header{display:flex;gap:16px;flex-wrap:wrap}
+.token-part{flex:1;min-width:200px}
+.token-part-label{font-size:12px;color:var(--sub);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px}
+.valid{color:#4ade80}
+.invalid{color:#f87171}
+.warning{color:#fbbf24}
+.faq-item{margin-bottom:20px}
+.faq-item strong{display:block;color:var(--text);margin-bottom:8px;font-size:15px}
+.faq-item p{color:var(--sub);line-height:1.7;font-size:14px}
+.tools{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-top:16px}
+.tools a{display:block;padding:14px;background:var(--card);border:1px solid var(--border);border-radius:8px;color:var(--sub);text-decoration:none;font-size:14px;transition:all .2s}
+.tools a:hover{border-color:var(--accent);color:var(--accent)}
+.tip{font-size:13px;color:var(--sub);margin-top:8px;line-height:1.5}
+@media(max-width:600px){
+  .btn-row{flex-direction:column}
+  .btn{width:100%}
+  h1{font-size:26px}
+}
+  
+    footer { border-top: 1px solid var(--border); padding-top: 24px; margin-top: 40px; text-align: center; color: var(--text-sub); font-size: 14px; }
+  footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
+  
+</head>
+<body>
+  <div class="container">
+    <a class="back" href="../index.html">← Back to Tools</a>
+    <h1>JWT Decoder</h1>
+    <p class="subtitle">Decode JWT tokens instantly. View header, payload, and signature. Validate expiration and claims.</p>
+    
+    <div class="ad-banner"></div>
+    
+    <div class="card">
+      <label for="jwtInput">Paste your JWT token</label>
+      <textarea id="jwtInput" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"></textarea>
+      
+      <div class="btn-row">
+        <button class="btn" onclick="decodeJWT()">Decode Token</button>
+        <button class="btn secondary" onclick="clearAll()">Clear</button>
+        <button class="btn secondary" onclick="pasteSample()">Load Sample</button>
+      </div>
+      
+      <div id="result" style="display:none;">
+        <div class="result-title">Token Structure</div>
+        <div class="token-header">
+          <div class="token-part">
+            <div class="token-part-label">Header</div>
+            <div id="headerResult" class="result-box"></div>
+          </div>
+          <div class="token-part">
+            <div class="token-part-label">Payload</div>
+            <div id="payloadResult" class="result-box"></div>
+          </div>
+        </div>
+        
+        <div id="signatureResult" style="margin-top:16px;">
+          <div class="result-title">Signature</div>
+          <div id="signature" class="result-box"></div>
+        </div>
+        
+        <div id="validationResult" style="margin-top:16px;">
+          <div class="result-title">Validation Status</div>
+          <div id="validation" class="result-box"></div>
+        </div>
+        
+        <p class="tip">⚠️ For security, this tool only decodes and displays JWT information. It does not verify signature authenticity.</p>
+      </div>
+      
+      <div id="error" class="result-box" style="display:none;color:#f87171;"></div>
+    </div>
+    
+    <h2>Free Online JWT Decoder</h2>
+    <div class="section">
+      <p style="color:var(--sub);line-height:1.7;">
+        JWT (JSON Web Token) is a compact, URL-safe means of representing claims to be transferred between two parties. This decoder tool helps you inspect the contents of any JWT token instantly in your browser. No data is sent to any server – everything happens locally for maximum security and privacy.
+      </p>
+      <p style="color:var(--sub);line-height:1.7;margin-top:16px;">
+        Simply paste your JWT token into the input field above, and the tool will automatically decode the header, payload, and signature sections. It also checks common claims like expiration time, issuer, and subject to help you understand what the token contains.
+      </p>
+    </div>
+    
+    <h2>How It Works</h2>
+    <div class="section">
+      <p style="color:var(--sub);line-height:1.7;">
+        <strong>1. Paste your JWT:</strong> Copy and paste your JWT token into the text area. A valid JWT consists of three parts separated by dots: header, payload, and signature.
+      </p>
+      <p style="color:var(--sub);line-height:1.7;margin-top:12px;">
+        <strong>2. Click Decode:</strong> The tool will split the token and decode the Base64Url-encoded parts into readable JSON format.
+      </p>
+      <p style="color:var(--sub);line-height:1.7;margin-top:12px;">
+        <strong>3. Review the results:</strong> Examine the decoded header to see the algorithm and type. Check the payload for claims like expiration (exp), issuer (iss), subject (sub), and custom data.
+      </p>
+      <p style="color:var(--sub);line-height:1.7;margin-top:12px;">
+        <strong>4. Validate token:</strong> The tool automatically checks if the token has expired and identifies common claims. Note that signature verification requires the secret key used to sign the token.
+      </p>
+    </div>
+    
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <strong>What is JWT?</strong>
+      <p>JWT (JSON Web Token) is an open standard (RFC 7519) that defines a compact and self-contained way for securely transmitting information between parties as a JSON object. It's commonly used for authentication and authorization in web applications.</p>
+    </div>
+    <div class="faq-item">
+      <strong>Is my data safe?</strong>
+      <p>Yes, absolutely. All decoding happens in your browser using JavaScript. No token data is ever sent to any server. Your JWT information remains completely private and secure.</p>
+    </div>
+    <div class="faq-item">
+      <strong>Can this tool verify JWT signatures?</strong>
+      <p>No, signature verification requires the secret key that was used to sign the token. This tool only decodes and displays the JWT contents. To verify signatures, you need access to the issuer's secret key.</p>
+    </div>
+    <div class="faq-item">
+      <strong>What are the three parts of a JWT?</strong>
+      <p>A JWT consists of three parts: Header (contains metadata like algorithm and type), Payload (contains claims like expiration, issuer, and custom data), and Signature (used to verify the token's authenticity).</p>
+    </div>
+    <div class="faq-item">
+      <strong>What does the "exp" claim mean?</strong>
+      <p>The "exp" (expiration time) claim identifies the expiration time on or after which the JWT must not be accepted for processing. It's represented as a Unix timestamp (seconds since January 1, 1970 UTC).</p>
+    </div>
+    <div class="faq-item">
+      <strong>Is this tool free?</strong>
+      <p>Yes, this JWT decoder is completely free to use. No registration or account is required. Use it as often as you need for debugging, development, or learning purposes.</p>
+    </div>
+    
+    <h2>Related Tools</h2>
+    <div class="tools">
+      <a href="/tools/json-formatter/">JSON Formatter</a>
+      <a href="/tools/base64-encoder/">Base64 Encoder</a>
+      <a href="/tools/url-encoder/">URL Encoder</a>
+      <a href="/tools/hmac-generator/">HMAC Generator</a>
+    </div>
+    
+    <div class="ad-banner" style="margin-top:40px;">
+      <!-- Ad space -->
+    </div>
+    
+    <footer>
+      <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
+      <p style="margin: 8px 0; font-size: 13px;">
+        <a href="/about/" style="color:var(--accent);text-decoration:none;margin:0 8px;">About</a>
+        <a href="/privacy/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Privacy</a>
+        <a href="/terms/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Terms</a>
+        <a href="/contact/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Contact</a>
+      </p>
+      <p>© 2026 Knexio. All rights reserved.</p>
+    </footer>
+  </div>
+  
+  <script>
+    function decodeJWT() {
+      const input = document.getElementById('jwtInput').value.trim();
+      const resultDiv = document.getElementById('result');
+      const errorDiv = document.getElementById('error');
+      const headerResult = document.getElementById('headerResult');
+      const payloadResult = document.getElementById('payloadResult');
+      const signatureDiv = document.getElementById('signature');
+      const validationDiv = document.getElementById('validation');
+      
+      errorDiv.style.display = 'none';
+      
+      if (!input) {
+        showError('Please enter a JWT token to decode.');
+        return;
+      }
+      
+      const parts = input.split('.');
+      
+      if (parts.length !== 3) {
+        showError('Invalid JWT format. A valid JWT must have exactly three parts separated by dots.');
+        return;
+      }
+      
+      try {
+        const header = JSON.parse(atob(parts[0]));
+        const payload = JSON.parse(atob(parts[1]));
+        const signature = parts[2];
+        
+        headerResult.innerHTML = `<pre>${JSON.stringify(header, null, 2)}</pre>`;
+        payloadResult.innerHTML = `<pre>${JSON.stringify(payload, null, 2)}</pre>`;
+        signatureDiv.innerHTML = `<pre style="word-break:break-all;white-space:pre-wrap;color:var(--accent);">${signature}</pre>`;
+        
+        let validationHTML = '';
+        const now = Math.floor(Date.now() / 1000);
+        
+        if (payload.exp) {
+          const expDate = new Date(payload.exp * 1000);
+          const isExpired = payload.exp < now;
+          validationHTML += `<div class="${isExpired ? 'invalid' : 'valid'}">
+            <strong>Expiration:</strong> ${isExpired ? 'EXPIRED' : 'VALID'}<br>
+            <span style="font-size:13px;margin-left:16px;">${expDate.toLocaleString()}</span>
+          </div>`;
+        } else {
+          validationHTML += '<div class="warning"><strong>Expiration:</strong> Not set</div>';
+        }
+        
+        if (payload.iss) {
+          validationHTML += `<div style="margin-top:8px;"><strong>Issuer:</strong> ${payload.iss}</div>`;
+        }
+        
+        if (payload.sub) {
+          validationHTML += `<div style="margin-top:8px;"><strong>Subject:</strong> ${payload.sub}</div>`;
+        }
+        
+        if (payload.aud) {
+          validationHTML += `<div style="margin-top:8px;"><strong>Audience:</strong> ${Array.isArray(payload.aud) ? payload.aud.join(', ') : payload.aud}</div>`;
+        }
+        
+        if (payload.iat) {
+          const iatDate = new Date(payload.iat * 1000);
+          validationHTML += `<div style="margin-top:8px;"><strong>Issued At:</strong> ${iatDate.toLocaleString()}</div>`;
+        }
+        
+        validationDiv.innerHTML = validationHTML;
+        resultDiv.style.display = 'block';
+        
+      } catch (e) {
+        showError('Failed to decode JWT. Please make sure it\'s a valid Base64Url-encoded token.');
+      }
+    }
+    
+    function showError(message) {
+      const errorDiv = document.getElementById('error');
+      const resultDiv = document.getElementById('result');
+      errorDiv.textContent = message;
+      errorDiv.style.display = 'block';
+      resultDiv.style.display = 'none';
+    }
+    
+    function clearAll() {
+      document.getElementById('jwtInput').value = '';
+      document.getElementById('result').style.display = 'none';
+      document.getElementById('error').style.display = 'none';
+    }
+    
+    function pasteSample() {
+      const sampleToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJleHAiOjE5OTk5OTk5OTl9.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c';
+      document.getElementById('jwtInput').value = sampleToken;
+      decodeJWT();
+    }
+    
+    // Auto-decode on paste
+    document.getElementById('jwtInput').addEventListener('paste', function() {
+      setTimeout(decodeJWT, 100);
+    });
+  </script>
+  
+  <script src="/knexio-bundle.js"></script>
 </body>
 </html>

@@ -4,37 +4,33 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Free Image Resizer – Resize Images Online</title>
-<meta name="description" content="">
+<title>Image Resizer – Resize Images Online | Knexio</title>
+<meta name="description" content="Free online image resizer. Resize images by width and height, maintain aspect ratio, and download instantly.">
 
-<link rel="canonical" href="">
+<link rel="canonical" href="https://knexio.xyz/tools/image-resizer/">
 
 <!-- Open Graph -->
 <meta property="og:title" content="Image Resizer">
-<meta property="og:description" content="">
-<meta property="og:url" content="">
+<meta property="og:description" content="Resize images online for free. Change image dimensions easily and download result.">
+<meta property="og:url" content="https://knexio.xyz/tools/image-resizer/">
 <meta property="og:type" content="WebApplication">
 <meta property="og:site_name" content="Knexio">
 <meta property="og:image" content="https://knexio.xyz/og-image.png">
 
 <!-- Structured Data -->
 <script type="application/ld+json">
-
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Image Resizer",
-    "url": "https://knexio.xyz/tools/image-resizer/",
-    "applicationCategory": "UtilitiesApplication",
-    "operatingSystem": "All",
-    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-    "description": "Free online image resizer. Adjust image dimensions while maintaining aspect ratio."
-  }
-  
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Image Resizer",
+  "url": "https://knexio.xyz/tools/image-resizer/",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "All",
+  "description": "Free online image resizer. Adjust image dimensions while maintaining aspect ratio."
+}
 </script>
 
 <style>
-
 :root{
   --bg:#0b1220;
   --card:#111a2e;
@@ -68,16 +64,6 @@ h1{font-size:32px;margin-bottom:8px}
 h2{font-size:22px;margin-top:30px;margin-bottom:10px}
 .subtitle{color:var(--sub);margin-bottom:24px}
 
-.badge{
-  display:inline-block;
-  padding:4px 10px;
-  border-radius:20px;
-  background:rgba(79,140,255,.15);
-  color:var(--accent);
-  font-size:12px;
-  margin-bottom:10px;
-}
-
 .card{
   background:var(--card);
   border:1px solid var(--border);
@@ -86,62 +72,129 @@ h2{font-size:22px;margin-top:30px;margin-bottom:10px}
   margin-bottom:20px;
 }
 
-textarea{
-  width:100%;
-  min-height:180px;
-  background:var(--bg);
-  border:1px solid var(--border);
-  border-radius:12px;
-  color:var(--text);
-  padding:14px;
-  font-size:15px;
-}
-textarea:focus{outline:none;border-color:var(--accent)}
-
-.btn-row{display:flex;gap:10px;margin-top:12px}
-button{
-  flex:1;
-  padding:10px;
-  border-radius:10px;
-  border:none;
-  background:var(--accent);
-  color:#fff;
-  cursor:pointer;
-}
-button.secondary{
-  background:transparent;
-  border:1px solid var(--border);
-  color:var(--sub);
+label {
+  display: block;
+  font-size: 14px;
+  color: var(--sub);
+  margin-bottom: 8px;
+  font-weight: 500;
 }
 
-.stats{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-  margin-top:16px;
-}
-.stat{
-  background:var(--bg);
-  border:1px solid var(--border);
-  border-radius:10px;
-  padding:16px;
-  text-align:center;
-}
-.stat span{
-  font-size:24px;
-  font-weight:700;
-  color:var(--accent);
-}
-.stat label{
-  display:block;
-  font-size:12px;
-  color:var(--sub);
+input[type="number"], input[type="range"], select {
+  width: 100%;
+  padding: 12px 16px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: var(--text);
+  font-size: 15px;
+  font-family: inherit;
 }
 
-.tip{
-  font-size:13px;
-  color:var(--sub);
-  margin-top:10px;
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.upload-area {
+  border: 2px dashed var(--border);
+  border-radius: 14px;
+  padding: 40px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.upload-area:hover {
+  border-color: var(--accent);
+  background: rgba(79,140,255,0.05);
+}
+
+.upload-area svg {
+  width: 48px;
+  height: 48px;
+  fill: var(--sub);
+  margin-bottom: 16px;
+}
+
+.upload-area p {
+  color: var(--sub);
+  font-size: 14px;
+}
+
+
+
+
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.checkbox-group input {
+  width: auto;
+  flex: 0;
+}
+
+.checkbox-group label {
+  margin-bottom: 0;
+  flex: 1;
+  cursor: pointer;
+}
+
+.preview-container {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  margin-top: 16px;
+  text-align: center;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.preview-container img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.info-text {
+  text-align: center;
+  color: var(--sub);
+  font-size: 13px;
+  margin-top: 12px;
+}
+
+.main-grid {
+  display: grid;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.panel {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.panel h2 {
+  font-size: 18px;
+  margin-top: 0;
+  margin-bottom: 16px;
 }
 
 .section p{
@@ -176,7 +229,7 @@ footer {
   text-align: center;
   color: var(--sub);
   font-size: 13px;
-}
+border-top:1px solid var(--border);}
 footer p {
   margin-bottom: 8px;
 }
@@ -191,11 +244,23 @@ footer a:hover {
 }
 
 @media(max-width:600px){
-  .stats{grid-template-columns:1fr 1fr}
+  .form-grid{grid-template-columns:1fr}
+  .main-grid{grid-template-columns:1fr}
 }
-
-</style>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2596567349043393" crossorigin="anonymous"></script>
+textarea,.text-area{width:100%;min-height:180px;background:var(--bg);border:1px solid var(--border);border-radius:12px;color:var(--text);padding:14px;font-size:15px;resize:vertical;box-sizing:border-box}
+textarea:focus,.text-area:focus{outline:none;border-color:var(--accent)}
+.btn-row{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+button,.btn,.btn-row button{flex:1;padding:10px;border-radius:10px;border:none;background:var(--accent);color:#fff;cursor:pointer;font-size:14px;transition:opacity 0.2s;box-sizing:border-box}
+button:hover,.btn:hover{opacity:0.9}
+button.secondary,.btn.secondary,.btn-outline,.btn-row button.secondary{background:transparent;border:1px solid var(--border);color:var(--sub)}
+button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.stat{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center}
+.stat span,.stat-value,.result-value,.age-value{font-size:24px;font-weight:700;color:var(--accent);display:block}
+.stat label,.stat-label,.result-label,.age-label{font-size:12px;color:var(--sub);display:block}
+.result-box{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;margin-top:16px;min-height:100px;white-space:pre-wrap;word-break:break-all;font-size:15px;line-height:1.7;box-sizing:border-box}
+@media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.btn-row{flex-direction:column}}
+  footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
 </head>
 
 <body><div class="container">
@@ -203,106 +268,201 @@ footer a:hover {
 <a class="back" href="../index.html">← Back to Tools</a>
 
 <h1>Image Resizer</h1>
-<p class="subtitle">Free online image resizer tool. No signup required, works in your browser.</p>
+<p class="subtitle">Resize images online for free. Change dimensions easily and download instantly.</p>
 
-<div class="ad-banner">
-  <ins class="adsbygoogle" style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="3153457922"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-</div>
+<div class="ad-banner"></div>
 
-<div class="container">
-    <a class="back" href="../index.html">← Back to Tools</a>
-    <h1>Image Resizer</h1>
-    <p class="subtitle">Free online image resizer tool. No signup required, works in your browser.</p>
-    <div class="intro">Resize images quickly and easily. Maintain aspect ratio or set custom dimensions.
+<div class="card">
+  <div class="upload-area" onclick="document.getElementById('fileInput').click()">
+    <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1 1-2 2H5a2 2 0 0 1 1-2-2v-4m8-12L12 3 7 8h7M7 8v7l-3 2h3m4-2l-3-2v7"/></svg>
+    <p>Drop image here or click to upload</p>
+    <input type="file" id="fileInput" accept="image/*" style="display:none;" onchange="handleFile(event)" />
   </div>
-    <div class="upload-area" onclick="document.getElementById('fileInput').click()" id="uploadArea">
-      <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1 1-2 2H5a2 2 0 0 1 1-2-2v-4m8-12L12 3 7 8h7M7 8v7l-3 2h3m4-2l-3-2v7"/></svg>
-      <p>Drop image here or click to upload</p>
-      <input type="file" id="fileInput" accept="image/*" style="display:none;" onchange="handleFile(event)" />
-    </div>
-    <div class="main-grid" id="editorPanel" style="display:none;">
-      <div class="panel">
-        <h2>Resize Settings</h2>
-        <div class="form-group">
+
+  <div class="main-grid" id="editorPanel" style="display:none;">
+    <div class="panel">
+      <h2>Resize Settings</h2>
+      <div class="form-grid">
+        <div>
           <label>Width (px)</label>
           <input type="number" id="widthInput" oninput="updateHeight()" />
         </div>
-        <div class="form-group">
+        <div>
           <label>Height (px)</label>
           <input type="number" id="heightInput" oninput="updateWidth()" />
         </div>
-        <div class="checkbox-group">
-          <input type="checkbox" id="lockAspect" checked onchange="toggleLock()" />
-          <label>Lock aspect ratio</label>
-        </div>
-        <div class="form-group">
-          <label>Output Format</label>
-          <select id="formatSelect" style="width:100%;padding:12px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);">
-            <option value="image/jpeg">JPEG</option>
-            <option value="image/png">PNG</option>
-            <option value="image/webp">WebP</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Quality: <span id="qualityValue">90</span>%</label>
-          <input type="range" id="quality" min="10" max="100" value="90" oninput="document.getElementById('qualityValue').textContent=this.value" style="width:100%;" />
-        </div>
-        <button class="btn" onclick="downloadResized()">Download Resized Image</button>
       </div>
-      <div class="panel">
-        <h2>Preview</h2>
-        <div class="preview-container" id="previewContainer">
-          <span style="color:var(--sub);">Upload an image to preview</span>
-        </div>
-        <div class="info-text" id="imageInfo"></div>
 
-  </div>
+      <div class="checkbox-group">
+        <input type="checkbox" id="lockAspect" checked onchange="toggleLock()" />
+        <label>Lock aspect ratio</label>
+      </div>
 
-<h2>How to Use This Tool</h2>
-  <div class="step-block">
-    <h3>Step 1: Enter your input</h3>
-    <p>Type or paste your content into the input field above.</p>
-  </div>
-  <div class="step-block">
-    <h3>Step 2: Adjust settings</h3>
-    <p>Use the available options to customize the processing.</p>
-  </div>
-  <div class="step-block">
-    <h3>Step 3: Get results</h3>
-    <p>View the processed output in the result area.</p>
-  </div>
-</div>
+      <div style="margin-bottom:16px;">
+        <label>Output Format</label>
+        <select id="formatSelect">
+          <option value="image/jpeg">JPEG</option>
+          <option value="image/png">PNG</option>
+          <option value="image/webp">WebP</option>
+        </select>
+      </div>
 
-<div class="ad-banner" style="margin-top:40px">
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3153457922" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <div style="margin-bottom:16px;">
+        <label>Quality: <span id="qualityValue">90</span>%</label>
+        <input type="range" id="quality" min="10" max="100" value="90" oninput="document.getElementById('qualityValue').textContent=this.value" />
+      </div>
+
+      <div class="btn-row">
+        <button onclick="downloadResized()">Download Resized Image</button>
+        <button class="secondary" onclick="resetTool()">Reset</button>
+      </div>
     </div>
 
-<div class="ad-banner" style="margin-top:40px">
-  <ins class="adsbygoogle" style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="3153457922"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
+    <div class="panel">
+      <h2>Preview</h2>
+      <div class="preview-container" id="previewContainer">
+        <span style="color:var(--sub);">Upload an image to preview</span>
+      </div>
+      <div class="info-text" id="imageInfo"></div>
+    </div>
+  </div>
 </div>
+
+<h2>Free Online Image Resizer</h2>
+<div class="section">
+<p>This image resizer instantly adjusts your images to any dimension. Perfect for web designers, bloggers, and anyone who needs to resize photos quickly.</p>
+<p>Upload an image, set your desired width and height, and download the resized version instantly. All processing happens in your browser for privacy.</p>
+</div>
+
+<h2>How It Works</h2>
+<div class="section">
+<p>The tool uses the browser's canvas API to resize images. When you upload an image, it calculates the aspect ratio and maintains proportions when the lock checkbox is enabled. You can choose output format (JPEG, PNG, WebP) and adjust quality before downloading.</p>
+</div>
+
+<h2>Related Tools</h2>
+<div class="tools">
+<a href="/tools/image-compressor/">Image Compressor</a>
+<a href="/tools/aspect-ratio-calculator/">Aspect Ratio Calculator</a>
+<a href="/tools/crop-image/">Crop Image</a>
+</div>
+
+<div class="ad-banner" style="margin-top:40px">
+      <!-- Ad space -->
+    </div>
 
 <footer>
   <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
-  <p>
-    <a href="/about/">About</a> •
-    <a href="/privacy/">Privacy Policy</a> •
-    <a href="/terms/">Terms of Service</a>
+  <p style="margin: 8px 0; font-size: 13px;">
+    <a href="/about/" style="color:var(--accent);text-decoration:none;margin:0 8px;">About</a>
+    <a href="/privacy/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Privacy</a>
+    <a href="/terms/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Terms</a>
+    <a href="/contact/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Contact</a>
   </p>
+  <p>© 2026 Knexio. All rights reserved.</p>
 </footer>
 
 </div>
 
 <script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-(adsbygoogle = window.adsbygoogle || []).push({});
+let originalImage = null;
+let aspectRatio = 1;
+let isLocked = true;
+
+function handleFile(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const img = new Image();
+    img.onload = function() {
+      originalImage = img;
+      aspectRatio = img.width / img.height;
+
+      document.getElementById('widthInput').value = img.width;
+      document.getElementById('heightInput').value = img.height;
+      document.getElementById('editorPanel').style.display = 'grid';
+      document.getElementById('imageInfo').textContent = `Original: ${img.width}×${img.height}px`;
+
+      updatePreview(img.width, img.height);
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+function updateHeight() {
+  const width = parseInt(document.getElementById('widthInput').value);
+  if (isLocked && width) {
+    const height = Math.round(width / aspectRatio);
+    document.getElementById('heightInput').value = height;
+    updatePreview(width, height);
+  }
+}
+
+function updateWidth() {
+  const height = parseInt(document.getElementById('heightInput').value);
+  if (isLocked && height) {
+    const width = Math.round(height * aspectRatio);
+    document.getElementById('widthInput').value = width;
+    updatePreview(width, height);
+  }
+}
+
+function updatePreview(width, height) {
+  if (!originalImage) return;
+
+  const canvas = document.createElement('canvas');
+  canvas.width = width;
+  canvas.height = height;
+  const ctx = canvas.getContext('2d');
+  ctx.drawImage(originalImage, 0, 0, width, height);
+
+  const previewContainer = document.getElementById('previewContainer');
+  previewContainer.innerHTML = '';
+  const previewImg = canvas.toDataURL('image/jpeg', 0.9);
+  previewContainer.innerHTML = `<img src="${previewImg}" alt="Preview" />`;
+}
+
+function toggleLock() {
+  isLocked = document.getElementById('lockAspect').checked;
+}
+
+function downloadResized() {
+  if (!originalImage) {
+    alert('Please upload an image first');
+    return;
+  }
+
+  const width = parseInt(document.getElementById('widthInput').value);
+  const height = parseInt(document.getElementById('heightInput').value);
+  const format = document.getElementById('formatSelect').value;
+  const quality = parseInt(document.getElementById('quality').value) / 100;
+
+  const canvas = document.createElement('canvas');
+  canvas.width = width;
+  canvas.height = height;
+  const ctx = canvas.getContext('2d');
+  ctx.drawImage(originalImage, 0, 0, width, height);
+
+  const dataUrl = canvas.toDataURL(format, quality);
+  const link = document.createElement('a');
+  link.download = `resized-image.${format.split('/')[1]}`;
+  link.href = dataUrl;
+  link.click();
+}
+
+function resetTool() {
+  document.getElementById('fileInput').value = '';
+  document.getElementById('editorPanel').style.display = 'none';
+  document.getElementById('previewContainer').innerHTML = '<span style="color:var(--sub);">Upload an image to preview</span>';
+  document.getElementById('imageInfo').textContent = '';
+  originalImage = null;
+}
+
+// AdSense initialization
 </script>
+
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>

@@ -1,238 +1,438 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>🎨 CSS Gradient Generator</title>
-<meta name="description" content="">
-
-<link rel="canonical" href="">
-
-<!-- Open Graph -->
-<meta property="og:title" content="🎨 CSS Gradient Generator">
-<meta property="og:description" content="">
-<meta property="og:url" content="">
-<meta property="og:type" content="WebApplication">
-<meta property="og:site_name" content="Knexio">
-<meta property="og:image" content="https://knexio.xyz/og-image.png">
-
-<!-- Structured Data -->
-<script type="application/ld+json">
-
+  <meta charset="UTF-8">
+  <title>CSS Gradient Generator – Linear, Radial & Conic | Knexio</title>
+  <meta property="og:image" content="https://knexio.xyz/og-image.svg" />
+  <meta name="description" content="Create beautiful CSS gradients online. Linear, radial, and conic gradient builder with live preview.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://knexio.xyz/tools/gradient-generator/">
+  <meta property="og:title" content="CSS Gradient Generator – Linear, Radial & Conic | Knexio">
+  <meta property="og:description" content="Build CSS gradients visually. Live preview, multi-stop support, copy-ready CSS output for linear, radial, and conic gradients.">
+  <meta property="og:url" content="https://knexio.xyz/tools/gradient-generator/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Knexio">
+  
+  <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What is this tool for?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "This is a free online tool for [purpose]. It helps you [function] quickly and easily."
-        }
-      }
-    ]
+    "@type": "WebApplication",
+    "name": "CSS Gradient Generator",
+    "url": "https://knexio.xyz/tools/gradient-generator/",
+    "applicationCategory": "DesignApplication",
+    "operatingSystem": "Any",
+    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+    "description": "Visual CSS gradient builder with live preview. Supports linear, radial, and conic gradients with multiple color stops."
   }
-  
+  </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the difference between linear and radial gradients?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Linear gradients transition colors along a straight line in a specified direction. Radial gradients radiate outward from a center point, creating circular or elliptical color spreads. Use linear for backgrounds and radial for spotlight effects or circular elements."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I add more than two colors to a gradient?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutely! Click \\"Add Color Stop\\" to include unlimited colors. Each color can be positioned independently (0-100%) creating complex multi-color gradients. The order of stops determines the color transition sequence."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a conic gradient used for?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Conic gradients rotate colors around a center point, like a pie chart. They're perfect for creating loaders, dials, pie charts, and any design requiring circular color distribution. The angle sets where the rotation begins."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I use the generated CSS code?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Click \\"Copy CSS\\" and paste it into your CSS file or HTML style attribute. The code includes the gradient function with all your settings. Apply it to background, background-image, or any CSS property accepting images."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are gradients supported in all browsers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, CSS gradients are supported in all modern browsers including Chrome, Firefox, Safari, and Edge. Our generator uses standard syntax ensuring maximum compatibility. No vendor prefixes are needed for current browser versions."
+      }
+    }
+  ]
+}
 </script>
-
-<style>
-
-:root{
-  --bg:#0b1220;
-  --card:#111a2e;
-  --border:rgba(255,255,255,.08);
-  --text:#fff;
-  --sub:#aab3c5;
-  --accent:#4f8cff;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-body{
-  font-family:system-ui,-apple-system;
-  background:var(--bg);
-  color:var(--text);
-}
-.container{max-width:900px;margin:auto;padding:50px 16px}
-
-/* 统一的返回按钮样式 */
-.back {
-  display: inline-block;
-  color: var(--sub);
-  text-decoration: none;
-  font-size: 14px;
-  margin-bottom: 24px;
-  transition: color 0.2s;
-}
-.back:hover {
-  color: var(--accent);
-}
-
-h1{font-size:32px;margin-bottom:8px}
-h2{font-size:22px;margin-top:30px;margin-bottom:10px}
-.subtitle{color:var(--sub);margin-bottom:24px}
-
-.badge{
-  display:inline-block;
-  padding:4px 10px;
-  border-radius:20px;
-  background:rgba(79,140,255,.15);
-  color:var(--accent);
-  font-size:12px;
-  margin-bottom:10px;
-}
-
-.card{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:14px;
-  padding:20px;
-  margin-bottom:20px;
-}
-
-textarea{
-  width:100%;
-  min-height:180px;
-  background:var(--bg);
-  border:1px solid var(--border);
-  border-radius:12px;
-  color:var(--text);
-  padding:14px;
-  font-size:15px;
-}
-textarea:focus{outline:none;border-color:var(--accent)}
-
-.btn-row{display:flex;gap:10px;margin-top:12px}
-button{
-  flex:1;
-  padding:10px;
-  border-radius:10px;
-  border:none;
-  background:var(--accent);
-  color:#fff;
-  cursor:pointer;
-}
-button.secondary{
-  background:transparent;
-  border:1px solid var(--border);
-  color:var(--sub);
-}
-
-.stats{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-  margin-top:16px;
-}
-.stat{
-  background:var(--bg);
-  border:1px solid var(--border);
-  border-radius:10px;
-  padding:16px;
-  text-align:center;
-}
-.stat span{
-  font-size:24px;
-  font-weight:700;
-  color:var(--accent);
-}
-.stat label{
-  display:block;
-  font-size:12px;
-  color:var(--sub);
-}
-
-.tip{
-  font-size:13px;
-  color:var(--sub);
-  margin-top:10px;
-}
-
-.section p{
-  color:var(--sub);
-  line-height:1.7;
-  margin-bottom:10px;
-}
-
-.tools a{
-  display:inline-block;
-  margin:6px;
-  padding:8px 14px;
-  border-radius:8px;
-  border:1px solid var(--border);
-  color:var(--sub);
-  text-decoration:none;
-}
-.tools a:hover{
-  border-color:var(--accent);
-  color:var(--accent);
-}
-
-/* 广告样式 */
-.ad-banner {
-  margin: 32px 0;
-  text-align: center;
-}
-
-/* 统一的 Footer 样式 */
-footer {
-  margin-top: 40px;
-  text-align: center;
-  color: var(--sub);
-  font-size: 13px;
-}
-footer p {
-  margin-bottom: 8px;
-}
-footer a {
-  color: var(--sub);
-  text-decoration: none;
-  margin: 0 10px;
-  transition: color 0.2s;
-}
-footer a:hover {
-  color: var(--accent);
-}
-
-@media(max-width:600px){
-  .stats{grid-template-columns:1fr 1fr}
-}
-
-</style>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2596567349043393" crossorigin="anonymous"></script>
+  <style>
+    :root {
+      --bg: #0b1220;
+      --card: #111a2e;
+      --border: rgba(255,255,255,0.08);
+      --text: #fff;
+      --sub: #aab3c5;
+      --accent: #4f8cff;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 20px 100px;
+    }
+    .back {
+      display: inline-block;
+      margin-bottom: 28px;
+      font-size: 14px;
+      color: var(--sub);
+    }
+    .back:hover {
+      color: var(--accent);
+    }
+    h1 {
+      font-size: 34px;
+      margin-bottom: 10px;
+    }
+    .subtitle {
+      font-size: 16px;
+      color: var(--sub);
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+    .ad-banner {
+      margin: 32px 0;
+      text-align: center;
+      min-height: 90px;
+    }
+    .main-grid {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 24px;
+    }
+    @media (max-width: 720px) {
+      .main-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .controls {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+    }
+    .preview-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .preview-box {
+      width: 100%;
+      aspect-ratio: 16/9;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      transition: all 0.2s;
+    }
+    .type-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .type-btn {
+      flex: 1;
+      padding: 10px 0;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--sub);
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.18s;
+    }
+    .type-btn.active {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+    .ctrl-label {
+      font-size: 12px;
+      color: var(--sub);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .ctrl-group {
+      margin-bottom: 20px;
+    }
+    .angle-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .angle-row input[type=range] {
+      flex: 1;
+      accent-color: var(--accent);
+    }
+    .angle-val {
+      min-width: 44px;
+      text-align: center;
+      font-size: 14px;
+      color: var(--accent);
+      font-family: monospace;
+    }
+    .stops-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .stop-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 8px 10px;
+    }
+    .stop-row input[type=color] {
+      width: 40px;
+      height: 32px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      background: none;
+      padding: 0;
+    }
+    .stop-row input[type=range] {
+      flex: 1;
+      accent-color: var(--accent);
+    }
+    .stop-pos {
+      font-size: 12px;
+      color: var(--sub);
+      font-family: monospace;
+      min-width: 32px;
+    }
+    .stop-remove {
+      background: none;
+      border: none;
+      color: var(--sub);
+      cursor: pointer;
+      font-size: 16px;
+      padding: 0 4px;
+      line-height: 1;
+    }
+    .stop-remove:hover {
+      color: #f87171;
+    }
+    .add-stop {
+      width: 100%;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px dashed var(--border);
+      background: none;
+      color: var(--sub);
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.18s;
+    }
+    .add-stop:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .css-out {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      font-family: monospace;
+      font-size: 13px;
+      color: #7dd3fc;
+      word-break: break-all;
+      line-height: 1.6;
+      min-height: 72px;
+    }
+    .btn-row {
+      display: flex;
+      gap: 10px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      padding: 10px 22px;
+      border-radius: 10px;
+      border: none;
+      background: var(--accent);
+      color: #fff;
+      font-size: 14px;
+      cursor: pointer;
+      transition: opacity 0.18s;
+    }
+    .btn:hover {
+      opacity: 0.85;
+    }
+    .btn.secondary {
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--sub);
+    }
+    .btn.secondary:hover {
+      color: var(--text);
+    }
+    .presets {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      margin-top: 16px;
+    }
+    .preset-swatch {
+      height: 44px;
+      border-radius: 8px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: border 0.18s;
+    }
+    .preset-swatch:hover {
+      border-color: var(--accent);
+    }
+    h2 {
+      font-size: 22px;
+      margin: 36px 0 14px;
+      color: var(--text);
+    }
+    .section {
+      margin-bottom: 24px;
+    }
+    .tip-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    .tip-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px;
+    }
+    .tip-card h3 {
+      font-size: 14px;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .tip-card p {
+      font-size: 13px;
+      color: var(--sub);
+      line-height: 1.6;
+    }
+    .faq-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 12px;
+    }
+    .faq-item h3 {
+      font-size: 16px;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+    .faq-item p {
+      font-size: 14px;
+      color: var(--sub);
+      line-height: 1.6;
+    }
+    .tools {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .tools a {
+      padding: 10px 18px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--sub);
+      text-decoration: none;
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+    .tools a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    footer {
+      margin-top: 60px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--sub);
+    border-top:1px solid var(--border);}
+    footer p {
+      margin-bottom: 8px;
+    }
+    footer a {
+      color: var(--sub);
+      margin: 0 10px;
+    }
+    footer a:hover {
+      color: var(--accent);
+    }
+    .copied {
+      background: #22c55e !important;
+    }
+    @media (max-width: 600px) {
+      .presets {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .btn-row {
+        flex-direction: column;
+      }
+    }
+  footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
 </head>
-
-<body><div class="container">
-
-<a class="back" href="../index.html">← Back to Tools</a>
-
-<h1>🎨 CSS Gradient Generator</h1>
-<p class="subtitle">Build linear, radial, and conic CSS gradients visually. Add unlimited color stops, adjust angle, and copy production-ready CSS code in one click.</p>
-
-<div class="ad-banner">
-  <ins class="adsbygoogle" style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="3153457922"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-</div>
-
+<body>
 <div class="container">
   <a class="back" href="../index.html">← Back to Tools</a>
   <h1>🎨 CSS Gradient Generator</h1>
   <p class="subtitle">Build linear, radial, and conic CSS gradients visually. Add unlimited color stops, adjust angle, and copy production-ready CSS code in one click.</p>
 
   <!-- Ad Slot 1: Top -->
+  <div class="ad-banner"></div>
 
   <div class="main-grid">
     <!-- Controls -->
     <div class="controls">
       <div class="type-row">
-        <div class="btn-row">
-      <button class="btn type-btn active" id="btn-linear" onclick="setType('linear')">Linear</button>
-        <button class="btn type-btn" id="btn-radial" onclick="setType('radial')">Radial</button>
-        <button class="btn type-btn" id="btn-conic" onclick="setType('conic')">Conic</button>
-    </div></div>
+        <button class="type-btn active" id="btn-linear" onclick="setType('linear')">Linear</button>
+        <button class="type-btn" id="btn-radial" onclick="setType('radial')">Radial</button>
+        <button class="type-btn" id="btn-conic" onclick="setType('conic')">Conic</button>
+      </div>
 
       <div class="ctrl-group" id="angle-group">
         <span class="ctrl-label">Angle</span>
@@ -253,45 +453,103 @@ footer a:hover {
     <div class="preview-wrap">
       <div class="preview-box" id="previewBox"></div>
 
-      <div style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px;">
+      <div class="card">
         <span class="ctrl-label">CSS Output</span>
         <div class="css-out" id="cssOut"></div>
-        
+        <div class="btn-row">
+          <button class="btn" id="copyBtn" onclick="copyCss()">📋 Copy CSS</button>
+          <button class="btn secondary" onclick="randomGradient()">🎲 Random</button>
+        </div>
       </div>
 
-      <div style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px;">
+      <div class="card">
         <span class="ctrl-label">Preset Gradients</span>
         <div class="presets" id="presetsGrid"></div>
       </div>
     </div>
   </div>
 
-  <!-- Ad Slot 2: Mid -->
-
-  <h2>CSS Gradient Tips</h2>
-  <div class="tip-grid">
-    <div class="tip-card">
-      <h3>Linear Gradient</h3>
-      <p><code>linear-gradient(135deg, #4f8cff 0%, #a855f7 100%)</code> — flows from top-left to bottom-right at 135°.</p>
-    </div>
-    <div class="tip-card">
-      <h3>Radial Gradient</h3>
-      <p><code>radial-gradient(circle, #22c55e 0%, #0b1220 100%)</code> — radiates outward from center. Use <code>ellipse</code> for oval shapes.</p>
-    </div>
-    <div class="tip-card">
-      <h3>Conic Gradient</h3>
-      <p><code>conic-gradient(from 0deg, red, yellow, green)</code> — sweeps around a center point. Great for pie charts.</p>
-    </div>
-    <div class="tip-card">
-      <h3>Multiple Backgrounds</h3>
-      <p>Stack gradients: <code>background: linear-gradient(...), linear-gradient(...)</code>. The first listed is on top.</p>
-    </div>
-
+  <div class="section">
+    <h2>Free Online CSS Gradient Generator</h2>
+    <p style="color: var(--sub); line-height: 1.7;">Create stunning CSS gradients instantly with our free gradient generator. Designers and developers can build linear, radial, and conic gradients with an intuitive visual interface. Adjust colors, add multiple stops, change angles, and copy the CSS code in one click. Perfect for buttons, backgrounds, headers, and any web design element.</p>
   </div>
 
-  <div class="ad-banner" style="margin-top:40px">
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3153457922" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <div class="section">
+    <h2>How It Works</h2>
+    <div class="tip-grid">
+      <div class="tip-card">
+        <h3>Choose Gradient Type</h3>
+        <p>Select Linear for straight color transitions, Radial for circular spreads from center, or Conic for wheel-like gradients around a point.</p>
+      </div>
+      <div class="tip-card">
+        <h3>Adjust Angle</h3>
+        <p>Use the slider to control the direction. 0deg goes upward, 90deg to the right, 180deg downward, 270deg to the left.</p>
+      </div>
+      <div class="tip-card">
+        <h3>Add Color Stops</h3>
+        <p>Click to add more colors. Each stop has a position slider (0-100%) determining where the color appears in the gradient.</p>
+      </div>
+      <div class="tip-card">
+        <h3>Copy CSS Code</h3>
+        <p>Instantly copy the generated CSS code. Paste directly into your stylesheet or inline style attribute. No formatting needed.</p>
+      </div>
     </div>
+  </div>
+
+  <div class="section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>What is the difference between linear and radial gradients?</h3>
+      <p>Linear gradients transition colors along a straight line in a specified direction. Radial gradients radiate outward from a center point, creating circular or elliptical color spreads. Use linear for backgrounds and radial for spotlight effects or circular elements.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Can I add more than two colors to a gradient?</h3>
+      <p>Absolutely! Click "Add Color Stop" to include unlimited colors. Each color can be positioned independently (0-100%) creating complex multi-color gradients. The order of stops determines the color transition sequence.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What is a conic gradient used for?</h3>
+      <p>Conic gradients rotate colors around a center point, like a pie chart. They're perfect for creating loaders, dials, pie charts, and any design requiring circular color distribution. The angle sets where the rotation begins.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How do I use the generated CSS code?</h3>
+      <p>Click "Copy CSS" and paste it into your CSS file or HTML style attribute. The code includes the gradient function with all your settings. Apply it to background, background-image, or any CSS property accepting images.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Are gradients supported in all browsers?</h3>
+      <p>Yes, CSS gradients are supported in all modern browsers including Chrome, Firefox, Safari, and Edge. Our generator uses standard syntax ensuring maximum compatibility. No vendor prefixes are needed for current browser versions.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Can I use gradients for print designs?</h3>
+      <p>CSS gradients are designed for screen displays, not print. For print, use solid colors or raster images. However, gradients are perfect for web design, mobile apps, and digital presentations.</p>
+    </div>
+  </div>
+
+  <div class="ad-banner" style="margin-top: 40px;">
+      <!-- Ad space -->
+    </div>
+
+  <h2>Related Tools</h2>
+  <div class="tools">
+    <a href="/tools/color-picker/">Color Picker</a>
+    <a href="/tools/hex-to-rgb/">Hex To Rgb</a>
+    <a href="/tools/hsl-to-rgb-converter/">Hsl To Rgb Converter</a>
+  </div>
+
+  <div class="ad-banner" style="margin-top: 40px;">
+      <!-- Ad space -->
+    </div>
+
+  <footer>
+    <p>Free online tools for developers, designers, and everyone.</p>
+    <p style="margin: 8px 0; font-size: 13px;">
+      <a href="/about/" style="color:var(--accent);text-decoration:none;margin:0 8px;">About</a>
+      <a href="/privacy/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Privacy</a>
+      <a href="/terms/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Terms</a>
+      <a href="/contact/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Contact</a>
+    </p>
+    <p>© 2026 Knexio. All rights reserved.</p>
+  </footer>
+</div>
 
 <script>
   let gradType = 'linear';
@@ -405,69 +663,6 @@ footer a:hover {
   buildPresets();
   renderStops();
 </script>
-  <script src="../../knexio-bundle.js"></script>
-  <script src="../../cookie-consent.js"></script>
-  <!-- Schema: FAQ -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What is this tool for?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "This is a free online tool for [purpose]. It helps you [function] quickly and easily."
-        }
-      }
-    ]
-  }
-  </script>
-  </div>
-
-  
-  <div class="seo-section">
-    <h2>How to Use the CSS Gradient Generator</h2>
-    <div class="step-block">
-      <h3>Step 1: Pick colors</h3>
-      <p>Choose two or more colors using the color pickers.</p>
-    </div>
-    <div class="step-block">
-      <h3>Step 2: Set direction and type</h3>
-      <p>Select angle/direction and choose linear, radial, or conic gradient.</p>
-    </div>
-    <div class="step-block">
-      <h3>Step 3: Preview in real time</h3>
-      <p>The gradient preview updates instantly as you adjust settings.</p>
-    </div>
-    <div class="step-block">
-      <h3>Step 4: Copy the CSS</h3>
-      <p>Click Copy CSS to get the ready-to-use background CSS property.</p>
-    </div>
-
-<div class="ad-banner" style="margin-top:40px">
-  <ins class="adsbygoogle" style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="3153457922"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-</div>
-
-<footer>
-  <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
-  <p>
-    <a href="/about/">About</a> •
-    <a href="/privacy/">Privacy Policy</a> •
-    <a href="/terms/">Terms of Service</a>
-  </p>
-</footer>
-
-</div>
-
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>

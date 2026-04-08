@@ -415,66 +415,12 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
         </div>
     </div>
 </div>
+<script src="/knexio-bundle.js"></script>
 
 
-    <footer p{margin:0},duration);
-  });
-}
 
-async function showSequence(){
-  showing=true;
-  playing=false;
-  document.getElementById('statusText').textContent='Watch the sequence…';
-  document.getElementById('statusText').className='status-text show';
-  for(const c of sequence){
-    await new Promise(r=>setTimeout(r,200));
-    await flash(c,500);
-  }
-  showing=false;
-  playing=true;
-  playerSeq=[];
-  document.getElementById('statusText').textContent='Your turn! ('+sequence.length+' steps)';
-  document.getElementById('statusText').className='status-text input';
-}
-
-function startGame(){
-  sequence=[];
-  level=0;
-  playing=false;
-  document.getElementById('startBtn').textContent='Restart';
-  nextLevel();
-}
-
-function nextLevel(){
-  level++;
-  sequence.push(COLORS[Math.floor(Math.random()*4)]);
-  document.getElementById('levelDisp').textContent=level;
-  document.getElementById('centerLevel').textContent=level;
-  if(level>best){best=level;document.getElementById('bestDisp').textContent=best;}
-  setTimeout(showSequence,600);
-}
-
-async function playerClick(color){
-  if(!playing||showing)return;
-  await flash(color,250);
-  playerSeq.push(color);
-  const idx=playerSeq.length-1;
-  if(playerSeq[idx]!==sequence[idx]){
-    playing=false;
-    document.getElementById('statusText').textContent='❌ Wrong! You reached level '+(level-1)+'. Press Restart.';
-    document.getElementById('statusText').className='status-text fail';
-    return;
-  }
-  if(playerSeq.length===sequence.length){
-    playing=false;
-    document.getElementById('statusText').textContent='✅ Correct!';
-    setTimeout(nextLevel,800);
-  }
-}
-</script></div>
-
-
-<footer>
+    <style>p{margin:0}</style>
+  <footer>
   <p>Free online games to play anytime. Enjoy classic games, puzzles, and entertainment.</p>
   <p style="margin: 8px 0; font-size: 13px;">
     <a href="/about/" style="color:var(--accent);text-decoration:none;margin:0 8px;">About</a>
@@ -485,6 +431,8 @@ async function playerClick(color){
   <p>© 2026 Knexio. All rights reserved.</p>
 </footer>
 
-</script>
+</script>
 </body>
 </html>
+
+</div>

@@ -5,25 +5,32 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Base64 Encoder / Decoder – Encode & Decode Text Online | Knexio</title>
-<meta name="description" content="">
+<meta name="description" content="Free online Base64 encoder and decoder. Encode text to Base64 or decode Base64 strings instantly. Supports Unicode and URL-safe Base64.">
 
-<link rel="canonical" href="">
+<link rel="canonical" href="https://knexio.xyz/tools/base64-encoder-decoder/">
 
 <!-- Open Graph -->
 <meta property="og:title" content="Base64 Encoder / Decoder">
-<meta property="og:description" content="">
-<meta property="og:url" content="">
+<meta property="og:description" content="Encode text to Base64 or decode Base64 strings instantly. Supports Unicode and URL-safe Base64.">
+<meta property="og:url" content="https://knexio.xyz/tools/base64-encoder-decoder/">
 <meta property="og:type" content="WebApplication">
 <meta property="og:site_name" content="Knexio">
 <meta property="og:image" content="https://knexio.xyz/og-image.png">
 
 <!-- Structured Data -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Base64 Encoder / Decoder","applicationCategory":"DeveloperApplication","operatingSystem":"All","url":"https://knexio.xyz/tools/base64-encoder-decoder/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Base64 Encoder / Decoder",
+  "url": "https://knexio.xyz/tools/base64-encoder-decoder/",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "All",
+  "description": "Free online Base64 encoder and decoder. Encode text to Base64 or decode Base64 strings instantly."
+}
 </script>
 
 <style>
-
 :root{
   --bg:#0b1220;
   --card:#111a2e;
@@ -75,57 +82,17 @@ h2{font-size:22px;margin-top:30px;margin-bottom:10px}
   margin-bottom:20px;
 }
 
-textarea{
-  width:100%;
-  min-height:180px;
-  background:var(--bg);
-  border:1px solid var(--border);
-  border-radius:12px;
-  color:var(--text);
-  padding:14px;
-  font-size:15px;
-}
+
 textarea:focus{outline:none;border-color:var(--accent)}
 
-.btn-row{display:flex;gap:10px;margin-top:12px}
-button{
-  flex:1;
-  padding:10px;
-  border-radius:10px;
-  border:none;
-  background:var(--accent);
-  color:#fff;
-  cursor:pointer;
-}
-button.secondary{
-  background:transparent;
-  border:1px solid var(--border);
-  color:var(--sub);
-}
 
-.stats{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-  margin-top:16px;
-}
-.stat{
-  background:var(--bg);
-  border:1px solid var(--border);
-  border-radius:10px;
-  padding:16px;
-  text-align:center;
-}
-.stat span{
-  font-size:24px;
-  font-weight:700;
-  color:var(--accent);
-}
-.stat label{
-  display:block;
-  font-size:12px;
-  color:var(--sub);
-}
+
+
+
+
+
+
+
 
 .tip{
   font-size:13px;
@@ -138,6 +105,17 @@ button.secondary{
   line-height:1.7;
   margin-bottom:10px;
 }
+
+/* Step blocks */
+
+
+
+
+/* FAQ */
+
+
+
+
 
 .tools a{
   display:inline-block;
@@ -165,7 +143,7 @@ footer {
   text-align: center;
   color: var(--sub);
   font-size: 13px;
-}
+border-top:1px solid var(--border);}
 footer p {
   margin-bottom: 8px;
 }
@@ -180,11 +158,22 @@ footer a:hover {
 }
 
 @media(max-width:600px){
-  .stats{grid-template-columns:1fr 1fr}
+  
 }
-
-</style>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2596567349043393" crossorigin="anonymous"></script>
+textarea,.text-area{width:100%;min-height:180px;background:var(--bg);border:1px solid var(--border);border-radius:12px;color:var(--text);padding:14px;font-size:15px;resize:vertical;box-sizing:border-box}
+textarea:focus,.text-area:focus{outline:none;border-color:var(--accent)}
+.btn-row{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+button,.btn,.btn-row button{flex:1;padding:10px;border-radius:10px;border:none;background:var(--accent);color:#fff;cursor:pointer;font-size:14px;transition:opacity 0.2s;box-sizing:border-box}
+button:hover,.btn:hover{opacity:0.9}
+button.secondary,.btn.secondary,.btn-outline,.btn-row button.secondary{background:transparent;border:1px solid var(--border);color:var(--sub)}
+button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.stat{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center}
+.stat span,.stat-value,.result-value,.age-value{font-size:24px;font-weight:700;color:var(--accent);display:block}
+.stat label,.stat-label,.result-label,.age-label{font-size:12px;color:var(--sub);display:block}
+.result-box{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;margin-top:16px;min-height:100px;white-space:pre-wrap;word-break:break-all;font-size:15px;line-height:1.7;box-sizing:border-box}
+@media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.btn-row{flex-direction:column}}
+  footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
 </head>
 
 <body><div class="container">
@@ -192,133 +181,150 @@ footer a:hover {
 <a class="back" href="../index.html">← Back to Tools</a>
 
 <h1>Base64 Encoder / Decoder</h1>
-<p class="subtitle">Encode text to Base64 or decode Base64 strings instantly. Supports Unicode, URL-safe Base64, and file encoding. All processing runs in your browser — no data sent anywhere.</p>
+<p class="subtitle">Encode text to Base64 or decode Base64 strings instantly. Supports Unicode and URL-safe Base64. All processing runs in your browser — no data sent anywhere.</p>
 
-<div class="ad-banner">
-  <ins class="adsbygoogle" style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="3153457922"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
+<div class="ad-banner"></div>
+
+<div class="card">
+<textarea id="input" placeholder="Paste or type your text here..."></textarea>
+
+<div class="btn-row">
+<button onclick="encode()">Encode to Base64</button>
+<button onclick="decode()">Decode from Base64</button>
+<button class="secondary" onclick="clearText()">Clear</button>
 </div>
 
-<div class="container">
-  <a class="back" href="../index.html">← Back to Tools</a>
-  <h1>Base64 Encoder / Decoder</h1>
-      <p class="subtitle">Encode text to Base64 or decode Base64 strings instantly. Supports Unicode, URL-safe Base64, and file encoding. All processing runs in your browser — no data sent anywhere.</p>
-
-  <div class="seo-section">
-    <h2>How to Use This Tool</h2>
-    <div class="step-block">
-      <h3>Step 1: Enter your input</h3>
-      <p>Type or paste your data into the input field.</p>
-    </div>
-    <div class="step-block">
-      <h3>Step 2: Click the action button</h3>
-      <p>Press the main action button to process your input.</p>
-    </div>
-    <div class="step-block">
-      <h3>Step 3: Copy or download results</h3>
-      <p>Use the Copy button to copy results, or Download to save.</p>
-    </div>
+<div class="stats">
+  <div class="stat">
+    <span id="inputLen">0</span>
+    <label>Input Length</label>
   </div>
-
-  <div class="toolbar">
-    <div class="btn-row">
-      <button class="btn btn-primary" onclick="encodeBase64()">Encode to Base64</button>
-    <button class="btn btn-outline" onclick="decodeBase64()">Decode from Base64</button>
-    <button class="btn btn-outline" onclick="swapText()">Swap</button>
-    <button class="btn btn-outline" onclick="clearAll()">Clear</button>
-    </div><div class="options">
-      <label class="option-item">
-        <input type="checkbox" id="urlSafe">
-        URL-safe Base64
-      </label>
-    </div>
+  <div class="stat">
+    <span id="outputLen">0</span>
+    <label>Output Length</label>
   </div>
-
-  <div class="editor-layout">
-    <div>
-      <div class="pane-label"><span>Input</span>
-      <textarea class="text-area" id="input" placeholder="Type or paste text here to encode..."></textarea>
-    </div>
-    <div>
-      <div class="pane-label"><span>Output</span><button class="btn btn-outline btn-sm" onclick="copyOutput()">Copy</button></div>
-      <div class="output-box" id="output"></div>
-    </div>
+  <div class="stat">
+    <span id="mode">-</span>
+    <label>Mode</label>
   </div>
+</div>
 
-  <div id="statusBar" class="status-bar"></div>
-
-  <div class="file-section">
-    <h3>📁 File to Base64</h3>
-    <div class="file-drop" id="fileDrop" onclick="document.getElementById('fileInput').click()">
-      <div style="font-size:32px;margin-bottom:8px">📂</div>
-      <div>Drop a file here or click to select</div>
-      <div class="file-info">Max file size: 5MB</div>
-    </div>
-    <input type="file" id="fileInput" style="display:none" onchange="handleFileSelect(event)">
-    <div id="fileResult" style="margin-top:12px;display:none">
-      <textarea class="text-area" id="fileBase64" style="height:120px;margin-top:8px" readonly></textarea>
-      <div style="display:flex;gap:10px;margin-top:8px">
-        <button class="btn btn-primary btn-sm" onclick="copyFileBase64()">Copy Base64</button>
-        <button class="btn btn-outline btn-sm" onclick="downloadFile()">Download as File</button>
-    </div></div>
-    </div>
-
+<div class="card" style="margin-top: 16px;">
+  <label style="display:block;font-size:14px;color:var(--sub);margin-bottom:8px;">Output</label>
+  <textarea id="output" readonly placeholder="Result will appear here..." style="background:var(--bg);"></textarea>
+  <div class="btn-row">
+    <button class="secondary" onclick="copyOutput()">Copy Output</button>
   </div>
+</div>
 
-  <div class="ad-banner" style="margin-top:40px">
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3153457922" data-ad-format="auto" data-full-width-responsive="true"></ins>
-    </div>
+<div class="tip" id="tip"></div>
 
-  <section class="seo-section">
-    <h2>How to Use the Base64 Encoder / Decoder</h2>
-      <div class="step-block">
-        <h3>Step 1: Paste Your Text or Data</h3>
-        <p>Enter the string you want to encode or decode in the input box.</p>
-      </div>
-      <div class="step-block">
-        <h3>Step 2: Choose Encode or Decode</h3>
-        <p>Select the operation you need from the toggle buttons.</p>
-      </div>
-      <div class="step-block">
-        <h3>Step 3: Copy the Result</h3>
-        <p>Click Copy to grab the output for use in your project.</p>
-      </div>
+</div>
 
-    <h2>What Is a Base64 Encoder / Decoder?</h2>
-    <p>Base64 is an encoding scheme that converts binary data into ASCII text. It is widely used in email attachments, data URLs, and API authentication tokens.</p>
+<h2>Free Online Base64 Encoder / Decoder</h2>
+<div class="section">
+<p>This Base64 encoder/decoder instantly converts text to Base64 or decodes Base64 strings back to original text. Perfect for developers working with data URLs, authentication tokens, and email attachments.</p>
+<p>Supports Unicode characters, URL-safe Base64 encoding, and works entirely in your browser for maximum privacy.</p>
+</div>
 
-    <h2>Frequently Asked Questions</h2>
-      <div class="faq-item">
-        <h3>Is Base64 encryption?</h3>
-        <p>No. Base64 is encoding, not encryption. Anyone can decode it without a key.</p>
-      </div>
-  </section>
+<h2>How It Works</h2>
+<div class="section">
+<p>Enter your text in the input field, then click "Encode to Base64" to convert text to Base64, or "Decode from Base64" to convert Base64 back to text. The result appears instantly in the output field.</p>
+</div>
+
+<h2>How to Use Base64 Encoder / Decoder</h2>
+
+
+
+
+<h2>Related Tools</h2>
+<div class="tools">
+<a href="/tools/url-encoder-decoder/">URL Encoder / Decoder</a>
+<a href="/tools/hash-generator/">Hash Generator</a>
+<a href="/tools/text-to-binary/">Text to Binary Converter</a>
+</div>
 
 <div class="ad-banner" style="margin-top:40px">
-  <ins class="adsbygoogle" style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="3153457922"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-</div>
+      <!-- Ad space -->
+    </div>
 
 <footer>
   <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
-  <p>
-    <a href="/about/">About</a> •
-    <a href="/privacy/">Privacy Policy</a> •
-    <a href="/terms/">Terms of Service</a>
+  <p style="margin: 8px 0; font-size: 13px;">
+    <a href="/about/" style="color:var(--accent);text-decoration:none;margin:0 8px;">About</a>
+    <a href="/privacy/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Privacy</a>
+    <a href="/terms/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Terms</a>
+    <a href="/contact/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Contact</a>
   </p>
+  <p>© 2026 Knexio. All rights reserved.</p>
 </footer>
 
 </div>
 
 <script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-(adsbygoogle = window.adsbygoogle || []).push({});
+const input = document.getElementById("input");
+const output = document.getElementById("output");
+
+input.addEventListener("input", updateStats);
+
+function updateStats() {
+  document.getElementById("inputLen").textContent = input.value.length;
+}
+
+function encode() {
+  try {
+    const text = input.value;
+    if (!text) {
+      document.getElementById("tip").textContent = "Please enter text to encode";
+      return;
+    }
+    const encoded = btoa(unescape(encodeURIComponent(text)));
+    output.value = encoded;
+    document.getElementById("outputLen").textContent = encoded.length;
+    document.getElementById("mode").textContent = "Encoded";
+    document.getElementById("tip").textContent = "Text successfully encoded to Base64";
+  } catch (e) {
+    document.getElementById("tip").textContent = "Error: " + e.message;
+  }
+}
+
+function decode() {
+  try {
+    const text = input.value.trim();
+    if (!text) {
+      document.getElementById("tip").textContent = "Please enter Base64 to decode";
+      return;
+    }
+    const decoded = decodeURIComponent(escape(atob(text)));
+    output.value = decoded;
+    document.getElementById("outputLen").textContent = decoded.length;
+    document.getElementById("mode").textContent = "Decoded";
+    document.getElementById("tip").textContent = "Base64 successfully decoded to text";
+  } catch (e) {
+    document.getElementById("tip").textContent = "Error: Invalid Base64 string";
+    output.value = "";
+  }
+}
+
+function clearText() {
+  input.value = "";
+  output.value = "";
+  document.getElementById("inputLen").textContent = "0";
+  document.getElementById("outputLen").textContent = "0";
+  document.getElementById("mode").textContent = "-";
+  document.getElementById("tip").textContent = "";
+}
+
+function copyOutput() {
+  if (output.value) {
+    navigator.clipboard.writeText(output.value);
+    document.getElementById("tip").textContent = "Output copied to clipboard!";
+  }
+}
+
+// AdSense initialization
 </script>
+
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>

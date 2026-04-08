@@ -4,26 +4,33 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>URL Encoder / Decoder – Encode & Decode URLs Online | Knexio</title>
-<meta name="description" content="">
+<title>URL Encoder Decoder – Encode & Decode URLs | Knexio</title>
+<meta name="description" content="Encode or decode URLs instantly. Free online URL encoder/decoder to handle percent-encoding, special characters, and query string parameters.">
 
-<link rel="canonical" href="">
+<link rel="canonical" href="https://knexio.xyz/tools/url-encoder-decoder/">
 
 <!-- Open Graph -->
-<meta property="og:title" content="URL Encoder / Decoder">
-<meta property="og:description" content="">
-<meta property="og:url" content="">
+<meta property="og:title" content="URL Encoder Decoder – Encode & Decode URLs">
+<meta property="og:description" content="Encode or decode URLs instantly. Free online URL encoder/decoder to handle percent-encoding, special characters, and query string parameters.">
+<meta property="og:url" content="https://knexio.xyz/tools/url-encoder-decoder/">
 <meta property="og:type" content="WebApplication">
 <meta property="og:site_name" content="Knexio">
 <meta property="og:image" content="https://knexio.xyz/og-image.png">
 
 <!-- Structured Data -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"SoftwareApplication","name":"URL Encoder / Decoder","applicationCategory":"DeveloperApplication","operatingSystem":"All","url":"https://knexio.xyz/tools/url-encoder-decoder/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "URL Encoder / Decoder",
+  "url": "https://knexio.xyz/tools/url-encoder-decoder/",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "All",
+  "description": "Free tool to encode and decode URLs instantly."
+}
 </script>
 
 <style>
-
 :root{
   --bg:#0b1220;
   --card:#111a2e;
@@ -40,7 +47,6 @@ body{
 }
 .container{max-width:900px;margin:auto;padding:50px 16px}
 
-/* 统一的返回按钮样式 */
 .back {
   display: inline-block;
   color: var(--sub);
@@ -75,56 +81,84 @@ h2{font-size:22px;margin-top:30px;margin-bottom:10px}
   margin-bottom:20px;
 }
 
-textarea{
-  width:100%;
+
+textarea:focus{outline:none;border-color:var(--accent)}
+
+
+
+
+
+.toolbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-bottom:16px;
+}
+.toolbar 
+.options{
+  display:flex;
+  gap:12px;
+  font-size:14px;
+  color:var(--sub);
+}
+.options label{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  cursor:pointer;
+}
+.options input[type="checkbox"]{
+  width:16px;
+  height:16px;
+  cursor:pointer;
+}
+
+.pane-label{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-size:13px;
+  color:var(--sub);
+  margin-bottom:8px;
+}
+.pane-label 
+
+.editor-layout{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+.editor-layout>div{
+  display:flex;
+  flex-direction:column;
+}
+.output-box{
   min-height:180px;
   background:var(--bg);
   border:1px solid var(--border);
   border-radius:12px;
-  color:var(--text);
   padding:14px;
-  font-size:15px;
+  color:var(--text);
+  font-family:monospace;
+  font-size:14px;
+  white-space:pre-wrap;
+  overflow:auto;
 }
-textarea:focus{outline:none;border-color:var(--accent)}
 
-.btn-row{display:flex;gap:10px;margin-top:12px}
-button{
-  flex:1;
+.status-bar{
+  margin-top:12px;
   padding:10px;
-  border-radius:10px;
-  border:none;
-  background:var(--accent);
-  color:#fff;
-  cursor:pointer;
-}
-button.secondary{
-  background:transparent;
-  border:1px solid var(--border);
-  color:var(--sub);
-}
-
-.stats{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-  margin-top:16px;
-}
-.stat{
   background:var(--bg);
-  border:1px solid var(--border);
-  border-radius:10px;
-  padding:16px;
-  text-align:center;
-}
-.stat span{
-  font-size:24px;
-  font-weight:700;
-  color:var(--accent);
-}
-.stat label{
-  display:block;
-  font-size:12px;
+  border-radius:8px;
+  font-size:13px;
   color:var(--sub);
+}
+.status-bar.success{
+  background:rgba(46,204,113,.1);
+  color:var(--green);
+  border:1px solid var(--green);
 }
 
 .tip{
@@ -153,19 +187,17 @@ button.secondary{
   color:var(--accent);
 }
 
-/* 广告样式 */
 .ad-banner {
   margin: 32px 0;
   text-align: center;
 }
 
-/* 统一的 Footer 样式 */
 footer {
   margin-top: 40px;
   text-align: center;
   color: var(--sub);
   font-size: 13px;
-}
+border-top:1px solid var(--border);}
 footer p {
   margin-bottom: 8px;
 }
@@ -180,11 +212,24 @@ footer a:hover {
 }
 
 @media(max-width:600px){
-  .stats{grid-template-columns:1fr 1fr}
+  .editor-layout{grid-template-columns:1fr}
+  .toolbar{flex-direction:column}
+  .toolbar 
 }
-
-</style>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2596567349043393" crossorigin="anonymous"></script>
+textarea,.text-area{width:100%;min-height:180px;background:var(--bg);border:1px solid var(--border);border-radius:12px;color:var(--text);padding:14px;font-size:15px;resize:vertical;box-sizing:border-box}
+textarea:focus,.text-area:focus{outline:none;border-color:var(--accent)}
+.btn-row{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+button,.btn,.btn-row button{flex:1;padding:10px;border-radius:10px;border:none;background:var(--accent);color:#fff;cursor:pointer;font-size:14px;transition:opacity 0.2s;box-sizing:border-box}
+button:hover,.btn:hover{opacity:0.9}
+button.secondary,.btn.secondary,.btn-outline,.btn-row button.secondary{background:transparent;border:1px solid var(--border);color:var(--sub)}
+button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.stat{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center}
+.stat span,.stat-value,.result-value,.age-value{font-size:24px;font-weight:700;color:var(--accent);display:block}
+.stat label,.stat-label,.result-label,.age-label{font-size:12px;color:var(--sub);display:block}
+.result-box{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;margin-top:16px;min-height:100px;white-space:pre-wrap;word-break:break-all;font-size:15px;line-height:1.7;box-sizing:border-box}
+@media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.btn-row{flex-direction:column}}
+  footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
 </head>
 
 <body><div class="container">
@@ -194,114 +239,155 @@ footer a:hover {
 <h1>URL Encoder / Decoder</h1>
 <p class="subtitle">Encode special characters in URLs or decode percent-encoded strings instantly. Supports Unicode, query parameters, and component encoding. All processing runs in your browser.</p>
 
-<div class="ad-banner">
-  <ins class="adsbygoogle" style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="3153457922"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-</div>
+<div class="ad-banner"></div>
 
-<div class="container">
-  <a class="back" href="../index.html">← Back to Tools</a>
-  <h1>URL Encoder / Decoder</h1>
-      <p class="subtitle">Encode special characters in URLs or decode percent-encoded strings instantly. Supports Unicode, query parameters, and component encoding. All processing runs in your browser.</p>
-
-  <div class="seo-section">
-    <h2>How to Use This Tool</h2>
-    <div class="step-block">
-      <h3>Step 1: Enter your input</h3>
-      <p>Type or paste your data into the input field.</p>
-    </div>
-    <div class="step-block">
-      <h3>Step 2: Click the action button</h3>
-      <p>Press the main action button to process your input.</p>
-    </div>
-    <div class="step-block">
-      <h3>Step 3: Copy or download results</h3>
-      <p>Use the Copy button to copy results, or Download to save.</p>
-    </div>
-  </div>
-
+<div class="card">
   <div class="toolbar">
     <div class="btn-row">
-      <button class="btn btn-primary" onclick="encodeURL()">Encode URL</button>
-    <button class="btn btn-outline" onclick="decodeURL()">Decode URL</button>
-    <button class="btn btn-outline" onclick="swapText()">Swap</button>
-    <button class="btn btn-outline" onclick="clearAll()">Clear</button>
-    </div><div class="options">
-      <label class="option-item">
+      <button onclick="encodeURL()">Encode URL</button>
+      <button class="secondary" onclick="decodeURL()">Decode URL</button>
+      <button class="secondary" onclick="swapText()">Swap</button>
+      <button class="secondary" onclick="clearAll()">Clear</button>
+    </div>
+    <div class="options">
+      <label>
         <input type="checkbox" id="componentMode" checked>
-        Encode as component
+        <span>Encode as component</span>
       </label>
     </div>
   </div>
 
   <div class="editor-layout">
     <div>
-      <div class="pane-label"><span>Input</span><button class="btn btn-outline btn-sm" onclick="pasteClipboard()">Paste</button></div>
-      <textarea class="text-area" id="input" placeholder="https://example.com/search?q=hello world&category=test+item"></textarea>
+      <div class="pane-label">
+        <span>Input</span>
+        <button class="secondary" onclick="pasteClipboard()">Paste</button>
+      </div>
+      <textarea id="input" placeholder="https://example.com/search?q=hello world&category=test+item"></textarea>
     </div>
     <div>
-      <div class="pane-label"><span>Output</span><button class="btn btn-outline btn-sm" onclick="copyOutput()">Copy</button></div>
+      <div class="pane-label">
+        <span>Output</span>
+        <button class="secondary" onclick="copyOutput()">Copy</button>
+      </div>
       <div class="output-box" id="output"></div>
     </div>
   </div>
 
-  <div id="statusBar" class="status-bar">
-  </div>
+  <div id="statusBar" class="status-bar"></div>
+</div>
 
-  <div class="ad-banner" style="margin-top:40px">
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3153457922" data-ad-format="auto" data-full-width-responsive="true"></ins>
-    </div>
+<h2>How to Use</h2>
+<div class="section">
+<p>Enter the string you want to encode or decode. Select the operation using the buttons. Use the Copy button to grab the output for use in your browser or code.</p>
+</div>
 
-  <section class="seo-section">
-    <h2>How to Use the URL Encoder / Decoder</h2>
-      <div class="step-block">
-        <h3>Step 1: Paste Your URL or Text</h3>
-        <p>Enter the string you want to encode or decode.</p>
-      </div>
-      <div class="step-block">
-        <h3>Step 2: Choose Encode or Decode</h3>
-        <p>Select the operation using the toggle buttons.</p>
-      </div>
-      <div class="step-block">
-        <h3>Step 3: Copy the Result</h3>
-        <p>Click Copy to grab the output for use in your browser or code.</p>
-      </div>
+<h2>How It Works</h2>
+<div class="section">
+<p>A URL encoder converts special characters (spaces, &, =, etc.) into percent-encoded format safe for use in URLs. A URL decoder reverses this process, converting %XX codes back to original characters.</p>
+</div>
 
-    <h2>What Is a URL Encoder / Decoder?</h2>
-    <p>A URL encoder converts special characters (spaces, &, =, etc.) into percent-encoded format safe for use in URLs. A URL decoder reverses this process.</p>
-
-    <h2>Frequently Asked Questions</h2>
-      <div class="faq-item">
-        <h3>When do I need to URL-encode?</h3>
-        <p>Whenever you include user input, special characters, or non-ASCII text in a URL query string.</p>
-      </div>
-  </section>
+<h2>Related Tools</h2>
+<div class="tools">
+<a href="/tools/base64-encoder-decoder/">Base64 Encoder/Decoder</a>
+<a href="/tools/html-entity-encoder/">HTML Entity Encoder</a>
+<a href="/tools/text-to-binary/">Text to Binary</a>
+</div>
 
 <div class="ad-banner" style="margin-top:40px">
-  <ins class="adsbygoogle" style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="3153457922"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-</div>
+      <!-- Ad space -->
+    </div>
 
 <footer>
   <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
-  <p>
-    <a href="/about/">About</a> •
-    <a href="/privacy/">Privacy Policy</a> •
-    <a href="/terms/">Terms of Service</a>
+  <p style="margin: 8px 0; font-size: 13px;">
+    <a href="/about/" style="color:var(--accent);text-decoration:none;margin:0 8px;">About</a>
+    <a href="/privacy/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Privacy</a>
+    <a href="/terms/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Terms</a>
+    <a href="/contact/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Contact</a>
   </p>
+  <p>© 2026 Knexio. All rights reserved.</p>
 </footer>
 
 </div>
 
 <script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-(adsbygoogle = window.adsbygoogle || []).push({});
+const input=document.getElementById('input');
+const output=document.getElementById('output');
+const statusBar=document.getElementById('statusBar');
+const componentMode=document.getElementById('componentMode');
+
+function encodeURL(){
+  const text=input.value;
+  if(!text){
+    showStatus('Please enter text to encode','');
+    return;
+  }
+  try{
+    const encoded=componentMode.checked
+      ?encodeURIComponent(text)
+      :encodeURI(text);
+    output.textContent=encoded;
+    showStatus('Encoded successfully','success');
+  }catch(e){
+    showStatus('Error encoding: '+e.message,'');
+  }
+}
+
+function decodeURL(){
+  const text=input.value;
+  if(!text){
+    showStatus('Please enter text to decode','');
+    return;
+  }
+  try{
+    const decoded=componentMode.checked
+      ?decodeURIComponent(text)
+      :decodeURI(text);
+    output.textContent=decoded;
+    showStatus('Decoded successfully','success');
+  }catch(e){
+    showStatus('Error decoding: '+e.message,'');
+    output.textContent='';
+  }
+}
+
+function swapText(){
+  const temp=input.value;
+  input.value=output.textContent;
+  output.textContent=temp;
+}
+
+function clearAll(){
+  input.value='';
+  output.textContent='';
+  showStatus('','');
+}
+
+function pasteClipboard(){
+  navigator.clipboard.readText().then(text=>{
+    input.value=text;
+  }).catch(err=>{
+    alert('Unable to paste. Please use Ctrl+V or Cmd+V.');
+  });
+}
+
+function copyOutput(){
+  if(!output.textContent)return;
+  navigator.clipboard.writeText(output.textContent).then(()=>{
+    alert('Copied!');
+  });
+}
+
+function showStatus(msg,type){
+  statusBar.textContent=msg;
+  statusBar.className='status-bar '+type;
+  if(!msg)statusBar.className='status-bar';
+}
 </script>
+
+<script>
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>

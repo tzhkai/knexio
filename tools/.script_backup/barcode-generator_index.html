@@ -1,313 +1,425 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <title>Barcode Generator – Create Barcodes Online Free | Knexio</title>
+  <meta name="description" content="Generate barcodes online for free. Support Code128, EAN, UPC and more formats. Download as PNG or SVG." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="canonical" href="https://knexio.xyz/tools/barcode-generator/" />
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Barcode Generator – Create Barcodes Online Free" />
+  <meta property="og:description" content="Generate barcodes in multiple formats. Download as PNG or SVG." />
+  <meta property="og:url" content="https://knexio.xyz/tools/barcode-generator/" />
+  <meta property="og:type" content="WebApplication" />
+  <meta property="og:site_name" content="Knexio" />
+  <meta property="og:image" content="https://knexio.xyz/og-image.png" />
 
-<title>Free Barcode Generator – Create Barcodes Online</title>
-<meta name="description" content="">
-
-<link rel="canonical" href="">
-
-<!-- Open Graph -->
-<meta property="og:title" content="Barcode Generator">
-<meta property="og:description" content="">
-<meta property="og:url" content="">
-<meta property="og:type" content="WebApplication">
-<meta property="og:site_name" content="Knexio">
-<meta property="og:image" content="https://knexio.xyz/og-image.png">
-
-<!-- Structured Data -->
-<script type="application/ld+json">
-
+  <!-- Structured Data -->
+  <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
+    "@type": "WebApplication",
     "name": "Barcode Generator",
     "url": "https://knexio.xyz/tools/barcode-generator/",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "All",
-    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-    "description": "Free online barcode generator. Create barcodes in Code128, EAN, UPC and more formats."
+    "description": "Generate barcodes in multiple formats. Download as PNG or SVG."
   }
-  
-</script>
+  </script>
 
-<style>
+  <style>
+    :root {
+      --bg: #0b1220;
+      --card: #111a2e;
+      --border: rgba(255,255,255,0.08);
+      --text: #fff;
+      --sub: #aab3c5;
+      --accent: #4f8cff;
+    }
 
-:root{
-  --bg:#0b1220;
-  --card:#111a2e;
-  --border:rgba(255,255,255,.08);
-  --text:#fff;
-  --sub:#aab3c5;
-  --accent:#4f8cff;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-body{
-  font-family:system-ui,-apple-system;
-  background:var(--bg);
-  color:var(--text);
-}
-.container{max-width:900px;margin:auto;padding:50px 16px}
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* 统一的返回按钮样式 */
-.back {
-  display: inline-block;
-  color: var(--sub);
-  text-decoration: none;
-  font-size: 14px;
-  margin-bottom: 24px;
-  transition: color 0.2s;
-}
-.back:hover {
-  color: var(--accent);
-}
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
 
-h1{font-size:32px;margin-bottom:8px}
-h2{font-size:22px;margin-top:30px;margin-bottom:10px}
-.subtitle{color:var(--sub);margin-bottom:24px}
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 50px 16px;
+    }
 
-.badge{
-  display:inline-block;
-  padding:4px 10px;
-  border-radius:20px;
-  background:rgba(79,140,255,.15);
-  color:var(--accent);
-  font-size:12px;
-  margin-bottom:10px;
-}
+    /* 统一的返回按钮样式 */
+    .back {
+      display: inline-block;
+      color: var(--sub);
+      text-decoration: none;
+      font-size: 14px;
+      margin-bottom: 24px;
+      transition: color 0.2s;
+    }
 
-.card{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:14px;
-  padding:20px;
-  margin-bottom:20px;
-}
+    .back:hover {
+      color: var(--accent);
+    }
 
-textarea{
-  width:100%;
-  min-height:180px;
-  background:var(--bg);
-  border:1px solid var(--border);
-  border-radius:12px;
-  color:var(--text);
-  padding:14px;
-  font-size:15px;
-}
-textarea:focus{outline:none;border-color:var(--accent)}
+    h1 { font-size: 32px; margin-bottom: 8px; color: var(--text); }
 
-.btn-row{display:flex;gap:10px;margin-top:12px}
-button{
-  flex:1;
-  padding:10px;
-  border-radius:10px;
-  border:none;
-  background:var(--accent);
-  color:#fff;
-  cursor:pointer;
-}
-button.secondary{
-  background:transparent;
-  border:1px solid var(--border);
-  color:var(--sub);
-}
+    h2 { font-size: 22px; margin-top: 30px; margin-bottom: 10px; }
 
-.stats{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-  margin-top:16px;
-}
-.stat{
-  background:var(--bg);
-  border:1px solid var(--border);
-  border-radius:10px;
-  padding:16px;
-  text-align:center;
-}
-.stat span{
-  font-size:24px;
-  font-weight:700;
-  color:var(--accent);
-}
-.stat label{
-  display:block;
-  font-size:12px;
-  color:var(--sub);
-}
+    .subtitle {
+      font-size: 15px;
+      color: var(--sub);
+      margin-bottom: 24px;
+    }
 
-.tip{
-  font-size:13px;
-  color:var(--sub);
-  margin-top:10px;
-}
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
 
-.section p{
-  color:var(--sub);
-  line-height:1.7;
-  margin-bottom:10px;
-}
+    .card h2 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
 
-.tools a{
-  display:inline-block;
-  margin:6px;
-  padding:8px 14px;
-  border-radius:8px;
-  border:1px solid var(--border);
-  color:var(--sub);
-  text-decoration:none;
-}
-.tools a:hover{
-  border-color:var(--accent);
-  color:var(--accent);
-}
+    label {
+      display: block;
+      font-size: 14px;
+      color: var(--sub);
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
 
-/* 广告样式 */
-.ad-banner {
-  margin: 32px 0;
-  text-align: center;
-}
+    input[type="text"], input[type="number"], select {
+      width: 100%;
+      padding: 12px 16px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: var(--text);
+      font-size: 15px;
+      font-family: inherit;
+      transition: border-color 0.2s;
+    }
 
-/* 统一的 Footer 样式 */
-footer {
-  margin-top: 40px;
-  text-align: center;
-  color: var(--sub);
-  font-size: 13px;
-}
-footer p {
-  margin-bottom: 8px;
-}
-footer a {
-  color: var(--sub);
-  text-decoration: none;
-  margin: 0 10px;
-  transition: color 0.2s;
-}
-footer a:hover {
-  color: var(--accent);
-}
+    input:focus, select:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
 
-@media(max-width:600px){
-  .stats{grid-template-columns:1fr 1fr}
-}
+    
 
-</style>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2596567349043393" crossorigin="anonymous"></script>
+    .btn:hover {
+      background: #3d7de0;
+    }
+
+    
+
+    .btn.secondary:hover {
+      border-color: var(--sub);
+      color: var(--text);
+    }
+
+    
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .checkbox-group input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+    }
+
+    .checkbox-group label {
+      display: inline;
+      margin-bottom: 0;
+      cursor: pointer;
+    }
+
+    .barcode-preview {
+      background: #fff;
+      border-radius: 12px;
+      padding: 40px;
+      text-align: center;
+      min-height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 16px;
+    }
+
+    .barcode-preview svg {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .section p {
+      color: var(--sub);
+      line-height: 1.7;
+      margin-bottom: 10px;
+    }
+
+    /* Step blocks */
+    
+    
+    
+
+    /* FAQ */
+    
+    
+    
+    
+
+    .tools a {
+      display: inline-block;
+      margin: 6px;
+      padding: 8px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      color: var(--sub);
+      text-decoration: none;
+    }
+
+    .tools a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* 广告样式 */
+    .ad-banner {
+      margin: 32px 0;
+      text-align: center;
+    }
+
+    /* 统一的 Footer 样式 */
+    footer {
+      margin-top: 40px;
+      text-align: center;
+      color: var(--sub);
+      font-size: 13px;
+    border-top:1px solid var(--border);}
+
+    footer p {
+      margin-bottom: 8px;
+    }
+
+    footer a {
+      color: var(--sub);
+      text-decoration: none;
+      margin: 0 10px;
+      transition: color 0.2s;
+    }
+
+    footer a:hover {
+      color: var(--accent);
+    }
+
+    @media (max-width: 600px) {
+      
+    }
+textarea,.text-area{width:100%;min-height:180px;background:var(--bg);border:1px solid var(--border);border-radius:12px;color:var(--text);padding:14px;font-size:15px;resize:vertical;box-sizing:border-box}
+textarea:focus,.text-area:focus{outline:none;border-color:var(--accent)}
+.btn-row{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+button,.btn,.btn-row button{flex:1;padding:10px;border-radius:10px;border:none;background:var(--accent);color:#fff;cursor:pointer;font-size:14px;transition:opacity 0.2s;box-sizing:border-box}
+button:hover,.btn:hover{opacity:0.9}
+button.secondary,.btn.secondary,.btn-outline,.btn-row button.secondary{background:transparent;border:1px solid var(--border);color:var(--sub)}
+button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.stat{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center}
+.stat span,.stat-value,.result-value,.age-value{font-size:24px;font-weight:700;color:var(--accent);display:block}
+.stat label,.stat-label,.result-label,.age-label{font-size:12px;color:var(--sub);display:block}
+.result-box{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;margin-top:16px;min-height:100px;white-space:pre-wrap;word-break:break-all;font-size:15px;line-height:1.7;box-sizing:border-box}
+@media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.btn-row{flex-direction:column}}
+  footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
 </head>
 
-<body><div class="container">
-
-<a class="back" href="../index.html">← Back to Tools</a>
-
-<h1>Barcode Generator</h1>
-<p class="subtitle">Free online barcode generator tool. No signup required, works in your browser.</p>
-
-<div class="ad-banner">
-  <ins class="adsbygoogle" style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="3153457922"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-</div>
-
-<div class="container">
+<body>
+  <div class="container">
     <a class="back" href="../index.html">← Back to Tools</a>
+
     <h1>Barcode Generator</h1>
-    <p class="subtitle">Free online barcode generator tool. No signup required, works in your browser.</p>
-    <div class="intro">Create barcodes in multiple formats. Enter your data, choose a format, and download.
-  <h2>How to Use This Tool</h2>
-  <div class="step-block">
-    <h3>Step 1: Enter your input</h3>
-    <p>Type or paste your content into the input field above.</p>
-  </div>
-  <div class="step-block">
-    <h3>Step 2: Adjust settings</h3>
-    <p>Use the available options to customize the processing.</p>
-  </div>
-  <div class="step-block">
-    <h3>Step 3: Get results</h3>
-    <p>View the processed output in the result area.</p>
-  </div>
-</div>
+    <p class="subtitle">Create barcodes in multiple formats. Download as PNG or SVG.</p>
 
-    </div>
-    <div class="main-grid">
-      <div class="panel">
-        <h2>Barcode Settings</h2>
-        <div class="form-group">
-          <label>Data / Text</label>
-          <input type="text" id="barcodeData" placeholder="Enter text or numbers..." value="123456789" oninput="generateBarcode()" />
-        </div>
-        <div class="form-group">
-          <label>Barcode Format</label>
-          <select id="barcodeFormat" onchange="generateBarcode()">
-            <option value="CODE128">CODE128 (Universal)</option>
-            <option value="EAN13">EAN-13 (Retail)</option>
-            <option value="EAN8">EAN-8 (Small Retail)</option>
-            <option value="UPC">UPC (North America)</option>
-            <option value="CODE39">CODE39</option>
-            <option value="ITF14">ITF-14 (Shipping)</option>
-            <option value="MSI">MSI</option>
-            <option value="pharmacode">Pharmacode</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Width</label>
-          <input type="number" id="barcodeWidth" value="2" min="1" max="4" oninput="generateBarcode()" />
-        </div>
-        <div class="form-group">
-          <label>Height (px)</label>
-          <input type="number" id="barcodeHeight" value="100" min="30" max="300" oninput="generateBarcode()" />
-        </div>
-        <div class="form-group">
-          <label>
-            <input type="checkbox" id="showText" checked onchange="generateBarcode()" />
-            Show text below barcode
-          </label>
-        </div>
-        <button class="btn" onclick="generateBarcode()" style="width: 100%;">Generate Barcode</button>
+    <div class="ad-banner"></div>
+
+    <div class="card">
+      <h2>Barcode Settings</h2>
+      <div class="form-group">
+        <label>Data / Text</label>
+        <input type="text" id="barcodeData" placeholder="Enter text or numbers..." value="123456789" oninput="generateBarcode()" />
       </div>
-      <div class="panel">
-        <h2>Preview</h2>
-        <div class="barcode-preview">
-          <svg id="barcode"></svg>
-        </div>
-        <div class="btn-row">
-          <button class="btn" onclick="downloadPNG()">Download PNG</button>
-          <button class="btn btn-outline" onclick="downloadSVG()">Download SVG</button>
-        </div>
+      <div class="form-group">
+        <label>Barcode Format</label>
+        <select id="barcodeFormat" onchange="generateBarcode()">
+          <option value="CODE128">CODE128 (Universal)</option>
+          <option value="EAN13">EAN-13 (Retail)</option>
+          <option value="EAN8">EAN-8 (Small Retail)</option>
+          <option value="UPC">UPC (North America)</option>
+          <option value="CODE39">CODE39</option>
+          <option value="ITF14">ITF-14 (Shipping)</option>
+          <option value="MSI">MSI</option>
+          <option value="pharmacode">Pharmacode</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Width</label>
+        <input type="number" id="barcodeWidth" value="2" min="1" max="4" oninput="generateBarcode()" />
+      </div>
+      <div class="form-group">
+        <label>Height (px)</label>
+        <input type="number" id="barcodeHeight" value="100" min="30" max="300" oninput="generateBarcode()" />
+      </div>
+      <div class="form-group checkbox-group">
+        <input type="checkbox" id="showText" checked onchange="generateBarcode()" />
+        <label for="showText">Show text below barcode</label>
+      </div>
+      <div class="btn-row">
+        <button class="btn" onclick="generateBarcode()">Generate Barcode</button>
+      </div>
 
-  </div>
-
-  <div class="ad-banner" style="margin-top:40px">
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3153457922" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <h2>Preview</h2>
+      <div class="barcode-preview">
+        <svg id="barcode"></svg>
+      </div>
+      <div class="btn-row">
+        <button class="btn" onclick="downloadPNG()">Download PNG</button>
+        <button class="btn secondary" onclick="downloadSVG()">Download SVG</button>
+      </div>
     </div>
 
-<div class="ad-banner" style="margin-top:40px">
-  <ins class="adsbygoogle" style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="3153457922"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-</div>
+    <h2>How to Use the Barcode Generator</h2>
+    
+    
+    
 
-<footer>
-  <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
-  <p>
-    <a href="/about/">About</a> •
-    <a href="/privacy/">Privacy Policy</a> •
-    <a href="/terms/">Terms of Service</a>
-  </p>
-</footer>
+    <h2>What Is a Barcode?</h2>
+    <div class="section">
+      <p>A barcode is a machine-readable representation of data using parallel lines of varying widths. Different formats support different character sets and use cases. For example, EAN-13 is standard for retail products, while CODE128 can encode any ASCII character.</p>
+    </div>
 
-</div>
+    <div class="section">
+      <p><strong>How It Works</strong> - Enter your text or data in the input field. Our barcode generator creates multiple barcode formats including CODE128, EAN-13, UPC-A, and QR Code. Choose your preferred format and click Generate. The barcode updates instantly as you type.</p>
+    </div>
+<h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>What barcode formats are supported?</h3>
+      <p>We support major formats including CODE128 (most common), EAN-13 (retail), UPC-A (US retail), and QR Code (mobile-friendly).</p>
+    </div>
+    <div class="faq-item">
+      <h3>Can I use these barcodes commercially?</h3>
+      <p>The barcode images generated here are for general use. For commercial product barcodes, you may need official UPC/EAN registration.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Are the barcodes scannable?</h3>
+      <p>Yes, all generated barcodes use standard specifications and are scannable with any standard barcode reader or smartphone app.</p>
+    </div>
 
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-(adsbygoogle = window.adsbygoogle || []).push({});
+    <h2>Related Tools</h2>
+    <div class="tools">
+      <a href="/tools/qr-code-generator/">QR Code Generator</a>
+      <a href="/tools/favicon-generator/">Favicon Generator</a>
+      <a href="/tools/image-resizer/">Image Resizer</a>
+    </div>
+
+    <div class="ad-banner" style="margin-top:40px">
+      <!-- Ad space -->
+    </div>
+
+    <footer>
+      <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
+      <p style="margin: 8px 0; font-size: 13px;">
+        <a href="/about/" style="color:var(--accent);text-decoration:none;margin:0 8px;">About</a>
+        <a href="/privacy/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Privacy</a>
+        <a href="/terms/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Terms</a>
+        <a href="/contact/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Contact</a>
+      </p>
+      <p>© 2026 Knexio. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+  <script>
+    function generateBarcode() {
+      const data = document.getElementById('barcodeData').value;
+      const format = document.getElementById('barcodeFormat').value;
+      const width = parseInt(document.getElementById('barcodeWidth').value);
+      const height = parseInt(document.getElementById('barcodeHeight').value);
+      const showText = document.getElementById('showText').checked;
+
+      if (!data) {
+        document.getElementById('barcode').innerHTML = '';
+        return;
+      }
+
+      try {
+        JsBarcode('#barcode', data, {
+          format: format,
+          width: width,
+          height: height,
+          displayValue: showText,
+          fontSize: 16,
+          margin: 10
+        });
+      } catch(e) {
+        console.error('Barcode generation failed:', e);
+        document.getElementById('barcode').innerHTML = '<p style="color:var(--sub)">Unable to generate barcode. Please check your input.</p>';
+      }
+    }
+
+    function downloadPNG() {
+      const svg = document.getElementById('barcode');
+      const svgData = new XMLSerializer().serializeToString(svg);
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      const img = new Image();
+
+      img.onload = function() {
+        canvas.width = img.width;
+        canvas.height = img.height;
+        ctx.drawImage(img, 0, 0);
+        const link = document.createElement('a');
+        link.download = 'barcode.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      };
+
+      img.src = 'data:image/svg+xml;base64,' + btoa(svgData);
+    }
+
+    function downloadSVG() {
+      const svg = document.getElementById('barcode');
+      const svgData = new XMLSerializer().serializeToString(svg);
+      const blob = new Blob([svgData], { type: 'image/svg+xml' });
+      const link = document.createElement('a');
+      link.download = 'barcode.svg';
+      link.href = URL.createObjectURL(blob);
+      link.click();
+    }
+
+    // Initialize
+    generateBarcode();
+  
+// AdSense initialization
 </script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
