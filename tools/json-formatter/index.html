@@ -217,6 +217,54 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
 .result-box{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;margin-top:16px;min-height:100px;white-space:pre-wrap;word-break:break-all;font-size:15px;line-height:1.7;box-sizing:border-box}
 @media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.btn-row{flex-direction:column}}
   footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is JSON?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "JSON (JavaScript Object Notation) is a lightweight data-interchange format. It is easy for humans to read and write, and easy for machines to parse and generate. It is commonly used for API responses and configuration files."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the JSON formatter validate syntax?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The formatter will alert you if your JSON contains syntax errors, such as missing commas, unquoted keys, or trailing commas."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I minify JSON with this tool?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Besides pretty-printing with indentation, the tool can also minify (compact) JSON by removing all unnecessary whitespace."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my JSON data sent to a server?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. All formatting and validation happen directly in your browser. Your JSON data never leaves your device."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it support JSON with comments?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Standard JSON does not support comments. If your file contains comments, it is technically not valid JSON. Consider removing comments or using JSONC format."
+      }
+    }
+  ]
+}
+</script>
 </head>
 
 <body><div class="container">
@@ -284,6 +332,36 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
 <p>The tool parses and reformats JSON with proper indentation and line breaks. Syntax errors are highlighted with exact line and position for quick debugging. All processing happens locally in your browser.</p>
 </div>
 
+<h2>Frequently Asked Questions</h2>
+<div class="faq-item">
+  <h3>What is JSON?</h3>
+  <p>JSON (JavaScript Object Notation) is a lightweight data-interchange format. It is easy for humans to read and write, and easy for machines to parse and generate. It is commonly used for API responses and configuration files.</p>
+</div>
+<div class="faq-item">
+  <h3>Does the JSON formatter validate syntax?</h3>
+  <p>Yes. The formatter will alert you if your JSON contains syntax errors, such as missing commas, unquoted keys, or trailing commas.</p>
+</div>
+<div class="faq-item">
+  <h3>Can I minify JSON with this tool?</h3>
+  <p>Yes. Besides pretty-printing with indentation, the tool can also minify (compact) JSON by removing all unnecessary whitespace.</p>
+</div>
+<div class="faq-item">
+  <h3>Is my JSON data sent to a server?</h3>
+  <p>No. All formatting and validation happen directly in your browser. Your JSON data never leaves your device.</p>
+</div>
+<div class="faq-item">
+  <h3>Does it support JSON with comments?</h3>
+  <p>Standard JSON does not support comments. If your file contains comments, it is technically not valid JSON. Consider removing comments or using JSONC format.</p>
+</div>
+<div class="ad-banner" style="margin:24px 0">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="5794572171"
+       data-ad-format="auto"
+       data-full-width-responsive="true">
+  </ins>
+</div>
 <h2>Related Tools</h2>
 <div class="tools">
 <a href="../xml-formatter/">XML Formatter</a>

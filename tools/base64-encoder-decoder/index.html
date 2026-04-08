@@ -174,6 +174,54 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
 .result-box{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;margin-top:16px;min-height:100px;white-space:pre-wrap;word-break:break-all;font-size:15px;line-height:1.7;box-sizing:border-box}
 @media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.btn-row{flex-direction:column}}
   footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is Base64 encoding?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Base64 is a binary-to-text encoding system that converts binary data into ASCII text format. It is commonly used to encode data for safe transmission in text-based protocols like JSON, XML, or email."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Base64 encoding secure?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Base64 is not encryption \u2014 it is purely an encoding method. Anyone can decode a Base64 string. For secure data transmission, use HTTPS and proper encryption algorithms."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the difference between encoding and encrypting?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Encoding converts data to a different format for compatibility. Encrypting converts data using a secret key so that only authorized parties can read it. Base64 is encoding, not encrypting."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Base64 increase the file size?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Base64 encoding increases data size by approximately 33%. Three bytes of binary data become four ASCII characters."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I decode Base64 without an online tool?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Most programming languages have built-in Base64 functions. Browser developer tools, Python, JavaScript, and many other languages can decode Base64 directly."
+      }
+    }
+  ]
+}
+</script>
 </head>
 
 <body><div class="container">
@@ -245,6 +293,36 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
 
 
 
+<h2>Frequently Asked Questions</h2>
+<div class="faq-item">
+  <h3>What is Base64 encoding?</h3>
+  <p>Base64 is a binary-to-text encoding system that converts binary data into ASCII text format. It is commonly used to encode data for safe transmission in text-based protocols like JSON, XML, or email.</p>
+</div>
+<div class="faq-item">
+  <h3>Is Base64 encoding secure?</h3>
+  <p>Base64 is not encryption — it is purely an encoding method. Anyone can decode a Base64 string. For secure data transmission, use HTTPS and proper encryption algorithms.</p>
+</div>
+<div class="faq-item">
+  <h3>What's the difference between encoding and encrypting?</h3>
+  <p>Encoding converts data to a different format for compatibility. Encrypting converts data using a secret key so that only authorized parties can read it. Base64 is encoding, not encrypting.</p>
+</div>
+<div class="faq-item">
+  <h3>Does Base64 increase the file size?</h3>
+  <p>Yes. Base64 encoding increases data size by approximately 33%. Three bytes of binary data become four ASCII characters.</p>
+</div>
+<div class="faq-item">
+  <h3>Can I decode Base64 without an online tool?</h3>
+  <p>Yes. Most programming languages have built-in Base64 functions. Browser developer tools, Python, JavaScript, and many other languages can decode Base64 directly.</p>
+</div>
+<div class="ad-banner" style="margin:24px 0">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="5794572171"
+       data-ad-format="auto"
+       data-full-width-responsive="true">
+  </ins>
+</div>
 <h2>Related Tools</h2>
 <div class="tools">
 <a href="/tools/url-encoder-decoder/">URL Encoder / Decoder</a>
