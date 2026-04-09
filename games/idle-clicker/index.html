@@ -224,7 +224,12 @@
       }
         }
 
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
+footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}
+@keyframes floatUp {
+  0% { opacity: 1; transform: translateX(-50%) translateY(0); }
+  100% { opacity: 0; transform: translateX(-50%) translateY(-50px); }
+}
+</style>
   <meta name="keywords" content="idle clicker game, free online game, browser game, play online, casual game" /><script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -407,11 +412,78 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
         </div>
     </div>
 </div>
+<script>
+let coins = 0;
+let cps = 0;
+let clickValue = 1;
+const upgrades = [
+  { id: "cursor", name: "🖱️ Cursor", cost: 15, cps: 0.1, owned: 0 },
+  { id: "grandma", name: "👵 Grandma", cost: 100, cps: 1, owned: 0 },
+  { id: "farm", name: "🌾 Farm", cost: 1100, cps: 8, owned: 0 },
+  { id: "mine", name: "⛏️ Mine", cost: 12000, cps: 47, owned: 0 },
+  { id: "factory", name: "🏭 Factory", cost: 130000, cps: 260, owned: 0 },
+  { id: "bank", name: "🏦 Bank", cost: 1400000, cps: 1400, owned: 0 }
+];
+
+function clickCoin(e) {
+  coins += clickValue;
+  updateDisplay();
+  animateClick(e);
+}
+
+function animateClick(e) {
+  const btn = document.getElementById("clickBtn");
+  btn.style.transform = "scale(0.9)";
+  setTimeout(() => btn.style.transform = "scale(1)", 50);
+  const float = document.createElement("div");
+  float.textContent = "+" + clickValue;
+  float.style.cssText = "position:absolute;left:50%;top:40%;transform:translateX(-50%);color:#facc15;font-weight:bold;font-size:24px;pointer-events:none;animation:floatUp 0.8s ease-out forwards";
+  btn.parentElement.appendChild(float);
+  setTimeout(() => float.remove(), 800);
+}
+
+function buyUpgrade(idx) {
+  const u = upgrades[idx];
+  if (coins >= u.cost) {
+    coins -= u.cost;
+    u.owned++;
+    u.cost = Math.ceil(u.cost * 1.15);
+    updateCPS();
+    renderUpgrades();
+    updateDisplay();
+  }
+}
+
+function updateCPS() {
+  cps = upgrades.reduce((sum, u) => sum + u.cps * u.owned, 0);
+  clickValue = 1 + Math.floor(cps / 10);
+}
+
+function updateDisplay() {
+  document.getElementById("scoreVal").textContent = Math.floor(coins);
+  document.getElementById("coinRate").textContent = "+" + clickValue + " per click · " + cps.toFixed(1) + "/sec";
+  document.getElementById("totalCPS").textContent = "Total: " + cps.toFixed(1) + " coins/sec";
+}
+
+function renderUpgrades() {
+  const panel = document.getElementById("upgradesPanel");
+  panel.innerHTML = upgrades.map((u, i) => '<div class="upgrade-card" onclick="buyUpgrade(' + i + ')"><div class="upgrade-header"><span class="upgrade-name">' + u.name + '</span>' + (u.owned > 0 ? '<span class="upgrade-owned">' + u.owned + '</span>' : '') + '</div><div class="upgrade-desc">+' + u.cps + ' CPS</div><div class="upgrade-footer"><p>Cost: <strong>' + u.cost + '</strong> 🪙</p></div></div>').join("");
+}
+
+setInterval(() => { if (cps > 0) { coins += cps / 10; updateDisplay(); } }, 100);
+renderUpgrades();
+updateDisplay();
+</script>
 <script src="/knexio-bundle.js"></script>
 
 
 
-    <style>p{margin:0}</style>
+    <style>p{margin:0}
+@keyframes floatUp {
+  0% { opacity: 1; transform: translateX(-50%) translateY(0); }
+  100% { opacity: 0; transform: translateX(-50%) translateY(-50px); }
+}
+</style>
   <footer>
   <p>Free online games to play anytime. Enjoy classic games, puzzles, and entertainment.</p>
   <p style="margin: 8px 0; font-size: 13px;">
