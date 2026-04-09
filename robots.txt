@@ -1,6 +1,5 @@
 # Sitemap
 Sitemap: https://knexio.xyz/sitemap.xml
-Sitemap: https://knexio.xyz/sitemap-pages.xml
 
 # Google AdSense
 User-agent: Mediapartners-Google
@@ -43,8 +42,6 @@ Disallow: /cache/
 Disallow: /logs/
 Disallow: /.git/
 Disallow: /.env
-
-# Optional (谨慎使用)
 Disallow: /search/
 Disallow: /tag/
 Disallow: /category/
