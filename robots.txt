@@ -1,5 +1,5 @@
 # Sitemap
-Sitemap: https://knexio.xyz/sitemap.xml
+Sitemap: https://knexio.xyz/sitemap_index.xml
 
 # Google AdSense
 User-agent: Mediapartners-Google
