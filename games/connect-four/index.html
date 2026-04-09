@@ -371,6 +371,366 @@
   <p>© 2026 Knexio. All rights reserved.</p>
 </footer><div class="ad-banner" style="margin-top:40px"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="5794572171" data-ad-format="auto" data-full-width-responsive="true"></ins></div><div class="ad-section" style="margin-top:40px;text-align:center"><ins class="adsbygoogle" style="display:block;background:var(--panel);border-radius:12px;padding:15px" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
 
-  <script src="/cookie-consent.js"></script>
+<script>
+// ==================== Connect Four Game Logic ====================
+const ROWS = 6;
+const COLS = 7;
+let board = [];
+let currentPlayer = 'red';
+let gameMode = 'ai';
+let difficulty = 'medium';
+let gameOver = false;
+let scores = { red: 0, yellow: 0, draws: 0 };
+
+function initGame() {
+  board = Array(ROWS).fill(null).map(() => Array(COLS).fill(null));
+  currentPlayer = 'red';
+  gameOver = false;
+  renderBoard();
+  renderHoverRow();
+  updateStatus();
+  hideModal();
+}
+
+function renderBoard() {
+  const grid = document.getElementById('boardGrid');
+  grid.innerHTML = '';
+  
+  for (let row = 0; row < ROWS; row++) {
+    for (let col = 0; col < COLS; col++) {
+      const cell = document.createElement('div');
+      cell.className = 'cell';
+      cell.dataset.row = row;
+      cell.dataset.col = col;
+      
+      if (board[row][col]) {
+        const disc = document.createElement('div');
+        disc.className = `disc ${board[row][col]}`;
+        cell.appendChild(disc);
+      }
+      
+      grid.appendChild(cell);
+    }
+  }
+}
+
+function renderHoverRow() {
+  const hoverRow = document.getElementById('hoverRow');
+  hoverRow.innerHTML = '';
+  
+  for (let col = 0; col < COLS; col++) {
+    const slot = document.createElement('div');
+    slot.className = 'hover-slot';
+    slot.dataset.col = col;
+    slot.addEventListener('click', () => handleColumnClick(col));
+    slot.addEventListener('mouseenter', () => showPreview(col));
+    slot.addEventListener('mouseleave', () => hidePreview());
+    hoverRow.appendChild(slot);
+  }
+}
+
+function showPreview(col) {
+  if (gameOver) return;
+  const slots = document.querySelectorAll('.hover-slot');
+  slots.forEach((slot, i) => {
+    slot.innerHTML = i === col ? `<div class="preview-disc ${currentPlayer}"></div>` : '';
+  });
+}
+
+function hidePreview() {
+  const slots = document.querySelectorAll('.hover-slot');
+  slots.forEach(slot => slot.innerHTML = '');
+}
+
+function handleColumnClick(col) {
+  if (gameOver) return;
+  if (gameMode === 'ai' && currentPlayer === 'yellow') return;
+  
+  const row = getLowestEmptyRow(col);
+  if (row === -1) return;
+  
+  makeMove(row, col);
+}
+
+function getLowestEmptyRow(col) {
+  for (let row = ROWS - 1; row >= 0; row--) {
+    if (!board[row][col]) return row;
+  }
+  return -1;
+}
+
+function makeMove(row, col) {
+  board[row][col] = currentPlayer;
+  renderBoard();
+  
+  if (checkWin(row, col)) {
+    gameOver = true;
+    scores[currentPlayer]++;
+    updateScores();
+    showModal(`${currentPlayer === 'red' ? '🔴 Red' : '🟡 Yellow'} Wins!`, 'Connect 4 in a row!');
+    highlightWinningCells();
+    return;
+  }
+  
+  if (checkDraw()) {
+    gameOver = true;
+    scores.draws++;
+    updateScores();
+    showModal('🤝 Draw!', 'The board is full.');
+    return;
+  }
+  
+  currentPlayer = currentPlayer === 'red' ? 'yellow' : 'red';
+  updateStatus();
+  
+  if (gameMode === 'ai' && currentPlayer === 'yellow') {
+    setTimeout(makeAIMove, 500);
+  }
+}
+
+function checkWin(row, col) {
+  const player = board[row][col];
+  const directions = [[0, 1], [1, 0], [1, 1], [1, -1]];
+  
+  for (const [dr, dc] of directions) {
+    let count = 1;
+    let winningCells = [[row, col]];
+    
+    // Check positive direction
+    for (let i = 1; i < 4; i++) {
+      const r = row + dr * i;
+      const c = col + dc * i;
+      if (r >= 0 && r < ROWS && c >= 0 && c < COLS && board[r][c] === player) {
+        count++;
+        winningCells.push([r, c]);
+      } else break;
+    }
+    
+    // Check negative direction
+    for (let i = 1; i < 4; i++) {
+      const r = row - dr * i;
+      const c = col - dc * i;
+      if (r >= 0 && r < ROWS && c >= 0 && c < COLS && board[r][c] === player) {
+        count++;
+        winningCells.push([r, c]);
+      } else break;
+    }
+    
+    if (count >= 4) {
+      window.winningCells = winningCells;
+      return true;
+    }
+  }
+  return false;
+}
+
+function highlightWinningCells() {
+  if (!window.winningCells) return;
+  const cells = document.querySelectorAll('.cell');
+  window.winningCells.forEach(([row, col]) => {
+    const index = row * COLS + col;
+    cells[index].classList.add('winning');
+  });
+}
+
+function checkDraw() {
+  return board.every(row => row.every(cell => cell !== null));
+}
+
+// ==================== AI Logic ====================
+function makeAIMove() {
+  if (gameOver) return;
+  
+  let col;
+  
+  if (difficulty === 'easy') {
+    col = getRandomValidMove();
+  } else if (difficulty === 'medium') {
+    col = getMediumMove();
+  } else {
+    col = getHardMove();
+  }
+  
+  const row = getLowestEmptyRow(col);
+  makeMove(row, col);
+}
+
+function getRandomValidMove() {
+  const validCols = [];
+  for (let col = 0; col < COLS; col++) {
+    if (getLowestEmptyRow(col) !== -1) validCols.push(col);
+  }
+  return validCols[Math.floor(Math.random() * validCols.length)];
+}
+
+function getMediumMove() {
+  // Check for winning move
+  for (let col = 0; col < COLS; col++) {
+    const row = getLowestEmptyRow(col);
+    if (row !== -1) {
+      board[row][col] = 'yellow';
+      if (checkWin(row, col)) {
+        board[row][col] = null;
+        return col;
+      }
+      board[row][col] = null;
+    }
+  }
+  
+  // Block opponent's winning move
+  for (let col = 0; col < COLS; col++) {
+    const row = getLowestEmptyRow(col);
+    if (row !== -1) {
+      board[row][col] = 'red';
+      if (checkWin(row, col)) {
+        board[row][col] = null;
+        return col;
+      }
+      board[row][col] = null;
+    }
+  }
+  
+  // Prefer center
+  const centerCols = [3, 2, 4, 1, 5, 0, 6];
+  for (const col of centerCols) {
+    if (getLowestEmptyRow(col) !== -1) return col;
+  }
+  
+  return getRandomValidMove();
+}
+
+function getHardMove() {
+  // Simple minimax with alpha-beta
+  let bestScore = -Infinity;
+  let bestCol = 3;
+  
+  for (let col = 0; col < COLS; col++) {
+    const row = getLowestEmptyRow(col);
+    if (row !== -1) {
+      board[row][col] = 'yellow';
+      const score = minimax(board, 4, -Infinity, Infinity, false);
+      board[row][col] = null;
+      
+      if (score > bestScore) {
+        bestScore = score;
+        bestCol = col;
+      }
+    }
+  }
+  
+  return bestCol;
+}
+
+function minimax(board, depth, alpha, beta, isMaximizing) {
+  // Check terminal states
+  for (let col = 0; col < COLS; col++) {
+    const row = getLowestEmptyRow(col);
+    if (row !== -1) {
+      board[row][col] = isMaximizing ? 'yellow' : 'red';
+      const win = checkWin(row, col);
+      board[row][col] = null;
+      if (win) return isMaximizing ? 1000 - (6 - depth) : -1000 + (6 - depth);
+    }
+  }
+  
+  if (depth === 0) return evaluateBoard();
+  
+  if (isMaximizing) {
+    let maxScore = -Infinity;
+    for (let col = 0; col < COLS; col++) {
+      const row = getLowestEmptyRow(col);
+      if (row !== -1) {
+        board[row][col] = 'yellow';
+        const score = minimax(board, depth - 1, alpha, beta, false);
+        board[row][col] = null;
+        maxScore = Math.max(maxScore, score);
+        alpha = Math.max(alpha, score);
+        if (beta <= alpha) break;
+      }
+    }
+    return maxScore;
+  } else {
+    let minScore = Infinity;
+    for (let col = 0; col < COLS; col++) {
+      const row = getLowestEmptyRow(col);
+      if (row !== -1) {
+        board[row][col] = 'red';
+        const score = minimax(board, depth - 1, alpha, beta, true);
+        board[row][col] = null;
+        minScore = Math.min(minScore, score);
+        beta = Math.min(beta, score);
+        if (beta <= alpha) break;
+      }
+    }
+    return minScore;
+  }
+}
+
+function evaluateBoard() {
+  let score = 0;
+  // Prefer center control
+  for (let row = 0; row < ROWS; row++) {
+    if (board[row][3] === 'yellow') score += 3;
+    if (board[row][2] === 'yellow' || board[row][4] === 'yellow') score += 2;
+  }
+  return score;
+}
+
+// ==================== UI Functions ====================
+function setMode(mode) {
+  gameMode = mode;
+  document.getElementById('btn-vs-ai').classList.toggle('active', mode === 'ai');
+  document.getElementById('btn-vs-player').classList.toggle('active', mode === '2p');
+  document.getElementById('diff-seg').style.display = mode === 'ai' ? 'flex' : 'none';
+  newGame();
+}
+
+function setDiff(diff) {
+  difficulty = diff;
+  document.querySelectorAll('#diff-seg button').forEach(btn => {
+    btn.classList.toggle('active', btn.textContent.toLowerCase() === diff);
+  });
+}
+
+function newGame() {
+  initGame();
+}
+
+function updateStatus() {
+  const turnDisc = document.getElementById('turnDisc');
+  const statusText = document.getElementById('statusText');
+  turnDisc.className = 'disc-indicator ' + currentPlayer;
+  statusText.textContent = (currentPlayer === 'red' ? 'Red' : 'Yellow') + "'s turn";
+}
+
+function updateScores() {
+  document.getElementById('scoreRed').textContent = scores.red;
+  document.getElementById('scoreYellow').textContent = scores.yellow;
+  document.getElementById('scoreDraws').textContent = scores.draws;
+}
+
+function showModal(title, sub) {
+  document.getElementById('modalTitle').textContent = title;
+  document.getElementById('modalSub').textContent = sub;
+  document.getElementById('modal').style.display = 'flex';
+}
+
+function hideModal() {
+  document.getElementById('modal').style.display = 'none';
+}
+
+// Initialize
+document.addEventListener('DOMContentLoaded', initGame);
+</script>
+
+<style>
+.cell.winning .disc { animation: pulse 0.5s ease-in-out infinite; }
+@keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+.preview-disc { width: 50px; height: 50px; border-radius: 50%; opacity: 0.5; }
+.preview-disc.red { background: #ff4757; }
+.preview-disc.yellow { background: #ffa502; }
+</style>
+
+<script src="/cookie-consent.js"></script>
 </body>
 </html>

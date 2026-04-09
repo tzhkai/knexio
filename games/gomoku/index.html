@@ -347,6 +347,317 @@
   <p>© 2026 Knexio. All rights reserved.</p>
 </footer><div class="ad-banner" style="margin-top:40px"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="5794572171" data-ad-format="auto" data-full-width-responsive="true"></ins></div><div class="ad-section" style="margin-top:40px;text-align:center"><ins class="adsbygoogle" style="display:block;background:var(--panel);border-radius:12px;padding:15px" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
 
-  <script src="/cookie-consent.js"></script>
+<script>
+// ==================== Gomoku Game Logic ====================
+const BOARD_SIZE = 15;
+let board = [];
+let currentPlayer = 'black';
+let gameMode = 'pvp';
+let gameOver = false;
+let moveHistory = [];
+
+function initGame() {
+  board = Array(BOARD_SIZE).fill(null).map(() => Array(BOARD_SIZE).fill(null));
+  currentPlayer = 'black';
+  gameOver = false;
+  moveHistory = [];
+  renderBoard();
+  updateStatus();
+  hideWinMessage();
+}
+
+function renderBoard() {
+  const boardEl = document.getElementById('board');
+  boardEl.innerHTML = '';
+  boardEl.style.display = 'grid';
+  boardEl.style.gridTemplateColumns = `repeat(${BOARD_SIZE}, 30px)`;
+  boardEl.style.gap = '1px';
+  boardEl.style.background = '#8b4513';
+  boardEl.style.padding = '10px';
+  boardEl.style.borderRadius = '8px';
+  boardEl.style.width = 'fit-content';
+  boardEl.style.margin = '0 auto';
+  
+  for (let row = 0; row < BOARD_SIZE; row++) {
+    for (let col = 0; col < BOARD_SIZE; col++) {
+      const cell = document.createElement('div');
+      cell.style.width = '30px';
+      cell.style.height = '30px';
+      cell.style.background = '#deb887';
+      cell.style.display = 'flex';
+      cell.style.alignItems = 'center';
+      cell.style.justifyContent = 'center';
+      cell.style.cursor = 'pointer';
+      cell.dataset.row = row;
+      cell.dataset.col = col;
+      
+      if (board[row][col]) {
+        const stone = document.createElement('div');
+        stone.style.width = '24px';
+        stone.style.height = '24px';
+        stone.style.borderRadius = '50%';
+        stone.style.background = board[row][col] === 'black' ? '#000' : '#fff';
+        stone.style.border = board[row][col] === 'white' ? '1px solid #ccc' : 'none';
+        stone.style.boxShadow = '2px 2px 4px rgba(0,0,0,0.3)';
+        cell.appendChild(stone);
+      }
+      
+      cell.addEventListener('click', () => handleCellClick(row, col));
+      boardEl.appendChild(cell);
+    }
+  }
+}
+
+function handleCellClick(row, col) {
+  if (gameOver || board[row][col]) return;
+  if (gameMode === 'ai' && currentPlayer === 'white') return;
+  
+  makeMove(row, col);
+}
+
+function makeMove(row, col) {
+  board[row][col] = currentPlayer;
+  moveHistory.push({ row, col, player: currentPlayer });
+  renderBoard();
+  
+  if (checkWin(row, col)) {
+    gameOver = true;
+    showWinMessage(currentPlayer);
+    return;
+  }
+  
+  if (checkDraw()) {
+    gameOver = true;
+    showWinMessage('draw');
+    return;
+  }
+  
+  currentPlayer = currentPlayer === 'black' ? 'white' : 'black';
+  updateStatus();
+  
+  if (gameMode === 'ai' && currentPlayer === 'white') {
+    setTimeout(makeAIMove, 500);
+  }
+}
+
+function checkWin(row, col) {
+  const player = board[row][col];
+  const directions = [[0, 1], [1, 0], [1, 1], [1, -1]];
+  
+  for (const [dr, dc] of directions) {
+    let count = 1;
+    
+    // Check positive direction
+    for (let i = 1; i < 5; i++) {
+      const r = row + dr * i;
+      const c = col + dc * i;
+      if (r >= 0 && r < BOARD_SIZE && c >= 0 && c < BOARD_SIZE && board[r][c] === player) {
+        count++;
+      } else break;
+    }
+    
+    // Check negative direction
+    for (let i = 1; i < 5; i++) {
+      const r = row - dr * i;
+      const c = col - dc * i;
+      if (r >= 0 && r < BOARD_SIZE && c >= 0 && c < BOARD_SIZE && board[r][c] === player) {
+        count++;
+      } else break;
+    }
+    
+    if (count >= 5) return true;
+  }
+  return false;
+}
+
+function checkDraw() {
+  return board.every(row => row.every(cell => cell !== null));
+}
+
+// ==================== AI Logic ====================
+function makeAIMove() {
+  if (gameOver) return;
+  
+  const move = findBestMove();
+  makeMove(move.row, move.col);
+}
+
+function findBestMove() {
+  // Check for winning move
+  for (let row = 0; row < BOARD_SIZE; row++) {
+    for (let col = 0; col < BOARD_SIZE; col++) {
+      if (!board[row][col]) {
+        board[row][col] = 'white';
+        if (checkWin(row, col)) {
+          board[row][col] = null;
+          return { row, col };
+        }
+        board[row][col] = null;
+      }
+    }
+  }
+  
+  // Block opponent's winning move
+  for (let row = 0; row < BOARD_SIZE; row++) {
+    for (let col = 0; col < BOARD_SIZE; col++) {
+      if (!board[row][col]) {
+        board[row][col] = 'black';
+        if (checkWin(row, col)) {
+          board[row][col] = null;
+          return { row, col };
+        }
+        board[row][col] = null;
+      }
+    }
+  }
+  
+  // Look for open 4 (4 in a row with both ends open)
+  for (let row = 0; row < BOARD_SIZE; row++) {
+    for (let col = 0; col < BOARD_SIZE; col++) {
+      if (!board[row][col]) {
+        board[row][col] = 'white';
+        if (hasOpenFour(row, col, 'white')) {
+          board[row][col] = null;
+          return { row, col };
+        }
+        board[row][col] = null;
+      }
+    }
+  }
+  
+  // Block opponent's open 4
+  for (let row = 0; row < BOARD_SIZE; row++) {
+    for (let col = 0; col < BOARD_SIZE; col++) {
+      if (!board[row][col]) {
+        board[row][col] = 'black';
+        if (hasOpenFour(row, col, 'black')) {
+          board[row][col] = null;
+          return { row, col };
+        }
+        board[row][col] = null;
+      }
+    }
+  }
+  
+  // Prefer center area
+  const centerMoves = [];
+  const otherMoves = [];
+  for (let row = 0; row < BOARD_SIZE; row++) {
+    for (let col = 0; col < BOARD_SIZE; col++) {
+      if (!board[row][col]) {
+        const distFromCenter = Math.abs(row - 7) + Math.abs(col - 7);
+        if (distFromCenter <= 3) {
+          centerMoves.push({ row, col, score: 10 - distFromCenter });
+        } else {
+          otherMoves.push({ row, col, score: 5 });
+        }
+      }
+    }
+  }
+  
+  const allMoves = [...centerMoves, ...otherMoves];
+  if (allMoves.length > 0) {
+    allMoves.sort((a, b) => b.score - a.score);
+    return allMoves[Math.floor(Math.random() * Math.min(5, allMoves.length))];
+  }
+  
+  return { row: 7, col: 7 };
+}
+
+function hasOpenFour(row, col, player) {
+  const directions = [[0, 1], [1, 0], [1, 1], [1, -1]];
+  
+  for (const [dr, dc] of directions) {
+    let count = 1;
+    let openEnds = 0;
+    
+    // Positive direction
+    for (let i = 1; i < 5; i++) {
+      const r = row + dr * i;
+      const c = col + dc * i;
+      if (r >= 0 && r < BOARD_SIZE && c >= 0 && c < BOARD_SIZE) {
+        if (board[r][c] === player) count++;
+        else if (!board[r][c]) { openEnds++; break; }
+        else break;
+      }
+    }
+    
+    // Negative direction
+    for (let i = 1; i < 5; i++) {
+      const r = row - dr * i;
+      const c = col - dc * i;
+      if (r >= 0 && r < BOARD_SIZE && c >= 0 && c < BOARD_SIZE) {
+        if (board[r][c] === player) count++;
+        else if (!board[r][c]) { openEnds++; break; }
+        else break;
+      }
+    }
+    
+    if (count >= 4 && openEnds >= 1) return true;
+  }
+  return false;
+}
+
+// ==================== UI Functions ====================
+function setMode(mode) {
+  gameMode = mode;
+  document.querySelectorAll('.mode-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.textContent.toLowerCase().includes(mode === 'ai' ? 'ai' : 'players'));
+  });
+  newGame();
+}
+
+function newGame() {
+  initGame();
+}
+
+function undoMove() {
+  if (moveHistory.length === 0 || gameOver) return;
+  
+  // Undo both player and AI moves if in AI mode
+  const movesToUndo = (gameMode === 'ai' && moveHistory.length >= 2) ? 2 : 1;
+  
+  for (let i = 0; i < movesToUndo && moveHistory.length > 0; i++) {
+    const lastMove = moveHistory.pop();
+    board[lastMove.row][lastMove.col] = null;
+  }
+  
+  currentPlayer = moveHistory.length % 2 === 0 ? 'black' : 'white';
+  gameOver = false;
+  renderBoard();
+  updateStatus();
+  hideWinMessage();
+}
+
+function updateStatus() {
+  const indicator = document.getElementById('currentIndicator');
+  const text = document.getElementById('currentText');
+  indicator.className = 'player-indicator ' + currentPlayer;
+  text.textContent = currentPlayer === 'black' ? 'Black' : 'White';
+}
+
+function showWinMessage(winner) {
+  const winMsg = document.getElementById('winMessage');
+  const winnerText = document.getElementById('winnerText');
+  
+  if (winner === 'draw') {
+    winnerText.textContent = 'It\'s a Draw!';
+    winMsg.querySelector('p').textContent = 'The board is full!';
+  } else {
+    winnerText.textContent = winner === 'black' ? 'Black' : 'White';
+    winMsg.querySelector('p').textContent = 'Five in a row achieved!';
+  }
+  winMsg.style.display = 'block';
+}
+
+function hideWinMessage() {
+  document.getElementById('winMessage').style.display = 'none';
+}
+
+// Initialize
+document.addEventListener('DOMContentLoaded', initGame);
+</script>
+
+<script src="/cookie-consent.js"></script>
 </body>
 </html>
