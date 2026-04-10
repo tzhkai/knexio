@@ -2,31 +2,31 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://knexio.xyz/</loc>
-    <lastmod>2026-04-09</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://knexio.xyz/about/</loc>
-    <lastmod>2026-04-09</lastmod>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://knexio.xyz/privacy/</loc>
-    <lastmod>2026-04-09</lastmod>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://knexio.xyz/terms/</loc>
-    <lastmod>2026-04-09</lastmod>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://knexio.xyz/contact/</loc>
-    <lastmod>2026-04-09</lastmod>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
