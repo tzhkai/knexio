@@ -78,33 +78,111 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 </div>
 <script>
 function generatePosts() {
-  const topic = document.getElementById('topic').value || 'this topic';
+  const topic = document.getElementById('topic').value.trim();
+  if (!topic) {
+    alert('Please enter a post topic');
+    return;
+  }
   const platform = document.getElementById('platform').value;
   const style = document.getElementById('style').value;
+  
+  const titleCase = s => s ? s[0].toUpperCase() + s.slice(1) : '';
+  const topicLC = topic.toLowerCase();
+  const topicTC = titleCase(topicLC);
   
   const posts = [];
   
   if (platform === 'all' || platform === 'twitter') {
-    posts.push({platform: 'Twitter/X', text: `🧵 5 ${topic} strategies that changed my workflow:\n\n1. [Tip 1]\n2. [Tip 2]\n3. [Tip 3]\n4. [Tip 4]\n5. [Tip 5]\n\nWhich one resonates most? 👇`});
+    let tweet = style === 'informative'
+      ? '🧵 Everything you need to know about ' + topicLC + ':
+
+• ' + topicTC + ' matters more than most realize
+• The key is consistency, not perfection
+• Small steps compound fast
+
+Save this for later 👇'
+      : style === 'humorous'
+      ? topicLC + ' be like:
+
+"Yeah I should do that"
+"Nah let me scroll first"
+
+— 3 hours later —
+
+"Okay NOW I'll handle it" 😮‍💨
+
+Relatable? Drop a 👋'
+      : style === 'inspirational'
+      ? 'Every expert started somewhere.
+
+Including you. Including ' + topicLC + '.
+
+The journey of 1000 miles begins with a single step.
+
+What\'s your next step? 🚀'
+      : 'Quick question:
+
+What\'s your biggest challenge with ' + topicLC + '?
+
+Drop it in the replies 👇 I\'m reading every one.';
+    posts.push({platform: 'Twitter/X', text: tweet});
   }
   
   if (platform === 'all' || platform === 'linkedin') {
-    posts.push({platform: 'LinkedIn', text: `I just discovered something game-changing about ${topic}...\n\nAfter years of trial and error, here's what actually works:\n\n[Key insight]\n\nThe key isn't what you know - it's what you consistently apply.\n\nWhat's your experience with ${topic}? 👇`});
+    let lp = style === 'informative'
+      ? 'I\'ve spent years studying what separates high performers from the rest when it comes to ' + topicLC + '.
+
+The results:
+
+1. Intentionality beats intensity
+2. Small daily wins compound
+3. Remove what\'s broken before adding more
+
+What would you add? 👇'
+      : style === 'humorous'
+      ? 'POV: Trying to explain why ' + topicLC + ' matters to someone who\'s never tried it.
+
+*internally* just trust me 😭
+
+Your go-to analogy? 👇'
+      : style === 'inspirational'
+      ? 'The best time to start ' + topicLC + ' was 6 months ago.
+
+The second best time is right now.
+
+Don\'t wait for the "perfect moment."
+
+Take one action today.'
+      : 'What\'s the #1 thing holding you back with ' + topicLC + '?
+
+I\'ve seen hundreds face the same challenge. Let\'s talk 💬';
+    posts.push({platform: 'LinkedIn', text: lp});
   }
   
   if (platform === 'all' || platform === 'instagram') {
-    posts.push({platform: 'Instagram', text: `💡 ${topic} tip you need to know\n\nSave this for later!\n\n[Your actionable tip here]\n\nFollow for more ${topic} tips ✨`});
+    let ig = style === 'inspirational'
+      ? 'You don\'t have to be perfect at ' + topicLC + '.
+
+You just have to start.
+
+One step. One decision.
+
+Save this. Share it. Take action today. ✨'
+      : 'Your ' + topicLC + ' reminder:
+
+✅ Small steps add up
+✅ Consistency beats intensity
+✅ You\'re closer than you think
+
+Follow for daily tips ✨';
+    posts.push({platform: 'Instagram', text: ig});
   }
   
   const container = document.getElementById('posts');
-  container.innerHTML = posts.map(p => `
-    <div class="post-card">
-      <div class="platform">${p.platform}</div>
-      <p>${p.text}</p>
-    </div>
-  `).join('');
-}
-</script>
+  container.innerHTML = posts.map(function(p) {
+    return '<div class="post-card"><div class="platform">' + p.platform + '</div><p style="white-space:pre-wrap">' + p.text + '</p></div>';
+  }).join('');
+}</script>
 <script src="/knexio-bundle.js"></script>
 <div class="ad-banner footer-ad" style="margin:40px 0;text-align:center"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
 

@@ -61,6 +61,16 @@ footer{margin-top:60px;text-align:center;color:var(--sub)}
 <div class="section">
 <p><strong>Free Competitor Analysis Generator</strong> - Create SWOT analysis for any competitor. Compare strengths, weaknesses, opportunities, and threats. Make informed business decisions.</p>
 </div>
+
+<div style="margin:40px 0;padding:24px;background:var(--card);border:1px solid var(--border);border-radius:12px">
+<h2 style="margin-top:0;font-size:20px">How to Use This Tool</h2>
+<ol style="margin:0;padding-left:20px;line-height:2">
+<li><strong>Enter competitor name</strong> — Name the company or brand you want to analyze</li>
+<li><strong>Fill in each SWOT category</strong> — Think about both internal factors (Strengths/Weaknesses) and external factors (Opportunities/Threats)</li>
+<li><strong>Click Generate</strong> — Your formatted SWOT analysis will appear instantly</li>
+<li><strong>Copy & use</strong> — Use the analysis for business planning, pitches, or strategy documents</li>
+</ol>
+</div>
 <h2>FAQ</h2>
 <div class="faq-item">
 <h3>What is competitor analysis?</h3>
@@ -82,11 +92,20 @@ footer{margin-top:60px;text-align:center;color:var(--sub)}
 <script>
 function generateAnalysis() {
   const comp = document.getElementById('competitor').value || 'Competitor';
-  const s = document.getElementById('strengths').value;
-  const w = document.getElementById('weaknesses').value;
-  const o = document.getElementById('opportunities').value;
-  const t = document.getElementById('threats').value;
-  alert('Analysis for ' + comp + ' generated!');
+  const s = document.getElementById('strengths').value || 'Strong brand recognition\nPopular product features\nLarge customer base';
+  const w = document.getElementById('weaknesses').value || 'Higher pricing than competitors\nLimited mobile app features\nCustomer support response times';
+  const o = document.getElementById('opportunities').value || 'Emerging market expansion\nNew technology integration\nStrategic partnership opportunities';
+  const t = document.getElementById('threats').value || 'Increasing market competition\nRegulatory changes\nEconomic downturn impact';
+  
+  const result = document.getElementById('result');
+  result.innerHTML = '<h3>SWOT Analysis: ' + comp + '</h3>' +
+    '<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px">' +
+    '<div style="background:#ecfdf5;padding:16px;border-radius:8px"><h4 style="color:#166534;margin:0 0 8px">Strengths</h4><p style="margin:0;white-space:pre-line">' + s + '</p></div>' +
+    '<div style="background:#fef2f2;padding:16px;border-radius:8px"><h4 style="color:#991b1b;margin:0 0 8px">Weaknesses</h4><p style="margin:0;white-space:pre-line">' + w + '</p></div>' +
+    '<div style="background:#eff6ff;padding:16px;border-radius:8px"><h4 style="color:#1e40af;margin:0 0 8px">Opportunities</h4><p style="margin:0;white-space:pre-line">' + o + '</p></div>' +
+    '<div style="background:#fefce8;padding:16px;border-radius:8px"><h4 style="color:#92400e;margin:0 0 8px">Threats</h4><p style="margin:0;white-space:pre-line">' + t + '</p></div>' +
+    '</div><p style="margin-top:16px;color:#6b7280;font-size:14px">Tip: Edit the fields above to customize for your specific competitor analysis.</p>';
+  result.style.display = 'block';
 }
 </script>
 <script src="/knexio-bundle.js"></script>
