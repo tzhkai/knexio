@@ -1,5 +1,16 @@
 /* Footer separator - consistent across all pages */
 footer {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 24px 20px 0;
   border-top: 1px solid var(--border);
-  padding-top: 24px;
+  text-align: center;
+}
+
+/* Ensure footer separator matches content width on smaller screens */
+@media (max-width: 768px) {
+  footer {
+    max-width: 100%;
+    padding: 24px 16px 0;
+  }
 }
