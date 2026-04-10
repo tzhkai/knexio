@@ -14,7 +14,7 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: center
         }
         
         .verification-box {
@@ -23,12 +23,12 @@
             padding: 40px;
             border-radius: 20px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            max-width: 500px;
+            max-width: 500px
         }
         
         h1 {
             color: #4f8cff;
-            margin-bottom: 20px;
+            margin-bottom: 20px
         }
         
         .verification-code {
@@ -39,18 +39,18 @@
             margin: 20px 0;
             font-size: 1.2rem;
             color: #333;
-            word-break: break-all;
+            word-break: break-all
         }
         
         .steps {
             text-align: left;
-            margin: 30px 0;
+            margin: 30px 0
         }
         
         .steps li {
             margin-bottom: 15px;
             padding-left: 30px;
-            position: relative;
+            position: relative
         }
         
         .steps li:before {
@@ -66,11 +66,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
+            font-weight: bold
         }
         
         ol {
-            counter-reset: step;
+            counter-reset: step
         }
         
         .success-message {
@@ -79,7 +79,7 @@
             padding: 15px;
             border-radius: 10px;
             margin: 20px 0;
-            display: none;
+            display: none
         }
         
         button {
@@ -91,15 +91,16 @@
             font-size: 1rem;
             cursor: pointer;
             transition: all 0.3s ease;
-            margin-top: 20px;
+            margin-top: 20px
         }
         
         button:hover {
             background: #3a7bff;
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(79, 140, 255, 0.4);
+            box-shadow: 0 5px 15px rgba(79, 140, 255, 0.4)
         }
     </style>
+<link rel="stylesheet" href="shared.css">
 </head>
 <body>
     <div class="verification-box">
@@ -145,12 +146,12 @@
         function copyVerificationCode() {
             const code = document.querySelector('.verification-code').textContent.trim();
             navigator.clipboard.writeText(code).then(() => {
-                alert('验证代码已复制到剪贴板！');
-            });
+                alert('验证代码已复制到剪贴板！')
+            })
         }
         
         function showNextSteps() {
-            document.getElementById('nextSteps').style.display = 'block';
+            document.getElementById('nextSteps').style.display = 'block'
         }
     </script>
 

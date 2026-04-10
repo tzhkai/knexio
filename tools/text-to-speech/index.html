@@ -37,13 +37,13 @@
   --border:rgba(255,255,255,.08);
   --text:#fff;
   --sub:#aab3c5;
-  --accent:#4f8cff;
+  --accent:#4f8cff
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{
   font-family:system-ui,-apple-system;
   background:var(--bg);
-  color:var(--text);
+  color:var(--text)
 }
 .container{max-width:900px;margin:auto;padding:50px 16px}
 
@@ -54,10 +54,10 @@ body{
   text-decoration: none;
   font-size: 14px;
   margin-bottom: 24px;
-  transition: color 0.2s;
+  transition: color 0.2s
 }
 .back:hover {
-  color: var(--accent);
+  color: var(--accent)
 }
 
 h1{font-size:32px;margin-bottom:8px}
@@ -70,7 +70,7 @@ h3{font-size:18px;margin-bottom:8px}
   border:1px solid var(--border);
   border-radius:14px;
   padding:20px;
-  margin-bottom:20px;
+  margin-bottom:20px
 }
 
 
@@ -81,23 +81,23 @@ textarea:focus{outline:none;border-color:var(--accent)}
 
 button:disabled{
   opacity:0.5;
-  cursor:not-allowed;
+  cursor:not-allowed
 }
 
 .controls{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
   gap:16px;
-  margin-bottom:16px;
+  margin-bottom:16px
 }
 .control-group{
   display:flex;
   flex-direction:column;
-  gap:8px;
+  gap:8px
 }
 label{
   font-size:14px;
-  color:var(--sub);
+  color:var(--sub)
 }
 select{
   padding:10px;
@@ -105,19 +105,19 @@ select{
   border:1px solid var(--border);
   border-radius:8px;
   color:var(--text);
-  cursor:pointer;
+  cursor:pointer
 }
 select:focus{outline:none;border-color:var(--accent)}
 input[type="range"]{
   width:100%;
-  cursor:pointer;
+  cursor:pointer
 }
 
 .char-count{
   text-align:right;
   font-size:13px;
   color:var(--sub);
-  margin-bottom:8px;
+  margin-bottom:8px
 }
 
 .status{
@@ -127,48 +127,48 @@ input[type="range"]{
   padding:12px;
   background:var(--bg);
   border-radius:10px;
-  margin-top:12px;
+  margin-top:12px
 }
 .status-icon{
-  font-size:20px;
+  font-size:20px
 }
 .status-text{
   flex:1;
   font-size:14px;
-  color:var(--sub);
+  color:var(--sub)
 }
 
 .features{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
   gap:16px;
-  margin-top:20px;
+  margin-top:20px
 }
 .feature{
   padding:16px;
   background:var(--bg);
   border:1px solid var(--border);
   border-radius:10px;
-  text-align:center;
+  text-align:center
 }
 .feature-icon{
   font-size:32px;
-  margin-bottom:12px;
+  margin-bottom:12px
 }
 .feature h3{
   color:var(--text);
-  margin-bottom:8px;
+  margin-bottom:8px
 }
 .feature p{
   font-size:14px;
   color:var(--sub);
-  line-height:1.6;
+  line-height:1.6
 }
 
 .section p{
   color:var(--sub);
   line-height:1.7;
-  margin-bottom:10px;
+  margin-bottom:10px
 }
 
 
@@ -186,37 +186,37 @@ input[type="range"]{
   border-radius:8px;
   border:1px solid var(--border);
   color:var(--sub);
-  text-decoration:none;
+  text-decoration:none
 }
 .tools a:hover{
   border-color:var(--accent);
-  color:var(--accent);
+  color:var(--accent)
 }
 
 /* 广告样式 */
 .ad-banner {
   margin: 32px 0;
-  text-align: center;
+  text-align: center
 }
 
 /* 统一的 Footer 样式 */
-footer {
+footer{
   margin-top: 40px;
   text-align: center;
   color: var(--sub);
-  font-size: 13px;
-border-top:1px solid var(--border);}
+  font-size: 13px
+}
 footer p {
-  margin-bottom: 8px;
+  margin-bottom: 8px
 }
 footer a {
   color: var(--sub);
   text-decoration: none;
   margin: 0 10px;
-  transition: color 0.2s;
+  transition: color 0.2s
 }
 footer a:hover {
-  color: var(--accent);
+  color: var(--accent)
 }
 
 @media(max-width:600px){
@@ -236,104 +236,7 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
 .stat label,.stat-label,.result-label,.age-label{font-size:12px;color:var(--sub);display:block}
 .result-box{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;margin-top:16px;min-height:100px;white-space:pre-wrap;word-break:break-all;font-size:15px;line-height:1.7;box-sizing:border-box}
 @media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.btn-row{flex-direction:column}}
-  footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Is this tool free to use?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, this tool is completely free to use. No registration, no login, and no subscription required. Just open the page and start using it."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is my data safe? Is anything stored on a server?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, your data is safe. All processing happens entirely in your browser \u2014 your input never leaves your device and is not sent to any server."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does this tool work on mobile devices?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. The tool is fully responsive and works on smartphones, tablets, and desktop computers."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How accurate is the result?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The tool uses standard algorithms and web APIs to provide accurate results. For critical or professional use, please verify with additional sources."
-      }
-    }
-  ]
-}
-</script>
-</head>
-
-<body><div class="container">
-
-<a class="back" href="../index.html">← Back to Tools</a>
-
-<h1>Text to Speech</h1>
-<p class="subtitle">Convert text to natural-sounding speech instantly. Free online TTS with multiple languages and voices.</p>
-
-<div class="ad-banner">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="5794572171"
-       data-ad-format="auto"
-       data-full-width-responsive="true">
-  </ins>
-</div>
-
-<div class="card">
-  <div class="controls">
-    <div class="control-group">
-      <label>Language</label>
-      <select id="languageSelect">
-        <option value="en-US">English (US)</option>
-        <option value="en-GB">English (UK)</option>
-        <option value="es-ES">Spanish</option>
-        <option value="fr-FR">French</option>
-        <option value="de-DE">German</option>
-        <option value="it-IT">Italian</option>
-        <option value="pt-BR">Portuguese</option>
-        <option value="ru-RU">Russian</option>
-        <option value="ja-JP">Japanese</option>
-        <option value="ko-KR">Korean</option>
-        <option value="zh-CN">Chinese (Simplified)</option>
-        <option value="zh-TW">Chinese (Traditional)</option>
-        <option value="ar-SA">Arabic</option>
-        <option value="hi-IN">Hindi</option>
-        <option value="nl-NL">Dutch</option>
-        <option value="pl-PL">Polish</option>
-        <option value="tr-TR">Turkish</option>
-        <option value="vi-VN">Vietnamese</option>
-      </select>
-    </div>
-    <div class="control-group">
-      <label>Voice</label>
-      <select id="voiceSelect">
-        <option value="">Default</option>
-      </select>
-    </div>
-    <div class="control-group">
-      <label>Speed: <span id="rateValue">1.0</span>x</label>
-      <input type="range" id="rateSlider" min="0.5" max="2" step="0.1" value="1" oninput="updateRate()">
-    </div>
-  </div>
-
-  <textarea id="textInput" placeholder="Enter or paste your text here to convert to speech...&#10;&#10;Example: Hello! This is a text to speech converter. You can type anything here and I'll read it aloud for you." oninput="updateCharCount()"></textarea>
+  footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;&#10;Example: Hello! This is a text to speech converter. You can type anything here and I'll read it aloud for you." oninput="updateCharCount()"></textarea>
 
   <div class="char-count"><span id="charCount">0</span> / 5000 characters</div>
 
@@ -437,8 +340,8 @@ function loadVoices(){
     const option = document.createElement('option');
     option.value = index;
     option.textContent = `${voice.name} (${voice.lang})`;
-    voiceSelect.appendChild(option);
-  });
+    voiceSelect.appendChild(option)
+  })
 }
 
 synthesis.onvoiceschanged = loadVoices;
@@ -446,7 +349,7 @@ document.getElementById('languageSelect').addEventListener('change', loadVoices)
 
 function updateRate(){
   const value = document.getElementById('rateSlider').value;
-  document.getElementById('rateValue').textContent = parseFloat(value).toFixed(1);
+  document.getElementById('rateValue').textContent = parseFloat(value).toFixed(1)
 }
 
 function updateCharCount(){
@@ -455,7 +358,7 @@ function updateCharCount(){
   document.getElementById('charCount').textContent = count;
   
   if(count > 5000){
-    document.getElementById('textInput').value = text.substring(0, 5000);
+    document.getElementById('textInput').value = text.substring(0, 5000)
   }
 }
 
@@ -463,14 +366,14 @@ function showStatus(text, icon = '🔊'){
   const box = document.getElementById('statusBox');
   document.getElementById('statusText').textContent = text;
   document.getElementById('statusIcon').textContent = icon;
-  box.style.display = 'flex';
+  box.style.display = 'flex'
 }
 
 function speak(){
   const text = document.getElementById('textInput').value.trim();
   if(!text){
     showStatus('Please enter some text', '⚠️');
-    return;
+    return
   }
   
   synthesis.cancel();
@@ -484,14 +387,14 @@ function speak(){
     const voices = synthesis.getVoices();
     const filteredVoices = voices.filter(v => v.lang.startsWith(utterance.lang.split('-')[0]));
     if(filteredVoices[voiceIndex]){
-      utterance.voice = filteredVoices[voiceIndex];
+      utterance.voice = filteredVoices[voiceIndex]
     }
   }
   
   utterance.onstart = () => {
     document.getElementById('pauseBtn').disabled = false;
     document.getElementById('stopBtn').disabled = false;
-    showStatus('Speaking...', '🔊');
+    showStatus('Speaking...', '🔊')
   };
   
   utterance.onend = () => {
@@ -499,7 +402,7 @@ function speak(){
     document.getElementById('stopBtn').disabled = true;
     isPaused = false;
     document.getElementById('pauseBtn').textContent = '⏸ Pause';
-    showStatus('Finished', '✅');
+    showStatus('Finished', '✅')
   };
   
   utterance.onerror = () => {
@@ -507,10 +410,10 @@ function speak(){
     document.getElementById('stopBtn').disabled = true;
     isPaused = false;
     document.getElementById('pauseBtn').textContent = '⏸ Pause';
-    showStatus('Error occurred', '❌');
+    showStatus('Error occurred', '❌')
   };
   
-  synthesis.speak(utterance);
+  synthesis.speak(utterance)
 }
 
 function pauseResume(){
@@ -518,12 +421,12 @@ function pauseResume(){
     synthesis.resume();
     isPaused = false;
     document.getElementById('pauseBtn').textContent = '⏸ Pause';
-    showStatus('Speaking...', '🔊');
+    showStatus('Speaking...', '🔊')
   } else {
     synthesis.pause();
     isPaused = true;
     document.getElementById('pauseBtn').textContent = '▶ Resume';
-    showStatus('Paused', '⏸️');
+    showStatus('Paused', '⏸️')
   }
 }
 
@@ -533,7 +436,7 @@ function stop(){
   document.getElementById('stopBtn').disabled = true;
   isPaused = false;
   document.getElementById('pauseBtn').textContent = '⏸ Pause';
-  showStatus('Stopped', '⏹️');
+  showStatus('Stopped', '⏹️')
 }
 </script>
 

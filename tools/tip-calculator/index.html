@@ -88,13 +88,13 @@
   --border:rgba(255,255,255,.08);
   --text:#fff;
   --sub:#aab3c5;
-  --accent:#4f8cff;
+  --accent:#4f8cff
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{
   font-family:system-ui,-apple-system;
   background:var(--bg);
-  color:var(--text);
+  color:var(--text)
 }
 .container{max-width:900px;margin:auto;padding:50px 16px}
 
@@ -104,7 +104,7 @@ body{
   text-decoration:none;
   font-size:14px;
   margin-bottom:24px;
-  transition:color 0.2s;
+  transition:color 0.2s
 }
 .back:hover{color:var(--accent)}
 
@@ -117,7 +117,7 @@ h2{font-size:22px;margin-top:30px;margin-bottom:10px}
   border:1px solid var(--border);
   border-radius:14px;
   padding:20px;
-  margin-bottom:20px;
+  margin-bottom:20px
 }
 
 .input-group{margin-bottom:16px}
@@ -139,7 +139,7 @@ h2{font-size:22px;margin-top:30px;margin-bottom:10px}
   border-radius:8px;
   border:1px solid var(--border);
   color:var(--sub);
-  text-decoration:none;
+  text-decoration:none
 }
 .tools a:hover{border-color:var(--accent);color:var(--accent)}
 
@@ -150,7 +150,7 @@ h2{font-size:22px;margin-top:30px;margin-bottom:10px}
   border:1px solid var(--border);
   border-radius:12px;
   padding:20px;
-  margin-bottom:12px;
+  margin-bottom:12px
 }
 .faq-item h3{font-size:16px;margin-bottom:8px;color:var(--text)}
 .faq-item p{color:var(--sub);font-size:14px;line-height:1.7;margin:0}
@@ -161,7 +161,7 @@ footer a{
   color:var(--sub);
   text-decoration:none;
   margin:0 10px;
-  transition:color 0.2s;
+  transition:color 0.2s
 }
 footer a:hover{color:var(--accent)}
 
@@ -189,47 +189,7 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
   .input-grid{grid-template-columns:1fr}
   .btn-row{flex-direction:column}
 }
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
-</head>
-
-<body><div class="container">
-
-<a class="back" href="../index.html">← Back to Tools</a>
-
-<h1>Tip Calculator</h1>
-<p class="subtitle">Calculate tips based on percentage, split bills between people, and see per-person totals.</p>
-
-<div class="ad-banner">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="5794572171"
-       data-ad-format="auto"
-       data-full-width-responsive="true">
-  </ins>
-</div>
-
-<div class="card">
-  <div class="input-grid">
-    <div class="input-group">
-      <label>Bill Amount (¥)</label>
-      <input type="number" class="input" id="billAmount" placeholder="100" step="0.01" min="0">
-    </div>
-    <div class="input-group">
-      <label>Number of People</label>
-      <input type="number" class="input" id="numPeople" value="1" min="1">
-    </div>
-  </div>
-
-  <div class="input-group">
-    <label>Tip Percentage</label>
-    <div class="tip-buttons">
-      <button class="tip-btn" data-tip="10">10%</button>
-      <button class="tip-btn active" data-tip="15">15%</button>
-      <button class="tip-btn" data-tip="18">18%</button>
-      <button class="tip-btn" data-tip="20">20%</button>
-      <button class="tip-btn" data-tip="25">25%</button>
-      <div style="width:100px;">
+footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;">
         <input type="number" class="input" id="customTip" placeholder="Custom %" min="0" max="100">
       </div>
     </div>
@@ -354,14 +314,14 @@ document.querySelectorAll('.tip-btn').forEach(btn => {
     document.querySelectorAll('.tip-btn').forEach(b => b.classList.remove('active'));
     this.classList.add('active');
     selectedTip = parseInt(this.dataset.tip);
-    document.getElementById('customTip').value = '';
-  });
+    document.getElementById('customTip').value = ''
+  })
 });
 
 document.getElementById('customTip').addEventListener('input', function() {
   if (this.value) {
     document.querySelectorAll('.tip-btn').forEach(b => b.classList.remove('active'));
-    selectedTip = parseFloat(this.value) || 0;
+    selectedTip = parseFloat(this.value) || 0
   }
 });
 
@@ -371,7 +331,7 @@ function calculateTip() {
   
   if (bill <= 0) {
     alert('Please enter a valid bill amount');
-    return;
+    return
   }
   
   const tipAmount = bill * (selectedTip / 100);
@@ -386,12 +346,12 @@ function calculateTip() {
     const tipPerPerson = tipAmount / numPeople;
     const totalPerPerson = total / numPeople;
     document.getElementById('tipPerPerson').textContent = '¥' + tipPerPerson.toFixed(2);
-    document.getElementById('totalPerPerson').textContent = '¥' + totalPerPerson.toFixed(2);
+    document.getElementById('totalPerPerson').textContent = '¥' + totalPerPerson.toFixed(2)
   } else {
-    document.getElementById('perPersonBox').style.display = 'none';
+    document.getElementById('perPersonBox').style.display = 'none'
   }
   
-  document.getElementById('results').classList.add('active');
+  document.getElementById('results').classList.add('active')
 }
 </script>
 <script src="/knexio-bundle.js"></script>

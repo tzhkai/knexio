@@ -79,7 +79,7 @@
   --border:rgba(255,255,255,.08);
   --text:#fff;
   --sub:#aab3c5;
-  --accent:#4f8cff;
+  --accent:#4f8cff
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:system-ui,-apple-system;background:var(--bg);color:var(--text)}
@@ -125,53 +125,7 @@ footer a:hover{color:var(--accent)}
 .status-bar.success{background:rgba(46,204,113,.1);color:#2ecc71;border:1px solid #2ecc71}
 .status-bar.error{background:rgba(231,76,60,.1);color:#e74c3c;border:1px solid #e74c3c}
 @media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.btn-row{flex-direction:column}.editor-layout{grid-template-columns:1fr}.toolbar{flex-direction:column;align-items:stretch}}
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
-</head>
-<body><div class="container">
-<a class="back" href="../index.html">← Back to Tools</a>
-<h1>XML Formatter & Validator</h1>
-<p class="subtitle">Beautify, validate, and minify XML code with syntax highlighting and error detection.</p>
-
-<div class="ad-banner">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="5794572171"
-       data-ad-format="auto"
-       data-full-width-responsive="true">
-  </ins>
-</div>
-
-<div class="card">
-  <div class="toolbar">
-    <div class="btn-row">
-      <button onclick="formatXML()">Format</button>
-      <button class="secondary" onclick="minifyXML()">Minify</button>
-      <button class="secondary" onclick="validateXML()">Validate</button>
-      <button class="secondary" onclick="clearAll()">Clear</button>
-    </div>
-    <div class="options">
-      <label>
-        Indent:
-        <select id="indentSize">
-          <option value="2">2 spaces</option>
-          <option value="4" selected>4 spaces</option>
-          <option value="8">8 spaces</option>
-        </select>
-      </label>
-    </div>
-  </div>
-
-  <div class="editor-layout">
-    <div>
-      <div class="pane-label">
-        <span>Input XML</span>
-        <button class="secondary" onclick="pasteClipboard()">Paste</button>
-      </div>
-      <textarea id="input" placeholder="Paste your XML code here...
-
-Example:
-&lt;root&gt;&lt;person&gt;&lt;name&gt;John&lt;/name&gt;&lt;age&gt;30&lt;/age&gt;&lt;/person&gt;&lt;/root&gt;"></textarea>
+footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;root&gt;&lt;person&gt;&lt;name&gt;John&lt;/name&gt;&lt;age&gt;30&lt;/age&gt;&lt;/person&gt;&lt;/root&gt;"></textarea>
     </div>
     <div>
       <div class="pane-label">
@@ -268,7 +222,7 @@ function formatXML() {
   const xml = input.value.trim();
   if (!xml) {
     showStatus('Please enter XML code to format', '');
-    return;
+    return
   }
 
   try {
@@ -279,7 +233,7 @@ function formatXML() {
     if (error) {
       showStatus('Invalid XML: ' + error.textContent, 'error');
       output.textContent = '';
-      return;
+      return
     }
 
     const indentSize = parseInt(document.getElementById('indentSize').value);
@@ -287,9 +241,9 @@ function formatXML() {
     const formatted = formatXMLString(doc.documentElement, '', indent);
     
     output.textContent = '<?xml version="1.0" encoding="UTF-8"?>\n' + formatted;
-    showStatus('XML formatted successfully!', 'success');
+    showStatus('XML formatted successfully!', 'success')
   } catch (e) {
-    showStatus('Error formatting XML: ' + e.message, 'error');
+    showStatus('Error formatting XML: ' + e.message, 'error')
   }
 }
 
@@ -298,8 +252,8 @@ function formatXMLString(element, indent, indentSize) {
   
   if (element.attributes) {
     Array.from(element.attributes).forEach(attr => {
-      result += ` ${attr.name}="${attr.value}"`;
-    });
+      result += ` ${attr.name}="${attr.value}"`
+    })
   }
   
   const children = Array.from(element.childNodes);
@@ -308,34 +262,34 @@ function formatXMLString(element, indent, indentSize) {
   
   if (!hasChildren && !hasText) {
     result += ' />';
-    return result;
+    return result
   }
   
   result += '>';
   
   if (hasText) {
-    result += element.textContent.trim();
+    result += element.textContent.trim()
   } else if (hasChildren) {
     result += '\n';
     children.forEach(child => {
       if (child.nodeType === 1) {
-        result += formatXMLString(child, indent + indentSize, indentSize) + '\n';
+        result += formatXMLString(child, indent + indentSize, indentSize) + '\n'
       } else if (child.nodeType === 8) {
-        result += indent + indentSize + '<!--' + child.textContent + '-->\n';
+        result += indent + indentSize + '<!--' + child.textContent + '-->\n'
       }
     });
-    result += indent;
+    result += indent
   }
   
   result += '</' + element.tagName + '>';
-  return result;
+  return result
 }
 
 function minifyXML() {
   const xml = input.value.trim();
   if (!xml) {
     showStatus('Please enter XML code to minify', '');
-    return;
+    return
   }
 
   try {
@@ -346,7 +300,7 @@ function minifyXML() {
     if (error) {
       showStatus('Invalid XML: ' + error.textContent, 'error');
       output.textContent = '';
-      return;
+      return
     }
 
     const serializer = new XMLSerializer();
@@ -356,9 +310,9 @@ function minifyXML() {
     minified = minified.replace(/^<\?xml[^>]*>/, '');
     
     output.textContent = minified;
-    showStatus('XML minified successfully!', 'success');
+    showStatus('XML minified successfully!', 'success')
   } catch (e) {
-    showStatus('Error minifying XML: ' + e.message, 'error');
+    showStatus('Error minifying XML: ' + e.message, 'error')
   }
 }
 
@@ -366,7 +320,7 @@ function validateXML() {
   const xml = input.value.trim();
   if (!xml) {
     showStatus('Please enter XML code to validate', '');
-    return;
+    return
   }
 
   try {
@@ -376,42 +330,42 @@ function validateXML() {
     const error = doc.querySelector('parsererror');
     if (error) {
       showStatus('Invalid XML: ' + error.textContent, 'error');
-      output.textContent = 'Validation failed:\n' + error.textContent;
+      output.textContent = 'Validation failed:\n' + error.textContent
     } else {
       output.textContent = '✓ Valid XML!';
-      showStatus('XML is valid!', 'success');
+      showStatus('XML is valid!', 'success')
     }
   } catch (e) {
-    showStatus('Error validating XML: ' + e.message, 'error');
+    showStatus('Error validating XML: ' + e.message, 'error')
   }
 }
 
 function clearAll() {
   input.value = '';
   output.textContent = '';
-  showStatus('', '');
+  showStatus('', '')
 }
 
 function pasteClipboard() {
   navigator.clipboard.readText().then(text => {
     input.value = text;
-    formatXML();
+    formatXML()
   }).catch(err => {
-    alert('Unable to paste. Please use Ctrl+V or Cmd+V.');
-  });
+    alert('Unable to paste. Please use Ctrl+V or Cmd+V.')
+  })
 }
 
 function copyOutput() {
   if (!output.textContent) return;
   navigator.clipboard.writeText(output.textContent).then(() => {
-    showStatus('Copied to clipboard!', 'success');
-  });
+    showStatus('Copied to clipboard!', 'success')
+  })
 }
 
 function showStatus(msg, type) {
   statusBar.textContent = msg;
   statusBar.className = 'status-bar ' + type;
-  if (!msg) statusBar.className = 'status-bar';
+  if (!msg) statusBar.className = 'status-bar'
 }
 </script>
 <script src="/knexio-bundle.js"></script>

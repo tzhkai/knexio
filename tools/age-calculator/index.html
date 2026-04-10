@@ -35,13 +35,13 @@
   --border:rgba(255,255,255,.08);
   --text:#fff;
   --sub:#aab3c5;
-  --accent:#4f8cff;
+  --accent:#4f8cff
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{
   font-family:system-ui,-apple-system;
   background:var(--bg);
-  color:var(--text);
+  color:var(--text)
 }
 .container{max-width:900px;margin:auto;padding:50px 16px}
 
@@ -51,7 +51,7 @@ body{
   text-decoration:none;
   font-size:14px;
   margin-bottom:24px;
-  transition:color .2s;
+  transition:color .2s
 }
 .back:hover{color:var(--accent)}
 
@@ -64,7 +64,7 @@ h2{font-size:22px;margin-top:30px;margin-bottom:10px}
   border:1px solid var(--border);
   border-radius:14px;
   padding:20px;
-  margin-bottom:20px;
+  margin-bottom:20px
 }
 
 label{
@@ -72,7 +72,7 @@ label{
   font-size:14px;
   color:var(--sub);
   margin-bottom:8px;
-  font-weight:500;
+  font-weight:500
 }
 
 input[type="date"]{
@@ -83,7 +83,7 @@ input[type="date"]{
   border-radius:12px;
   color:var(--text);
   font-size:15px;
-  font-family:inherit;
+  font-family:inherit
 }
 input[type="date"]:focus{outline:none;border-color:var(--accent)}
 
@@ -98,7 +98,7 @@ button{
   cursor:pointer;
   font-size:14px;
   font-family:inherit;
-  transition:opacity .2s;
+  transition:opacity .2s
 }
 button:hover{opacity:.9}
 
@@ -108,27 +108,27 @@ button:hover{opacity:.9}
   font-weight:800;
   color:var(--accent);
   line-height:1;
-  margin-bottom:8px;
+  margin-bottom:8px
 }
 .age-sub{font-size:14px;color:var(--sub);margin-bottom:20px}
 .age-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:12px;
-  margin-bottom:20px;
+  margin-bottom:20px
 }
 .age-item{
   background:var(--card);
   border:1px solid var(--border);
   border-radius:10px;
   padding:16px;
-  text-align:center;
+  text-align:center
 }
 .age-value{
   font-size:24px;
   font-weight:700;
   color:var(--accent);
-  margin-bottom:6px;
+  margin-bottom:6px
 }
 .age-label{font-size:12px;color:var(--sub)}
 .extra-row{
@@ -140,7 +140,7 @@ button:hover{opacity:.9}
   border:1px solid var(--border);
   border-radius:10px;
   margin-bottom:10px;
-  font-size:14px;
+  font-size:14px
 }
 .extra-row:last-child{margin-bottom:0}
 .extra-row span:first-child{color:var(--sub)}
@@ -157,182 +157,7 @@ footer a{color:var(--accent);text-decoration:none;margin:0 8px}
 footer a:hover{opacity:.8}
 
 @media(max-width:600px){.age-grid{grid-template-columns:repeat(2,1fr)}}
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "How accurate is the age calculator?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The calculator uses JavaScript's Date API to compute the exact difference between your birth date and today. It accounts for leap years and varying month lengths, giving you a precise result down to the second."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does the calculator consider leap years?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. The calculator uses the actual calendar including leap years when computing total days, hours, minutes, and seconds."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What zodiac sign does the calculator show?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The calculator uses the standard tropical zodiac system. It shows the zodiac sign for your birth date based on the month and day of birth."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is my date of birth stored or sent anywhere?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No. All calculations are performed entirely in your browser. Your date of birth never leaves your device and is not saved on any server."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I calculate age for future dates?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. Simply enter any date in the past or future, and the calculator will show the time difference."
-      }
-    }
-  ]
-}
-</script>
-</head>
-
-<body><div class="container">
-
-<a class="back" href="../index.html">← Back to Tools</a>
-
-<h1>Age Calculator</h1>
-<p class="subtitle">Calculate your exact age in years, months, days, hours, minutes, and seconds. Find your next birthday and zodiac sign.</p>
-
-<div class="ad-banner">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="5794572171"
-       data-ad-format="auto"
-       data-full-width-responsive="true">
-  </ins>
-</div>
-
-<div class="card">
-  <label>Date of Birth</label>
-  <input type="date" id="birthDate">
-
-  <div class="btn-row">
-    <button onclick="calculateAge()">Calculate Age</button>
-  </div>
-
-  <div class="result-box" id="resultBox">
-    <div class="age-main" id="ageYears">0</div>
-    <div class="age-sub">years old</div>
-
-    <div class="age-grid">
-      <div class="age-item">
-        <div class="age-value" id="ageMonths">0</div>
-        <div class="age-label">Months</div>
-      </div>
-      <div class="age-item">
-        <div class="age-value" id="ageDays">0</div>
-        <div class="age-label">Days</div>
-      </div>
-      <div class="age-item">
-        <div class="age-value" id="ageHours">0</div>
-        <div class="age-label">Hours</div>
-      </div>
-      <div class="age-item">
-        <div class="age-value" id="ageMinutes">0</div>
-        <div class="age-label">Minutes</div>
-      </div>
-      <div class="age-item">
-        <div class="age-value" id="ageSeconds">0</div>
-        <div class="age-label">Seconds</div>
-      </div>
-    </div>
-
-    <div class="extra-row">
-      <span>Next Birthday</span>
-      <span id="nextBirthday">-</span>
-    </div>
-    <div class="extra-row">
-      <span>Days Until Birthday</span>
-      <span id="daysUntilBirthday">-</span>
-    </div>
-    <div class="extra-row">
-      <span>Zodiac Sign</span>
-      <span id="zodiacSign">-</span>
-    </div>
-    <div class="extra-row">
-      <span>Birth Day of Week</span>
-      <span id="birthDay">-</span>
-    </div>
-  </div>
-</div>
-
-<h2>How to Use the Age Calculator</h2>
-<div class="section">
-<p>Select your date of birth using the date picker and click "Calculate Age". Your exact age is displayed instantly in years, months, days, hours, minutes, and seconds.</p>
-</div>
-
-<h2>How It Works</h2>
-<div class="section">
-<p>The calculator computes the exact difference between your birth date and today's date, accounting for leap years and varying month lengths. It displays age in multiple units and calculates your next birthday countdown and zodiac sign.</p>
-</div>
-
-<h2>Frequently Asked Questions</h2>
-<div class="faq-item">
-  <h3>How accurate is the age calculator?</h3>
-  <p>The calculator uses JavaScript's Date API to compute the exact difference between your birth date and today. It accounts for leap years and varying month lengths, giving you a precise result down to the second.</p>
-</div>
-<div class="faq-item">
-  <h3>Does the calculator consider leap years?</h3>
-  <p>Yes. The calculator uses the actual calendar including leap years when computing total days, hours, minutes, and seconds.</p>
-</div>
-<div class="faq-item">
-  <h3>What zodiac sign does the calculator show?</h3>
-  <p>The calculator uses the standard tropical zodiac system. It shows the zodiac sign for your birth date based on the month and day of birth.</p>
-</div>
-<div class="faq-item">
-  <h3>Is my date of birth stored or sent anywhere?</h3>
-  <p>No. All calculations are performed entirely in your browser. Your date of birth never leaves your device and is not saved on any server.</p>
-</div>
-<div class="faq-item">
-  <h3>Can I calculate age for future dates?</h3>
-  <p>Yes. Simply enter any date in the past or future, and the calculator will show the time difference.</p>
-</div>
-<div class="ad-banner" style="margin:24px 0">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="5794572171"
-       data-ad-format="auto"
-       data-full-width-responsive="true">
-  </ins>
-</div>
-<h2>Related Tools</h2>
-<div class="tools">
-<a href="/tools/days-between-dates/">Days Between Dates</a>
-<a href="/tools/date-difference-calculator/">Date Difference Calculator</a>
-<a href="/tools/time-zone-converter/">Time Zone Converter</a>
-</div>
-
-<div class="ad-banner" style="margin-top:40px">
-      <!-- Ad space -->
-    </div>
-
-
-<!-- Ad: Footer -->
-<div class="ad-banner footer-ad" style="margin:40px 0;text-align:center"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
+footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;text-align:center"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
 <footer>
   <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
   <p style="margin: 8px 0; font-size: 13px;">
@@ -351,7 +176,7 @@ document.getElementById('birthDate').max = new Date().toISOString().split('T')[0
 
 function calculateAge() {
   const birthDate = new Date(document.getElementById('birthDate').value);
-  if (isNaN(birthDate)) { alert('Please select a valid date'); return; }
+  if (isNaN(birthDate)) { alert('Please select a valid date'); return }
 
   const now = new Date();
   const diff = now - birthDate;
@@ -360,8 +185,8 @@ function calculateAge() {
   let months = now.getMonth() - birthDate.getMonth();
   let days = now.getDate() - birthDate.getDate();
 
-  if (days < 0) { months--; days += new Date(now.getFullYear(), now.getMonth(), 0).getDate(); }
-  if (months < 0) { years--; months += 12; }
+  if (days < 0) { months--; days += new Date(now.getFullYear(), now.getMonth(), 0).getDate() }
+  if (months < 0) { years--; months += 12 }
 
   const totalDays = Math.floor(diff / (1000 * 60 * 60 * 24));
   const totalHours = Math.floor(diff / (1000 * 60 * 60));
@@ -384,7 +209,7 @@ function calculateAge() {
   document.getElementById('zodiacSign').textContent = getZodiacSign(birthDate.getMonth() + 1, birthDate.getDate());
   document.getElementById('birthDay').textContent = birthDate.toLocaleDateString('en-US', { weekday: 'long' });
 
-  document.getElementById('resultBox').style.display = 'block';
+  document.getElementById('resultBox').style.display = 'block'
 }
 
 function getZodiacSign(month, day) {
@@ -403,7 +228,7 @@ function getZodiacSign(month, day) {
     { name: 'Sagittarius', end: 21 },
     { name: 'Capricorn', end: 31 }
   ];
-  return signs[month - 1].name + (day > signs[month - 1].end ? ' / ' + signs[month].name : '');
+  return signs[month - 1].name + (day > signs[month - 1].end ? ' / ' + signs[month].name : '')
 }
 </script>
 <script src="/knexio-bundle.js"></script>

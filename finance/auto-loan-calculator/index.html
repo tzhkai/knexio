@@ -110,7 +110,7 @@
     .faq-item{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;margin-bottom:20px}
     .faq-item h3{font-size:16px;margin:0 0 8px}
     .faq-item p{color:var(--sub);font-size:14px;line-height:1.7;margin:0}
-    footer{text-align:center;padding:40px 20px;border-top:1px solid var(--border);margin-top:20px;color:var(--sub);font-size:14px}
+    footer{text-align:center;padding:40px 20px;margin-top:20px;color:var(--sub);font-size:14px}
     footer a{color:var(--sub);margin:0 10px;transition:color 0.2s}
     footer a:hover{color:var(--accent)}
     footer p{margin-bottom:8px}
@@ -119,6 +119,7 @@
 
 <!-- Open Graph -->
 <meta property="og:site_name" content="Knexio">
+<link rel="stylesheet" href="shared.css">
 </head>
 <body>
   <div class="container">
@@ -252,12 +253,12 @@
 
       const taxAmount = carPrice * salesTaxRate;
       const principal = carPrice + taxAmount - downPayment - tradeIn;
-      if (principal <= 0) { alert('Down payment + trade-in must be less than car price.'); return; }
+      if (principal <= 0) { alert('Down payment + trade-in must be less than car price.'); return }
 
       const monthlyRate = annualRate / 100 / 12;
       let pi;
-      if (monthlyRate === 0) { pi = principal / n; }
-      else { pi = principal * (monthlyRate * Math.pow(1+monthlyRate,n)) / (Math.pow(1+monthlyRate,n)-1); }
+      if (monthlyRate === 0) { pi = principal / n }
+      else { pi = principal * (monthlyRate * Math.pow(1+monthlyRate,n)) / (Math.pow(1+monthlyRate,n)-1) }
 
       const totalPaid = pi * n;
       const totalInterest = totalPaid - principal;
@@ -268,7 +269,7 @@
         const interest = bal * monthlyRate;
         const princPay = pi - interest;
         bal = Math.max(0, bal - princPay);
-        rows += `<tr><td>${i}</td><td>$${fmt(pi)}</td><td>$${fmt(Math.max(0,princPay))}</td><td>$${fmt(interest)}</td><td>$${fmt(bal)}</td></tr>`;
+        rows += `<tr><td>${i}</td><td>$${fmt(pi)}</td><td>$${fmt(Math.max(0,princPay))}</td><td>$${fmt(interest)}</td><td>$${fmt(bal)}</td></tr>`
       }
 
       document.getElementById('results').innerHTML = `
@@ -286,15 +287,15 @@
         <div class="amortization-wrap"><div class="table-scroll">
           <table class="amortization-table"><thead><tr><th>Month</th><th>Payment</th><th>Principal</th><th>Interest</th><th>Balance</th></tr></thead><tbody>${rows}</tbody></table>
         </div></div>
-      `;
+      `
     }
 
     function clearForm() {
       ['carPrice','downPayment','tradeIn','interestRate','salesTax'].forEach(id => {
-        document.getElementById(id).value = {carPrice:'30000',downPayment:'6000',tradeIn:'0',interestRate:'5',salesTax:'0'}[id];
+        document.getElementById(id).value = {carPrice:'30000',downPayment:'6000',tradeIn:'0',interestRate:'5',salesTax:'0'}[id]
       });
       document.getElementById('loanTerm').value = '60';
-      document.getElementById('results').innerHTML = '<div class="result-placeholder">Enter your loan details and click <strong>Calculate</strong> to see results</div>';
+      document.getElementById('results').innerHTML = '<div class="result-placeholder">Enter your loan details and click <strong>Calculate</strong> to see results</div>'
     }
   </script>
   <script src="/knexio-bundle.js"></script>

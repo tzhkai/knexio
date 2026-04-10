@@ -59,48 +59,48 @@
       --border: rgba(255,255,255,0.08);
       --text-main: #ffffff;
       --text-sub: #aab3c5;
-      --accent: #4f8cff;
+      --accent: #4f8cff
     }
 
-    * { box-sizing: border-box; }
+    * { box-sizing: border-box }
 
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
       background: linear-gradient(180deg, var(--bg-dark), var(--bg-dark-2));
-      color: var(--text-main);
+      color: var(--text-main)
     }
 
-    a { text-decoration: none; color: inherit; }
+    a { text-decoration: none; color: inherit }
 
     .container {
       max-width: 1000px;
       margin: 0 auto;
       padding: 100px 20px 120px;
-      text-align: center;
+      text-align: center
     }
 
-    h1 { font-size: 42px; margin-bottom: 16px; }
+    h1 { font-size: 42px; margin-bottom: 16px }
 
     .subtitle {
       font-size: 18px;
       color: var(--text-sub);
       max-width: 720px;
       margin: 0 auto 48px;
-      line-height: 1.6;
+      line-height: 1.6
     }
 
     /* Ad banner */
     .ad-banner {
       margin: 0 auto 48px;
       max-width: 728px;
-      text-align: center;
+      text-align: center
     }
 
     .nav-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
+      gap: 32px
     }
 
     .nav-card {
@@ -111,22 +111,22 @@
       transition: transform 0.2s ease, box-shadow 0.2s ease;
       display: flex;
       flex-direction: column;
-      min-height: 280px;
+      min-height: 280px
     }
 
     .nav-card:hover {
       transform: translateY(-6px);
-      box-shadow: 0 14px 40px rgba(0,0,0,0.35);
+      box-shadow: 0 14px 40px rgba(0,0,0,0.35)
     }
 
-    .nav-card h2 { font-size: 26px; margin-bottom: 14px; }
+    .nav-card h2 { font-size: 26px; margin-bottom: 14px }
 
     .nav-card p {
       font-size: 15px;
       color: var(--text-sub);
       line-height: 1.7;
       margin-bottom: 26px;
-      flex: 1;
+      flex: 1
     }
 
     .nav-card .btn {
@@ -136,26 +136,26 @@
       color: #fff;
       border-radius: 12px;
       font-size: 14px;
-      font-weight: 500;
+      font-weight: 500
     }
 
     /* Featured links section */
     .featured {
       margin-top: 80px;
-      text-align: left;
+      text-align: left
     }
 
     .featured h2 {
       font-size: 22px;
       margin-bottom: 20px;
-      color: var(--text-main);
+      color: var(--text-main)
     }
 
     .link-group {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 12px;
-      margin-bottom: 40px;
+      margin-bottom: 40px
     }
 
     .link-group a {
@@ -166,19 +166,19 @@
       padding: 12px 16px;
       font-size: 14px;
       color: var(--text-sub);
-      transition: color 0.15s, border-color 0.15s;
+      transition: color 0.15s, border-color 0.15s
     }
 
     .link-group a:hover {
       color: var(--accent);
-      border-color: var(--accent);
+      border-color: var(--accent)
     }
 
     .link-group a span {
       display: block;
       font-size: 11px;
       color: #5a6a82;
-      margin-top: 3px;
+      margin-top: 3px
     }
 
     .seo-section {
@@ -186,27 +186,27 @@
       text-align: left;
       max-width: 760px;
       margin-left: auto;
-      margin-right: auto;
+      margin-right: auto
     }
 
-    .seo-section h2 { font-size: 24px; margin-bottom: 12px; }
+    .seo-section h2 { font-size: 24px; margin-bottom: 12px }
 
     .seo-section p {
       color: var(--text-sub);
       line-height: 1.8;
-      font-size: 15px;
+      font-size: 15px
     }
 
     footer{
       margin-top: 100px;
       font-size: 13px;
       color: var(--text-sub);
-      text-align: center;
-      border-top: 1px solid var(--border);
-      padding-top: 24px;
+      text-align: center
+      
+      
     }
 
-    footer a { color: var(--accent); text-decoration: none; }
+    footer a { color: var(--accent); text-decoration: none }
 
     /* ==================== 移动端优化 ==================== */
 
@@ -214,115 +214,116 @@
     @media (max-width: 768px) {
       .container {
         padding: 60px 15px 80px !important;
-        max-width: 100% !important;
+        max-width: 100% !important
       }
 
       h1 {
         font-size: 32px !important;
-        margin-bottom: 12px !important;
+        margin-bottom: 12px !important
       }
 
       .subtitle {
         font-size: 16px !important;
         margin-bottom: 36px !important;
-        max-width: 100% !important;
+        max-width: 100% !important
       }
 
       .nav-grid {
         grid-template-columns: repeat(2, 1fr) !important;
-        gap: 20px !important;
+        gap: 20px !important
       }
 
       .nav-card {
         min-height: 260px !important;
-        padding: 32px 24px !important;
+        padding: 32px 24px !important
       }
 
       .nav-card h2 {
         font-size: 22px !important;
-        margin-bottom: 12px !important;
+        margin-bottom: 12px !important
       }
 
       .nav-card p {
         font-size: 14px !important;
-        margin-bottom: 24px !important;
+        margin-bottom: 24px !important
       }
 
       .nav-card .btn {
         padding: 10px 22px !important;
-        font-size: 13px !important;
+        font-size: 13px !important
       }
 
       .featured {
-        margin-top: 60px !important;
+        margin-top: 60px !important
       }
 
       .featured h2 {
         font-size: 20px !important;
-        margin-bottom: 16px !important;
+        margin-bottom: 16px !important
       }
 
       .link-group {
         grid-template-columns: repeat(2, 1fr) !important;
-        gap: 10px !important;
+        gap: 10px !important
       }
     }
 
     /* 小手机 (≤480px) */
     @media (max-width: 480px) {
       .container {
-        padding: 40px 12px 60px !important;
+        padding: 40px 12px 60px !important
       }
 
       h1 {
-        font-size: 28px !important;
+        font-size: 28px !important
       }
 
       .subtitle {
         font-size: 15px !important;
-        margin-bottom: 32px !important;
+        margin-bottom: 32px !important
       }
 
       .nav-grid {
         grid-template-columns: 1fr !important;
-        gap: 16px !important;
+        gap: 16px !important
       }
 
       .nav-card {
         min-height: 240px !important;
-        padding: 28px 20px !important;
+        padding: 28px 20px !important
       }
 
       .nav-card h2 {
-        font-size: 20px !important;
+        font-size: 20px !important
       }
 
       .nav-card p {
         font-size: 13.5px !important;
         line-height: 1.6 !important;
-        margin-bottom: 22px !important;
+        margin-bottom: 22px !important
       }
 
       .nav-card .btn {
         padding: 9px 20px !important;
-        font-size: 12.5px !important;
+        font-size: 12.5px !important
       }
 
       .featured h2 {
-        font-size: 18px !important;
+        font-size: 18px !important
       }
 
       .link-group {
-        grid-template-columns: 1fr !important;
+        grid-template-columns: 1fr !important
       }
 
       footer {
         margin-top: 60px !important;
-        font-size: 12px !important;
+        font-size: 12px !important
       }
     }
 
 </style>
+<link rel="stylesheet" href="shared.css">
 </head>
 
 <body><a href="cdn-cgi/content-okyNH5dT2uSzFPotWVrzTkWBGA_I9CSDIExkGSj3dPE.html" aria-hidden="true" rel="nofollow noopener" style="display: none !important; visibility: hidden !important"></a>

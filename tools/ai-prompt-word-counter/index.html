@@ -40,13 +40,13 @@
   --border:rgba(255,255,255,.08);
   --text:#fff;
   --sub:#aab3c5;
-  --accent:#4f8cff;
+  --accent:#4f8cff
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{
   font-family:system-ui,-apple-system;
   background:var(--bg);
-  color:var(--text);
+  color:var(--text)
 }
 .container{max-width:900px;margin:auto;padding:50px 16px}
 
@@ -56,7 +56,7 @@ body{
   text-decoration:none;
   font-size:14px;
   margin-bottom:24px;
-  transition:color 0.2s;
+  transition:color 0.2s
 }
 .back:hover{color:var(--accent)}
 
@@ -69,7 +69,7 @@ h2{font-size:22px;margin-top:30px;margin-bottom:10px}
   border:1px solid var(--border);
   border-radius:14px;
   padding:20px;
-  margin-bottom:20px;
+  margin-bottom:20px
 }
 
 
@@ -95,7 +95,7 @@ textarea:focus{outline:none;border-color:var(--accent)}
   border-radius:8px;
   border:1px solid var(--border);
   color:var(--sub);
-  text-decoration:none;
+  text-decoration:none
 }
 .tools a:hover{border-color:var(--accent);color:var(--accent)}
 
@@ -106,7 +106,7 @@ textarea:focus{outline:none;border-color:var(--accent)}
   border:1px solid var(--border);
   border-radius:12px;
   padding:20px;
-  margin-bottom:12px;
+  margin-bottom:12px
 }
 .faq-item h3{font-size:16px;margin-bottom:8px;color:var(--text)}
 .faq-item p{color:var(--sub);font-size:14px;line-height:1.7;margin:0}
@@ -117,7 +117,7 @@ footer a{
   color:var(--sub);
   text-decoration:none;
   margin:0 10px;
-  transition:color 0.2s;
+  transition:color 0.2s
 }
 footer a:hover{color:var(--accent)}
 
@@ -137,136 +137,7 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
 .stat label,.stat-label,.result-label,.age-label{font-size:12px;color:var(--sub);display:block}
 .result-box{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;margin-top:16px;min-height:100px;white-space:pre-wrap;word-break:break-all;font-size:15px;line-height:1.7;box-sizing:border-box}
 @media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.btn-row{flex-direction:column}}
-  footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Is this tool free to use?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, this tool is completely free to use. No registration, no login, and no subscription required. Just open the page and start using it."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is my data safe? Is anything stored on a server?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, your data is safe. All processing happens entirely in your browser \u2014 your input never leaves your device and is not sent to any server."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does this tool work on mobile devices?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. The tool is fully responsive and works on smartphones, tablets, and desktop computers."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How accurate is the result?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The tool uses standard algorithms and web APIs to provide accurate results. For critical or professional use, please verify with additional sources."
-      }
-    }
-  ]
-}
-</script>
-</head>
-
-<body><div class="container">
-
-<a class="back" href="../index.html">← Back to Tools</a>
-
-<h1>AI Prompt Word Counter</h1>
-<p class="subtitle">Count words, tokens, and characters in your AI prompts for ChatGPT, Midjourney, and Claude.</p>
-
-<div class="ad-banner">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="5794572171"
-       data-ad-format="auto"
-       data-full-width-responsive="true">
-  </ins>
-</div>
-
-<div class="card">
-<textarea class="text-area" id="input" placeholder="Paste or type your text here..."></textarea>
-
-<div class="btn-row">
-<button onclick="clearPrompt()">Clear</button>
-<button class="secondary" onclick="copyPrompt()">Copy</button>
-</div>
-
-<div class="stats">
-      <div class="stat"><span id="words">0</span><label>Words</label></div>
-      <div class="stat"><span id="chars">0</span><label>Characters</label></div>
-      <div class="stat"><span id="sentences">0</span><label>Tokens</label></div>
-    </div>
-
-<div class="tip" id="tip"></div>
-</div>
-
-<h2>About AI Prompt Counting</h2>
-<div class="section">
-<p>Paste or type your AI prompt above. Word count, character count, and token estimate are shown instantly.</p>
-<p>Token count is estimated at approximately 1 token per 4 characters, which is how most AI models process English text.</p>
-</div>
-
-<h2>How It Works</h2>
-<div class="section">
-<p>Different AI models have different token limits: ChatGPT-4o ~128K tokens, Claude 3 Opus 200K tokens, Gemini 1.5 Pro 1M tokens, Midjourney ~4,000 characters.</p>
-<p>Use this tool to ensure your prompts fit within the token limits of your chosen AI model.</p>
-</div>
-
-<h2>Frequently Asked Questions</h2>
-<div class="faq-item">
-  <h3>Is this tool free to use?</h3>
-  <p>Yes, this tool is completely free to use. No registration, no login, and no subscription required. Just open the page and start using it.</p>
-</div>
-<div class="faq-item">
-  <h3>Is my data safe? Is anything stored on a server?</h3>
-  <p>Yes, your data is safe. All processing happens entirely in your browser — your input never leaves your device and is not sent to any server.</p>
-</div>
-<div class="faq-item">
-  <h3>Does this tool work on mobile devices?</h3>
-  <p>Yes. The tool is fully responsive and works on smartphones, tablets, and desktop computers.</p>
-</div>
-<div class="faq-item">
-  <h3>How accurate is the result?</h3>
-  <p>The tool uses standard algorithms and web APIs to provide accurate results. For critical or professional use, please verify with additional sources.</p>
-</div>
-<div class="ad-banner" style="margin:24px 0">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="5794572171"
-       data-ad-format="auto"
-       data-full-width-responsive="true">
-  </ins>
-</div>
-<h2>Related Tools</h2>
-<div class="tools">
-<a href="/tools/word-counter/">Word Counter</a>
-<a href="/tools/character-counter/">Character Counter</a>
-<a href="/tools/chatgpt-prompts/">ChatGPT Prompts</a>
-<a href="/tools/midjourney-prompts/">Midjourney Prompts</a>
-</div>
-
-<div class="ad-banner" style="margin-top:40px">
-      <!-- Ad space -->
-    </div>
-
-
-<!-- Ad: Footer -->
-<div class="ad-banner footer-ad" style="margin:40px 0;text-align:center"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
+  footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;text-align:center"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
 <footer>
   <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
   <p style="margin: 8px 0; font-size: 13px;">
@@ -295,14 +166,14 @@ function update() {
   var tip = document.getElementById("tip");
   if (words > 0) {
     var model = tokens < 500 ? "Short - fits any AI" : tokens < 2000 ? "Standard - most models" : tokens < 8000 ? "Long - premium models" : "Extended - optimize";
-    tip.innerText = "Tip: " + model;
+    tip.innerText = "Tip: " + model
   } else {
-    tip.innerText = "";
+    tip.innerText = ""
   }
 }
 
-function clearPrompt() { input.value = ""; update(); }
-function copyPrompt() { navigator.clipboard.writeText(input.value); }
+function clearPrompt() { input.value = ""; update() }
+function copyPrompt() { navigator.clipboard.writeText(input.value) }
 </script>
 <script src="/knexio-bundle.js"></script>
 </body>

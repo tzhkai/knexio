@@ -37,13 +37,13 @@
   --border:rgba(255,255,255,.08);
   --text:#fff;
   --sub:#aab3c5;
-  --accent:#4f8cff;
+  --accent:#4f8cff
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{
   font-family:system-ui,-apple-system;
   background:var(--bg);
-  color:var(--text);
+  color:var(--text)
 }
 .container{max-width:900px;margin:auto;padding:50px 16px}
 
@@ -54,10 +54,10 @@ body{
   text-decoration: none;
   font-size: 14px;
   margin-bottom: 24px;
-  transition: color 0.2s;
+  transition: color 0.2s
 }
 .back:hover {
-  color: var(--accent);
+  color: var(--accent)
 }
 
 h1{font-size:32px;margin-bottom:8px}
@@ -69,7 +69,7 @@ h2{font-size:22px;margin-top:30px;margin-bottom:10px}
   border:1px solid var(--border);
   border-radius:14px;
   padding:20px;
-  margin-bottom:20px;
+  margin-bottom:20px
 }
 
 label {
@@ -77,7 +77,7 @@ label {
   font-size: 14px;
   color: var(--sub);
   margin-bottom: 8px;
-  font-weight: 500;
+  font-weight: 500
 }
 
 input[type="url"], select {
@@ -88,12 +88,12 @@ input[type="url"], select {
   border-radius: 12px;
   color: var(--text);
   font-size: 15px;
-  font-family: inherit;
+  font-family: inherit
 }
 
 input:focus, select:focus {
   outline: none;
-  border-color: var(--accent);
+  border-color: var(--accent)
 }
 
 
@@ -103,7 +103,7 @@ input:focus, select:focus {
 .form-grid {
   display: grid;
   gap: 16px;
-  margin-bottom: 16px;
+  margin-bottom: 16px
 }
 
 
@@ -114,7 +114,7 @@ input:focus, select:focus {
   border-radius: 10px;
   padding: 16px;
   margin: 12px 0;
-  position: relative;
+  position: relative
 }
 
 .code-block code {
@@ -124,7 +124,7 @@ input:focus, select:focus {
   font-size: 13px;
   white-space: pre-wrap;
   word-break: break-all;
-  line-height: 1.5;
+  line-height: 1.5
 }
 
 .preview-box {
@@ -134,7 +134,7 @@ input:focus, select:focus {
   border-radius: 10px;
   color: #333;
   max-width: 100%;
-  overflow-x: auto;
+  overflow-x: auto
 }
 
 .error {
@@ -143,20 +143,20 @@ input:focus, select:focus {
   padding: 12px;
   border-radius: 10px;
   margin-top: 12px;
-  display: none;
+  display: none
 }
 
 .loading {
   display: none;
   text-align: center;
   padding: 20px;
-  color: var(--sub);
+  color: var(--sub)
 }
 
 .section p{
   color:var(--sub);
   line-height:1.7;
-  margin-bottom:10px;
+  margin-bottom:10px
 }
 
 .tools a{
@@ -166,37 +166,37 @@ input:focus, select:focus {
   border-radius:8px;
   border:1px solid var(--border);
   color:var(--sub);
-  text-decoration:none;
+  text-decoration:none
 }
 .tools a:hover{
   border-color:var(--accent);
-  color:var(--accent);
+  color:var(--accent)
 }
 
 /* 广告样式 */
 .ad-banner {
   margin: 32px 0;
-  text-align: center;
+  text-align: center
 }
 
 /* 统一的 Footer 样式 */
-footer {
+footer{
   margin-top: 40px;
   text-align: center;
   color: var(--sub);
-  font-size: 13px;
-border-top:1px solid var(--border);}
+  font-size: 13px
+}
 footer p {
-  margin-bottom: 8px;
+  margin-bottom: 8px
 }
 footer a {
   color: var(--sub);
   text-decoration: none;
   margin: 0 10px;
-  transition: color 0.2s;
+  transition: color 0.2s
 }
 footer a:hover {
-  color: var(--accent);
+  color: var(--accent)
 }
 textarea,.text-area{width:100%;min-height:180px;background:var(--bg);border:1px solid var(--border);border-radius:12px;color:var(--text);padding:14px;font-size:15px;resize:vertical;box-sizing:border-box}
 textarea:focus,.text-area:focus{outline:none;border-color:var(--accent)}
@@ -211,110 +211,7 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
 .stat label,.stat-label,.result-label,.age-label{font-size:12px;color:var(--sub);display:block}
 .result-box{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;margin-top:16px;min-height:100px;white-space:pre-wrap;word-break:break-all;font-size:15px;line-height:1.7;box-sizing:border-box}
 @media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.btn-row{flex-direction:column}}
-  footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Is this tool free to use?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, this tool is completely free to use. No registration, no login, and no subscription required. Just open the page and start using it."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is my data safe? Is anything stored on a server?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, your data is safe. All processing happens entirely in your browser \u2014 your input never leaves your device and is not sent to any server."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does this tool work on mobile devices?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. The tool is fully responsive and works on smartphones, tablets, and desktop computers."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How accurate is the result?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The tool uses standard algorithms and web APIs to provide accurate results. For critical or professional use, please verify with additional sources."
-      }
-    }
-  ]
-}
-</script>
-</head>
-
-<body><div class="container">
-
-<a class="back" href="../index.html">← Back to Tools</a>
-
-<h1>OEmbed Generator</h1>
-<p class="subtitle">Generate embed codes for Twitter, YouTube, Instagram, and other platforms from URLs instantly.</p>
-
-<div class="ad-banner">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="5794572171"
-       data-ad-format="auto"
-       data-full-width-responsive="true">
-  </ins>
-</div>
-
-<div class="card">
-<div class="form-grid">
-  <div>
-    <label>Content URL</label>
-    <input type="url" id="url" placeholder="https://twitter.com/username/status/123456789">
-  </div>
-
-  <div>
-    <label>Platform</label>
-    <select id="platform">
-      <option value="twitter">Twitter / X</option>
-      <option value="youtube">YouTube</option>
-      <option value="vimeo">Vimeo</option>
-      <option value="instagram">Instagram</option>
-      <option value="facebook">Facebook</option>
-      <option value="spotify">Spotify</option>
-      <option value="soundcloud">SoundCloud</option>
-      <option value="dailymotion">Dailymotion</option>
-      <option value="reddit">Reddit</option>
-      <option value="flickr">Flickr</option>
-      <option value="tiktok">TikTok</option>
-      <option value="generic">Generic OEmbed</option>
-    </select>
-  </div>
-</div>
-
-<div class="btn-row">
-<button onclick="generateOEmbed()">Generate Embed</button>
-<button class="secondary" onclick="clearAll()">Clear</button>
-</div>
-
-<div class="error" id="error"></div>
-<div class="loading" id="loading">Generating embed code...</div>
-
-<div class="result-box" id="resultBox">
-  <h3>OEmbed Code</h3>
-  <div class="code-block">
-    <code id="embedCode"></code>
-  </div>
-  <div class="btn-row">
-    <button class="secondary" onclick="copyCode()">Copy Code</button>
-  </div>
-
-  <h3 style="margin-top:24px;">Preview</h3>
+  footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;">Preview</h3>
   <div class="preview-box" id="preview"></div>
 </div>
 
@@ -397,7 +294,7 @@ function generateOEmbed() {
   if (!url) {
     errorEl.style.display = 'block';
     errorEl.textContent = 'Please enter a URL';
-    return;
+    return
   }
 
   errorEl.style.display = 'none';
@@ -444,95 +341,95 @@ function generateOEmbed() {
           break;
         default:
           embedCode = `<blockquote class="oembed"><a href="${url}">${url}</a></blockquote>`;
-          preview = embedCode;
+          preview = embedCode
       }
 
       loadingEl.style.display = 'none';
       resultBox.style.display = 'block';
       embedCodeEl.textContent = embedCode;
-      previewEl.innerHTML = preview;
+      previewEl.innerHTML = preview
 
     } catch(e) {
       loadingEl.style.display = 'none';
       errorEl.style.display = 'block';
-      errorEl.textContent = 'Could not generate embed code. Please check URL.';
+      errorEl.textContent = 'Could not generate embed code. Please check URL.'
     }
-  }, 300);
+  }, 300)
 }
 
 function generateTwitterEmbed(url) {
-  return `<blockquote class="twitter-tweet" data-theme="dark"><a href="${url}"></a></blockquote>\n<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"><\/script>`;
+  return `<blockquote class="twitter-tweet" data-theme="dark"><a href="${url}"></a></blockquote>\n<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"><\/script>`
 }
 
 function generateYouTubeEmbed(url) {
   let videoId = '';
   if (url.includes('youtu.be/')) {
-    videoId = url.split('youtu.be/')[1].split('?')[0];
+    videoId = url.split('youtu.be/')[1].split('?')[0]
   } else if (url.includes('youtube.com/watch')) {
     const urlParams = new URLSearchParams(url.split('?')[1]);
-    videoId = urlParams.get('v');
+    videoId = urlParams.get('v')
   } else if (url.includes('youtube.com/embed/')) {
-    videoId = url.split('youtube.com/embed/')[1];
+    videoId = url.split('youtube.com/embed/')[1]
   } else if (url.includes('youtube.com/shorts/')) {
-    videoId = url.split('youtube.com/shorts/')[1].split('?')[0];
+    videoId = url.split('youtube.com/shorts/')[1].split('?')[0]
   }
 
   if (videoId) {
-    return `<iframe width="560" height="315" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+    return `<iframe width="560" height="315" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
   }
-  return `<!-- Could not extract YouTube video ID -->`;
+  return `<!-- Could not extract YouTube video ID -->`
 }
 
 function generateVimeoEmbed(url) {
   let videoId = '';
   if (url.includes('vimeo.com/')) {
-    videoId = url.split('vimeo.com/')[1].split('?')[0];
+    videoId = url.split('vimeo.com/')[1].split('?')[0]
   }
   if (videoId) {
-    return `<iframe src="https://player.vimeo.com/video/${videoId}" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
+    return `<iframe src="https://player.vimeo.com/video/${videoId}" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`
   }
-  return `<!-- Could not extract Vimeo video ID -->`;
+  return `<!-- Could not extract Vimeo video ID -->`
 }
 
 function generateInstagramEmbed(url) {
-  return `<blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="${url}" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="${url}" style="background:#FFFFFF; line-height:0; margin:0; padding:0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style="display:flex; flex-direction:row; align-items:center;"> <div style="background-color:#F4F4F4; border-radius:50%; flex-grow:0; height:40px; margin-right:14px; width:40px;"></div> <div style="display:flex; flex-direction:column; flex-grow:1; justify-content:center;"> <div style="background-color:#F4F4F4; border-radius:4px; flex-grow:0; height:14px; margin-bottom:6px; width:100px;"></div> <div style="background-color:#F4F4F4; border-radius:4px; flex-grow:0; height:14px; width:60px;"></div> </div> </div><div style="padding: 19% 0;"></div><div style="display:block; height:50px; margin:0 auto 12px; width:50px;"></div><div style="padding-top:8px;"><div style="color:#198754; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-right:8px; margin-bottom:9px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">View this post on Instagram</div></div><div style="padding: 12.5% 0;"></div> <div style="display:flex; flex-direction:row; margin-bottom:14px; align-items:center;"><div> <div style="background-color:#F4F4F4; border-radius:50%; height:12.5px; width:12.5px; transform:translateX(0px) translateY(7px);"></div> <div style="background-color:#F4F4F4; height:12.5px; transform:rotate(-45deg) translateX(3px) translateY(1px); width:12.5px; flex-grow:0; margin-right:14px; margin-left:2px;"></div> <div style="background-color:#F4F4F4; border-radius:50%; height:12.5px; width:12.5px; transform:translateX(9px) translateY(-18px);"></div> </div><div style="margin-left:8px;"> <div style="background-color:#F4F4F4; border-radius:5px; flex-grow:0; height:20px; width:60px;"></div> <div style="background-color:#F4F4F4; border-radius:5px; flex-grow:0; height:20px; width:40px;"></div> </div></div> </a></div><script async src="//www.instagram.com/embed.js"><\/script></blockquote>`;
+  return `<blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="${url}" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="${url}" style="background:#FFFFFF; line-height:0; margin:0; padding:0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style="display:flex; flex-direction:row; align-items:center;"> <div style="background-color:#F4F4F4; border-radius:50%; flex-grow:0; height:40px; margin-right:14px; width:40px;"></div> <div style="display:flex; flex-direction:column; flex-grow:1; justify-content:center;"> <div style="background-color:#F4F4F4; border-radius:4px; flex-grow:0; height:14px; margin-bottom:6px; width:100px;"></div> <div style="background-color:#F4F4F4; border-radius:4px; flex-grow:0; height:14px; width:60px;"></div> </div> </div><div style="padding: 19% 0;"></div><div style="display:block; height:50px; margin:0 auto 12px; width:50px;"></div><div style="padding-top:8px;"><div style="color:#198754; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-right:8px; margin-bottom:9px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">View this post on Instagram</div></div><div style="padding: 12.5% 0;"></div> <div style="display:flex; flex-direction:row; margin-bottom:14px; align-items:center;"><div> <div style="background-color:#F4F4F4; border-radius:50%; height:12.5px; width:12.5px; transform:translateX(0px) translateY(7px);"></div> <div style="background-color:#F4F4F4; height:12.5px; transform:rotate(-45deg) translateX(3px) translateY(1px); width:12.5px; flex-grow:0; margin-right:14px; margin-left:2px;"></div> <div style="background-color:#F4F4F4; border-radius:50%; height:12.5px; width:12.5px; transform:translateX(9px) translateY(-18px);"></div> </div><div style="margin-left:8px;"> <div style="background-color:#F4F4F4; border-radius:5px; flex-grow:0; height:20px; width:60px;"></div> <div style="background-color:#F4F4F4; border-radius:5px; flex-grow:0; height:20px; width:40px;"></div> </div></div> </a></div><script async src="//www.instagram.com/embed.js"><\/script></blockquote>`
 }
 
 function generateFacebookEmbed(url) {
-  return `<div class="fb-post" data-href="${url}" data-width="500"></div>\n<div id="fb-root"></div>\n<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0"><\/script>`;
+  return `<div class="fb-post" data-href="${url}" data-width="500"></div>\n<div id="fb-root"></div>\n<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0"><\/script>`
 }
 
 function generateSpotifyEmbed(url) {
   const trackId = url.match(/track\/([^?]+)/) || url.match(/playlist\/([^?]+)/) || url.match(/album\/([^?]+)/);
   if (trackId) {
     const type = url.includes('track') ? 'track' : url.includes('playlist') ? 'playlist' : 'album';
-    return `<iframe style="border-radius:12px" src="https://open.spotify.com/embed/${type}/${trackId[1]}" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`;
+    return `<iframe style="border-radius:12px" src="https://open.spotify.com/embed/${type}/${trackId[1]}" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`
   }
-  return `<!-- Could not extract Spotify track/playlist/album ID -->`;
+  return `<!-- Could not extract Spotify track/playlist/album ID -->`
 }
 
 function generateSoundCloudEmbed(url) {
-  return `<iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=${encodeURIComponent(url)}"></iframe>`;
+  return `<iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=${encodeURIComponent(url)}"></iframe>`
 }
 
 function generateTikTokEmbed(url) {
   const videoId = url.match(/video\/(\d+)/);
   if (videoId) {
-    return `<blockquote class="tiktok-embed" cite="${url}" data-video-id="${videoId[1]}" style="max-width: 605px; min-width: 325px;"> <section> <a target="_blank" title="@tiktok" href="https://www.tiktok.com/@tiktok?refer=embed">@tiktok</a> <p>Check out this video on TikTok!</p> </section> </blockquote> <script async src="https://www.tiktok.com/embed.js"><\/script>`;
+    return `<blockquote class="tiktok-embed" cite="${url}" data-video-id="${videoId[1]}" style="max-width: 605px; min-width: 325px;"> <section> <a target="_blank" title="@tiktok" href="https://www.tiktok.com/@tiktok?refer=embed">@tiktok</a> <p>Check out this video on TikTok!</p> </section> </blockquote> <script async src="https://www.tiktok.com/embed.js"><\/script>`
   }
-  return `<!-- Could not extract TikTok video ID -->`;
+  return `<!-- Could not extract TikTok video ID -->`
 }
 
 function clearAll() {
   document.getElementById('url').value = '';
   document.getElementById('resultBox').style.display = 'none';
-  document.getElementById('error').style.display = 'none';
+  document.getElementById('error').style.display = 'none'
 }
 
 function copyCode() {
   const code = document.getElementById('embedCode').textContent;
   navigator.clipboard.writeText(code);
-  alert('Copied!');
+  alert('Copied!')
 }
 
 // AdSense initialization

@@ -33,23 +33,23 @@
       --border: rgba(255,255,255,0.08);
       --text: #ffffff;
       --sub: #aab3c5;
-      --accent: #4f8cff;
+      --accent: #4f8cff
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0 }
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
-      min-height: 100vh;
+      min-height: 100vh
     }
 
     .container {
       max-width: 920px;
       margin: 0 auto;
-      padding: 60px 20px;
+      padding: 60px 20px
     }
 
     .back {
@@ -58,48 +58,48 @@
       text-decoration: none;
       font-size: 14px;
       margin-bottom: 24px;
-      transition: color 0.2s;
+      transition: color 0.2s
     }
 
     .back:hover {
-      color: var(--accent);
+      color: var(--accent)
     }
 
     h1 {
       font-size: 34px;
       margin-bottom: 8px;
-      color: var(--text);
+      color: var(--text)
     }
 
     .subtitle {
       font-size: 15px;
       color: var(--sub);
-      margin-bottom: 40px;
+      margin-bottom: 40px
     }
 
     .tool-layout {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 24px;
-      margin-bottom: 40px;
+      margin-bottom: 40px
     }
 
     .panel {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 24px;
+      padding: 24px
     }
 
     .panel-title {
       font-size: 18px;
       font-weight: 600;
       margin-bottom: 20px;
-      color: var(--text);
+      color: var(--text)
     }
 
     .form-group {
-      margin-bottom: 20px;
+      margin-bottom: 20px
     }
 
     label {
@@ -107,7 +107,7 @@
       font-size: 14px;
       color: var(--sub);
       margin-bottom: 8px;
-      font-weight: 500;
+      font-weight: 500
     }
 
     input[type="text"],
@@ -125,25 +125,25 @@
       color: var(--text);
       font-size: 15px;
       font-family: inherit;
-      transition: border-color 0.2s;
+      transition: border-color 0.2s
     }
 
     input:focus,
     textarea:focus,
     select:focus {
       outline: none;
-      border-color: var(--accent);
+      border-color: var(--accent)
     }
 
     textarea {
       min-height: 120px;
-      resize: vertical;
+      resize: vertical
     }
 
     .button-group {
       display: flex;
       gap: 12px;
-      margin-top: 24px;
+      margin-top: 24px
     }
 
     .btn {
@@ -154,27 +154,27 @@
       font-size: 15px;
       font-weight: 600;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all 0.2s
     }
 
     .btn-primary {
       background: var(--accent);
-      color: #ffffff;
+      color: #ffffff
     }
 
     .btn-primary:hover {
-      background: #3d7de0;
+      background: #3d7de0
     }
 
     .btn-secondary {
       background: transparent;
       border: 1px solid var(--border);
-      color: var(--sub);
+      color: var(--sub)
     }
 
     .btn-secondary:hover {
       border-color: var(--sub);
-      color: var(--text);
+      color: var(--text)
     }
 
     .result-box {
@@ -187,7 +187,7 @@
       overflow-y: auto;
       white-space: pre-wrap;
       color: var(--text);
-      line-height: 1.8;
+      line-height: 1.8
     }
 
     .content {
@@ -195,78 +195,78 @@
       border: 1px solid var(--border);
       border-radius: 12px;
       padding: 32px;
-      margin-bottom: 24px;margin-bottom: 40px;
+      margin-bottom: 24px;margin-bottom: 40px
     }
 
     .content h2 {
       font-size: 24px;
       margin-bottom: 16px;
-      color: var(--text);
+      color: var(--text)
     }
 
     .content p {
       color: var(--sub);
       margin-bottom: 16px;
-      line-height: 1.7;
+      line-height: 1.7
     }
 
     .content ul {
       margin-left: 24px;
       margin-bottom: 16px;
-      color: var(--sub);
+      color: var(--sub)
     }
 
     .content li {
-      margin-bottom: 8px;
+      margin-bottom: 8px
     }
 
-    footer {
+    footer{
       text-align: center;
       padding: 40px 20px;
-      border-top: 1px solid var(--border);
-      margin-top: 60px;
+      
+      margin-top: 60px
     }
 
     footer a {
       color: var(--sub);
       text-decoration: none;
       margin: 0 16px;
-      font-size: 14px;
+      font-size: 14px
     }
 
     footer a:hover {
-      color: var(--accent);
+      color: var(--accent)
     }
 
     @media (max-width: 768px) {
       .container {
-        padding: 40px 16px 80px;
+        padding: 40px 16px 80px
       }
 
       h1 {
-        font-size: 28px;
+        font-size: 28px
       }
 
       .tool-layout {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr
       }
 
       .button-group {
-        flex-direction: column;
+        flex-direction: column
       }
     }
 
     @media (max-width: 480px) {
       .container {
-        padding: 32px 12px 80px;
+        padding: 32px 12px 80px
       }
 
       h1 {
-        font-size: 24px;
+        font-size: 24px
       }
 
       .panel {
-        padding: 20px;
+        padding: 20px
       }
     }
 
@@ -274,6 +274,7 @@
 
 <!-- Open Graph -->
 <meta property="og:site_name" content="Knexio">
+<link rel="stylesheet" href="shared.css">
 </head>
 <body>
   <div class="container">
@@ -380,14 +381,14 @@ Hosting - $500"></textarea>
       document.getElementById("items").value = '';
       document.getElementById("taxRate").value = '';
       document.getElementById("validUntil").value = '';
-      document.getElementById("result").textContent = 'Your result will appear here...';
+      document.getElementById("result").textContent = 'Your result will appear here...'
     }
 
     function copyResult() {
       const result = document.getElementById("result").textContent;
       navigator.clipboard.writeText(result).then(() => {
-        alert("✓ Result copied to clipboard!");
-      });
+        alert("✓ Result copied to clipboard!")
+      })
     }
 
         function generateQuote() {
@@ -406,7 +407,7 @@ Hosting - $500"></textarea>
       validUntil: ${validUntil}
       `;
 
-      document.getElementById("result").textContent = result;
+      document.getElementById("result").textContent = result
     }
   </script>
 <script src="/knexio-bundle.js"></script>

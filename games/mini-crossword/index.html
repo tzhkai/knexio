@@ -13,51 +13,51 @@
   <meta property="og:site_name" content="Knexio" />
   <meta property="og:image" content="https://knexio.xyz/og-image.png" />
 <style>
-    :root{--bg:#0b1220;--bg2:#070d1a;--panel:#111a2e;--border:rgba(255,255,255,0.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff;--green:#22c55e;--yellow:#fbbf24;;--text-main:#fff;--text-sub:#aab3c5}
-    *{box-sizing:border-box;margin:0;padding:0;}
-    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:linear-gradient(180deg,var(--bg),var(--bg2));color:var(--text);min-height:100vh;}
-    a{text-decoration:none;color:inherit;}
-    .wrap{max-width:720px;margin:0 auto;padding:40px 16px 80px;}
-    .back{display:inline-block;margin-bottom:20px;font-size:14px;color:var(--sub);}
-    .back:hover{color:var(--accent);}
-    h1{font-size:30px;margin-bottom:6px;}
-    .subtitle{font-size:15px;color:var(--sub);margin-bottom:18px;}
+    :root{--bg:#0b1220;--bg2:#070d1a;--panel:#111a2e;--border:rgba(255,255,255,0.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff;--green:#22c55e;--yellow:#fbbf24;--text-main:#fff;--text-sub:#aab3c5}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:linear-gradient(180deg,var(--bg),var(--bg2));color:var(--text);min-height:100vh}
+    a{text-decoration:none;color:inherit}
+    .wrap{max-width:720px;margin:0 auto;padding:40px 16px 80px}
+    .back{display:inline-block;margin-bottom:20px;font-size:14px;color:var(--sub)}
+    .back:hover{color:var(--accent)}
+    h1{font-size:30px;margin-bottom:6px}
+    .subtitle{font-size:15px;color:var(--sub);margin-bottom:18px}
     .ad-slot{margin:24px 0;text-align:center;min-height:90px}
-    .game-layout{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:start;}
-    .grid-wrap{display:flex;flex-direction:column;align-items:flex-start;gap:12px;}
-    .crossword-grid{display:grid;gap:3px;background:#0a1020;border:3px solid #1a2540;border-radius:10px;padding:6px;}
-    .cell{width:52px;height:52px;background:#1e2d4a;border:1px solid rgba(255,255,255,0.1);position:relative;cursor:pointer;transition:background 0.1s;}
-    .cell.black{background:#000;cursor:default;border-color:#000;}
-    .cell.active{background:rgba(79,140,255,0.3);border-color:var(--accent);}
-    .cell.highlighted{background:rgba(79,140,255,0.12);}
-    .cell.correct{background:rgba(34,197,94,0.2);}
-    .cell.wrong{background:rgba(248,113,113,0.15);}
-    .cell input{position:absolute;inset:0;width:100%;height:100%;background:none;border:none;color:#fff;font-size:22px;font-weight:700;text-align:center;text-transform:uppercase;outline:none;cursor:pointer;caret-color:transparent;}
-    .cell-num{position:absolute;top:2px;left:3px;font-size:10px;color:var(--sub);font-weight:600;line-height:1;}
-    .clues-panel{min-width:0;}
-    .clue-section{margin-bottom:20px;}
-    .clue-section h3{font-size:14px;color:var(--sub);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:10px;}
-    .clue{padding:8px 12px;border-radius:8px;font-size:14px;color:var(--sub);cursor:pointer;transition:background 0.15s;display:flex;gap:8px;align-items:baseline;}
-    .clue:hover{background:rgba(255,255,255,0.05);}
-    .clue.active{background:rgba(79,140,255,0.12);color:var(--text);}
-    .clue.solved{color:var(--green);}
-    .clue .cn{min-width:20px;font-weight:700;color:var(--accent);font-size:13px;}
-    .btn-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;}
-    .btn{padding:9px 18px;border-radius:10px;border:none;background:var(--accent);color:#fff;font-size:14px;cursor:pointer;transition:opacity 0.18s;}
-    .btn:hover{opacity:0.85;}
-    .btn.secondary{background:var(--panel);border:1px solid var(--border);color:var(--sub);}
-    .timer-row{display:flex;align-items:center;gap:14px;margin-bottom:14px;}
-    .timer{font-size:18px;font-family:monospace;color:var(--accent);font-weight:700;}
-    .mode-seg{display:flex;border:1px solid var(--border);border-radius:8px;overflow:hidden;}
-    .mode-seg button{padding:7px 14px;background:none;border:none;color:var(--sub);font-size:13px;cursor:pointer;}
-    .mode-seg button.active{background:var(--accent);color:#fff;}
-    .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:100;align-items:center;justify-content:center;}
-    .modal-overlay.show{display:flex;}
-    .modal{background:var(--panel);border:1px solid var(--border);border-radius:20px;padding:36px 28px;text-align:center;max-width:320px;width:100%;}
-    .modal h2{font-size:26px;margin-bottom:8px;}
-    .modal p{color:var(--sub);margin-bottom:18px;font-size:15px;}
-    .modal .ad-slot{margin:0 0 18px;min-height:70px;}
-    .modal .btn{width:100%;}
+    .game-layout{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:start}
+    .grid-wrap{display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+    .crossword-grid{display:grid;gap:3px;background:#0a1020;border:3px solid #1a2540;border-radius:10px;padding:6px}
+    .cell{width:52px;height:52px;background:#1e2d4a;border:1px solid rgba(255,255,255,0.1);position:relative;cursor:pointer;transition:background 0.1s}
+    .cell.black{background:#000;cursor:default;border-color:#000}
+    .cell.active{background:rgba(79,140,255,0.3);border-color:var(--accent)}
+    .cell.highlighted{background:rgba(79,140,255,0.12)}
+    .cell.correct{background:rgba(34,197,94,0.2)}
+    .cell.wrong{background:rgba(248,113,113,0.15)}
+    .cell input{position:absolute;inset:0;width:100%;height:100%;background:none;border:none;color:#fff;font-size:22px;font-weight:700;text-align:center;text-transform:uppercase;outline:none;cursor:pointer;caret-color:transparent}
+    .cell-num{position:absolute;top:2px;left:3px;font-size:10px;color:var(--sub);font-weight:600;line-height:1}
+    .clues-panel{min-width:0}
+    .clue-section{margin-bottom:20px}
+    .clue-section h3{font-size:14px;color:var(--sub);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:10px}
+    .clue{padding:8px 12px;border-radius:8px;font-size:14px;color:var(--sub);cursor:pointer;transition:background 0.15s;display:flex;gap:8px;align-items:baseline}
+    .clue:hover{background:rgba(255,255,255,0.05)}
+    .clue.active{background:rgba(79,140,255,0.12);color:var(--text)}
+    .clue.solved{color:var(--green)}
+    .clue .cn{min-width:20px;font-weight:700;color:var(--accent);font-size:13px}
+    .btn-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+    .btn{padding:9px 18px;border-radius:10px;border:none;background:var(--accent);color:#fff;font-size:14px;cursor:pointer;transition:opacity 0.18s}
+    .btn:hover{opacity:0.85}
+    .btn.secondary{background:var(--panel);border:1px solid var(--border);color:var(--sub)}
+    .timer-row{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+    .timer{font-size:18px;font-family:monospace;color:var(--accent);font-weight:700}
+    .mode-seg{display:flex;border:1px solid var(--border);border-radius:8px;overflow:hidden}
+    .mode-seg button{padding:7px 14px;background:none;border:none;color:var(--sub);font-size:13px;cursor:pointer}
+    .mode-seg button.active{background:var(--accent);color:#fff}
+    .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:100;align-items:center;justify-content:center}
+    .modal-overlay.show{display:flex}
+    .modal{background:var(--panel);border:1px solid var(--border);border-radius:20px;padding:36px 28px;text-align:center;max-width:320px;width:100%}
+    .modal h2{font-size:26px;margin-bottom:8px}
+    .modal p{color:var(--sub);margin-bottom:18px;font-size:15px}
+    .modal .ad-slot{margin:0 0 18px;min-height:70px}
+    .modal .btn{width:100%}
     footer p{margin:0}
     footer p{margin:0}
     footer p{margin:0}
@@ -70,153 +70,153 @@
       /* 容器布局优化 */
       .container, .wrap {
         padding: 40px 15px 80px !important;
-        max-width: 100% !important;
+        max-width: 100% !important
       }
       
       /* 标题字体优化 */
       h1 {
         font-size: 28px !important;
-        line-height: 1.3 !important;
+        line-height: 1.3 !important
       }
       
       h2 {
         font-size: 20px !important;
         margin-top: 36px !important;
-        margin-bottom: 10px !important;
+        margin-bottom: 10px !important
       }
       
       h3 {
-        font-size: 17px !important;
+        font-size: 17px !important
       }
       
       /* 正文内容优化 */
       p, li, .intro, .subtitle {
         font-size: 14px !important;
-        line-height: 1.7 !important;
+        line-height: 1.7 !important
       }
       
       /* 段落间距优化 */
       p, ul, ol {
-        margin-bottom: 16px !important;
+        margin-bottom: 16px !important
       }
       
       /* 列表优化 */
       ul, ol {
-        padding-left: 18px !important;
+        padding-left: 18px !important
       }
       
       li {
-        margin-bottom: 6px !important;
+        margin-bottom: 6px !important
       }
       
       /* 内容块优化 */
       .main-panel, .step-block, .notice, .extra-info {
         padding: 16px !important;
         border-radius: 12px !important;
-        margin: 16px 0 !important;
+        margin: 16px 0 !important
       }
       
       /* 按钮和输入框优化 */
       .btn {
         padding: 14px !important;
         font-size: 15px !important;
-        min-height: 48px !important;
+        min-height: 48px !important
       }
       
       .input-group input {
         padding: 12px !important;
-        font-size: 15px !important;
+        font-size: 15px !important
       }
       
       /* 网格系统优化 */
       .age-grid {
         grid-template-columns: repeat(2, 1fr) !important;
-        gap: 12px !important;
+        gap: 12px !important
       }
       
       /* 广告位优化 */
       .ad-banner {
         margin: 16px 0 !important;
-        min-height: 50px !important;
+        min-height: 50px !important
       }
       
       /* 游戏页面优化 */
       .grid-container {
-        padding: 8px !important;
+        padding: 8px !important
       }
       
       .grid {
-        gap: 8px !important;
+        gap: 8px !important
       }
       
       .cell {
         font-size: 20px !important;
-        border-radius: 6px !important;
+        border-radius: 6px !important
       }
       
       .score-box {
         min-width: 70px !important;
-        padding: 6px 12px !important;
+        padding: 6px 12px !important
       }
       
       .score-val {
-        font-size: 18px !important;
+        font-size: 18px !important
       }
       
       /* 工具页面优化 */
       .age-main {
-        font-size: 36px !important;
+        font-size: 36px !important
       }
       
       .age-value {
-        font-size: 24px !important;
+        font-size: 24px !important
       }
       
       .age-label {
-        font-size: 11px !important;
+        font-size: 11px !important
       }
       
       /* 引导页面优化 */
       .intro {
         border-left-width: 2px !important;
         padding-left: 12px !important;
-        margin-bottom: 32px !important;
+        margin-bottom: 32px !important
       }
       
       .faq-item {
-        margin-bottom: 20px !important;
+        margin-bottom: 20px !important
       }
       
       .faq-item strong {
-        font-size: 15px !important;
+        font-size: 15px !important
       }
     }
     
     /* 小手机优化 (≤480px) */
     @media (max-width: 480px) {
       h1 {
-        font-size: 24px !important;
+        font-size: 24px !important
       }
       
       h2 {
-        font-size: 18px !important;
+        font-size: 18px !important
       }
       
       .container, .wrap {
-        padding: 32px 12px 60px !important;
+        padding: 32px 12px 60px !important
       }
       
       .main-panel, .step-block, .notice {
-        padding: 14px !important;
+        padding: 14px !important
       }
       
       .btn {
         padding: 12px !important;
-        font-size: 14px !important;
+        font-size: 14px !important
       }
       
       .age-grid {
-        grid-template-columns: 1fr !important;
+        grid-template-columns: 1fr !important
       }
     }
     
@@ -224,51 +224,14 @@
     @media (hover: none) and (pointer: coarse) {
       button, .btn, a[onclick], .cell {
         min-height: 44px !important;
-        min-width: 44px !important;
+        min-width: 44px !important
       }
       
       input, select, textarea {
-        font-size: 16px !important;
+        font-size: 16px !important
       }
     }
-    footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "VideoGame",
-  "name": "✏️ Mini Crossword",
-  "url": "https://knexio.xyz/games/mini-crossword/",
-  "description": "Fill the 5×5 grid using Across and Down clues. Click a cell and type.",
-  "genre": "Game",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  }
-}
-</script>
-</head>
-<body><div class="wrap">
-  <a class="back" href="../index.html">← Back to Games</a>
-  <h1>✏️ Mini Crossword</h1>
-  <p class="subtitle">Fill the 5×5 grid using Across and Down clues. Click a cell and type.</p>
-
-  <!-- Ad Slot 1: Top -->
-
-  <div class="timer-row">
-    <div class="mode-seg">
-      <button class="active" id="btn-daily" onclick="loadMode('daily')">Daily</button>
-      <button id="btn-random" onclick="loadMode('random')">Random</button>
-    </div>
-    <div class="timer" id="timerDisplay">0:00</div>
-    <button class="btn secondary" onclick="newPuzzle()">New</button>
-    <button class="btn secondary" onclick="checkAnswers()">Check</button>
-    <button class="btn secondary" onclick="revealAll()">Reveal</button>
-  </div>
-
-  <div class="game-layout">
-    <div class="grid-wrap">
-      <div class="crossword-grid" id="cwGrid" style="grid-template-columns:repeat(5,1fr);grid-template-rows:repeat(5,1fr);"></div>
+    footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;grid-template-rows:repeat(5,1fr);"></div>
     </div>
     <div class="clues-panel">
       <div class="clue-section">
@@ -586,15 +549,15 @@ function loadMode(m) {
   mode = m;
   document.getElementById('btn-daily').classList.toggle('active', m==='daily');
   document.getElementById('btn-random').classList.toggle('active', m==='random');
-  newPuzzle();
+  newPuzzle()
 }
 
 function getPuzzle() {
   if (mode === 'daily') {
     const idx = new Date().getDay() % SIMPLE_PUZZLES.length;
-    return SIMPLE_PUZZLES[idx];
+    return SIMPLE_PUZZLES[idx]
   }
-  return SIMPLE_PUZZLES[Math.floor(Math.random() * SIMPLE_PUZZLES.length)];
+  return SIMPLE_PUZZLES[Math.floor(Math.random() * SIMPLE_PUZZLES.length)]
 }
 
 function newPuzzle() {
@@ -606,13 +569,13 @@ function newPuzzle() {
   timerInterval = setInterval(tick, 1000);
   renderGrid();
   renderClues();
-  closeModal();
+  closeModal()
 }
 
 function tick() {
   seconds++;
   const m = Math.floor(seconds/60), s = seconds%60;
-  document.getElementById('timerDisplay').textContent = `${m}:${s.toString().padStart(2,'0')}`;
+  document.getElementById('timerDisplay').textContent = `${m}:${s.toString().padStart(2,'0')}`
 }
 
 function renderGrid() {
@@ -627,7 +590,7 @@ function renderGrid() {
     if (num) {
       const numEl = document.createElement('div');
       numEl.className = 'cell-num'; numEl.textContent = num;
-      cell.appendChild(numEl);
+      cell.appendChild(numEl)
     }
     const inp = document.createElement('input');
     inp.maxLength = 1;
@@ -638,18 +601,18 @@ function renderGrid() {
     cell.appendChild(inp);
     cell.addEventListener('click', () => {
       if (activeCell && activeCell[0]===r && activeCell[1]===c) {
-        activeDir = activeDir==='A'?'D':'A';
+        activeDir = activeDir==='A'?'D':'A'
       }
-      selectCell(r,c);
+      selectCell(r,c)
     });
-    cw.appendChild(cell);
+    cw.appendChild(cell)
   }
 }
 
 function getCellNum(r,c) {
   const allEntries = [...currentPuzzle.acrossClues, ...currentPuzzle.downClues];
   const found = allEntries.find(e => e.r===r && e.c===c);
-  return found ? found.num : null;
+  return found ? found.num : null
 }
 
 function selectCell(r,c) {
@@ -657,12 +620,12 @@ function selectCell(r,c) {
   highlightCells();
   const cells = document.getElementById('cwGrid').children;
   const idx = r*5+c;
-  if (cells[idx]) cells[idx].querySelector('input').focus();
+  if (cells[idx]) cells[idx].querySelector('input').focus()
 }
 
 function highlightCells() {
   const cells = document.getElementById('cwGrid').children;
-  [...cells].forEach(c => { c.classList.remove('active','highlighted'); });
+  [...cells].forEach(c => { c.classList.remove('active','highlighted') });
   if (!activeCell) return;
   const [r,c] = activeCell;
   cells[r*5+c].classList.add('active');
@@ -673,10 +636,10 @@ function highlightCells() {
       const tr = entry.dir==='A' ? r : entry.r+i;
       const tc = entry.dir==='A' ? entry.c+i : c;
       if (tr===r&&tc===c) continue;
-      cells[tr*5+tc]?.classList.add('highlighted');
+      cells[tr*5+tc]?.classList.add('highlighted')
     }
   }
-  renderClues();
+  renderClues()
 }
 
 function getActiveEntry() {
@@ -685,8 +648,8 @@ function getActiveEntry() {
   const list = activeDir==='A' ? currentPuzzle.acrossClues : currentPuzzle.downClues;
   return list.find(e => {
     if (activeDir==='A') return e.r===r && e.c<=c && e.c+e.len>c;
-    else return e.c===c && e.r<=r && e.r+e.len>r;
-  });
+    else return e.c===c && e.r<=r && e.r+e.len>r
+  })
 }
 
 function handleInput(e, r, c) {
@@ -694,39 +657,39 @@ function handleInput(e, r, c) {
   e.target.value = val;
   userGrid[r][c] = val;
   if (val) advanceCursor(r,c);
-  checkComplete();
+  checkComplete()
 }
 
 function handleKey(e, r, c) {
   if (e.key==='Backspace') {
     if (!userGrid[r][c]) moveCursor(r,c,-1);
-    else { userGrid[r][c]=''; e.target.value=''; }
-    e.preventDefault();
-  } else if (e.key==='ArrowRight') { activeDir='A'; moveCursor(r,c,1); e.preventDefault(); }
-  else if (e.key==='ArrowLeft') { activeDir='A'; moveCursor(r,c,-1); e.preventDefault(); }
-  else if (e.key==='ArrowDown') { activeDir='D'; moveCursor(r,c,1); e.preventDefault(); }
-  else if (e.key==='ArrowUp') { activeDir='D'; moveCursor(r,c,-1); e.preventDefault(); }
-  else if (e.key==='Tab') { e.preventDefault(); cycleEntry(1); }
+    else { userGrid[r][c]=''; e.target.value='' }
+    e.preventDefault()
+  } else if (e.key==='ArrowRight') { activeDir='A'; moveCursor(r,c,1); e.preventDefault() }
+  else if (e.key==='ArrowLeft') { activeDir='A'; moveCursor(r,c,-1); e.preventDefault() }
+  else if (e.key==='ArrowDown') { activeDir='D'; moveCursor(r,c,1); e.preventDefault() }
+  else if (e.key==='ArrowUp') { activeDir='D'; moveCursor(r,c,-1); e.preventDefault() }
+  else if (e.key==='Tab') { e.preventDefault(); cycleEntry(1) }
 }
 
 function advanceCursor(r,c) {
-  moveCursor(r,c,1);
+  moveCursor(r,c,1)
 }
 
 function moveCursor(r,c,d) {
   const nr = activeDir==='D' ? r+d : r;
   const nc = activeDir==='A' ? c+d : c;
-  if (nr>=0&&nr<5&&nc>=0&&nc<5) selectCell(nr,nc);
+  if (nr>=0&&nr<5&&nc>=0&&nc<5) selectCell(nr,nc)
 }
 
 function cycleEntry(d) {
   const all = [...currentPuzzle.acrossClues, ...currentPuzzle.downClues];
   const cur = getActiveEntry();
-  if (!cur) { selectCell(0,0); return; }
+  if (!cur) { selectCell(0,0); return }
   const idx = all.findIndex(e=>e===cur);
   const next = all[(idx+d+all.length)%all.length];
   activeDir = next.dir || (currentPuzzle.acrossClues.includes(next)?'A':'D');
-  selectCell(next.r, next.c);
+  selectCell(next.r, next.c)
 }
 
 function renderClues() {
@@ -738,16 +701,16 @@ function renderClues() {
     const div=document.createElement('div'); div.className='clue';
     if (activeEntry===e||(activeDir==='A'&&isWordSolved(e,'A'))) div.classList.add(isWordSolved(e,'A')?'solved':'active');
     div.innerHTML=`<span class="cn">${e.num}A</span><span>${e.clue}</span>`;
-    div.onclick=()=>{activeDir='A';selectCell(e.r,e.c);};
-    ac.appendChild(div);
+    div.onclick=()=>{activeDir='A';selectCell(e.r,e.c)};
+    ac.appendChild(div)
   });
   currentPuzzle.downClues.forEach(e => {
     const div=document.createElement('div'); div.className='clue';
     if (activeEntry===e||(activeDir==='D'&&isWordSolved(e,'D'))) div.classList.add(isWordSolved(e,'D')?'solved':'active');
     div.innerHTML=`<span class="cn">${e.num}D</span><span>${e.clue}</span>`;
-    div.onclick=()=>{activeDir='D';selectCell(e.r,e.c);};
-    dc.appendChild(div);
-  });
+    div.onclick=()=>{activeDir='D';selectCell(e.r,e.c)};
+    dc.appendChild(div)
+  })
 }
 
 function isWordSolved(entry, dir) {
@@ -757,18 +720,18 @@ function isWordSolved(entry, dir) {
   const user = dir==='A'
     ? Array.from({length:entry.len},(_,i)=>userGrid[entry.r][entry.c+i]).join('')
     : Array.from({length:entry.len},(_,i)=>userGrid[entry.r+i][entry.c]).join('');
-  return user===answer;
+  return user===answer
 }
 
 function checkComplete() {
   let allCorrect = true;
   for(let r=0;r<5;r++) for(let c=0;c<5;c++) {
-    if (userGrid[r][c]!==currentPuzzle.grid[r][c]) { allCorrect=false; break; }
+    if (userGrid[r][c]!==currentPuzzle.grid[r][c]) { allCorrect=false; break }
   }
   if (allCorrect) {
     clearInterval(timerInterval);
     const m=Math.floor(seconds/60), s=seconds%60;
-    showModal('🎉 Solved!', `You completed the puzzle in ${m}:${s.toString().padStart(2,'0')}!`);
+    showModal('🎉 Solved!', `You completed the puzzle in ${m}:${s.toString().padStart(2,'0')}!`)
   }
 }
 
@@ -776,30 +739,30 @@ function checkAnswers() {
   const cells = document.getElementById('cwGrid').children;
   for(let r=0;r<5;r++) for(let c=0;c<5;c++) {
     const cell = cells[r*5+c];
-    if (!userGrid[r][c]) { cell.classList.remove('correct','wrong'); continue; }
+    if (!userGrid[r][c]) { cell.classList.remove('correct','wrong'); continue }
     cell.classList.toggle('correct', userGrid[r][c]===currentPuzzle.grid[r][c]);
-    cell.classList.toggle('wrong', userGrid[r][c]!==currentPuzzle.grid[r][c]);
+    cell.classList.toggle('wrong', userGrid[r][c]!==currentPuzzle.grid[r][c])
   }
 }
 
 function revealAll() {
   for(let r=0;r<5;r++) for(let c=0;c<5;c++) {
-    userGrid[r][c] = currentPuzzle.grid[r][c];
+    userGrid[r][c] = currentPuzzle.grid[r][c]
   }
   const cells = document.getElementById('cwGrid').children;
   for(let r=0;r<5;r++) for(let c=0;c<5;c++) {
     const inp = cells[r*5+c].querySelector('input');
-    if(inp) inp.value = userGrid[r][c];
+    if(inp) inp.value = userGrid[r][c]
   }
 }
 
 function showModal(title,sub) {
   document.getElementById('modalTitle').textContent=title;
   document.getElementById('modalSub').textContent=sub;
-  setTimeout(()=>document.getElementById('modal').classList.add('show'),600);
+  setTimeout(()=>document.getElementById('modal').classList.add('show'),600)
 }
 
-function closeModal(){document.getElementById('modal').classList.remove('show');}
+function closeModal(){document.getElementById('modal').classList.remove('show')}
 
 mode='daily';
 newPuzzle();

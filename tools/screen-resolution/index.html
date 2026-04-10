@@ -88,13 +88,13 @@
   --border:rgba(255,255,255,.08);
   --text:#fff;
   --sub:#aab3c5;
-  --accent:#4f8cff;
+  --accent:#4f8cff
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{
   font-family:system-ui,-apple-system;
   background:var(--bg);
-  color:var(--text);
+  color:var(--text)
 }
 .container{max-width:900px;margin:auto;padding:50px 16px}
 
@@ -104,7 +104,7 @@ body{
   text-decoration:none;
   font-size:14px;
   margin-bottom:24px;
-  transition:color 0.2s;
+  transition:color 0.2s
 }
 .back:hover{color:var(--accent)}
 
@@ -117,7 +117,7 @@ h2{font-size:22px;margin-top:30px;margin-bottom:10px}
   border:1px solid var(--border);
   border-radius:14px;
   padding:20px;
-  margin-bottom:20px;
+  margin-bottom:20px
 }
 
 .tip{font-size:13px;color:var(--sub);margin-top:10px}
@@ -131,7 +131,7 @@ h2{font-size:22px;margin-top:30px;margin-bottom:10px}
   border-radius:8px;
   border:1px solid var(--border);
   color:var(--sub);
-  text-decoration:none;
+  text-decoration:none
 }
 .tools a:hover{border-color:var(--accent);color:var(--accent)}
 
@@ -142,7 +142,7 @@ h2{font-size:22px;margin-top:30px;margin-bottom:10px}
   border:1px solid var(--border);
   border-radius:12px;
   padding:20px;
-  margin-bottom:12px;
+  margin-bottom:12px
 }
 .faq-item h3{font-size:16px;margin-bottom:8px;color:var(--text)}
 .faq-item p{color:var(--sub);font-size:14px;line-height:1.7;margin:0}
@@ -153,7 +153,7 @@ footer a{
   color:var(--sub);
   text-decoration:none;
   margin:0 10px;
-  transition:color 0.2s;
+  transition:color 0.2s
 }
 footer a:hover{color:var(--accent)}
 
@@ -174,62 +174,7 @@ button.secondary:hover,.btn.secondary:hover{border-color:var(--accent);color:var
 .detail-item .d-label{color:var(--sub);font-size:13px}
 .detail-item .d-value{color:var(--text);font-weight:600;font-size:14px}
 @media(max-width:600px){.detail-grid{grid-template-columns:1fr}}
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
-</head>
-
-<body><div class="container">
-
-<a class="back" href="../index.html">← Back to Tools</a>
-
-<h1>Screen Resolution Checker</h1>
-<p class="subtitle">Check your screen resolution, window size, pixel ratio, color depth, and device orientation instantly.</p>
-
-<div class="ad-banner">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="5794572171"
-       data-ad-format="auto"
-       data-full-width-responsive="true">
-  </ins>
-</div>
-
-<div class="card">
-  <div class="stats">
-    <div class="stat"><span id="resolution">--</span><label>Resolution</label></div>
-    <div class="stat"><span id="windowSize">--</span><label>Window Size</label></div>
-    <div class="stat"><span id="pixelRatio">--</span><label>Pixel Ratio</label></div>
-    <div class="stat"><span id="colorDepth">--</span><label>Color Depth</label></div>
-    <div class="stat"><span id="orientation">--</span><label>Orientation</label></div>
-    <div class="stat"><span id="touchSupport">--</span><label>Touch Support</label></div>
-  </div>
-
-  <div class="detail-grid">
-    <div class="detail-item"><span class="d-label">Screen Width</span><span class="d-value" id="screenWidth">--</span></div>
-    <div class="detail-item"><span class="d-label">Screen Height</span><span class="d-value" id="screenHeight">--</span></div>
-    <div class="detail-item"><span class="d-label">Available Width</span><span class="d-value" id="availWidth">--</span></div>
-    <div class="detail-item"><span class="d-label">Available Height</span><span class="d-value" id="availHeight">--</span></div>
-    <div class="detail-item"><span class="d-label">Window Width</span><span class="d-value" id="windowWidth">--</span></div>
-    <div class="detail-item"><span class="d-label">Window Height</span><span class="d-value" id="windowHeight">--</span></div>
-  </div>
-
-  <div class="btn-row">
-    <button onclick="updateDisplayInfo()">Refresh</button>
-    <button class="secondary" onclick="copyInfo()">Copy Info</button>
-  </div>
-
-  <div class="tip" id="tip"></div>
-</div>
-
-<h2>Free Online Screen Resolution Checker</h2>
-<div class="section">
-<p>This tool instantly detects your screen resolution, window dimensions, device pixel ratio, color depth, and orientation. Perfect for developers, designers, and QA testers who need accurate display information.</p>
-<p>Results update automatically when you resize the browser window or change orientation on mobile devices.</p>
-</div>
-
-<h2>How It Works</h2>
-<div class="section">
-<p>The tool reads display properties directly from the browser's <code style="background:var(--card);padding:2px 6px;border-radius:4px;font-size:13px;">window.screen</code> and <code style="background:var(--card);padding:2px 6px;border-radius:4px;font-size:13px;">window.innerWidth/Height</code> APIs. These values reflect your actual hardware screen size and the current browser viewport size respectively.</p>
+footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;padding:2px 6px;border-radius:4px;font-size:13px;">window.screen</code> and <code style="background:var(--card);padding:2px 6px;border-radius:4px;font-size:13px;">window.innerWidth/Height</code> APIs. These values reflect your actual hardware screen size and the current browser viewport size respectively.</p>
 <p>The pixel ratio (<code style="background:var(--card);padding:2px 6px;border-radius:4px;font-size:13px;">devicePixelRatio</code>) shows how many physical pixels correspond to one CSS pixel — higher values mean sharper Retina or HiDPI displays.</p>
 </div>
 
@@ -322,7 +267,7 @@ function updateDisplayInfo() {
   document.getElementById('windowWidth').textContent = iw + ' px';
   document.getElementById('windowHeight').textContent = ih + ' px';
 
-  document.getElementById('tip').textContent = 'Physical pixels: ' + Math.round(w * dpr) + ' × ' + Math.round(h * dpr);
+  document.getElementById('tip').textContent = 'Physical pixels: ' + Math.round(w * dpr) + ' × ' + Math.round(h * dpr)
 }
 
 function copyInfo() {
@@ -338,14 +283,14 @@ function copyInfo() {
   navigator.clipboard.writeText(text).then(() => {
     const btn = document.querySelectorAll('button')[1];
     btn.textContent = '✅ Copied!';
-    setTimeout(() => { btn.textContent = 'Copy Info'; }, 2000);
-  });
+    setTimeout(() => { btn.textContent = 'Copy Info' }, 2000)
+  })
 }
 
 window.addEventListener('load', updateDisplayInfo);
 window.addEventListener('resize', updateDisplayInfo);
 if (screen.orientation) {
-  screen.orientation.addEventListener('change', updateDisplayInfo);
+  screen.orientation.addEventListener('change', updateDisplayInfo)
 }
 </script>
 <script src="/knexio-bundle.js"></script>

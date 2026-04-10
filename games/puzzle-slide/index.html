@@ -13,55 +13,55 @@
   <meta property="og:type" content="website">
 <style>
 
-    :root { --bg: #0b1220; --bg2: #070d1a; --panel: #111a2e; --accent: #4f8cff; --success: #10b981; --text: #fff; --sub: #aab3c5; --border: rgba(255,255,255,0.08);; --text-main: #fff; --text-sub: #aab3c5; }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: linear-gradient(180deg, var(--bg), var(--bg2)); color: var(--text); min-height: 100vh; }
-    .container { max-width: 600px; margin: 0 auto; padding: 20px; text-align: center; }
-    .back { display: block; text-align: left; color: var(--sub); margin-bottom: 20px; text-decoration: none; font-size: 14px; }
-    .back:hover { color: var(--accent); }
-    h1 { font-size: 32px; margin-bottom: 8px; }
-    .subtitle { color: var(--sub); font-size: 14px; margin-bottom: 20px; }
+    :root { --bg: #0b1220; --bg2: #070d1a; --panel: #111a2e; --accent: #4f8cff; --success: #10b981; --text: #fff; --sub: #aab3c5; --border: rgba(255,255,255,0.08); --text-main: #fff; --text-sub: #aab3c5 }
+    * { box-sizing: border-box; margin: 0; padding: 0 }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: linear-gradient(180deg, var(--bg), var(--bg2)); color: var(--text); min-height: 100vh }
+    .container { max-width: 600px; margin: 0 auto; padding: 20px; text-align: center }
+    .back { display: block; text-align: left; color: var(--sub); margin-bottom: 20px; text-decoration: none; font-size: 14px }
+    .back:hover { color: var(--accent) }
+    h1 { font-size: 32px; margin-bottom: 8px }
+    .subtitle { color: var(--sub); font-size: 14px; margin-bottom: 20px }
 
-    .game-header { display: flex; justify-content: center; gap: 30px; margin-bottom: 15px; flex-wrap: wrap; }
-    .stat { text-align: center; }
-    .stat-value { font-size: 24px; font-weight: 600; color: var(--accent); }
-    .stat-label { font-size: 11px; color: var(--sub); text-transform: uppercase; }
+    .game-header { display: flex; justify-content: center; gap: 30px; margin-bottom: 15px; flex-wrap: wrap }
+    .stat { text-align: center }
+    .stat-value { font-size: 24px; font-weight: 600; color: var(--accent) }
+    .stat-label { font-size: 11px; color: var(--sub); text-transform: uppercase }
 
-    .size-selector { display: flex; justify-content: center; gap: 8px; margin-bottom: 15px; }
-    .size-btn { padding: 8px 16px; background: var(--panel); border: 1px solid var(--border); border-radius: 6px; color: var(--sub); font-size: 13px; cursor: pointer; transition: all 0.15s; }
-    .size-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
-    .size-btn:hover:not(.active) { border-color: var(--accent); }
+    .size-selector { display: flex; justify-content: center; gap: 8px; margin-bottom: 15px }
+    .size-btn { padding: 8px 16px; background: var(--panel); border: 1px solid var(--border); border-radius: 6px; color: var(--sub); font-size: 13px; cursor: pointer; transition: all 0.15s }
+    .size-btn.active { background: var(--accent); color: #fff; border-color: var(--accent) }
+    .size-btn:hover:not(.active) { border-color: var(--accent) }
 
-    .game-container { background: var(--panel); border-radius: 16px; padding: 20px; margin: 20px 0; }
-    .board { margin: 0 auto; display: grid; gap: 4px; margin: 0 auto; background: rgba(0,0,0,0.3); padding: 4px; border-radius: 12px; width: fit-content; }
-    .tile { width: 70px; height: 70px; background: linear-gradient(135deg, var(--accent), #3b7de8); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 600; cursor: pointer; transition: all 0.15s; user-select: none; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
-    .tile:hover { transform: scale(1.02); }
-    .tile.empty { background: transparent; box-shadow: none; cursor: default; }
-    .tile.correct { background: linear-gradient(135deg, var(--success), #059669); }
+    .game-container { background: var(--panel); border-radius: 16px; padding: 20px; margin: 20px 0 }
+    .board { margin: 0 auto; display: grid; gap: 4px; margin: 0 auto; background: rgba(0,0,0,0.3); padding: 4px; border-radius: 12px; width: fit-content }
+    .tile { width: 70px; height: 70px; background: linear-gradient(135deg, var(--accent), #3b7de8); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 600; cursor: pointer; transition: all 0.15s; user-select: none; box-shadow: 0 2px 8px rgba(0,0,0,0.3) }
+    .tile:hover { transform: scale(1.02) }
+    .tile.empty { background: transparent; box-shadow: none; cursor: default }
+    .tile.correct { background: linear-gradient(135deg, var(--success), #059669) }
 
-    .controls { display: flex; justify-content: center; gap: 10px; margin-top: 20px; }
-    .btn { padding: 12px 28px; background: var(--accent); color: #fff; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; transition: opacity 0.15s; }
-    .btn:hover { opacity: 0.85; }
-    .btn-secondary { background: var(--panel); border: 1px solid var(--border); }
+    .controls { display: flex; justify-content: center; gap: 10px; margin-top: 20px }
+    .btn { padding: 12px 28px; background: var(--accent); color: #fff; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; transition: opacity 0.15s }
+    .btn:hover { opacity: 0.85 }
+    .btn-secondary { background: var(--panel); border: 1px solid var(--border) }
 
-    .win-message { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: var(--panel); padding: 40px; border-radius: 16px; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.5); z-index: 100; }
-    .win-message.show { display: block; }
-    .win-message h2 { font-size: 28px; margin-bottom: 15px; color: var(--success); }
-    .win-message p { color: var(--sub); margin: 8px 0; }
+    .win-message { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: var(--panel); padding: 40px; border-radius: 16px; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.5); z-index: 100 }
+    .win-message.show { display: block }
+    .win-message h2 { font-size: 28px; margin-bottom: 15px; color: var(--success) }
+    .win-message p { color: var(--sub); margin: 8px 0 }
 
-    .rules { margin-top: 40px; background: var(--panel); border-radius: 12px; padding: 25px; text-align: left; }
-    .rules h2 { font-size: 18px; margin-bottom: 15px; }
-    .rules h3 { font-size: 14px; margin: 15px 0 8px; color: var(--sub); }
-    .rules p, .rules li { color: var(--sub); font-size: 14px; line-height: 1.7; }
-    .rules ul { margin-left: 20px; }
+    .rules { margin-top: 40px; background: var(--panel); border-radius: 12px; padding: 25px; text-align: left }
+    .rules h2 { font-size: 18px; margin-bottom: 15px }
+    .rules h3 { font-size: 14px; margin: 15px 0 8px; color: var(--sub) }
+    .rules p, .rules li { color: var(--sub); font-size: 14px; line-height: 1.7 }
+    .rules ul { margin-left: 20px }
 
     footer p{margin:0}
     footer p{margin:0}
 
     @media (max-width: 480px) {
-      .tile { width: 55px; height: 55px; font-size: 18px; }
-      h1 { font-size: 26px; }
-      .game-container { padding: 15px; }
+      .tile { width: 55px; height: 55px; font-size: 18px }
+      h1 { font-size: 26px }
+      .game-container { padding: 15px }
     }
   .ad-banner{margin:24px 0;text-align:center;min-height:90px}
 
@@ -72,153 +72,153 @@
       /* 容器布局优化 */
       .container, .wrap {
         padding: 40px 15px 80px !important;
-        max-width: 100% !important;
+        max-width: 100% !important
       }
 
       /* 标题字体优化 */
       h1 {
         font-size: 28px !important;
-        line-height: 1.3 !important;
+        line-height: 1.3 !important
       }
 
       h2 {
         font-size: 20px !important;
         margin-top: 36px !important;
-        margin-bottom: 10px !important;
+        margin-bottom: 10px !important
       }
 
       h3 {
-        font-size: 17px !important;
+        font-size: 17px !important
       }
 
       /* 正文内容优化 */
       p, li, .intro, .subtitle {
         font-size: 14px !important;
-        line-height: 1.7 !important;
+        line-height: 1.7 !important
       }
 
       /* 段落间距优化 */
       p, ul, ol {
-        margin-bottom: 16px !important;
+        margin-bottom: 16px !important
       }
 
       /* 列表优化 */
       ul, ol {
-        padding-left: 18px !important;
+        padding-left: 18px !important
       }
 
       li {
-        margin-bottom: 6px !important;
+        margin-bottom: 6px !important
       }
 
       /* 内容块优化 */
       .main-panel, .step-block, .notice, .extra-info {
         padding: 16px !important;
         border-radius: 12px !important;
-        margin: 16px 0 !important;
+        margin: 16px 0 !important
       }
 
       /* 按钮和输入框优化 */
       .btn {
         padding: 14px !important;
         font-size: 15px !important;
-        min-height: 48px !important;
+        min-height: 48px !important
       }
 
       .input-group input {
         padding: 12px !important;
-        font-size: 15px !important;
+        font-size: 15px !important
       }
 
       /* 网格系统优化 */
       .age-grid {
         grid-template-columns: repeat(2, 1fr) !important;
-        gap: 12px !important;
+        gap: 12px !important
       }
 
       /* 广告位优化 */
       .ad-banner {
         margin: 16px 0 !important;
-        min-height: 50px !important;
+        min-height: 50px !important
       }
 
       /* 游戏页面优化 */
       .grid-container {
-        padding: 8px !important;
+        padding: 8px !important
       }
 
       .grid { margin: 0 auto;
-        gap: 8px !important;
+        gap: 8px !important
       }
 
       .cell {
         font-size: 20px !important;
-        border-radius: 6px !important;
+        border-radius: 6px !important
       }
 
       .score-box {
         min-width: 70px !important;
-        padding: 6px 12px !important;
+        padding: 6px 12px !important
       }
 
       .score-val {
-        font-size: 18px !important;
+        font-size: 18px !important
       }
 
       /* 工具页面优化 */
       .age-main {
-        font-size: 36px !important;
+        font-size: 36px !important
       }
 
       .age-value {
-        font-size: 24px !important;
+        font-size: 24px !important
       }
 
       .age-label {
-        font-size: 11px !important;
+        font-size: 11px !important
       }
 
       /* 引导页面优化 */
       .intro {
         border-left-width: 2px !important;
         padding-left: 12px !important;
-        margin-bottom: 32px !important;
+        margin-bottom: 32px !important
       }
 
       .faq-item {
-        margin-bottom: 20px !important;
+        margin-bottom: 20px !important
       }
 
       .faq-item strong {
-        font-size: 15px !important;
+        font-size: 15px !important
       }
     }
 
     /* 小手机优化 (≤480px) */
     @media (max-width: 480px) {
       h1 {
-        font-size: 24px !important;
+        font-size: 24px !important
       }
 
       h2 {
-        font-size: 18px !important;
+        font-size: 18px !important
       }
 
       .container, .wrap {
-        padding: 32px 12px 60px !important;
+        padding: 32px 12px 60px !important
       }
 
       .main-panel, .step-block, .notice {
-        padding: 14px !important;
+        padding: 14px !important
       }
 
       .btn {
         padding: 12px !important;
-        font-size: 14px !important;
+        font-size: 14px !important
       }
 
       .age-grid {
-        grid-template-columns: 1fr !important;
+        grid-template-columns: 1fr !important
       }
     }
 
@@ -226,61 +226,15 @@
     @media (hover: none) and (pointer: coarse) {
       button, .btn, a[onclick], .cell {
         min-height: 44px !important;
-        min-width: 44px !important;
+        min-width: 44px !important
       }
 
       input, select, textarea {
-        font-size: 16px !important;
+        font-size: 16px !important
       }
         }
 
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
-
-  <meta name="keywords" content="puzzle slide game, free online game, browser game, play online, casual game" /><script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "VideoGame",
-  "name": "Puzzle Slide",
-  "url": "https://knexio.xyz/games/puzzle-slide/",
-  "description": "Play Puzzle Slide free online. Puzzle Slide is a fun browser game that you can play for free. Enjoy this entertaining game with simple controls and eng... No download required. Works on all devices.",
-  "genre": "Game",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  }
-}
-</script>
-
-<!-- Open Graph -->
-<meta property="og:site_name" content="Knexio">
-</head>
-<body><div class="container">
-    <a class="back" href="../index.html">← Back to Games</a>
-    <h1>Puzzle Slide</h1>
-    <p class="subtitle">Classic sliding puzzle – arrange tiles in order</p>
-
-    <div class="game-header">
-      <div class="stat">
-        <div class="stat-value" id="moves">0</div>
-        <div class="stat-label">Moves</div>
-      </div>
-      <div class="stat">
-        <div class="stat-value" id="time">0:00</div>
-        <div class="stat-label">Time</div>
-      </div>
-    </div>
-
-    <div class="size-selector">
-      <button class="size-btn" data-size="3" onclick="setSize(3)">3×3</button>
-      <button class="size-btn active" data-size="4" onclick="setSize(4)">4×4</button>
-      <button class="size-btn" data-size="5" onclick="setSize(5)">5×5</button>
-    </div>
-
-    <div class="game-container">
-      <div class="board" id="board">
-<!-- Ad: Sidebar -->
-<div class="ad-sidebar" style="margin:20px 0;text-align:center"><ins class="adsbygoogle" style="display:block;min-height:250px" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3617326351" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
+footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;text-align:center"><ins class="adsbygoogle" style="display:block;min-height:250px" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3617326351" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
 </div>
       <div class="controls">
         <button class="btn btn-secondary" onclick="shuffleBoard()">Shuffle</button>
@@ -405,18 +359,18 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
     function setSize(size) {
       gridSize = size;
       document.querySelectorAll('.size-btn').forEach(btn => {
-        btn.classList.toggle('active', parseInt(btn.dataset.size) === size);
+        btn.classList.toggle('active', parseInt(btn.dataset.size) === size)
       });
-      newGame();
+      newGame()
     }
 
     function initBoard() {
       tiles = [];
       for (let i = 1; i < gridSize * gridSize; i++) {
-        tiles.push(i);
+        tiles.push(i)
       }
       tiles.push(0); // 0 represents empty space
-      emptyIndex = tiles.length - 1;
+      emptyIndex = tiles.length - 1
     }
 
     function render() {
@@ -428,17 +382,17 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
         const tile = document.createElement('div');
         tile.className = 'tile';
         if (num === 0) {
-          tile.classList.add('empty');
+          tile.classList.add('empty')
         } else {
           tile.textContent = num;
           // Highlight if in correct position
           if (num === index + 1) {
-            tile.classList.add('correct');
+            tile.classList.add('correct')
           }
-          tile.onclick = () => handleTileClick(index);
+          tile.onclick = () => handleTileClick(index)
         }
-        board.appendChild(tile);
-      });
+        board.appendChild(tile)
+      })
     }
 
     function handleTileClick(index) {
@@ -451,7 +405,7 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
         render();
 
         if (checkWin()) {
-          gameWon();
+          gameWon()
         }
       }
     }
@@ -466,12 +420,12 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
       const rowDiff = Math.abs(row - emptyRow);
       const colDiff = Math.abs(col - emptyCol);
 
-      return (rowDiff === 1 && colDiff === 0) || (rowDiff === 0 && colDiff === 1);
+      return (rowDiff === 1 && colDiff === 0) || (rowDiff === 0 && colDiff === 1)
     }
 
     function swapTiles(i, j) {
       [tiles[i], tiles[j]] = [tiles[j], tiles[i]];
-      emptyIndex = i;
+      emptyIndex = i
     }
 
     function shuffleBoard() {
@@ -486,12 +440,12 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
         const randomNeighbor = validNeighbors[Math.floor(Math.random() * validNeighbors.length)];
 
         lastIndex = emptyIndex;
-        swapTiles(randomNeighbor, emptyIndex);
+        swapTiles(randomNeighbor, emptyIndex)
       }
 
       moves = 0;
       document.getElementById('moves').textContent = moves;
-      render();
+      render()
     }
 
     function getNeighbors(index) {
@@ -504,14 +458,14 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
       if (col > 0) neighbors.push(index - 1); // Left
       if (col < gridSize - 1) neighbors.push(index + 1); // Right
 
-      return neighbors;
+      return neighbors
     }
 
     function checkWin() {
       for (let i = 0; i < tiles.length - 1; i++) {
-        if (tiles[i] !== i + 1) return false;
+        if (tiles[i] !== i + 1) return false
       }
-      return true;
+      return true
     }
 
     function gameWon() {
@@ -519,14 +473,14 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
       clearInterval(timerInterval);
       document.getElementById('finalMoves').textContent = moves;
       document.getElementById('finalTime').textContent = document.getElementById('time').textContent;
-      document.getElementById('winMessage').classList.add('show');
+      document.getElementById('winMessage').classList.add('show')
     }
 
     function updateTimer() {
       const elapsed = Math.floor((Date.now() - startTime) / 1000);
       const mins = Math.floor(elapsed / 60);
       const secs = elapsed % 60;
-      document.getElementById('time').textContent = `${mins}:${secs.toString().padStart(2, '0')}`;
+      document.getElementById('time').textContent = `${mins}:${secs.toString().padStart(2, '0')}`
     }
 
     function newGame() {
@@ -541,7 +495,7 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
       isPlaying = true;
       startTime = Date.now();
       if (timerInterval) clearInterval(timerInterval);
-      timerInterval = setInterval(updateTimer, 1000);
+      timerInterval = setInterval(updateTimer, 1000)
     }
 
     // Keyboard controls
@@ -564,12 +518,12 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
           break;
         case 'ArrowRight':
           if (emptyCol > 0) targetIndex = emptyIndex - 1;
-          break;
+          break
       }
 
       if (targetIndex !== -1) {
         e.preventDefault();
-        handleTileClick(targetIndex);
+        handleTileClick(targetIndex)
       }
     });
 

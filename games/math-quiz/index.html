@@ -26,65 +26,65 @@
   </script>
 <style>
 
-    :root{--bg:#0b1220;--bg2:#070d1a;--panel:#111a2e;--border:rgba(255,255,255,0.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff;--green:#22c55e;--red:#ef4444;--orange:#f97316;;--text-main:#fff;--text-sub:#aab3c5}
-    *{box-sizing:border-box;margin:0;padding:0;}
-    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:linear-gradient(180deg,var(--bg),var(--bg2));color:var(--text);min-height:100vh;}
-    a{text-decoration:none;color:inherit;}
-    .wrap{max-width:680px;margin:0 auto;padding:50px 20px 100px;}
-    .back{display:inline-block;margin-bottom:22px;font-size:14px;color:var(--sub);}
-    .back:hover{color:var(--accent);}
-    h1{font-size:32px;margin-bottom:8px;}
-    .subtitle{font-size:15px;color:var(--sub);margin-bottom:28px;}
-    .ad-banner{margin-bottom:32px;text-align:center;}
+    :root{--bg:#0b1220;--bg2:#070d1a;--panel:#111a2e;--border:rgba(255,255,255,0.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff;--green:#22c55e;--red:#ef4444;--orange:#f97316;--text-main:#fff;--text-sub:#aab3c5}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:linear-gradient(180deg,var(--bg),var(--bg2));color:var(--text);min-height:100vh}
+    a{text-decoration:none;color:inherit}
+    .wrap{max-width:680px;margin:0 auto;padding:50px 20px 100px}
+    .back{display:inline-block;margin-bottom:22px;font-size:14px;color:var(--sub)}
+    .back:hover{color:var(--accent)}
+    h1{font-size:32px;margin-bottom:8px}
+    .subtitle{font-size:15px;color:var(--sub);margin-bottom:28px}
+    .ad-banner{margin-bottom:32px;text-align:center}
 
     /* Setup screen */
-    .setup-panel{background:var(--panel);border:1px solid var(--border);border-radius:20px;padding:36px;}
-    .setup-section{margin-bottom:28px;}
-    .setup-label{font-size:12px;text-transform:uppercase;letter-spacing:0.5px;color:var(--sub);margin-bottom:12px;}
-    .op-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
-    .op-btn{padding:14px;border:1px solid var(--border);border-radius:12px;background:var(--bg);color:var(--sub);font-size:22px;cursor:pointer;text-align:center;transition:all 0.15s;}
-    .op-btn.sel{border-color:var(--accent);background:rgba(79,140,255,0.15);color:#fff;}
-    .diff-row{display:flex;gap:8px;}
-    .diff-btn{flex:1;padding:10px;border:1px solid var(--border);border-radius:10px;background:var(--bg);color:var(--sub);font-size:14px;cursor:pointer;text-align:center;transition:all 0.15s;}
-    .diff-btn.sel{border-color:var(--accent);background:rgba(79,140,255,0.15);color:#fff;}
-    .time-row{display:flex;gap:8px;}
-    .time-btn{flex:1;padding:10px;border:1px solid var(--border);border-radius:10px;background:var(--bg);color:var(--sub);font-size:14px;cursor:pointer;text-align:center;transition:all 0.15s;}
-    .time-btn.sel{border-color:var(--accent);background:rgba(79,140,255,0.15);color:#fff;}
-    .start-btn{width:100%;padding:16px;background:var(--accent);color:#fff;border:none;border-radius:12px;font-size:17px;font-weight:700;cursor:pointer;transition:opacity 0.15s;margin-top:8px;}
-    .start-btn:hover{opacity:0.88;}
+    .setup-panel{background:var(--panel);border:1px solid var(--border);border-radius:20px;padding:36px}
+    .setup-section{margin-bottom:28px}
+    .setup-label{font-size:12px;text-transform:uppercase;letter-spacing:0.5px;color:var(--sub);margin-bottom:12px}
+    .op-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+    .op-btn{padding:14px;border:1px solid var(--border);border-radius:12px;background:var(--bg);color:var(--sub);font-size:22px;cursor:pointer;text-align:center;transition:all 0.15s}
+    .op-btn.sel{border-color:var(--accent);background:rgba(79,140,255,0.15);color:#fff}
+    .diff-row{display:flex;gap:8px}
+    .diff-btn{flex:1;padding:10px;border:1px solid var(--border);border-radius:10px;background:var(--bg);color:var(--sub);font-size:14px;cursor:pointer;text-align:center;transition:all 0.15s}
+    .diff-btn.sel{border-color:var(--accent);background:rgba(79,140,255,0.15);color:#fff}
+    .time-row{display:flex;gap:8px}
+    .time-btn{flex:1;padding:10px;border:1px solid var(--border);border-radius:10px;background:var(--bg);color:var(--sub);font-size:14px;cursor:pointer;text-align:center;transition:all 0.15s}
+    .time-btn.sel{border-color:var(--accent);background:rgba(79,140,255,0.15);color:#fff}
+    .start-btn{width:100%;padding:16px;background:var(--accent);color:#fff;border:none;border-radius:12px;font-size:17px;font-weight:700;cursor:pointer;transition:opacity 0.15s;margin-top:8px}
+    .start-btn:hover{opacity:0.88}
 
     /* Game screen */
-    .game-panel{display:none;background:var(--panel);border:1px solid var(--border);border-radius:20px;padding:36px;text-align:center;}
-    .timer-bar-wrap{width:100%;background:rgba(255,255,255,0.07);border-radius:4px;height:6px;margin-bottom:28px;overflow:hidden;}
-    .timer-bar{height:100%;background:var(--accent);border-radius:4px;transition:width 1s linear;}
-    .timer-bar.warn{background:var(--orange);}
-    .timer-bar.danger{background:var(--red);}
-    .score-row{display:flex;justify-content:space-around;margin-bottom:32px;}
-    .score-item{text-align:center;}
-    .score-val{font-size:30px;font-weight:700;color:var(--accent);}
-    .score-lbl{font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--sub);}
-    .question{font-size:52px;font-weight:700;margin-bottom:32px;letter-spacing:2px;}
-    .answer-input{width:100%;max-width:200px;padding:16px 20px;background:#0b1220;border:2px solid var(--border);border-radius:14px;color:#fff;font-size:28px;text-align:center;outline:none;font-variant-numeric:tabular-nums;}
-    .answer-input:focus{border-color:var(--accent);}
-    .answer-input.correct{border-color:var(--green);animation:flash-green 0.3s;}
-    .answer-input.wrong{border-color:var(--red);animation:shake 0.35s;}
-    .feedback{font-size:18px;font-weight:600;min-height:28px;margin-top:14px;transition:opacity 0.3s;}
-    .feedback.ok{color:var(--green);}
-    .feedback.no{color:var(--red);}
+    .game-panel{display:none;background:var(--panel);border:1px solid var(--border);border-radius:20px;padding:36px;text-align:center}
+    .timer-bar-wrap{width:100%;background:rgba(255,255,255,0.07);border-radius:4px;height:6px;margin-bottom:28px;overflow:hidden}
+    .timer-bar{height:100%;background:var(--accent);border-radius:4px;transition:width 1s linear}
+    .timer-bar.warn{background:var(--orange)}
+    .timer-bar.danger{background:var(--red)}
+    .score-row{display:flex;justify-content:space-around;margin-bottom:32px}
+    .score-item{text-align:center}
+    .score-val{font-size:30px;font-weight:700;color:var(--accent)}
+    .score-lbl{font-size:11px;text-transform:uppercase;letter-spacing:0.4px;color:var(--sub)}
+    .question{font-size:52px;font-weight:700;margin-bottom:32px;letter-spacing:2px}
+    .answer-input{width:100%;max-width:200px;padding:16px 20px;background:#0b1220;border:2px solid var(--border);border-radius:14px;color:#fff;font-size:28px;text-align:center;outline:none;font-variant-numeric:tabular-nums}
+    .answer-input:focus{border-color:var(--accent)}
+    .answer-input.correct{border-color:var(--green);animation:flash-green 0.3s}
+    .answer-input.wrong{border-color:var(--red);animation:shake 0.35s}
+    .feedback{font-size:18px;font-weight:600;min-height:28px;margin-top:14px;transition:opacity 0.3s}
+    .feedback.ok{color:var(--green)}
+    .feedback.no{color:var(--red)}
 
     /* Result */
-    .result-panel{display:none;background:var(--panel);border:1px solid var(--border);border-radius:20px;padding:40px;text-align:center;}
-    .result-title{font-size:32px;font-weight:700;margin-bottom:12px;}
-    .result-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:28px 0;}
-    .stat-box{background:#0b1220;border:1px solid var(--border);border-radius:12px;padding:18px 12px;}
-    .stat-val{font-size:28px;font-weight:700;color:var(--accent);}
-    .stat-lbl{font-size:12px;color:var(--sub);margin-top:4px;}
-    .replay-btn{padding:14px 40px;background:var(--accent);color:#fff;border:none;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;margin-right:10px;}
-    .menu-btn{padding:14px 24px;background:var(--panel);color:var(--sub);border:1px solid var(--border);border-radius:12px;font-size:14px;cursor:pointer;}
+    .result-panel{display:none;background:var(--panel);border:1px solid var(--border);border-radius:20px;padding:40px;text-align:center}
+    .result-title{font-size:32px;font-weight:700;margin-bottom:12px}
+    .result-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:28px 0}
+    .stat-box{background:#0b1220;border:1px solid var(--border);border-radius:12px;padding:18px 12px}
+    .stat-val{font-size:28px;font-weight:700;color:var(--accent)}
+    .stat-lbl{font-size:12px;color:var(--sub);margin-top:4px}
+    .replay-btn{padding:14px 40px;background:var(--accent);color:#fff;border:none;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;margin-right:10px}
+    .menu-btn{padding:14px 24px;background:var(--panel);color:var(--sub);border:1px solid var(--border);border-radius:12px;font-size:14px;cursor:pointer}
 
-    .seo{margin-top:70px;}
-    .seo h2{font-size:22px;margin-bottom:12px;}
-    .seo p{font-size:15px;color:var(--sub);line-height:1.8;margin-bottom:14px;}
+    .seo{margin-top:70px}
+    .seo h2{font-size:22px;margin-bottom:12px}
+    .seo p{font-size:15px;color:var(--sub);line-height:1.8;margin-bottom:14px}
     footer p{margin:0}
     footer p{margin:0}
 
@@ -95,153 +95,153 @@
       /* 容器布局优化 */
       .container, .wrap {
         padding: 40px 15px 80px !important;
-        max-width: 100% !important;
+        max-width: 100% !important
       }
 
       /* 标题字体优化 */
       h1 {
         font-size: 28px !important;
-        line-height: 1.3 !important;
+        line-height: 1.3 !important
       }
 
       h2 {
         font-size: 20px !important;
         margin-top: 36px !important;
-        margin-bottom: 10px !important;
+        margin-bottom: 10px !important
       }
 
       h3 {
-        font-size: 17px !important;
+        font-size: 17px !important
       }
 
       /* 正文内容优化 */
       p, li, .intro, .subtitle {
         font-size: 14px !important;
-        line-height: 1.7 !important;
+        line-height: 1.7 !important
       }
 
       /* 段落间距优化 */
       p, ul, ol {
-        margin-bottom: 16px !important;
+        margin-bottom: 16px !important
       }
 
       /* 列表优化 */
       ul, ol {
-        padding-left: 18px !important;
+        padding-left: 18px !important
       }
 
       li {
-        margin-bottom: 6px !important;
+        margin-bottom: 6px !important
       }
 
       /* 内容块优化 */
       .main-panel, .step-block, .notice, .extra-info {
         padding: 16px !important;
         border-radius: 12px !important;
-        margin: 16px 0 !important;
+        margin: 16px 0 !important
       }
 
       /* 按钮和输入框优化 */
       .btn {
         padding: 14px !important;
         font-size: 15px !important;
-        min-height: 48px !important;
+        min-height: 48px !important
       }
 
       .input-group input {
         padding: 12px !important;
-        font-size: 15px !important;
+        font-size: 15px !important
       }
 
       /* 网格系统优化 */
       .age-grid {
         grid-template-columns: repeat(2, 1fr) !important;
-        gap: 12px !important;
+        gap: 12px !important
       }
 
       /* 广告位优化 */
       .ad-banner {
         margin: 16px 0 !important;
-        min-height: 50px !important;
+        min-height: 50px !important
       }
 
       /* 游戏页面优化 */
       .grid-container {
-        padding: 8px !important;
+        padding: 8px !important
       }
 
       .grid {
-        gap: 8px !important;
+        gap: 8px !important
       }
 
       .cell {
         font-size: 20px !important;
-        border-radius: 6px !important;
+        border-radius: 6px !important
       }
 
       .score-box {
         min-width: 70px !important;
-        padding: 6px 12px !important;
+        padding: 6px 12px !important
       }
 
       .score-val {
-        font-size: 18px !important;
+        font-size: 18px !important
       }
 
       /* 工具页面优化 */
       .age-main {
-        font-size: 36px !important;
+        font-size: 36px !important
       }
 
       .age-value {
-        font-size: 24px !important;
+        font-size: 24px !important
       }
 
       .age-label {
-        font-size: 11px !important;
+        font-size: 11px !important
       }
 
       /* 引导页面优化 */
       .intro {
         border-left-width: 2px !important;
         padding-left: 12px !important;
-        margin-bottom: 32px !important;
+        margin-bottom: 32px !important
       }
 
       .faq-item {
-        margin-bottom: 20px !important;
+        margin-bottom: 20px !important
       }
 
       .faq-item strong {
-        font-size: 15px !important;
+        font-size: 15px !important
       }
     }
 
     /* 小手机优化 (≤480px) */
     @media (max-width: 480px) {
       h1 {
-        font-size: 24px !important;
+        font-size: 24px !important
       }
 
       h2 {
-        font-size: 18px !important;
+        font-size: 18px !important
       }
 
       .container, .wrap {
-        padding: 32px 12px 60px !important;
+        padding: 32px 12px 60px !important
       }
 
       .main-panel, .step-block, .notice {
-        padding: 14px !important;
+        padding: 14px !important
       }
 
       .btn {
         padding: 12px !important;
-        font-size: 14px !important;
+        font-size: 14px !important
       }
 
       .age-grid {
-        grid-template-columns: 1fr !important;
+        grid-template-columns: 1fr !important
       }
     }
 
@@ -249,77 +249,15 @@
     @media (hover: none) and (pointer: coarse) {
       button, .btn, a[onclick], .cell {
         min-height: 44px !important;
-        min-width: 44px !important;
+        min-width: 44px !important
       }
 
       input, select, textarea {
-        font-size: 16px !important;
+        font-size: 16px !important
       }
         }
 
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
-  <meta name="keywords" content="math quiz game, free online game, browser game, play online, casual game" /></head>
-<body><div class="wrap">
-  <a class="back" href="../index.html">← Back to Games</a>
-  <h1>Math Quiz</h1>
-  <div class="subtitle">Race the clock! Answer as many mental math questions as you can. Choose your operations, difficulty, and time limit.</div>
-
-  <!-- Setup -->
-  <div class="setup-panel" id="setup-panel">
-    <div class="setup-section">
-      <div class="setup-label">Operations</div>
-      <div class="op-grid">
-        <button class="op-btn sel" id="op-add" onclick="toggleOp('add')">＋ Add</button>
-        <button class="op-btn sel" id="op-sub" onclick="toggleOp('sub')">－ Subtract</button>
-        <button class="op-btn" id="op-mul" onclick="toggleOp('mul')">× Multiply</button>
-        <button class="op-btn" id="op-div" onclick="toggleOp('div')">÷ Divide</button>
-      </div>
-    </div>
-    <div class="setup-section">
-      <div class="setup-label">Difficulty</div>
-      <div class="diff-row">
-        <button class="diff-btn sel" id="d-easy" onclick="setDiff('easy')">Easy</button>
-        <button class="diff-btn" id="d-med" onclick="setDiff('medium')">Medium</button>
-        <button class="diff-btn" id="d-hard" onclick="setDiff('hard')">Hard</button>
-      </div>
-    </div>
-    <div class="setup-section">
-      <div class="setup-label">Time Limit</div>
-      <div class="time-row">
-        <button class="time-btn" id="t-30" onclick="setTime(30)">30s</button>
-        <button class="time-btn sel" id="t-60" onclick="setTime(60)">60s</button>
-        <button class="time-btn" id="t-120" onclick="setTime(120)">120s</button>
-      </div>
-    </div>
-    <button class="start-btn" onclick="startGame()">Start Quiz</button>
-  </div>
-
-  <!-- Game -->
-  <div class="game-panel" id="game-panel">
-    <div class="timer-bar-wrap"><div class="timer-bar" id="timer-bar"></div></div>
-    <div class="score-row">
-      <div class="score-item"><div class="score-val" id="g-score">0</div><div class="score-lbl">Score</div></div>
-      <div class="score-item"><div class="score-val" id="g-timer">60</div><div class="score-lbl">Time</div></div>
-      <div class="score-item"><div class="score-val" id="g-streak">0</div><div class="score-lbl">Streak 🔥</div></div>
-    </div>
-    <div class="question" id="question">?</div>
-    <input class="answer-input" type="number" id="answer-input" placeholder="?" autocomplete="off" />
-    <div class="feedback" id="feedback"></div>
-  </div>
-
-  <!-- Result -->
-  <div class="result-panel" id="result-panel">
-    <div class="result-title" id="result-title">Quiz Over!</div>
-    <div class="result-stats">
-      <div class="stat-box"><div class="stat-val" id="r-score">0</div><div class="stat-lbl">Score</div></div>
-      <div class="stat-box"><div class="stat-val" id="r-correct">0</div><div class="stat-lbl">Correct</div></div>
-      <div class="stat-box"><div class="stat-val" id="r-streak">0</div><div class="stat-lbl">Best Streak</div></div>
-    </div>
-    <button class="replay-btn" onclick="replayGame()">Play Again</button>
-    <button class="menu-btn" onclick="showSetup()">Change Settings</button>
-  </div>
-
-  <div style="margin-top:60px;text-align:center;">
+footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;text-align:center;">
 
   </div>
     <div class="ad-banner" style="margin-top:40px"></div>
@@ -432,31 +370,31 @@ let lastReplaySettings = null;
 function toggleOp(op) {
   if (ops.has(op) && ops.size === 1) return; // keep at least 1
   ops.has(op) ? ops.delete(op) : ops.add(op);
-  document.getElementById('op-'+op).classList.toggle('sel', ops.has(op));
+  document.getElementById('op-'+op).classList.toggle('sel', ops.has(op))
 }
 
 function setDiff(d) {
   difficulty = d;
-  ['easy','medium','hard'].forEach(x => document.getElementById('d-'+x).classList.toggle('sel', x===d));
+  ['easy','medium','hard'].forEach(x => document.getElementById('d-'+x).classList.toggle('sel', x===d))
 }
 
 function setTime(t) {
   timeLimit = t;
-  [30,60,120].forEach(x => document.getElementById('t-'+x).classList.toggle('sel', x===t));
+  [30,60,120].forEach(x => document.getElementById('t-'+x).classList.toggle('sel', x===t))
 }
 
-function randInt(min, max) { return Math.floor(Math.random()*(max-min+1))+min; }
+function randInt(min, max) { return Math.floor(Math.random()*(max-min+1))+min }
 
 function generateQ() {
   const op = [...ops][Math.floor(Math.random()*ops.size)];
   let a, b, q, ans;
   const ranges = { easy:[1,9], medium:[1,19], hard:[2,25] };
   const [mn,mx] = ranges[difficulty];
-  if (op === 'add') { a=randInt(mn,mx); b=randInt(mn,mx); q=`${a} + ${b} = ?`; ans=a+b; }
-  else if (op === 'sub') { a=randInt(mn,mx); b=randInt(mn,mx); if(a<b)[a,b]=[b,a]; q=`${a} − ${b} = ?`; ans=a-b; }
-  else if (op === 'mul') { const mr=difficulty==='easy'?[1,9]:difficulty==='medium'?[1,12]:[2,15]; a=randInt(mr[0],mr[1]); b=randInt(mr[0],mr[1]); q=`${a} × ${b} = ?`; ans=a*b; }
-  else { const dr=difficulty==='easy'?[1,9]:[1,12]; b=randInt(dr[0],dr[1]); a=b*randInt(1,difficulty==='easy'?9:12); q=`${a} ÷ ${b} = ?`; ans=a/b; }
-  return { q, ans };
+  if (op === 'add') { a=randInt(mn,mx); b=randInt(mn,mx); q=`${a} + ${b} = ?`; ans=a+b }
+  else if (op === 'sub') { a=randInt(mn,mx); b=randInt(mn,mx); if(a<b)[a,b]=[b,a]; q=`${a} − ${b} = ?`; ans=a-b }
+  else if (op === 'mul') { const mr=difficulty==='easy'?[1,9]:difficulty==='medium'?[1,12]:[2,15]; a=randInt(mr[0],mr[1]); b=randInt(mr[0],mr[1]); q=`${a} × ${b} = ?`; ans=a*b }
+  else { const dr=difficulty==='easy'?[1,9]:[1,12]; b=randInt(dr[0],dr[1]); a=b*randInt(1,difficulty==='easy'?9:12); q=`${a} ÷ ${b} = ?`; ans=a/b }
+  return { q, ans }
 }
 
 function startGame() {
@@ -475,13 +413,13 @@ function startGame() {
   document.getElementById('feedback').textContent='';
   updateTimer();
   timerInt = setInterval(tick, 1000);
-  document.getElementById('answer-input').oninput = checkAnswer;
+  document.getElementById('answer-input').oninput = checkAnswer
 }
 
 function tick() {
   timeLeft--;
   updateTimer();
-  if (timeLeft <= 0) { clearInterval(timerInt); endGame(); }
+  if (timeLeft <= 0) { clearInterval(timerInt); endGame() }
 }
 
 function updateTimer() {
@@ -489,7 +427,7 @@ function updateTimer() {
   const bar = document.getElementById('timer-bar');
   const pct = (timeLeft/timeLimit)*100;
   bar.style.width=pct+'%';
-  bar.className='timer-bar'+(pct<=20?' danger':pct<=40?' warn':'');
+  bar.className='timer-bar'+(pct<=20?' danger':pct<=40?' warn':'')
 }
 
 function checkAnswer() {
@@ -505,9 +443,9 @@ function checkAnswer() {
     inp.classList.add('correct');
     document.getElementById('feedback').textContent='✓ Correct' + (streak>=3?` (${streak}× streak +${bonus}pts)`:` +${bonus}pts`);
     document.getElementById('feedback').className='feedback ok';
-    setTimeout(()=>{ inp.classList.remove('correct'); document.getElementById('feedback').textContent=''; },350);
+    setTimeout(()=>{ inp.classList.remove('correct'); document.getElementById('feedback').textContent='' },350);
     const {q,ans}=generateQ(); document.getElementById('question').textContent=q; currentAnswer=ans;
-    document.getElementById('answer-input').value='';
+    document.getElementById('answer-input').value=''
   } else if (String(val).length >= String(currentAnswer).length + 1) {
     // wrong answer submitted (longer than correct)
     streak=0; document.getElementById('g-streak').textContent=0;
@@ -515,9 +453,9 @@ function checkAnswer() {
     inp.classList.add('wrong');
     document.getElementById('feedback').textContent=`✗ Was ${currentAnswer}`;
     document.getElementById('feedback').className='feedback no';
-    setTimeout(()=>{ inp.classList.remove('wrong'); document.getElementById('feedback').textContent=''; },400);
+    setTimeout(()=>{ inp.classList.remove('wrong'); document.getElementById('feedback').textContent='' },400);
     const {q,ans}=generateQ(); document.getElementById('question').textContent=q; currentAnswer=ans;
-    document.getElementById('answer-input').value='';
+    document.getElementById('answer-input').value=''
   }
 }
 
@@ -529,16 +467,16 @@ function endGame() {
   document.getElementById('r-score').textContent=score;
   document.getElementById('r-correct').textContent=correct;
   document.getElementById('r-streak').textContent=bestStreak;
-  document.getElementById('answer-input').oninput=null;
+  document.getElementById('answer-input').oninput=null
 }
 
 function replayGame() {
   document.getElementById('result-panel').style.display='none';
-  startGame();
+  startGame()
 }
 function showSetup() {
   document.getElementById('result-panel').style.display='none';
-  document.getElementById('setup-panel').style.display='block';
+  document.getElementById('setup-panel').style.display='block'
 }
 <div class="ad-banner" style="margin-top:40px"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="5794572171" data-ad-format="auto" data-full-width-responsive="true"></ins></div></script></div>
 

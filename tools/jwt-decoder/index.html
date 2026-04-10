@@ -28,7 +28,7 @@
   </script>
   
   <style>
-:root{--bg:#0b1220;--card:#111a2e;--border:rgba(255,255,255,.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff  --text-sub:#aab3c5;
+:root{--bg:#0b1220;--card:#111a2e;--border:rgba(255,255,255,.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff  --text-sub:#aab3c5
   }
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:system-ui,-apple-system;background:var(--bg);color:var(--text);line-height:1.6}
@@ -70,77 +70,8 @@ textarea:focus{outline:none;border-color:var(--accent)}
   h1{font-size:26px}
 }
   
-    footer { border-top: 1px solid var(--border); padding-top: 24px; margin-top: 40px; text-align: center; color: var(--text-sub); font-size: 14px; }
-  footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
-  
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Is this tool free to use?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, this tool is completely free to use. No registration, no login, and no subscription required. Just open the page and start using it."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is my data safe? Is anything stored on a server?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, your data is safe. All processing happens entirely in your browser \u2014 your input never leaves your device and is not sent to any server."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does this tool work on mobile devices?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. The tool is fully responsive and works on smartphones, tablets, and desktop computers."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How accurate is the result?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The tool uses standard algorithms and web APIs to provide accurate results. For critical or professional use, please verify with additional sources."
-      }
-    }
-  ]
-}
-</script>
-</head>
-<body>
-  <div class="container">
-    <a class="back" href="../index.html">← Back to Tools</a>
-    <h1>JWT Decoder</h1>
-    <p class="subtitle">Decode JWT tokens instantly. View header, payload, and signature. Validate expiration and claims.</p>
-    
-    <div class="ad-banner">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="5794572171"
-       data-ad-format="auto"
-       data-full-width-responsive="true">
-  </ins>
-</div>
-    
-    <div class="card">
-      <label for="jwtInput">Paste your JWT token</label>
-      <textarea id="jwtInput" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"></textarea>
-      
-      <div class="btn-row">
-        <button class="btn" onclick="decodeJWT()">Decode Token</button>
-        <button class="btn secondary" onclick="clearAll()">Clear</button>
-        <button class="btn secondary" onclick="pasteSample()">Load Sample</button>
-      </div>
-      
-      <div id="result" style="display:none;">
+    footer{   margin-top: 40px; text-align: center; color: var(--text-sub); font-size: 14px }
+  footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;">
         <div class="result-title">Token Structure</div>
         <div class="token-header">
           <div class="token-part">
@@ -270,14 +201,14 @@ textarea:focus{outline:none;border-color:var(--accent)}
       
       if (!input) {
         showError('Please enter a JWT token to decode.');
-        return;
+        return
       }
       
       const parts = input.split('.');
       
       if (parts.length !== 3) {
         showError('Invalid JWT format. A valid JWT must have exactly three parts separated by dots.');
-        return;
+        return
       }
       
       try {
@@ -298,33 +229,33 @@ textarea:focus{outline:none;border-color:var(--accent)}
           validationHTML += `<div class="${isExpired ? 'invalid' : 'valid'}">
             <strong>Expiration:</strong> ${isExpired ? 'EXPIRED' : 'VALID'}<br>
             <span style="font-size:13px;margin-left:16px;">${expDate.toLocaleString()}</span>
-          </div>`;
+          </div>`
         } else {
-          validationHTML += '<div class="warning"><strong>Expiration:</strong> Not set</div>';
+          validationHTML += '<div class="warning"><strong>Expiration:</strong> Not set</div>'
         }
         
         if (payload.iss) {
-          validationHTML += `<div style="margin-top:8px;"><strong>Issuer:</strong> ${payload.iss}</div>`;
+          validationHTML += `<div style="margin-top:8px;"><strong>Issuer:</strong> ${payload.iss}</div>`
         }
         
         if (payload.sub) {
-          validationHTML += `<div style="margin-top:8px;"><strong>Subject:</strong> ${payload.sub}</div>`;
+          validationHTML += `<div style="margin-top:8px;"><strong>Subject:</strong> ${payload.sub}</div>`
         }
         
         if (payload.aud) {
-          validationHTML += `<div style="margin-top:8px;"><strong>Audience:</strong> ${Array.isArray(payload.aud) ? payload.aud.join(', ') : payload.aud}</div>`;
+          validationHTML += `<div style="margin-top:8px;"><strong>Audience:</strong> ${Array.isArray(payload.aud) ? payload.aud.join(', ') : payload.aud}</div>`
         }
         
         if (payload.iat) {
           const iatDate = new Date(payload.iat * 1000);
-          validationHTML += `<div style="margin-top:8px;"><strong>Issued At:</strong> ${iatDate.toLocaleString()}</div>`;
+          validationHTML += `<div style="margin-top:8px;"><strong>Issued At:</strong> ${iatDate.toLocaleString()}</div>`
         }
         
         validationDiv.innerHTML = validationHTML;
-        resultDiv.style.display = 'block';
+        resultDiv.style.display = 'block'
         
       } catch (e) {
-        showError('Failed to decode JWT. Please make sure it\'s a valid Base64Url-encoded token.');
+        showError('Failed to decode JWT. Please make sure it\'s a valid Base64Url-encoded token.')
       }
     }
     
@@ -333,24 +264,24 @@ textarea:focus{outline:none;border-color:var(--accent)}
       const resultDiv = document.getElementById('result');
       errorDiv.textContent = message;
       errorDiv.style.display = 'block';
-      resultDiv.style.display = 'none';
+      resultDiv.style.display = 'none'
     }
     
     function clearAll() {
       document.getElementById('jwtInput').value = '';
       document.getElementById('result').style.display = 'none';
-      document.getElementById('error').style.display = 'none';
+      document.getElementById('error').style.display = 'none'
     }
     
     function pasteSample() {
       const sampleToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJleHAiOjE5OTk5OTk5OTl9.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c';
       document.getElementById('jwtInput').value = sampleToken;
-      decodeJWT();
+      decodeJWT()
     }
     
     // Auto-decode on paste
     document.getElementById('jwtInput').addEventListener('paste', function() {
-      setTimeout(decodeJWT, 100);
+      setTimeout(decodeJWT, 100)
     });
   </script>
   

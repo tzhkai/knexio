@@ -13,36 +13,36 @@
   <meta property="og:image" content="https://knexio.xyz/og-image.svg" />
 <style>
 
-    :root{--bg:#0b1220;--bg2:#070d1a;--panel:#111a2e;--border:rgba(255,255,255,0.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff;;--text-main:#fff;--text-sub:#aab3c5}
-    *{box-sizing:border-box;margin:0;padding:0;}
-    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:linear-gradient(180deg,var(--bg),var(--bg2));color:var(--text);min-height:100vh;}
-    a{text-decoration:none;color:inherit;}
-    .wrap{max-width:520px;margin:0 auto;padding:50px 20px 80px;}
-    .back{display:inline-block;margin-bottom:24px;font-size:14px;color:var(--sub);}
-    .header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;}
-    h1{font-size:40px;font-weight:800;}
-    .score-board{display:flex;gap:10px;}
-    .score-box{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:8px 18px;text-align:center;min-width:80px;}
-    .score-label{font-size:10px;text-transform:uppercase;color:var(--sub);letter-spacing:0.05em;}
-    .score-val{font-size:20px;font-weight:700;color:var(--text);}
-    .subtitle{font-size:14px;color:var(--sub);margin-bottom:20px;}
-    .btn-row{display:flex;gap:10px;margin-bottom:20px;}
-    .btn{padding:9px 20px;border-radius:10px;border:none;background:var(--accent);color:#fff;font-size:14px;font-weight:500;cursor:pointer;transition:opacity 0.15s;}
-    .btn:hover{opacity:0.85;}
-    .btn.ghost{background:transparent;border:1px solid var(--border);color:var(--sub);}
-    .btn.ghost:hover{border-color:var(--accent);color:var(--accent);}
-    .ad-banner{margin-bottom:24px;text-align:center;}
-    .grid-container{background:#0d1526;border-radius:14px;padding:10px;position:relative;}
-    .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
-    .cell{aspect-ratio:1;border-radius:8px;background:rgba(255,255,255,0.04);display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:800;transition:all 0.1s;}
-    .overlay{position:absolute;inset:0;background:rgba(11,18,32,0.88);border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;opacity:0;pointer-events:none;transition:opacity 0.3s;}
-    .overlay.show{opacity:1;pointer-events:all;}
-    .overlay h2{font-size:32px;}
-    .overlay p{color:var(--sub);font-size:15px;}
-    .hint{margin-top:16px;font-size:13px;color:var(--sub);text-align:center;}
-    .seo{margin-top:60px;}
-    .seo h2{font-size:20px;margin-bottom:10px;}
-    .seo p{font-size:14px;color:var(--sub);line-height:1.8;margin-bottom:14px;}
+    :root{--bg:#0b1220;--bg2:#070d1a;--panel:#111a2e;--border:rgba(255,255,255,0.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff;--text-main:#fff;--text-sub:#aab3c5}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:linear-gradient(180deg,var(--bg),var(--bg2));color:var(--text);min-height:100vh}
+    a{text-decoration:none;color:inherit}
+    .wrap{max-width:520px;margin:0 auto;padding:50px 20px 80px}
+    .back{display:inline-block;margin-bottom:24px;font-size:14px;color:var(--sub)}
+    .header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+    h1{font-size:40px;font-weight:800}
+    .score-board{display:flex;gap:10px}
+    .score-box{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:8px 18px;text-align:center;min-width:80px}
+    .score-label{font-size:10px;text-transform:uppercase;color:var(--sub);letter-spacing:0.05em}
+    .score-val{font-size:20px;font-weight:700;color:var(--text)}
+    .subtitle{font-size:14px;color:var(--sub);margin-bottom:20px}
+    .btn-row{display:flex;gap:10px;margin-bottom:20px}
+    .btn{padding:9px 20px;border-radius:10px;border:none;background:var(--accent);color:#fff;font-size:14px;font-weight:500;cursor:pointer;transition:opacity 0.15s}
+    .btn:hover{opacity:0.85}
+    .btn.ghost{background:transparent;border:1px solid var(--border);color:var(--sub)}
+    .btn.ghost:hover{border-color:var(--accent);color:var(--accent)}
+    .ad-banner{margin-bottom:24px;text-align:center}
+    .grid-container{background:#0d1526;border-radius:14px;padding:10px;position:relative}
+    .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+    .cell{aspect-ratio:1;border-radius:8px;background:rgba(255,255,255,0.04);display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:800;transition:all 0.1s}
+    .overlay{position:absolute;inset:0;background:rgba(11,18,32,0.88);border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;opacity:0;pointer-events:none;transition:opacity 0.3s}
+    .overlay.show{opacity:1;pointer-events:all}
+    .overlay h2{font-size:32px}
+    .overlay p{color:var(--sub);font-size:15px}
+    .hint{margin-top:16px;font-size:13px;color:var(--sub);text-align:center}
+    .seo{margin-top:60px}
+    .seo h2{font-size:20px;margin-bottom:10px}
+    .seo p{font-size:14px;color:var(--sub);line-height:1.8;margin-bottom:14px}
     footer p{margin:0}
 
     /* ==================== 移动端优化 ==================== */
@@ -52,153 +52,153 @@
       /* 容器布局优化 */
       .container, .wrap {
         padding: 40px 15px 80px !important;
-        max-width: 100% !important;
+        max-width: 100% !important
       }
 
       /* 标题字体优化 */
       h1 {
         font-size: 28px !important;
-        line-height: 1.3 !important;
+        line-height: 1.3 !important
       }
 
       h2 {
         font-size: 20px !important;
         margin-top: 36px !important;
-        margin-bottom: 10px !important;
+        margin-bottom: 10px !important
       }
 
       h3 {
-        font-size: 17px !important;
+        font-size: 17px !important
       }
 
       /* 正文内容优化 */
       p, li, .intro, .subtitle {
         font-size: 14px !important;
-        line-height: 1.7 !important;
+        line-height: 1.7 !important
       }
 
       /* 段落间距优化 */
       p, ul, ol {
-        margin-bottom: 16px !important;
+        margin-bottom: 16px !important
       }
 
       /* 列表优化 */
       ul, ol {
-        padding-left: 18px !important;
+        padding-left: 18px !important
       }
 
       li {
-        margin-bottom: 6px !important;
+        margin-bottom: 6px !important
       }
 
       /* 内容块优化 */
       .main-panel, .step-block, .notice, .extra-info {
         padding: 16px !important;
         border-radius: 12px !important;
-        margin: 16px 0 !important;
+        margin: 16px 0 !important
       }
 
       /* 按钮和输入框优化 */
       .btn {
         padding: 14px !important;
         font-size: 15px !important;
-        min-height: 48px !important;
+        min-height: 48px !important
       }
 
       .input-group input {
         padding: 12px !important;
-        font-size: 15px !important;
+        font-size: 15px !important
       }
 
       /* 网格系统优化 */
       .age-grid {
         grid-template-columns: repeat(2, 1fr) !important;
-        gap: 12px !important;
+        gap: 12px !important
       }
 
       /* 广告位优化 */
       .ad-banner {
         margin: 16px 0 !important;
-        min-height: 50px !important;
+        min-height: 50px !important
       }
 
       /* 游戏页面优化 */
       .grid-container {
-        padding: 8px !important;
+        padding: 8px !important
       }
 
       .grid { margin: 0 auto;
-        gap: 8px !important;
+        gap: 8px !important
       }
 
       .cell {
         font-size: 20px !important;
-        border-radius: 6px !important;
+        border-radius: 6px !important
       }
 
       .score-box {
         min-width: 70px !important;
-        padding: 6px 12px !important;
+        padding: 6px 12px !important
       }
 
       .score-val {
-        font-size: 18px !important;
+        font-size: 18px !important
       }
 
       /* 工具页面优化 */
       .age-main {
-        font-size: 36px !important;
+        font-size: 36px !important
       }
 
       .age-value {
-        font-size: 24px !important;
+        font-size: 24px !important
       }
 
       .age-label {
-        font-size: 11px !important;
+        font-size: 11px !important
       }
 
       /* 引导页面优化 */
       .intro {
         border-left-width: 2px !important;
         padding-left: 12px !important;
-        margin-bottom: 32px !important;
+        margin-bottom: 32px !important
       }
 
       .faq-item {
-        margin-bottom: 20px !important;
+        margin-bottom: 20px !important
       }
 
       .faq-item strong {
-        font-size: 15px !important;
+        font-size: 15px !important
       }
     }
 
     /* 小手机优化 (≤480px) */
     @media (max-width: 480px) {
       h1 {
-        font-size: 24px !important;
+        font-size: 24px !important
       }
 
       h2 {
-        font-size: 18px !important;
+        font-size: 18px !important
       }
 
       .container, .wrap {
-        padding: 32px 12px 60px !important;
+        padding: 32px 12px 60px !important
       }
 
       .main-panel, .step-block, .notice {
-        padding: 14px !important;
+        padding: 14px !important
       }
 
       .btn {
         padding: 12px !important;
-        font-size: 14px !important;
+        font-size: 14px !important
       }
 
       .age-grid {
-        grid-template-columns: 1fr !important;
+        grid-template-columns: 1fr !important
       }
     }
 
@@ -206,66 +206,15 @@
     @media (hover: none) and (pointer: coarse) {
       button, .btn, a[onclick], .cell {
         min-height: 44px !important;
-        min-width: 44px !important;
+        min-width: 44px !important
       }
 
       input, select, textarea {
-        font-size: 16px !important;
+        font-size: 16px !important
       }
         }
 
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
-
-  <meta name="keywords" content="2048 game, number puzzle, slide tiles, merge numbers, free online puzzle, addictive math game" /><script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "VideoGame",
-  "name": "2048",
-  "url": "https://knexio.xyz/games/2048/",
-  "description": "Play 2048 free online. 2048 is a classic number puzzle game where you slide tiles on a 4×4 grid to combine them and reach the 2048 tile. Every ... No download required. Works on all devices.",
-  "genre": "Game",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  }
-}
-</script>
-
-<!-- Open Graph -->
-<meta property="og:site_name" content="Knexio">
-</head>
-<body><div class="wrap">
-  <a class="back" href="../index.html">← Back to Games</a>
-  <div class="header">
-    <h1>2048</h1>
-    <div class="score-board">
-      <div class="score-box"><div class="score-label">Score</div><div class="score-val" id="score">0</div></div>
-      <div class="score-box"><div class="score-label">Best</div><div class="score-val" id="best">0</div></div>
-    </div>
-  </div>
-  <p class="subtitle">Combine tiles to reach <strong>2048</strong>. Use arrow keys or swipe.</p>
-  <div class="btn-row">
-    <button class="btn" onclick="newGame()">New Game</button>
-    <button class="btn ghost" onclick="undo()">Undo</button>
-  </div>
-
-  <div class="grid-container" id="gridContainer">
-    <div class="grid" id="grid"></div>
-    <div class="overlay" id="overlay">
-      <h2 id="overlayTitle">Game Over</h2>
-      <p id="overlayMsg">No more moves available.</p>
-      <button class="btn" onclick="newGame()">Play Again</button>
-    </div>
-
-  </div>
-
-  <div class="ad-banner" style="margin-top:40px">
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="5794572171" data-ad-format="auto" data-full-width-responsive="true"></ins>
-    </div>
-
-<!-- ==================== 游戏玩法说明 - SEO优化内容 ==================== -->
-<div class="gameplay-section" style="margin: 60px auto 0; max-width: 800px; padding: 32px 24px; background: var(--panel); border-radius: 18px; border: 1px solid var(--border); text-align: left;">
+footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px; max-width: 800px; padding: 32px 24px; background: var(--panel); border-radius: 18px; border: 1px solid var(--border); text-align: left;">
     <h2 style="font-size: 28px; margin-bottom: 30px; color: var(--text-main); display: flex; align-items: center;">
         <span style="background: var(--accent); color: white; width: 36px; height: 36px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 15px; font-size: 18px;">🎮</span>
         How to Play 2048
@@ -436,20 +385,20 @@ function newGame() {
   prev = null;
   addTile(); addTile();
   document.getElementById('overlay').classList.remove('show');
-  render();
+  render()
 }
 
 function addTile() {
   const empty = [];
-  board.forEach((r,i)=>r.forEach((v,j)=>{ if(!v) empty.push([i,j]); }));
+  board.forEach((r,i)=>r.forEach((v,j)=>{ if(!v) empty.push([i,j]) }));
   if (!empty.length) return;
   const [r,c] = empty[Math.floor(Math.random()*empty.length)];
-  board[r][c] = Math.random()<0.9 ? 2 : 4;
+  board[r][c] = Math.random()<0.9 ? 2 : 4
 }
 
 function render() {
   document.getElementById('score').textContent = score;
-  if (score > best) { best = score; document.getElementById('best').textContent = best; localStorage.setItem('2048best',best); }
+  if (score > best) { best = score; document.getElementById('best').textContent = best; localStorage.setItem('2048best',best) }
   const g = document.getElementById('grid');
   g.innerHTML = '';
   board.flat().forEach(v=>{
@@ -459,38 +408,38 @@ function render() {
     d.style.color = v<=4 ? (TEXT_COLOR[v]||'#fff') : '#fff';
     d.style.fontSize = v>=1000 ? '18px' : v>=100 ? '22px' : '28px';
     d.textContent = v || '';
-    g.appendChild(d);
-  });
+    g.appendChild(d)
+  })
 }
 
 function slide(row) {
   let r = row.filter(v=>v);
   for (let i=0;i<r.length-1;i++) {
-    if (r[i]===r[i+1]) { r[i]*=2; score+=r[i]; r.splice(i+1,1); }
+    if (r[i]===r[i+1]) { r[i]*=2; score+=r[i]; r.splice(i+1,1) }
   }
   while(r.length<4) r.push(0);
-  return r;
+  return r
 }
 
 function move(dir) {
   prev = board.map(r=>[...r]);
   let moved = false;
   const nb = board.map(r=>[...r]);
-  if (dir==='left') { nb.forEach((r,i)=>{ const s=slide(r); if(s.join()!==r.join()) moved=true; nb[i]=s; }); }
-  else if (dir==='right') { nb.forEach((r,i)=>{ const s=slide([...r].reverse()).reverse(); if(s.join()!==r.join()) moved=true; nb[i]=s; }); }
+  if (dir==='left') { nb.forEach((r,i)=>{ const s=slide(r); if(s.join()!==r.join()) moved=true; nb[i]=s }) }
+  else if (dir==='right') { nb.forEach((r,i)=>{ const s=slide([...r].reverse()).reverse(); if(s.join()!==r.join()) moved=true; nb[i]=s }) }
   else if (dir==='up') {
     for(let j=0;j<4;j++){
       const col=nb.map(r=>r[j]);
       const s=slide(col);
       if(s.join()!==col.join()) moved=true;
-      nb.forEach((r,i)=>r[j]=s[i]);
+      nb.forEach((r,i)=>r[j]=s[i])
     }
   } else {
     for(let j=0;j<4;j++){
       const col=nb.map(r=>r[j]).reverse();
       const s=slide(col).reverse();
       if(s.join()!==nb.map(r=>r[j]).join()) moved=true;
-      nb.forEach((r,i)=>r[j]=s[i]);
+      nb.forEach((r,i)=>r[j]=s[i])
     }
   }
   if (!moved) return;
@@ -498,7 +447,7 @@ function move(dir) {
   addTile();
   render();
   if (isWon()) showOverlay('You Win! 🎉','You reached 2048!');
-  else if (isOver()) showOverlay('Game Over','No more moves available.');
+  else if (isOver()) showOverlay('Game Over','No more moves available.')
 }
 
 function undo() {
@@ -506,40 +455,40 @@ function undo() {
   board = prev.map(r=>[...r]);
   prev = null;
   document.getElementById('overlay').classList.remove('show');
-  render();
+  render()
 }
 
 function isOver() {
   for(let i=0;i<4;i++) for(let j=0;j<4;j++){
     if(!board[i][j]) return false;
     if(i<3&&board[i][j]===board[i+1][j]) return false;
-    if(j<3&&board[i][j]===board[i][j+1]) return false;
+    if(j<3&&board[i][j]===board[i][j+1]) return false
   }
-  return true;
+  return true
 }
 
-function isWon() { return board.some(r=>r.some(v=>v===2048)); }
+function isWon() { return board.some(r=>r.some(v=>v===2048)) }
 
 function showOverlay(title, msg) {
   document.getElementById('overlayTitle').textContent = title;
   document.getElementById('overlayMsg').textContent = msg;
-  document.getElementById('overlay').classList.add('show');
+  document.getElementById('overlay').classList.add('show')
 }
 
 // Keyboard
 document.addEventListener('keydown', e=>{
   const map={'ArrowLeft':'left','ArrowRight':'right','ArrowUp':'up','ArrowDown':'down'};
-  if(map[e.key]){ e.preventDefault(); move(map[e.key]); }
+  if(map[e.key]){ e.preventDefault(); move(map[e.key]) }
 });
 
 // Touch swipe
 let tx=0,ty=0;
-document.getElementById('gridContainer').addEventListener('touchstart',e=>{ tx=e.touches[0].clientX; ty=e.touches[0].clientY; },{passive:true});
+document.getElementById('gridContainer').addEventListener('touchstart',e=>{ tx=e.touches[0].clientX; ty=e.touches[0].clientY },{passive:true});
 document.getElementById('gridContainer').addEventListener('touchend',e=>{
   const dx=e.changedTouches[0].clientX-tx, dy=e.changedTouches[0].clientY-ty;
   if(Math.abs(dx)<20&&Math.abs(dy)<20) return;
   if(Math.abs(dx)>Math.abs(dy)) move(dx>0?'right':'left');
-  else move(dy>0?'down':'up');
+  else move(dy>0?'down':'up')
 });
 
 // Load best

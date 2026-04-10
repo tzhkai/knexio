@@ -26,60 +26,7 @@ button{background:var(--accent);color:#fff;border:none;cursor:pointer;font-weigh
 .faq-item h3{font-size:16px;margin-bottom:8px}.faq-item p{color:var(--sub);line-height:1.6}
 footer p{margin:0}
 .ad-banner{margin:24px 0;text-align:center;min-height:90px}
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
-
-<!-- Open Graph -->
-<meta property="og:url" content="https://knexio.xyz/ai-tools/ai-email-generator/">
-<meta property="og:type" content="WebApplication">
-<meta property="og:site_name" content="Knexio">
-</head>
-<body>
-<div class="container">
-<a class="back" href="../index.html">← Back to AI Tools</a>
-<h1>AI Email Generator</h1>
-<p class="subtitle">Write professional emails in seconds</p>
-<div class="ad-banner">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="5794572171"
-       data-ad-format="auto"
-       data-full-width-responsive="true">
-  </ins>
-</div>
-<div class="controls">
-<label>Email Type</label>
-<select id="type">
-<option value="followup">Follow-up Email</option>
-<option value="introduction">Professional Introduction</option>
-<option value="request">Request Email</option>
-<option value="thankyou">Thank You Email</option>
-<option value="meeting">Meeting Request</option>
-</select>
-<label>Subject / Purpose (brief)</label>
-<input type="text" id="subject" placeholder="e.g., Following up on our conversation">
-<label>Recipient Name</label>
-<input type="text" id="recipient" placeholder="John">
-<label>Tone</label>
-<select id="tone">
-<option value="professional">Professional</option>
-<option value="friendly">Friendly</option>
-<option value="formal">Formal</option>
-</select>
-<button onclick="generateEmail()">Generate Email</button>
-</div>
-<div class="output">
-<textarea id="output" placeholder="Generated email will appear here..."></textarea>
-<button onclick="copyEmail()">Copy Email</button>
-</div>
-<div class="section">
-<p><strong>Free AI Email Generator</strong> - Generate professional emails instantly. Perfect for business communication, follow-ups, and outreach. Get polished results in seconds.</p>
-</div>
-<div class="section">
-<p><strong>How It Works</strong> - Select email type, enter subject and recipient name, choose tone. Click Generate for a ready-to-send email.</p>
-</div>
-<h2>How to Use</h2>
-<ol style="margin:0 0 24px;padding-left:20px;line-height:2">
+footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;padding-left:20px;line-height:2">
 <li><strong>Choose an email type</strong> — Select from follow-up, professional introduction, request, thank you, or meeting request</li>
 <li><strong>Enter subject and details</strong> — Fill in a brief subject or purpose and the recipient's name</li>
 <li><strong>Pick your tone</strong> — Choose Professional, Friendly, or Formal to match your audience</li>
@@ -147,14 +94,14 @@ function generateEmail() {
   const type = document.getElementById('type').value;
   const name = document.getElementById('recipient').value || 'there';
   const template = templates[type] || templates.followup;
-  document.getElementById('output').value = template(name, document.getElementById('tone').value);
+  document.getElementById('output').value = template(name, document.getElementById('tone').value)
 }
 
 function copyEmail() {
   const output = document.getElementById('output');
   output.select();
   document.execCommand('copy');
-  alert('Copied!');
+  alert('Copied!')
 }
 </script>
 <script src="/knexio-bundle.js"></script>

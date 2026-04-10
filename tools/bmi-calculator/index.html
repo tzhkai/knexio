@@ -88,13 +88,13 @@
   --border:rgba(255,255,255,.08);
   --text:#fff;
   --sub:#aab3c5;
-  --accent:#4f8cff;
+  --accent:#4f8cff
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{
   font-family:system-ui,-apple-system;
   background:var(--bg);
-  color:var(--text);
+  color:var(--text)
 }
 .container{max-width:900px;margin:auto;padding:50px 16px}
 
@@ -104,7 +104,7 @@ body{
   text-decoration:none;
   font-size:14px;
   margin-bottom:24px;
-  transition:color 0.2s;
+  transition:color 0.2s
 }
 .back:hover{color:var(--accent)}
 
@@ -117,7 +117,7 @@ h2{font-size:22px;margin-top:30px;margin-bottom:10px}
   border:1px solid var(--border);
   border-radius:14px;
   padding:20px;
-  margin-bottom:20px;
+  margin-bottom:20px
 }
 
 label{display:block;font-size:14px;color:var(--sub);margin-bottom:8px}
@@ -130,7 +130,7 @@ input[type="number"]{
   color:var(--text);
   font-size:15px;
   font-family:inherit;
-  margin-bottom:16px;
+  margin-bottom:16px
 }
 input[type="number"]:focus{outline:none;border-color:var(--accent)}
 
@@ -144,13 +144,13 @@ input[type="number"]:focus{outline:none;border-color:var(--accent)}
   color:var(--sub);
   cursor:pointer;
   font-size:14px;
-  transition:all 0.2s;
+  transition:all 0.2s
 }
 .toggle-btn:hover{border-color:var(--accent);color:var(--accent)}
 .toggle-btn.active{
   background:var(--accent);
   color:#fff;
-  border-color:var(--accent);
+  border-color:var(--accent)
 }
 
 .height-inputs{display:flex;gap:10px}
@@ -167,17 +167,17 @@ button,.btn,.btn-row button{
   cursor:pointer;
   font-size:14px;
   transition:opacity 0.2s;
-  box-sizing:border-box;
+  box-sizing:border-box
 }
 button:hover,.btn:hover{opacity:0.9}
 button.secondary,.btn.secondary,.btn-outline,.btn-row button.secondary{
   background:transparent;
   border:1px solid var(--border);
-  color:var(--sub);
+  color:var(--sub)
 }
 button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{
   border-color:var(--accent);
-  color:var(--accent);
+  color:var(--accent)
 }
 
 .result-box{
@@ -187,14 +187,14 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{
   padding:16px;
   margin-top:16px;
   min-height:100px;
-  text-align:center;
+  text-align:center
 }
 .bmi-value{
   font-size:48px;
   font-weight:700;
   color:var(--accent);
   line-height:1;
-  margin-bottom:8px;
+  margin-bottom:8px
 }
 .bmi-category{
   font-size:18px;
@@ -202,34 +202,34 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{
   margin-bottom:16px;
   padding:6px 16px;
   border-radius:6px;
-  display:inline-block;
+  display:inline-block
 }
 .bmi-category.underweight{
   background:rgba(59,130,246,.2);
-  color:#3b82f6;
+  color:#3b82f6
 }
 .bmi-category.normal{
   background:rgba(16,185,129,.2);
-  color:#10b981;
+  color:#10b981
 }
 .bmi-category.overweight{
   background:rgba(245,158,11,.2);
-  color:#f59e0b;
+  color:#f59e0b
 }
 .bmi-category.obese{
   background:rgba(239,68,68,.2);
-  color:#ef4444;
+  color:#ef4444
 }
 .range-result{
   margin-top:16px;
   padding-top:16px;
-  border-top:1px solid var(--border);
+  border-top:1px solid var(--border)
 }
 .range-result p{
   color:var(--sub);
   font-size:14px;
   line-height:1.7;
-  margin:0;
+  margin:0
 }
 .range-result strong{color:var(--text)}
 
@@ -244,7 +244,7 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{
   border-radius:8px;
   border:1px solid var(--border);
   color:var(--sub);
-  text-decoration:none;
+  text-decoration:none
 }
 .tools a:hover{border-color:var(--accent);color:var(--accent)}
 
@@ -255,7 +255,7 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{
   border:1px solid var(--border);
   border-radius:12px;
   padding:20px;
-  margin-bottom:12px;
+  margin-bottom:12px
 }
 .faq-item h3{font-size:16px;margin-bottom:8px;color:var(--text)}
 .faq-item p{color:var(--sub);font-size:14px;line-height:1.7;margin:0}
@@ -266,7 +266,7 @@ footer a{
   color:var(--sub);
   text-decoration:none;
   margin:0 10px;
-  transition:color 0.2s;
+  transition:color 0.2s
 }
 footer a:hover{color:var(--accent)}
 
@@ -274,51 +274,7 @@ footer a:hover{color:var(--accent)}
   .height-inputs{flex-direction:column}
   .bmi-value{font-size:36px}
 }
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
-</head>
-
-<body><div class="container">
-
-<a class="back" href="../index.html">← Back to Tools</a>
-
-<h1>BMI Calculator</h1>
-<p class="subtitle">Calculate Body Mass Index with metric/imperial units and gender-specific healthy ranges.</p>
-
-<div class="ad-banner">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="5794572171"
-       data-ad-format="auto"
-       data-full-width-responsive="true">
-  </ins>
-</div>
-
-<div class="card">
-  <div class="unit-toggle">
-    <button class="toggle-btn active" id="metricBtn" onclick="setUnit('metric')">Metric (kg, cm)</button>
-    <button class="toggle-btn" id="imperialBtn" onclick="setUnit('imperial')">Imperial (lbs, ft)</button>
-  </div>
-  
-  <div class="form-group">
-    <label>Gender</label>
-    <div class="unit-toggle">
-      <button class="toggle-btn active" id="maleBtn" onclick="setGender('male')">Male</button>
-      <button class="toggle-btn" id="femaleBtn" onclick="setGender('female')">Female</button>
-    </div>
-  </div>
-  
-  <div class="form-group">
-    <label>Age</label>
-    <input type="number" id="age" placeholder="25" min="18" max="100" value="25">
-  </div>
-  
-  <div class="form-group">
-    <label>Height</label>
-    <div id="metricHeight">
-      <input type="number" id="heightCm" placeholder="175" min="50" max="300" value="175">
-    </div>
-    <div id="imperialHeight" class="height-inputs" style="display:none;">
+footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;">
       <input type="number" id="heightFt" placeholder="5" min="1" max="9" value="5">
       <input type="number" id="heightIn" placeholder="9" min="0" max="11" value="9">
     </div>
@@ -435,20 +391,20 @@ function setUnit(unit) {
   if (unit === 'metric') {
     document.getElementById('metricHeight').style.display = 'block';
     document.getElementById('imperialHeight').style.display = 'none';
-    document.getElementById('weight').placeholder = '70';
+    document.getElementById('weight').placeholder = '70'
   } else {
     document.getElementById('metricHeight').style.display = 'none';
     document.getElementById('imperialHeight').style.display = 'flex';
-    document.getElementById('weight').placeholder = '154';
+    document.getElementById('weight').placeholder = '154'
   }
-  calculateBMI();
+  calculateBMI()
 }
 
 function setGender(gender) {
   currentGender = gender;
   document.getElementById('maleBtn').className = gender === 'male' ? 'toggle-btn active' : 'toggle-btn';
   document.getElementById('femaleBtn').className = gender === 'female' ? 'toggle-btn active' : 'toggle-btn';
-  calculateBMI();
+  calculateBMI()
 }
 
 function calculateBMI() {
@@ -456,12 +412,12 @@ function calculateBMI() {
   
   if (currentUnit === 'metric') {
     height = parseFloat(document.getElementById('heightCm').value) / 100;
-    weight = parseFloat(document.getElementById('weight').value);
+    weight = parseFloat(document.getElementById('weight').value)
   } else {
     const feet = parseFloat(document.getElementById('heightFt').value) || 0;
     const inches = parseFloat(document.getElementById('heightIn').value) || 0;
     height = (feet * 12 + inches) * 0.0254;
-    weight = parseFloat(document.getElementById('weight').value) * 0.453592;
+    weight = parseFloat(document.getElementById('weight').value) * 0.453592
   }
   
   if (!height || !weight || height <= 0 || weight <= 0) {
@@ -469,7 +425,7 @@ function calculateBMI() {
     document.getElementById('bmiCategory').textContent = 'Enter your height and weight';
     document.getElementById('bmiCategory').className = 'bmi-category';
     document.getElementById('healthyRange').textContent = '-';
-    return;
+    return
   }
   
   const bmi = weight / (height * height);
@@ -481,30 +437,30 @@ function calculateBMI() {
   if (currentGender === 'male') {
     if (bmi < 18.5) {
       category = 'Underweight';
-      className = 'underweight';
+      className = 'underweight'
     } else if (bmi < 25) {
       category = 'Normal';
-      className = 'normal';
+      className = 'normal'
     } else if (bmi < 30) {
       category = 'Overweight';
-      className = 'overweight';
+      className = 'overweight'
     } else {
       category = 'Obese';
-      className = 'obese';
+      className = 'obese'
     }
   } else {
     if (bmi < 18.0) {
       category = 'Underweight';
-      className = 'underweight';
+      className = 'underweight'
     } else if (bmi < 24.0) {
       category = 'Normal';
-      className = 'normal';
+      className = 'normal'
     } else if (bmi < 29.0) {
       category = 'Overweight';
-      className = 'overweight';
+      className = 'overweight'
     } else {
       category = 'Obese';
-      className = 'obese';
+      className = 'obese'
     }
   }
   
@@ -519,11 +475,11 @@ function calculateBMI() {
   const maxWeight = (maxBMI * height * height).toFixed(1);
   
   if (currentUnit === 'metric') {
-    document.getElementById('healthyRange').textContent = `${minWeight} kg - ${maxWeight} kg`;
+    document.getElementById('healthyRange').textContent = `${minWeight} kg - ${maxWeight} kg`
   } else {
     const minLbs = (minWeight * 2.20462).toFixed(1);
     const maxLbs = (maxWeight * 2.20462).toFixed(1);
-    document.getElementById('healthyRange').textContent = `${minLbs} lbs - ${maxLbs} lbs`;
+    document.getElementById('healthyRange').textContent = `${minLbs} lbs - ${maxLbs} lbs`
   }
 }
 
@@ -533,11 +489,11 @@ function clearAll() {
   document.getElementById('heightIn').value = '';
   document.getElementById('weight').value = '';
   document.getElementById('age').value = '';
-  calculateBMI();
+  calculateBMI()
 }
 
 document.querySelectorAll('input').forEach(input => {
-  input.addEventListener('input', calculateBMI);
+  input.addEventListener('input', calculateBMI)
 });
 
 calculateBMI();

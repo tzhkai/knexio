@@ -79,7 +79,7 @@
   --border:rgba(255,255,255,.08);
   --text:#fff;
   --sub:#aab3c5;
-  --accent:#4f8cff;
+  --accent:#4f8cff
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:system-ui,-apple-system;background:var(--bg);color:var(--text)}
@@ -129,41 +129,7 @@ footer a:hover{color:var(--accent)}
 .ref-roman{font-size:20px;font-weight:700;color:var(--accent);margin-bottom:4px}
 .ref-num{font-size:13px;color:var(--sub)}
 @media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.btn-row{flex-direction:column}.ref-grid{grid-template-columns:repeat(3,1fr)}}
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
-</head>
-<body><div class="container">
-<a class="back" href="../index.html">← Back to Tools</a>
-<h1>Roman Numeral Converter</h1>
-<p class="subtitle">Convert numbers to Roman numerals and Roman numerals back to numbers. Supports 1 to 3,999,999 with step-by-step breakdown.</p>
-
-<div class="ad-banner">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="5794572171"
-       data-ad-format="auto"
-       data-full-width-responsive="true">
-  </ins>
-</div>
-
-<div class="card">
-  <div class="mode-row">
-    <div class="btn-row">
-      <button class="mode-btn active" id="m-n2r" onclick="setMode('n2r')">Number → Roman</button>
-      <button class="mode-btn" id="m-r2n" onclick="setMode('r2n')">Roman → Number</button>
-    </div>
-  </div>
-  
-  <div class="field-label" id="in-label">Enter a Number (1 – 3,999,999)</div>
-  <input class="big-input" type="text" id="main-input" placeholder="e.g. 2026" oninput="convert()">
-  <div class="result-box" id="result-box"></div>
-  
-  <div class="breakdown" id="breakdown-box" style="display:none">
-    <h3>Step-by-Step Breakdown</h3>
-    <div class="step-list" id="step-list"></div>
-  </div>
-  
-  <p class="tip" id="error-msg" style="color:#ff6b6b;display:none"></p>
+footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;display:none"></p>
 </div>
 
 <h2>Free Online Roman Numeral Converter</h2>
@@ -312,7 +278,7 @@ function setMode(mode) {
   resultBox.textContent = '';
   breakdownBox.style.display = 'none';
   input.value = '';
-  document.getElementById('error-msg').style.display = 'none';
+  document.getElementById('error-msg').style.display = 'none'
 }
 
 function convert() {
@@ -333,30 +299,30 @@ function convert() {
     if (isNaN(num) || num < 1 || num > 3999999) {
       errorMsg.textContent = 'Please enter a valid number between 1 and 3,999,999';
       errorMsg.style.display = 'block';
-      return;
+      return
     }
     
     const { result, steps } = numberToRoman(num);
     resultBox.textContent = result;
     stepList.textContent = steps;
-    breakdownBox.style.display = 'block';
+    breakdownBox.style.display = 'block'
   } else {
     if (!/^[IVXLCDM\u0305]+$/.test(input)) {
       errorMsg.textContent = 'Invalid Roman numerals. Only I, V, X, L, C, D, M and overline characters are allowed';
       errorMsg.style.display = 'block';
-      return;
+      return
     }
     
     const { result, steps } = romanToNumber(input);
     if (result === null) {
       errorMsg.textContent = 'Invalid Roman numeral format';
       errorMsg.style.display = 'block';
-      return;
+      return
     }
     
     resultBox.textContent = result.toLocaleString();
     stepList.textContent = steps;
-    breakdownBox.style.display = 'block';
+    breakdownBox.style.display = 'block'
   }
 }
 
@@ -369,11 +335,11 @@ function numberToRoman(num) {
     while (remaining >= val) {
       result += sym;
       steps.push(`${val.toLocaleString()} = ${sym}`);
-      remaining -= val;
+      remaining -= val
     }
   }
   
-  return { result, steps: steps.join('\n') };
+  return { result, steps: steps.join('\n') }
 }
 
 function romanToNumber(roman) {
@@ -393,25 +359,25 @@ function romanToNumber(roman) {
       else if (char === 'X̄') value = 10000;
       else if (char === 'V̄') value = 5000;
       else {
-        return { result: null, steps: '' };
+        return { result: null, steps: '' }
       }
     }
     
     if (value < prevValue) {
       total -= value;
-      steps.push(`${char} = -${value.toLocaleString()}`);
+      steps.push(`${char} = -${value.toLocaleString()}`)
     } else {
       total += value;
-      steps.push(`${char} = +${value.toLocaleString()}`);
+      steps.push(`${char} = +${value.toLocaleString()}`)
     }
-    prevValue = value;
+    prevValue = value
   }
   
   if (total < 1 || total > 3999999) {
-    return { result: null, steps: '' };
+    return { result: null, steps: '' }
   }
   
-  return { result: total, steps: steps.reverse().join('\n') };
+  return { result: total, steps: steps.reverse().join('\n') }
 }
 </script>
 </body>

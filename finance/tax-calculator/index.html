@@ -104,7 +104,7 @@
     .faq-item{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;margin-bottom:16px}
     .faq-item h3{font-size:16px;font-weight:600;margin-bottom:12px;color:var(--text)}
     .faq-item p{color:var(--sub);font-size:14px;line-height:1.6;margin:0}
-    footer{text-align:center;padding:40px 20px;border-top:1px solid var(--border);margin-top:20px;color:var(--sub);font-size:14px}
+    footer{text-align:center;padding:40px 20px;margin-top:20px;color:var(--sub);font-size:14px}
     footer a{color:var(--accent);margin:0 10px;transition:color 0.2s}
     footer a:hover{color:var(--accent)}
     footer p{margin-bottom:8px}
@@ -113,6 +113,7 @@
 
 <!-- Open Graph -->
 <meta property="og:site_name" content="Knexio">
+<link rel="stylesheet" href="shared.css">
 </head>
 <body>
   <div class="container">
@@ -246,9 +247,9 @@
       for(const [limit,rate] of brackets){
         if(taxableIncome<=prev) break;
         tax+=(Math.min(taxableIncome,limit)-prev)*rate;
-        prev=limit;
+        prev=limit
       }
-      return tax;
+      return tax
     }
     function calculate(){
       const income=parseFloat(document.getElementById('income').value)||0;
@@ -271,9 +272,9 @@
         for(const [limit,rate] of brackets){
           if(taxableIncome<=prev) return rate*100;
           if(taxableIncome<=limit) return rate*100;
-          prev=limit;
+          prev=limit
         }
-        return 37;
+        return 37
       })();
       document.getElementById('results').innerHTML=`
         <div class="result-header">Tax Summary (2024)</div>
@@ -291,7 +292,7 @@
         <div class="result-row"><span class="result-label">After-tax income</span><span class="result-value green">$${fmt(afterTaxIncome)}</span></div>
         <div class="result-row"><span class="result-label">Effective tax rate</span><span class="result-value accent">${effectiveRate.toFixed(1)}%</span></div>
         <div class="result-row"><span class="result-label">Marginal tax rate</span><span class="result-value">${marginalRate.toFixed(0)}%</span></div>
-      `;
+      `
     }
     function clearForm(){
       document.getElementById('income').value='80000';
@@ -300,7 +301,7 @@
       document.getElementById('stateTaxRate').value='5';
       document.getElementById('credits').value='0';
       document.getElementById('year').value='2024';
-      document.getElementById('results').innerHTML='<div class="result-placeholder">Enter your details and click <strong>Calculate</strong> to see results</div>';
+      document.getElementById('results').innerHTML='<div class="result-placeholder">Enter your details and click <strong>Calculate</strong> to see results</div>'
     }
   </script>
   <script src="/knexio-bundle.js"></script>

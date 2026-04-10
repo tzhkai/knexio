@@ -72,29 +72,7 @@ h1{font-size:32px;margin-bottom:8px}
 
 footer a{color:var(--accent);text-decoration:none}
 .ad-banner{margin:32px 0;text-align:center;min-height:90px}
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
-
-<!-- Open Graph -->
-<meta property="og:site_name" content="Knexio">
-</head>
-<body>
-<div class="container">
-<a class="back" href="../index.html">← Back to Tools</a>
-
-<h1>UUID Generator</h1>
-<p class="subtitle">Generate universally unique identifiers instantly</p>
-
-<div class="ad-banner">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="5794572171"
-       data-ad-format="auto"
-       data-full-width-responsive="true">
-  </ins>
-
-<!-- Ad: Sidebar -->
-<div class="ad-sidebar" style="margin:20px 0;text-align:center"><ins class="adsbygoogle" style="display:block;min-height:250px" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3617326351" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
+footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;text-align:center"><ins class="adsbygoogle" style="display:block;min-height:250px" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3617326351" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
 </div>
 
 <div class="controls">
@@ -181,15 +159,15 @@ function generateUUID() {
   
   for (let i = 0; i < quantity; i++) {
     if (version === 'v4') {
-      uuids.push(crypto.randomUUID());
+      uuids.push(crypto.randomUUID())
     } else if (version === 'v1') {
-      uuids.push(generateV1());
+      uuids.push(generateV1())
     } else if (version === 'v7') {
-      uuids.push(generateV7());
+      uuids.push(generateV7())
     }
   }
   
-  document.getElementById('output').value = uuids.join('\n');
+  document.getElementById('output').value = uuids.join('\n')
 }
 
 function generateV1() {
@@ -200,7 +178,7 @@ function generateV1() {
   const clockSeq = (Math.random() * 0x3fff) | 0x8000;
   const node = Array.from({length: 6}, () => Math.floor(Math.random() * 256).toString(16).padStart(2, '0')).join('');
   
-  return `${timeLow}-${timeMid}-${timeHiAndVersion.toString(16).padStart(4, '0')}-${clockSeq.toString(16).padStart(4, '0')}-${node}`;
+  return `${timeLow}-${timeMid}-${timeHiAndVersion.toString(16).padStart(4, '0')}-${clockSeq.toString(16).padStart(4, '0')}-${node}`
 }
 
 function generateV7() {
@@ -210,14 +188,14 @@ function generateV7() {
   const clock = (Math.random() * 0x3fff) | 0x8000;
   const node = Array.from({length: 6}, () => Math.floor(Math.random() * 256).toString(16).padStart(2, '0')).join('');
   
-  return `${timeLo.toString(16).padStart(8, '0')}-${timeHi.toString(16).padStart(4, '0')}-${clock.toString(16).padStart(4, '0')}-${node}`;
+  return `${timeLo.toString(16).padStart(8, '0')}-${timeHi.toString(16).padStart(4, '0')}-${clock.toString(16).padStart(4, '0')}-${node}`
 }
 
 function copyOutput() {
   const output = document.getElementById('output');
   output.select();
   document.execCommand('copy');
-  alert('Copied to clipboard!');
+  alert('Copied to clipboard!')
 }
 </script>
 <script src="/knexio-bundle.js"></script>

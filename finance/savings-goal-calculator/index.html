@@ -28,81 +28,7 @@ button{background:var(--accent);color:#fff;border:none;padding:14px 24px;border-
 .result-label{color:var(--sub);font-size:14px}
 .faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px}
 .faq-item h3{font-size:16px;margin-bottom:8px}.faq-item p{color:var(--sub);line-height:1.6}
-footer{margin-top:60px;text-align:center;color:var(--sub)border-top:1px solid var(--border);padding-top:24px}
-</style>
-
-<!-- Open Graph -->
-<meta property="og:url" content="https://knexio.xyz/finance/savings-goal-calculator/">
-<meta property="og:type" content="WebApplication">
-<meta property="og:site_name" content="Knexio">
-</head>
-<body>
-<div class="container">
-<a class="back" href="../index.html">← Back to Finance Tools</a>
-<h1>Savings Goal Calculator</h1>
-<p class="subtitle">Find out how long to reach your savings goal</p>
-<div class="ad-banner">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="5794572171"
-       data-ad-format="auto"
-       data-full-width-responsive="true">
-  </ins>
-</div>
-<div class="controls">
-<div class="input-group">
-<label>Savings Goal ($)</label>
-<input type="number" id="goal" placeholder="10000">
-</div>
-<div class="input-group">
-<label>Current Savings ($)</label>
-<input type="number" id="current" placeholder="0" value="0">
-</div>
-<div class="input-group">
-<label>Monthly Contribution ($)</label>
-<input type="number" id="monthly" placeholder="500">
-</div>
-<div class="input-group">
-<label>Annual Interest Rate (%)</label>
-<input type="number" id="rate" placeholder="4" value="4" step="0.1">
-</div>
-<button onclick="calculate()">Calculate</button>
-</div>
-<div class="results" id="results" style="display:none">
-<div class="result-card">
-<div class="result-label">Time to Goal</div>
-<div class="result-value" id="months">-</div>
-</div>
-<div class="result-card">
-<div class="result-label">Total Contributed</div>
-<div class="result-value" id="contributed">-</div>
-</div>
-<div class="result-card">
-<div class="result-label">Interest Earned</div>
-<div class="result-value" id="interest">-</div>
-</div>
-<div class="result-card">
-<div class="result-label">Final Balance</div>
-<div class="result-value" id="final">-</div>
-</div>
-</div>
-<div class="section">
-<p><strong>Free Savings Goal Calculator</strong> - Calculate how long it takes to reach any savings goal. Factor in monthly contributions and interest rate. Plan for a house, car, vacation, or emergency fund.</p>
-</div>
-<div class="section">
-<p><strong>How It Works</strong> - Enter your goal amount, current savings, monthly contribution, and interest rate. Click Calculate to see timeline and total interest earned.</p>
-</div>
-<h2>Frequently Asked Questions</h2>
-<div class="faq-item">
-<h3>What interest rate should I use?</h3>
-<p>High-yield savings accounts offer 4-5% APY. Regular savings accounts offer 0.5-1%. Use your actual rate for accuracy.</p>
-</div>
-<div class="faq-item">
-<h3>How can I reach my goal faster?</h3>
-<p>Increase monthly contributions, find a higher-yield account, or reduce your goal amount.</p>
-</div>
-<div class="ad-banner footer-ad" style="margin:40px 0;text-align:center"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
+footer{margin-top:60px;text-align:center;color:var(--sub)text-align:center"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
 
     <footer>
   <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
@@ -122,7 +48,7 @@ function calculate() {
   const monthly = parseFloat(document.getElementById('monthly').value);
   const annualRate = parseFloat(document.getElementById('rate').value) || 0;
   
-  if (!goal || !monthly) { alert('Please enter goal and monthly contribution'); return; }
+  if (!goal || !monthly) { alert('Please enter goal and monthly contribution'); return }
   
   const monthlyRate = annualRate / 100 / 12;
   let balance = current;
@@ -132,7 +58,7 @@ function calculate() {
   while (balance < goal && months < 1200) {
     balance = balance * (1 + monthlyRate) + monthly;
     totalContributed += monthly;
-    months++;
+    months++
   }
   
   const interestEarned = balance - totalContributed;
@@ -144,7 +70,7 @@ function calculate() {
   document.getElementById('contributed').textContent = '$' + totalContributed.toLocaleString(undefined, {maximumFractionDigits:0});
   document.getElementById('interest').textContent = '$' + Math.max(0, interestEarned).toLocaleString(undefined, {maximumFractionDigits:0});
   document.getElementById('final').textContent = '$' + balance.toLocaleString(undefined, {maximumFractionDigits:0});
-  document.getElementById('results').style.display = 'grid';
+  document.getElementById('results').style.display = 'grid'
 }
 </script>
 <script src="/knexio-bundle.js"></script>

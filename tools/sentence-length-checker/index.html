@@ -58,129 +58,7 @@ footer p{margin-bottom:8px}
 footer a{color:var(--accent);text-decoration:none;margin:0 8px}
 footer a:hover{opacity:.8}
 @media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.btn-row{flex-direction:column}}
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Is this tool free to use?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, this tool is completely free to use. No registration, no login, and no subscription required. Just open the page and start using it."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is my data safe? Is anything stored on a server?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, your data is safe. All processing happens entirely in your browser \u2014 your input never leaves your device and is not sent to any server."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does this tool work on mobile devices?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. The tool is fully responsive and works on smartphones, tablets, and desktop computers."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How accurate is the result?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The tool uses standard algorithms and web APIs to provide accurate results. For critical or professional use, please verify with additional sources."
-      }
-    }
-  ]
-}
-</script>
-</head>
-<body>
-<div class="container">
-  <a class="back" href="../index.html">← Back to Tools</a>
-
-  <h1>Sentence Length Checker</h1>
-  <p class="subtitle">Check average sentence length in your writing. Identify long and short sentences to improve readability.</p>
-
-  <div class="ad-banner">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="5794572171"
-       data-ad-format="auto"
-       data-full-width-responsive="true">
-  </ins>
-</div>
-
-  <div class="card">
-    <textarea class="text-area" id="textInput" placeholder="Paste or type your text here..."></textarea>
-    <div class="btn-row">
-      <button onclick="clearText()">Clear</button>
-      <button class="secondary" onclick="copyText()">Copy Text</button>
-    </div>
-    <div class="stats">
-      <div class="stat"><span id="sentenceCount">0</span><label>Sentences</label></div>
-      <div class="stat"><span id="wordCount">0</span><label>Words</label></div>
-      <div class="stat"><span id="avgLength">0</span><label>Avg Length</label></div>
-    </div>
-    <div class="readability-tip" id="readabilityNote" style="display:none">
-      <span id="readabilityText"></span>
-    </div>
-  </div>
-
-  <div class="ad-banner">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="5794572171"
-       data-ad-format="auto"
-       data-full-width-responsive="true">
-  </ins>
-</div>
-
-  <div class="section">
-    <h2>What Is a Sentence Length Checker?</h2>
-    <p>This sentence length checker analyzes your text and calculates the average words per sentence. It also provides a readability assessment to help you understand how easy or difficult your writing is to read.</p>
-  </div>
-
-  <div class="section">
-    <h2>How to Use</h2>
-    <p><strong>Step 1:</strong> Paste or type your text into the input area above.</p>
-    <p><strong>Step 2:</strong> View real-time sentence count, word count, and average sentence length.</p>
-    <p><strong>Step 3:</strong> Check the readability tip for advice on improving your writing style.</p>
-  </div>
-
-  <div class="section">
-    <div class="section">
-      <p><strong>How It Works</strong> - Paste your text and get instant analysis of sentence lengths. See average sentence length, longest sentences, and distribution. Helpful for improving writing clarity and meeting readability requirements.</p>
-    </div>
-<h2>Frequently Asked Questions</h2>
-    <div class="faq-item">
-      <h3>What's the ideal sentence length?</h3>
-      <p>Most writing guides recommend 15-25 words for clarity. Varying sentence length keeps readers engaged.</p>
-    </div>
-    <div class="faq-item">
-      <h3>Does it count words too?</h3>
-      <p>Yes, shows word count and average words per sentence.</p>
-    </div>
-
-    <h2>Related Tools</h2>
-    <div class="tools">
-      <a href="/tools/sentence-counter/">Sentence Counter</a>
-      <a href="/tools/word-counter/">Word Counter</a>
-      <a href="/tools/character-counter/">Character Counter</a>
-      <a href="/tools/sentence-counter-online/">Sentence Counter Online</a>
-    </div>
-  </div>
-
-  
-<!-- Ad: Footer -->
-<div class="ad-banner footer-ad" style="margin:40px 0;text-align:center"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
+footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;text-align:center"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
 <footer>
     <p>Free online tools for developers, designers, and everyone.</p>
     <p style="margin: 8px 0; font-size: 13px;">
@@ -204,9 +82,9 @@ function updateStats() {
     document.getElementById("wordCount").textContent = "0";
     document.getElementById("avgLength").textContent = "0";
     document.getElementById("readabilityNote").style.display = "none";
-    return;
+    return
   }
-  var sentences = text.split(/[.!?]+/).filter(function(s){ return s.trim().length > 0; });
+  var sentences = text.split(/[.!?]+/).filter(function(s){ return s.trim().length > 0 });
   var words = text.trim().split(/\s+/).length;
   var avg = sentences.length ? (words / sentences.length).toFixed(1) : "0";
   document.getElementById("sentenceCount").textContent = sentences.length;
@@ -218,21 +96,21 @@ function updateStats() {
   var a = parseFloat(avg);
   if (a <= 15) {
     textEl.textContent = "Very readable — sentences are concise and clear.";
-    textEl.style.color = "#34d399";
+    textEl.style.color = "#34d399"
   } else if (a <= 20) {
     textEl.textContent = "Good — average sentence length is within recommended range.";
-    textEl.style.color = "#34d399";
+    textEl.style.color = "#34d399"
   } else if (a <= 28) {
     textEl.textContent = "Moderate — consider breaking up some longer sentences.";
-    textEl.style.color = "#fbbf24";
+    textEl.style.color = "#fbbf24"
   } else {
     textEl.textContent = "Complex — sentences are quite long; readability may suffer.";
-    textEl.style.color = "#f87171";
+    textEl.style.color = "#f87171"
   }
 }
 
-function clearText() { input.value = ""; updateStats(); }
-function copyText() { navigator.clipboard.writeText(input.value); }
+function clearText() { input.value = ""; updateStats() }
+function copyText() { navigator.clipboard.writeText(input.value) }
 </script>
 <script src="/knexio-bundle.js"></script>
 </body>

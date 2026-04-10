@@ -37,13 +37,13 @@
   --border:rgba(255,255,255,.08);
   --text:#fff;
   --sub:#aab3c5;
-  --accent:#4f8cff;
+  --accent:#4f8cff
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{
   font-family:system-ui,-apple-system;
   background:var(--bg);
-  color:var(--text);
+  color:var(--text)
 }
 .container{max-width:900px;margin:auto;padding:50px 16px}
 
@@ -54,10 +54,10 @@ body{
   text-decoration: none;
   font-size: 14px;
   margin-bottom: 24px;
-  transition: color 0.2s;
+  transition: color 0.2s
 }
 .back:hover {
-  color: var(--accent);
+  color: var(--accent)
 }
 
 h1{font-size:32px;margin-bottom:8px}
@@ -70,7 +70,7 @@ h3{font-size:18px;margin-bottom:8px}
   border:1px solid var(--border);
   border-radius:14px;
   padding:20px;
-  margin-bottom:20px;
+  margin-bottom:20px
 }
 
 
@@ -86,7 +86,7 @@ textarea:focus{outline:none;border-color:var(--accent)}
 .stat-label{
   font-size:12px;
   color:var(--sub);
-  margin-top:4px;
+  margin-top:4px
 }
 
 
@@ -102,7 +102,7 @@ textarea:focus{outline:none;border-color:var(--accent)}
 
 .tools a:hover{
   border-color:var(--accent);
-  color:var(--accent);
+  color:var(--accent)
 }
 
 /* 广告样式 */
@@ -134,7 +134,7 @@ button:hover{opacity:0.9}
   border-radius:8px;
   border:1px solid var(--border);
   color:var(--sub);
-  text-decoration:none;
+  text-decoration:none
 }
 .tools a:hover{border-color:var(--accent);color:var(--accent)}
 
@@ -145,7 +145,7 @@ footer p{margin-bottom:8px}
 footer a{
   color:var(--accent);
   text-decoration:none;
-  margin:0 8px;
+  margin:0 8px
 }
 footer a:hover{opacity:0.8}
 
@@ -166,143 +166,7 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
 .stat label,.stat-label,.result-label,.age-label{font-size:12px;color:var(--sub);display:block}
 .result-box{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;margin-top:16px;min-height:100px;white-space:pre-wrap;word-break:break-all;font-size:15px;line-height:1.7;box-sizing:border-box}
 @media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.btn-row{flex-direction:column}}
-  footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Is this tool free to use?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, this tool is completely free to use. No registration, no login, and no subscription required. Just open the page and start using it."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is my data safe? Is anything stored on a server?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, your data is safe. All processing happens entirely in your browser \u2014 your input never leaves your device and is not sent to any server."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does this tool work on mobile devices?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. The tool is fully responsive and works on smartphones, tablets, and desktop computers."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How accurate is the result?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The tool uses standard algorithms and web APIs to provide accurate results. For critical or professional use, please verify with additional sources."
-      }
-    }
-  ]
-}
-</script>
-</head>
-
-<body><div class="container">
-
-<a class="back" href="../index.html">← Back to Tools</a>
-
-<h1>Text Case Counter</h1>
-<p class="subtitle">Count uppercase, lowercase, title case, digits, and special characters in your text instantly.</p>
-
-<div class="ad-banner">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="5794572171"
-       data-ad-format="auto"
-       data-full-width-responsive="true">
-  </ins>
-</div>
-
-<div class="card">
-  <textarea id="input" placeholder="Type or paste your text here to count character cases..."></textarea>
-
-  <div class="btn-row">
-    <button onclick="countCases()">Count</button>
-    <button class="secondary" onclick="clearText()">Clear</button>
-    <button class="secondary" onclick="copyText()">Copy</button>
-  </div>
-
-  <div class="stats" id="stats" style="display:none">
-    <div class="stat">
-      <div class="stat-value" id="uppercaseCount">0</div>
-      <div class="stat-label">Uppercase (A-Z)</div>
-    </div>
-    <div class="stat">
-      <div class="stat-value" id="lowercaseCount">0</div>
-      <div class="stat-label">Lowercase (a-z)</div>
-    </div>
-    <div class="stat">
-      <div class="stat-value" id="digitCount">0</div>
-      <div class="stat-label">Digits (0-9)</div>
-    </div>
-    <div class="stat">
-      <div class="stat-value" id="spaceCount">0</div>
-      <div class="stat-label">Spaces</div>
-    </div>
-    <div class="stat">
-      <div class="stat-value" id="specialCount">0</div>
-      <div class="stat-label">Special Chars</div>
-    </div>
-    <div class="stat">
-      <div class="stat-value" id="totalCount">0</div>
-      <div class="stat-label">Total Chars</div>
-    </div>
-  </div>
-</div>
-
-<h2>How to Use</h2>
-<div class="section">
-
-
-
-</div>
-
-<h2>What Is a Text Case Counter?</h2>
-<div class="section">
-<p>A text case counter analyzes your text and provides a detailed breakdown of different character types. It counts uppercase letters, lowercase letters, digits, spaces, and special characters separately.</p>
-<p>This tool is useful for password validation, text analysis, SEO optimization, and understanding the composition of your text content.</p>
-</div>
-
-<div class="section">
-      <p><strong>How It Works</strong> - Paste your text and instantly see counts of uppercase letters, lowercase letters, digits, and special characters. Helpful for password strength checking, data validation, and text analysis.</p>
-    </div>
-<h2>Frequently Asked Questions</h2>
-    <div class="faq-item">
-      <h3>What's the difference between case and character?</h3>
-      <p>Case counts letters (upper/lower), character counts all characters including numbers and symbols.</p>
-    </div>
-    <div class="faq-item">
-      <h3>Can I see percentage breakdown?</h3>
-      <p>The tool shows both counts and percentages for each category.</p>
-    </div>
-
-    <h2>Related Tools</h2>
-<div class="tools">
-<a href="/tools/word-counter/">Word Counter</a>
-<a href="/tools/character-counter/">Character Counter</a>
-<a href="/tools/case-converter/">Case Converter</a>
-</div>
-
-<div class="ad-banner" style="margin-top:40px">
-      <!-- Ad space -->
-    </div>
-
-
-<!-- Ad: Footer -->
-<div class="ad-banner footer-ad" style="margin:40px 0;text-align:center"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
+  footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;text-align:center"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
 <footer>
   <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
   <p style="margin: 8px 0; font-size: 13px;">
@@ -334,23 +198,23 @@ function countCases(){
   document.getElementById('specialCount').textContent = special;
   document.getElementById('totalCount').textContent = total;
   
-  document.getElementById('stats').style.display = 'grid';
+  document.getElementById('stats').style.display = 'grid'
 }
 
 function clearText(){
   document.getElementById('input').value = '';
-  document.getElementById('stats').style.display = 'none';
+  document.getElementById('stats').style.display = 'none'
 }
 
 function copyText(){
   const text = document.getElementById('input').value;
   if(!text){
     alert('Nothing to copy');
-    return;
+    return
   }
   navigator.clipboard.writeText(text).then(() => {
-    alert('Copied!');
-  });
+    alert('Copied!')
+  })
 }
 </script>
 

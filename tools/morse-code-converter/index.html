@@ -88,13 +88,13 @@
   --border:rgba(255,255,255,.08);
   --text:#fff;
   --sub:#aab3c5;
-  --accent:#4f8cff;
+  --accent:#4f8cff
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{
   font-family:system-ui,-apple-system;
   background:var(--bg);
-  color:var(--text);
+  color:var(--text)
 }
 .container{max-width:900px;margin:auto;padding:50px 16px}
 
@@ -104,7 +104,7 @@ body{
   text-decoration:none;
   font-size:14px;
   margin-bottom:24px;
-  transition:color 0.2s;
+  transition:color 0.2s
 }
 .back:hover{color:var(--accent)}
 
@@ -117,7 +117,7 @@ h2{font-size:22px;margin-top:30px;margin-bottom:10px}
   border:1px solid var(--border);
   border-radius:14px;
   padding:20px;
-  margin-bottom:20px;
+  margin-bottom:20px
 }
 
 .tip{font-size:13px;color:var(--sub);margin-top:10px}
@@ -131,7 +131,7 @@ h2{font-size:22px;margin-top:30px;margin-bottom:10px}
   border-radius:8px;
   border:1px solid var(--border);
   color:var(--sub);
-  text-decoration:none;
+  text-decoration:none
 }
 .tools a:hover{border-color:var(--accent);color:var(--accent)}
 
@@ -142,7 +142,7 @@ h2{font-size:22px;margin-top:30px;margin-bottom:10px}
   border:1px solid var(--border);
   border-radius:12px;
   padding:20px;
-  margin-bottom:12px;
+  margin-bottom:12px
 }
 .faq-item h3{font-size:16px;margin-bottom:8px;color:var(--text)}
 .faq-item p{color:var(--sub);font-size:14px;line-height:1.7;margin:0}
@@ -153,7 +153,7 @@ footer a{
   color:var(--sub);
   text-decoration:none;
   margin:0 10px;
-  transition:color 0.2s;
+  transition:color 0.2s
 }
 footer a:hover{color:var(--accent)}
 
@@ -186,143 +186,7 @@ input[type=range]{width:70px;accent-color:var(--accent)}
 .ref-cell{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:10px;text-align:center}
 .ref-char{font-size:20px;font-weight:700;color:var(--accent)}
 .ref-morse{font-size:13px;color:var(--sub);font-family:monospace;margin-top:4px}
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
-</head>
-
-<body><div class="container">
-
-<a class="back" href="../index.html">← Back to Tools</a>
-
-<h1>Morse Code Converter</h1>
-<p class="subtitle">Convert text to Morse code (dots & dashes) or decode Morse back to text. Includes audio playback and a full A–Z, 0–9 reference chart.</p>
-
-<div class="ad-banner">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="5794572171"
-       data-ad-format="auto"
-       data-full-width-responsive="true">
-  </ins>
-</div>
-
-<div class="card">
-  <div class="tab-bar">
-    <button class="tab-btn active" onclick="switchTab('encode')">Text → Morse</button>
-    <button class="tab-btn" onclick="switchTab('decode')">Morse → Text</button>
-  </div>
-
-  <!-- Encode Tab -->
-  <div class="tab-panel active" id="tab-encode">
-    <div class="text-cols">
-      <div>
-        <label class="label">Your Text</label>
-        <textarea id="encodeInput" placeholder="Type text here..." oninput="encodeText()"></textarea>
-      </div>
-      <div>
-        <label class="label">Morse Code</label>
-        <textarea id="encodeOutput" readonly placeholder="Morse code will appear here..."></textarea>
-      </div>
-    </div>
-    <div class="btn-row">
-      <button onclick="encodeText()">Convert</button>
-      <button class="green" onclick="playMorse()" id="playBtn">▶ Play Audio</button>
-      <button class="secondary" onclick="copyOutput('encodeOutput')">Copy</button>
-      <button class="secondary" onclick="clearAll('encode')">Clear</button>
-      <div class="speed-wrap">Speed <input type="range" id="wpmSlider" min="5" max="30" value="15" oninput="updateWPM()"> <span id="wpmVal">15</span> WPM</div>
-    </div>
-  </div>
-
-  <!-- Decode Tab -->
-  <div class="tab-panel" id="tab-decode">
-    <div class="text-cols">
-      <div>
-        <label class="label">Morse Code (use space between letters, / between words)</label>
-        <textarea id="decodeInput" placeholder="e.g. .... . .-.. .-.. --- / .-- --- .-. .-.. -.." oninput="decodeMorse()"></textarea>
-      </div>
-      <div>
-        <label class="label">Decoded Text</label>
-        <textarea id="decodeOutput" readonly placeholder="Decoded text will appear here..."></textarea>
-      </div>
-    </div>
-    <div class="btn-row">
-      <button onclick="decodeMorse()">Decode</button>
-      <button class="secondary" onclick="copyOutput('decodeOutput')">Copy</button>
-      <button class="secondary" onclick="clearAll('decode')">Clear</button>
-    </div>
-  </div>
-</div>
-
-<h2>Morse Code Reference Chart</h2>
-<div class="ref-grid" id="refGrid"></div>
-
-<h2>Free Online Morse Code Converter</h2>
-<div class="section">
-<p>This tool converts text to Morse code (dots and dashes) and decodes Morse back to plain text. Includes real-time audio playback with adjustable speed, and a complete A–Z, 0–9 reference chart.</p>
-<p>Morse code was invented in the 1830s for telegraph communication and is still used today in aviation, amateur radio, and emergency signaling.</p>
-</div>
-
-<h2>How It Works</h2>
-<div class="section">
-<p>Morse code encodes letters and numbers as sequences of short signals (dots, •) and long signals (dashes, −). The tool maps each character to its Morse equivalent using the standard International Morse code alphabet.</p>
-<p>For encoding, type any text and the tool instantly converts each letter. For decoding, enter Morse code using spaces between letters and forward slashes (/) between words. The audio playback uses the Web Audio API to beep at adjustable WPM (words per minute) speed.</p>
-</div>
-
-<h2>Frequently Asked Questions</h2>
-
-<div class="faq-item">
-  <h3>What is Morse code?</h3>
-  <p>Morse code is a communication system that encodes letters and numbers as sequences of short signals (dots, •) and long signals (dashes, −). It was invented by Samuel Morse and Alfred Vail in the 1830s for telegraph communication and is still used today in aviation, amateur radio, and emergency signaling.</p>
-</div>
-
-<div class="faq-item">
-  <h3>How do you separate letters and words in Morse code?</h3>
-  <p>Letters within a word are separated by a single space. Words are separated by a forward slash (/) or three spaces. For example: "HI THERE" = <code>.... .. / - .... . .-. .</code></p>
-</div>
-
-<div class="faq-item">
-  <h3>What is WPM (Words Per Minute) in Morse code?</h3>
-  <p>WPM measures how fast Morse code is transmitted. 1 WPM is based on sending the word "PARIS" once per minute. Beginners typically start at 5–10 WPM, while experienced operators can reach 25–30 WPM or higher.</p>
-</div>
-
-<div class="faq-item">
-  <h3>What does SOS mean in Morse code?</h3>
-  <p>SOS is the international distress signal: <code>··· −−− ···</code> (three dots, three dashes, three dots). Contrary to popular belief, SOS doesn't stand for any specific phrase — it was chosen because the pattern is simple, distinctive, and easy to recognize.</p>
-</div>
-
-<div class="faq-item">
-  <h3>Can I listen to Morse code?</h3>
-  <p>Yes. After converting text to Morse code, click the "Play Audio" button to hear the dots and dashes beeps. Adjust the WPM slider to change playback speed. The audio uses the standard 650 Hz tone frequency.</p>
-</div>
-
-<div class="faq-item">
-  <h3>What characters are supported?</h3>
-  <p>The tool supports all letters (A–Z), numbers (0–9), and common punctuation including period, comma, question mark, exclamation mark, slash, at sign, ampersand, colon, apostrophe, parentheses, hyphen, plus sign, and equals sign.</p>
-</div>
-<div class="ad-banner" style="margin:24px 0">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="5794572171"
-       data-ad-format="auto"
-       data-full-width-responsive="true">
-  </ins>
-</div>
-<h2>Related Tools</h2>
-<div class="tools">
-<a href="/tools/word-counter/">Word Counter</a>
-<a href="/tools/character-counter/">Character Counter</a>
-<a href="/tools/json-formatter/">JSON Formatter</a>
-<a href="/tools/password-generator/">Password Generator</a>
-</div>
-
-<div class="ad-banner" style="margin-top:40px">
-      <!-- Ad space -->
-    </div>
-
-
-<!-- Ad: Footer -->
-<div class="ad-banner footer-ad" style="margin:40px 0;text-align:center"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
+footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;text-align:center"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
 <footer>
   <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
   <p style="margin: 8px 0; font-size: 13px;">
@@ -351,18 +215,18 @@ function encodeText() {
   const text = document.getElementById('encodeInput').value.toUpperCase();
   const result = text.split('').map(ch => {
     if (ch === ' ') return '/';
-    return MORSE[ch] || '?';
+    return MORSE[ch] || '?'
   }).join(' ');
-  document.getElementById('encodeOutput').value = result;
+  document.getElementById('encodeOutput').value = result
 }
 
 function decodeMorse() {
   const morse = document.getElementById('decodeInput').value.trim();
   const words = morse.split(/\s*\/\s*/);
   const result = words.map(word => {
-    return word.trim().split(/\s+/).map(code => REVERSE[code] || '?').join('');
+    return word.trim().split(/\s+/).map(code => REVERSE[code] || '?').join('')
   }).join(' ');
-  document.getElementById('decodeOutput').value = result;
+  document.getElementById('decodeOutput').value = result
 }
 
 function copyOutput(id) {
@@ -371,23 +235,23 @@ function copyOutput(id) {
     const btn = event.target;
     const orig = btn.textContent;
     btn.textContent = 'Copied!';
-    setTimeout(() => btn.textContent = orig, 1500);
-  });
+    setTimeout(() => btn.textContent = orig, 1500)
+  })
 }
 
 function clearAll(mode) {
   if (mode === 'encode') {
     document.getElementById('encodeInput').value = '';
-    document.getElementById('encodeOutput').value = '';
+    document.getElementById('encodeOutput').value = ''
   } else {
     document.getElementById('decodeInput').value = '';
-    document.getElementById('decodeOutput').value = '';
+    document.getElementById('decodeOutput').value = ''
   }
 }
 
 function updateWPM() {
   const v = document.getElementById('wpmSlider').value;
-  document.getElementById('wpmVal').textContent = v;
+  document.getElementById('wpmVal').textContent = v
 }
 
 let audioCtx = null;
@@ -396,13 +260,13 @@ let stopFlag = false;
 
 function getAudioCtx() {
   if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-  return audioCtx;
+  return audioCtx
 }
 
 async function playMorse() {
-  if (isPlaying) { stopFlag = true; return; }
+  if (isPlaying) { stopFlag = true; return }
   const morse = document.getElementById('encodeOutput').value;
-  if (!morse) { encodeText(); }
+  if (!morse) { encodeText() }
   const morseStr = document.getElementById('encodeOutput').value;
   const btn = document.getElementById('playBtn');
   const wpm = parseInt(document.getElementById('wpmSlider').value);
@@ -418,19 +282,19 @@ async function playMorse() {
     if (stopFlag) break;
     const s = symbols[i];
     if (s === '.') {
-      beep(ctx, t, unit * 1); t += unit * 1 + unit * 1;
+      beep(ctx, t, unit * 1); t += unit * 1 + unit * 1
     } else if (s === '-') {
-      beep(ctx, t, unit * 3); t += unit * 3 + unit * 1;
+      beep(ctx, t, unit * 3); t += unit * 3 + unit * 1
     } else if (s === ' ') {
-      if (symbols[i+1] === '/') { t += unit * 7; i++; }
-      else { t += unit * 3; }
+      if (symbols[i+1] === '/') { t += unit * 7; i++ }
+      else { t += unit * 3 }
     }
   }
 
   const duration = (t - ctx.currentTime) * 1000;
   await new Promise(r => setTimeout(r, Math.max(duration, 0)));
   isPlaying = false;
-  btn.textContent = '▶ Play Audio';
+  btn.textContent = '▶ Play Audio'
 }
 
 function beep(ctx, startTime, duration) {
@@ -442,13 +306,13 @@ function beep(ctx, startTime, duration) {
   gain.gain.linearRampToValueAtTime(0.6, startTime + 0.005);
   gain.gain.setValueAtTime(0.6, startTime + duration - 0.005);
   gain.gain.linearRampToValueAtTime(0, startTime + duration);
-  osc.start(startTime); osc.stop(startTime + duration);
+  osc.start(startTime); osc.stop(startTime + duration)
 }
 
 function switchTab(t) {
   document.querySelectorAll('.tab-btn').forEach((b,i) => b.classList.toggle('active', (t==='encode'&&i===0)||(t==='decode'&&i===1)));
   document.getElementById('tab-encode').classList.toggle('active', t==='encode');
-  document.getElementById('tab-decode').classList.toggle('active', t==='decode');
+  document.getElementById('tab-decode').classList.toggle('active', t==='decode')
 }
 
 function buildRef() {
@@ -458,8 +322,8 @@ function buildRef() {
     const cell = document.createElement('div');
     cell.className = 'ref-cell';
     cell.innerHTML = `<div class="ref-char">${ch}</div><div class="ref-morse">${code}</div>`;
-    grid.appendChild(cell);
-  });
+    grid.appendChild(cell)
+  })
 }
 
 buildRef();

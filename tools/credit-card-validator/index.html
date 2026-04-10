@@ -39,13 +39,13 @@
   --sub:#aab3c5;
   --accent:#4f8cff;
   --green:#22c55e;
-  --red:#ef4444;
+  --red:#ef4444
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{
   font-family:system-ui,-apple-system;
   background:var(--bg);
-  color:var(--text);
+  color:var(--text)
 }
 .container{max-width:900px;margin:auto;padding:50px 16px}
 
@@ -56,10 +56,10 @@ body{
   text-decoration: none;
   font-size: 14px;
   margin-bottom: 24px;
-  transition: color 0.2s;
+  transition: color 0.2s
 }
 .back:hover {
-  color: var(--accent);
+  color: var(--accent)
 }
 
 h1{font-size:32px;margin-bottom:8px}
@@ -71,7 +71,7 @@ h2{font-size:22px;margin-top:30px;margin-bottom:10px}
   border:1px solid var(--border);
   border-radius:14px;
   padding:20px;
-  margin-bottom:20px;
+  margin-bottom:20px
 }
 
 /* Input area */
@@ -85,13 +85,13 @@ h2{font-size:22px;margin-top:30px;margin-bottom:10px}
   border-radius: 8px;
   margin-bottom: 16px;
   font-size: 14px;
-  color: var(--sub);
+  color: var(--sub)
 }
 
 .card-input-wrap {
   display: flex;
   gap: 12px;
-  align-items: center;
+  align-items: center
 }
 
 #cardInput {
@@ -103,17 +103,17 @@ h2{font-size:22px;margin-top:30px;margin-bottom:10px}
   color: var(--text);
   font-size: 18px;
   font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
-  letter-spacing: 2px;
+  letter-spacing: 2px
 }
 #cardInput:focus {
   outline: none;
-  border-color: var(--accent);
+  border-color: var(--accent)
 }
 #cardInput.valid {
-  border-color: var(--green);
+  border-color: var(--green)
 }
 #cardInput.invalid {
-  border-color: var(--red);
+  border-color: var(--red)
 }
 
 .card-type-badge {
@@ -122,7 +122,7 @@ h2{font-size:22px;margin-top:30px;margin-bottom:10px}
   border-radius: 8px;
   font-weight: 600;
   font-size: 14px;
-  color: #fff;
+  color: #fff
 }
 
 /* Results */
@@ -130,7 +130,7 @@ h2{font-size:22px;margin-top:30px;margin-bottom:10px}
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 12px;
-  margin-top: 20px;
+  margin-top: 20px
 }
 
 .result-pill {
@@ -140,48 +140,48 @@ h2{font-size:22px;margin-top:30px;margin-bottom:10px}
   padding: 16px;
   background: var(--bg);
   border: 1px solid var(--border);
-  border-radius: 10px;
+  border-radius: 10px
 }
 
 .result-pill .label {
   font-size: 13px;
   color: var(--sub);
-  font-weight: 500;
+  font-weight: 500
 }
 
 .result-pill .value {
   font-size: 20px;
   font-weight: 700;
-  color: var(--text);
+  color: var(--text)
 }
 
 .result-pill .value-valid {
-  color: var(--green);
+  color: var(--green)
 }
 
 .result-pill .value-invalid {
-  color: var(--red);
+  color: var(--red)
 }
 
 .result-pill .value-neutral {
-  color: var(--sub);
+  color: var(--sub)
 }
 
 /* Luhn steps */
 .luhn-steps {
   margin-top: 24px;
-  display: none;
+  display: none
 }
 
 .luhn-steps.visible {
-  display: block;
+  display: block
 }
 
 .luhn-title {
   font-size: 16px;
   font-weight: 600;
   color: var(--text);
-  margin-bottom: 12px;
+  margin-bottom: 12px
 }
 
 .luhn-grid {
@@ -193,26 +193,26 @@ h2{font-size:22px;margin-top:30px;margin-bottom:10px}
   border: 1px solid var(--border);
   border-radius: 10px;
   margin-bottom: 12px;
-  font-size: 14px;
+  font-size: 14px
 }
 
 .luhn-cell {
   padding: 8px;
   text-align: center;
   border-radius: 6px;
-  font-weight: 600;
+  font-weight: 600
 }
 
 .luhn-cell.doubled {
-  background: rgba(79, 140, 255, 0.1);
+  background: rgba(79, 140, 255, 0.1)
 }
 
 .luhn-orig {
-  color: var(--text);
+  color: var(--text)
 }
 
 .luhn-doubled {
-  color: var(--sub);
+  color: var(--sub)
 }
 
 .luhn-sum-row {
@@ -222,25 +222,25 @@ h2{font-size:22px;margin-top:30px;margin-bottom:10px}
   padding: 12px 16px;
   background: var(--card);
   border-radius: 8px;
-  font-size: 15px;
+  font-size: 15px
 }
 
 /* Test cards */
 .test-numbers {
-  margin-top: 24px;
+  margin-top: 24px
 }
 
 .test-title {
   font-size: 15px;
   font-weight: 600;
   color: var(--sub);
-  margin-bottom: 12px;
+  margin-bottom: 12px
 }
 
 .test-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 12px;
+  gap: 12px
 }
 
 .test-card {
@@ -252,34 +252,34 @@ h2{font-size:22px;margin-top:30px;margin-bottom:10px}
   border: 1px solid var(--border);
   border-radius: 8px;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.2s
 }
 
 .test-card:hover {
   border-color: var(--accent);
-  background: rgba(79, 140, 255, 0.05);
+  background: rgba(79, 140, 255, 0.05)
 }
 
 .test-icon {
-  font-size: 20px;
+  font-size: 20px
 }
 
 .test-info {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 4px
 }
 
 .test-name {
   font-size: 14px;
   font-weight: 600;
-  color: var(--text);
+  color: var(--text)
 }
 
 .test-num {
   font-size: 12px;
   color: var(--sub);
-  font-family: 'Monaco', monospace;
+  font-family: 'Monaco', monospace
 }
 
 
@@ -287,7 +287,7 @@ h2{font-size:22px;margin-top:30px;margin-bottom:10px}
 .section p{
   color:var(--sub);
   line-height:1.7;
-  margin-bottom:10px;
+  margin-bottom:10px
 }
 
 .tools a{
@@ -297,37 +297,37 @@ h2{font-size:22px;margin-top:30px;margin-bottom:10px}
   border-radius:8px;
   border:1px solid var(--border);
   color:var(--sub);
-  text-decoration:none;
+  text-decoration:none
 }
 .tools a:hover{
   border-color:var(--accent);
-  color:var(--accent);
+  color:var(--accent)
 }
 
 /* 广告样式 */
 .ad-banner {
   margin: 32px 0;
-  text-align: center;
+  text-align: center
 }
 
 /* 统一的 Footer 样式 */
-footer {
+footer{
   margin-top: 40px;
   text-align: center;
   color: var(--sub);
-  font-size: 13px;
-border-top:1px solid var(--border);}
+  font-size: 13px
+}
 footer p {
-  margin-bottom: 8px;
+  margin-bottom: 8px
 }
 footer a {
   color: var(--sub);
   text-decoration: none;
   margin: 0 10px;
-  transition: color 0.2s;
+  transition: color 0.2s
 }
 footer a:hover {
-  color: var(--accent);
+  color: var(--accent)
 }
 
 @media(max-width:600px){
@@ -348,150 +348,7 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
 .stat label,.stat-label,.result-label,.age-label{font-size:12px;color:var(--sub);display:block}
 .result-box{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;margin-top:16px;min-height:100px;white-space:pre-wrap;word-break:break-all;font-size:15px;line-height:1.7;box-sizing:border-box}
 @media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.btn-row{flex-direction:column}}
-  footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Is this tool free to use?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, this tool is completely free to use. No registration, no login, and no subscription required. Just open the page and start using it."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is my data safe? Is anything stored on a server?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, your data is safe. All processing happens entirely in your browser \u2014 your input never leaves your device and is not sent to any server."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does this tool work on mobile devices?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. The tool is fully responsive and works on smartphones, tablets, and desktop computers."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How accurate is the result?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The tool uses standard algorithms and web APIs to provide accurate results. For critical or professional use, please verify with additional sources."
-      }
-    }
-  ]
-}
-</script>
-</head>
-
-<body><div class="container">
-
-<a class="back" href="../index.html">← Back to Tools</a>
-
-<h1>Credit Card Validator</h1>
-<p class="subtitle">Validate any credit card number using Luhn algorithm. Detects card type and shows step-by-step Luhn check. 100% client-side — no data sent.</p>
-
-<div class="ad-banner">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="5794572171"
-       data-ad-format="auto"
-       data-full-width-responsive="true">
-  </ins>
-</div>
-
-<div class="card">
-  <div class="privacy-note"><span>🔒</span> This tool runs entirely in your browser. Card numbers are never sent to any server.</div>
-
-  <div class="card-input-wrap">
-    <input type="text" id="cardInput" placeholder="4111 1111 1111 1111" maxlength="23" oninput="handleInput(this)" autocomplete="off" />
-    <div class="card-type-badge" id="typeBadge">?</div>
-  </div>
-
-  <div class="result-row">
-    <div class="result-pill"><div class="label">Validity</div><div class="value" id="validResult">—</div></div>
-    <div class="result-pill"><div class="label">Card Type</div><div class="value value-neutral" id="typeResult">—</div></div>
-    <div class="result-pill"><div class="label">Length</div><div class="value value-neutral" id="lengthResult">—</div></div>
-    <div class="result-pill"><div class="label">Luhn Sum</div><div class="value value-neutral" id="luhnResult">—</div></div>
-  </div>
-
-  <div class="luhn-steps" id="luhnSteps">
-    <div class="luhn-title">Luhn Algorithm Steps</div>
-    <div class="luhn-grid" id="luhnGrid"></div>
-    <div class="luhn-sum-row" id="luhnSumRow"></div>
-  </div>
-
-  <div class="test-numbers">
-    <div class="test-title">Test with valid test numbers (these are not real cards):</div>
-    <div class="test-grid">
-      <div class="test-card" onclick="setCard('4111111111111111')"><div class="test-icon">💳</div><div class="test-info"><div class="test-name">Visa</div><div class="test-num">4111 1111 1111 1111</div></div></div>
-      <div class="test-card" onclick="setCard('5500005555555559')"><div class="test-icon">💳</div><div class="test-info"><div class="test-name">Mastercard</div><div class="test-num">5500 0055 5555 5559</div></div></div>
-      <div class="test-card" onclick="setCard('371449635398431')"><div class="test-icon">💳</div><div class="test-info"><div class="test-name">Amex</div><div class="test-num">3714 4963 5398 431</div></div></div>
-      <div class="test-card" onclick="setCard('6011111111111117')"><div class="test-icon">💳</div><div class="test-info"><div class="test-name">Discover</div><div class="test-num">6011 1111 1111 1117</div></div></div>
-      <div class="test-card" onclick="setCard('3530111333300000')"><div class="test-icon">💳</div><div class="test-info"><div class="test-name">JCB</div><div class="test-num">3530 1113 3330 0000</div></div></div>
-      <div class="test-card" onclick="setCard('6200000000000005')"><div class="test-icon">💳</div><div class="test-info"><div class="test-name">UnionPay</div><div class="test-num">6200 0000 0000 0005</div></div></div>
-    </div>
-  </div>
-</div>
-
-<h2>Free Online Credit Card Validator</h2>
-<div class="section">
-<p>Validate credit card numbers using the Luhn algorithm. Detect card type (Visa, Mastercard, Amex, Discover, JCB, UnionPay) instantly. Client-side only, no data sent to server.</p>
-</div>
-
-<h2>How It Works</h2>
-<div class="section">
-<p>The tool uses the Luhn algorithm (modulus 10) to validate card numbers: it doubles every second digit from the right, sums all digits, and checks if the total is divisible by 10. Card type detection uses IIN/BIN prefixes and length patterns. All processing happens 100% in your browser with no server communication.</p>
-</div>
-
-<h2>Frequently Asked Questions</h2>
-<div class="faq-item">
-  <h3>Is this tool free to use?</h3>
-  <p>Yes, this tool is completely free to use. No registration, no login, and no subscription required. Just open the page and start using it.</p>
-</div>
-<div class="faq-item">
-  <h3>Is my data safe? Is anything stored on a server?</h3>
-  <p>Yes, your data is safe. All processing happens entirely in your browser — your input never leaves your device and is not sent to any server.</p>
-</div>
-<div class="faq-item">
-  <h3>Does this tool work on mobile devices?</h3>
-  <p>Yes. The tool is fully responsive and works on smartphones, tablets, and desktop computers.</p>
-</div>
-<div class="faq-item">
-  <h3>How accurate is the result?</h3>
-  <p>The tool uses standard algorithms and web APIs to provide accurate results. For critical or professional use, please verify with additional sources.</p>
-</div>
-<div class="ad-banner" style="margin:24px 0">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="5794572171"
-       data-ad-format="auto"
-       data-full-width-responsive="true">
-  </ins>
-</div>
-<h2>Related Tools</h2>
-<div class="tools">
-<a href="/tools/iban-validator/">IBAN Validator</a>
-<a href="/tools/phone-validator/">Phone Validator</a>
-<a href="/tools/email-validator/">Email Validator</a>
-</div>
-
-<div class="ad-banner" style="margin-top:40px">
-      <!-- Ad space -->
-    </div>
-
-
-<!-- Ad: Footer -->
-<div class="ad-banner footer-ad" style="margin:40px 0;text-align:center"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
+  footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;text-align:center"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
 <footer>
   <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
   <p style="margin: 8px 0; font-size: 13px;">
@@ -510,13 +367,13 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
     let raw = el.value.replace(/\D/g,'');
     // Format with spaces every 4
     el.value = raw.match(/.{1,4}/g)?.join(' ') || raw;
-    validate(raw);
+    validate(raw)
   }
 
   function setCard(num) {
     const el = document.getElementById('cardInput');
     el.value = num.match(/.{1,4}/g).join(' ');
-    validate(num);
+    validate(num)
   }
 
   function luhn(num) {
@@ -528,13 +385,13 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
       const doubled = alternate;
       if (alternate) {
         n *= 2;
-        if (n > 9) n -= 9;
+        if (n > 9) n -= 9
       }
       digits.unshift({orig: parseInt(num[i]), doubled, final: n});
       sum += n;
-      alternate = !alternate;
+      alternate = !alternate
     }
-    return {valid: sum % 10 === 0, sum, digits};
+    return {valid: sum % 10 === 0, sum, digits}
   }
 
   function detectType(num) {
@@ -546,12 +403,12 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
     if (/^62/.test(num)) return {name:'UnionPay', icon:'💳'};
     if (/^(300|301|302|303|36|38)/.test(num) && num.length === 14) return {name:"Diners Club", icon:'💳'};
     if (/^(636)/.test(num)) return {name:'Maestro', icon:'💳'};
-    return null;
+    return null
   }
 
   function validate(raw) {
     if (!raw) {
-      resetUI(); return;
+      resetUI(); return
     }
 
     const inp = document.getElementById('cardInput');
@@ -578,7 +435,7 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
           <div class="luhn-orig">${d.orig}</div>
           <div class="luhn-doubled">${d.doubled ? (d.orig*2 > 9 ? d.orig*2+'-9' : (d.orig===0?'—':'×2='+d.orig*2)) : '—'}</div>
         </div>`).join('');
-      document.getElementById('luhnSumRow').innerHTML = `Total sum: <strong>${sum}</strong> → ${sum} ÷ 10 remainder <strong>${sum%10}</strong> → ${valid ? '<span style="color:#22c55e">✓ Valid (remainder = 0)</span>' : '<span style="color:#ef4444">✗ Invalid (remainder ≠ 0)</span>'}`;
+      document.getElementById('luhnSumRow').innerHTML = `Total sum: <strong>${sum}</strong> → ${sum} ÷ 10 remainder <strong>${sum%10}</strong> → ${valid ? '<span style="color:#22c55e">✓ Valid (remainder = 0)</span>' : '<span style="color:#ef4444">✗ Invalid (remainder ≠ 0)</span>'}`
     }
   }
 
@@ -590,7 +447,7 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
     document.getElementById('luhnResult').textContent = '—';
     document.getElementById('typeBadge').textContent = '?';
     document.getElementById('luhnSteps').className = 'luhn-steps';
-    document.getElementById('cardInput').className = '';
+    document.getElementById('cardInput').className = ''
   }
 
   // AdSense initialization

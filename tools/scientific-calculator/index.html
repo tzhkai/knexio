@@ -66,159 +66,7 @@ footer a:hover{opacity:.8}
 .history-expr{color:var(--sub)}
 .history-result{color:var(--accent);font-weight:600}
 @media(max-width:600px){.calc-grid{grid-template-columns:repeat(4,1fr)}.calc-grid button{padding:12px 6px;font-size:14px}}
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Is this tool free to use?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, this tool is completely free to use. No registration, no login, and no subscription required. Just open the page and start using it."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is my data safe? Is anything stored on a server?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, your data is safe. All processing happens entirely in your browser \u2014 your input never leaves your device and is not sent to any server."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does this tool work on mobile devices?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. The tool is fully responsive and works on smartphones, tablets, and desktop computers."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How accurate is the result?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The tool uses standard algorithms and web APIs to provide accurate results. For critical or professional use, please verify with additional sources."
-      }
-    }
-  ]
-}
-</script>
-</head>
-<body>
-<div class="container">
-  <a class="back" href="../index.html">← Back to Tools</a>
-
-  <h1>Scientific Calculator</h1>
-  <p class="subtitle">Advanced online calculator with trigonometry, logarithms, exponents, and scientific functions.</p>
-
-  <div class="ad-banner">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="5794572171"
-       data-ad-format="auto"
-       data-full-width-responsive="true">
-  </ins>
-</div>
-
-  <div class="card">
-    <div class="display">
-      <div class="display-history" id="history"></div>
-      <div class="display-main" id="display">0</div>
-    </div>
-
-    <div class="mode-tabs">
-      <button class="active" id="degBtn" onclick="setMode('deg')">DEG</button>
-      <button id="radBtn" onclick="setMode('rad')">RAD</button>
-    </div>
-
-    <div class="calc-grid">
-      <button class="func" onclick="insertFunction('sin')">sin</button>
-      <button class="func" onclick="insertFunction('cos')">cos</button>
-      <button class="func" onclick="insertFunction('tan')">tan</button>
-      <button class="func" onclick="insertFunction('log')">log</button>
-      <button class="func" onclick="insertFunction('ln')">ln</button>
-
-      <button class="func" onclick="insert('PI')">π</button>
-      <button class="func" onclick="insert('E')">e</button>
-      <button class="func" onclick="insert('^')">x²</button>
-      <button class="func" onclick="insertFunction('sqrt')">√</button>
-      <button class="clear" onclick="clearAll()">AC</button>
-
-      <button class="func" onclick="insert('(')">(</button>
-      <button class="func" onclick="insert(')')">)</button>
-      <button class="func" onclick="insert('%')">%</button>
-      <button class="func" onclick="backspace()">⌫</button>
-      <button class="op" onclick="insert('/')">÷</button>
-
-      <button class="num" onclick="insert('7')">7</button>
-      <button class="num" onclick="insert('8')">8</button>
-      <button class="num" onclick="insert('9')">9</button>
-      <button class="func" onclick="insertFunction('abs')">|x|</button>
-      <button class="op" onclick="insert('*')">×</button>
-
-      <button class="num" onclick="insert('4')">4</button>
-      <button class="num" onclick="insert('5')">5</button>
-      <button class="num" onclick="insert('6')">6</button>
-      <button class="func" onclick="insert('!')">n!</button>
-      <button class="op" onclick="insert('-')">−</button>
-
-      <button class="num" onclick="insert('1')">1</button>
-      <button class="num" onclick="insert('2')">2</button>
-      <button class="num" onclick="insert('3')">3</button>
-      <button class="func" onclick="insertFunction('floor')">⌊x⌋</button>
-      <button class="op" onclick="insert('+')">+</button>
-
-      <button class="num" onclick="insert('0')">0</button>
-      <button class="num" onclick="insert('.')">.</button>
-      <button class="func" onclick="insertFunction('ceil')">⌈x⌉</button>
-      <button class="op" onclick="calculate()" style="grid-column:span 2">=</button>
-    </div>
-
-    <div class="history-list" id="historyList"></div>
-  </div>
-
-  <div class="ad-banner">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="5794572171"
-       data-ad-format="auto"
-       data-full-width-responsive="true">
-  </ins>
-</div>
-
-  <div class="section">
-    <h2>About Scientific Calculator</h2>
-    <p>This free online scientific calculator supports trigonometric functions (sin, cos, tan), logarithms (log, ln), exponents, factorials, and more. Switch between DEG and RAD modes for angle calculations.</p>
-    <p>Keyboard shortcuts: 0-9 for numbers, +-*/ for operators, Enter or = to calculate, Escape to clear, Backspace to delete.</p>
-  </div>
-
-  <div class="section">
-    <div class="section">
-      <p><strong>How It Works</strong> - Use the calculator for basic arithmetic, scientific functions, trigonometry, logarithms, and more. Click the function buttons or use keyboard shortcuts for quick calculations.</p>
-    </div>
-<h2>Frequently Asked Questions</h2>
-    <div class="faq-item">
-      <h3>What scientific functions are supported?</h3>
-      <p>Trigonometry (sin, cos, tan), logarithms, exponentials, powers, roots, and more.</p>
-    </div>
-
-    <h2>Related Tools</h2>
-    <div class="tools">
-      <a href="/tools/unit-converter/">Unit Converter</a>
-      <a href="/tools/percentage-calculator/">Percentage Calculator</a>
-      <a href="/tools/base64-encoder-decoder/">Base64 Encoder</a>
-    </div>
-  </div>
-
-  
-<!-- Ad: Footer -->
-<div class="ad-banner footer-ad" style="margin:40px 0;text-align:center"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
+footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;text-align:center"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
 <footer>
     <p>Free online tools for developers, designers, and everyone.</p>
     <p style="margin: 8px 0; font-size: 13px;">
@@ -240,47 +88,47 @@ var calculationHistory = [];
 var isRadians = false;
 
 function updateDisplay() {
-  display.textContent = currentInput;
+  display.textContent = currentInput
 }
 
 function insert(value) {
   if (currentInput === '0' && !isOperator(value) && value !== '.') {
-    currentInput = value;
+    currentInput = value
   } else {
-    currentInput += value;
+    currentInput += value
   }
-  updateDisplay();
+  updateDisplay()
 }
 
 function insertFunction(func) {
   if (currentInput === '0') currentInput = '';
   currentInput += func + '(';
-  updateDisplay();
+  updateDisplay()
 }
 
 function isOperator(char) {
-  return ['+', '-', '*', '/', '^', '%'].indexOf(char) >= 0;
+  return ['+', '-', '*', '/', '^', '%'].indexOf(char) >= 0
 }
 
 function clearAll() {
   currentInput = '0';
   history.textContent = '';
-  updateDisplay();
+  updateDisplay()
 }
 
 function backspace() {
   if (currentInput.length > 1) {
-    currentInput = currentInput.slice(0, -1);
+    currentInput = currentInput.slice(0, -1)
   } else {
-    currentInput = '0';
+    currentInput = '0'
   }
-  updateDisplay();
+  updateDisplay()
 }
 
 function setMode(mode) {
   isRadians = mode === 'rad';
   document.getElementById('degBtn').className = mode === 'deg' ? 'active' : '';
-  document.getElementById('radBtn').className = mode === 'rad' ? 'active' : '';
+  document.getElementById('radBtn').className = mode === 'rad' ? 'active' : ''
 }
 
 function factorial(n) {
@@ -288,13 +136,13 @@ function factorial(n) {
   if (n === 0 || n === 1) return 1;
   var result = 1;
   for (var i = 2; i <= n; i++) result *= i;
-  return result;
+  return result
 }
 
 function evaluate(expr) {
   expr = expr.replace(/PI/g, 'Math.PI');
   expr = expr.replace(/E/g, 'Math.E');
-  expr = expr.replace(/(\d+)!/g, function(m, n) { return factorial(parseInt(n)); });
+  expr = expr.replace(/(\d+)!/g, function(m, n) { return factorial(parseInt(n)) });
 
   var trigFuncs = ['sin', 'cos', 'tan'];
   for (var i = 0; i < trigFuncs.length; i++) {
@@ -303,8 +151,8 @@ function evaluate(expr) {
     expr = expr.replace(regex, function(m, arg) {
       var val = evaluate(arg);
       var rad = isRadians ? val : val * Math.PI / 180;
-      return 'Math.' + func + '(' + rad + ')';
-    });
+      return 'Math.' + func + '(' + rad + ')'
+    })
   }
 
   expr = expr.replace(/sqrt\(([^)]+)\)/g, 'Math.sqrt($1)');
@@ -317,9 +165,9 @@ function evaluate(expr) {
   expr = expr.replace(/(\d+)%/g, '($1/100)');
 
   try {
-    return Function('"use strict"; return (' + expr + ')')();
+    return Function('"use strict"; return (' + expr + ')')()
   } catch (e) {
-    return 'Error';
+    return 'Error'
   }
 }
 
@@ -331,16 +179,16 @@ function calculate() {
   updateDisplay();
   calculationHistory.unshift({expr: expression, result: result});
   if (calculationHistory.length > 10) calculationHistory.pop();
-  updateHistoryList();
+  updateHistoryList()
 }
 
 function updateHistoryList() {
   var html = '';
   for (var i = 0; i < calculationHistory.length; i++) {
     var item = calculationHistory[i];
-    html += '<div class="history-item"><span class="history-expr">' + item.expr + '</span><span class="history-result">= ' + item.result + '</span></div>';
+    html += '<div class="history-item"><span class="history-expr">' + item.expr + '</span><span class="history-result">= ' + item.result + '</span></div>'
   }
-  historyList.innerHTML = html;
+  historyList.innerHTML = html
 }
 
 document.addEventListener('keydown', function(e) {
@@ -356,7 +204,7 @@ document.addEventListener('keydown', function(e) {
   else if (e.key === '%') insert('%');
   else if (e.key === 'Enter' || e.key === '=') calculate();
   else if (e.key === 'Escape') clearAll();
-  else if (e.key === 'Backspace') backspace();
+  else if (e.key === 'Backspace') backspace()
 });
 </script>
 <script src="/knexio-bundle.js"></script>

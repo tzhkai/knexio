@@ -25,52 +25,7 @@ button{background:var(--accent);color:#fff;border:none;cursor:pointer;font-weigh
 .platform{font-size:12px;color:var(--accent);text-transform:uppercase;margin-bottom:8px}
 .faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px}
 footer p{margin:0}
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
-
-<!-- Open Graph -->
-<meta property="og:url" content="https://knexio.xyz/ai-tools/ai-social-post-generator/">
-<meta property="og:type" content="WebApplication">
-<meta property="og:site_name" content="Knexio">
-</head>
-<body>
-<div class="container">
-<a class="back" href="../index.html">← Back to AI Tools</a>
-<h1>AI Social Post Generator</h1>
-<p class="subtitle">Create engaging social media posts</p>
-<div class="ad-banner">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="5794572171"
-       data-ad-format="auto"
-       data-full-width-responsive="true">
-  </ins>
-</div>
-<div class="controls">
-<label>Post Topic</label>
-<input type="text" id="topic" placeholder="e.g., productivity tips">
-<label>Platform</label>
-<select id="platform">
-<option value="all">All Platforms</option>
-<option value="twitter">Twitter/X</option>
-<option value="linkedin">LinkedIn</option>
-<option value="instagram">Instagram</option>
-</select>
-<label>Style</label>
-<select id="style">
-<option value="informative">Informative</option>
-<option value="humorous">Humorous</option>
-<option value="inspirational">Inspirational</option>
-<option value="question">Question/Engaging</option>
-</select>
-<button onclick="generatePosts()">Generate Posts</button>
-</div>
-<div class="posts" id="posts"></div>
-<div class="section">
-<p><strong>Free AI Social Post Generator</strong> — Create engaging social media content for Twitter/X, LinkedIn, and Instagram in seconds. Pick a platform, choose your style, and generate posts that drive real engagement and grow your following.</p>
-</div>
-
-<div style="margin:32px 0;padding:24px;background:var(--card);border:1px solid var(--border);border-radius:12px">
+footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;padding:24px;background:var(--card);border:1px solid var(--border);border-radius:12px">
 <h2 style="margin-top:0;font-size:20px">How to Use</h2>
 <ol style="margin:0;padding-left:20px;line-height:2">
 <li><strong>Enter your topic</strong> — Type the subject you want to post about (e.g. "remote work productivity" or "product launch")</li>
@@ -131,7 +86,7 @@ function generatePosts() {
   const topic = document.getElementById('topic').value.trim();
   if (!topic) {
     alert('Please enter a post topic');
-    return;
+    return
   }
   const platform = document.getElementById('platform').value;
   const style = document.getElementById('style').value;
@@ -175,7 +130,7 @@ What\'s your next step? 🚀'
 What\'s your biggest challenge with ' + topicLC + '?
 
 Drop it in the replies 👇 I\'m reading every one.';
-    posts.push({platform: 'Twitter/X', text: tweet});
+    posts.push({platform: 'Twitter/X', text: tweet})
   }
   
   if (platform === 'all' || platform === 'linkedin') {
@@ -206,7 +161,7 @@ Take one action today.'
       : 'What\'s the #1 thing holding you back with ' + topicLC + '?
 
 I\'ve seen hundreds face the same challenge. Let\'s talk 💬';
-    posts.push({platform: 'LinkedIn', text: lp});
+    posts.push({platform: 'LinkedIn', text: lp})
   }
   
   if (platform === 'all' || platform === 'instagram') {
@@ -225,13 +180,13 @@ Save this. Share it. Take action today. ✨'
 ✅ You\'re closer than you think
 
 Follow for daily tips ✨';
-    posts.push({platform: 'Instagram', text: ig});
+    posts.push({platform: 'Instagram', text: ig})
   }
   
   const container = document.getElementById('posts');
   container.innerHTML = posts.map(function(p) {
-    return '<div class="post-card"><div class="platform">' + p.platform + '</div><p style="white-space:pre-wrap">' + p.text + '</p></div>';
-  }).join('');
+    return '<div class="post-card"><div class="platform">' + p.platform + '</div><p style="white-space:pre-wrap">' + p.text + '</p></div>'
+  }).join('')
 }</script>
 <script src="/knexio-bundle.js"></script>
 <div class="ad-banner footer-ad" style="margin:40px 0;text-align:center"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins></div>

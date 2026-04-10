@@ -35,13 +35,13 @@
   --border:rgba(255,255,255,.08);
   --text:#fff;
   --sub:#aab3c5;
-  --accent:#4f8cff;
+  --accent:#4f8cff
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{
   font-family:system-ui,-apple-system;
   background:var(--bg);
-  color:var(--text);
+  color:var(--text)
 }
 .container{max-width:900px;margin:auto;padding:50px 16px}
 
@@ -52,10 +52,10 @@ body{
   text-decoration: none;
   font-size: 14px;
   margin-bottom: 24px;
-  transition: color 0.2s;
+  transition: color 0.2s
 }
 .back:hover {
-  color: var(--accent);
+  color: var(--accent)
 }
 
 h1{font-size:32px;margin-bottom:8px}
@@ -68,7 +68,7 @@ h3{font-size:18px;margin-bottom:8px}
   border:1px solid var(--border);
   border-radius:14px;
   padding:20px;
-  margin-bottom:20px;
+  margin-bottom:20px
 }
 
 
@@ -79,14 +79,14 @@ label {
   color: var(--sub);
   font-size: 13px;
   margin-bottom: 8px;
-  font-weight: 500;
+  font-weight: 500
 }
 
 .options {
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
-  margin-bottom: 16px;
+  margin-bottom: 16px
 }
 
 .option-item {
@@ -94,13 +94,13 @@ label {
   align-items: center;
   gap: 6px;
   color: var(--sub);
-  font-size: 14px;
+  font-size: 14px
 }
 .option-item input[type="checkbox"] {
   width: 16px;
   height: 16px;
   cursor: pointer;
-  accent-color: var(--accent);
+  accent-color: var(--accent)
 }
 
 
@@ -112,7 +112,7 @@ button:hover{opacity:0.9}
   margin-top: 20px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 12px
 }
 
 .hash-result {
@@ -122,32 +122,32 @@ button:hover{opacity:0.9}
   padding: 16px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: center
 }
 
 .hash-info {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 4px
 }
 
 .hash-name {
   font-size: 12px;
   color: var(--sub);
   font-weight: 500;
-  text-transform: uppercase;
+  text-transform: uppercase
 }
 
 .hash-value {
   font-family: Monaco,Menlo,monospace;
   font-size: 14px;
   color: var(--accent);
-  word-break: break-all;
+  word-break: break-all
 }
 
 .hash-actions {
   display: flex;
-  gap: 8px;
+  gap: 8px
 }
 
 .icon-btn {
@@ -157,11 +157,11 @@ button:hover{opacity:0.9}
   padding: 8px 12px;
   font-size: 16px;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.2s
 }
 .icon-btn:hover {
   background: var(--accent);
-  border-color: var(--accent);
+  border-color: var(--accent)
 }
 
 .security-note {
@@ -174,17 +174,17 @@ button:hover{opacity:0.9}
   margin-top: 16px;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 8px
 }
 
 .section p{
   color:var(--sub);
   line-height:1.7;
-  margin-bottom:10px;
+  margin-bottom:10px
 }
 
 .seo-section {
-  margin-top: 30px;
+  margin-top: 30px
 }
 
 
@@ -202,37 +202,37 @@ button:hover{opacity:0.9}
   border-radius:8px;
   border:1px solid var(--border);
   color:var(--sub);
-  text-decoration:none;
+  text-decoration:none
 }
 .tools a:hover{
   border-color:var(--accent);
-  color:var(--accent);
+  color:var(--accent)
 }
 
 /* 广告样式 */
 .ad-banner {
   margin: 32px 0;
-  text-align: center;
+  text-align: center
 }
 
 /* 统一的 Footer 样式 */
-footer {
+footer{
   margin-top: 40px;
   text-align: center;
   color: var(--sub);
-  font-size: 13px;
-border-top:1px solid var(--border);}
+  font-size: 13px
+}
 footer p {
-  margin-bottom: 8px;
+  margin-bottom: 8px
 }
 footer a {
   color: var(--sub);
   text-decoration: none;
   margin: 0 10px;
-  transition: color 0.2s;
+  transition: color 0.2s
 }
 footer a:hover {
-  color: var(--accent);
+  color: var(--accent)
 }
 
 @media(max-width:600px){
@@ -252,142 +252,7 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
 .stat label,.stat-label,.result-label,.age-label{font-size:12px;color:var(--sub);display:block}
 .result-box{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;margin-top:16px;min-height:100px;white-space:pre-wrap;word-break:break-all;font-size:15px;line-height:1.7;box-sizing:border-box}
 @media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.btn-row{flex-direction:column}}
-  footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Is this tool free to use?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, this tool is completely free to use. No registration, no login, and no subscription required. Just open the page and start using it."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is my data safe? Is anything stored on a server?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, your data is safe. All processing happens entirely in your browser \u2014 your input never leaves your device and is not sent to any server."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does this tool work on mobile devices?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. The tool is fully responsive and works on smartphones, tablets, and desktop computers."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How accurate is the result?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The tool uses standard algorithms and web APIs to provide accurate results. For critical or professional use, please verify with additional sources."
-      }
-    }
-  ]
-}
-</script>
-</head>
-
-<body><div class="container">
-
-<a class="back" href="../index.html">← Back to Tools</a>
-
-<h1>Hash Generator</h1>
-<p class="subtitle">Generate MD5, SHA-1, SHA-256, and SHA-512 hashes from any text. All hashing is done client-side using the Web Crypto API.</p>
-
-<div class="ad-banner">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="5794572171"
-       data-ad-format="auto"
-       data-full-width-responsive="true">
-  </ins>
-</div>
-
-<div class="card">
-  <div class="input-section">
-    <label>Enter text to hash</label>
-    <textarea class="text-area" id="inputText" placeholder="Type or paste text here..."></textarea>
-  </div>
-  
-  <div class="options">
-    <label class="option-item"><input type="checkbox" id="md5Check" checked> MD5</label>
-    <label class="option-item"><input type="checkbox" id="sha1Check" checked> SHA-1</label>
-    <label class="option-item"><input type="checkbox" id="sha256Check" checked> SHA-256</label>
-    <label class="option-item"><input type="checkbox" id="sha512Check"> SHA-512</label>
-  </div>
-  
-  <div class="btn-row">
-    <button class="btn" onclick="generateHashes()">Generate Hashes</button>
-    <button class="btn secondary" onclick="clearAll()">Clear</button>
-  </div>
-</div>
-
-<div class="results" id="results"></div>
-
-<div class="security-note">
-  🔒 <strong>Security Note:</strong> All hashing is performed locally in your browser using the Web Crypto API. Your data never leaves your device.
-</div>
-
-<h2>How to Use</h2>
-<div class="section">
-<p>Enter the text you want to hash, select which hash algorithms to use (MD5, SHA-1, SHA-256, or SHA-512), and click "Generate Hashes". The tool instantly generates cryptographic hash values that you can copy.</p>
-</div>
-
-<h2>How It Works</h2>
-<div class="section">
-<p>Hashing uses mathematical algorithms to convert any text into a fixed-length string of characters. This hash is unique to the original input – even a small change in text results in a completely different hash.</p>
-<p>The Web Crypto API ensures secure, standards-based hashing performed entirely in your browser. No data is sent to any server.</p>
-</div>
-
-<h2>Frequently Asked Questions</h2>
-<div class="faq-item">
-  <h3>Is this tool free to use?</h3>
-  <p>Yes, this tool is completely free to use. No registration, no login, and no subscription required. Just open the page and start using it.</p>
-</div>
-<div class="faq-item">
-  <h3>Is my data safe? Is anything stored on a server?</h3>
-  <p>Yes, your data is safe. All processing happens entirely in your browser — your input never leaves your device and is not sent to any server.</p>
-</div>
-<div class="faq-item">
-  <h3>Does this tool work on mobile devices?</h3>
-  <p>Yes. The tool is fully responsive and works on smartphones, tablets, and desktop computers.</p>
-</div>
-<div class="faq-item">
-  <h3>How accurate is the result?</h3>
-  <p>The tool uses standard algorithms and web APIs to provide accurate results. For critical or professional use, please verify with additional sources.</p>
-</div>
-<div class="ad-banner" style="margin:24px 0">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="5794572171"
-       data-ad-format="auto"
-       data-full-width-responsive="true">
-  </ins>
-</div>
-<h2>Related Tools</h2>
-<div class="tools">
-<a href="/tools/base64-encoder-decoder/">Base64 Encoder/Decoder</a>
-<a href="/tools/encryption-tool/">Encryption Tool</a>
-<a href="/tools/password-generator/">Password Generator</a>
-</div>
-
-<div class="ad-banner" style="margin-top:40px">
-      <!-- Ad space -->
-    </div>
-
-
-<!-- Ad: Footer -->
-<div class="ad-banner footer-ad" style="margin:40px 0;text-align:center"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
+  footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;text-align:center"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
 <footer>
   <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
   <p style="margin: 8px 0; font-size: 13px;">
@@ -405,35 +270,35 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
 // Simple MD5 implementation for demo - in production use a proper MD5 library
 function md5(string) {
   function rotateLeft(value, shift) {
-    return (value << shift) | (value >>> (32 - shift));
+    return (value << shift) | (value >>> (32 - shift))
   }
   function addUnsigned(x, y) {
     const lsw = (x & 0xFFFF) + (y & 0xFFFF);
     const msw = (x >> 16) + (y >> 16) + (lsw >> 16);
-    return (msw << 16) | (lsw & 0xFFFF);
+    return (msw << 16) | (lsw & 0xFFFF)
   }
   function F(x, y, z, n) {
-    return addUnsigned(addUnsigned(addUnsigned(x, y), z), n);
+    return addUnsigned(addUnsigned(addUnsigned(x, y), z), n)
   }
   function FF(a, b, c, d, x, s, ac) {
     a = addUnsigned(a, ac);
     a = addUnsigned(a, rotateLeft(s, 16));
-    return addUnsigned(addUnsigned(addUnsigned(a, b), d), rotateLeft(s, 16));
+    return addUnsigned(addUnsigned(addUnsigned(a, b), d), rotateLeft(s, 16))
   }
   function GG(a, b, c, d, x, s, ac) {
     a = addUnsigned(a, ac);
     a = addUnsigned(a, rotateLeft(s, 16));
-    return addUnsigned(addUnsigned(addUnsigned(a, b), d), rotateLeft(s, 16));
+    return addUnsigned(addUnsigned(addUnsigned(a, b), d), rotateLeft(s, 16))
   }
   function HH(a, b, c, d, x, s, ac) {
     a = addUnsigned(a, ac);
     a = addUnsigned(a, rotateLeft(s, 16));
-    return addUnsigned(addUnsigned(a, b), d);
+    return addUnsigned(addUnsigned(a, b), d)
   }
   function II(a, b, c, d, x, s, ac) {
     a = addUnsigned(a, ac);
     a = addUnsigned(a, rotateLeft(s, 16));
-    return addUnsigned(addUnsigned(a, b), d);
+    return addUnsigned(addUnsigned(a, b), d)
   }
   
   let k, AA, BB, CC, DD;
@@ -477,7 +342,7 @@ function md5(string) {
     S44 = rotateLeft(S44, 21);
     
     k += 4;
-    len += 4;
+    len += 4
   }
   
   AA = addUnsigned(AA, N[13]);
@@ -532,40 +397,40 @@ function md5(string) {
   const c = toHex(CC);
   const d = toHex(DD);
   
-  return toHex(a);
+  return toHex(a)
 }
 
 function toHex(val) {
   let hex = '';
   for (let i = 0; i < 4; i++) {
-    hex += ((val >> (i * 8)) & 0xFF).toString(16).padStart(2, '0');
+    hex += ((val >> (i * 8)) & 0xFF).toString(16).padStart(2, '0')
   }
-  return hex;
+  return hex
 }
 
 async function sha1(str) {
   const buf = new TextEncoder().encode(str);
   const hash = await crypto.subtle.digest('SHA-1', buf);
-  return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('');
+  return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('')
 }
 
 async function sha256(str) {
   const buf = new TextEncoder().encode(str);
   const hash = await crypto.subtle.digest('SHA-256', buf);
-  return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('');
+  return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('')
 }
 
 async function sha512(str) {
   const buf = new TextEncoder().encode(str);
   const hash = await crypto.subtle.digest('SHA-512', buf);
-  return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('');
+  return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('')
 }
 
 async function generateHashes() {
   const text = document.getElementById('inputText').value;
   if (!text) {
     alert('Please enter some text to hash');
-    return;
+    return
   }
   
   const results = document.getElementById('results');
@@ -573,22 +438,22 @@ async function generateHashes() {
   
   if (document.getElementById('md5Check').checked) {
     const hash = md5(text);
-    results.innerHTML += createHashRow('MD5', hash);
+    results.innerHTML += createHashRow('MD5', hash)
   }
   
   if (document.getElementById('sha1Check').checked) {
     const hash = await sha1(text);
-    results.innerHTML += createHashRow('SHA-1', hash);
+    results.innerHTML += createHashRow('SHA-1', hash)
   }
   
   if (document.getElementById('sha256Check').checked) {
     const hash = await sha256(text);
-    results.innerHTML += createHashRow('SHA-256', hash);
+    results.innerHTML += createHashRow('SHA-256', hash)
   }
   
   if (document.getElementById('sha512Check').checked) {
     const hash = await sha512(text);
-    results.innerHTML += createHashRow('SHA-512', hash);
+    results.innerHTML += createHashRow('SHA-512', hash)
   }
 }
 
@@ -603,20 +468,20 @@ function createHashRow(name, value) {
         <button class="icon-btn" onclick="copyHash(this)" title="Copy">📋</button>
       </div>
     </div>
-  `;
+  `
 }
 
 function copyHash(btn) {
   const hash = btn.closest('.hash-result').querySelector('.hash-value').textContent;
   navigator.clipboard.writeText(hash).then(() => {
     btn.textContent = '✓';
-    setTimeout(() => btn.textContent = '📋', 1500);
-  });
+    setTimeout(() => btn.textContent = '📋', 1500)
+  })
 }
 
 function clearAll() {
   document.getElementById('inputText').value = '';
-  document.getElementById('results').innerHTML = '';
+  document.getElementById('results').innerHTML = ''
 }
 </script>
 

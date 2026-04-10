@@ -26,14 +26,14 @@ button{background:var(--accent);color:#fff;border:none;padding:14px 24px;border-
 .result-label{color:var(--sub)}
 .faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px}
 .faq-item h3{font-size:16px;margin-bottom:8px}.faq-item p{color:var(--sub);line-height:1.6}
-footer{margin-top:60px;text-align:center;color:var(--sub)border-top:1px solid var(--border);padding-top:24px}
-.ad-banner{margin:32px 0;min-height:90px}
+footer{margin-top:60px;text-align:center;color:var(--sub)min-height:90px}
 </style>
 
 <!-- Open Graph -->
 <meta property="og:url" content="https://knexio.xyz/finance/roi-calculator/">
 <meta property="og:type" content="WebApplication">
 <meta property="og:site_name" content="Knexio">
+<link rel="stylesheet" href="shared.css">
 </head>
 <body>
 <div class="container">
@@ -150,7 +150,7 @@ function calculateROI() {
   
   if (!initial || !final) {
     alert('Please enter valid numbers');
-    return;
+    return
   }
   
   const roi = ((final - initial) / initial) * 100;
@@ -158,7 +158,7 @@ function calculateROI() {
   
   document.getElementById('roiValue').textContent = roi.toFixed(1) + '%';
   document.getElementById('annualROI').textContent = 'Annual: ' + annualROI.toFixed(1) + '%';
-  document.getElementById('result').style.display = 'block';
+  document.getElementById('result').style.display = 'block'
 }
 </script>
 <script src="/knexio-bundle.js"></script>

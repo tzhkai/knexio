@@ -39,39 +39,39 @@
       --border: rgba(255,255,255,0.08);
       --text: #ffffff;
       --sub: #aab3c5;
-      --accent: #4f8cff;
+      --accent: #4f8cff
     }
 
-    * { box-sizing: border-box; }
+    * { box-sizing: border-box }
 
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
       background: linear-gradient(180deg, #0b1220, #070d1a);
-      color: var(--text);
+      color: var(--text)
     }
 
-    a { color: var(--accent); text-decoration: none; }
+    a { color: var(--accent); text-decoration: none }
 
     .container {
       max-width: 920px;
       margin: 0 auto;
-      padding: 60px 20px 100px;
+      padding: 60px 20px 100px
     }
 
     .back {
       display: inline-block;
       margin-bottom: 24px;
       color: var(--sub);
-      font-size: 14px;
+      font-size: 14px
     }
 
-    h1 { font-size: 34px; margin: 0 0 10px; }
+    h1 { font-size: 34px; margin: 0 0 10px }
 
     .subtitle {
       color: var(--sub);
       font-size: 15px;
-      margin-bottom: 24px;
+      margin-bottom: 24px
     }
 
     .card {
@@ -79,7 +79,7 @@
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 20px;
-      margin-bottom: 20px;
+      margin-bottom: 20px
     }
 
     textarea {
@@ -91,10 +91,10 @@
       background: var(--card);
       color: #fff;
       font-size: 15px;
-      resize: vertical;
+      resize: vertical
     }
 
-    textarea::placeholder { color: #7f8aa3; }
+    textarea::placeholder { color: #7f8aa3 }
 
     input[type="text"],
     select {
@@ -104,15 +104,15 @@
       border: 1px solid var(--border);
       background: var(--card);
       color: #fff;
-      font-size: 15px;
+      font-size: 15px
     }
 
-    input::placeholder { color: #7f8aa3; }
+    input::placeholder { color: #7f8aa3 }
 
     .btn-row {
       display: flex;
       gap: 12px;
-      margin-top: 12px;
+      margin-top: 12px
     }
 
     .btn-row button {
@@ -122,28 +122,28 @@
       background: var(--card);
       color: var(--sub);
       cursor: pointer;
-      font-size: 13px;
+      font-size: 13px
     }
 
-    .btn-row button:hover { color: #fff; border-color: var(--accent); }
+    .btn-row button:hover { color: #fff; border-color: var(--accent) }
 
     .btn-row .main-btn {
       background: var(--accent) !important;
       color: #fff !important;
-      border: none !important;
+      border: none !important
     }
 
-    .btn-row .main-btn:hover { background: #3a7be0 !important; }
+    .btn-row .main-btn:hover { background: #3a7be0 !important }
 
     .input-group {
-      margin-bottom: 20px;
+      margin-bottom: 20px
     }
 
     label {
       display: block;
       margin-bottom: 8px;
       font-size: 14px;
-      color: var(--sub);
+      color: var(--sub)
     }
 
     .result-box {
@@ -152,43 +152,43 @@
       border-radius: 14px;
       padding: 20px;
       min-height: 200px;
-      margin-top: 20px;
+      margin-top: 20px
     }
 
     .result-label {
       font-size: 13px;
       color: var(--sub);
       margin-bottom: 12px;
-      font-weight: 600;
+      font-weight: 600
     }
 
     .result-content {
       font-size: 15px;
       line-height: 1.75;
-      color: var(--text);
+      color: var(--text)
     }
 
-    .section { margin-top: 60px; }
-    .section h2 { font-size: 24px; margin-bottom: 12px; }
-    .section p { color: var(--sub); line-height: 1.75; font-size: 15px; }
+    .section { margin-top: 60px }
+    .section h2 { font-size: 24px; margin-bottom: 12px }
+    .section p { color: var(--sub); line-height: 1.75; font-size: 15px }
 
-    .faq { margin-top: 60px; }
-    .faq h2 { font-size: 24px; margin-bottom: 20px; }
+    .faq { margin-top: 60px }
+    .faq h2 { font-size: 24px; margin-bottom: 20px }
     .faq-item { 
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 20px;
-      margin-bottom: 20px;
+      margin-bottom: 20px
     }
-    .faq-item h3 { font-size: 16px; margin: 0 0 8px; }
-    .faq-item p { color: var(--sub); font-size: 14px; line-height: 1.7; margin: 0; }
+    .faq-item h3 { font-size: 16px; margin: 0 0 8px }
+    .faq-item p { color: var(--sub); font-size: 14px; line-height: 1.7; margin: 0 }
 
     .tools a {
       display: inline-block;
       margin-right: 16px;
       margin-top: 8px;
-      font-size: 14px;
+      font-size: 14px
     }
 
     footer p{margin:0}
@@ -198,183 +198,56 @@
     @media (max-width: 768px) {
       .container {
         padding: 40px 15px 80px !important;
-        max-width: 100% !important;
+        max-width: 100% !important
       }
 
       h1 {
         font-size: 28px !important;
-        line-height: 1.3 !important;
+        line-height: 1.3 !important
       }
 
       h2 {
         font-size: 20px !important;
         margin-top: 36px !important;
-        margin-bottom: 10px !important;
+        margin-bottom: 10px !important
       }
 
       textarea {
         min-height: 180px !important;
-        padding: 12px !important;
+        padding: 12px !important
       }
 
       .btn-row {
-        flex-wrap: wrap;
+        flex-wrap: wrap
       }
 
       .ad-banner {
         margin: 16px 0 !important;
-        min-height: 50px !important;
+        min-height: 50px !important
       }
     }
 
     @media (max-width: 480px) {
       h1 {
-        font-size: 24px !important;
+        font-size: 24px !important
       }
 
       h2 {
-        font-size: 18px !important;
+        font-size: 18px !important
       }
 
       .container {
-        padding: 32px 12px 60px !important;
+        padding: 32px 12px 60px !important
       }
     }
 
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
-</head>
-
-<body>
-  <div class="container">
-    <a class="back" href="../index.html">← Back to AI Tools</a>
-
-    <h1>Prompt Optimizer</h1>
-
-    <div class="subtitle">
-      Improve and enhance your AI prompts for better results.
-    </div>
-
-    <div class="ad-banner">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="5794572171"
-       data-ad-format="auto"
-       data-full-width-responsive="true">
-  </ins>
-</div>
-
-    <div class="card">
-      <textarea id="promptInput" placeholder="Paste your current prompt here..."></textarea>
-      <div class="input-group">
-        <label>Optimization Focus</label>
-        <select id="optimization">
-          <option value="clarity">Clarity</option>
-          <option value="specificity">Specificity</option>
-          <option value="structure">Structure</option>
-          <option value="effectiveness">Effectiveness</option>
-        </select>
-      </div>
-      <div class="btn-row">
-        <button class="main-btn" onclick="optimizePrompt()">Optimize Prompt</button>
-        <button onclick="clearText()">Clear</button>
-        <button onclick="copyOptimized()">Copy Optimized</button>
-      </div>
-    </div>
-
-    <div class="result-box">
-      <div class="result-label">Result:</div>
-      <div class="result-content" id="result">Your result will appear here...</div>
-    </div>
-
-    <div class="ad-banner" style="margin-top: 40px">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="5794572171"
-       data-ad-format="auto"
-       data-full-width-responsive="true">
-  </ins>
-</div>
-
-    <div class="section">
-      <h2>Free Online Prompt Optimizer</h2>
-      <p>
-        Optimize your AI prompts to get better, more accurate responses from ChatGPT, Claude, and other AI tools. Our prompt optimizer analyzes your prompts and suggests improvements based on clarity, specificity, structure, and effectiveness. Whether you're writing prompts for content creation, coding assistance, research, or any other task, our tool helps you craft prompts that deliver the results you need.
-      </p>
-    </div>
-
-    <div class="section">
-      <h2>How It Works</h2>
-      <p>
-        Enter your current prompt in the input area, select the optimization focus that best matches your goal, and click "Optimize Prompt" to get an improved version. The optimizer analyzes your prompt for clarity, specificity, structure, and overall effectiveness, then provides an enhanced version with better context, clearer instructions, and more precise wording. You can then copy the optimized prompt and use it with any AI assistant.
-      </p>
-      <p>
-        Choose from four optimization modes: Clarity removes ambiguity and improves readability, Specificity adds detail and context, Structure organizes your prompt logically, and Effectiveness combines all three approaches for maximum impact. Each optimization mode is designed to address different aspects of prompt engineering, helping you get the best possible results from AI models.
-      </p>
-      <p>
-        After optimization, review the enhanced prompt and copy it to use with ChatGPT, Claude, or any other AI tool. You can also iteratively optimize prompts multiple times to refine them further. Our tool works entirely in your browser without storing any of your prompts, ensuring complete privacy and security for your content.
-      </p>
-    </div>
-
-    <div class="faq">
-      <h2>Frequently Asked Questions</h2>
-      <div class="faq-item">
-        <h3>What is a prompt optimizer?</h3>
-        <p>A prompt optimizer is a tool that analyzes and improves AI prompts to help you get better results from AI models like ChatGPT and Claude. It enhances clarity, specificity, and structure of your prompts.</p>
-      </div>
-      <div class="faq-item">
-        <h3>How do I use the prompt optimizer?</h3>
-        <p>Simply paste your current prompt into the input area, select your optimization focus (clarity, specificity, structure, or effectiveness), and click "Optimize Prompt" to get an enhanced version.</p>
-      </div>
-      <div class="faq-item">
-        <h3>What optimization modes are available?</h3>
-        <p>We offer four optimization modes: Clarity removes ambiguity, Specificity adds detail and context, Structure organizes your prompt logically, and Effectiveness combines all three for maximum impact.</p>
-      </div>
-      <div class="faq-item">
-        <h3>Can I optimize prompts multiple times?</h3>
-        <p>Yes, you can iteratively optimize prompts multiple times. After each optimization, you can further refine the result by running it through the optimizer again with different focus areas.</p>
-      </div>
-      <div class="faq-item">
-        <h3>Is my prompt data stored or shared?</h3>
-        <p>No, all processing happens locally in your browser. We never store, transmit, or share your prompts with any third parties. Your content remains completely private and secure.</p>
-      </div>
-      <div class="faq-item">
-        <h3>Is this prompt optimizer free to use?</h3>
-        <p>Yes, our prompt optimizer is completely free to use with no registration required. It works directly in your browser with unlimited optimizations.</p>
-      </div>
-    </div>
-
-    <div class="section">
-      <h2>Related AI Tools</h2>
-      <div class="tools">
-        <a href="../chatgpt-prompt-generator/index.html">ChatGPT Prompt Generator</a>
-        <a href="../ai-content-rewriter/index.html">AI Content Rewriter</a>
-        <a href="../prompt-library/index.html">Prompt Library</a>
-      </div>
-    </div>
-
-    <div class="ad-banner" style="margin-top: 40px">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="5794572171"
-       data-ad-format="auto"
-       data-full-width-responsive="true">
-  </ins>
-</div>
-
-  </div>
-
-  <script>
-    function optimizePrompt() {
-      const promptInput = document.getElementById('promptInput');
+footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;
       const optimization = document.getElementById('optimization').value;
       const result = document.getElementById('result');
 
       if (!promptInput.value.trim()) {
         result.textContent = 'Please enter a prompt to optimize.';
-        return;
+        return
       }
 
       let optimizedPrompt = promptInput.value.trim();
@@ -392,10 +265,10 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
           break;
         case 'effectiveness':
           optimizedPrompt = optimizeForEffectiveness(optimizedPrompt);
-          break;
+          break
       }
 
-      result.textContent = optimizedPrompt;
+      result.textContent = optimizedPrompt
     }
 
     function optimizeForClarity(prompt) {
@@ -408,15 +281,15 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
       
       // Add clear structure if missing
       if (!optimized.includes('Please') && !optimized.includes('I need') && !optimized.includes('Help me')) {
-        optimized = 'Please ' + optimized.charAt(0).toLowerCase() + optimized.slice(1);
+        optimized = 'Please ' + optimized.charAt(0).toLowerCase() + optimized.slice(1)
       }
       
       // Ensure complete sentences
       if (!optimized.endsWith('.')) {
-        optimized += '.';
+        optimized += '.'
       }
       
-      return optimized;
+      return optimized
     }
 
     function optimizeForSpecificity(prompt) {
@@ -428,19 +301,19 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
       const hasContext = contextKeywords.some(keyword => optimized.toLowerCase().includes(keyword));
       
       if (!hasContext) {
-        optimized = 'Please provide a detailed explanation of: ' + optimized;
+        optimized = 'Please provide a detailed explanation of: ' + optimized
       }
       
       // Add specificity enhancements
       if (!optimized.includes('with examples')) {
-        optimized += ' Include relevant examples to support your answer.';
+        optimized += ' Include relevant examples to support your answer.'
       }
       
       if (!optimized.includes('step by step')) {
-        optimized += ' Present your response in a clear, step-by-step manner.';
+        optimized += ' Present your response in a clear, step-by-step manner.'
       }
       
-      return optimized;
+      return optimized
     }
 
     function optimizeForStructure(prompt) {
@@ -449,16 +322,16 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
       
       // Add clear structure indicators
       if (!optimized.includes('First') && !optimized.includes('1.') && !optimized.includes('-')) {
-        optimized = 'Structure your response as follows:\n\n' + optimized + '\n\nEnsure each point is clearly separated and well-organized.';
+        optimized = 'Structure your response as follows:\n\n' + optimized + '\n\nEnsure each point is clearly separated and well-organized.'
       }
       
       // Add section markers if missing
       if (optimized.includes('Introduction') && !optimized.includes('##')) {
         optimized = optimized.replace(/(Introduction|Overview|Background)/g, '## $1');
-        optimized = optimized.replace(/(Conclusion|Summary)/g, '## $1');
+        optimized = optimized.replace(/(Conclusion|Summary)/g, '## $1')
       }
       
-      return optimized;
+      return optimized
     }
 
     function optimizeForEffectiveness(prompt) {
@@ -471,33 +344,33 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
       
       // Apply specificity
       if (!optimized.includes('with examples')) {
-        optimized += ' Include relevant examples.';
+        optimized += ' Include relevant examples.'
       }
       
       // Apply structure
       if (!optimized.includes('step by step')) {
-        optimized += ' Present in a clear, step-by-step manner.';
+        optimized += ' Present in a clear, step-by-step manner.'
       }
       
       // Add effectiveness markers
       if (!optimized.includes('Be thorough')) {
-        optimized = 'Be thorough and comprehensive in your response. ' + optimized;
+        optimized = 'Be thorough and comprehensive in your response. ' + optimized
       }
       
-      return optimized;
+      return optimized
     }
 
     function clearText() {
       document.getElementById('promptInput').value = '';
-      document.getElementById('result').textContent = 'Your result will appear here...';
+      document.getElementById('result').textContent = 'Your result will appear here...'
     }
 
     function copyOptimized() {
       const result = document.getElementById('result');
       if (result && result.textContent && result.textContent !== 'Your result will appear here...') {
         navigator.clipboard.writeText(result.textContent).then(() => {
-          alert('Optimized prompt copied to clipboard!');
-        });
+          alert('Optimized prompt copied to clipboard!')
+        })
       }
     }
   </script>

@@ -56,16 +56,16 @@
   --border: rgba(255,255,255,0.08);
   --text: #fff;
   --sub: #aab3c5;
-  --accent: #4f8cff;
+  --accent: #4f8cff
 }
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0 }
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   background: var(--bg);
   color: var(--text);
-  line-height: 1.6;
+  line-height: 1.6
 }
-.container { max-width: 900px; margin: 0 auto; padding: 50px 16px; }
+.container { max-width: 900px; margin: 0 auto; padding: 50px 16px }
 
 /* Back Button */
 .back {
@@ -74,14 +74,14 @@ body {
   text-decoration: none;
   font-size: 14px;
   margin-bottom: 24px;
-  transition: color 0.2s;
+  transition: color 0.2s
 }
-.back:hover { color: var(--accent); }
+.back:hover { color: var(--accent) }
 
-h1 { font-size: 32px; margin-bottom: 8px; font-weight: 700; }
-h2 { font-size: 22px; margin-top: 40px; margin-bottom: 16px; font-weight: 600; }
-h3 { font-size: 16px; margin-bottom: 10px; font-weight: 600; }
-.subtitle { color: var(--sub); margin-bottom: 24px; font-size: 16px; }
+h1 { font-size: 32px; margin-bottom: 8px; font-weight: 700 }
+h2 { font-size: 22px; margin-top: 40px; margin-bottom: 16px; font-weight: 600 }
+h3 { font-size: 16px; margin-bottom: 10px; font-weight: 600 }
+.subtitle { color: var(--sub); margin-bottom: 24px; font-size: 16px }
 
 /* Card */
 .card {
@@ -89,18 +89,18 @@ h3 { font-size: 16px; margin-bottom: 10px; font-weight: 600; }
   border: 1px solid var(--border);
   border-radius: 14px;
   padding: 24px;
-  margin-bottom: 20px;
+  margin-bottom: 20px
 }
 
 /* Input Group */
 .input-group {
-  margin-bottom: 16px;
+  margin-bottom: 16px
 }
 .input-group label {
   display: block;
   font-size: 13px;
   color: var(--sub);
-  margin-bottom: 8px;
+  margin-bottom: 8px
 }
 .input-group input,
 .input-group select {
@@ -110,43 +110,43 @@ h3 { font-size: 16px; margin-bottom: 10px; font-weight: 600; }
   border: 1px solid var(--border);
   border-radius: 10px;
   color: var(--text);
-  font-size: 14px;
+  font-size: 14px
 }
 .input-group input:focus,
 .input-group select:focus {
   outline: none;
-  border-color: var(--accent);
+  border-color: var(--accent)
 }
 
 /* Options Row */
 .options-row {
   display: flex;
   gap: 16px;
-  margin-bottom: 20px;
+  margin-bottom: 20px
 }
 .option-group {
-  flex: 1;
+  flex: 1
 }
 .option-group label {
   display: block;
   font-size: 13px;
   color: var(--sub);
-  margin-bottom: 8px;
+  margin-bottom: 8px
 }
 
 /* Buttons */
 
 .btn:hover {
   background: #3a7bff;
-  transform: translateY(-1px);
+  transform: translateY(-1px)
 }
 .btn:active {
-  transform: translateY(0);
+  transform: translateY(0)
 }
 
 .btn.secondary:hover {
   border-color: var(--accent);
-  color: var(--accent);
+  color: var(--accent)
 }
 
 /* Screenshot Preview */
@@ -156,19 +156,19 @@ h3 { font-size: 16px; margin-bottom: 10px; font-weight: 600; }
   border-radius: 12px;
   padding: 16px;
   background: var(--bg);
-  display: none;
+  display: none
 }
 .preview-box.active {
-  display: block;
+  display: block
 }
 .preview-image {
   width: 100%;
   border-radius: 8px;
-  margin-bottom: 12px;
+  margin-bottom: 12px
 }
 .preview-actions {
   display: flex;
-  gap: 10px;
+  gap: 10px
 }
 .preview-actions 
 
@@ -178,22 +178,22 @@ h3 { font-size: 16px; margin-bottom: 10px; font-weight: 600; }
   padding: 12px;
   border-radius: 8px;
   font-size: 13px;
-  display: none;
+  display: none
 }
 .status.active {
-  display: block;
+  display: block
 }
 .status.loading {
   background: rgba(79,140,255,0.1);
-  color: var(--accent);
+  color: var(--accent)
 }
 .status.success {
   background: rgba(46,204,113,0.1);
-  color: #2ecc71;
+  color: #2ecc71
 }
 .status.error {
   background: rgba(231,76,60,0.1);
-  color: #e74c3c;
+  color: #e74c3c
 }
 
 /* Step Blocks */
@@ -211,7 +211,7 @@ h3 { font-size: 16px; margin-bottom: 10px; font-weight: 600; }
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin-top: 16px;
+  margin-top: 16px
 }
 .tools a {
   display: inline-block;
@@ -221,48 +221,48 @@ h3 { font-size: 16px; margin-bottom: 10px; font-weight: 600; }
   color: var(--sub);
   text-decoration: none;
   font-size: 14px;
-  transition: all 0.2s;
+  transition: all 0.2s
 }
 .tools a:hover {
   border-color: var(--accent);
-  color: var(--accent);
+  color: var(--accent)
 }
 
 /* Ad Banner */
 .ad-banner {
   margin: 32px 0;
-  text-align: center;
+  text-align: center
 }
 
 /* Footer */
-footer {
+footer{
   margin-top: 40px;
   text-align: center;
   color: var(--sub);
-  font-size: 13px;
-  padding-top: 30px;
-  border-top: 1px solid var(--border);
+  font-size: 13px
+  
+  
 }
 footer p {
-  margin-bottom: 8px;
+  margin-bottom: 8px
 }
 footer a {
   color: var(--sub);
   text-decoration: none;
   margin: 0 10px;
-  transition: color 0.2s;
+  transition: color 0.2s
 }
 footer a:hover {
-  color: var(--accent);
+  color: var(--accent)
 }
 
 /* Responsive */
 @media (max-width: 600px) {
   .options-row {
-    flex-direction: column;
+    flex-direction: column
   }
   .preview-actions {
-    flex-direction: column;
+    flex-direction: column
   }
 }
 textarea,.text-area{width:100%;min-height:180px;background:var(--bg);border:1px solid var(--border);border-radius:12px;color:var(--text);padding:14px;font-size:15px;resize:vertical;box-sizing:border-box}
@@ -278,103 +278,7 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
 .stat label,.stat-label,.result-label,.age-label{font-size:12px;color:var(--sub);display:block}
 .result-box{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;margin-top:16px;min-height:100px;white-space:pre-wrap;word-break:break-all;font-size:15px;line-height:1.7;box-sizing:border-box}
 @media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.btn-row{flex-direction:column}}
-  footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
-</head>
-
-<body>
-<div class="container">
-
-<a class="back" href="../index.html">← Back to Tools</a>
-
-<h1>Website Screenshot Tool</h1>
-<p class="subtitle">Take screenshots of any webpage online. Choose viewport sizes and download your captures.</p>
-
-<div class="ad-banner">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="5794572171"
-       data-ad-format="auto"
-       data-full-width-responsive="true">
-  </ins>
-</div>
-
-<div class="card">
-  <div class="input-group">
-    <label>Website URL</label>
-    <input type="url" id="urlInput" placeholder="https://example.com">
-  </div>
-
-  <div class="options-row">
-    <div class="option-group">
-      <label>Viewport Size</label>
-      <select id="viewportSize">
-        <option value="1920x1080">Desktop (1920x1080)</option>
-        <option value="1366x768">Laptop (1366x768)</option>
-        <option value="768x1024">Tablet (768x1024)</option>
-        <option value="375x667">Mobile (375x667)</option>
-      </select>
-    </div>
-    <div class="option-group">
-      <label>Format</label>
-      <select id="imageFormat">
-        <option value="png">PNG</option>
-        <option value="jpeg">JPEG</option>
-      </select>
-    </div>
-  </div>
-
-  <button class="btn" onclick="takeScreenshot()">Take Screenshot</button>
-
-  <div id="status" class="status"></div>
-
-  <div id="previewBox" class="preview-box">
-    <img id="previewImage" class="preview-image" alt="Screenshot preview">
-    <div class="preview-actions">
-      <button class="btn" onclick="downloadScreenshot()">Download Screenshot</button>
-      <button class="btn secondary" onclick="closePreview()">Close</button>
-    </div>
-  </div>
-</div>
-
-<h2>How to Use the Website Screenshot Tool</h2>
-
-
-
-
-<div class="section">
-      <p><strong>How It Works</strong> - Enter any website URL and our tool captures the full page as a screenshot. Choose between PNG for high quality or JPEG for smaller file size. Download instantly.</p>
-    </div>
-<h2>Frequently Asked Questions</h2>
-    <div class="faq-item">
-      <h3>Does it capture the whole page?</h3>
-      <p>Yes, captures the full page including content below the fold.</p>
-    </div>
-    <div class="faq-item">
-      <h3>Can I capture multiple pages?</h3>
-      <p>Enter each URL separately to capture multiple pages.</p>
-    </div>
-
-    <h2>Related Tools</h2>
-<div class="tools">
-  <a href="../image-compressor/">Image Compressor</a>
-  <a href="../image-resizer/">Image Resizer</a>
-  <a href="../color-picker/">Color Picker</a>
-</div>
-
-<div class="ad-banner">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="5794572171"
-       data-ad-format="auto"
-       data-full-width-responsive="true">
-  </ins>
-</div>
-
-
-<!-- Ad: Footer -->
-<div class="ad-banner footer-ad" style="margin:40px 0;text-align:center"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
+  footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;text-align:center"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
 <footer>
   <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
   <p style="margin: 8px 0; font-size: 13px;">
@@ -394,19 +298,19 @@ let screenshotData = null;
 function showStatus(message, type) {
   const status = document.getElementById('status');
   status.textContent = message;
-  status.className = 'status active ' + type;
+  status.className = 'status active ' + type
 }
 
 function takeScreenshot() {
   const url = document.getElementById('urlInput').value.trim();
   if (!url) {
     showStatus('Please enter a URL', 'error');
-    return;
+    return
   }
 
   if (!url.startsWith('http://') && !url.startsWith('https://')) {
     showStatus('URL must start with http:// or https://', 'error');
-    return;
+    return
   }
 
   showStatus('Taking screenshot... This may take a few seconds.', 'loading');
@@ -426,15 +330,15 @@ function takeScreenshot() {
         const previewImage = document.getElementById('previewImage');
         previewImage.src = screenshotData;
         document.getElementById('previewBox').classList.add('active');
-        showStatus('Screenshot captured successfully!', 'success');
+        showStatus('Screenshot captured successfully!', 'success')
       } else {
-        throw new Error('Failed to capture screenshot');
+        throw new Error('Failed to capture screenshot')
       }
     })
     .catch(error => {
       console.error('Error:', error);
-      showStatus('Error capturing screenshot. Please try again or check the URL.', 'error');
-    });
+      showStatus('Error capturing screenshot. Please try again or check the URL.', 'error')
+    })
 }
 
 function downloadScreenshot() {
@@ -446,13 +350,13 @@ function downloadScreenshot() {
   link.download = `screenshot.${format}`;
   document.body.appendChild(link);
   link.click();
-  document.body.removeChild(link);
+  document.body.removeChild(link)
 }
 
 function closePreview() {
   document.getElementById('previewBox').classList.remove('active');
   screenshotData = null;
-  showStatus('', '');
+  showStatus('', '')
 }
 
 </script>

@@ -35,13 +35,13 @@
   --border:rgba(255,255,255,.08);
   --text:#fff;
   --sub:#aab3c5;
-  --accent:#4f8cff;
+  --accent:#4f8cff
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{
   font-family:system-ui,-apple-system;
   background:var(--bg);
-  color:var(--text);
+  color:var(--text)
 }
 .container{max-width:900px;margin:auto;padding:50px 16px}
 
@@ -52,10 +52,10 @@ body{
   text-decoration: none;
   font-size: 14px;
   margin-bottom: 24px;
-  transition: color 0.2s;
+  transition: color 0.2s
 }
 .back:hover {
-  color: var(--accent);
+  color: var(--accent)
 }
 
 h1{font-size:32px;margin-bottom:8px}
@@ -68,7 +68,7 @@ h3{font-size:18px;margin-bottom:8px}
   border:1px solid var(--border);
   border-radius:14px;
   padding:20px;
-  margin-bottom:20px;
+  margin-bottom:20px
 }
 
 
@@ -80,20 +80,20 @@ button:disabled{opacity:0.5;cursor:not-allowed}
 
 .btn-primary {
   background:var(--accent);
-  color:#fff;
+  color:#fff
 }
 .btn-green {
   background:#22c55e;
-  color:#fff;
+  color:#fff
 }
 
 .btn-sm {
   padding:6px 12px;
-  font-size:12px;
+  font-size:12px
 }
 .btn-outline:hover {
   border-color:var(--accent);
-  color:var(--accent);
+  color:var(--accent)
 }
 
 
@@ -105,12 +105,12 @@ textarea:focus{outline:none;border-color:var(--accent)}
   gap:8px;
   color:var(--sub);
   font-size:13px;
-  margin-left:10px;
+  margin-left:10px
 }
 .check-label input[type="checkbox"] {
   width:16px;
   height:16px;
-  cursor:pointer;
+  cursor:pointer
 }
 
 .toolbar {
@@ -118,14 +118,14 @@ textarea:focus{outline:none;border-color:var(--accent)}
   flex-wrap:wrap;
   gap:10px;
   align-items:center;
-  margin-bottom:16px;
+  margin-bottom:16px
 }
 
 .editor-layout {
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:16px;
-  margin-top:16px;
+  margin-top:16px
 }
 
 .pane-label {
@@ -135,7 +135,7 @@ textarea:focus{outline:none;border-color:var(--accent)}
   margin-bottom:8px;
   font-size:14px;
   color:var(--sub);
-  font-weight:500;
+  font-weight:500
 }
 
 
@@ -152,7 +152,7 @@ textarea:focus{outline:none;border-color:var(--accent)}
   font-family:Monaco,Menlo,monospace;
   white-space:pre-wrap;
   word-break:break-all;
-  overflow:auto;
+  overflow:auto
 }
 
 .status-bar {
@@ -162,7 +162,7 @@ textarea:focus{outline:none;border-color:var(--accent)}
   border-radius:8px;
   color:var(--accent);
   font-size:13px;
-  text-align:center;
+  text-align:center
 }
 
 .savings-bar-wrap {
@@ -170,17 +170,17 @@ textarea:focus{outline:none;border-color:var(--accent)}
   padding:16px;
   background:rgba(34,197,94,.1);
   border:1px solid rgba(34,197,94,.3);
-  border-radius:12px;
+  border-radius:12px
 }
 
 .savings-header {
   display:flex;
   justify-content:space-between;
   margin-bottom:10px;
-  font-size:14px;
+  font-size:14px
 }
 .savings-header strong {
-  color:var(--accent);
+  color:var(--accent)
 }
 
 .bar-track {
@@ -189,14 +189,14 @@ textarea:focus{outline:none;border-color:var(--accent)}
   background:rgba(255,255,255,.1);
   border-radius:4px;
   margin:10px 0;
-  overflow:hidden;
+  overflow:hidden
 }
 
 .bar-mini {
   height:100%;
   background:linear-gradient(90deg, var(--accent), #22c55e);
   border-radius:4px;
-  transition: width 0.5s ease;
+  transition: width 0.5s ease
 }
 
 .stats-grid {
@@ -204,28 +204,28 @@ textarea:focus{outline:none;border-color:var(--accent)}
   grid-template-columns:repeat(3,1fr);
   gap:10px;
   margin-top:12px;
-  font-size:13px;
+  font-size:13px
 }
 .stats-grid div {
-  color:var(--sub);
+  color:var(--sub)
 }
 .stats-grid span {
   color:var(--text);
-  font-weight:600;
+  font-weight:600
 }
 
 .green {
-  color:#22c55e;
+  color:#22c55e
 }
 
 .section p{
   color:var(--sub);
   line-height:1.7;
-  margin-bottom:10px;
+  margin-bottom:10px
 }
 
 .seo-section {
-  margin-top:30px;
+  margin-top:30px
 }
 
 
@@ -243,37 +243,37 @@ textarea:focus{outline:none;border-color:var(--accent)}
   border-radius:8px;
   border:1px solid var(--border);
   color:var(--sub);
-  text-decoration:none;
+  text-decoration:none
 }
 .tools a:hover{
   border-color:var(--accent);
-  color:var(--accent);
+  color:var(--accent)
 }
 
 /* 广告样式 */
 .ad-banner {
   margin: 32px 0;
-  text-align: center;
+  text-align: center
 }
 
 /* 统一的 Footer 样式 */
-footer {
+footer{
   margin-top: 40px;
   text-align: center;
   color: var(--sub);
-  font-size: 13px;
-border-top:1px solid var(--border);}
+  font-size: 13px
+}
 footer p {
-  margin-bottom: 8px;
+  margin-bottom: 8px
 }
 footer a {
   color: var(--sub);
   text-decoration: none;
   margin: 0 10px;
-  transition: color 0.2s;
+  transition: color 0.2s
 }
 footer a:hover {
-  color: var(--accent);
+  color: var(--accent)
 }
 
 @media(max-width:768px){
@@ -295,95 +295,16 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
 .stat label,.stat-label,.result-label,.age-label{font-size:12px;color:var(--sub);display:block}
 .result-box{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;margin-top:16px;min-height:100px;white-space:pre-wrap;word-break:break-all;font-size:15px;line-height:1.7;box-sizing:border-box}
 @media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.btn-row{flex-direction:column}}
-  footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Is this tool free to use?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, this tool is completely free to use. No registration, no login, and no subscription required. Just open the page and start using it."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is my data safe? Is anything stored on a server?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, your data is safe. All processing happens entirely in your browser \u2014 your input never leaves your device and is not sent to any server."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does this tool work on mobile devices?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. The tool is fully responsive and works on smartphones, tablets, and desktop computers."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How accurate is the result?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The tool uses standard algorithms and web APIs to provide accurate results. For critical or professional use, please verify with additional sources."
-      }
-    }
-  ]
-}
-</script>
-</head>
-
-<body><div class="container">
-
-<a class="back" href="../index.html">← Back to Tools</a>
-
-<h1>CSS Minifier</h1>
-<p class="subtitle">Paste your CSS and minify it instantly. Removes whitespace, comments, and redundant semicolons. See exactly how much file size you save.</p>
-
-<div class="ad-banner">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="5794572171"
-       data-ad-format="auto"
-       data-full-width-responsive="true">
-  </ins>
-</div>
-
-<div class="card">
-  <div class="toolbar">
-    <button class="btn btn-primary" onclick="minifyCSS()">Minify CSS</button>
-    <button class="btn btn-green" onclick="downloadCSS()" id="dlBtn" disabled>Download .css</button>
-    <button class="btn btn-outline" onclick="copyOutput()">Copy Output</button>
-    <button class="btn btn-outline" onclick="clearAll()">Clear</button>
-  </div>
-  
-  <label class="check-label"><input type="checkbox" id="removeCommentsChk" checked> Remove comments</label>
-  <label class="check-label"><input type="checkbox" id="removeEmptyChk" checked> Remove empty rules</label>
-
-  <div class="editor-layout">
-    <div>
-      <div class="pane-label">
-        <span>Original CSS</span>
-        <button class="btn btn-outline btn-sm" onclick="pasteClipboard()">Paste</button>
-      </div>
-      <textarea class="text-area" id="input" placeholder="/* Paste your CSS here */
-body {
-  font-family: Arial, sans-serif;
+  footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;
   margin: 0;
   padding: 0;
-  background-color: #ffffff;
+  background-color: #ffffff
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 20px
 }"></textarea>
     </div>
     <div>
@@ -487,13 +408,13 @@ function minifyCSS() {
   
   if (!input.trim()) {
     showStatus('Please paste CSS code first', true);
-    return;
+    return
   }
   
   let result = input;
   
   if (removeComments) {
-    result = result.replace(/\/\*[\s\S]*?\*\//g, '');
+    result = result.replace(/\/\*[\s\S]*?\*\//g, '')
   }
   
   result = result
@@ -503,7 +424,7 @@ function minifyCSS() {
     .trim();
   
   if (removeEmpty) {
-    result = result.replace(/[^{}]+\{}/g, '');
+    result = result.replace(/[^{}]+\{}/g, '')
   }
   
   minifiedCode = result;
@@ -523,23 +444,23 @@ function minifyCSS() {
   document.getElementById('savingsBox').style.display = 'block';
   document.getElementById('dlBtn').disabled = false;
   
-  showStatus('CSS minified successfully! Saved ' + savingsPct + '%');
+  showStatus('CSS minified successfully! Saved ' + savingsPct + '%')
 }
 
 function copyOutput() {
   if (!minifiedCode) {
     showStatus('No minified code to copy', true);
-    return;
+    return
   }
   navigator.clipboard.writeText(minifiedCode).then(() => {
-    showStatus('Copied to clipboard!');
-  });
+    showStatus('Copied to clipboard!')
+  })
 }
 
 function downloadCSS() {
   if (!minifiedCode) {
     showStatus('No minified code to download', true);
-    return;
+    return
   }
   const blob = new Blob([minifiedCode], { type: 'text/css' });
   const url = URL.createObjectURL(blob);
@@ -548,7 +469,7 @@ function downloadCSS() {
   a.download = 'styles.min.css';
   a.click();
   URL.revokeObjectURL(url);
-  showStatus('Downloaded styles.min.css');
+  showStatus('Downloaded styles.min.css')
 }
 
 function clearAll() {
@@ -557,16 +478,16 @@ function clearAll() {
   document.getElementById('savingsBox').style.display = 'none';
   document.getElementById('dlBtn').disabled = true;
   document.getElementById('statusBar').style.display = 'none';
-  minifiedCode = '';
+  minifiedCode = ''
 }
 
 function pasteClipboard() {
   navigator.clipboard.readText().then(text => {
     document.getElementById('input').value = text;
-    showStatus('Pasted from clipboard');
+    showStatus('Pasted from clipboard')
   }).catch(err => {
-    showStatus('Could not paste: ' + err.message, true);
-  });
+    showStatus('Could not paste: ' + err.message, true)
+  })
 }
 
 function showStatus(message, isError = false) {
@@ -574,7 +495,7 @@ function showStatus(message, isError = false) {
   statusBar.textContent = message;
   statusBar.style.display = 'block';
   statusBar.style.color = isError ? '#ef4444' : 'var(--accent)';
-  statusBar.style.background = isError ? 'rgba(239,68,68,.1)' : 'rgba(79,140,255,.1)';
+  statusBar.style.background = isError ? 'rgba(239,68,68,.1)' : 'rgba(79,140,255,.1)'
 }
 
 function formatBytes(bytes) {
@@ -582,7 +503,7 @@ function formatBytes(bytes) {
   const k = 1024;
   const sizes = ['B', 'KB', 'MB'];
   const i = Math.floor(Math.log(bytes) / Math.log(k));
-  return (bytes / Math.pow(k, i)).toFixed(2) + ' ' + sizes[i];
+  return (bytes / Math.pow(k, i)).toFixed(2) + ' ' + sizes[i]
 }
 </script>
 

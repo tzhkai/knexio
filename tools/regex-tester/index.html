@@ -32,76 +32,7 @@ textarea{width:100%;min-height:150px;background:var(--bg);border:1px solid var(-
 .faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px}
 .faq-item h3{font-size:16px;margin-bottom:8px}.faq-item p{color:var(--sub);line-height:1.6}
 
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
-
-<!-- Open Graph -->
-<meta property="og:url" content="https://knexio.xyz/tools/regex-tester/">
-<meta property="og:type" content="WebApplication">
-<meta property="og:site_name" content="Knexio">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Is this tool free to use?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, this tool is completely free to use. No registration, no login, and no subscription required. Just open the page and start using it."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is my data safe? Is anything stored on a server?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, your data is safe. All processing happens entirely in your browser \u2014 your input never leaves your device and is not sent to any server."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does this tool work on mobile devices?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. The tool is fully responsive and works on smartphones, tablets, and desktop computers."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How accurate is the result?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The tool uses standard algorithms and web APIs to provide accurate results. For critical or professional use, please verify with additional sources."
-      }
-    }
-  ]
-}
-</script>
-</head>
-<body>
-<div class="container">
-<a class="back" href="../index.html">← Back to Tools</a>
-<h1>Regex Tester</h1>
-<p class="subtitle">Test regular expressions in real time</p>
-<div class="ad-banner">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="5794572171"
-       data-ad-format="auto"
-       data-full-width-responsive="true">
-  </ins>
-</div>
-<div class="panel">
-<div class="regex-row">
-<span>/</span>
-<input type="text" id="pattern" placeholder="[a-z]+" oninput="test()">
-<span>/</span>
-<input type="text" id="flags" placeholder="gi" value="g" style="width:80px" oninput="test()">
-</div>
-<div id="status"></div>
-<label style="display:block;margin-bottom:8px;color:var(--sub)">Test String</label>
+footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;margin-bottom:8px;color:var(--sub)">Test String</label>
 <textarea id="testStr" placeholder="Enter text to test against..." oninput="test()">Hello World 123</textarea>
 </div>
 <div class="panel">
@@ -155,18 +86,18 @@ function test() {
     statusEl.innerHTML = '';
     matchesEl.innerHTML = '';
     countEl.textContent = 'Enter a pattern to see matches';
-    return;
+    return
   }
 
   let regex;
   try {
     regex = new RegExp(pattern, flags);
-    statusEl.innerHTML = '<span class="status valid">✓ Valid regex</span>';
+    statusEl.innerHTML = '<span class="status valid">✓ Valid regex</span>'
   } catch(e) {
     statusEl.innerHTML = `<span class="status invalid">✗ ${e.message}</span>`;
     matchesEl.innerHTML = '';
     countEl.textContent = '';
-    return;
+    return
   }
 
   const matches = [...str.matchAll(new RegExp(pattern, flags.includes('g') ? flags : flags + 'g'))];
@@ -178,11 +109,11 @@ function test() {
       <strong>${escapeHtml(m[0])}</strong>
       ${m.length > 1 ? '<br><span style="color:var(--sub)">Groups: ' + m.slice(1).map((g,j) => `$${j+1}: ${escapeHtml(g||'')}`).join(', ') + '</span>' : ''}
     </div>
-  `).join('');
+  `).join('')
 }
 
 function escapeHtml(s) {
-  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
 }
 </script>
 <script src="/knexio-bundle.js"></script>

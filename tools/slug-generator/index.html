@@ -85,13 +85,13 @@
   --border:rgba(255,255,255,.08);
   --text:#fff;
   --sub:#aab3c5;
-  --accent:#4f8cff;
+  --accent:#4f8cff
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{
   font-family:system-ui,-apple-system;
   background:var(--bg);
-  color:var(--text);
+  color:var(--text)
 }
 .container{max-width:900px;margin:auto;padding:50px 16px}
 
@@ -101,10 +101,10 @@ body{
   text-decoration: none;
   font-size: 14px;
   margin-bottom: 24px;
-  transition: color 0.2s;
+  transition: color 0.2s
 }
 .back:hover {
-  color: var(--accent);
+  color: var(--accent)
 }
 
 h1{font-size:32px;margin-bottom:8px}
@@ -117,7 +117,7 @@ h3{font-size:18px;margin-bottom:8px}
   border:1px solid var(--border);
   border-radius:14px;
   padding:20px;
-  margin-bottom:20px;
+  margin-bottom:20px
 }
 
 input[type="text"]{
@@ -127,7 +127,7 @@ input[type="text"]{
   border:1px solid var(--border);
   border-radius:12px;
   color:var(--text);
-  font-size:15px;
+  font-size:15px
 }
 input[type="text"]:focus{outline:none;border-color:var(--accent)}
 
@@ -135,17 +135,17 @@ input[type="text"]:focus{outline:none;border-color:var(--accent)}
   display:grid;
   grid-template-columns:1fr;
   gap:16px;
-  margin-bottom:16px;
+  margin-bottom:16px
 }
 
 .field{
   display:flex;
   flex-direction:column;
-  gap:8px;
+  gap:8px
 }
 label{
   font-size:14px;
-  color:var(--sub);
+  color:var(--sub)
 }
 
 .options-row{
@@ -155,14 +155,14 @@ label{
   margin-bottom:16px;
   padding:16px;
   background:var(--bg);
-  border-radius:10px;
+  border-radius:10px
 }
 .opt-label,.check-label{
   display:flex;
   align-items:center;
   gap:8px;
   font-size:14px;
-  color:var(--sub);
+  color:var(--sub)
 }
 select{
   padding:8px 12px;
@@ -170,13 +170,13 @@ select{
   border:1px solid var(--border);
   border-radius:8px;
   color:var(--text);
-  cursor:pointer;
+  cursor:pointer
 }
 select:focus{outline:none;border-color:var(--accent)}
 input[type="checkbox"]{
   width:16px;
   height:16px;
-  cursor:pointer;
+  cursor:pointer
 }
 
 .result-box{
@@ -185,13 +185,13 @@ input[type="checkbox"]{
   border-radius:10px;
   padding:16px;
   margin-top:16px;
-  min-height:100px;
+  min-height:100px
 }
 
 .result-label{
   font-size:13px;
   color:var(--sub);
-  margin-bottom:8px;
+  margin-bottom:8px
 }
 .result-slug{
   font-size:18px;
@@ -200,7 +200,7 @@ input[type="checkbox"]{
   padding:12px;
   background:var(--card);
   border-radius:8px;
-  margin-bottom:12px;
+  margin-bottom:12px
 }
 
 .bulk-output{
@@ -208,7 +208,7 @@ input[type="checkbox"]{
   padding:16px;
   background:var(--bg);
   border:1px solid var(--border);
-  border-radius:10px;
+  border-radius:10px
 }
 .bulk-result{
   display:flex;
@@ -217,26 +217,26 @@ input[type="checkbox"]{
   padding:10px;
   margin-bottom:8px;
   background:var(--card);
-  border-radius:8px;
+  border-radius:8px
 }
 .bulk-result:last-child{margin-bottom:0}
 .bulk-original{
   font-size:14px;
   color:var(--sub);
   flex:1;
-  margin-right:16px;
+  margin-right:16px
 }
 .bulk-slug{
   font-size:14px;
   color:var(--accent);
   word-break:break-all;
-  flex:1;
+  flex:1
 }
 
 .section p{
   color:var(--sub);
   line-height:1.7;
-  margin-bottom:10px;
+  margin-bottom:10px
 }
 
 .faq-item {
@@ -244,19 +244,19 @@ input[type="checkbox"]{
   border: 1px solid var(--border);
   border-radius: 14px;
   padding: 20px;
-  margin-bottom: 12px;
+  margin-bottom: 12px
 }
 
 .faq-item h3 {
   font-size: 16px;
   color: var(--text);
-  margin-bottom: 8px;
+  margin-bottom: 8px
 }
 
 .faq-item p {
   color: var(--sub);
   line-height: 1.7;
-  font-size: 14px;
+  font-size: 14px
 }
 
 .tools a{
@@ -266,35 +266,35 @@ input[type="checkbox"]{
   border-radius:8px;
   border:1px solid var(--border);
   color:var(--sub);
-  text-decoration:none;
+  text-decoration:none
 }
 .tools a:hover{
   border-color:var(--accent);
-  color:var(--accent);
+  color:var(--accent)
 }
 
 .ad-banner {
   margin: 32px 0;
-  text-align: center;
+  text-align: center
 }
 
-footer {
+footer{
   margin-top: 40px;
   text-align: center;
   color: var(--sub);
-  font-size: 13px;
-border-top:1px solid var(--border);}
+  font-size: 13px
+}
 footer p {
-  margin-bottom: 8px;
+  margin-bottom: 8px
 }
 footer a {
   color: var(--sub);
   text-decoration: none;
   margin: 0 10px;
-  transition: color 0.2s;
+  transition: color 0.2s
 }
 footer a:hover {
-  color: var(--accent);
+  color: var(--accent)
 }
 
 @media(max-width:600px){
@@ -336,43 +336,7 @@ button.secondary:hover{
   border-color:var(--accent);
   color:var(--accent)
 }
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
-</head>
-
-<body><div class="container">
-
-<a class="back" href="../index.html">← Back to Tools</a>
-
-<h1>URL Slug Generator</h1>
-<p class="subtitle">Convert any text or title into a clean, SEO-friendly URL slug. Handles diacritics, special characters, and bulk conversion (one title per line).</p>
-
-<div class="ad-banner">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="5794572171"
-       data-ad-format="auto"
-       data-full-width-responsive="true">
-  </ins>
-</div>
-
-<h2>Free Online URL Slug Generator</h2>
-<div class="section">
-<p>This free online tool instantly converts any text, title, or phrase into a clean, SEO-friendly URL slug. Perfect for blog posts, product pages, and website content. Simply type or paste your text, and the generator removes special characters, diacritics, and unwanted words, while letting you customize separators and formatting options.</p>
-<p>The slug generator supports bulk conversion, allowing you to process multiple titles at once (one per line). All processing happens in your browser — your data never leaves your device, ensuring complete privacy and security.</p>
-</div>
-
-<div class="card">
-  <div class="form-grid">
-    <div class="field">
-      <label>Single Title / Text</label>
-      <input type="text" id="singleInput" placeholder="How to Fix Zoom Audio Not Working (2026)" oninput="convertSingle()" />
-    </div>
-  </div>
-
-  <div class="options-row">
-    <label class="opt-label">Separator:
-      <select id="sepSel" onchange="convertSingle();convertBulk()">
+footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;convertBulk()">
         <option value="-">Hyphen (-)</option>
         <option value="_">Underscore (_)</option>
         <option value=".">Dot (.)</option>
@@ -489,17 +453,17 @@ function toSlug(text, separator, lowercase, removeStop, removeNum){
   if(lowercase) slug = slug.toLowerCase();
   if(removeStop){
     const words = slug.split(separator);
-    slug = words.filter(w => !stopWords.includes(w.toLowerCase())).join(separator);
+    slug = words.filter(w => !stopWords.includes(w.toLowerCase())).join(separator)
   }
   if(removeNum){
-    slug = slug.replace(/\d+/g, '');
+    slug = slug.replace(/\d+/g, '')
   }
   
   // Clean up
   slug = slug.replace(new RegExp('^['+separator+']+'), '');
   slug = slug.replace(new RegExp('['+separator+']+$'), '');
   
-  return slug;
+  return slug
 }
 
 function convertSingle(){
@@ -511,11 +475,11 @@ function convertSingle(){
   
   if(!text.trim()){
     document.getElementById('resultSlug').textContent = '';
-    return;
+    return
   }
   
   const slug = toSlug(text, separator, lowercase, removeStop, removeNum);
-  document.getElementById('resultSlug').textContent = slug;
+  document.getElementById('resultSlug').textContent = slug
 }
 
 function convertBulk(){
@@ -528,7 +492,7 @@ function convertBulk(){
   const outputDiv = document.getElementById('bulkOutput');
   if(!text.trim()){
     outputDiv.innerHTML = '';
-    return;
+    return
   }
   
   const lines = text.split('\n').filter(l => l.trim());
@@ -542,24 +506,24 @@ function convertBulk(){
         <div class="bulk-slug">${slug}</div>
         <button onclick="copyText('${slug.replace(/'/g, "\\'")}')" style="flex:0 0 80px;padding:6px;margin-left:12px;font-size:12px">Copy</button>
       </div>
-    `;
+    `
   });
   
-  outputDiv.innerHTML = html;
+  outputDiv.innerHTML = html
 }
 
 function copySlug(){
   const slug = document.getElementById('resultSlug').textContent;
   if(!slug) return;
   navigator.clipboard.writeText(slug).then(() => {
-    alert('Slug copied!');
-  });
+    alert('Slug copied!')
+  })
 }
 
 function copyText(text){
   navigator.clipboard.writeText(text).then(() => {
-    alert('Copied!');
-  });
+    alert('Copied!')
+  })
 }
 
 function copyAllSlugs(){
@@ -575,18 +539,18 @@ function copyAllSlugs(){
   const slugs = lines.map(line => toSlug(line, separator, lowercase, removeStop, removeNum)).join('\n');
   
   navigator.clipboard.writeText(slugs).then(() => {
-    alert('All slugs copied!');
-  });
+    alert('All slugs copied!')
+  })
 }
 
 function clearSingle(){
   document.getElementById('singleInput').value = '';
-  document.getElementById('resultSlug').textContent = '';
+  document.getElementById('resultSlug').textContent = ''
 }
 
 function clearBulk(){
   document.getElementById('bulkInput').value = '';
-  document.getElementById('bulkOutput').innerHTML = '';
+  document.getElementById('bulkOutput').innerHTML = ''
 }
 </script>
 

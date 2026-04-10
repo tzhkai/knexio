@@ -50,70 +50,7 @@ h1{font-size:32px;margin-bottom:8px}
 .faq-item p{color:var(--sub);font-size:14px;line-height:1.6}
 
 .ad-banner{margin:32px 0;text-align:center;min-height:90px}
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
-
-<!-- Open Graph -->
-<meta property="og:type" content="WebApplication">
-<meta property="og:site_name" content="Knexio">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Is this tool free to use?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, this tool is completely free to use. No registration, no login, and no subscription required. Just open the page and start using it."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is my data safe? Is anything stored on a server?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, your data is safe. All processing happens entirely in your browser \u2014 your input never leaves your device and is not sent to any server."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does this tool work on mobile devices?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. The tool is fully responsive and works on smartphones, tablets, and desktop computers."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How accurate is the result?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The tool uses standard algorithms and web APIs to provide accurate results. For critical or professional use, please verify with additional sources."
-      }
-    }
-  ]
-}
-</script>
-</head>
-<body>
-<div class="container">
-<a class="back" href="../index.html">← Back to Tools</a>
-
-<h1>Heart Rate Calculator</h1>
-<p class="subtitle">Find your optimal exercise heart rate zones</p>
-
-<div class="ad-banner">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="5794572171"
-       data-ad-format="auto"
-       data-full-width-responsive="true">
-  </ins>
-
-<!-- Ad: Sidebar -->
-<div class="ad-sidebar" style="margin:20px 0;text-align:center"><ins class="adsbygoogle" style="display:block;min-height:250px" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3617326351" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
+footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;text-align:center"><ins class="adsbygoogle" style="display:block;min-height:250px" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3617326351" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
 </div>
 
 <div class="controls">
@@ -203,7 +140,7 @@ function calculate() {
   
   if (!age || !resting) {
     alert('Please enter valid numbers');
-    return;
+    return
   }
   
   const maxHR = 220 - age;
@@ -216,7 +153,7 @@ function calculate() {
   document.getElementById('zone4').textContent = Math.round(resting + hrr * 0.8) + '-' + Math.round(resting + hrr * 0.9) + ' bpm';
   document.getElementById('zone5').textContent = Math.round(resting + hrr * 0.9) + '-' + maxHR + ' bpm';
   
-  document.getElementById('results').style.display = 'block';
+  document.getElementById('results').style.display = 'block'
 }
 </script>
 <script src="/knexio-bundle.js"></script>

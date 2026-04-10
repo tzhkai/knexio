@@ -80,56 +80,56 @@
       --border: rgba(255,255,255,0.08);
       --text: #fff;
       --sub: #aab3c5;
-      --accent: #4f8cff;
+      --accent: #4f8cff
     }
     * {
       box-sizing: border-box;
       margin: 0;
-      padding: 0;
+      padding: 0
     }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background: var(--bg);
       color: var(--text);
-      min-height: 100vh;
+      min-height: 100vh
     }
     .container {
       max-width: 900px;
       margin: 0 auto;
-      padding: 60px 20px 100px;
+      padding: 60px 20px 100px
     }
     .back {
       display: inline-block;
       margin-bottom: 28px;
       font-size: 14px;
-      color: var(--sub);
+      color: var(--sub)
     }
     .back:hover {
-      color: var(--accent);
+      color: var(--accent)
     }
     h1 {
       font-size: 34px;
-      margin-bottom: 10px;
+      margin-bottom: 10px
     }
     .subtitle {
       font-size: 16px;
       color: var(--sub);
       margin-bottom: 28px;
-      line-height: 1.6;
+      line-height: 1.6
     }
     .ad-banner {
       margin: 32px 0;
       text-align: center;
-      min-height: 90px;
+      min-height: 90px
     }
     .main-grid {
       display: grid;
       grid-template-columns: 340px 1fr;
-      gap: 24px;
+      gap: 24px
     }
     @media (max-width: 720px) {
       .main-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr
       }
     }
     .card {
@@ -137,30 +137,30 @@
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 20px;
-      margin-bottom: 20px;
+      margin-bottom: 20px
     }
     .controls {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 14px;
-      padding: 20px;
+      padding: 20px
     }
     .preview-wrap {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 16px
     }
     .preview-box {
       width: 100%;
       aspect-ratio: 16/9;
       border-radius: 14px;
       border: 1px solid var(--border);
-      transition: all 0.2s;
+      transition: all 0.2s
     }
     .type-row {
       display: flex;
       gap: 8px;
-      margin-bottom: 20px;
+      margin-bottom: 20px
     }
     .type-btn {
       flex: 1;
@@ -171,12 +171,12 @@
       color: var(--sub);
       font-size: 14px;
       cursor: pointer;
-      transition: all 0.18s;
+      transition: all 0.18s
     }
     .type-btn.active {
       background: var(--accent);
       color: #fff;
-      border-color: var(--accent);
+      border-color: var(--accent)
     }
     .ctrl-label {
       font-size: 12px;
@@ -184,32 +184,32 @@
       text-transform: uppercase;
       letter-spacing: 0.5px;
       margin-bottom: 8px;
-      display: block;
+      display: block
     }
     .ctrl-group {
-      margin-bottom: 20px;
+      margin-bottom: 20px
     }
     .angle-row {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 12px
     }
     .angle-row input[type=range] {
       flex: 1;
-      accent-color: var(--accent);
+      accent-color: var(--accent)
     }
     .angle-val {
       min-width: 44px;
       text-align: center;
       font-size: 14px;
       color: var(--accent);
-      font-family: monospace;
+      font-family: monospace
     }
     .stops-list {
       display: flex;
       flex-direction: column;
       gap: 8px;
-      margin-bottom: 12px;
+      margin-bottom: 12px
     }
     .stop-row {
       display: flex;
@@ -218,7 +218,7 @@
       background: rgba(255,255,255,0.03);
       border: 1px solid var(--border);
       border-radius: 10px;
-      padding: 8px 10px;
+      padding: 8px 10px
     }
     .stop-row input[type=color] {
       width: 40px;
@@ -227,17 +227,17 @@
       border-radius: 6px;
       cursor: pointer;
       background: none;
-      padding: 0;
+      padding: 0
     }
     .stop-row input[type=range] {
       flex: 1;
-      accent-color: var(--accent);
+      accent-color: var(--accent)
     }
     .stop-pos {
       font-size: 12px;
       color: var(--sub);
       font-family: monospace;
-      min-width: 32px;
+      min-width: 32px
     }
     .stop-remove {
       background: none;
@@ -246,10 +246,10 @@
       cursor: pointer;
       font-size: 16px;
       padding: 0 4px;
-      line-height: 1;
+      line-height: 1
     }
     .stop-remove:hover {
-      color: #f87171;
+      color: #f87171
     }
     .add-stop {
       width: 100%;
@@ -260,11 +260,11 @@
       color: var(--sub);
       font-size: 14px;
       cursor: pointer;
-      transition: all 0.18s;
+      transition: all 0.18s
     }
     .add-stop:hover {
       border-color: var(--accent);
-      color: var(--accent);
+      color: var(--accent)
     }
     .css-out {
       background: var(--bg);
@@ -276,13 +276,13 @@
       color: #7dd3fc;
       word-break: break-all;
       line-height: 1.6;
-      min-height: 72px;
+      min-height: 72px
     }
     .btn-row {
       display: flex;
       gap: 10px;
       margin-top: 12px;
-      flex-wrap: wrap;
+      flex-wrap: wrap
     }
     .btn {
       padding: 10px 22px;
@@ -292,86 +292,86 @@
       color: #fff;
       font-size: 14px;
       cursor: pointer;
-      transition: opacity 0.18s;
+      transition: opacity 0.18s
     }
     .btn:hover {
-      opacity: 0.85;
+      opacity: 0.85
     }
     .btn.secondary {
       background: var(--card);
       border: 1px solid var(--border);
-      color: var(--sub);
+      color: var(--sub)
     }
     .btn.secondary:hover {
-      color: var(--text);
+      color: var(--text)
     }
     .presets {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
       gap: 8px;
-      margin-top: 16px;
+      margin-top: 16px
     }
     .preset-swatch {
       height: 44px;
       border-radius: 8px;
       cursor: pointer;
       border: 2px solid transparent;
-      transition: border 0.18s;
+      transition: border 0.18s
     }
     .preset-swatch:hover {
-      border-color: var(--accent);
+      border-color: var(--accent)
     }
     h2 {
       font-size: 22px;
       margin: 36px 0 14px;
-      color: var(--text);
+      color: var(--text)
     }
     .section {
-      margin-bottom: 24px;
+      margin-bottom: 24px
     }
     .tip-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
       gap: 14px;
-      margin-bottom: 24px;
+      margin-bottom: 24px
     }
     .tip-card {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 18px;
+      padding: 18px
     }
     .tip-card h3 {
       font-size: 14px;
       color: var(--accent);
-      margin-bottom: 8px;
+      margin-bottom: 8px
     }
     .tip-card p {
       font-size: 13px;
       color: var(--sub);
-      line-height: 1.6;
+      line-height: 1.6
     }
     .faq-item {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 20px;
-      margin-bottom: 12px;
+      margin-bottom: 12px
     }
     .faq-item h3 {
       font-size: 16px;
       margin-bottom: 8px;
-      color: var(--text);
+      color: var(--text)
     }
     .faq-item p {
       font-size: 14px;
       color: var(--sub);
-      line-height: 1.6;
+      line-height: 1.6
     }
     .tools {
       display: flex;
       gap: 12px;
-      flex-wrap: wrap;
+      flex-wrap: wrap
     }
     .tools a {
       padding: 10px 18px;
@@ -381,105 +381,40 @@
       color: var(--sub);
       text-decoration: none;
       font-size: 14px;
-      transition: all 0.2s;
+      transition: all 0.2s
     }
     .tools a:hover {
       border-color: var(--accent);
-      color: var(--accent);
+      color: var(--accent)
     }
-    footer {
+    footer{
       margin-top: 60px;
       text-align: center;
       font-size: 13px;
-      color: var(--sub);
-    border-top:1px solid var(--border);}
+      color: var(--sub)
+    }
     footer p {
-      margin-bottom: 8px;
+      margin-bottom: 8px
     }
     footer a {
       color: var(--sub);
-      margin: 0 10px;
+      margin: 0 10px
     }
     footer a:hover {
-      color: var(--accent);
+      color: var(--accent)
     }
     .copied {
-      background: #22c55e !important;
+      background: #22c55e !important
     }
     @media (max-width: 600px) {
       .presets {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, 1fr)
       }
       .btn-row {
-        flex-direction: column;
+        flex-direction: column
       }
     }
-  footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
-</head>
-<body>
-<div class="container">
-  <a class="back" href="../index.html">← Back to Tools</a>
-  <h1>🎨 CSS Gradient Generator</h1>
-  <p class="subtitle">Build linear, radial, and conic CSS gradients visually. Add unlimited color stops, adjust angle, and copy production-ready CSS code in one click.</p>
-
-  <!-- Ad Slot 1: Top -->
-  <div class="ad-banner">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="5794572171"
-       data-ad-format="auto"
-       data-full-width-responsive="true">
-  </ins>
-</div>
-
-  <div class="main-grid">
-    <!-- Controls -->
-    <div class="controls">
-      <div class="type-row">
-        <button class="type-btn active" id="btn-linear" onclick="setType('linear')">Linear</button>
-        <button class="type-btn" id="btn-radial" onclick="setType('radial')">Radial</button>
-        <button class="type-btn" id="btn-conic" onclick="setType('conic')">Conic</button>
-      </div>
-
-      <div class="ctrl-group" id="angle-group">
-        <span class="ctrl-label">Angle</span>
-        <div class="angle-row">
-          <input type="range" id="angleRange" min="0" max="360" value="135" oninput="updateAngle(this.value)">
-          <span class="angle-val" id="angleVal">135°</span>
-        </div>
-      </div>
-
-      <div class="ctrl-group">
-        <span class="ctrl-label">Color Stops</span>
-        <div class="stops-list" id="stopsList"></div>
-        <button class="add-stop" onclick="addStop()">+ Add Color Stop</button>
-      </div>
-    </div>
-
-    <!-- Preview + Output -->
-    <div class="preview-wrap">
-      <div class="preview-box" id="previewBox"></div>
-
-      <div class="card">
-        <span class="ctrl-label">CSS Output</span>
-        <div class="css-out" id="cssOut"></div>
-        <div class="btn-row">
-          <button class="btn" id="copyBtn" onclick="copyCss()">📋 Copy CSS</button>
-          <button class="btn secondary" onclick="randomGradient()">🎲 Random</button>
-        </div>
-      </div>
-
-      <div class="card">
-        <span class="ctrl-label">Preset Gradients</span>
-        <div class="presets" id="presetsGrid"></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section">
-    <h2>Free Online CSS Gradient Generator</h2>
-    <p style="color: var(--sub); line-height: 1.7;">Create stunning CSS gradients instantly with our free gradient generator. Designers and developers can build linear, radial, and conic gradients with an intuitive visual interface. Adjust colors, add multiple stops, change angles, and copy the CSS code in one click. Perfect for buttons, backgrounds, headers, and any web design element.</p>
+  footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px; line-height: 1.7;">Create stunning CSS gradients instantly with our free gradient generator. Designers and developers can build linear, radial, and conic gradients with an intuitive visual interface. Adjust colors, add multiple stops, change angles, and copy the CSS code in one click. Perfect for buttons, backgrounds, headers, and any web design element.</p>
   </div>
 
   <div class="section">
@@ -595,26 +530,26 @@
     const stopStr = stops.map(s => `${s.color} ${s.pos}%`).join(', ');
     if (gradType === 'linear') return `linear-gradient(${angle}deg, ${stopStr})`;
     if (gradType === 'radial') return `radial-gradient(circle, ${stopStr})`;
-    if (gradType === 'conic') return `conic-gradient(from ${angle}deg, ${stopStr})`;
+    if (gradType === 'conic') return `conic-gradient(from ${angle}deg, ${stopStr})`
   }
 
   function render() {
     const grad = buildGradient();
     document.getElementById('previewBox').style.background = grad;
-    document.getElementById('cssOut').textContent = `background: ${grad};`;
+    document.getElementById('cssOut').textContent = `background: ${grad};`
   }
 
   function setType(t) {
     gradType = t;
     ['linear','radial','conic'].forEach(x => document.getElementById('btn-'+x).classList.toggle('active', x===t));
     document.getElementById('angle-group').style.display = (t === 'radial') ? 'none' : 'block';
-    render();
+    render()
   }
 
   function updateAngle(v) {
     angle = +v;
     document.getElementById('angleVal').textContent = v + '°';
-    render();
+    render()
   }
 
   function renderStops() {
@@ -629,20 +564,20 @@
         <span class="stop-pos" id="pos-${i}">${s.pos}%</span>
         ${stops.length > 2 ? `<button class="stop-remove" onclick="removeStop(${i})">✕</button>` : ''}
       `;
-      list.appendChild(row);
+      list.appendChild(row)
     });
-    render();
+    render()
   }
 
   function addStop() {
     const mid = Math.round((stops[stops.length-2]?.pos + stops[stops.length-1]?.pos) / 2) || 50;
     stops.splice(stops.length - 1, 0, {color:'#ffffff', pos: Math.min(mid, 99)});
-    renderStops();
+    renderStops()
   }
 
   function removeStop(i) {
     stops.splice(i, 1);
-    renderStops();
+    renderStops()
   }
 
   function copyCss() {
@@ -651,8 +586,8 @@
       const btn = document.getElementById('copyBtn');
       btn.textContent = '✅ Copied!';
       btn.classList.add('copied');
-      setTimeout(() => { btn.textContent = '📋 Copy CSS'; btn.classList.remove('copied'); }, 2000);
-    });
+      setTimeout(() => { btn.textContent = '📋 Copy CSS'; btn.classList.remove('copied') }, 2000)
+    })
   }
 
   function randomGradient() {
@@ -662,7 +597,7 @@
     angle = Math.floor(Math.random() * 360);
     document.getElementById('angleRange').value = angle;
     document.getElementById('angleVal').textContent = angle + '°';
-    renderStops();
+    renderStops()
   }
 
   function buildPresets() {
@@ -674,9 +609,9 @@
       div.className = 'preset-swatch';
       div.style.background = `linear-gradient(135deg, ${stopStr})`;
       div.title = 'Preset ' + (i+1);
-      div.onclick = () => { stops = p.map(s => ({...s})); renderStops(); };
-      grid.appendChild(div);
-    });
+      div.onclick = () => { stops = p.map(s => ({...s})); renderStops() };
+      grid.appendChild(div)
+    })
   }
 
   buildPresets();

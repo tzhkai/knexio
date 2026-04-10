@@ -81,153 +81,153 @@
       /* 容器布局优化 */
       .container, .wrap {
         padding: 40px 15px 80px !important;
-        max-width: 100% !important;
+        max-width: 100% !important
       }
       
       /* 标题字体优化 */
       h1 {
         font-size: 28px !important;
-        line-height: 1.3 !important;
+        line-height: 1.3 !important
       }
       
       h2 {
         font-size: 20px !important;
         margin-top: 36px !important;
-        margin-bottom: 10px !important;
+        margin-bottom: 10px !important
       }
       
       h3 {
-        font-size: 17px !important;
+        font-size: 17px !important
       }
       
       /* 正文内容优化 */
       p, li, .intro, .subtitle {
         font-size: 14px !important;
-        line-height: 1.7 !important;
+        line-height: 1.7 !important
       }
       
       /* 段落间距优化 */
       p, ul, ol {
-        margin-bottom: 16px !important;
+        margin-bottom: 16px !important
       }
       
       /* 列表优化 */
       ul, ol {
-        padding-left: 18px !important;
+        padding-left: 18px !important
       }
       
       li {
-        margin-bottom: 6px !important;
+        margin-bottom: 6px !important
       }
       
       /* 内容块优化 */
       .main-panel, .step-block, .notice, .extra-info {
         padding: 16px !important;
         border-radius: 12px !important;
-        margin: 16px 0 !important;
+        margin: 16px 0 !important
       }
       
       /* 按钮和输入框优化 */
       .btn {
         padding: 14px !important;
         font-size: 15px !important;
-        min-height: 48px !important;
+        min-height: 48px !important
       }
       
       .input-group input {
         padding: 12px !important;
-        font-size: 15px !important;
+        font-size: 15px !important
       }
       
       /* 网格系统优化 */
       .age-grid {
         grid-template-columns: repeat(2, 1fr) !important;
-        gap: 12px !important;
+        gap: 12px !important
       }
       
       /* 广告位优化 */
       .ad-banner {
         margin: 16px 0 !important;
-        min-height: 50px !important;
+        min-height: 50px !important
       }
       
       /* 游戏页面优化 */
       .grid-container {
-        padding: 8px !important;
+        padding: 8px !important
       }
       
       .grid { margin: 0 auto;
-        gap: 8px !important;
+        gap: 8px !important
       }
       
       .cell {
         font-size: 20px !important;
-        border-radius: 6px !important;
+        border-radius: 6px !important
       }
       
       .score-box {
         min-width: 70px !important;
-        padding: 6px 12px !important;
+        padding: 6px 12px !important
       }
       
       .score-val {
-        font-size: 18px !important;
+        font-size: 18px !important
       }
       
       /* 工具页面优化 */
       .age-main {
-        font-size: 36px !important;
+        font-size: 36px !important
       }
       
       .age-value {
-        font-size: 24px !important;
+        font-size: 24px !important
       }
       
       .age-label {
-        font-size: 11px !important;
+        font-size: 11px !important
       }
       
       /* 引导页面优化 */
       .intro {
         border-left-width: 2px !important;
         padding-left: 12px !important;
-        margin-bottom: 32px !important;
+        margin-bottom: 32px !important
       }
       
       .faq-item {
-        margin-bottom: 20px !important;
+        margin-bottom: 20px !important
       }
       
       .faq-item strong {
-        font-size: 15px !important;
+        font-size: 15px !important
       }
     }
     
     /* 小手机优化 (≤480px) */
     @media (max-width: 480px) {
       h1 {
-        font-size: 24px !important;
+        font-size: 24px !important
       }
       
       h2 {
-        font-size: 18px !important;
+        font-size: 18px !important
       }
       
       .container, .wrap {
-        padding: 32px 12px 60px !important;
+        padding: 32px 12px 60px !important
       }
       
       .main-panel, .step-block, .notice {
-        padding: 14px !important;
+        padding: 14px !important
       }
       
       .btn {
         padding: 12px !important;
-        font-size: 14px !important;
+        font-size: 14px !important
       }
       
       .age-grid {
-        grid-template-columns: 1fr !important;
+        grid-template-columns: 1fr !important
       }
     }
     
@@ -235,33 +235,14 @@
     @media (hover: none) and (pointer: coarse) {
       button, .btn, a[onclick], .cell {
         min-height: 44px !important;
-        min-width: 44px !important;
+        min-width: 44px !important
       }
       
       input, select, textarea {
-        font-size: 16px !important;
+        font-size: 16px !important
       }
     }
-    footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
-</head>
-<body><div class="container">
-    <a href="../index.html" class="back-link">← Back to Games</a>
-
-    <h1>Gomoku</h1>
-    <p class="subtitle">Five in a Row - Connect 5 stones to win!</p>
-
-    <div class="game-container">
-      <div class="mode-select">
-        <button class="mode-btn active" onclick="setMode('pvp')">👥 2 Players</button>
-        <button class="mode-btn" onclick="setMode('ai')">🤖 vs AI</button>
-      </div>
-
-      <div class="game-header">
-        <div class="current-player">
-          Current: <div class="player-indicator black" id="currentIndicator"></div> <span id="currentText">Black</span>
-        
-<!-- Ad: Sidebar -->
-<div class="ad-sidebar" style="margin:20px 0;text-align:center"><ins class="adsbygoogle" style="display:block;min-height:250px" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3617326351" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
+    footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;text-align:center"><ins class="adsbygoogle" style="display:block;min-height:250px" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3617326351" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
 </div>
         <div class="controls">
           <button class="btn btn-secondary" onclick="undoMove()">↩️ Undo</button>
@@ -366,7 +347,7 @@ function initGame() {
   moveHistory = [];
   renderBoard();
   updateStatus();
-  hideWinMessage();
+  hideWinMessage()
 }
 
 function renderBoard() {
@@ -402,11 +383,11 @@ function renderBoard() {
         stone.style.background = board[row][col] === 'black' ? '#000' : '#fff';
         stone.style.border = board[row][col] === 'white' ? '1px solid #ccc' : 'none';
         stone.style.boxShadow = '2px 2px 4px rgba(0,0,0,0.3)';
-        cell.appendChild(stone);
+        cell.appendChild(stone)
       }
       
       cell.addEventListener('click', () => handleCellClick(row, col));
-      boardEl.appendChild(cell);
+      boardEl.appendChild(cell)
     }
   }
 }
@@ -415,7 +396,7 @@ function handleCellClick(row, col) {
   if (gameOver || board[row][col]) return;
   if (gameMode === 'ai' && currentPlayer === 'white') return;
   
-  makeMove(row, col);
+  makeMove(row, col)
 }
 
 function makeMove(row, col) {
@@ -426,20 +407,20 @@ function makeMove(row, col) {
   if (checkWin(row, col)) {
     gameOver = true;
     showWinMessage(currentPlayer);
-    return;
+    return
   }
   
   if (checkDraw()) {
     gameOver = true;
     showWinMessage('draw');
-    return;
+    return
   }
   
   currentPlayer = currentPlayer === 'black' ? 'white' : 'black';
   updateStatus();
   
   if (gameMode === 'ai' && currentPlayer === 'white') {
-    setTimeout(makeAIMove, 500);
+    setTimeout(makeAIMove, 500)
   }
 }
 
@@ -455,8 +436,8 @@ function checkWin(row, col) {
       const r = row + dr * i;
       const c = col + dc * i;
       if (r >= 0 && r < BOARD_SIZE && c >= 0 && c < BOARD_SIZE && board[r][c] === player) {
-        count++;
-      } else break;
+        count++
+      } else break
     }
     
     // Check negative direction
@@ -464,17 +445,17 @@ function checkWin(row, col) {
       const r = row - dr * i;
       const c = col - dc * i;
       if (r >= 0 && r < BOARD_SIZE && c >= 0 && c < BOARD_SIZE && board[r][c] === player) {
-        count++;
-      } else break;
+        count++
+      } else break
     }
     
-    if (count >= 5) return true;
+    if (count >= 5) return true
   }
-  return false;
+  return false
 }
 
 function checkDraw() {
-  return board.every(row => row.every(cell => cell !== null));
+  return board.every(row => row.every(cell => cell !== null))
 }
 
 // ==================== AI Logic ====================
@@ -482,7 +463,7 @@ function makeAIMove() {
   if (gameOver) return;
   
   const move = findBestMove();
-  makeMove(move.row, move.col);
+  makeMove(move.row, move.col)
 }
 
 function findBestMove() {
@@ -493,9 +474,9 @@ function findBestMove() {
         board[row][col] = 'white';
         if (checkWin(row, col)) {
           board[row][col] = null;
-          return { row, col };
+          return { row, col }
         }
-        board[row][col] = null;
+        board[row][col] = null
       }
     }
   }
@@ -507,9 +488,9 @@ function findBestMove() {
         board[row][col] = 'black';
         if (checkWin(row, col)) {
           board[row][col] = null;
-          return { row, col };
+          return { row, col }
         }
-        board[row][col] = null;
+        board[row][col] = null
       }
     }
   }
@@ -521,9 +502,9 @@ function findBestMove() {
         board[row][col] = 'white';
         if (hasOpenFour(row, col, 'white')) {
           board[row][col] = null;
-          return { row, col };
+          return { row, col }
         }
-        board[row][col] = null;
+        board[row][col] = null
       }
     }
   }
@@ -535,9 +516,9 @@ function findBestMove() {
         board[row][col] = 'black';
         if (hasOpenFour(row, col, 'black')) {
           board[row][col] = null;
-          return { row, col };
+          return { row, col }
         }
-        board[row][col] = null;
+        board[row][col] = null
       }
     }
   }
@@ -550,9 +531,9 @@ function findBestMove() {
       if (!board[row][col]) {
         const distFromCenter = Math.abs(row - 7) + Math.abs(col - 7);
         if (distFromCenter <= 3) {
-          centerMoves.push({ row, col, score: 10 - distFromCenter });
+          centerMoves.push({ row, col, score: 10 - distFromCenter })
         } else {
-          otherMoves.push({ row, col, score: 5 });
+          otherMoves.push({ row, col, score: 5 })
         }
       }
     }
@@ -561,10 +542,10 @@ function findBestMove() {
   const allMoves = [...centerMoves, ...otherMoves];
   if (allMoves.length > 0) {
     allMoves.sort((a, b) => b.score - a.score);
-    return allMoves[Math.floor(Math.random() * Math.min(5, allMoves.length))];
+    return allMoves[Math.floor(Math.random() * Math.min(5, allMoves.length))]
   }
   
-  return { row: 7, col: 7 };
+  return { row: 7, col: 7 }
 }
 
 function hasOpenFour(row, col, player) {
@@ -580,8 +561,8 @@ function hasOpenFour(row, col, player) {
       const c = col + dc * i;
       if (r >= 0 && r < BOARD_SIZE && c >= 0 && c < BOARD_SIZE) {
         if (board[r][c] === player) count++;
-        else if (!board[r][c]) { openEnds++; break; }
-        else break;
+        else if (!board[r][c]) { openEnds++; break }
+        else break
       }
     }
     
@@ -591,27 +572,27 @@ function hasOpenFour(row, col, player) {
       const c = col - dc * i;
       if (r >= 0 && r < BOARD_SIZE && c >= 0 && c < BOARD_SIZE) {
         if (board[r][c] === player) count++;
-        else if (!board[r][c]) { openEnds++; break; }
-        else break;
+        else if (!board[r][c]) { openEnds++; break }
+        else break
       }
     }
     
-    if (count >= 4 && openEnds >= 1) return true;
+    if (count >= 4 && openEnds >= 1) return true
   }
-  return false;
+  return false
 }
 
 // ==================== UI Functions ====================
 function setMode(mode) {
   gameMode = mode;
   document.querySelectorAll('.mode-btn').forEach(btn => {
-    btn.classList.toggle('active', btn.textContent.toLowerCase().includes(mode === 'ai' ? 'ai' : 'players'));
+    btn.classList.toggle('active', btn.textContent.toLowerCase().includes(mode === 'ai' ? 'ai' : 'players'))
   });
-  newGame();
+  newGame()
 }
 
 function newGame() {
-  initGame();
+  initGame()
 }
 
 function undoMove() {
@@ -622,21 +603,21 @@ function undoMove() {
   
   for (let i = 0; i < movesToUndo && moveHistory.length > 0; i++) {
     const lastMove = moveHistory.pop();
-    board[lastMove.row][lastMove.col] = null;
+    board[lastMove.row][lastMove.col] = null
   }
   
   currentPlayer = moveHistory.length % 2 === 0 ? 'black' : 'white';
   gameOver = false;
   renderBoard();
   updateStatus();
-  hideWinMessage();
+  hideWinMessage()
 }
 
 function updateStatus() {
   const indicator = document.getElementById('currentIndicator');
   const text = document.getElementById('currentText');
   indicator.className = 'player-indicator ' + currentPlayer;
-  text.textContent = currentPlayer === 'black' ? 'Black' : 'White';
+  text.textContent = currentPlayer === 'black' ? 'Black' : 'White'
 }
 
 function showWinMessage(winner) {
@@ -645,16 +626,16 @@ function showWinMessage(winner) {
   
   if (winner === 'draw') {
     winnerText.textContent = 'It\'s a Draw!';
-    winMsg.querySelector('p').textContent = 'The board is full!';
+    winMsg.querySelector('p').textContent = 'The board is full!'
   } else {
     winnerText.textContent = winner === 'black' ? 'Black' : 'White';
-    winMsg.querySelector('p').textContent = 'Five in a row achieved!';
+    winMsg.querySelector('p').textContent = 'Five in a row achieved!'
   }
-  winMsg.style.display = 'block';
+  winMsg.style.display = 'block'
 }
 
 function hideWinMessage() {
-  document.getElementById('winMessage').style.display = 'none';
+  document.getElementById('winMessage').style.display = 'none'
 }
 
 // Initialize

@@ -25,53 +25,53 @@
   </script>
 <style>
 
-    :root{--bg:#0b1220;--bg2:#070d1a;--panel:#111a2e;--border:rgba(255,255,255,0.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff;--board-light:#eecfa1;--board-dark:#8b4513;--piece-red:#dc2626;--piece-black:#1f2937;--king-gold:#fbbf24;;--text-main:#fff;--text-sub:#aab3c5}
-    *{box-sizing:border-box;margin:0;padding:0;}
-    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:linear-gradient(180deg,var(--bg),var(--bg2));color:var(--text);min-height:100vh;}
-    a{text-decoration:none;color:inherit;}
-    .wrap{width:fit-content;margin:0 auto;padding:20px;}
-    .back{display:inline-block;margin-bottom:15px;font-size:14px;color:var(--sub);}
-    .back:hover{color:var(--accent);}
-    h1{font-size:28px;margin-bottom:10px;text-align:center;}
-    .subtitle{text-align:center;color:var(--sub);font-size:14px;margin-bottom:15px;}
-    .ad-banner{margin:15px 0;text-align:center;}
-    .game-container{background:var(--panel);border-radius:12px;padding:20px;}
-    .game-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px;padding:12px;background:var(--bg2);border-radius:8px;flex-wrap:wrap;gap:10px;}
-    .player-info{display:flex;align-items:center;gap:10px;}
-    .player-piece{width:24px;height:24px;border-radius:50%;border:3px solid var(--border);}
-    .player-piece.red{background:var(--piece-red);}
-    .player-piece.black{background:var(--piece-black);}
-    .turn-indicator{font-size:13px;color:var(--accent);font-weight:600;}
-    .score{display:flex;gap:20px;}
-    .score-item{text-align:center;}
-    .score-value{font-size:20px;font-weight:600;}
-    .score-value.red{color:var(--piece-red);}
-    .score-value.black{color:#6b7280;}
-    .score-label{font-size:11px;color:var(--sub);}
-    .controls{display:flex;gap:8px;}
-    .btn{padding:8px 16px;background:var(--accent);border:none;border-radius:6px;color:#fff;font-size:13px;cursor:pointer;transition:opacity 0.2s;}
-    .btn:hover{opacity:0.9;}
-    .btn-secondary{background:var(--bg2);}
-    .board-container{display:flex;justify-content:center;}
-    .checkers-board{width:fit-content;min-width:320px;aspect-ratio:1;display:grid;grid-template-columns:repeat(8,1fr);border:4px solid #5d4037;border-radius:4px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,0.5);}
-    .square{display:flex;align-items:center;justify-content:center;position:relative;}
-    .square.light{background:var(--board-light);}
-    .square.dark{background:var(--board-dark);}
-    .square.valid-move::after{content:'';position:absolute;width:40%;height:40%;background:rgba(255,255,255,0.3);border-radius:50%;}
-    .square.selected::before{content:'';position:absolute;inset:0;background:rgba(255,255,0,0.4);}
-    .piece{width:75%;height:75%;border-radius:50%;cursor:pointer;transition:transform 0.15s;position:relative;box-shadow:0 3px 6px rgba(0,0,0,0.4);}
-    .piece:hover{transform:scale(1.05);}
-    .piece.red{background:radial-gradient(circle at 30% 30%,#ef4444,var(--piece-red));}
-    .piece.black{background:radial-gradient(circle at 30% 30%,#4b5563,var(--piece-black));}
-    .piece.king::after{content:'★';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:20px;color:var(--king-gold);text-shadow:0 1px 2px rgba(0,0,0,0.5);}
-    .status-message{margin-top:15px;padding:12px;background:var(--bg2);border-radius:8px;text-align:center;font-size:14px;}
-    .status-message.capture{background:rgba(34,197,94,0.2);color:#86efac;}
-    .status-message.win{background:rgba(34,197,94,0.3);color:#86efac;font-weight:600;}
-    .rules{margin-top:30px;background:var(--panel);border-radius:12px;padding:20px;}
-    .rules h2{font-size:18px;margin-bottom:15px;}
-    .rules h3{font-size:15px;margin:15px 0 8px;color:var(--sub);}
-    .rules p,.rules li{color:var(--sub);font-size:14px;line-height:1.7;}
-    .rules ul{margin-left:20px;}
+    :root{--bg:#0b1220;--bg2:#070d1a;--panel:#111a2e;--border:rgba(255,255,255,0.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff;--board-light:#eecfa1;--board-dark:#8b4513;--piece-red:#dc2626;--piece-black:#1f2937;--king-gold:#fbbf24;--text-main:#fff;--text-sub:#aab3c5}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:linear-gradient(180deg,var(--bg),var(--bg2));color:var(--text);min-height:100vh}
+    a{text-decoration:none;color:inherit}
+    .wrap{width:fit-content;margin:0 auto;padding:20px}
+    .back{display:inline-block;margin-bottom:15px;font-size:14px;color:var(--sub)}
+    .back:hover{color:var(--accent)}
+    h1{font-size:28px;margin-bottom:10px;text-align:center}
+    .subtitle{text-align:center;color:var(--sub);font-size:14px;margin-bottom:15px}
+    .ad-banner{margin:15px 0;text-align:center}
+    .game-container{background:var(--panel);border-radius:12px;padding:20px}
+    .game-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px;padding:12px;background:var(--bg2);border-radius:8px;flex-wrap:wrap;gap:10px}
+    .player-info{display:flex;align-items:center;gap:10px}
+    .player-piece{width:24px;height:24px;border-radius:50%;border:3px solid var(--border)}
+    .player-piece.red{background:var(--piece-red)}
+    .player-piece.black{background:var(--piece-black)}
+    .turn-indicator{font-size:13px;color:var(--accent);font-weight:600}
+    .score{display:flex;gap:20px}
+    .score-item{text-align:center}
+    .score-value{font-size:20px;font-weight:600}
+    .score-value.red{color:var(--piece-red)}
+    .score-value.black{color:#6b7280}
+    .score-label{font-size:11px;color:var(--sub)}
+    .controls{display:flex;gap:8px}
+    .btn{padding:8px 16px;background:var(--accent);border:none;border-radius:6px;color:#fff;font-size:13px;cursor:pointer;transition:opacity 0.2s}
+    .btn:hover{opacity:0.9}
+    .btn-secondary{background:var(--bg2)}
+    .board-container{display:flex;justify-content:center}
+    .checkers-board{width:fit-content;min-width:320px;aspect-ratio:1;display:grid;grid-template-columns:repeat(8,1fr);border:4px solid #5d4037;border-radius:4px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,0.5)}
+    .square{display:flex;align-items:center;justify-content:center;position:relative}
+    .square.light{background:var(--board-light)}
+    .square.dark{background:var(--board-dark)}
+    .square.valid-move::after{content:'';position:absolute;width:40%;height:40%;background:rgba(255,255,255,0.3);border-radius:50%}
+    .square.selected::before{content:'';position:absolute;inset:0;background:rgba(255,255,0,0.4)}
+    .piece{width:75%;height:75%;border-radius:50%;cursor:pointer;transition:transform 0.15s;position:relative;box-shadow:0 3px 6px rgba(0,0,0,0.4)}
+    .piece:hover{transform:scale(1.05)}
+    .piece.red{background:radial-gradient(circle at 30% 30%,#ef4444,var(--piece-red))}
+    .piece.black{background:radial-gradient(circle at 30% 30%,#4b5563,var(--piece-black))}
+    .piece.king::after{content:'★';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:20px;color:var(--king-gold);text-shadow:0 1px 2px rgba(0,0,0,0.5)}
+    .status-message{margin-top:15px;padding:12px;background:var(--bg2);border-radius:8px;text-align:center;font-size:14px}
+    .status-message.capture{background:rgba(34,197,94,0.2);color:#86efac}
+    .status-message.win{background:rgba(34,197,94,0.3);color:#86efac;font-weight:600}
+    .rules{margin-top:30px;background:var(--panel);border-radius:12px;padding:20px}
+    .rules h2{font-size:18px;margin-bottom:15px}
+    .rules h3{font-size:15px;margin:15px 0 8px;color:var(--sub)}
+    .rules p,.rules li{color:var(--sub);font-size:14px;line-height:1.7}
+    .rules ul{margin-left:20px}
     footer p{margin:0}
     footer p{margin:0}
 
@@ -82,153 +82,153 @@
       /* 容器布局优化 */
       .container, .wrap {
         padding: 40px 15px 80px !important;
-        max-width: 100% !important;
+        max-width: 100% !important
       }
 
       /* 标题字体优化 */
       h1 {
         font-size: 28px !important;
-        line-height: 1.3 !important;
+        line-height: 1.3 !important
       }
 
       h2 {
         font-size: 20px !important;
         margin-top: 36px !important;
-        margin-bottom: 10px !important;
+        margin-bottom: 10px !important
       }
 
       h3 {
-        font-size: 17px !important;
+        font-size: 17px !important
       }
 
       /* 正文内容优化 */
       p, li, .intro, .subtitle {
         font-size: 14px !important;
-        line-height: 1.7 !important;
+        line-height: 1.7 !important
       }
 
       /* 段落间距优化 */
       p, ul, ol {
-        margin-bottom: 16px !important;
+        margin-bottom: 16px !important
       }
 
       /* 列表优化 */
       ul, ol {
-        padding-left: 18px !important;
+        padding-left: 18px !important
       }
 
       li {
-        margin-bottom: 6px !important;
+        margin-bottom: 6px !important
       }
 
       /* 内容块优化 */
       .main-panel, .step-block, .notice, .extra-info {
         padding: 16px !important;
         border-radius: 12px !important;
-        margin: 16px 0 !important;
+        margin: 16px 0 !important
       }
 
       /* 按钮和输入框优化 */
       .btn {
         padding: 14px !important;
         font-size: 15px !important;
-        min-height: 48px !important;
+        min-height: 48px !important
       }
 
       .input-group input {
         padding: 12px !important;
-        font-size: 15px !important;
+        font-size: 15px !important
       }
 
       /* 网格系统优化 */
       .age-grid {
         grid-template-columns: repeat(2, 1fr) !important;
-        gap: 12px !important;
+        gap: 12px !important
       }
 
       /* 广告位优化 */
       .ad-banner {
         margin: 16px 0 !important;
-        min-height: 50px !important;
+        min-height: 50px !important
       }
 
       /* 游戏页面优化 */
       .grid-container {
-        padding: 8px !important;
+        padding: 8px !important
       }
 
       .grid {
-        gap: 8px !important;
+        gap: 8px !important
       }
 
       .cell {
         font-size: 20px !important;
-        border-radius: 6px !important;
+        border-radius: 6px !important
       }
 
       .score-box {
         min-width: 70px !important;
-        padding: 6px 12px !important;
+        padding: 6px 12px !important
       }
 
       .score-val {
-        font-size: 18px !important;
+        font-size: 18px !important
       }
 
       /* 工具页面优化 */
       .age-main {
-        font-size: 36px !important;
+        font-size: 36px !important
       }
 
       .age-value {
-        font-size: 24px !important;
+        font-size: 24px !important
       }
 
       .age-label {
-        font-size: 11px !important;
+        font-size: 11px !important
       }
 
       /* 引导页面优化 */
       .intro {
         border-left-width: 2px !important;
         padding-left: 12px !important;
-        margin-bottom: 32px !important;
+        margin-bottom: 32px !important
       }
 
       .faq-item {
-        margin-bottom: 20px !important;
+        margin-bottom: 20px !important
       }
 
       .faq-item strong {
-        font-size: 15px !important;
+        font-size: 15px !important
       }
     }
 
     /* 小手机优化 (≤480px) */
     @media (max-width: 480px) {
       h1 {
-        font-size: 24px !important;
+        font-size: 24px !important
       }
 
       h2 {
-        font-size: 18px !important;
+        font-size: 18px !important
       }
 
       .container, .wrap {
-        padding: 32px 12px 60px !important;
+        padding: 32px 12px 60px !important
       }
 
       .main-panel, .step-block, .notice {
-        padding: 14px !important;
+        padding: 14px !important
       }
 
       .btn {
         padding: 12px !important;
-        font-size: 14px !important;
+        font-size: 14px !important
       }
 
       .age-grid {
-        grid-template-columns: 1fr !important;
+        grid-template-columns: 1fr !important
       }
     }
 
@@ -236,44 +236,15 @@
     @media (hover: none) and (pointer: coarse) {
       button, .btn, a[onclick], .cell {
         min-height: 44px !important;
-        min-width: 44px !important;
+        min-width: 44px !important
       }
 
       input, select, textarea {
-        font-size: 16px !important;
+        font-size: 16px !important
       }
         }
 
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
-  <meta name="keywords" content="checkers game, free online game, browser game, play online, casual game" />
-<!-- Open Graph -->
-<meta property="og:site_name" content="Knexio">
-</head>
-<body><div class="wrap">
-  <a class="back" href="../index.html">← Back to Games</a>
-
-  <h1>⚫ Checkers ⚪</h1>
-  <p class="subtitle">Classic draughts - Capture all opponent pieces or block their moves</p>
-
-  <div class="game-container">
-    <div class="game-header">
-      <div class="player-info">
-        <div class="player-piece black"></div>
-        <span>AI (Black)</span>
-      </div>
-
-      <div class="score">
-        <div class="score-item">
-          <div class="score-value red" id="redScore">12</div>
-          <div class="score-label">RED</div>
-        </div>
-        <div class="score-item">
-          <div class="score-value black" id="blackScore">12</div>
-          <div class="score-label">BLACK</div>
-        </div>
-      
-<!-- Ad: Sidebar -->
-<div class="ad-sidebar" style="margin:20px 0;text-align:center"><ins class="adsbygoogle" style="display:block;min-height:250px" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3617326351" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
+footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;text-align:center"><ins class="adsbygoogle" style="display:block;min-height:250px" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3617326351" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
 </div>
 
       <div class="controls">
@@ -475,7 +446,7 @@ function initBoard() {
   for (let row = 5; row < 8; row++) {
     for (let col = 0; col < 8; col++) {
       if ((row + col) % 2 === 1) {
-        board[row][col] = RED;
+        board[row][col] = RED
       }
     }
   }
@@ -484,7 +455,7 @@ function initBoard() {
   for (let row = 0; row < 3; row++) {
     for (let col = 0; col < 8; col++) {
       if ((row + col) % 2 === 1) {
-        board[row][col] = BLACK;
+        board[row][col] = BLACK
       }
     }
   }
@@ -502,11 +473,11 @@ function renderBoard() {
       square.dataset.col = col;
 
       if (selectedPiece && selectedPiece.row === row && selectedPiece.col === col) {
-        square.classList.add('selected');
+        square.classList.add('selected')
       }
 
       if (validMoves.some(m => m.row === row && m.col === col)) {
-        square.classList.add('valid-move');
+        square.classList.add('valid-move')
       }
 
       const piece = board[row][col];
@@ -514,21 +485,21 @@ function renderBoard() {
         const pieceEl = document.createElement('div');
         pieceEl.className = `piece ${piece === RED || piece === RED_KING ? 'red' : 'black'}`;
         if (piece === RED_KING || piece === BLACK_KING) {
-          pieceEl.classList.add('king');
+          pieceEl.classList.add('king')
         }
         pieceEl.onclick = (e) => {
           e.stopPropagation();
-          handlePieceClick(row, col);
+          handlePieceClick(row, col)
         };
-        square.appendChild(pieceEl);
+        square.appendChild(pieceEl)
       }
 
       square.onclick = () => handleSquareClick(row, col);
-      boardEl.appendChild(square);
+      boardEl.appendChild(square)
     }
   }
 
-  updateScore();
+  updateScore()
 }
 
 function handlePieceClick(row, col) {
@@ -543,7 +514,7 @@ function handlePieceClick(row, col) {
 
   selectedPiece = { row, col };
   validMoves = getValidMoves(row, col);
-  renderBoard();
+  renderBoard()
 }
 
 function handleSquareClick(row, col) {
@@ -559,7 +530,7 @@ function handleSquareClick(row, col) {
       selectedPiece = { row, col };
       validMoves = getValidMoves(row, col).filter(m => m.capture);
       renderBoard();
-      updateStatus('Double jump available! Continue capturing.');
+      updateStatus('Double jump available! Continue capturing.')
     } else {
       captureChain = false;
       selectedPiece = null;
@@ -567,7 +538,7 @@ function handleSquareClick(row, col) {
       currentPlayer = BLACK;
       renderBoard();
       updateStatus('AI is thinking...');
-      setTimeout(makeAIMove, 800);
+      setTimeout(makeAIMove, 800)
     }
   }
 }
@@ -589,7 +560,7 @@ function getValidMoves(row, col) {
       if (isValidPos(jumpRow, jumpCol) && board[jumpRow][jumpCol] === EMPTY) {
         const midPiece = board[midRow][midCol];
         if (midPiece !== EMPTY && !isPlayerPiece(midPiece, piece)) {
-          moves.push({ row: jumpRow, col: jumpCol, capture: { row: midRow, col: midCol } });
+          moves.push({ row: jumpRow, col: jumpCol, capture: { row: midRow, col: midCol } })
         }
       }
     }
@@ -602,29 +573,29 @@ function getValidMoves(row, col) {
         const newRow = row + dr;
         const newCol = col + dc;
         if (isValidPos(newRow, newCol) && board[newRow][newCol] === EMPTY) {
-          moves.push({ row: newRow, col: newCol });
+          moves.push({ row: newRow, col: newCol })
         }
       }
     }
   }
 
-  return moves;
+  return moves
 }
 
 function canPieceCapture(row, col) {
   const moves = getValidMoves(row, col);
-  return moves.some(m => m.capture);
+  return moves.some(m => m.capture)
 }
 
 function isPlayerPiece(piece, player) {
   if (player === RED) {
-    return piece === RED || piece === RED_KING;
+    return piece === RED || piece === RED_KING
   }
-  return piece === BLACK || piece === BLACK_KING;
+  return piece === BLACK || piece === BLACK_KING
 }
 
 function isValidPos(row, col) {
-  return row >= 0 && row < BOARD_SIZE && col >= 0 && col < BOARD_SIZE;
+  return row >= 0 && row < BOARD_SIZE && col >= 0 && col < BOARD_SIZE
 }
 
 function makeMove(from, to) {
@@ -634,14 +605,14 @@ function makeMove(from, to) {
 
   // Handle capture
   if (to.capture) {
-    board[to.capture.row][to.capture.col] = EMPTY;
+    board[to.capture.row][to.capture.col] = EMPTY
   }
 
   // Check for king promotion
   if (piece === RED && to.row === 0) {
-    board[to.row][to.col] = RED_KING;
+    board[to.row][to.col] = RED_KING
   } else if (piece === BLACK && to.row === 7) {
-    board[to.row][to.col] = BLACK_KING;
+    board[to.row][to.col] = BLACK_KING
   }
 }
 
@@ -651,7 +622,7 @@ function makeAIMove() {
   const moves = getAllValidMoves(BLACK);
   if (moves.length === 0) {
     endGame(RED);
-    return;
+    return
   }
 
   // Prioritize captures
@@ -659,9 +630,9 @@ function makeAIMove() {
   let move;
 
   if (captures.length > 0) {
-    move = captures[Math.floor(Math.random() * captures.length)];
+    move = captures[Math.floor(Math.random() * captures.length)]
   } else {
-    move = moves[Math.floor(Math.random() * moves.length)];
+    move = moves[Math.floor(Math.random() * moves.length)]
   }
 
   makeMove(move.from, move.move);
@@ -670,7 +641,7 @@ function makeAIMove() {
   if (move.move.capture && canPieceCapture(move.move.row, move.move.col)) {
     renderBoard();
     setTimeout(() => makeAIMove(), 600);
-    return;
+    return
   }
 
   currentPlayer = RED;
@@ -678,9 +649,9 @@ function makeAIMove() {
   renderBoard();
 
   if (getAllValidMoves(RED).length === 0) {
-    endGame(BLACK);
+    endGame(BLACK)
   } else {
-    updateStatus(mustCapture ? 'You must capture!' : 'Your turn (Red)');
+    updateStatus(mustCapture ? 'You must capture!' : 'Your turn (Red)')
   }
 }
 
@@ -693,18 +664,18 @@ function getAllValidMoves(player) {
       if (isPlayerPiece(board[row][col], player)) {
         const pieceMoves = getValidMoves(row, col);
         if (pieceMoves.some(m => m.capture)) {
-          hasCapture = true;
+          hasCapture = true
         }
-        pieceMoves.forEach(m => moves.push({ from: { row, col }, move: m }));
+        pieceMoves.forEach(m => moves.push({ from: { row, col }, move: m }))
       }
     }
   }
 
   // If any capture available, only return captures
   if (hasCapture) {
-    return moves.filter(m => m.move.capture);
+    return moves.filter(m => m.move.capture)
   }
-  return moves;
+  return moves
 }
 
 function checkMustCapture() {
@@ -713,7 +684,7 @@ function checkMustCapture() {
     for (let col = 0; col < BOARD_SIZE; col++) {
       if (isPlayerPiece(board[row][col], RED) && canPieceCapture(row, col)) {
         mustCapture = true;
-        return;
+        return
       }
     }
   }
@@ -724,27 +695,27 @@ function updateScore() {
   for (let row = 0; row < BOARD_SIZE; row++) {
     for (let col = 0; col < BOARD_SIZE; col++) {
       if (isPlayerPiece(board[row][col], RED)) red++;
-      else if (isPlayerPiece(board[row][col], BLACK)) black++;
+      else if (isPlayerPiece(board[row][col], BLACK)) black++
     }
   }
   document.getElementById('redScore').textContent = red;
-  document.getElementById('blackScore').textContent = black;
+  document.getElementById('blackScore').textContent = black
 }
 
 function updateStatus(msg) {
-  document.getElementById('statusMessage').textContent = msg;
+  document.getElementById('statusMessage').textContent = msg
 }
 
 function endGame(winner) {
   gameOver = true;
   const msg = winner === RED ? '🎉 You Win!' : 'AI Wins! Try again.';
   document.getElementById('statusMessage').textContent = msg;
-  document.getElementById('statusMessage').className = 'status-message win';
+  document.getElementById('statusMessage').className = 'status-message win'
 }
 
 function undoMove() {
   // Simplified - would need move history for full undo
-  newGame();
+  newGame()
 }
 
 function newGame() {
@@ -757,7 +728,7 @@ function newGame() {
   captureChain = false;
   document.getElementById('statusMessage').className = 'status-message';
   updateStatus('Your turn (Red) - Click a piece to move');
-  renderBoard();
+  renderBoard()
 }
 
 // Initialize

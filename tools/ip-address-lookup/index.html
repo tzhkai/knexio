@@ -29,73 +29,7 @@ h1{font-size:32px;margin-bottom:8px}.subtitle{color:var(--sub);margin-bottom:32p
 .faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px}
 .faq-item h3{font-size:16px;margin-bottom:8px}.faq-item p{color:var(--sub);line-height:1.6}
 
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
-
-<!-- Open Graph -->
-<meta property="og:url" content="https://knexio.xyz/tools/ip-address-lookup/">
-<meta property="og:type" content="WebApplication">
-<meta property="og:site_name" content="Knexio">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Is this tool free to use?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, this tool is completely free to use. No registration, no login, and no subscription required. Just open the page and start using it."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is my data safe? Is anything stored on a server?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, your data is safe. All processing happens entirely in your browser \u2014 your input never leaves your device and is not sent to any server."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does this tool work on mobile devices?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. The tool is fully responsive and works on smartphones, tablets, and desktop computers."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How accurate is the result?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The tool uses standard algorithms and web APIs to provide accurate results. For critical or professional use, please verify with additional sources."
-      }
-    }
-  ]
-}
-</script>
-</head>
-<body>
-<div class="container">
-<a class="back" href="../index.html">← Back to Tools</a>
-<h1>IP Address Lookup</h1>
-<p class="subtitle">Find location and details for any IP address</p>
-<div class="ad-banner">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="5794572171"
-       data-ad-format="auto"
-       data-full-width-responsive="true">
-  </ins>
-</div>
-<div class="my-ip">
-<div style="color:var(--sub)">Your IP Address</div>
-<div class="my-ip-value" id="myIP">Loading...</div>
-
-<!-- Ad: Sidebar -->
-<div class="ad-sidebar" style="margin:20px 0;text-align:center"><ins class="adsbygoogle" style="display:block;min-height:250px" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3617326351" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
+footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;text-align:center"><ins class="adsbygoogle" style="display:block;min-height:250px" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3617326351" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
 </div>
 <div class="controls">
 <input type="text" id="ipInput" placeholder="Enter IP address (e.g. 8.8.8.8)">
@@ -148,15 +82,15 @@ async function getMyIP() {
   try {
     const r = await fetch('https://api.ipify.org?format=json');
     const d = await r.json();
-    document.getElementById('myIP').textContent = d.ip;
+    document.getElementById('myIP').textContent = d.ip
   } catch(e) {
-    document.getElementById('myIP').textContent = 'Unavailable';
+    document.getElementById('myIP').textContent = 'Unavailable'
   }
 }
 
 async function lookupIP() {
   const ip = document.getElementById('ipInput').value.trim();
-  if (!ip) { alert('Please enter an IP address'); return; }
+  if (!ip) { alert('Please enter an IP address'); return }
   try {
     const r = await fetch(`https://ipapi.co/${ip}/json/`);
     const d = await r.json();
@@ -166,9 +100,9 @@ async function lookupIP() {
     document.getElementById('resCity').textContent = d.city || '-';
     document.getElementById('resOrg').textContent = d.org || '-';
     document.getElementById('resTZ').textContent = d.timezone || '-';
-    document.getElementById('result').style.display = 'block';
+    document.getElementById('result').style.display = 'block'
   } catch(e) {
-    alert('Lookup failed. Please try again.');
+    alert('Lookup failed. Please try again.')
   }
 }
 

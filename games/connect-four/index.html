@@ -28,60 +28,60 @@
   }
   </script>
 <style>
-    :root{--bg:#0b1220;--bg2:#070d1a;--panel:#111a2e;--border:rgba(255,255,255,0.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff;--red:#f87171;--yellow:#fbbf24;}
-    *{box-sizing:border-box;margin:0;padding:0;}
-    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:linear-gradient(180deg,var(--bg),var(--bg2));color:var(--text);min-height:100vh;}
-    a{text-decoration:none;color:inherit;}
-    .wrap{max-width:700px;margin:0 auto;padding:40px 16px 80px;}
-    .back{display:inline-block;margin-bottom:20px;font-size:14px;color:var(--sub);}
-    .back:hover{color:var(--accent);}
-    h1{font-size:30px;margin-bottom:6px;}
-    .subtitle{font-size:15px;color:var(--sub);margin-bottom:20px;}
+    :root{--bg:#0b1220;--bg2:#070d1a;--panel:#111a2e;--border:rgba(255,255,255,0.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff;--red:#f87171;--yellow:#fbbf24}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:linear-gradient(180deg,var(--bg),var(--bg2));color:var(--text);min-height:100vh}
+    a{text-decoration:none;color:inherit}
+    .wrap{max-width:700px;margin:0 auto;padding:40px 16px 80px}
+    .back{display:inline-block;margin-bottom:20px;font-size:14px;color:var(--sub)}
+    .back:hover{color:var(--accent)}
+    h1{font-size:30px;margin-bottom:6px}
+    .subtitle{font-size:15px;color:var(--sub);margin-bottom:20px}
     .ad-slot{margin:24px 0;text-align:center;min-height:90px}
-    .controls{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;align-items:center;}
-    .ctrl-label{font-size:13px;color:var(--sub);}
-    .seg{display:flex;border:1px solid var(--border);border-radius:10px;overflow:hidden;}
-    .seg button{padding:8px 16px;background:none;border:none;color:var(--sub);font-size:13px;cursor:pointer;transition:all 0.15s;}
-    .seg button.active{background:var(--accent);color:#fff;}
-    .btn{padding:9px 20px;border-radius:10px;border:none;background:var(--accent);color:#fff;font-size:14px;cursor:pointer;transition:opacity 0.18s;}
-    .btn:hover{opacity:0.85;}
-    .btn.secondary{background:var(--panel);border:1px solid var(--border);color:var(--sub);}
-    .status-bar{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:12px 18px;margin-bottom:16px;display:flex;align-items:center;gap:12px;font-size:15px;}
-    .disc-indicator{width:22px;height:22px;border-radius:50%;display:inline-block;}
-    .disc-red{background:var(--red);}
-    .disc-yellow{background:var(--yellow);}
-    .board-wrap{background:#1a2540;border-radius:16px;padding:12px;display:inline-block;cursor:pointer;user-select:none;}
-    .board-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;}
-    .cell{width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,0.07);transition:background 0.15s;}
-    @media(max-width:480px){.cell{width:40px;height:40px;}.board-wrap{padding:8px;}.board-grid{gap:5px;}}
-    .cell.red{background:var(--red);box-shadow:0 0 10px rgba(248,113,113,0.5);}
-    .cell.yellow{background:var(--yellow);box-shadow:0 0 10px rgba(251,191,36,0.5);}
-    .cell.win{animation:pulse 0.5s infinite alternate;}
+    .controls{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;align-items:center}
+    .ctrl-label{font-size:13px;color:var(--sub)}
+    .seg{display:flex;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+    .seg button{padding:8px 16px;background:none;border:none;color:var(--sub);font-size:13px;cursor:pointer;transition:all 0.15s}
+    .seg button.active{background:var(--accent);color:#fff}
+    .btn{padding:9px 20px;border-radius:10px;border:none;background:var(--accent);color:#fff;font-size:14px;cursor:pointer;transition:opacity 0.18s}
+    .btn:hover{opacity:0.85}
+    .btn.secondary{background:var(--panel);border:1px solid var(--border);color:var(--sub)}
+    .status-bar{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:12px 18px;margin-bottom:16px;display:flex;align-items:center;gap:12px;font-size:15px}
+    .disc-indicator{width:22px;height:22px;border-radius:50%;display:inline-block}
+    .disc-red{background:var(--red)}
+    .disc-yellow{background:var(--yellow)}
+    .board-wrap{background:#1a2540;border-radius:16px;padding:12px;display:inline-block;cursor:pointer;user-select:none}
+    .board-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+    .cell{width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,0.07);transition:background 0.15s}
+    @media(max-width:480px){.cell{width:40px;height:40px}.board-wrap{padding:8px}.board-grid{gap:5px}}
+    .cell.red{background:var(--red);box-shadow:0 0 10px rgba(248,113,113,0.5)}
+    .cell.yellow{background:var(--yellow);box-shadow:0 0 10px rgba(251,191,36,0.5)}
+    .cell.win{animation:pulse 0.5s infinite alternate}
     @keyframes pulse{from{opacity:1}to{opacity:0.5}}
-    .hover-row{height:24px;display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-bottom:6px;}
-    .hover-cell{border-radius:50%;width:100%;}
-    .hover-cell.show-red{background:rgba(248,113,113,0.6);}
-    .hover-cell.show-yellow{background:rgba(251,191,36,0.6);}
-    .score-row{display:flex;gap:12px;margin-top:16px;justify-content:center;}
-    .score-card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:12px 24px;text-align:center;}
-    .score-card .s-label{font-size:12px;color:var(--sub);margin-bottom:4px;}
-    .score-card .s-val{font-size:26px;font-weight:700;}
-    .score-card .s-val.red{color:var(--red);}
-    .score-card .s-val.yellow{color:var(--yellow);}
+    .hover-row{height:24px;display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-bottom:6px}
+    .hover-cell{border-radius:50%;width:100%}
+    .hover-cell.show-red{background:rgba(248,113,113,0.6)}
+    .hover-cell.show-yellow{background:rgba(251,191,36,0.6)}
+    .score-row{display:flex;gap:12px;margin-top:16px;justify-content:center}
+    .score-card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:12px 24px;text-align:center}
+    .score-card .s-label{font-size:12px;color:var(--sub);margin-bottom:4px}
+    .score-card .s-val{font-size:26px;font-weight:700}
+    .score-card .s-val.red{color:var(--red)}
+    .score-card .s-val.yellow{color:var(--yellow)}
     /* Game Over Modal */
-    .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:100;align-items:center;justify-content:center;}
-    .modal-overlay.show{display:flex;}
-    .modal{background:var(--panel);border:1px solid var(--border);border-radius:20px;padding:36px 32px;text-align:center;max-width:340px;width:100%;}
-    .modal h2{font-size:26px;margin-bottom:10px;}
-    .modal p{color:var(--sub);margin-bottom:20px;font-size:15px;}
-    .modal .ad-slot{margin:0 0 20px;min-height:70px;}
-    .modal .btn{width:100%;}
-    h2.section{font-size:22px;margin:32px 0 12px;}
-    .rules-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px;}
-    @media(max-width:480px){.rules-grid{grid-template-columns:1fr;}}
-    .rule-card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:16px;}
-    .rule-card h3{font-size:14px;color:var(--accent);margin-bottom:6px;}
-    .rule-card p{font-size:13px;color:var(--sub);line-height:1.5;}
+    .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:100;align-items:center;justify-content:center}
+    .modal-overlay.show{display:flex}
+    .modal{background:var(--panel);border:1px solid var(--border);border-radius:20px;padding:36px 32px;text-align:center;max-width:340px;width:100%}
+    .modal h2{font-size:26px;margin-bottom:10px}
+    .modal p{color:var(--sub);margin-bottom:20px;font-size:15px}
+    .modal .ad-slot{margin:0 0 20px;min-height:70px}
+    .modal .btn{width:100%}
+    h2.section{font-size:22px;margin:32px 0 12px}
+    .rules-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
+    @media(max-width:480px){.rules-grid{grid-template-columns:1fr}}
+    .rule-card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:16px}
+    .rule-card h3{font-size:14px;color:var(--accent);margin-bottom:6px}
+    .rule-card p{font-size:13px;color:var(--sub);line-height:1.5}
     footer p{margin:0}
     footer p{margin:0}
     footer p{margin:0}
@@ -94,153 +94,153 @@
       /* 容器布局优化 */
       .container, .wrap {
         padding: 40px 15px 80px !important;
-        max-width: 100% !important;
+        max-width: 100% !important
       }
       
       /* 标题字体优化 */
       h1 {
         font-size: 28px !important;
-        line-height: 1.3 !important;
+        line-height: 1.3 !important
       }
       
       h2 {
         font-size: 20px !important;
         margin-top: 36px !important;
-        margin-bottom: 10px !important;
+        margin-bottom: 10px !important
       }
       
       h3 {
-        font-size: 17px !important;
+        font-size: 17px !important
       }
       
       /* 正文内容优化 */
       p, li, .intro, .subtitle {
         font-size: 14px !important;
-        line-height: 1.7 !important;
+        line-height: 1.7 !important
       }
       
       /* 段落间距优化 */
       p, ul, ol {
-        margin-bottom: 16px !important;
+        margin-bottom: 16px !important
       }
       
       /* 列表优化 */
       ul, ol {
-        padding-left: 18px !important;
+        padding-left: 18px !important
       }
       
       li {
-        margin-bottom: 6px !important;
+        margin-bottom: 6px !important
       }
       
       /* 内容块优化 */
       .main-panel, .step-block, .notice, .extra-info {
         padding: 16px !important;
         border-radius: 12px !important;
-        margin: 16px 0 !important;
+        margin: 16px 0 !important
       }
       
       /* 按钮和输入框优化 */
       .btn {
         padding: 14px !important;
         font-size: 15px !important;
-        min-height: 48px !important;
+        min-height: 48px !important
       }
       
       .input-group input {
         padding: 12px !important;
-        font-size: 15px !important;
+        font-size: 15px !important
       }
       
       /* 网格系统优化 */
       .age-grid {
         grid-template-columns: repeat(2, 1fr) !important;
-        gap: 12px !important;
+        gap: 12px !important
       }
       
       /* 广告位优化 */
       .ad-banner {
         margin: 16px 0 !important;
-        min-height: 50px !important;
+        min-height: 50px !important
       }
       
       /* 游戏页面优化 */
       .grid-container {
-        padding: 8px !important;
+        padding: 8px !important
       }
       
       .grid {
-        gap: 8px !important;
+        gap: 8px !important
       }
       
       .cell {
         font-size: 20px !important;
-        border-radius: 6px !important;
+        border-radius: 6px !important
       }
       
       .score-box {
         min-width: 70px !important;
-        padding: 6px 12px !important;
+        padding: 6px 12px !important
       }
       
       .score-val {
-        font-size: 18px !important;
+        font-size: 18px !important
       }
       
       /* 工具页面优化 */
       .age-main {
-        font-size: 36px !important;
+        font-size: 36px !important
       }
       
       .age-value {
-        font-size: 24px !important;
+        font-size: 24px !important
       }
       
       .age-label {
-        font-size: 11px !important;
+        font-size: 11px !important
       }
       
       /* 引导页面优化 */
       .intro {
         border-left-width: 2px !important;
         padding-left: 12px !important;
-        margin-bottom: 32px !important;
+        margin-bottom: 32px !important
       }
       
       .faq-item {
-        margin-bottom: 20px !important;
+        margin-bottom: 20px !important
       }
       
       .faq-item strong {
-        font-size: 15px !important;
+        font-size: 15px !important
       }
     }
     
     /* 小手机优化 (≤480px) */
     @media (max-width: 480px) {
       h1 {
-        font-size: 24px !important;
+        font-size: 24px !important
       }
       
       h2 {
-        font-size: 18px !important;
+        font-size: 18px !important
       }
       
       .container, .wrap {
-        padding: 32px 12px 60px !important;
+        padding: 32px 12px 60px !important
       }
       
       .main-panel, .step-block, .notice {
-        padding: 14px !important;
+        padding: 14px !important
       }
       
       .btn {
         padding: 12px !important;
-        font-size: 14px !important;
+        font-size: 14px !important
       }
       
       .age-grid {
-        grid-template-columns: 1fr !important;
+        grid-template-columns: 1fr !important
       }
     }
     
@@ -248,43 +248,14 @@
     @media (hover: none) and (pointer: coarse) {
       button, .btn, a[onclick], .cell {
         min-height: 44px !important;
-        min-width: 44px !important;
+        min-width: 44px !important
       }
       
       input, select, textarea {
-        font-size: 16px !important;
+        font-size: 16px !important
       }
     }
-    footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
-</head>
-<body><div class="wrap">
-  <a class="back" href="../index.html">← Back to Games</a>
-  <h1>🔴 Connect Four</h1>
-  <p class="subtitle">Drop discs to connect 4 in a row. Play against AI or a friend.</p>
-
-  <!-- Ad Slot 1: Top -->
-
-  <div class="controls">
-    <span class="ctrl-label">Mode:</span>
-    <div class="seg">
-      <button class="active" id="btn-vs-ai" onclick="setMode('ai')">vs AI</button>
-      <button id="btn-vs-player" onclick="setMode('2p')">2 Players</button>
-    </div>
-    <span class="ctrl-label">Difficulty:</span>
-    <div class="seg" id="diff-seg">
-      <button onclick="setDiff('easy')">Easy</button>
-      <button class="active" onclick="setDiff('medium')">Medium</button>
-      <button onclick="setDiff('hard')">Hard</button>
-    </div>
-    <button class="btn secondary" onclick="newGame()">New Game</button>
-  </div>
-
-  <div class="status-bar">
-    <span class="disc-indicator" id="turnDisc"></span>
-    <span id="statusText">Red's turn</span>
-  </div>
-
-  <div style="text-align:center;">
+    footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;">
     <div class="hover-row" id="hoverRow"></div>
     <div class="board-wrap" id="boardWrap">
       <div class="board-grid" id="boardGrid"></div>
@@ -389,7 +360,7 @@ function initGame() {
   renderBoard();
   renderHoverRow();
   updateStatus();
-  hideModal();
+  hideModal()
 }
 
 function renderBoard() {
@@ -406,10 +377,10 @@ function renderBoard() {
       if (board[row][col]) {
         const disc = document.createElement('div');
         disc.className = `disc ${board[row][col]}`;
-        cell.appendChild(disc);
+        cell.appendChild(disc)
       }
       
-      grid.appendChild(cell);
+      grid.appendChild(cell)
     }
   }
 }
@@ -425,7 +396,7 @@ function renderHoverRow() {
     slot.addEventListener('click', () => handleColumnClick(col));
     slot.addEventListener('mouseenter', () => showPreview(col));
     slot.addEventListener('mouseleave', () => hidePreview());
-    hoverRow.appendChild(slot);
+    hoverRow.appendChild(slot)
   }
 }
 
@@ -433,13 +404,13 @@ function showPreview(col) {
   if (gameOver) return;
   const slots = document.querySelectorAll('.hover-slot');
   slots.forEach((slot, i) => {
-    slot.innerHTML = i === col ? `<div class="preview-disc ${currentPlayer}"></div>` : '';
-  });
+    slot.innerHTML = i === col ? `<div class="preview-disc ${currentPlayer}"></div>` : ''
+  })
 }
 
 function hidePreview() {
   const slots = document.querySelectorAll('.hover-slot');
-  slots.forEach(slot => slot.innerHTML = '');
+  slots.forEach(slot => slot.innerHTML = '')
 }
 
 function handleColumnClick(col) {
@@ -449,14 +420,14 @@ function handleColumnClick(col) {
   const row = getLowestEmptyRow(col);
   if (row === -1) return;
   
-  makeMove(row, col);
+  makeMove(row, col)
 }
 
 function getLowestEmptyRow(col) {
   for (let row = ROWS - 1; row >= 0; row--) {
-    if (!board[row][col]) return row;
+    if (!board[row][col]) return row
   }
-  return -1;
+  return -1
 }
 
 function makeMove(row, col) {
@@ -469,7 +440,7 @@ function makeMove(row, col) {
     updateScores();
     showModal(`${currentPlayer === 'red' ? '🔴 Red' : '🟡 Yellow'} Wins!`, 'Connect 4 in a row!');
     highlightWinningCells();
-    return;
+    return
   }
   
   if (checkDraw()) {
@@ -477,14 +448,14 @@ function makeMove(row, col) {
     scores.draws++;
     updateScores();
     showModal('🤝 Draw!', 'The board is full.');
-    return;
+    return
   }
   
   currentPlayer = currentPlayer === 'red' ? 'yellow' : 'red';
   updateStatus();
   
   if (gameMode === 'ai' && currentPlayer === 'yellow') {
-    setTimeout(makeAIMove, 500);
+    setTimeout(makeAIMove, 500)
   }
 }
 
@@ -502,8 +473,8 @@ function checkWin(row, col) {
       const c = col + dc * i;
       if (r >= 0 && r < ROWS && c >= 0 && c < COLS && board[r][c] === player) {
         count++;
-        winningCells.push([r, c]);
-      } else break;
+        winningCells.push([r, c])
+      } else break
     }
     
     // Check negative direction
@@ -512,16 +483,16 @@ function checkWin(row, col) {
       const c = col - dc * i;
       if (r >= 0 && r < ROWS && c >= 0 && c < COLS && board[r][c] === player) {
         count++;
-        winningCells.push([r, c]);
-      } else break;
+        winningCells.push([r, c])
+      } else break
     }
     
     if (count >= 4) {
       window.winningCells = winningCells;
-      return true;
+      return true
     }
   }
-  return false;
+  return false
 }
 
 function highlightWinningCells() {
@@ -529,12 +500,12 @@ function highlightWinningCells() {
   const cells = document.querySelectorAll('.cell');
   window.winningCells.forEach(([row, col]) => {
     const index = row * COLS + col;
-    cells[index].classList.add('winning');
-  });
+    cells[index].classList.add('winning')
+  })
 }
 
 function checkDraw() {
-  return board.every(row => row.every(cell => cell !== null));
+  return board.every(row => row.every(cell => cell !== null))
 }
 
 // ==================== AI Logic ====================
@@ -544,23 +515,23 @@ function makeAIMove() {
   let col;
   
   if (difficulty === 'easy') {
-    col = getRandomValidMove();
+    col = getRandomValidMove()
   } else if (difficulty === 'medium') {
-    col = getMediumMove();
+    col = getMediumMove()
   } else {
-    col = getHardMove();
+    col = getHardMove()
   }
   
   const row = getLowestEmptyRow(col);
-  makeMove(row, col);
+  makeMove(row, col)
 }
 
 function getRandomValidMove() {
   const validCols = [];
   for (let col = 0; col < COLS; col++) {
-    if (getLowestEmptyRow(col) !== -1) validCols.push(col);
+    if (getLowestEmptyRow(col) !== -1) validCols.push(col)
   }
-  return validCols[Math.floor(Math.random() * validCols.length)];
+  return validCols[Math.floor(Math.random() * validCols.length)]
 }
 
 function getMediumMove() {
@@ -571,9 +542,9 @@ function getMediumMove() {
       board[row][col] = 'yellow';
       if (checkWin(row, col)) {
         board[row][col] = null;
-        return col;
+        return col
       }
-      board[row][col] = null;
+      board[row][col] = null
     }
   }
   
@@ -584,19 +555,19 @@ function getMediumMove() {
       board[row][col] = 'red';
       if (checkWin(row, col)) {
         board[row][col] = null;
-        return col;
+        return col
       }
-      board[row][col] = null;
+      board[row][col] = null
     }
   }
   
   // Prefer center
   const centerCols = [3, 2, 4, 1, 5, 0, 6];
   for (const col of centerCols) {
-    if (getLowestEmptyRow(col) !== -1) return col;
+    if (getLowestEmptyRow(col) !== -1) return col
   }
   
-  return getRandomValidMove();
+  return getRandomValidMove()
 }
 
 function getHardMove() {
@@ -613,12 +584,12 @@ function getHardMove() {
       
       if (score > bestScore) {
         bestScore = score;
-        bestCol = col;
+        bestCol = col
       }
     }
   }
   
-  return bestCol;
+  return bestCol
 }
 
 function minimax(board, depth, alpha, beta, isMaximizing) {
@@ -629,7 +600,7 @@ function minimax(board, depth, alpha, beta, isMaximizing) {
       board[row][col] = isMaximizing ? 'yellow' : 'red';
       const win = checkWin(row, col);
       board[row][col] = null;
-      if (win) return isMaximizing ? 1000 - (6 - depth) : -1000 + (6 - depth);
+      if (win) return isMaximizing ? 1000 - (6 - depth) : -1000 + (6 - depth)
     }
   }
   
@@ -645,10 +616,10 @@ function minimax(board, depth, alpha, beta, isMaximizing) {
         board[row][col] = null;
         maxScore = Math.max(maxScore, score);
         alpha = Math.max(alpha, score);
-        if (beta <= alpha) break;
+        if (beta <= alpha) break
       }
     }
-    return maxScore;
+    return maxScore
   } else {
     let minScore = Infinity;
     for (let col = 0; col < COLS; col++) {
@@ -659,10 +630,10 @@ function minimax(board, depth, alpha, beta, isMaximizing) {
         board[row][col] = null;
         minScore = Math.min(minScore, score);
         beta = Math.min(beta, score);
-        if (beta <= alpha) break;
+        if (beta <= alpha) break
       }
     }
-    return minScore;
+    return minScore
   }
 }
 
@@ -671,9 +642,9 @@ function evaluateBoard() {
   // Prefer center control
   for (let row = 0; row < ROWS; row++) {
     if (board[row][3] === 'yellow') score += 3;
-    if (board[row][2] === 'yellow' || board[row][4] === 'yellow') score += 2;
+    if (board[row][2] === 'yellow' || board[row][4] === 'yellow') score += 2
   }
-  return score;
+  return score
 }
 
 // ==================== UI Functions ====================
@@ -682,41 +653,41 @@ function setMode(mode) {
   document.getElementById('btn-vs-ai').classList.toggle('active', mode === 'ai');
   document.getElementById('btn-vs-player').classList.toggle('active', mode === '2p');
   document.getElementById('diff-seg').style.display = mode === 'ai' ? 'flex' : 'none';
-  newGame();
+  newGame()
 }
 
 function setDiff(diff) {
   difficulty = diff;
   document.querySelectorAll('#diff-seg button').forEach(btn => {
-    btn.classList.toggle('active', btn.textContent.toLowerCase() === diff);
-  });
+    btn.classList.toggle('active', btn.textContent.toLowerCase() === diff)
+  })
 }
 
 function newGame() {
-  initGame();
+  initGame()
 }
 
 function updateStatus() {
   const turnDisc = document.getElementById('turnDisc');
   const statusText = document.getElementById('statusText');
   turnDisc.className = 'disc-indicator ' + currentPlayer;
-  statusText.textContent = (currentPlayer === 'red' ? 'Red' : 'Yellow') + "'s turn";
+  statusText.textContent = (currentPlayer === 'red' ? 'Red' : 'Yellow') + "'s turn"
 }
 
 function updateScores() {
   document.getElementById('scoreRed').textContent = scores.red;
   document.getElementById('scoreYellow').textContent = scores.yellow;
-  document.getElementById('scoreDraws').textContent = scores.draws;
+  document.getElementById('scoreDraws').textContent = scores.draws
 }
 
 function showModal(title, sub) {
   document.getElementById('modalTitle').textContent = title;
   document.getElementById('modalSub').textContent = sub;
-  document.getElementById('modal').style.display = 'flex';
+  document.getElementById('modal').style.display = 'flex'
 }
 
 function hideModal() {
-  document.getElementById('modal').style.display = 'none';
+  document.getElementById('modal').style.display = 'none'
 }
 
 // Initialize
@@ -724,11 +695,11 @@ document.addEventListener('DOMContentLoaded', initGame);
 </script>
 
 <style>
-.cell.winning .disc { animation: pulse 0.5s ease-in-out infinite; }
-@keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
-.preview-disc { width: 50px; height: 50px; border-radius: 50%; opacity: 0.5; }
-.preview-disc.red { background: #ff4757; }
-.preview-disc.yellow { background: #ffa502; }
+.cell.winning .disc { animation: pulse 0.5s ease-in-out infinite }
+@keyframes pulse { 0%, 100% { transform: scale(1) } 50% { transform: scale(1.1) } }
+.preview-disc { width: 50px; height: 50px; border-radius: 50%; opacity: 0.5 }
+.preview-disc.red { background: #ff4757 }
+.preview-disc.yellow { background: #ffa502 }
 </style>
 
 <script src="/cookie-consent.js"></script>

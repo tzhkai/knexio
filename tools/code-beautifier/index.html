@@ -37,13 +37,13 @@
   --border:rgba(255,255,255,.08);
   --text:#fff;
   --sub:#aab3c5;
-  --accent:#4f8cff;
+  --accent:#4f8cff
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{
   font-family:system-ui,-apple-system;
   background:var(--bg);
-  color:var(--text);
+  color:var(--text)
 }
 .container{max-width:900px;margin:auto;padding:50px 16px}
 
@@ -54,10 +54,10 @@ body{
   text-decoration: none;
   font-size: 14px;
   margin-bottom: 24px;
-  transition: color 0.2s;
+  transition: color 0.2s
 }
 .back:hover {
-  color: var(--accent);
+  color: var(--accent)
 }
 
 h1{font-size:32px;margin-bottom:8px}
@@ -69,12 +69,12 @@ h2{font-size:22px;margin-top:30px;margin-bottom:10px}
   border:1px solid var(--border);
   border-radius:14px;
   padding:20px;
-  margin-bottom:20px;
+  margin-bottom:20px
 }
 
 /* Language selection */
 .lang-row {
-  margin-bottom: 16px;
+  margin-bottom: 16px
 }
 .lang-btn {
   flex:1;
@@ -85,16 +85,16 @@ h2{font-size:22px;margin-top:30px;margin-bottom:10px}
   color:var(--sub);
   cursor:pointer;
   font-size:14px;
-  transition:all 0.2s;
+  transition:all 0.2s
 }
 .lang-btn:hover {
   border-color:var(--accent);
-  color:var(--accent);
+  color:var(--accent)
 }
 .lang-btn.active {
   background:var(--accent);
   color:#fff;
-  border-color:var(--accent);
+  border-color:var(--accent)
 }
 
 /* Options */
@@ -103,11 +103,11 @@ h2{font-size:22px;margin-top:30px;margin-bottom:10px}
   align-items: center;
   gap: 16px;
   margin-bottom: 16px;
-  flex-wrap: wrap;
+  flex-wrap: wrap
 }
 .opt-label {
   font-size: 14px;
-  color: var(--sub);
+  color: var(--sub)
 }
 select {
   padding: 8px 12px;
@@ -115,53 +115,53 @@ select {
   border: 1px solid var(--border);
   border-radius: 8px;
   color: var(--text);
-  font-size: 14px;
+  font-size: 14px
 }
 select:focus {
   outline: none;
-  border-color: var(--accent);
+  border-color: var(--accent)
 }
 
 /* Editor grid */
 .editor-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  gap: 16px
 }
 .editor-pane {
   display: flex;
-  flex-direction: column;
+  flex-direction: column
 }
 .pane-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 8px;
+  margin-bottom: 8px
 }
 .pane-label {
   font-size: 14px;
   font-weight: 600;
-  color: var(--text);
+  color: var(--text)
 }
 
 .text-area:focus {
   outline: none;
-  border-color: var(--accent);
+  border-color: var(--accent)
 }
 .text-area[readonly] {
-  background: rgba(11, 18, 32, 0.5);
+  background: rgba(11, 18, 32, 0.5)
 }
 .stat-row {
   display: flex;
   gap: 16px;
   margin-top: 8px;
   font-size: 12px;
-  color: var(--sub);
+  color: var(--sub)
 }
 .error {
   color: #ef4444;
   font-size: 13px;
-  margin-top: 8px;
+  margin-top: 8px
 }
 
 /* Buttons */
@@ -172,7 +172,7 @@ select:focus {
 .section p{
   color:var(--sub);
   line-height:1.7;
-  margin-bottom:10px;
+  margin-bottom:10px
 }
 
 /* Step blocks */
@@ -193,37 +193,37 @@ select:focus {
   border-radius:8px;
   border:1px solid var(--border);
   color:var(--sub);
-  text-decoration:none;
+  text-decoration:none
 }
 .tools a:hover{
   border-color:var(--accent);
-  color:var(--accent);
+  color:var(--accent)
 }
 
 /* 广告样式 */
 .ad-banner {
   margin: 32px 0;
-  text-align: center;
+  text-align: center
 }
 
 /* 统一的 Footer 样式 */
-footer {
+footer{
   margin-top: 40px;
   text-align: center;
   color: var(--sub);
-  font-size: 13px;
-border-top:1px solid var(--border);}
+  font-size: 13px
+}
 footer p {
-  margin-bottom: 8px;
+  margin-bottom: 8px
 }
 footer a {
   color: var(--sub);
   text-decoration: none;
   margin: 0 10px;
-  transition: color 0.2s;
+  transition: color 0.2s
 }
 footer a:hover {
-  color: var(--accent);
+  color: var(--accent)
 }
 
 @media(max-width:600px){
@@ -243,104 +243,7 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
 .stat label,.stat-label,.result-label,.age-label{font-size:12px;color:var(--sub);display:block}
 .result-box{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;margin-top:16px;min-height:100px;white-space:pre-wrap;word-break:break-all;font-size:15px;line-height:1.7;box-sizing:border-box}
 @media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.btn-row{flex-direction:column}}
-  footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Is this tool free to use?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, this tool is completely free to use. No registration, no login, and no subscription required. Just open the page and start using it."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is my data safe? Is anything stored on a server?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, your data is safe. All processing happens entirely in your browser \u2014 your input never leaves your device and is not sent to any server."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does this tool work on mobile devices?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. The tool is fully responsive and works on smartphones, tablets, and desktop computers."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How accurate is the result?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The tool uses standard algorithms and web APIs to provide accurate results. For critical or professional use, please verify with additional sources."
-      }
-    }
-  ]
-}
-</script>
-</head>
-
-<body><div class="container">
-
-<a class="back" href="../index.html">← Back to Tools</a>
-
-<h1>Code Beautifier & Formatter</h1>
-<p class="subtitle">Beautify and minify JSON, JavaScript, CSS, HTML, and SQL. 100% browser-based — no server uploads.</p>
-
-<div class="ad-banner">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="5794572171"
-       data-ad-format="auto"
-       data-full-width-responsive="true">
-  </ins>
-</div>
-
-<div class="card">
-  <div class="lang-row">
-    <div class="btn-row">
-      <button class="lang-btn active" onclick="setLang('json')">JSON</button>
-      <button class="lang-btn" onclick="setLang('js')">JavaScript</button>
-      <button class="lang-btn" onclick="setLang('css')">CSS</button>
-      <button class="lang-btn" onclick="setLang('html')">HTML</button>
-      <button class="lang-btn" onclick="setLang('sql')">SQL</button>
-    </div>
-  </div>
-
-  <div class="options-row">
-    <span class="opt-label">Indent Size:</span>
-    <select id="indentSize" onchange="beautify()">
-      <option value="2" selected>2 spaces</option>
-      <option value="4">4 spaces</option>
-      <option value="tab">Tab</option>
-    </select>
-    <span class="opt-label">Sort Keys (JSON):</span>
-    <input type="checkbox" id="sortKeys" onchange="beautify()" />
-    <span class="opt-label">Minify:</span>
-    <input type="checkbox" id="minifyMode" onchange="beautify()" />
-  </div>
-
-  <div class="editor-grid">
-    <div class="editor-pane">
-      <div class="pane-header">
-        <span class="pane-label">Input</span>
-      </div>
-      <textarea class="text-area" id="inputCode" placeholder="Paste your code here..." oninput="beautify()"></textarea>
-      <div class="stat-row" id="inputStats"></div>
-    </div>
-    <div class="editor-pane">
-      <div class="pane-header">
-        <span class="pane-label">Beautified Output</span>
-      </div>
-      <textarea class="text-area" id="outputCode" readonly placeholder="Formatted code will appear here..."></textarea>
-      <div id="errorMsg" style="display:none;" class="error"></div>
+  footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;" class="error"></div>
       <div class="stat-row" id="outputStats"></div>
     </div>
   </div>
@@ -412,19 +315,19 @@ let currentLang = 'json';
 function setLang(lang) {
   currentLang = lang;
   document.querySelectorAll('.lang-btn').forEach((b,i) => b.classList.toggle('active', ['json','js','css','html','sql'][i] === lang));
-  beautify();
+  beautify()
 }
 
 function getIndent() {
   const v = document.getElementById('indentSize').value;
-  return v === 'tab' ? '\t' : ' '.repeat(+v);
+  return v === 'tab' ? '\t' : ' '.repeat(+v)
 }
 
 function beautify() {
   const input = document.getElementById('inputCode').value;
   const errEl = document.getElementById('errorMsg');
   errEl.style.display = 'none';
-  if (!input.trim()) { document.getElementById('outputCode').value = ''; updateStats('',''); return; }
+  if (!input.trim()) { document.getElementById('outputCode').value = ''; updateStats('',''); return }
 
   const minify = document.getElementById('minifyMode').checked;
   let output = '';
@@ -434,28 +337,28 @@ function beautify() {
     else if (currentLang === 'js') output = beautifyJS(input, minify);
     else if (currentLang === 'css') output = beautifyCSS(input, minify);
     else if (currentLang === 'html') output = beautifyHTML(input, minify);
-    else if (currentLang === 'sql') output = beautifySQL(input, minify);
+    else if (currentLang === 'sql') output = beautifySQL(input, minify)
   } catch(e) {
     errEl.textContent = '⚠️ ' + e.message;
     errEl.style.display = 'block';
-    output = input;
+    output = input
   }
 
   document.getElementById('outputCode').value = output;
-  updateStats(input, output);
+  updateStats(input, output)
 }
 
 function beautifyJSON(input, minify) {
   const parsed = JSON.parse(input);
   if (document.getElementById('sortKeys').checked) sortObj(parsed);
-  return minify ? JSON.stringify(parsed) : JSON.stringify(parsed, null, getIndent());
+  return minify ? JSON.stringify(parsed) : JSON.stringify(parsed, null, getIndent())
 }
 
 function sortObj(obj) {
-  if (Array.isArray(obj)) { obj.forEach(sortObj); return; }
+  if (Array.isArray(obj)) { obj.forEach(sortObj); return }
   if (obj && typeof obj === 'object') {
     const keys = Object.keys(obj).sort();
-    keys.forEach(k => { const v = obj[k]; delete obj[k]; obj[k] = v; sortObj(v); });
+    keys.forEach(k => { const v = obj[k]; delete obj[k]; obj[k] = v; sortObj(v) })
   }
 }
 
@@ -465,16 +368,16 @@ function beautifyJS(input, minify) {
   let level = 0, out = '', inStr = false, strChar = '';
   for (let i = 0; i < input.length; i++) {
     const c = input[i];
-    if (inStr) { out += c; if (c === strChar && input[i-1] !== '\\') inStr = false; continue; }
-    if (c === '"' || c === "'" || c === '`') { inStr = true; strChar = c; out += c; continue; }
-    if (c === '{' || c === '[') { out += c + '\n' + ind.repeat(++level); }
-    else if (c === '}' || c === ']') { out = out.replace(/[\s]+$/, ''); out += '\n' + ind.repeat(--level) + c; }
-    else if (c === ';') { out += c + '\n' + ind.repeat(level); }
-    else if (c === ',') { out += c + '\n' + ind.repeat(level); }
-    else if (c === '\n') { continue; }
-    else { out += c; }
+    if (inStr) { out += c; if (c === strChar && input[i-1] !== '\\') inStr = false; continue }
+    if (c === '"' || c === "'" || c === '`') { inStr = true; strChar = c; out += c; continue }
+    if (c === '{' || c === '[') { out += c + '\n' + ind.repeat(++level) }
+    else if (c === '}' || c === ']') { out = out.replace(/[\s]+$/, ''); out += '\n' + ind.repeat(--level) + c }
+    else if (c === ';') { out += c + '\n' + ind.repeat(level) }
+    else if (c === ',') { out += c + '\n' + ind.repeat(level) }
+    else if (c === '\n') { continue }
+    else { out += c }
   }
-  return out.replace(/\n\s*\n/g,'\n').trim();
+  return out.replace(/\n\s*\n/g,'\n').trim()
 }
 
 function beautifyCSS(input, minify) {
@@ -487,7 +390,7 @@ function beautifyCSS(input, minify) {
     .replace(/\s*\}/g, '\n}\n')
     .replace(/,\s*/g, ',\n')
     .replace(/\n\s*\n/g,'\n')
-    .trim();
+    .trim()
 }
 
 function beautifyHTML(input, minify) {
@@ -498,24 +401,24 @@ function beautifyHTML(input, minify) {
   input.replace(/<!--[\s\S]*?-->|<\/?[a-z][^>]*>|[^<]+/gi, m => {
     if (m.startsWith('</')) {
       level = Math.max(0, level-1);
-      out += ind.repeat(level) + m.trim() + '\n';
+      out += ind.repeat(level) + m.trim() + '\n'
     } else if (m.startsWith('<')) {
       const tag = (m.match(/<([a-z]+)/i)||[])[1]?.toLowerCase();
       out += ind.repeat(level) + m.trim() + '\n';
-      if (tag && !VOID.has(tag) && !m.endsWith('/>')) level++;
+      if (tag && !VOID.has(tag) && !m.endsWith('/>')) level++
     } else if (m.trim()) {
-      out += ind.repeat(level) + m.trim() + '\n';
+      out += ind.repeat(level) + m.trim() + '\n'
     }
   });
-  return out.trim();
+  return out.trim()
 }
 
 function beautifySQL(input, minify) {
   if (minify) return input.replace(/\s+/g,' ').trim().toUpperCase().replace(/ (FROM|WHERE|JOIN|ON|GROUP BY|ORDER BY|HAVING|LIMIT|UNION|INSERT|UPDATE|DELETE|SET|VALUES) /g, '\n$1\n');
   const keywords = ['SELECT','FROM','WHERE','AND','OR','JOIN','LEFT JOIN','RIGHT JOIN','INNER JOIN','OUTER JOIN','ON','GROUP BY','ORDER BY','HAVING','LIMIT','UNION','UNION ALL','INSERT INTO','UPDATE','DELETE FROM','SET','VALUES','AS','DISTINCT','COUNT','SUM','AVG','MAX','MIN'];
   let sql = input.replace(/\s+/g, ' ');
-  keywords.forEach(kw => { sql = sql.replace(new RegExp('\\b' + kw + '\\b', 'gi'), '\n' + kw); });
-  return sql.trim().replace(/\n\s*\n/g,'\n');
+  keywords.forEach(kw => { sql = sql.replace(new RegExp('\\b' + kw + '\\b', 'gi'), '\n' + kw) });
+  return sql.trim().replace(/\n\s*\n/g,'\n')
 }
 
 function updateStats(inp, out) {
@@ -523,21 +426,21 @@ function updateStats(inp, out) {
   const bytes = s => new Blob([s]).size;
   const fmt = n => n >= 1024 ? (n/1024).toFixed(1)+' KB' : n+' B';
   document.getElementById('inputStats').innerHTML = inp ? `${lines(inp)} lines · ${inp.length} chars · ${fmt(bytes(inp))}` : '';
-  document.getElementById('outputStats').innerHTML = out ? `${lines(out)} lines · ${out.length} chars · ${fmt(bytes(out))}` : '';
+  document.getElementById('outputStats').innerHTML = out ? `${lines(out)} lines · ${out.length} chars · ${fmt(bytes(out))}` : ''
 }
 
 function copyOutput() {
   const text = document.getElementById('outputCode').value;
   if (!text) return;
   navigator.clipboard.writeText(text);
-  alert('Copied to clipboard!');
+  alert('Copied to clipboard!')
 }
 
 function swapCode() {
   const a = document.getElementById('inputCode').value;
   const b = document.getElementById('outputCode').value;
   document.getElementById('inputCode').value = b;
-  beautify();
+  beautify()
 }
 
 function clearAll() {
@@ -545,7 +448,7 @@ function clearAll() {
   document.getElementById('outputCode').value = '';
   document.getElementById('inputStats').innerHTML = '';
   document.getElementById('outputStats').innerHTML = '';
-  document.getElementById('errorMsg').style.display = 'none';
+  document.getElementById('errorMsg').style.display = 'none'
 }
 
 </script>

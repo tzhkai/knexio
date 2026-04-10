@@ -88,13 +88,13 @@
   --border:rgba(255,255,255,.08);
   --text:#fff;
   --sub:#aab3c5;
-  --accent:#4f8cff;
+  --accent:#4f8cff
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{
   font-family:system-ui,-apple-system;
   background:var(--bg);
-  color:var(--text);
+  color:var(--text)
 }
 .container{max-width:900px;margin:auto;padding:50px 16px}
 
@@ -104,7 +104,7 @@ body{
   text-decoration:none;
   font-size:14px;
   margin-bottom:24px;
-  transition:color 0.2s;
+  transition:color 0.2s
 }
 .back:hover{color:var(--accent)}
 
@@ -117,7 +117,7 @@ h2{font-size:22px;margin-top:30px;margin-bottom:10px}
   border:1px solid var(--border);
   border-radius:14px;
   padding:20px;
-  margin-bottom:20px;
+  margin-bottom:20px
 }
 
 .color-preview{height:120px;border-radius:12px;border:1px solid var(--border);margin-bottom:16px}
@@ -152,7 +152,7 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
   border-radius:8px;
   border:1px solid var(--border);
   color:var(--sub);
-  text-decoration:none;
+  text-decoration:none
 }
 .tools a:hover{border-color:var(--accent);color:var(--accent)}
 
@@ -163,7 +163,7 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
   border:1px solid var(--border);
   border-radius:12px;
   padding:20px;
-  margin-bottom:12px;
+  margin-bottom:12px
 }
 .faq-item h3{font-size:16px;margin-bottom:8px;color:var(--text)}
 .faq-item p{color:var(--sub);font-size:14px;line-height:1.7;margin:0}
@@ -174,7 +174,7 @@ footer a{
   color:var(--sub);
   text-decoration:none;
   margin:0 10px;
-  transition:color 0.2s;
+  transition:color 0.2s
 }
 footer a:hover{color:var(--accent)}
 
@@ -182,31 +182,7 @@ footer a:hover{color:var(--accent)}
   .values-panel{grid-template-columns:1fr}
   .btn-row{flex-direction:column}
 }
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
-</head>
-
-<body><div class="container">
-
-<a class="back" href="../index.html">← Back to Tools</a>
-
-<h1>HEX to RGB Color Converter</h1>
-<p class="subtitle">Convert HEX color codes to RGB, HSL, and HSV format with WCAG contrast checking.</p>
-
-<div class="ad-banner">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="5794572171"
-       data-ad-format="auto"
-       data-full-width-responsive="true">
-  </ins>
-</div>
-
-<div class="card">
-  <div class="color-preview" id="colorPreview"></div>
-  
-  <div class="input-group">
-    <span style="color: var(--sub); margin-right: 8px;">#</span>
+footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px; margin-right: 8px;">#</span>
     <input type="text" class="hex-input" id="hexInput" maxlength="8" value="4f8cff" placeholder="4f8cff" oninput="fromHex(this.value)" />
   </div>
   
@@ -364,7 +340,7 @@ function update() {
   document.getElementById('valHSV').textContent = `hsv(${hv}°, ${sv}%, ${v}%)`;
   const wc = contrastRatio(currentR,currentG,currentB,255,255,255);
   const bc = contrastRatio(currentR,currentG,currentB,0,0,0);
-  document.getElementById('valContrast').textContent = `${wc.toFixed(1)}:1 (White ${wc>=4.5?'AA ✅':'❌'}) / ${bc.toFixed(1)}:1 (Black ${bc>=4.5?'AA ✅':'❌'})`;
+  document.getElementById('valContrast').textContent = `${wc.toFixed(1)}:1 (White ${wc>=4.5?'AA ✅':'❌'}) / ${bc.toFixed(1)}:1 (Black ${bc>=4.5?'AA ✅':'❌'})`
 }
 
 function fromHex(v) {
@@ -374,7 +350,7 @@ function fromHex(v) {
   currentR = parseInt(v.slice(0,2),16);
   currentG = parseInt(v.slice(2,4),16);
   currentB = parseInt(v.slice(4,6),16);
-  update();
+  update()
 }
 
 function fromSliders() {
@@ -382,25 +358,25 @@ function fromSliders() {
   currentR = +inputs[0].value;
   currentG = +inputs[1].value;
   currentB = +inputs[2].value;
-  update();
+  update()
 }
 
 function toHex(r,g,b) {
-  return [r,g,b].map(v=>v.toString(16).padStart(2,'0')).join('');
+  return [r,g,b].map(v=>v.toString(16).padStart(2,'0')).join('')
 }
 
 function rgbToHsl(r,g,b) {
   r/=255; g/=255; b/=255;
   const max=Math.max(r,g,b), min=Math.min(r,g,b);
   let h,s,l=(max+min)/2;
-  if(max===min){h=s=0;}else{
+  if(max===min){h=s=0}else{
     const d=max-min;
     s=l>0.5?d/(2-max-min):d/(max+min);
     if(max===r) h=((g-b)/d+(g<b?6:0))/6;
     else if(max===g) h=((b-r)/d+2)/6;
-    else h=((r-g)/d+4)/6;
+    else h=((r-g)/d+4)/6
   }
-  return [Math.round(h*360),Math.round(s*100),Math.round(l*100)];
+  return [Math.round(h*360),Math.round(s*100),Math.round(l*100)]
 }
 
 function rgbToHsv(r,g,b) {
@@ -408,30 +384,30 @@ function rgbToHsv(r,g,b) {
   const max=Math.max(r,g,b),min=Math.min(r,g,b),d=max-min;
   let h;
   const s=max===0?0:d/max, v=max;
-  if(d===0){h=0;}
-  else if(max===r){h=((g-b)/d%6)/6;}
-  else if(max===g){h=((b-r)/d+2)/6;}
-  else{h=((r-g)/d+4)/6;}
-  return [Math.round(h*360),Math.round(s*100),Math.round(v*100)];
+  if(d===0){h=0}
+  else if(max===r){h=((g-b)/d%6)/6}
+  else if(max===g){h=((b-r)/d+2)/6}
+  else{h=((r-g)/d+4)/6}
+  return [Math.round(h*360),Math.round(s*100),Math.round(v*100)]
 }
 
 function luminance(r,g,b) {
-  return [r,g,b].map(v=>{v/=255;return v<=0.03928?v/12.92:Math.pow((v+0.055)/1.055,2.4);}).reduce((a,v,i)=>a+v*[0.2126,0.7152,0.0722][i],0);
+  return [r,g,b].map(v=>{v/=255;return v<=0.03928?v/12.92:Math.pow((v+0.055)/1.055,2.4)}).reduce((a,v,i)=>a+v*[0.2126,0.7152,0.0722][i],0)
 }
 
 function contrastRatio(r1,g1,b1,r2,g2,b2) {
   const l1=luminance(r1,g1,b1), l2=luminance(r2,g2,b2);
-  return (Math.max(l1,l2)+0.05)/(Math.min(l1,l2)+0.05);
+  return (Math.max(l1,l2)+0.05)/(Math.min(l1,l2)+0.05)
 }
 
 function copyVal(id) {
   const text = document.getElementById(id).textContent;
   navigator.clipboard.writeText(text);
-  alert('Copied: ' + text);
+  alert('Copied: ' + text)
 }
 
 hexInput.addEventListener('input', function() {
-  fromHex(this.value);
+  fromHex(this.value)
 });
 update();
 </script>

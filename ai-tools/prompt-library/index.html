@@ -98,50 +98,50 @@
       --border: rgba(255,255,255,0.08);
       --text: #ffffff;
       --sub: #aab3c5;
-      --accent: #4f8cff;
+      --accent: #4f8cff
     }
 
-    * { box-sizing: border-box; }
+    * { box-sizing: border-box }
 
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
       background: linear-gradient(180deg, #0b1220, #070d1a);
-      color: var(--text);
+      color: var(--text)
     }
 
-    a { color: var(--accent); text-decoration: none; }
+    a { color: var(--accent); text-decoration: none }
 
     .container {
       max-width: 920px;
       margin: 0 auto;
-      padding: 60px 20px 100px;
+      padding: 60px 20px 100px
     }
 
     .back {
       display: inline-block;
       margin-bottom: 24px;
       color: var(--sub);
-      font-size: 14px;
+      font-size: 14px
     }
 
-    h1 { font-size: 34px; margin: 0 0 10px; }
+    h1 { font-size: 34px; margin: 0 0 10px }
 
     .subtitle {
       color: var(--sub);
       font-size: 15px;
-      margin-bottom: 24px;
+      margin-bottom: 24px
     }
 
     .filter-group {
-      margin-bottom: 24px;
+      margin-bottom: 24px
     }
 
     .filter-group label {
       display: block;
       margin-bottom: 8px;
       font-size: 14px;
-      color: var(--sub);
+      color: var(--sub)
     }
 
     .filter-group select {
@@ -151,14 +151,14 @@
       border: 1px solid var(--border);
       background: var(--card);
       color: #fff;
-      font-size: 15px;
+      font-size: 15px
     }
 
     .prompt-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       gap: 16px;
-      margin-top: 24px;
+      margin-top: 24px
     }
 
     .prompt-card {
@@ -167,12 +167,12 @@
       border-radius: 14px;
       padding: 20px;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all 0.2s
     }
 
     .prompt-card:hover {
       border-color: var(--accent);
-      transform: translateY(-2px);
+      transform: translateY(-2px)
     }
 
     .prompt-category {
@@ -180,13 +180,13 @@
       color: var(--accent);
       font-weight: 600;
       text-transform: uppercase;
-      margin-bottom: 8px;
+      margin-bottom: 8px
     }
 
     .prompt-title {
       font-size: 16px;
       font-weight: 600;
-      margin-bottom: 8px;
+      margin-bottom: 8px
     }
 
     .prompt-preview {
@@ -197,7 +197,7 @@
       text-overflow: ellipsis;
       display: -webkit-box;
       -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
+      -webkit-box-orient: vertical
     }
 
     .modal {
@@ -210,10 +210,10 @@
       background: rgba(0,0,0,0.8);
       z-index: 1000;
       justify-content: center;
-      align-items: center;
+      align-items: center
     }
 
-    .modal.active { display: flex; }
+    .modal.active { display: flex }
 
     .modal-content {
       background: var(--card);
@@ -222,19 +222,19 @@
       max-width: 600px;
       width: 90%;
       max-height: 80vh;
-      overflow-y: auto;
+      overflow-y: auto
     }
 
     .modal-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 20px;
+      margin-bottom: 20px
     }
 
     .modal-title {
       font-size: 20px;
-      font-weight: 600;
+      font-weight: 600
     }
 
     .close-btn {
@@ -242,7 +242,7 @@
       border: none;
       color: var(--sub);
       font-size: 24px;
-      cursor: pointer;
+      cursor: pointer
     }
 
     .modal-prompt {
@@ -252,12 +252,12 @@
       margin: 20px 0;
       font-size: 15px;
       line-height: 1.75;
-      color: var(--text);
+      color: var(--text)
     }
 
     .modal-actions {
       display: flex;
-      gap: 12px;
+      gap: 12px
     }
 
     .modal-btn {
@@ -269,45 +269,45 @@
       color: var(--text);
       font-size: 14px;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all 0.2s
     }
 
     .modal-btn:hover {
       border-color: var(--accent);
-      color: #fff;
+      color: #fff
     }
 
     .modal-btn.primary {
       background: var(--accent);
       border: none;
-      color: #fff;
+      color: #fff
     }
 
     .modal-btn.primary:hover {
-      background: #3a7be0;
+      background: #3a7be0
     }
 
-    .section { margin-top: 60px; }
-    .section h2 { font-size: 24px; margin-bottom: 12px; }
-    .section p { color: var(--sub); line-height: 1.75; font-size: 15px; }
+    .section { margin-top: 60px }
+    .section h2 { font-size: 24px; margin-bottom: 12px }
+    .section p { color: var(--sub); line-height: 1.75; font-size: 15px }
 
-    .faq { margin-top: 60px; }
-    .faq h2 { font-size: 24px; margin-bottom: 20px; }
+    .faq { margin-top: 60px }
+    .faq h2 { font-size: 24px; margin-bottom: 20px }
     .faq-item {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 20px;
-      margin-bottom: 16px;
+      margin-bottom: 16px
     }
-    .faq-item h3 { font-size: 16px; margin: 0 0 8px; }
-    .faq-item p { color: var(--sub); font-size: 14px; line-height: 1.7; margin: 0; }
+    .faq-item h3 { font-size: 16px; margin: 0 0 8px }
+    .faq-item p { color: var(--sub); font-size: 14px; line-height: 1.7; margin: 0 }
 
     .tools a {
       display: inline-block;
       margin-right: 16px;
       margin-top: 8px;
-      font-size: 14px;
+      font-size: 14px
     }
 
     footer p{margin:0}
@@ -318,256 +318,53 @@
     @media (max-width: 768px) {
       .container {
         padding: 40px 15px 80px !important;
-        max-width: 100% !important;
+        max-width: 100% !important
       }
 
       h1 {
         font-size: 28px !important;
-        line-height: 1.3 !important;
+        line-height: 1.3 !important
       }
 
       h2 {
         font-size: 20px !important;
         margin-top: 36px !important;
-        margin-bottom: 10px !important;
+        margin-bottom: 10px !important
       }
 
       .prompt-grid {
-        grid-template-columns: 1fr !important;
+        grid-template-columns: 1fr !important
       }
 
       .modal-content {
-        padding: 24px;
+        padding: 24px
       }
 
       .ad-banner {
         margin: 16px 0 !important;
-        min-height: 50px !important;
+        min-height: 50px !important
       }
     }
 
     @media (max-width: 480px) {
       h1 {
-        font-size: 24px !important;
+        font-size: 24px !important
       }
 
       h2 {
-        font-size: 18px !important;
+        font-size: 18px !important
       }
 
       .container {
-        padding: 32px 12px 60px !important;
+        padding: 32px 12px 60px !important
       }
 
       .modal-title {
-        font-size: 18px;
+        font-size: 18px
       }
     }
 
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
-</head>
-
-<body>
-  <div class="container">
-    <a class="back" href="../index.html">← Back to AI Tools</a>
-
-    <h1>AI Prompt Library</h1>
-
-    <div class="subtitle">
-      Curated collection of effective prompts for various AI tools.
-    </div>
-
-    <div class="ad-banner">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="5794572171"
-       data-ad-format="auto"
-       data-full-width-responsive="true">
-  </ins>
-</div>
-
-    <div class="filter-group">
-      <label>Filter by Category</label>
-      <select id="categoryFilter" onchange="filterPrompts()">
-        <option value="all">All Categories</option>
-        <option value="writing">Writing</option>
-        <option value="coding">Coding</option>
-        <option value="marketing">Marketing</option>
-        <option value="image">Image Generation</option>
-        <option value="analysis">Analysis</option>
-      </select>
-    </div>
-
-    <div class="prompt-grid" id="promptGrid">
-      <!-- Prompts will be dynamically inserted here -->
-    </div>
-
-    <div class="ad-banner" style="margin-top: 40px">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="5794572171"
-       data-ad-format="auto"
-       data-full-width-responsive="true">
-  </ins>
-</div>
-
-    <div class="section">
-      <h2>Free Online AI Prompt Library</h2>
-      <p>
-        Access our curated collection of effective, tested prompts for various AI tools including ChatGPT, Midjourney, and more. These prompts have been optimized for quality and effectiveness, helping you get better results faster. Perfect for developers, writers, marketers, designers, and anyone using AI tools regularly. All prompts are completely free to use and customize for your specific needs.
-      </p>
-    </div>
-
-    <div class="section">
-      <h2>How It Works</h2>
-      <p>
-        Browse through our curated collection of prompts organized by category: Writing, Coding, Marketing, Image Generation, and Analysis. Use the filter dropdown to focus on specific categories that match your needs. Each prompt card shows a preview of what you can expect.
-      </p>
-      <p>
-        Click on any prompt card to open a modal with the full prompt text. This reveals the complete, detailed prompt with all necessary instructions and parameters. Read through the full prompt to understand its structure and how it can be applied to your specific use case.
-      </p>
-      <p>
-        Copy the prompt to your clipboard using the "Copy Prompt" button. Paste it into your preferred AI tool and customize it by replacing placeholder text like [topic], [audience], or [subject] with your specific requirements. The prompts are designed to be flexible and adaptable to various scenarios.
-      </p>
-    </div>
-
-    <div class="section">
-      <h2>Who Should Use This Library?</h2>
-      <p>
-        Developers, writers, marketers, designers, content creators, and anyone using AI tools regularly who wants access to proven, effective prompts. Whether you're new to AI prompts or an experienced user, this library provides high-quality templates to boost your productivity and improve results.
-      </p>
-    </div>
-
-    <div class="faq">
-      <h2>Frequently Asked Questions</h2>
-      <div class="faq-item">
-        <h3>What is an AI prompt library?</h3>
-        <p>An AI prompt library is a curated collection of effective prompts for various AI tools like ChatGPT, Midjourney, and more. These prompts have been optimized for quality and effectiveness.</p>
-      </div>
-      <div class="faq-item">
-        <h3>Are these prompts free to use?</h3>
-        <p>Yes. All prompts in this library are completely free to use and customize. There are no restrictions or fees for accessing and using these prompts.</p>
-      </div>
-      <div class="faq-item">
-        <h3>Can I contribute my own prompts?</h3>
-        <p>This is a curated library with carefully selected prompts. You can use and customize these prompts for your specific needs, but we don't currently accept user submissions.</p>
-      </div>
-      <div class="faq-item">
-        <h3>What categories of prompts are available?</h3>
-        <p>The library includes prompts for Writing (blog posts, emails), Coding (documentation, reviews), Marketing (strategies, launches), Image Generation (portraits, landscapes), and Analysis (data insights, competitor analysis).</p>
-      </div>
-      <div class="faq-item">
-        <h3>How do I use prompts from this library?</h3>
-        <p>Browse prompts by category, click any card to view the full prompt, then copy and customize it for your specific needs. Replace placeholders like [topic] or [audience] with your actual requirements.</p>
-      </div>
-      <div class="faq-item">
-        <h3>Can I customize these prompts?</h3>
-        <p>Yes. All prompts are designed to be easily customizable. Copy them and modify placeholders and parameters to match your specific requirements and context.</p>
-      </div>
-    </div>
-
-    <div class="section">
-      <h2>Related AI Tools</h2>
-      <div class="tools">
-        <a href="../chatgpt-prompt-generator/index.html">ChatGPT Prompt Generator</a>
-        <a href="../midjourney-prompt-generator/index.html">Midjourney Prompt Generator</a>
-        <a href="../prompt-optimizer/index.html">Prompt Optimizer</a>
-        <a href="../ai-writing-assistant/index.html">AI Writing Assistant</a>
-      </div>
-    </div>
-
-    <div class="ad-banner" style="margin-top: 40px">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="5794572171"
-       data-ad-format="auto"
-       data-full-width-responsive="true">
-  </ins>
-</div>
-
-  </div>
-
-  <!-- Modal -->
-  <div class="modal" id="promptModal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <div class="modal-title" id="modalTitle">Prompt Title</div>
-        <button class="close-btn" onclick="closeModal()">×</button>
-      </div>
-      <div class="modal-prompt" id="modalPrompt"></div>
-      <div class="modal-actions">
-        <button class="modal-btn" onclick="closeModal()">Close</button>
-        <button class="modal-btn primary" onclick="copyModalPrompt()">Copy Prompt</button>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    const prompts = [
-      {
-        category: 'writing',
-        title: 'Blog Post Outline',
-        preview: 'Create a comprehensive blog post outline with H2 headings, bullet points, and key takeaways for [topic].',
-        full: 'Create a comprehensive blog post outline about [topic]. Include:\n- An engaging introduction hook\n- 5-7 H2 headings covering main subtopics\n- Bullet points under each heading\n- Key takeaways and call-to-action\n- SEO-friendly title suggestions'
-      },
-      {
-        category: 'coding',
-        title: 'Code Documentation',
-        preview: 'Write comprehensive documentation for the following code snippet, including parameters, return values, and usage examples.',
-        full: 'Write comprehensive documentation for the following code snippet:\n\n[CODE HERE]\n\nInclude:\n- Function/method description\n- All parameters with types and descriptions\n- Return value description\n- Usage examples\n- Edge cases and error handling\n- Performance considerations'
-      },
-      {
-        category: 'marketing',
-        title: 'Social Media Strategy',
-        preview: 'Develop a comprehensive social media strategy for [business type] targeting [audience] on [platforms].',
-        full: 'Develop a comprehensive social media strategy for [business type] targeting [audience]. Include:\n- Platform-specific content strategy\n- Content calendar template\n- Engagement tactics\n- Hashtag strategy\n- Posting frequency and optimal times\n- KPIs and success metrics\n- Community management approach'
-      },
-      {
-        category: 'image',
-        title: 'Portrait Photography',
-        preview: 'Generate a professional portrait photograph with specific lighting, composition, and mood requirements.',
-        full: '/imagine prompt: Professional portrait photograph of [subject], studio lighting with softbox setup, shallow depth of field (f/1.8), clean background, high key lighting, slight catchlight in eyes, authentic expression, professional headshot style, 8K resolution --ar 2:3 --style raw --v 6'
-      },
-      {
-        category: 'analysis',
-        title: 'Data Insights',
-        preview: 'Analyze the following dataset and provide key insights, trends, and actionable recommendations.',
-        full: 'Analyze the following dataset and provide:\n\n[DATA HERE]\n\n- Key findings and trends\n- Statistical significance\n- Unexpected patterns\n- Actionable recommendations\n- Risk factors and opportunities\n- Data quality assessment\n- Next steps for deeper analysis'
-      },
-      {
-        category: 'writing',
-        title: 'Email Newsletter',
-        preview: 'Create an engaging email newsletter with compelling subject line, preview text, and valuable content.',
-        full: 'Create an engaging email newsletter:\n\nCompelling subject line (under 50 characters)\nPreview text (under 100 characters)\n\nContent structure:\n- Personal greeting\n- Main value proposition\n- 2-3 valuable tips or insights\n- Call-to-action\n- Professional sign-off\n\nTone: [friendly/professional/casual]'
-      },
-      {
-        category: 'coding',
-        title: 'Code Review Checklist',
-        preview: 'Generate a comprehensive code review checklist for [programming language] focusing on quality, security, and best practices.',
-        full: 'Generate a comprehensive code review checklist for [programming language]:\n\nCode Quality:\n- Naming conventions\n- Code organization\n- DRY principle compliance\n- Performance considerations\n\nSecurity:\n- Input validation\n- SQL injection prevention\n- XSS prevention\n- Authentication checks\n\nBest Practices:\n- Error handling\n- Logging requirements\n- Testing coverage\n- Documentation standards\n\nAdd specific items relevant to [language features]'
-      },
-      {
-        category: 'marketing',
-        title: 'Product Launch',
-        preview: 'Develop a complete product launch strategy including pre-launch buzz, launch day activities, and post-launch follow-up.',
-        full: 'Develop a complete product launch strategy for [product name]:\n\nPre-Launch (4 weeks):\n- Teaser content schedule\n- Influencer outreach\n- Email drip campaign\n- Social media countdown\n\nLaunch Day:\n- Live event planning\n- Social media schedule\n- Customer support preparation\n- Monitoring and response plan\n\nPost-Launch (2 weeks):\n- Follow-up content\n- User-generated content\n- Review collection strategy\n- Analytics review\n\nBudget allocation for each phase'
-      },
-      {
-        category: 'image',
-        title: 'Landscape Photography',
-        preview: 'Create a stunning landscape image with specific time of day, weather conditions, and artistic style.',
-        full: '/imagine prompt: Breathtaking landscape photograph of [location], golden hour lighting with warm orange and gold tones, dramatic sky with wispy clouds, long exposure water effect, balanced composition using rule of thirds, professional photography style, ultra-wide angle, 10K resolution --ar 16:9 --style raw --v 6'
-      },
-      {
-        category: 'analysis',
-        title: 'Competitor Analysis',
-        preview: 'Conduct a thorough competitor analysis for [industry/market] identifying strengths, weaknesses, and market opportunities.',
-        full: 'Conduct a comprehensive competitor analysis for [industry/market]:\n\nCompetitor Identification:\n- List top 5 direct competitors\n- Identify indirect competitors\n\nAnalysis Framework:\n- Product/service comparison\n- Pricing strategy analysis\n- Market positioning\n- Strength assessment\n- Weakness identification\n\nOpportunities:\n- Gaps in market\n- Underserved segments\n- Differentiation possibilities\n\nRecommendations:\n- Strategic positioning\n- Competitive advantages to build\n- Market entry strategies'
-      }
-    ];
+footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;
 
     function renderPrompts(filter = 'all') {
       const grid = document.getElementById('promptGrid');
@@ -586,35 +383,35 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
           <div class="prompt-title">${prompt.title}</div>
           <div class="prompt-preview">${prompt.preview}</div>
         `;
-        grid.appendChild(card);
-      });
+        grid.appendChild(card)
+      })
     }
 
     function filterPrompts() {
       const filter = document.getElementById('categoryFilter').value;
-      renderPrompts(filter);
+      renderPrompts(filter)
     }
 
     function openModal(prompt) {
       document.getElementById('modalTitle').textContent = prompt.title;
       document.getElementById('modalPrompt').textContent = prompt.full;
-      document.getElementById('promptModal').classList.add('active');
+      document.getElementById('promptModal').classList.add('active')
     }
 
     function closeModal() {
-      document.getElementById('promptModal').classList.remove('active');
+      document.getElementById('promptModal').classList.remove('active')
     }
 
     function copyModalPrompt() {
       const prompt = document.getElementById('modalPrompt').textContent;
       navigator.clipboard.writeText(prompt).then(() => {
-        alert('Prompt copied to clipboard!');
-      });
+        alert('Prompt copied to clipboard!')
+      })
     }
 
     // Close modal on outside click
     document.getElementById('promptModal').onclick = function(e) {
-      if (e.target === this) closeModal();
+      if (e.target === this) closeModal()
     };
 
     // Initial render

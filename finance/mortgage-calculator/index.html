@@ -111,7 +111,7 @@
     .faq-item{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;margin-bottom:20px}
     .faq-item h3{font-size:16px;margin:0 0 8px}
     .faq-item p{color:var(--sub);font-size:14px;line-height:1.7;margin:0}
-    footer{text-align:center;padding:40px 20px;border-top:1px solid var(--border);margin-top:20px;color:var(--sub);font-size:14px}
+    footer{text-align:center;padding:40px 20px;margin-top:20px;color:var(--sub);font-size:14px}
     footer a{color:var(--sub);margin:0 10px;transition:color 0.2s}
     footer a:hover{color:var(--accent)}
     footer p{margin-bottom:8px}
@@ -120,6 +120,7 @@
 
 <!-- Open Graph -->
 <meta property="og:site_name" content="Knexio">
+<link rel="stylesheet" href="shared.css">
 </head>
 <body>
   <div class="container">
@@ -250,7 +251,7 @@
   <script>
     document.getElementById('startDate').valueAsDate = new Date();
 
-    function fmt(n) { return n.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}); }
+    function fmt(n) { return n.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}) }
 
     function calculate() {
       const homePrice = parseFloat(document.getElementById('homePrice').value) || 0;
@@ -262,15 +263,15 @@
       const pmiRate = (parseFloat(document.getElementById('pmi').value) || 0) / 100;
 
       const principal = homePrice - downPayment;
-      if (principal <= 0) { alert('Home price must be greater than down payment.'); return; }
+      if (principal <= 0) { alert('Home price must be greater than down payment.'); return }
 
       const monthlyRate = annualRate / 100 / 12;
       const n = years * 12;
       let pi = 0;
       if (monthlyRate === 0) {
-        pi = principal / n;
+        pi = principal / n
       } else {
-        pi = principal * (monthlyRate * Math.pow(1 + monthlyRate, n)) / (Math.pow(1 + monthlyRate, n) - 1);
+        pi = principal * (monthlyRate * Math.pow(1 + monthlyRate, n)) / (Math.pow(1 + monthlyRate, n) - 1)
       }
       const monthlyPMI = pmiRate * principal / 12;
       const totalMonthly = pi + propTax + insur + monthlyPMI;
@@ -293,7 +294,7 @@
         <div class="result-header" style="margin-top:24px">Amortization Schedule</div>
         <div class="amortization-wrap"><div class="table-scroll">${buildAmortization(principal, monthlyRate, n, pi)}</div></div>
       `;
-      document.getElementById('results').innerHTML = html;
+      document.getElementById('results').innerHTML = html
     }
 
     function buildAmortization(principal, rate, n, pi) {
@@ -303,9 +304,9 @@
         const interest = bal * rate;
         const princPay = pi - interest;
         bal = Math.max(0, bal - princPay);
-        rows += `<tr><td>${i}</td><td>$${fmt(pi)}</td><td>$${fmt(Math.max(0,princPay))}</td><td>$${fmt(interest)}</td><td>$${fmt(bal)}</td></tr>`;
+        rows += `<tr><td>${i}</td><td>$${fmt(pi)}</td><td>$${fmt(Math.max(0,princPay))}</td><td>$${fmt(interest)}</td><td>$${fmt(bal)}</td></tr>`
       }
-      return `<table class="amortization-table"><thead><tr><th>Month</th><th>Payment</th><th>Principal</th><th>Interest</th><th>Balance</th></tr></thead><tbody>${rows}</tbody></table>`;
+      return `<table class="amortization-table"><thead><tr><th>Month</th><th>Payment</th><th>Principal</th><th>Interest</th><th>Balance</th></tr></thead><tbody>${rows}</tbody></table>`
     }
 
     function clearForm() {
@@ -317,7 +318,7 @@
       document.getElementById('insurance').value = '1200';
       document.getElementById('pmi').value = '0';
       document.getElementById('startDate').valueAsDate = new Date();
-      document.getElementById('results').innerHTML = '<div class="result-placeholder">Enter your loan details and click <strong>Calculate</strong> to see results</div>';
+      document.getElementById('results').innerHTML = '<div class="result-placeholder">Enter your loan details and click <strong>Calculate</strong> to see results</div>'
     }
   </script>
   <script src="/knexio-bundle.js"></script>

@@ -105,7 +105,7 @@
     .faq-item{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;margin-bottom:16px}
     .faq-item h3{font-size:16px;font-weight:600;color:var(--text);margin-bottom:8px}
     .faq-item p{font-size:14px;color:var(--sub);margin-bottom:0;line-height:1.6}
-    footer{text-align:center;padding:40px 20px;border-top:1px solid var(--border);margin-top:60px;color:var(--sub);font-size:14px}
+    footer{text-align:center;padding:40px 20px;margin-top:60px;color:var(--sub);font-size:14px}
     footer p{margin-bottom:8px}
     footer a{color:var(--accent);transition:color 0.2s}
     footer a:hover{color:#3d7de0}
@@ -114,6 +114,7 @@
 
 <!-- Open Graph -->
 <meta property="og:site_name" content="Knexio">
+<link rel="stylesheet" href="shared.css">
 </head>
 <body>
   <div class="container">
@@ -239,8 +240,8 @@
       const months=years*12;
       const fvInitial=initial*Math.pow(1+monthlyRate,months);
       let fvContrib=0;
-      if(monthlyRate===0){fvContrib=monthly*months;}
-      else{fvContrib=monthly*(Math.pow(1+monthlyRate,months)-1)/monthlyRate;}
+      if(monthlyRate===0){fvContrib=monthly*months}
+      else{fvContrib=monthly*(Math.pow(1+monthlyRate,months)-1)/monthlyRate}
       const futureValue=fvInitial+fvContrib;
       const totalContributions=initial+monthly*months;
       const totalGains=futureValue-totalContributions;
@@ -261,7 +262,7 @@
         <div class="result-row"><span class="result-label">After-tax value</span><span class="result-value accent">$${fmt(afterTaxValue)}</span></div>
         <div class="result-row"><span class="result-label">Real value (inflation-adjusted)</span><span class="result-value green">$${fmt(realValue)}</span></div>
         <div class="result-row"><span class="result-label">Total return</span><span class="result-value green">${((totalGains/totalContributions)*100).toFixed(1)}%</span></div>
-      `;
+      `
     }
     function clearForm(){
       document.getElementById('initialInvestment').value='10000';
@@ -270,7 +271,7 @@
       document.getElementById('years').value='20';
       document.getElementById('inflationRate').value='2.5';
       document.getElementById('taxRate').value='15';
-      document.getElementById('results').innerHTML='<div class="result-placeholder">Enter your details and click <strong>Calculate</strong> to see results</div>';
+      document.getElementById('results').innerHTML='<div class="result-placeholder">Enter your details and click <strong>Calculate</strong> to see results</div>'
     }
   </script>
   <script src="/knexio-bundle.js"></script>

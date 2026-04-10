@@ -107,7 +107,7 @@
     .faq-item{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;margin-bottom:16px}
     .faq-item h3{font-size:16px;font-weight:600;color:var(--text);margin-bottom:8px}
     .faq-item p{font-size:14px;color:var(--sub);margin-bottom:0;line-height:1.6}
-    footer{text-align:center;padding:40px 20px;border-top:1px solid var(--border);margin-top:60px;color:var(--sub);font-size:14px}
+    footer{text-align:center;padding:40px 20px;margin-top:60px;color:var(--sub);font-size:14px}
     footer p{margin-bottom:8px}
     footer a{color:var(--accent);transition:color 0.2s}
     footer a:hover{color:#3d7de0}
@@ -116,6 +116,7 @@
 
 <!-- Open Graph -->
 <meta property="og:site_name" content="Knexio">
+<link rel="stylesheet" href="shared.css">
 </head>
 <body>
   <div class="container">
@@ -254,7 +255,7 @@
       const pension = parseFloat(document.getElementById('pension').value) || 0;
       const withdrawalRate = parseFloat(document.getElementById('withdrawalRate').value) / 100;
 
-      if (currentAge >= retirementAge) { alert('Retirement age must be greater than current age.'); return; }
+      if (currentAge >= retirementAge) { alert('Retirement age must be greater than current age.'); return }
 
       const years = retirementAge - currentAge;
       let projectedSavings = currentSavings;
@@ -262,7 +263,7 @@
 
       for (let i = 0; i < years; i++) {
         projectedSavings = projectedSavings * (1 + annualReturn) + annualContribution;
-        totalContributions += annualContribution;
+        totalContributions += annualContribution
       }
 
       const investmentEarnings = projectedSavings - totalContributions;
@@ -296,7 +297,7 @@
         <div style="margin-top:16px"><div style="font-size:13px;color:var(--sub);margin-bottom:8px">Income Coverage: ${progressPct.toFixed(1)}%</div>
           <div class="progress-bar-wrap"><div class="progress-bar" style="width:${progressPct}%"></div></div>
         </div>
-      `;
+      `
     }
 
     function clearForm() {
@@ -309,7 +310,7 @@
       document.getElementById('socialSecurity').value = '2000';
       document.getElementById('pension').value = '0';
       document.getElementById('withdrawalRate').value = '4';
-      document.getElementById('results').innerHTML = '<div class="result-placeholder">Enter your retirement details and click <strong>Calculate</strong> to see projections</div>';
+      document.getElementById('results').innerHTML = '<div class="result-placeholder">Enter your retirement details and click <strong>Calculate</strong> to see projections</div>'
     }
   </script>
   <script src="/knexio-bundle.js"></script>
