@@ -13,40 +13,40 @@
   <meta property="og:type" content="website">
 <style>
 
-    :root { --bg: #0b1220; --bg2: #070d1a; --panel: #111a2e; --accent: #4f8cff; --success: #10b981; --danger: #ef4444; --text: #fff; --sub: #aab3c5; --border: rgba(255,255,255,0.08); --text-main: #fff; --text-sub: #aab3c5 }
-    * { box-sizing: border-box; margin: 0; padding: 0 }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: linear-gradient(180deg, var(--bg), var(--bg2)); color: var(--text); min-height: 100vh }
-    .container { max-width: 800px; margin: 0 auto; padding: 20px; text-align: center }
-    .back { display: block; text-align: left; color: var(--sub); margin-bottom: 20px; text-decoration: none; font-size: 14px }
-    .back:hover { color: var(--accent) }
-    h1 { font-size: 32px; margin-bottom: 8px }
-    .subtitle { color: var(--sub); font-size: 14px; margin-bottom: 15px }
+    :root { --bg: #0b1220; --bg2: #070d1a; --panel: #111a2e; --accent: #4f8cff; --success: #10b981; --danger: #ef4444; --text: #fff; --sub: #aab3c5; --border: rgba(255,255,255,0.08);; --text-main: #fff; --text-sub: #aab3c5; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: linear-gradient(180deg, var(--bg), var(--bg2)); color: var(--text); min-height: 100vh; }
+    .container { max-width: 800px; margin: 0 auto; padding: 20px; text-align: center; }
+    .back { display: block; text-align: left; color: var(--sub); margin-bottom: 20px; text-decoration: none; font-size: 14px; }
+    .back:hover { color: var(--accent); }
+    h1 { font-size: 32px; margin-bottom: 8px; }
+    .subtitle { color: var(--sub); font-size: 14px; margin-bottom: 15px; }
 
-    .game-header { display: flex; justify-content: center; gap: 30px; margin-bottom: 15px }
-    .stat { text-align: center }
-    .stat-value { font-size: 24px; font-weight: 600; color: var(--accent) }
-    .stat-label { font-size: 11px; color: var(--sub); text-transform: uppercase }
+    .game-header { display: flex; justify-content: center; gap: 30px; margin-bottom: 15px; }
+    .stat { text-align: center; }
+    .stat-value { font-size: 24px; font-weight: 600; color: var(--accent); }
+    .stat-label { font-size: 11px; color: var(--sub); text-transform: uppercase; }
 
-    .game-container { background: var(--panel); border-radius: 16px; padding: 20px; margin: 20px 0; position: relative }
-    .canvas-wrap { position: relative; line-height: 0 }
-    canvas { background: linear-gradient(180deg, #87CEEB 0%, #E0F6FF 100%); border-radius: 12px; max-width: 100%; display: block; margin: 0 auto }
+    .game-container { background: var(--panel); border-radius: 16px; padding: 20px; margin: 20px 0; position: relative; }
+    .canvas-wrap { position: relative; line-height: 0; }
+    canvas { background: linear-gradient(180deg, #87CEEB 0%, #E0F6FF 100%); border-radius: 12px; max-width: 100%; display: block; margin: 0 auto; }
 
-    .overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(0,0,0,0.7); border-radius: 12px; color: #fff }
-    .overlay h2 { font-size: 28px; margin-bottom: 10px }
-    .overlay p { color: var(--sub); margin: 5px 0 }
-    .overlay .btn { margin-top: 15px }
-    .hidden { display: none !important }
+    .overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(0,0,0,0.7); border-radius: 12px; color: #fff; }
+    .overlay h2 { font-size: 28px; margin-bottom: 10px; }
+    .overlay p { color: var(--sub); margin: 5px 0; }
+    .overlay .btn { margin-top: 15px; }
+    .hidden { display: none !important; }
 
-    .controls { margin-top: 15px; color: var(--sub); font-size: 13px }
-    .controls .key { display: inline-block; background: var(--panel); border: 1px solid var(--border); border-radius: 4px; padding: 2px 8px; font-family: monospace; font-size: 12px }
+    .controls { margin-top: 15px; color: var(--sub); font-size: 13px; }
+    .controls .key { display: inline-block; background: var(--panel); border: 1px solid var(--border); border-radius: 4px; padding: 2px 8px; font-family: monospace; font-size: 12px; }
 
-    .btn { padding: 12px 28px; background: var(--accent); color: #fff; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; transition: opacity 0.15s }
-    .btn:hover { opacity: 0.85 }
+    .btn { padding: 12px 28px; background: var(--accent); color: #fff; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; transition: opacity 0.15s; }
+    .btn:hover { opacity: 0.85; }
 
-    .rules { margin-top: 30px; background: var(--panel); border-radius: 12px; padding: 20px; text-align: left }
-    .rules h2 { font-size: 16px; margin-bottom: 12px }
-    .rules p, .rules li { color: var(--sub); font-size: 13px; line-height: 1.7 }
-    .rules ul { margin-left: 18px; margin-top: 8px }
+    .rules { margin-top: 30px; background: var(--panel); border-radius: 12px; padding: 20px; text-align: left; }
+    .rules h2 { font-size: 16px; margin-bottom: 12px; }
+    .rules p, .rules li { color: var(--sub); font-size: 13px; line-height: 1.7; }
+    .rules ul { margin-left: 18px; margin-top: 8px; }
 
     footer p{margin:0}
     footer p{margin:0}
@@ -59,153 +59,153 @@
       /* 容器布局优化 */
       .container, .wrap {
         padding: 40px 15px 80px !important;
-        max-width: 100% !important
+        max-width: 100% !important;
       }
 
       /* 标题字体优化 */
       h1 {
         font-size: 28px !important;
-        line-height: 1.3 !important
+        line-height: 1.3 !important;
       }
 
       h2 {
         font-size: 20px !important;
         margin-top: 36px !important;
-        margin-bottom: 10px !important
+        margin-bottom: 10px !important;
       }
 
       h3 {
-        font-size: 17px !important
+        font-size: 17px !important;
       }
 
       /* 正文内容优化 */
       p, li, .intro, .subtitle {
         font-size: 14px !important;
-        line-height: 1.7 !important
+        line-height: 1.7 !important;
       }
 
       /* 段落间距优化 */
       p, ul, ol {
-        margin-bottom: 16px !important
+        margin-bottom: 16px !important;
       }
 
       /* 列表优化 */
       ul, ol {
-        padding-left: 18px !important
+        padding-left: 18px !important;
       }
 
       li {
-        margin-bottom: 6px !important
+        margin-bottom: 6px !important;
       }
 
       /* 内容块优化 */
       .main-panel, .step-block, .notice, .extra-info {
         padding: 16px !important;
         border-radius: 12px !important;
-        margin: 16px 0 !important
+        margin: 16px 0 !important;
       }
 
       /* 按钮和输入框优化 */
       .btn {
         padding: 14px !important;
         font-size: 15px !important;
-        min-height: 48px !important
+        min-height: 48px !important;
       }
 
       .input-group input {
         padding: 12px !important;
-        font-size: 15px !important
+        font-size: 15px !important;
       }
 
       /* 网格系统优化 */
       .age-grid {
         grid-template-columns: repeat(2, 1fr) !important;
-        gap: 12px !important
+        gap: 12px !important;
       }
 
       /* 广告位优化 */
       .ad-banner {
         margin: 16px 0 !important;
-        min-height: 50px !important
+        min-height: 50px !important;
       }
 
       /* 游戏页面优化 */
       .grid-container {
-        padding: 8px !important
+        padding: 8px !important;
       }
 
       .grid {
-        gap: 8px !important
+        gap: 8px !important;
       }
 
       .cell {
         font-size: 20px !important;
-        border-radius: 6px !important
+        border-radius: 6px !important;
       }
 
       .score-box {
         min-width: 70px !important;
-        padding: 6px 12px !important
+        padding: 6px 12px !important;
       }
 
       .score-val {
-        font-size: 18px !important
+        font-size: 18px !important;
       }
 
       /* 工具页面优化 */
       .age-main {
-        font-size: 36px !important
+        font-size: 36px !important;
       }
 
       .age-value {
-        font-size: 24px !important
+        font-size: 24px !important;
       }
 
       .age-label {
-        font-size: 11px !important
+        font-size: 11px !important;
       }
 
       /* 引导页面优化 */
       .intro {
         border-left-width: 2px !important;
         padding-left: 12px !important;
-        margin-bottom: 32px !important
+        margin-bottom: 32px !important;
       }
 
       .faq-item {
-        margin-bottom: 20px !important
+        margin-bottom: 20px !important;
       }
 
       .faq-item strong {
-        font-size: 15px !important
+        font-size: 15px !important;
       }
     }
 
     /* 小手机优化 (≤480px) */
     @media (max-width: 480px) {
       h1 {
-        font-size: 24px !important
+        font-size: 24px !important;
       }
 
       h2 {
-        font-size: 18px !important
+        font-size: 18px !important;
       }
 
       .container, .wrap {
-        padding: 32px 12px 60px !important
+        padding: 32px 12px 60px !important;
       }
 
       .main-panel, .step-block, .notice {
-        padding: 14px !important
+        padding: 14px !important;
       }
 
       .btn {
         padding: 12px !important;
-        font-size: 14px !important
+        font-size: 14px !important;
       }
 
       .age-grid {
-        grid-template-columns: 1fr !important
+        grid-template-columns: 1fr !important;
       }
     }
 
@@ -213,15 +213,63 @@
     @media (hover: none) and (pointer: coarse) {
       button, .btn, a[onclick], .cell {
         min-height: 44px !important;
-        min-width: 44px !important
+        min-width: 44px !important;
       }
 
       input, select, textarea {
-        font-size: 16px !important
+        font-size: 16px !important;
       }
         }
 
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;">🎉 New Best!</p>
+footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
+
+  <meta name="keywords" content="flappy plane game, free online game, browser game, play online, casual game" /><script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoGame",
+  "name": "Flappy Plane",
+  "url": "https://knexio.xyz/games/flappy-plane/",
+  "description": "Play Flappy Plane free online. Flappy Plane is a fun browser game that you can play for free. Enjoy this entertaining game with simple controls and eng... No download required. Works on all devices.",
+  "genre": "Game",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+
+<!-- Open Graph -->
+<meta property="og:site_name" content="Knexio">
+</head>
+<body><div class="container">
+    <a class="back" href="../index.html">← Back to Games</a>
+    <h1>Flappy Plane</h1>
+    <p class="subtitle">Tap to fly, avoid the pipes!</p>
+
+    <div class="game-header">
+      <div class="stat">
+        <div class="stat-value" id="score">0</div>
+        <div class="stat-label">Score</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value" id="best">0</div>
+        <div class="stat-label">Best</div>
+      </div>
+    </div>
+
+    <div class="game-container">
+      <div class="canvas-wrap">
+        <canvas id="game" width="360" height="500"></canvas>
+        <div class="overlay hidden" id="startOverlay">
+          <h2>✈️ Flappy Plane</h2>
+          <p>Tap, Click, or Space to fly</p>
+          <button class="btn" onclick="startGame()">Start Game</button>
+        </div>
+        <div class="overlay hidden" id="gameOverOverlay">
+          <h2>💥 Crashed!</h2>
+          <p>Score: <span id="finalScore">0</span></p>
+          <p id="newBest" class="hidden" style="color: var(--success);">🎉 New Best!</p>
           <button class="btn" onclick="resetGame()">Try Again</button>
         </div>
       
@@ -358,7 +406,7 @@ const canvas = document.getElementById('game');
         y: Math.random() * 200,
         speed: 0.3 + Math.random() * 0.3,
         size: 20 + Math.random() * 20
-      })
+      });
     }
 
     function init() {
@@ -368,7 +416,7 @@ const canvas = document.getElementById('game');
       particles = [];
       frameCount = 0;
       document.getElementById('score').textContent = score;
-      document.getElementById('best').textContent = bestScore
+      document.getElementById('best').textContent = bestScore;
     }
 
     function startGame() {
@@ -377,14 +425,14 @@ const canvas = document.getElementById('game');
       document.getElementById('gameOverOverlay').classList.add('hidden');
       init();
       // Add first pipe
-      spawnPipe()
+      spawnPipe();
     }
 
     function spawnPipe() {
       const minY = 60;
       const maxY = 350;
       const pipeY = minY + Math.random() * (maxY - minY);
-      pipes.push({ x: PIPE_SPAWN_X, y: pipeY, passed: false })
+      pipes.push({ x: PIPE_SPAWN_X, y: pipeY, passed: false });
     }
 
     function createExplosion(x, y) {
@@ -396,7 +444,7 @@ const canvas = document.getElementById('game');
           vy: (Math.random() - 0.5) * 8,
           life: 1,
           color: `hsl(${40 + Math.random() * 20}, 100%, 50%)`
-        })
+        });
       }
     }
 
@@ -406,7 +454,7 @@ const canvas = document.getElementById('game');
       // Update clouds
       clouds.forEach(cloud => {
         cloud.x -= cloud.speed;
-        if (cloud.x < -50) cloud.x = 400
+        if (cloud.x < -50) cloud.x = 400;
       });
 
       if (gameState === 'playing') {
@@ -417,7 +465,7 @@ const canvas = document.getElementById('game');
 
         // Ground/ceiling collision
         if (plane.y < 0 || plane.y > 470) {
-          gameOver()
+          gameOver();
         }
 
         // Update pipes
@@ -436,18 +484,18 @@ const canvas = document.getElementById('game');
 
           // Collision with top pipe
           if (planeRight > pipeLeft && planeLeft < pipeRight && planeTop < topPipeBottom) {
-            gameOver()
+            gameOver();
           }
           // Collision with bottom pipe
           if (planeRight > pipeLeft && planeLeft < pipeRight && planeBottom > bottomPipeTop) {
-            gameOver()
+            gameOver();
           }
 
           // Score when passing pipe
           if (!pipe.passed && pipe.x + PIPE_WIDTH < plane.x) {
             pipe.passed = true;
             score++;
-            document.getElementById('score').textContent = score
+            document.getElementById('score').textContent = score;
           }
         });
 
@@ -456,7 +504,7 @@ const canvas = document.getElementById('game');
 
         // Spawn new pipes
         if (frameCount % 120 === 0) {
-          spawnPipe()
+          spawnPipe();
         }
       }
 
@@ -465,9 +513,9 @@ const canvas = document.getElementById('game');
         p.x += p.vx;
         p.y += p.vy;
         p.vy += 0.2;
-        p.life -= 0.02
+        p.life -= 0.02;
       });
-      particles = particles.filter(p => p.life > 0)
+      particles = particles.filter(p => p.life > 0);
     }
 
     function draw() {
@@ -485,7 +533,7 @@ const canvas = document.getElementById('game');
         ctx.arc(cloud.x, cloud.y, cloud.size, 0, Math.PI * 2);
         ctx.arc(cloud.x + cloud.size * 0.5, cloud.y - cloud.size * 0.3, cloud.size * 0.8, 0, Math.PI * 2);
         ctx.arc(cloud.x + cloud.size, cloud.y, cloud.size * 0.7, 0, Math.PI * 2);
-        ctx.fill()
+        ctx.fill();
       });
 
       // Draw pipes
@@ -509,7 +557,7 @@ const canvas = document.getElementById('game');
         ctx.fillStyle = pipeGrad;
         ctx.fillRect(pipe.x, bottomY, PIPE_WIDTH, 500 - bottomY);
         ctx.fillStyle = '#1e8449';
-        ctx.fillRect(pipe.x - 2, bottomY, PIPE_WIDTH + 4, 20)
+        ctx.fillRect(pipe.x - 2, bottomY, PIPE_WIDTH + 4, 20);
       });
 
       // Draw ground
@@ -565,24 +613,24 @@ const canvas = document.getElementById('game');
         ctx.fillStyle = p.color;
         ctx.beginPath();
         ctx.arc(p.x, p.y, 4, 0, Math.PI * 2);
-        ctx.fill()
+        ctx.fill();
       });
-      ctx.globalAlpha = 1
+      ctx.globalAlpha = 1;
     }
 
     function loop() {
       update();
       draw();
-      requestAnimationFrame(loop)
+      requestAnimationFrame(loop);
     }
 
     function jump() {
       if (gameState === 'playing') {
-        plane.velocity = JUMP_STRENGTH
+        plane.velocity = JUMP_STRENGTH;
       } else if (gameState === 'start') {
-        startGame()
+        startGame();
       } else if (gameState === 'gameover') {
-        resetGame()
+        resetGame();
       }
     }
 
@@ -595,37 +643,37 @@ const canvas = document.getElementById('game');
       if (newBest) {
         bestScore = score;
         localStorage.setItem('flappyPlaneBest', bestScore.toString());
-        document.getElementById('best').textContent = bestScore
+        document.getElementById('best').textContent = bestScore;
       }
 
       document.getElementById('finalScore').textContent = score;
       document.getElementById('newBest').classList.toggle('hidden', !newBest);
-      document.getElementById('gameOverOverlay').classList.remove('hidden')
+      document.getElementById('gameOverOverlay').classList.remove('hidden');
     }
 
     function resetGame() {
       gameState = 'playing';
       document.getElementById('gameOverOverlay').classList.add('hidden');
       init();
-      spawnPipe()
+      spawnPipe();
     }
 
     // Input handling
     document.addEventListener('keydown', e => {
       if (e.code === 'Space' || e.code === 'ArrowUp') {
         e.preventDefault();
-        jump()
+        jump();
       }
     });
 
     canvas.addEventListener('mousedown', e => {
       e.preventDefault();
-      jump()
+      jump();
     });
 
     canvas.addEventListener('touchstart', e => {
       e.preventDefault();
-      jump()
+      jump();
     }, { passive: false });
 
     // Show start screen
@@ -636,8 +684,6 @@ const canvas = document.getElementById('game');
     loop();
 </script></div>
 
-
-</style>
 
 <script src="/knexio-bundle.js"></script>
   

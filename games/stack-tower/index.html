@@ -9,25 +9,25 @@
   <link rel="canonical" href="https://knexio.xyz/games/stack-tower/">
 <style>
 
-    :root { --bg: #0b1220; --panel: #111a2e; --accent: #4f8cff; --text: #fff; --sub: #aab3c5; --text-main: #fff; --text-sub: #aab3c5 }
-    * { box-sizing: border-box; margin: 0; padding: 0 }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh }
-    .container { max-width: 600px; margin: 0 auto; padding: 20px; text-align: center }
-    .back { display: block; text-align: left; color: var(--sub); margin-bottom: 16px; text-decoration: none; font-size: 14px }
-    .back:hover { color: var(--accent) }
-    h1 { font-size: 30px; font-weight: 800; margin-bottom: 6px; letter-spacing: 1px }
-    .tagline { color: var(--sub); font-size: 14px; margin-bottom: 16px }
-    .game-wrap { background: var(--panel); border-radius: 16px; padding: 20px 20px 16px; margin: 0 0 20px; box-shadow: 0 4px 24px rgba(0,0,0,0.4) }
-    .hud { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-size: 15px; font-weight: 600 }
-    .hud-score { color: var(--accent) }
-    .hud-best { color: var(--sub); font-size: 13px }
-    canvas { display: block; border-radius: 12px; max-width: 100%; cursor: pointer; touch-action: none }
-    .controls-hint { margin-top: 10px; font-size: 13px; color: var(--sub) }
-    .controls-hint kbd { background: #1e2d4a; padding: 2px 7px; border-radius: 4px; font-size: 12px; color: #fff }
-    .info-section { background: var(--panel); border-radius: 12px; padding: 20px 24px; text-align: left; margin-bottom: 20px }
-    .info-section h2 { font-size: 18px; margin-bottom: 10px; color: var(--accent) }
-    .info-section p, .info-section li { color: var(--sub); font-size: 14px; line-height: 1.7 }
-    .info-section ul { margin-left: 18px }
+    :root { --bg: #0b1220; --panel: #111a2e; --accent: #4f8cff; --text: #fff; --sub: #aab3c5;; --text-main: #fff; --text-sub: #aab3c5; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+    .container { max-width: 600px; margin: 0 auto; padding: 20px; text-align: center; }
+    .back { display: block; text-align: left; color: var(--sub); margin-bottom: 16px; text-decoration: none; font-size: 14px; }
+    .back:hover { color: var(--accent); }
+    h1 { font-size: 30px; font-weight: 800; margin-bottom: 6px; letter-spacing: 1px; }
+    .tagline { color: var(--sub); font-size: 14px; margin-bottom: 16px; }
+    .game-wrap { background: var(--panel); border-radius: 16px; padding: 20px 20px 16px; margin: 0 0 20px; box-shadow: 0 4px 24px rgba(0,0,0,0.4); }
+    .hud { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-size: 15px; font-weight: 600; }
+    .hud-score { color: var(--accent); }
+    .hud-best { color: var(--sub); font-size: 13px; }
+    canvas { display: block; border-radius: 12px; max-width: 100%; cursor: pointer; touch-action: none; }
+    .controls-hint { margin-top: 10px; font-size: 13px; color: var(--sub); }
+    .controls-hint kbd { background: #1e2d4a; padding: 2px 7px; border-radius: 4px; font-size: 12px; color: #fff; }
+    .info-section { background: var(--panel); border-radius: 12px; padding: 20px 24px; text-align: left; margin-bottom: 20px; }
+    .info-section h2 { font-size: 18px; margin-bottom: 10px; color: var(--accent); }
+    .info-section p, .info-section li { color: var(--sub); font-size: 14px; line-height: 1.7; }
+    .info-section ul { margin-left: 18px; }
     footer p{margin:0}
     footer p{margin:0}
     footer p{margin:0}
@@ -40,153 +40,153 @@
       /* 容器布局优化 */
       .container, .wrap {
         padding: 40px 15px 80px !important;
-        max-width: 100% !important
+        max-width: 100% !important;
       }
 
       /* 标题字体优化 */
       h1 {
         font-size: 28px !important;
-        line-height: 1.3 !important
+        line-height: 1.3 !important;
       }
 
       h2 {
         font-size: 20px !important;
         margin-top: 36px !important;
-        margin-bottom: 10px !important
+        margin-bottom: 10px !important;
       }
 
       h3 {
-        font-size: 17px !important
+        font-size: 17px !important;
       }
 
       /* 正文内容优化 */
       p, li, .intro, .subtitle {
         font-size: 14px !important;
-        line-height: 1.7 !important
+        line-height: 1.7 !important;
       }
 
       /* 段落间距优化 */
       p, ul, ol {
-        margin-bottom: 16px !important
+        margin-bottom: 16px !important;
       }
 
       /* 列表优化 */
       ul, ol {
-        padding-left: 18px !important
+        padding-left: 18px !important;
       }
 
       li {
-        margin-bottom: 6px !important
+        margin-bottom: 6px !important;
       }
 
       /* 内容块优化 */
       .main-panel, .step-block, .notice, .extra-info {
         padding: 16px !important;
         border-radius: 12px !important;
-        margin: 16px 0 !important
+        margin: 16px 0 !important;
       }
 
       /* 按钮和输入框优化 */
       .btn {
         padding: 14px !important;
         font-size: 15px !important;
-        min-height: 48px !important
+        min-height: 48px !important;
       }
 
       .input-group input {
         padding: 12px !important;
-        font-size: 15px !important
+        font-size: 15px !important;
       }
 
       /* 网格系统优化 */
       .age-grid {
         grid-template-columns: repeat(2, 1fr) !important;
-        gap: 12px !important
+        gap: 12px !important;
       }
 
       /* 广告位优化 */
       .ad-banner {
         margin: 16px 0 !important;
-        min-height: 50px !important
+        min-height: 50px !important;
       }
 
       /* 游戏页面优化 */
       .grid-container {
-        padding: 8px !important
+        padding: 8px !important;
       }
 
       .grid {
-        gap: 8px !important
+        gap: 8px !important;
       }
 
       .cell {
         font-size: 20px !important;
-        border-radius: 6px !important
+        border-radius: 6px !important;
       }
 
       .score-box {
         min-width: 70px !important;
-        padding: 6px 12px !important
+        padding: 6px 12px !important;
       }
 
       .score-val {
-        font-size: 18px !important
+        font-size: 18px !important;
       }
 
       /* 工具页面优化 */
       .age-main {
-        font-size: 36px !important
+        font-size: 36px !important;
       }
 
       .age-value {
-        font-size: 24px !important
+        font-size: 24px !important;
       }
 
       .age-label {
-        font-size: 11px !important
+        font-size: 11px !important;
       }
 
       /* 引导页面优化 */
       .intro {
         border-left-width: 2px !important;
         padding-left: 12px !important;
-        margin-bottom: 32px !important
+        margin-bottom: 32px !important;
       }
 
       .faq-item {
-        margin-bottom: 20px !important
+        margin-bottom: 20px !important;
       }
 
       .faq-item strong {
-        font-size: 15px !important
+        font-size: 15px !important;
       }
     }
 
     /* 小手机优化 (≤480px) */
     @media (max-width: 480px) {
       h1 {
-        font-size: 24px !important
+        font-size: 24px !important;
       }
 
       h2 {
-        font-size: 18px !important
+        font-size: 18px !important;
       }
 
       .container, .wrap {
-        padding: 32px 12px 60px !important
+        padding: 32px 12px 60px !important;
       }
 
       .main-panel, .step-block, .notice {
-        padding: 14px !important
+        padding: 14px !important;
       }
 
       .btn {
         padding: 12px !important;
-        font-size: 14px !important
+        font-size: 14px !important;
       }
 
       .age-grid {
-        grid-template-columns: 1fr !important
+        grid-template-columns: 1fr !important;
       }
     }
 
@@ -194,15 +194,62 @@
     @media (hover: none) and (pointer: coarse) {
       button, .btn, a[onclick], .cell {
         min-height: 44px !important;
-        min-width: 44px !important
+        min-width: 44px !important;
       }
 
       input, select, textarea {
-        font-size: 16px !important
+        font-size: 16px !important;
       }
         }
 
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px; max-width: 800px; padding: 32px 24px; background: var(--panel); border-radius: 18px; border: 1px solid var(--border); text-align: left;">
+footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
+
+  <meta name="keywords" content="stack tower game, free online game, browser game, play online, casual game" />  <meta property="og:title" content="Stack Tower – Free Browser Game | Knexio" />
+<meta property="og:url" content="https://knexio.xyz/games/stack-tower/" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoGame",
+  "name": "Stack Tower",
+  "url": "https://knexio.xyz/games/stack-tower/",
+  "description": "Play Stack Tower free online. Stack Tower is a fun browser game that you can play for free. Enjoy this entertaining game with simple controls and enga... No download required. Works on all devices.",
+  "genre": "Game",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+
+<!-- Open Graph -->
+<meta property="og:description" content="Play Stack Tower free online. Stack blocks to build the tallest tower possible. Works in your browser.">
+<meta property="og:type" content="WebApplication">
+<meta property="og:site_name" content="Knexio">
+</head>
+<body><div class="container">
+    <a class="back" href="../index.html">← Back to Games</a>
+    <h1>Stack Tower</h1>
+    <p class="tagline">Stack blocks perfectly to build the tallest tower!</p>
+
+    <div class="game-wrap">
+      <div class="hud">
+        <span class="hud-score">Score: <span id="scoreDisplay">0</span></span>
+        <span class="hud-best">Best: <span id="bestDisplay">0</span></span>
+      </div>
+      <canvas id="game" width="360" height="520"></canvas>
+      <div class="controls-hint">
+        <kbd>Space</kbd> / <kbd>Click</kbd> / <kbd>Tap</kbd> to place block
+      </div>
+
+  </div>
+
+  <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="5794572171" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+
+<!-- ==================== 游戏玩法说明 - SEO优化内容 ==================== -->
+<div class="gameplay-section" style="margin: 60px auto 0; max-width: 800px; padding: 32px 24px; background: var(--panel); border-radius: 18px; border: 1px solid var(--border); text-align: left;">
     <h2 style="font-size: 28px; margin-bottom: 30px; color: var(--text-main); display: flex; align-items: center;">
         <span style="background: var(--accent); color: white; width: 36px; height: 36px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 15px; font-size: 18px;">🎮</span>
         How to Play Stack Tower
@@ -307,7 +354,7 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 
     let score, bestScore, gameState, blocks, currentBlock, cameraY, particles;
 
-    try { bestScore = parseInt(localStorage.getItem('stacktower_best') || '0') } catch(e){ bestScore = 0 }
+    try { bestScore = parseInt(localStorage.getItem('stacktower_best') || '0'); } catch(e){ bestScore = 0; }
 
     const colors = [
       '#4f8cff', '#ff6b6b', '#4ecb71', '#ffa53d', '#c678dd',
@@ -332,7 +379,7 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 
       spawnBlock();
       updateHUD();
-      render()
+      render();
     }
 
     function spawnBlock() {
@@ -348,18 +395,18 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
         color: colors[score % colors.length],
         speed: speed * direction,
         direction: direction
-      }
+      };
     }
 
     function updateHUD() {
       document.getElementById('scoreDisplay').textContent = score;
-      document.getElementById('bestDisplay').textContent = bestScore
+      document.getElementById('bestDisplay').textContent = bestScore;
     }
 
     // ── Input ──────────────────────────────────────────
     function dropBlock() {
-      if (gameState === 'idle') { startGame(); return }
-      if (gameState !== 'playing') { init(); return }
+      if (gameState === 'idle') { startGame(); return; }
+      if (gameState !== 'playing') { init(); return; }
 
       const lastBlock = blocks[blocks.length - 1];
 
@@ -374,10 +421,10 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
         gameState = 'dead';
         if (score > bestScore) {
           bestScore = score;
-          try { localStorage.setItem('stacktower_best', bestScore) } catch(e){}
+          try { localStorage.setItem('stacktower_best', bestScore); } catch(e){}
         }
         updateHUD();
-        return
+        return;
       }
 
       // Perfect placement bonus
@@ -386,7 +433,7 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
         // Keep same width for perfect placement
         currentBlock.x = lastBlock.x;
         currentBlock.w = lastBlock.w;
-        spawnParticles(currentBlock.x + currentBlock.w/2, currentBlock.y, '#ffd700', 15)
+        spawnParticles(currentBlock.x + currentBlock.w/2, currentBlock.y, '#ffd700', 15);
       } else {
         // Cut off overhang
         currentBlock.x = left;
@@ -396,7 +443,7 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
         const cutOffX = currentBlock.direction === 1 ? right : currentBlock.x - (currentBlock.direction === 1 ? 0 : lastBlock.w - overlap);
         const cutOffWidth = currentBlock.w - overlap;
         if (cutOffWidth > 0) {
-          spawnParticles(cutOffX + cutOffWidth/2, currentBlock.y + BLOCK_HEIGHT/2, currentBlock.color, 10)
+          spawnParticles(cutOffX + cutOffWidth/2, currentBlock.y + BLOCK_HEIGHT/2, currentBlock.color, 10);
         }
       }
 
@@ -405,21 +452,21 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 
       // Camera follow
       if (blocks.length > 5) {
-        cameraY = blocks[blocks.length - 1].y - (H - 200)
+        cameraY = blocks[blocks.length - 1].y - (H - 200);
       }
 
       spawnBlock();
-      updateHUD()
+      updateHUD();
     }
 
     document.addEventListener('keydown', e => {
-      if (e.code === 'Space') { e.preventDefault(); dropBlock() }
+      if (e.code === 'Space') { e.preventDefault(); dropBlock(); }
     });
-    canvas.addEventListener('pointerdown', e => { e.preventDefault(); dropBlock() });
+    canvas.addEventListener('pointerdown', e => { e.preventDefault(); dropBlock(); });
 
     function startGame() {
       gameState = 'playing';
-      loop()
+      loop();
     }
 
     // ── Loop ───────────────────────────────────────────
@@ -427,7 +474,7 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
       if (gameState !== 'playing') return;
       update();
       render();
-      requestAnimationFrame(loop)
+      requestAnimationFrame(loop);
     }
 
     function update() {
@@ -438,10 +485,10 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
         // Bounce off walls
         if (currentBlock.x <= -currentBlock.w) {
           currentBlock.x = -currentBlock.w;
-          currentBlock.speed = Math.abs(currentBlock.speed)
+          currentBlock.speed = Math.abs(currentBlock.speed);
         } else if (currentBlock.x >= W) {
           currentBlock.x = W;
-          currentBlock.speed = -Math.abs(currentBlock.speed)
+          currentBlock.speed = -Math.abs(currentBlock.speed);
         }
       }
 
@@ -452,7 +499,7 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
         p.y += p.vy;
         p.vy += 0.3;
         p.life--;
-        if (p.life <= 0) particles.splice(i, 1)
+        if (p.life <= 0) particles.splice(i, 1);
       }
     }
 
@@ -466,7 +513,7 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
           life: 30 + Math.random() * 20,
           color,
           size: Math.random() * 6 + 3
-        })
+        });
       }
     }
 
@@ -485,7 +532,7 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
       // Draw placed blocks
       for (let i = 0; i < blocks.length; i++) {
         const b = blocks[i];
-        drawBlock(b, i === blocks.length - 1)
+        drawBlock(b, i === blocks.length - 1);
       }
 
       // Draw current moving block
@@ -501,7 +548,7 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
         ctx.moveTo(currentBlock.x + currentBlock.w, currentBlock.y);
         ctx.lineTo(currentBlock.x + currentBlock.w, currentBlock.y + BLOCK_HEIGHT);
         ctx.stroke();
-        ctx.setLineDash([])
+        ctx.setLineDash([]);
       }
 
       ctx.restore();
@@ -512,20 +559,20 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
         if (py > H + 50 || py < -50) continue;
         ctx.globalAlpha = p.life / 40;
         ctx.fillStyle = p.color;
-        ctx.fillRect(p.x - p.size/2, py - p.size/2, p.size, p.size)
+        ctx.fillRect(p.x - p.size/2, py - p.size/2, p.size, p.size);
       }
       ctx.globalAlpha = 1;
 
       // Overlays
       if (gameState === 'idle') {
-        drawOverlay('Stack Tower', 'Press Space or Tap to Start', '#4f8cff')
+        drawOverlay('Stack Tower', 'Press Space or Tap to Start', '#4f8cff');
       } else if (gameState === 'dead') {
         drawOverlay('Game Over', `Score: ${score}  ·  Best: ${bestScore}`, '#ff6b6b');
         ctx.fillStyle = '#fff';
         ctx.font = '14px system-ui';
         ctx.textAlign = 'center';
         ctx.fillText('Tap to play again', W/2, H/2 + 50);
-        ctx.textAlign = 'left'
+        ctx.textAlign = 'left';
       }
     }
 
@@ -556,7 +603,7 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
         ctx.font = 'bold 14px system-ui';
         ctx.textAlign = 'center';
         ctx.fillText(score, b.x + b.w/2, b.y + b.h/2 + 5);
-        ctx.textAlign = 'left'
+        ctx.textAlign = 'left';
       }
     }
 
@@ -570,7 +617,7 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
       ctx.fillStyle = '#aab3c5';
       ctx.font = '16px system-ui';
       ctx.fillText(sub, W/2, H/2 + 10);
-      ctx.textAlign = 'left'
+      ctx.textAlign = 'left';
     }
 
     function lighten(hex, amount) {
@@ -578,15 +625,13 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
       const r = Math.min(255, (num >> 16) + amount);
       const g = Math.min(255, ((num >> 8) & 0xff) + amount);
       const b = Math.min(255, (num & 0xff) + amount);
-      return `rgb(${r},${g},${b})`
+      return `rgb(${r},${g},${b})`;
     }
 
-    init()
+    init();
   })();
 </script></div>
 
-
-</style>
 
 <script src="/knexio-bundle.js"></script>
   

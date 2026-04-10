@@ -9,26 +9,26 @@
   <link rel="canonical" href="https://knexio.xyz/games/traffic-racer/">
 <style>
 
-    :root { --bg: #0b1220; --panel: #111a2e; --accent: #4f8cff; --text: #fff; --sub: #aab3c5; --text-main: #fff; --text-sub: #aab3c5 }
-    * { box-sizing: border-box; margin: 0; padding: 0 }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh }
-    .container { max-width: 600px; margin: 0 auto; padding: 20px; text-align: center }
-    .back { display: block; text-align: left; color: var(--sub); margin-bottom: 16px; text-decoration: none; font-size: 14px }
-    .back:hover { color: var(--accent) }
-    h1 { font-size: 30px; font-weight: 800; margin-bottom: 6px; letter-spacing: 1px }
-    .tagline { color: var(--sub); font-size: 14px; margin-bottom: 16px }
-    .game-wrap { background: var(--panel); border-radius: 16px; padding: 20px 20px 16px; margin: 0 0 20px; box-shadow: 0 4px 24px rgba(0,0,0,0.4) }
-    .hud { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-size: 15px; font-weight: 600 }
-    .hud-score { color: var(--accent) }
-    .hud-best { color: var(--sub); font-size: 13px }
-    .hud-speed { color: #ff6b6b }
-    canvas { display: block; border-radius: 12px; max-width: 100%; cursor: none; touch-action: none }
-    .controls-hint { margin-top: 10px; font-size: 13px; color: var(--sub) }
-    .controls-hint kbd { background: #1e2d4a; padding: 2px 7px; border-radius: 4px; font-size: 12px; color: #fff }
-    .info-section { background: var(--panel); border-radius: 12px; padding: 20px 24px; text-align: left; margin-bottom: 20px }
-    .info-section h2 { font-size: 18px; margin-bottom: 10px; color: var(--accent) }
-    .info-section p, .info-section li { color: var(--sub); font-size: 14px; line-height: 1.7 }
-    .info-section ul { margin-left: 18px }
+    :root { --bg: #0b1220; --panel: #111a2e; --accent: #4f8cff; --text: #fff; --sub: #aab3c5;; --text-main: #fff; --text-sub: #aab3c5; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+    .container { max-width: 600px; margin: 0 auto; padding: 20px; text-align: center; }
+    .back { display: block; text-align: left; color: var(--sub); margin-bottom: 16px; text-decoration: none; font-size: 14px; }
+    .back:hover { color: var(--accent); }
+    h1 { font-size: 30px; font-weight: 800; margin-bottom: 6px; letter-spacing: 1px; }
+    .tagline { color: var(--sub); font-size: 14px; margin-bottom: 16px; }
+    .game-wrap { background: var(--panel); border-radius: 16px; padding: 20px 20px 16px; margin: 0 0 20px; box-shadow: 0 4px 24px rgba(0,0,0,0.4); }
+    .hud { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-size: 15px; font-weight: 600; }
+    .hud-score { color: var(--accent); }
+    .hud-best { color: var(--sub); font-size: 13px; }
+    .hud-speed { color: #ff6b6b; }
+    canvas { display: block; border-radius: 12px; max-width: 100%; cursor: none; touch-action: none; }
+    .controls-hint { margin-top: 10px; font-size: 13px; color: var(--sub); }
+    .controls-hint kbd { background: #1e2d4a; padding: 2px 7px; border-radius: 4px; font-size: 12px; color: #fff; }
+    .info-section { background: var(--panel); border-radius: 12px; padding: 20px 24px; text-align: left; margin-bottom: 20px; }
+    .info-section h2 { font-size: 18px; margin-bottom: 10px; color: var(--accent); }
+    .info-section p, .info-section li { color: var(--sub); font-size: 14px; line-height: 1.7; }
+    .info-section ul { margin-left: 18px; }
     footer p{margin:0}
     footer p{margin:0}
     footer p{margin:0}
@@ -41,153 +41,153 @@
       /* 容器布局优化 */
       .container, .wrap {
         padding: 40px 15px 80px !important;
-        max-width: 100% !important
+        max-width: 100% !important;
       }
 
       /* 标题字体优化 */
       h1 {
         font-size: 28px !important;
-        line-height: 1.3 !important
+        line-height: 1.3 !important;
       }
 
       h2 {
         font-size: 20px !important;
         margin-top: 36px !important;
-        margin-bottom: 10px !important
+        margin-bottom: 10px !important;
       }
 
       h3 {
-        font-size: 17px !important
+        font-size: 17px !important;
       }
 
       /* 正文内容优化 */
       p, li, .intro, .subtitle {
         font-size: 14px !important;
-        line-height: 1.7 !important
+        line-height: 1.7 !important;
       }
 
       /* 段落间距优化 */
       p, ul, ol {
-        margin-bottom: 16px !important
+        margin-bottom: 16px !important;
       }
 
       /* 列表优化 */
       ul, ol {
-        padding-left: 18px !important
+        padding-left: 18px !important;
       }
 
       li {
-        margin-bottom: 6px !important
+        margin-bottom: 6px !important;
       }
 
       /* 内容块优化 */
       .main-panel, .step-block, .notice, .extra-info {
         padding: 16px !important;
         border-radius: 12px !important;
-        margin: 16px 0 !important
+        margin: 16px 0 !important;
       }
 
       /* 按钮和输入框优化 */
       .btn {
         padding: 14px !important;
         font-size: 15px !important;
-        min-height: 48px !important
+        min-height: 48px !important;
       }
 
       .input-group input {
         padding: 12px !important;
-        font-size: 15px !important
+        font-size: 15px !important;
       }
 
       /* 网格系统优化 */
       .age-grid {
         grid-template-columns: repeat(2, 1fr) !important;
-        gap: 12px !important
+        gap: 12px !important;
       }
 
       /* 广告位优化 */
       .ad-banner {
         margin: 16px 0 !important;
-        min-height: 50px !important
+        min-height: 50px !important;
       }
 
       /* 游戏页面优化 */
       .grid-container {
-        padding: 8px !important
+        padding: 8px !important;
       }
 
       .grid {
-        gap: 8px !important
+        gap: 8px !important;
       }
 
       .cell {
         font-size: 20px !important;
-        border-radius: 6px !important
+        border-radius: 6px !important;
       }
 
       .score-box {
         min-width: 70px !important;
-        padding: 6px 12px !important
+        padding: 6px 12px !important;
       }
 
       .score-val {
-        font-size: 18px !important
+        font-size: 18px !important;
       }
 
       /* 工具页面优化 */
       .age-main {
-        font-size: 36px !important
+        font-size: 36px !important;
       }
 
       .age-value {
-        font-size: 24px !important
+        font-size: 24px !important;
       }
 
       .age-label {
-        font-size: 11px !important
+        font-size: 11px !important;
       }
 
       /* 引导页面优化 */
       .intro {
         border-left-width: 2px !important;
         padding-left: 12px !important;
-        margin-bottom: 32px !important
+        margin-bottom: 32px !important;
       }
 
       .faq-item {
-        margin-bottom: 20px !important
+        margin-bottom: 20px !important;
       }
 
       .faq-item strong {
-        font-size: 15px !important
+        font-size: 15px !important;
       }
     }
 
     /* 小手机优化 (≤480px) */
     @media (max-width: 480px) {
       h1 {
-        font-size: 24px !important
+        font-size: 24px !important;
       }
 
       h2 {
-        font-size: 18px !important
+        font-size: 18px !important;
       }
 
       .container, .wrap {
-        padding: 32px 12px 60px !important
+        padding: 32px 12px 60px !important;
       }
 
       .main-panel, .step-block, .notice {
-        padding: 14px !important
+        padding: 14px !important;
       }
 
       .btn {
         padding: 12px !important;
-        font-size: 14px !important
+        font-size: 14px !important;
       }
 
       .age-grid {
-        grid-template-columns: 1fr !important
+        grid-template-columns: 1fr !important;
       }
     }
 
@@ -195,15 +195,53 @@
     @media (hover: none) and (pointer: coarse) {
       button, .btn, a[onclick], .cell {
         min-height: 44px !important;
-        min-width: 44px !important
+        min-width: 44px !important;
       }
 
       input, select, textarea {
-        font-size: 16px !important
+        font-size: 16px !important;
       }
         }
 
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;·&nbsp; Touch and drag
+footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
+
+  <meta name="keywords" content="traffic racer game, free online game, browser game, play online, casual game" />  <meta property="og:title" content="Traffic Racer – Free Browser Game | Knexio" />
+<meta property="og:url" content="https://knexio.xyz/games/traffic-racer/" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoGame",
+  "name": "Traffic Racer",
+  "url": "https://knexio.xyz/games/traffic-racer/",
+  "description": "Play Traffic Racer free online. Traffic Racer is a fun browser game that you can play for free. Enjoy this entertaining game with simple controls and en... No download required. Works on all devices.",
+  "genre": "Game",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+
+<!-- Open Graph -->
+<meta property="og:description" content="Play Traffic Racer free online. Drive and dodge traffic on busy highways. Works in your browser.">
+<meta property="og:type" content="WebApplication">
+<meta property="og:site_name" content="Knexio">
+</head>
+<body><div class="container">
+    <a class="back" href="../index.html">← Back to Games</a>
+    <h1>Traffic Racer</h1>
+    <p class="tagline">Dodge traffic and survive as long as you can!</p>
+
+    <div class="game-wrap">
+      <div class="hud">
+        <span class="hud-score">Score: <span id="scoreDisplay">0</span></span>
+        <span class="hud-speed"><span id="speedDisplay">0</span> km/h</span>
+        <span class="hud-best">Best: <span id="bestDisplay">0</span></span>
+      </div>
+      <canvas id="game" width="360" height="520"></canvas>
+      <div class="controls-hint">
+        <kbd>←</kbd> <kbd>→</kbd> / <kbd>A</kbd> <kbd>D</kbd> to steer &nbsp;·&nbsp; Touch and drag
       </div>
 
   </div>
@@ -319,7 +357,7 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
     let score, bestScore, gameState, speed, distance;
     let player, traffic, roadMarkers, particles;
 
-    try { bestScore = parseInt(localStorage.getItem('trafficracer_best') || '0') } catch(e){ bestScore = 0 }
+    try { bestScore = parseInt(localStorage.getItem('trafficracer_best') || '0'); } catch(e){ bestScore = 0; }
 
     function init() {
       score = 0; speed = 0; distance = 0;
@@ -331,17 +369,17 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 
       // Initialize road markers
       for (let i = 0; i < 10; i++) {
-        roadMarkers.push({ y: i * 60, x: W/2 - 2 })
+        roadMarkers.push({ y: i * 60, x: W/2 - 2 });
       }
 
       updateHUD();
-      render()
+      render();
     }
 
     function updateHUD() {
       document.getElementById('scoreDisplay').textContent = Math.floor(score);
       document.getElementById('speedDisplay').textContent = Math.floor(speed * 10);
-      document.getElementById('bestDisplay').textContent = bestScore
+      document.getElementById('bestDisplay').textContent = bestScore;
     }
 
     // ── Input ──────────────────────────────────────────
@@ -352,25 +390,25 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
         if (e.code === 'Space' || e.code === 'ArrowUp') {
           e.preventDefault();
           startGame();
-          return
+          return;
         }
       }
       if (gameState !== 'playing') return;
 
       if (e.code === 'ArrowLeft' || e.code === 'KeyA') {
         e.preventDefault();
-        player.lane = Math.max(0, player.lane - 1)
+        player.lane = Math.max(0, player.lane - 1);
       } else if (e.code === 'ArrowRight' || e.code === 'KeyD') {
         e.preventDefault();
-        player.lane = Math.min(3, player.lane + 1)
+        player.lane = Math.min(3, player.lane + 1);
       }
-      player.targetX = (player.lane + 0.5) * LANE_WIDTH
+      player.targetX = (player.lane + 0.5) * LANE_WIDTH;
     });
 
     canvas.addEventListener('touchstart', e => {
       touchX = e.touches[0].clientX;
       if (gameState === 'idle' || gameState === 'dead') {
-        startGame()
+        startGame();
       }
     }, {passive: false});
 
@@ -381,12 +419,12 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
       const x = e.touches[0].clientX - rect.left;
       const scaleX = canvas.width / rect.width;
       player.targetX = x * scaleX;
-      player.lane = Math.floor(player.targetX / LANE_WIDTH)
+      player.lane = Math.floor(player.targetX / LANE_WIDTH);
     }, {passive: false});
 
     canvas.addEventListener('mousedown', e => {
       if (gameState === 'idle' || gameState === 'dead') {
-        startGame()
+        startGame();
       }
     });
 
@@ -396,14 +434,14 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
       const x = e.clientX - rect.left;
       const scaleX = canvas.width / rect.width;
       player.targetX = x * scaleX;
-      player.targetX = Math.max(CAR_WIDTH/2, Math.min(W - CAR_WIDTH/2, player.targetX))
+      player.targetX = Math.max(CAR_WIDTH/2, Math.min(W - CAR_WIDTH/2, player.targetX));
     });
 
     function startGame() {
       if (gameState === 'dead') init();
       gameState = 'playing';
       speed = 8;
-      loop()
+      loop();
     }
 
     // ── Loop ───────────────────────────────────────────
@@ -411,7 +449,7 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
       if (gameState !== 'playing') return;
       update();
       render();
-      requestAnimationFrame(loop)
+      requestAnimationFrame(loop);
     }
 
     function update() {
@@ -426,7 +464,7 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
       // Update road markers
       for (const marker of roadMarkers) {
         marker.y += speed;
-        if (marker.y > H) marker.y -= H + 60
+        if (marker.y > H) marker.y -= H + 60;
       }
 
       // Spawn traffic
@@ -445,7 +483,7 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
           height: type === 'truck' ? 90 : CAR_HEIGHT,
           speed: speed * (0.5 + Math.random() * 0.5),
           color: colors[Math.floor(Math.random() * colors.length)]
-        })
+        });
       }
 
       // Update traffic
@@ -459,10 +497,10 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
           { x: t.x - t.width/2, y: t.y - t.height/2, w: t.width, h: t.height }
         )) {
           crash();
-          return
+          return;
         }
 
-        if (t.y > H + 100) traffic.splice(i, 1)
+        if (t.y > H + 100) traffic.splice(i, 1);
       }
 
       // Update particles
@@ -471,7 +509,7 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
         p.x += p.vx;
         p.y += p.vy;
         p.life--;
-        if (p.life <= 0) particles.splice(i, 1)
+        if (p.life <= 0) particles.splice(i, 1);
       }
 
       // Exhaust particles
@@ -484,14 +522,14 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
           life: 20,
           color: 'rgba(200,200,200,0.5)',
           size: Math.random() * 4 + 2
-        })
+        });
       }
 
-      updateHUD()
+      updateHUD();
     }
 
     function rectIntersect(a, b) {
-      return a.x < b.x + b.w && a.x + a.w > b.x && a.y < b.y + b.h && a.y + a.h > b.y
+      return a.x < b.x + b.w && a.x + a.w > b.x && a.y < b.y + b.h && a.y + a.h > b.y;
     }
 
     function crash() {
@@ -506,14 +544,14 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
           life: 40 + Math.random() * 20,
           color: ['#ff6b6b', '#ffa53d', '#fff'][Math.floor(Math.random() * 3)],
           size: Math.random() * 8 + 4
-        })
+        });
       }
 
       if (Math.floor(score) > bestScore) {
         bestScore = Math.floor(score);
-        try { localStorage.setItem('trafficracer_best', bestScore) } catch(e){}
+        try { localStorage.setItem('trafficracer_best', bestScore); } catch(e){}
       }
-      updateHUD()
+      updateHUD();
     }
 
     // ── Render ─────────────────────────────────────────
@@ -534,13 +572,13 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
         ctx.beginPath();
         ctx.moveTo(i * LANE_WIDTH, 0);
         ctx.lineTo(i * LANE_WIDTH, H);
-        ctx.stroke()
+        ctx.stroke();
       }
 
       // Road markers (moving)
       ctx.fillStyle = 'rgba(255,255,255,0.6)';
       for (const m of roadMarkers) {
-        ctx.fillRect(m.x, m.y, 4, 40)
+        ctx.fillRect(m.x, m.y, 4, 40);
       }
 
       // Particles
@@ -549,30 +587,30 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
         ctx.fillStyle = p.color;
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fill()
+        ctx.fill();
       }
       ctx.globalAlpha = 1;
 
       // Traffic cars
       for (const t of traffic) {
-        drawCar(t.x, t.y, t.width, t.height, t.color, false)
+        drawCar(t.x, t.y, t.width, t.height, t.color, false);
       }
 
       // Player car
       if (gameState !== 'dead' || particles.length > 0) {
-        drawCar(player.x, player.y, CAR_WIDTH, CAR_HEIGHT, '#4f8cff', true)
+        drawCar(player.x, player.y, CAR_WIDTH, CAR_HEIGHT, '#4f8cff', true);
       }
 
       // Overlays
       if (gameState === 'idle') {
-        drawOverlay('Traffic Racer', 'Press Space or Tap to Start', '#4f8cff')
+        drawOverlay('Traffic Racer', 'Press Space or Tap to Start', '#4f8cff');
       } else if (gameState === 'dead') {
         drawOverlay('Crashed!', `Score: ${Math.floor(score)}  ·  Best: ${bestScore}`, '#ff6b6b');
         ctx.fillStyle = '#fff';
         ctx.font = '14px system-ui';
         ctx.textAlign = 'center';
         ctx.fillText('Tap to play again', W/2, H/2 + 50);
-        ctx.textAlign = 'left'
+        ctx.textAlign = 'left';
       }
     }
 
@@ -625,7 +663,7 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
         ctx.moveTo(w/2 - 7, -h/2);
         ctx.lineTo(w/2 - 20, -h/2 - 60);
         ctx.lineTo(w/2 + 15, -h/2 - 60);
-        ctx.fill()
+        ctx.fill();
       } else {
         // Taillights
         ctx.fillStyle = '#ff4444';
@@ -633,10 +671,10 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
         ctx.shadowBlur = 8;
         ctx.fillRect(-w/2 + 3, h/2 - 2, 8, 4);
         ctx.fillRect(w/2 - 11, h/2 - 2, 8, 4);
-        ctx.shadowBlur = 0
+        ctx.shadowBlur = 0;
       }
 
-      ctx.restore()
+      ctx.restore();
     }
 
     function drawOverlay(title, sub, color) {
@@ -649,7 +687,7 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
       ctx.fillStyle = '#aab3c5';
       ctx.font = '16px system-ui';
       ctx.fillText(sub, W/2, H/2 + 10);
-      ctx.textAlign = 'left'
+      ctx.textAlign = 'left';
     }
 
     function lighten(hex, amount) {
@@ -657,7 +695,7 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
       const r = Math.min(255, (num >> 16) + amount);
       const g = Math.min(255, ((num >> 8) & 0xff) + amount);
       const b = Math.min(255, (num & 0xff) + amount);
-      return `rgb(${r},${g},${b})`
+      return `rgb(${r},${g},${b})`;
     }
 
     function darken(hex, amount) {
@@ -665,15 +703,13 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
       const r = Math.max(0, (num >> 16) - amount);
       const g = Math.max(0, ((num >> 8) & 0xff) - amount);
       const b = Math.max(0, (num & 0xff) - amount);
-      return `rgb(${r},${g},${b})`
+      return `rgb(${r},${g},${b})`;
     }
 
-    init()
+    init();
   })();
 </script></div>
 
-
-</style>
 
 <script src="/knexio-bundle.js"></script>
   

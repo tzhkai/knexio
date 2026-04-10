@@ -9,26 +9,26 @@
   <link rel="canonical" href="https://knexio.xyz/games/space-shooter/">
 <style>
 
-    :root { --bg: #0b1220; --panel: #111a2e; --accent: #4f8cff; --text: #fff; --sub: #aab3c5; --text-main: #fff; --text-sub: #aab3c5 }
-    * { box-sizing: border-box; margin: 0; padding: 0 }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh }
-    .container { max-width: 600px; margin: 0 auto; padding: 20px; text-align: center }
-    .back { display: block; text-align: left; color: var(--sub); margin-bottom: 16px; text-decoration: none; font-size: 14px }
-    .back:hover { color: var(--accent) }
-    h1 { font-size: 30px; font-weight: 800; margin-bottom: 6px; letter-spacing: 1px }
-    .tagline { color: var(--sub); font-size: 14px; margin-bottom: 16px }
-    .game-wrap { background: var(--panel); border-radius: 16px; padding: 20px 20px 16px; margin: 0 0 20px; box-shadow: 0 4px 24px rgba(0,0,0,0.4) }
-    .hud { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-size: 15px; font-weight: 600 }
-    .hud-score { color: var(--accent) }
-    .hud-best { color: var(--sub); font-size: 13px }
-    .hud-lives { color: #ff6b6b }
-    canvas { display: block; border-radius: 12px; max-width: 100%; cursor: crosshair; touch-action: none }
-    .controls-hint { margin-top: 10px; font-size: 13px; color: var(--sub) }
-    .controls-hint kbd { background: #1e2d4a; padding: 2px 7px; border-radius: 4px; font-size: 12px; color: #fff }
-    .info-section { background: var(--panel); border-radius: 12px; padding: 20px 24px; text-align: left; margin-bottom: 20px }
-    .info-section h2 { font-size: 18px; margin-bottom: 10px; color: var(--accent) }
-    .info-section p, .info-section li { color: var(--sub); font-size: 14px; line-height: 1.7 }
-    .info-section ul { margin-left: 18px }
+    :root { --bg: #0b1220; --panel: #111a2e; --accent: #4f8cff; --text: #fff; --sub: #aab3c5;; --text-main: #fff; --text-sub: #aab3c5; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+    .container { max-width: 600px; margin: 0 auto; padding: 20px; text-align: center; }
+    .back { display: block; text-align: left; color: var(--sub); margin-bottom: 16px; text-decoration: none; font-size: 14px; }
+    .back:hover { color: var(--accent); }
+    h1 { font-size: 30px; font-weight: 800; margin-bottom: 6px; letter-spacing: 1px; }
+    .tagline { color: var(--sub); font-size: 14px; margin-bottom: 16px; }
+    .game-wrap { background: var(--panel); border-radius: 16px; padding: 20px 20px 16px; margin: 0 0 20px; box-shadow: 0 4px 24px rgba(0,0,0,0.4); }
+    .hud { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-size: 15px; font-weight: 600; }
+    .hud-score { color: var(--accent); }
+    .hud-best { color: var(--sub); font-size: 13px; }
+    .hud-lives { color: #ff6b6b; }
+    canvas { display: block; border-radius: 12px; max-width: 100%; cursor: crosshair; touch-action: none; }
+    .controls-hint { margin-top: 10px; font-size: 13px; color: var(--sub); }
+    .controls-hint kbd { background: #1e2d4a; padding: 2px 7px; border-radius: 4px; font-size: 12px; color: #fff; }
+    .info-section { background: var(--panel); border-radius: 12px; padding: 20px 24px; text-align: left; margin-bottom: 20px; }
+    .info-section h2 { font-size: 18px; margin-bottom: 10px; color: var(--accent); }
+    .info-section p, .info-section li { color: var(--sub); font-size: 14px; line-height: 1.7; }
+    .info-section ul { margin-left: 18px; }
     footer p{margin:0}
     footer p{margin:0}
     footer p{margin:0}
@@ -41,153 +41,153 @@
       /* 容器布局优化 */
       .container, .wrap {
         padding: 40px 15px 80px !important;
-        max-width: 100% !important
+        max-width: 100% !important;
       }
 
       /* 标题字体优化 */
       h1 {
         font-size: 28px !important;
-        line-height: 1.3 !important
+        line-height: 1.3 !important;
       }
 
       h2 {
         font-size: 20px !important;
         margin-top: 36px !important;
-        margin-bottom: 10px !important
+        margin-bottom: 10px !important;
       }
 
       h3 {
-        font-size: 17px !important
+        font-size: 17px !important;
       }
 
       /* 正文内容优化 */
       p, li, .intro, .subtitle {
         font-size: 14px !important;
-        line-height: 1.7 !important
+        line-height: 1.7 !important;
       }
 
       /* 段落间距优化 */
       p, ul, ol {
-        margin-bottom: 16px !important
+        margin-bottom: 16px !important;
       }
 
       /* 列表优化 */
       ul, ol {
-        padding-left: 18px !important
+        padding-left: 18px !important;
       }
 
       li {
-        margin-bottom: 6px !important
+        margin-bottom: 6px !important;
       }
 
       /* 内容块优化 */
       .main-panel, .step-block, .notice, .extra-info {
         padding: 16px !important;
         border-radius: 12px !important;
-        margin: 16px 0 !important
+        margin: 16px 0 !important;
       }
 
       /* 按钮和输入框优化 */
       .btn {
         padding: 14px !important;
         font-size: 15px !important;
-        min-height: 48px !important
+        min-height: 48px !important;
       }
 
       .input-group input {
         padding: 12px !important;
-        font-size: 15px !important
+        font-size: 15px !important;
       }
 
       /* 网格系统优化 */
       .age-grid {
         grid-template-columns: repeat(2, 1fr) !important;
-        gap: 12px !important
+        gap: 12px !important;
       }
 
       /* 广告位优化 */
       .ad-banner {
         margin: 16px 0 !important;
-        min-height: 50px !important
+        min-height: 50px !important;
       }
 
       /* 游戏页面优化 */
       .grid-container {
-        padding: 8px !important
+        padding: 8px !important;
       }
 
       .grid {
-        gap: 8px !important
+        gap: 8px !important;
       }
 
       .cell {
         font-size: 20px !important;
-        border-radius: 6px !important
+        border-radius: 6px !important;
       }
 
       .score-box {
         min-width: 70px !important;
-        padding: 6px 12px !important
+        padding: 6px 12px !important;
       }
 
       .score-val {
-        font-size: 18px !important
+        font-size: 18px !important;
       }
 
       /* 工具页面优化 */
       .age-main {
-        font-size: 36px !important
+        font-size: 36px !important;
       }
 
       .age-value {
-        font-size: 24px !important
+        font-size: 24px !important;
       }
 
       .age-label {
-        font-size: 11px !important
+        font-size: 11px !important;
       }
 
       /* 引导页面优化 */
       .intro {
         border-left-width: 2px !important;
         padding-left: 12px !important;
-        margin-bottom: 32px !important
+        margin-bottom: 32px !important;
       }
 
       .faq-item {
-        margin-bottom: 20px !important
+        margin-bottom: 20px !important;
       }
 
       .faq-item strong {
-        font-size: 15px !important
+        font-size: 15px !important;
       }
     }
 
     /* 小手机优化 (≤480px) */
     @media (max-width: 480px) {
       h1 {
-        font-size: 24px !important
+        font-size: 24px !important;
       }
 
       h2 {
-        font-size: 18px !important
+        font-size: 18px !important;
       }
 
       .container, .wrap {
-        padding: 32px 12px 60px !important
+        padding: 32px 12px 60px !important;
       }
 
       .main-panel, .step-block, .notice {
-        padding: 14px !important
+        padding: 14px !important;
       }
 
       .btn {
         padding: 12px !important;
-        font-size: 14px !important
+        font-size: 14px !important;
       }
 
       .age-grid {
-        grid-template-columns: 1fr !important
+        grid-template-columns: 1fr !important;
       }
     }
 
@@ -195,15 +195,53 @@
     @media (hover: none) and (pointer: coarse) {
       button, .btn, a[onclick], .cell {
         min-height: 44px !important;
-        min-width: 44px !important
+        min-width: 44px !important;
       }
 
       input, select, textarea {
-        font-size: 16px !important
+        font-size: 16px !important;
       }
         }
 
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;·&nbsp; <kbd>Space</kbd> / <kbd>↑</kbd> to shoot &nbsp;·&nbsp; Tap to shoot
+footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
+
+  <meta name="keywords" content="space shooter game, free online game, browser game, play online, casual game" />  <meta property="og:title" content="Space Shooter – Free Browser Game | Knexio" />
+<meta property="og:url" content="https://knexio.xyz/games/space-shooter/" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoGame",
+  "name": "Space Shooter",
+  "url": "https://knexio.xyz/games/space-shooter/",
+  "description": "Play Space Shooter free online. Space Shooter is a fun browser game that you can play for free. Enjoy this entertaining game with simple controls and en... No download required. Works on all devices.",
+  "genre": "Game",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+
+<!-- Open Graph -->
+<meta property="og:description" content="Play Space Shooter free online. Shoot enemies and survive in this arcade space game. Works in your browser.">
+<meta property="og:type" content="WebApplication">
+<meta property="og:site_name" content="Knexio">
+</head>
+<body><div class="container">
+    <a class="back" href="../index.html">← Back to Games</a>
+    <h1>Space Shooter</h1>
+    <p class="tagline">Defend Earth from alien invaders!</p>
+
+    <div class="game-wrap">
+      <div class="hud">
+        <span class="hud-score">Score: <span id="scoreDisplay">0</span></span>
+        <span class="hud-lives">Lives: <span id="livesDisplay">3</span></span>
+        <span class="hud-best">Best: <span id="bestDisplay">0</span></span>
+      </div>
+      <canvas id="game" width="560" height="400"></canvas>
+      <div class="controls-hint">
+        <kbd>←</kbd> <kbd>→</kbd> / <kbd>A</kbd> <kbd>D</kbd> to move &nbsp;·&nbsp; <kbd>Space</kbd> / <kbd>↑</kbd> to shoot &nbsp;·&nbsp; Tap to shoot
       </div>
 
   </div>
@@ -315,7 +353,7 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
     let score, lives, bestScore, gameState, frameCount;
     let player, bullets, enemies, particles, powerups, stars;
 
-    try { bestScore = parseInt(localStorage.getItem('spaceshooter_best') || '0') } catch(e){ bestScore = 0 }
+    try { bestScore = parseInt(localStorage.getItem('spaceshooter_best') || '0'); } catch(e){ bestScore = 0; }
 
     function init() {
       score = 0; lives = 3; frameCount = 0; gameState = 'idle';
@@ -323,39 +361,39 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
       bullets = []; enemies = []; particles = []; powerups = []; stars = [];
       for (let i = 0; i < 80; i++) stars.push({ x: Math.random()*W, y: Math.random()*H, s: Math.random()*2+0.5, speed: Math.random()*2+0.5 });
       updateHUD();
-      render()
+      render();
     }
 
     function updateHUD() {
       document.getElementById('scoreDisplay').textContent = score;
       document.getElementById('livesDisplay').textContent = lives;
-      document.getElementById('bestDisplay').textContent = bestScore
+      document.getElementById('bestDisplay').textContent = bestScore;
     }
 
     // ── Input ──────────────────────────────────────────
     const keys = {};
     document.addEventListener('keydown', e => {
-      if (e.code === 'Space' || e.code === 'ArrowUp') { e.preventDefault(); shoot() }
+      if (e.code === 'Space' || e.code === 'ArrowUp') { e.preventDefault(); shoot(); }
       if (['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(e.code)) e.preventDefault();
-      keys[e.code] = true
+      keys[e.code] = true;
     });
     document.addEventListener('keyup', e => keys[e.code] = false);
-    canvas.addEventListener('pointerdown', e => { e.preventDefault(); shoot() });
+    canvas.addEventListener('pointerdown', e => { e.preventDefault(); shoot(); });
 
     function shoot() {
-      if (gameState === 'idle' || gameState === 'dead') { startGame(); return }
+      if (gameState === 'idle' || gameState === 'dead') { startGame(); return; }
       if (gameState !== 'playing') return;
       bullets.push({ x: player.x, y: player.y - 10, vy: -10, w: 4, h: 12, color: '#4f8cff' });
       if (player.rapid > 0) {
         bullets.push({ x: player.x - 12, y: player.y - 5, vy: -10, w: 3, h: 10, color: '#4f8cff' });
-        bullets.push({ x: player.x + 12, y: player.y - 5, vy: -10, w: 3, h: 10, color: '#4f8cff' })
+        bullets.push({ x: player.x + 12, y: player.y - 5, vy: -10, w: 3, h: 10, color: '#4f8cff' });
       }
     }
 
     function startGame() {
       if (gameState === 'dead') init();
       gameState = 'playing';
-      loop()
+      loop();
     }
 
     // ── Loop ───────────────────────────────────────────
@@ -363,7 +401,7 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
       if (gameState !== 'playing') return;
       update();
       render();
-      requestAnimationFrame(loop)
+      requestAnimationFrame(loop);
     }
 
     function update() {
@@ -379,12 +417,12 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
       if (player.shield > 0) player.shield--;
 
       // Stars
-      for (const s of stars) { s.y += s.speed; if (s.y > H) { s.y = 0; s.x = Math.random()*W } }
+      for (const s of stars) { s.y += s.speed; if (s.y > H) { s.y = 0; s.x = Math.random()*W; } }
 
       // Bullets
       for (let i = bullets.length - 1; i >= 0; i--) {
         bullets[i].y += bullets[i].vy;
-        if (bullets[i].y < -20) bullets.splice(i, 1)
+        if (bullets[i].y < -20) bullets.splice(i, 1);
       }
 
       // Spawn enemies
@@ -402,7 +440,7 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
           color: type === 'fast' ? '#ff6b6b' : (type === 'tank' ? '#c678dd' : '#4ecb71'),
           shootTimer: 0
         };
-        enemies.push(enemy)
+        enemies.push(enemy);
       }
 
       // Update enemies
@@ -413,9 +451,9 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
         if (e.shootTimer > 120 && Math.random() < 0.02) {
           // Enemy shoots
           bullets.push({ x: e.x, y: e.y + e.h/2, vy: 5, w: 4, h: 8, color: '#ff6b6b', enemy: true });
-          e.shootTimer = 0
+          e.shootTimer = 0;
         }
-        if (e.y > H + 50) { enemies.splice(i, 1); lives--; updateHUD(); if (lives <= 0) die() }
+        if (e.y > H + 50) { enemies.splice(i, 1); lives--; updateHUD(); if (lives <= 0) die(); }
       }
 
       // Collisions: bullets vs enemies
@@ -431,9 +469,9 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
               spawnParticles(e.x, e.y, e.color, 15);
               if (Math.random() < 0.15) spawnPowerup(e.x, e.y);
               enemies.splice(j, 1);
-              updateHUD()
+              updateHUD();
             }
-            break
+            break;
           }
         }
       }
@@ -443,15 +481,15 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
         if (!bullets[i].enemy) continue;
         if (rectIntersect(bullets[i], { x: player.x - player.w/2, y: player.y - player.h/2, w: player.w, h: player.h })) {
           bullets.splice(i, 1);
-          if (player.shield <= 0) { lives--; spawnParticles(player.x, player.y, '#4f8cff', 20); updateHUD(); if (lives <= 0) die() }
+          if (player.shield <= 0) { lives--; spawnParticles(player.x, player.y, '#4f8cff', 20); updateHUD(); if (lives <= 0) die(); }
         }
       }
 
       // Collisions: enemies vs player
       for (const e of enemies) {
         if (rectIntersect(e, { x: player.x - player.w/2, y: player.y - player.h/2, w: player.w, h: player.h })) {
-          if (player.shield <= 0) { lives--; spawnParticles(player.x, player.y, '#4f8cff', 20); updateHUD(); if (lives <= 0) die() }
-          e.hp = 0; spawnParticles(e.x, e.y, e.color, 15)
+          if (player.shield <= 0) { lives--; spawnParticles(player.x, player.y, '#4f8cff', 20); updateHUD(); if (lives <= 0) die(); }
+          e.hp = 0; spawnParticles(e.x, e.y, e.color, 15);
         }
       }
       enemies = enemies.filter(e => e.hp > 0);
@@ -465,9 +503,9 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
           if (p.type === 'shield') player.shield = 600;
           score += 50;
           updateHUD();
-          powerups.splice(i, 1)
+          powerups.splice(i, 1);
         } else if (p.y > H) {
-          powerups.splice(i, 1)
+          powerups.splice(i, 1);
         }
       }
 
@@ -475,13 +513,13 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
       for (let i = particles.length - 1; i >= 0; i--) {
         const p = particles[i];
         p.x += p.vx; p.y += p.vy; p.life--;
-        if (p.life <= 0) particles.splice(i, 1)
+        if (p.life <= 0) particles.splice(i, 1);
       }
     }
 
     function rectIntersect(a, b) {
       return a.x - a.w/2 < b.x + b.w/2 && a.x + a.w/2 > b.x - b.w/2 &&
-             a.y - a.h/2 < b.y + b.h/2 && a.y + a.h/2 > b.y - b.h/2
+             a.y - a.h/2 < b.y + b.h/2 && a.y + a.h/2 > b.y - b.h/2;
     }
 
     function spawnParticles(x, y, color, count) {
@@ -494,22 +532,22 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
           life: 25 + Math.random() * 15,
           color,
           size: Math.random() * 4 + 2
-        })
+        });
       }
     }
 
     function spawnPowerup(x, y) {
       const type = Math.random() < 0.5 ? 'rapid' : 'shield';
-      powerups.push({ x, y, w: 24, h: 24, type, color: type === 'rapid' ? '#4f8cff' : '#4ecb71' })
+      powerups.push({ x, y, w: 24, h: 24, type, color: type === 'rapid' ? '#4f8cff' : '#4ecb71' });
     }
 
     function die() {
       gameState = 'dead';
       if (score > bestScore) {
         bestScore = score;
-        try { localStorage.setItem('spaceshooter_best', bestScore) } catch(e){}
+        try { localStorage.setItem('spaceshooter_best', bestScore); } catch(e){}
       }
-      updateHUD()
+      updateHUD();
     }
 
     // ── Render ─────────────────────────────────────────
@@ -523,7 +561,7 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
         ctx.globalAlpha = Math.min(1, s.s / 2);
         ctx.beginPath();
         ctx.arc(s.x, s.y, s.s, 0, Math.PI * 2);
-        ctx.fill()
+        ctx.fill();
       }
       ctx.globalAlpha = 1;
 
@@ -539,7 +577,7 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
         ctx.fillStyle = '#fff';
         ctx.font = 'bold 12px sans-serif';
         ctx.textAlign = 'center';
-        ctx.fillText(p.type === 'rapid' ? 'R' : 'S', p.x, p.y + 4)
+        ctx.fillText(p.type === 'rapid' ? 'R' : 'S', p.x, p.y + 4);
       }
 
       // Player
@@ -550,7 +588,7 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
         ctx.lineWidth = 2;
         ctx.beginPath();
         ctx.arc(0, 0, 35, 0, Math.PI * 2);
-        ctx.stroke()
+        ctx.stroke();
       }
       // Ship body
       ctx.fillStyle = '#4f8cff';
@@ -580,7 +618,7 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
         ctx.shadowBlur = 10;
         ctx.fillStyle = b.color;
         ctx.fillRect(b.x - b.w/2, b.y - b.h/2, b.w, b.h);
-        ctx.shadowBlur = 0
+        ctx.shadowBlur = 0;
       }
 
       // Enemies
@@ -593,11 +631,11 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
         if (e.type === 'fast') {
           ctx.moveTo(0, e.h/2);
           ctx.lineTo(e.w/2, -e.h/2);
-          ctx.lineTo(-e.w/2, -e.h/2)
+          ctx.lineTo(-e.w/2, -e.h/2);
         } else if (e.type === 'tank') {
-          ctx.roundRect(-e.w/2, -e.h/2, e.w, e.h, 6)
+          ctx.roundRect(-e.w/2, -e.h/2, e.w, e.h, 6);
         } else {
-          ctx.arc(0, 0, e.w/2, 0, Math.PI * 2)
+          ctx.arc(0, 0, e.w/2, 0, Math.PI * 2);
         }
         ctx.fill();
         // HP bar for tank
@@ -605,9 +643,9 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
           ctx.fillStyle = '#333';
           ctx.fillRect(-20, -e.h/2 - 10, 40, 4);
           ctx.fillStyle = '#ff6b6b';
-          ctx.fillRect(-20, -e.h/2 - 10, 40 * (e.hp / 3), 4)
+          ctx.fillRect(-20, -e.h/2 - 10, 40 * (e.hp / 3), 4);
         }
-        ctx.restore()
+        ctx.restore();
       }
 
       // Particles
@@ -616,13 +654,13 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
         ctx.fillStyle = p.color;
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fill()
+        ctx.fill();
       }
       ctx.globalAlpha = 1;
 
       // Overlays
       if (gameState === 'idle') drawOverlay('Space Shooter', 'Press Space or Tap to Start', '#4f8cff');
-      else if (gameState === 'dead') drawOverlay('Game Over', `Score: ${score}  ·  Best: ${bestScore}`, '#ff6b6b')
+      else if (gameState === 'dead') drawOverlay('Game Over', `Score: ${score}  ·  Best: ${bestScore}`, '#ff6b6b');
     }
 
     function drawOverlay(title, sub, color) {
@@ -635,15 +673,13 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
       ctx.fillStyle = '#aab3c5';
       ctx.font = '16px system-ui';
       ctx.fillText(sub, W/2, H/2 + 10);
-      ctx.textAlign = 'left'
+      ctx.textAlign = 'left';
     }
 
-    init()
+    init();
   })();
 </script></div>
 
-
-</style>
 
 <script src="/knexio-bundle.js"></script>
   
