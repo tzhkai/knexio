@@ -105,7 +105,7 @@
     .faq-item{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;margin-bottom:16px}
     .faq-item h3{font-size:16px;font-weight:600;color:var(--text);margin-bottom:8px}
     .faq-item p{font-size:14px;color:var(--sub);margin-bottom:0;line-height:1.6}
-    footer{text-align:center;padding:40px 20px;margin-top:60px;color:var(--sub);font-size:14px}
+    footer{text-align:center;padding:40px 20px;border-top:1px solid var(--border);margin-top:60px;color:var(--sub);font-size:14px}
     footer p{margin-bottom:8px}
     footer a{color:var(--accent);transition:color 0.2s}
     footer a:hover{color:#3d7de0}
@@ -114,7 +114,7 @@
 
 <!-- Open Graph -->
 <meta property="og:site_name" content="Knexio">
-<link rel="stylesheet" href="shared.css">
+  <link rel="stylesheet" href="/shared.css">
 </head>
 <body>
   <div class="container">
@@ -226,19 +226,19 @@
       const rate=parseFloat(document.getElementById('averageInterest').value)||0;
       const payment=parseFloat(document.getElementById('monthlyPayment').value)||0;
       const extra=parseFloat(document.getElementById('extraPayment').value)||0;
-      if(debt<=0){alert('Please enter a valid debt amount.');return}
+      if(debt<=0){alert('Please enter a valid debt amount.');return;}
       const monthlyRate=rate/100/12;
       const minInterest=debt*monthlyRate;
       if(payment<=minInterest&&extra===0){
         document.getElementById('results').innerHTML='<div class="result-placeholder" style="color:#f87171">Your monthly payment is too low to cover interest. Please increase it.</div>';
-        return
+        return;
       }
       let bal1=debt,months1=0,totalInt1=0;
       while(bal1>0.01&&months1<600){
         const interest=bal1*monthlyRate;
         totalInt1+=interest;
         bal1-=Math.max(0,payment-interest);
-        months1++
+        months1++;
       }
       let bal2=debt,months2=0,totalInt2=0;
       const totalPayment=payment+extra;
@@ -246,7 +246,7 @@
         const interest=bal2*monthlyRate;
         totalInt2+=interest;
         bal2-=Math.max(0,totalPayment-interest);
-        months2++
+        months2++;
       }
       const saved=totalInt1-totalInt2;
       const savedMonths=months1-months2;
@@ -265,14 +265,14 @@
         <div class="result-row"><span class="result-label">Interest saved</span><span class="result-value green">$${fmt(saved)}</span></div>
         <div class="result-row"><span class="result-label">Months saved</span><span class="result-value green">${savedMonths} months</span></div>
         `:''}
-      `
+      `;
     }
     function clearForm(){
       document.getElementById('totalDebt').value='25000';
       document.getElementById('averageInterest').value='18';
       document.getElementById('monthlyPayment').value='600';
       document.getElementById('extraPayment').value='0';
-      document.getElementById('results').innerHTML='<div class="result-placeholder">Enter your details and click <strong>Calculate</strong> to see results</div>'
+      document.getElementById('results').innerHTML='<div class="result-placeholder">Enter your details and click <strong>Calculate</strong> to see results</div>';
     }
   </script>
   <script src="/knexio-bundle.js"></script>

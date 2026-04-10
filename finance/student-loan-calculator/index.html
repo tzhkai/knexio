@@ -105,7 +105,7 @@
     .faq-item{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;margin-bottom:20px}
     .faq-item h3{font-size:16px;margin:0 0 8px}
     .faq-item p{color:var(--sub);font-size:14px;line-height:1.7;margin:0}
-    footer{text-align:center;padding:40px 20px;margin-top:20px;color:var(--sub);font-size:14px}
+    footer{text-align:center;padding:40px 20px;border-top:1px solid var(--border);margin-top:20px;color:var(--sub);font-size:14px}
     footer a{color:var(--sub);margin:0 10px;transition:color 0.2s}
     footer a:hover{color:var(--accent)}
     footer p{margin-bottom:8px}
@@ -114,7 +114,7 @@
 
 <!-- Open Graph -->
 <meta property="og:site_name" content="Knexio">
-<link rel="stylesheet" href="shared.css">
+  <link rel="stylesheet" href="/shared.css">
 </head>
 <body>
   <div class="container">
@@ -237,7 +237,7 @@
       const years=parseInt(document.getElementById('loanTerm').value);
       const extra=parseFloat(document.getElementById('extraPayment').value)||0;
       const grace=parseInt(document.getElementById('gracePeriod').value)||0;
-      if(principal<=0){alert('Please enter a valid loan amount.');return}
+      if(principal<=0){alert('Please enter a valid loan amount.');return;}
       const monthlyRate=annualRate/100/12;
       const n=years*12;
       let pi=monthlyRate===0?principal/n:principal*(monthlyRate*Math.pow(1+monthlyRate,n))/(Math.pow(1+monthlyRate,n)-1);
@@ -251,7 +251,7 @@
         const princPay=Math.min(bal,totalMonthly-interest);
         bal-=princPay;
         months++;
-        if(totalMonthly<=interest&&extra===0){months=n;break}
+        if(totalMonthly<=interest&&extra===0){months=n;break;}
       }
       const savedInterest=totalInterestStd-totalInterestExtra;
       const savedMonths=n-months;
@@ -269,7 +269,7 @@
         <div class="result-row"><span class="result-label">Months Saved</span><span class="result-value green">${savedMonths} months</span></div>`:''}
         <div class="result-row"><span class="result-label">Total Amount Paid</span><span class="result-value">$${fmt(pi*n+extra*(extra>0?months:0))}</span></div>
         ${grace>0?`<div class="result-row"><span class="result-label">Interest during grace period</span><span class="result-value">$${fmt(principal*monthlyRate*grace)}</span></div>`:''}
-      `
+      `;
     }
     function clearForm(){
       document.getElementById('loanAmount').value='50000';
@@ -277,7 +277,7 @@
       document.getElementById('loanTerm').value='10';
       document.getElementById('extraPayment').value='0';
       document.getElementById('gracePeriod').value='6';
-      document.getElementById('results').innerHTML='<div class="result-placeholder">Enter your details and click <strong>Calculate</strong> to see results</div>'
+      document.getElementById('results').innerHTML='<div class="result-placeholder">Enter your details and click <strong>Calculate</strong> to see results</div>';
     }
   </script>
   <script src="/knexio-bundle.js"></script>

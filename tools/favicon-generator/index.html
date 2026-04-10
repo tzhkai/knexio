@@ -79,22 +79,22 @@
       --border: rgba(255,255,255,0.08);
       --text: #fff;
       --sub: #aab3c5;
-      --accent: #4f8cff
+      --accent: #4f8cff;
     }
     * {
       box-sizing: border-box;
       margin: 0;
-      padding: 0
+      padding: 0;
     }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background: var(--bg);
-      color: var(--text)
+      color: var(--text);
     }
     .container {
       max-width: 900px;
       margin: auto;
-      padding: 60px 20px 100px
+      padding: 60px 20px 100px;
     }
     .back {
       display: inline-block;
@@ -102,37 +102,37 @@
       text-decoration: none;
       font-size: 14px;
       margin-bottom: 24px;
-      transition: color 0.2s
+      transition: color 0.2s;
     }
     .back:hover {
-      color: var(--accent)
+      color: var(--accent);
     }
     h1 {
       font-size: 34px;
-      margin-bottom: 10px
+      margin-bottom: 10px;
     }
     h2 {
       font-size: 22px;
       margin: 36px 0 14px;
-      color: var(--text)
+      color: var(--text);
     }
     h3 {
       font-size: 18px;
       margin-bottom: 8px;
-      color: var(--text)
+      color: var(--text);
     }
     .subtitle {
       font-size: 16px;
       color: var(--sub);
       margin-bottom: 28px;
-      line-height: 1.6
+      line-height: 1.6;
     }
     .card {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 20px;
-      margin-bottom: 20px
+      margin-bottom: 20px;
     }
     .upload-area {
       border: 2px dashed var(--border);
@@ -142,44 +142,44 @@
       cursor: pointer;
       transition: all 0.2s;
       background: rgba(79,140,255,0.05);
-      margin-bottom: 20px
+      margin-bottom: 20px;
     }
     .upload-area:hover {
       border-color: var(--accent);
-      background: rgba(79,140,255,0.1)
+      background: rgba(79,140,255,0.1);
     }
     .upload-area svg {
       width: 48px;
       height: 48px;
       color: var(--accent);
-      margin-bottom: 12px
+      margin-bottom: 12px;
     }
     .upload-area p {
       color: var(--sub);
       font-size: 14px;
-      margin: 0
+      margin: 0;
     }
     .main-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 16px;
-      margin-top: 20px
+      margin-top: 20px;
     }
     @media (max-width: 768px) {
       .main-grid {
-        grid-template-columns: 1fr
+        grid-template-columns: 1fr;
       }
     }
     .panel {
       background: var(--bg);
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 20px
+      padding: 20px;
     }
     .panel h2 {
       font-size: 18px;
       margin: 0 0 16px 0;
-      color: var(--text)
+      color: var(--text);
     }
     .preview-container {
       display: flex;
@@ -187,33 +187,33 @@
       gap: 20px;
       justify-content: center;
       align-items: center;
-      min-height: 120px
+      min-height: 120px;
     }
     .preview-item {
-      text-align: center
+      text-align: center;
     }
     .preview-item img {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 8px;
       padding: 12px;
-      transition: all 0.2s
+      transition: all 0.2s;
     }
     .preview-item img:hover {
       border-color: var(--accent);
-      transform: scale(1.05)
+      transform: scale(1.05);
     }
     .preview-item span {
       display: block;
       font-size: 13px;
       color: var(--sub);
       margin-top: 8px;
-      font-weight: 500
+      font-weight: 500;
     }
     .btn-group {
       display: flex;
       flex-direction: column;
-      gap: 10px
+      gap: 10px;
     }
     .btn {
       padding: 12px 16px;
@@ -225,51 +225,51 @@
       font-weight: 500;
       cursor: pointer;
       transition: all 0.2s;
-      text-align: center
+      text-align: center;
     }
     .btn:hover {
       opacity: 0.9;
-      transform: translateY(-1px)
+      transform: translateY(-1px);
     }
     .btn.secondary {
       background: transparent;
       border: 1px solid var(--border);
-      color: var(--sub)
+      color: var(--sub);
     }
     .btn.secondary:hover {
       border-color: var(--accent);
-      color: var(--accent)
+      color: var(--accent);
     }
     .section {
-      margin-bottom: 24px
+      margin-bottom: 24px;
     }
     .section p {
       color: var(--sub);
       line-height: 1.7;
       margin-bottom: 10px;
-      font-size: 15px
+      font-size: 15px;
     }
     .faq-item {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 20px;
-      margin-bottom: 12px
+      margin-bottom: 12px;
     }
     .faq-item h3 {
       font-size: 16px;
       margin-bottom: 8px;
-      color: var(--text)
+      color: var(--text);
     }
     .faq-item p {
       font-size: 14px;
       color: var(--sub);
-      line-height: 1.6
+      line-height: 1.6;
     }
     .tools {
       display: flex;
       gap: 12px;
-      flex-wrap: wrap
+      flex-wrap: wrap;
     }
     .tools a {
       padding: 10px 18px;
@@ -279,36 +279,65 @@
       color: var(--sub);
       text-decoration: none;
       font-size: 14px;
-      transition: all 0.2s
+      transition: all 0.2s;
     }
     .tools a:hover {
       border-color: var(--accent);
-      color: var(--accent)
+      color: var(--accent);
     }
     .ad-banner {
       margin: 32px 0;
       text-align: center;
-      min-height: 90px
+      min-height: 90px;
     }
-    footer{
+    footer {
       margin-top: 40px;
       text-align: center;
       color: var(--sub);
-      font-size: 13px
-    }
+      font-size: 13px;
+    border-top:1px solid var(--border);}
     footer p {
-      margin-bottom: 8px
+      margin-bottom: 8px;
     }
     footer a {
       color: var(--sub);
       text-decoration: none;
       margin: 0 10px;
-      transition: color 0.2s
+      transition: color 0.2s;
     }
     footer a:hover {
-      color: var(--accent)
+      color: var(--accent);
     }
-  footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;" onchange="handleFile(event)" />
+  footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
+  <link rel="stylesheet" href="/shared.css">
+</head>
+<body>
+<div class="container">
+  <a class="back" href="../index.html">← Back to Tools</a>
+
+  <h1>Favicon Generator</h1>
+  <p class="subtitle">Create favicons in multiple sizes from any image. Download as ICO or PNG. No signup required.</p>
+
+  <!-- Ad Slot 1: Top -->
+  <div class="ad-banner">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="5794572171"
+       data-ad-format="auto"
+       data-full-width-responsive="true">
+  </ins>
+</div>
+
+  <div class="card">
+    <div class="upload-area" onclick="document.getElementById('fileInput').click()" id="uploadArea">
+      <svg viewBox="0 0 24 24" width="48" height="48" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+        <polyline points="17 8 12 3 7 8"></polyline>
+        <line x1="12" y1="3" x2="12" y2="15"></line>
+      </svg>
+      <p>Click to upload image or drag & drop here</p>
+      <input type="file" id="fileInput" accept="image/*" style="display:none;" onchange="handleFile(event)" />
     </div>
 
     <div class="main-grid" id="resultPanel" style="display:none;">
@@ -424,11 +453,11 @@ function handleFile(event) {
       originalImage = img;
       generatePreviews();
       document.getElementById('resultPanel').style.display = 'grid';
-      window.scrollTo({top: document.getElementById('resultPanel').offsetTop - 100, behavior: 'smooth'})
+      window.scrollTo({top: document.getElementById('resultPanel').offsetTop - 100, behavior: 'smooth'});
     };
-    img.src = e.target.result
+    img.src = e.target.result;
   };
-  reader.readAsDataURL(file)
+  reader.readAsDataURL(file);
 }
 
 function generatePreviews() {
@@ -453,8 +482,8 @@ function generatePreviews() {
     label.textContent = `${size}x${size}`;
     div.appendChild(img);
     div.appendChild(label);
-    container.appendChild(div)
-  })
+    container.appendChild(div);
+  });
 }
 
 function downloadPNG(size) {
@@ -467,7 +496,7 @@ function downloadPNG(size) {
   const link = document.createElement('a');
   link.download = `favicon-${size}x${size}.png`;
   link.href = canvas.toDataURL('image/png');
-  link.click()
+  link.click();
 }
 
 function downloadICO() {
@@ -480,22 +509,22 @@ function downloadICO() {
     canvas.height = size;
     const ctx = canvas.getContext('2d');
     ctx.drawImage(originalImage, 0, 0, size, size);
-    images.push({ data: canvas.toDataURL('image/png'), size: size })
+    images.push({ data: canvas.toDataURL('image/png'), size: size });
   });
   
   // Simple ICO download as PNG for now (full ICO encoding requires binary manipulation)
-  alert('ICO download not yet available. Please download individual PNG files and combine with an ICO converter tool.')
+  alert('ICO download not yet available. Please download individual PNG files and combine with an ICO converter tool.');
 }
 
 // Drag and drop support
 const uploadArea = document.getElementById('uploadArea');
 uploadArea.addEventListener('dragover', (e) => {
   e.preventDefault();
-  uploadArea.style.borderColor = 'var(--accent)'
+  uploadArea.style.borderColor = 'var(--accent)';
 });
 uploadArea.addEventListener('dragleave', (e) => {
   e.preventDefault();
-  uploadArea.style.borderColor = 'var(--border)'
+  uploadArea.style.borderColor = 'var(--border)';
 });
 uploadArea.addEventListener('drop', (e) => {
   e.preventDefault();
@@ -503,12 +532,10 @@ uploadArea.addEventListener('drop', (e) => {
   const file = e.dataTransfer.files[0];
   if (file) {
     document.getElementById('fileInput').files = e.dataTransfer.files;
-    handleFile({ target: document.getElementById('fileInput') })
+    handleFile({ target: document.getElementById('fileInput') });
   }
 });
 </script>
-</style>
-
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>

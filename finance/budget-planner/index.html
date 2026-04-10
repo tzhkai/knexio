@@ -104,7 +104,7 @@
     .faq-item{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;margin-bottom:16px}
     .faq-item h3{font-size:16px;font-weight:600;margin-bottom:12px;color:var(--text)}
     .faq-item p{color:var(--sub);font-size:14px;line-height:1.6;margin:0}
-    footer{text-align:center;padding:40px 20px;margin-top:20px;color:var(--sub);font-size:14px}
+    footer{text-align:center;padding:40px 20px;border-top:1px solid var(--border);margin-top:20px;color:var(--sub);font-size:14px}
     footer a{color:var(--accent);margin:0 10px;transition:color 0.2s}
     footer a:hover{color:var(--accent)}
     footer p{margin-bottom:8px}
@@ -113,7 +113,7 @@
 
 <!-- Open Graph -->
 <meta property="og:site_name" content="Knexio">
-<link rel="stylesheet" href="shared.css">
+  <link rel="stylesheet" href="/shared.css">
 </head>
 <body>
   <div class="container">
@@ -249,7 +249,7 @@
     function pct(n,total){return total>0?((n/total)*100).toFixed(1)+'%':'0%'}
     function bar(actual,recommended,label){
       const over=actual>recommended;
-      return `<div class="result-row"><span class="result-label">${label}</span><span class="result-value ${over?'red':'green'}">${pct(actual,recommended*100/50)} of income ${over?'⚠️':''}</span></div>`
+      return `<div class="result-row"><span class="result-label">${label}</span><span class="result-value ${over?'red':'green'}">${pct(actual,recommended*100/50)} of income ${over?'⚠️':''}</span></div>`;
     }
     function calculate(){
       const income=parseFloat(document.getElementById('monthlyIncome').value)||0;
@@ -272,7 +272,7 @@
       const rec50=income*0.50;
       const rec30=income*0.30;
       const rec20=income*0.20;
-      function status(actual,rec){return actual<=rec?'<span style="color:#00d4aa">✓ On track</span>':'<span style="color:#f87171">⚠️ Over budget</span>'}
+      function status(actual,rec){return actual<=rec?'<span style="color:#00d4aa">✓ On track</span>':'<span style="color:#f87171">⚠️ Over budget</span>';}
       document.getElementById('results').innerHTML=`
         <div class="result-header">Budget Overview</div>
         <div class="result-highlight">
@@ -291,12 +291,12 @@
         <div class="result-row"><span class="result-label">Food & Groceries</span><span class="result-value">$${fmt(groceries)} (${pct(groceries,income)})</span></div>
         <div class="result-row"><span class="result-label">Transportation</span><span class="result-value">$${fmt(transport)} (${pct(transport,income)})</span></div>
         <div class="result-row"><span class="result-label">Savings</span><span class="result-value green">$${fmt(savings)} (${pct(savings,income)})</span></div>
-      `
+      `;
     }
     function clearForm(){
       const defaults={monthlyIncome:5000,housing:1500,utilities:150,groceries:400,transport:300,insurance:200,entertainment:300,subscriptions:50,savings:500,debtPayments:200,other:0};
       Object.entries(defaults).forEach(([id,val])=>document.getElementById(id).value=val);
-      document.getElementById('results').innerHTML='<div class="result-placeholder">Enter your details and click <strong>Calculate</strong> to see results</div>'
+      document.getElementById('results').innerHTML='<div class="result-placeholder">Enter your details and click <strong>Calculate</strong> to see results</div>';
     }
   </script>
   <script src="/knexio-bundle.js"></script>

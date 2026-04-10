@@ -35,13 +35,13 @@
   --border:rgba(255,255,255,.08);
   --text:#fff;
   --sub:#aab3c5;
-  --accent:#4f8cff
+  --accent:#4f8cff;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{
   font-family:system-ui,-apple-system;
   background:var(--bg);
-  color:var(--text)
+  color:var(--text);
 }
 .container{max-width:900px;margin:auto;padding:50px 16px}
 
@@ -51,7 +51,7 @@ body{
   text-decoration:none;
   font-size:14px;
   margin-bottom:24px;
-  transition:color 0.2s
+  transition:color 0.2s;
 }
 .back:hover{color:var(--accent)}
 
@@ -64,14 +64,14 @@ h2{font-size:22px;margin-top:30px;margin-bottom:10px}
   border:1px solid var(--border);
   border-radius:14px;
   padding:20px;
-  margin-bottom:20px
+  margin-bottom:20px;
 }
 
 label{
   display:block;
   font-size:14px;
   color:var(--sub);
-  margin-bottom:8px
+  margin-bottom:8px;
 }
 
 input,textarea{
@@ -82,17 +82,17 @@ input,textarea{
   background:var(--bg);
   color:var(--text);
   font-size:15px;
-  margin-bottom:16px
+  margin-bottom:16px;
 }
 
 input:focus,textarea:focus{
   outline:none;
-  border-color:var(--accent)
+  border-color:var(--accent);
 }
 
 textarea{
   min-height:100px;
-  resize:vertical
+  resize:vertical;
 }
 
 button{
@@ -103,7 +103,7 @@ button{
   color:#fff;
   cursor:pointer;
   font-size:15px;
-  transition:opacity 0.2s
+  transition:opacity 0.2s;
 }
 
 button:hover{opacity:0.9}
@@ -111,19 +111,19 @@ button:hover{opacity:0.9}
 button.secondary{
   background:transparent;
   border:1px solid var(--border);
-  color:var(--sub)
+  color:var(--sub);
 }
 
 button.secondary:hover{
   border-color:var(--accent);
-  color:var(--accent)
+  color:var(--accent);
 }
 
 .btn-row{
   display:flex;
   gap:10px;
   margin-top:16px;
-  flex-wrap:wrap
+  flex-wrap:wrap;
 }
 
 .section p{color:var(--sub);line-height:1.7;margin-bottom:10px}
@@ -135,7 +135,7 @@ button.secondary:hover{
   border-radius:8px;
   border:1px solid var(--border);
   color:var(--sub);
-  text-decoration:none
+  text-decoration:none;
 }
 
 .tools a:hover{border-color:var(--accent);color:var(--accent)}
@@ -145,19 +145,19 @@ button.secondary:hover{
   color:#333;
   padding:40px;
   border-radius:10px;
-  margin-top:20px
+  margin-top:20px;
 }
 
 .resume-preview h3{
   color:#333;
   border-bottom:2px solid #4f8cff;
   padding-bottom:8px;
-  margin-bottom:16px
+  margin-bottom:16px;
 }
 
 .resume-preview p,.resume-preview li{
   color:#555;
-  line-height:1.6
+  line-height:1.6;
 }
 
 footer{
@@ -168,9 +168,9 @@ footer{
   margin-top:60px;
   text-align:center;
   color:var(--sub);
-  font-size:13px
-  
-  
+  font-size:13px;
+  border-top:1px solid var(--border);
+  padding-top:30px;
 }
 
 footer p{margin:0}
@@ -219,7 +219,7 @@ footer p{margin:0}
   ]
 }
 </script>
-<link rel="stylesheet" href="shared.css">
+  <link rel="stylesheet" href="/shared.css">
 </head>
 
 <body>
@@ -344,7 +344,7 @@ function addExperience(){
     <textarea class="job-desc" placeholder="Key responsibilities and achievements..."></textarea>
     <button type="button" class="secondary" onclick="this.parentElement.remove()">Remove</button>
   `;
-  list.appendChild(item)
+  list.appendChild(item);
 }
 
 function addEducation(){
@@ -357,7 +357,7 @@ function addEducation(){
     <input type="text" class="edu-date" placeholder="Graduation Year">
     <button type="button" class="secondary" onclick="this.parentElement.remove()">Remove</button>
   `;
-  list.appendChild(item)
+  list.appendChild(item);
 }
 
 function generateResume(){
@@ -376,7 +376,7 @@ function generateResume(){
   
   if(summary){
     html += `<h3>Professional Summary</h3>`;
-    html += `<p>${summary.replace(/\n/g,'<br>')}</p>`
+    html += `<p>${summary.replace(/\n/g,'<br>')}</p>`;
   }
   
   const expItems = document.querySelectorAll('.experience-item');
@@ -389,9 +389,9 @@ function generateResume(){
       const desc = item.querySelector('.job-desc').value;
       if(title){
         html += `<p><strong>${title}</strong> at ${company}<br><em>${date}</em></p>`;
-        if(desc) html += `<p>${desc.replace(/\n/g,'<br>')}</p>`
+        if(desc) html += `<p>${desc.replace(/\n/g,'<br>')}</p>`;
       }
-    })
+    });
   }
   
   const eduItems = document.querySelectorAll('.education-item');
@@ -402,34 +402,34 @@ function generateResume(){
       const school = item.querySelector('.school').value;
       const date = item.querySelector('.edu-date').value;
       if(degree){
-        html += `<p><strong>${degree}</strong>, ${school}<br><em>${date}</em></p>`
+        html += `<p><strong>${degree}</strong>, ${school}<br><em>${date}</em></p>`;
       }
-    })
+    });
   }
   
   if(skills){
     html += `<h3>Skills</h3>`;
-    html += `<p>${skills.replace(/\n/g,', ')}</p>`
+    html += `<p>${skills.replace(/\n/g,', ')}</p>`;
   }
   
   document.getElementById('resumeContent').innerHTML = html;
   document.getElementById('resumeOutput').style.display = 'block';
-  document.getElementById('resumeOutput').scrollIntoView({behavior:'smooth'})
+  document.getElementById('resumeOutput').scrollIntoView({behavior:'smooth'});
 }
 
 function clearForm(){
   if(confirm('Are you sure you want to clear all fields?')){
     document.querySelectorAll('input,textarea').forEach(el => el.value = '');
-    document.getElementById('resumeOutput').style.display = 'none'
+    document.getElementById('resumeOutput').style.display = 'none';
   }
 }
 
 function downloadPDF(){
-  window.print()
+  window.print();
 }
 
 function printResume(){
-  window.print()
+  window.print();
 }
 </script>
 

@@ -105,7 +105,7 @@
     .faq-item{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;margin-bottom:16px}
     .faq-item h3{font-size:16px;font-weight:600;color:var(--text);margin-bottom:8px}
     .faq-item p{font-size:14px;color:var(--sub);margin-bottom:0;line-height:1.6}
-    footer{text-align:center;padding:40px 20px;margin-top:60px;color:var(--sub);font-size:14px}
+    footer{text-align:center;padding:40px 20px;border-top:1px solid var(--border);margin-top:60px;color:var(--sub);font-size:14px}
     footer p{margin-bottom:8px}
     footer a{color:var(--accent);transition:color 0.2s}
     footer a:hover{color:#3d7de0}
@@ -114,7 +114,7 @@
 
 <!-- Open Graph -->
 <meta property="og:site_name" content="Knexio">
-<link rel="stylesheet" href="shared.css">
+  <link rel="stylesheet" href="/shared.css">
 </head>
 <body>
   <div class="container">
@@ -258,7 +258,7 @@
         <div class="result-row"><span class="result-label">Return on investment</span><span class="result-value ${isProfit?'green':'red'}">${returnPct.toFixed(2)}%</span></div>
         <div class="result-row"><span class="result-label">Net return (after tax)</span><span class="result-value ${isProfit?'green':'red'}">${netReturnPct.toFixed(2)}%</span></div>
         <div class="result-row"><span class="result-label">Break-even price</span><span class="result-value">$${fmt((totalCost+sellFee)/shares)}</span></div>
-      `
+      `;
     }
     function clearForm(){
       document.getElementById('buyPrice').value='50.00';
@@ -267,7 +267,7 @@
       document.getElementById('buyFee').value='0';
       document.getElementById('sellFee').value='0';
       document.getElementById('taxRate').value='15';
-      document.getElementById('results').innerHTML='<div class="result-placeholder">Enter your details and click <strong>Calculate</strong> to see results</div>'
+      document.getElementById('results').innerHTML='<div class="result-placeholder">Enter your details and click <strong>Calculate</strong> to see results</div>';
     }
   </script>
   <script src="/knexio-bundle.js"></script>

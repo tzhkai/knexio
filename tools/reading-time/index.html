@@ -88,13 +88,13 @@
   --border:rgba(255,255,255,.08);
   --text:#fff;
   --sub:#aab3c5;
-  --accent:#4f8cff
+  --accent:#4f8cff;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{
   font-family:system-ui,-apple-system;
   background:var(--bg);
-  color:var(--text)
+  color:var(--text);
 }
 .container{max-width:900px;margin:auto;padding:50px 16px}
 
@@ -104,7 +104,7 @@ body{
   text-decoration:none;
   font-size:14px;
   margin-bottom:24px;
-  transition:color 0.2s
+  transition:color 0.2s;
 }
 .back:hover{color:var(--accent)}
 
@@ -117,7 +117,7 @@ h2{font-size:22px;margin-top:30px;margin-bottom:10px}
   border:1px solid var(--border);
   border-radius:14px;
   padding:20px;
-  margin-bottom:20px
+  margin-bottom:20px;
 }
 
 .tip{font-size:13px;color:var(--sub);margin-top:10px}
@@ -131,7 +131,7 @@ h2{font-size:22px;margin-top:30px;margin-bottom:10px}
   border-radius:8px;
   border:1px solid var(--border);
   color:var(--sub);
-  text-decoration:none
+  text-decoration:none;
 }
 .tools a:hover{border-color:var(--accent);color:var(--accent)}
 
@@ -142,7 +142,7 @@ h2{font-size:22px;margin-top:30px;margin-bottom:10px}
   border:1px solid var(--border);
   border-radius:12px;
   padding:20px;
-  margin-bottom:12px
+  margin-bottom:12px;
 }
 .faq-item h3{font-size:16px;margin-bottom:8px;color:var(--text)}
 .faq-item p{color:var(--sub);font-size:14px;line-height:1.7;margin:0}
@@ -153,7 +153,7 @@ footer a{
   color:var(--sub);
   text-decoration:none;
   margin:0 10px;
-  transition:color 0.2s
+  transition:color 0.2s;
 }
 footer a:hover{color:var(--accent)}
 
@@ -176,7 +176,133 @@ button.secondary:hover,.btn.secondary:hover{border-color:var(--accent);color:var
 select{width:100%;padding:10px 12px;background:var(--bg);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:14px;font-family:inherit;cursor:pointer}
 select:focus{outline:none;border-color:var(--accent)}
 @media(max-width:600px){.speed-row{grid-template-columns:1fr}}
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;text-align:center"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
+footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
+  <link rel="stylesheet" href="/shared.css">
+</head>
+
+<body><div class="container">
+
+<a class="back" href="../index.html">← Back to Tools</a>
+
+<h1>Reading Time Calculator</h1>
+<p class="subtitle">Estimate how long it takes to read or speak any text. Paste your article, blog post, or essay below.</p>
+
+<div class="ad-banner">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="5794572171"
+       data-ad-format="auto"
+       data-full-width-responsive="true">
+  </ins>
+</div>
+
+<div class="card">
+<textarea id="text" placeholder="Paste your article, blog post, or any text here..." oninput="calculate()"></textarea>
+
+<div class="speed-row">
+  <div>
+    <label for="wpm">Reading Speed</label>
+    <select id="wpm" onchange="calculate()">
+      <option value="150">Slow (150 WPM)</option>
+      <option value="200" selected>Average (200 WPM)</option>
+      <option value="250">Fast (250 WPM)</option>
+      <option value="300">Very Fast (300 WPM)</option>
+    </select>
+  </div>
+  <div>
+    <label for="speakRate">Speaking Speed</label>
+    <select id="speakRate" onchange="calculate()">
+      <option value="130" selected>Slow (130 WPM)</option>
+      <option value="150">Average (150 WPM)</option>
+      <option value="160">Fast (160 WPM)</option>
+    </select>
+  </div>
+</div>
+
+<div class="btn-row">
+  <button onclick="calculate()">Calculate</button>
+  <button class="secondary" onclick="clearAll()">Clear</button>
+</div>
+
+<div class="stats">
+  <div class="stat"><span id="readingTime">0</span><label>Reading Time</label></div>
+  <div class="stat"><span id="speakingTime">0</span><label>Speaking Time</label></div>
+  <div class="stat"><span id="wordCount">0</span><label>Words</label></div>
+  <div class="stat"><span id="charCount">0</span><label>Characters</label></div>
+  <div class="stat"><span id="sentenceCount">0</span><label>Sentences</label></div>
+  <div class="stat"><span id="paragraphCount">0</span><label>Paragraphs</label></div>
+</div>
+
+<div class="tip" id="tip"></div>
+</div>
+
+<h2>Free Online Reading Time Calculator</h2>
+<div class="section">
+<p>This tool instantly estimates how long it takes to read or speak any text. Perfect for bloggers, content creators, writers, and anyone who needs to know the length of their article or presentation.</p>
+<p>Adjust the reading speed to match your audience — slow for complex technical content, fast for simple articles.</p>
+</div>
+
+<h2>How It Works</h2>
+<div class="section">
+<p>The calculator counts the total number of words in your text, then divides by your selected words-per-minute (WPM) speed. The average adult reads at 200 WPM and speaks at about 130 WPM. Results update automatically as you type.</p>
+<p>Sentence and paragraph counts are also calculated in real time, giving you a full picture of your text structure alongside the time estimates.</p>
+</div>
+
+<h2>Frequently Asked Questions</h2>
+
+<div class="faq-item">
+  <h3>What is the average reading speed?</h3>
+  <p>The average adult reads at about 200–250 words per minute (WPM) for non-fiction. For technical or complex content, reading speed typically drops to 150 WPM or lower. Academic reading is often even slower at around 100 WPM. This tool defaults to 200 WPM.</p>
+</div>
+
+<div class="faq-item">
+  <h3>How is speaking time different from reading time?</h3>
+  <p>Speaking time is based on how fast someone talks aloud, which is typically slower than silent reading. The average speaking pace is 130–150 WPM. Speaking time is useful for podcast scripts, speeches, presentations, and voice-over scripts.</p>
+</div>
+
+<div class="faq-item">
+  <h3>How long should a blog post take to read?</h3>
+  <p>Most readers prefer articles that take 3–7 minutes to read (600–1,400 words at 200 WPM). For SEO, long-form content of 1,500–2,500 words (7–12 minutes) often performs best in search rankings while still being readable.</p>
+</div>
+
+<div class="faq-item">
+  <h3>Is my text stored or sent anywhere?</h3>
+  <p>No. All processing happens entirely in your browser using JavaScript. Your text is never uploaded to any server and stays completely private on your device.</p>
+</div>
+
+<div class="faq-item">
+  <h3>Can I use this for video scripts?</h3>
+  <p>Yes. Use the Speaking Time result for video scripts or voice-overs. A 10-minute video needs roughly 1,300 words at 130 WPM. Adjust the speaking speed to match your presenter's natural pace for a more accurate estimate.</p>
+</div>
+
+<div class="faq-item">
+  <h3>How accurate is the reading time estimate?</h3>
+  <p>The estimate is based on average reading speed and is a reliable approximation for most content. Actual reading time may vary depending on content complexity, formatting, images, and the individual reader's familiarity with the topic.</p>
+</div>
+<div class="ad-banner" style="margin:24px 0">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="5794572171"
+       data-ad-format="auto"
+       data-full-width-responsive="true">
+  </ins>
+</div>
+<h2>Related Tools</h2>
+<div class="tools">
+<a href="/tools/word-counter/">Word Counter</a>
+<a href="/tools/character-counter/">Character Counter</a>
+<a href="/tools/sentence-counter/">Sentence Counter</a>
+</div>
+
+<div class="ad-banner" style="margin-top:40px">
+      <!-- Ad space -->
+    </div>
+
+
+<!-- Ad: Footer -->
+<div class="ad-banner footer-ad" style="margin:40px 0;text-align:center"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
 <footer>
   <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
   <p style="margin: 8px 0; font-size: 13px;">
@@ -207,7 +333,7 @@ function calculate() {
 
   function fmt(min) {
     if (!min || min === 0) return '0 min';
-    return min < 60 ? min + ' min' : Math.floor(min / 60) + 'h ' + (min % 60) + 'm'
+    return min < 60 ? min + ' min' : Math.floor(min / 60) + 'h ' + (min % 60) + 'm';
   }
 
   document.getElementById('readingTime').textContent = fmt(readMin);
@@ -220,9 +346,9 @@ function calculate() {
   const tip = document.getElementById('tip');
   if (wordCount > 0) {
     const avg = Math.round(wordCount / (sentences || 1));
-    tip.textContent = 'Avg sentence length: ' + avg + ' words'
+    tip.textContent = 'Avg sentence length: ' + avg + ' words';
   } else {
-    tip.textContent = ''
+    tip.textContent = '';
   }
 }
 
@@ -230,11 +356,9 @@ function clearAll() {
   document.getElementById('text').value = '';
   document.getElementById('wpm').value = '200';
   document.getElementById('speakRate').value = '130';
-  calculate()
+  calculate();
 }
 </script>
-</style>
-
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>

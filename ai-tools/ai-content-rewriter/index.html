@@ -98,39 +98,39 @@
       --border: rgba(255,255,255,0.08);
       --text: #ffffff;
       --sub: #aab3c5;
-      --accent: #4f8cff
+      --accent: #4f8cff;
     }
 
-    * { box-sizing: border-box }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
       background: linear-gradient(180deg, #0b1220, #070d1a);
-      color: var(--text)
+      color: var(--text);
     }
 
-    a { color: var(--accent); text-decoration: none }
+    a { color: var(--accent); text-decoration: none; }
 
     .container {
       max-width: 920px;
       margin: 0 auto;
-      padding: 60px 20px 100px
+      padding: 60px 20px 100px;
     }
 
     .back {
       display: inline-block;
       margin-bottom: 24px;
       color: var(--sub);
-      font-size: 14px
+      font-size: 14px;
     }
 
-    h1 { font-size: 34px; margin: 0 0 10px }
+    h1 { font-size: 34px; margin: 0 0 10px; }
 
     .subtitle {
       color: var(--sub);
       font-size: 15px;
-      margin-bottom: 24px
+      margin-bottom: 24px;
     }
 
     textarea {
@@ -142,15 +142,15 @@
       background: var(--card);
       color: #fff;
       font-size: 15px;
-      resize: vertical
+      resize: vertical;
     }
 
-    textarea::placeholder { color: #7f8aa3 }
+    textarea::placeholder { color: #7f8aa3; }
 
     .btn-row {
       display: flex;
       gap: 12px;
-      margin-top: 12px
+      margin-top: 12px;
     }
 
     .btn-row button {
@@ -160,28 +160,28 @@
       background: var(--card);
       color: var(--sub);
       cursor: pointer;
-      font-size: 14px
+      font-size: 14px;
     }
 
-    .btn-row button:hover { color: #fff; border-color: var(--accent) }
+    .btn-row button:hover { color: #fff; border-color: var(--accent); }
 
     .main-btn {
       background: var(--accent) !important;
       color: #fff !important;
-      border: none !important
+      border: none !important;
     }
 
-    .main-btn:hover { background: #3a7be0 !important }
+    .main-btn:hover { background: #3a7be0 !important; }
 
     .input-group {
-      margin-bottom: 20px
+      margin-bottom: 20px;
     }
 
     label {
       display: block;
       margin-bottom: 8px;
       font-size: 14px;
-      color: var(--sub)
+      color: var(--sub);
     }
 
     select {
@@ -191,7 +191,7 @@
       border: 1px solid var(--border);
       background: var(--card);
       color: #fff;
-      font-size: 15px
+      font-size: 15px;
     }
 
     .result-box {
@@ -200,43 +200,43 @@
       border-radius: 14px;
       padding: 20px;
       min-height: 200px;
-      margin-top: 20px
+      margin-top: 20px;
     }
 
     .result-label {
       font-size: 13px;
       color: var(--sub);
       margin-bottom: 12px;
-      font-weight: 600
+      font-weight: 600;
     }
 
     .result-content {
       font-size: 15px;
       line-height: 1.75;
-      color: var(--text)
+      color: var(--text);
     }
 
-    .section { margin-top: 60px }
-    .section h2 { font-size: 24px; margin-bottom: 12px }
-    .section p { color: var(--sub); line-height: 1.75; font-size: 15px }
+    .section { margin-top: 60px; }
+    .section h2 { font-size: 24px; margin-bottom: 12px; }
+    .section p { color: var(--sub); line-height: 1.75; font-size: 15px; }
 
-    .faq { margin-top: 60px }
-    .faq h2 { font-size: 24px; margin-bottom: 20px }
+    .faq { margin-top: 60px; }
+    .faq h2 { font-size: 24px; margin-bottom: 20px; }
     .faq-item {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 20px;
-      margin-bottom: 16px
+      margin-bottom: 16px;
     }
-    .faq-item h3 { font-size: 16px; margin: 0 0 8px }
-    .faq-item p { color: var(--sub); font-size: 14px; line-height: 1.7; margin: 0 }
+    .faq-item h3 { font-size: 16px; margin: 0 0 8px; }
+    .faq-item p { color: var(--sub); font-size: 14px; line-height: 1.7; margin: 0; }
 
     .tools a {
       display: inline-block;
       margin-right: 16px;
       margin-top: 8px;
-      font-size: 14px
+      font-size: 14px;
     }
 
     footer p{margin:0}
@@ -247,50 +247,82 @@
     @media (max-width: 768px) {
       .container {
         padding: 40px 15px 80px !important;
-        max-width: 100% !important
+        max-width: 100% !important;
       }
 
       h1 {
         font-size: 28px !important;
-        line-height: 1.3 !important
+        line-height: 1.3 !important;
       }
 
       h2 {
         font-size: 20px !important;
         margin-top: 36px !important;
-        margin-bottom: 10px !important
+        margin-bottom: 10px !important;
       }
 
       textarea {
         min-height: 180px !important;
-        padding: 12px !important
+        padding: 12px !important;
       }
 
       .btn-row {
-        flex-wrap: wrap
+        flex-wrap: wrap;
       }
 
       .ad-banner {
         margin: 16px 0 !important;
-        min-height: 50px !important
+        min-height: 50px !important;
       }
     }
 
     @media (max-width: 480px) {
       h1 {
-        font-size: 24px !important
+        font-size: 24px !important;
       }
 
       h2 {
-        font-size: 18px !important
+        font-size: 18px !important;
       }
 
       .container {
-        padding: 32px 12px 60px !important
+        padding: 32px 12px 60px !important;
       }
     }
 
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;">
+footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
+  <link rel="stylesheet" href="/shared.css">
+</head>
+
+<body>
+  <div class="container">
+    <a class="back" href="../index.html">← Back to AI Tools</a>
+
+    <h1>AI Content Rewriter</h1>
+
+    <div class="subtitle">
+      Paraphrase and improve your text with customizable options.
+    </div>
+
+    <div class="ad-banner">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="5794572171"
+       data-ad-format="auto"
+       data-full-width-responsive="true">
+  </ins>
+</div>
+
+    <textarea id="inputText" placeholder="Paste or type your text here to rewrite..."></textarea>
+
+    <div class="btn-row">
+      <button onclick="clearText()">Clear</button>
+      <button onclick="copyText()">Copy Text</button>
+      <button class="main-btn" onclick="rewrite()">Rewrite Content</button>
+    </div>
+
+    <div class="input-group" style="margin-top: 20px;">
       <label>Tone</label>
       <select id="tone">
         <option value="professional">Professional</option>
@@ -400,22 +432,22 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
   <script>
     function clearText() {
       document.getElementById('inputText').value = '';
-      document.getElementById('result').textContent = 'Your rewritten content will appear here...'
+      document.getElementById('result').textContent = 'Your rewritten content will appear here...';
     }
 
     function copyText() {
       const text = document.getElementById('inputText').value;
       if (!text) return;
       navigator.clipboard.writeText(text).then(() => {
-        alert('Text copied to clipboard!')
-      })
+        alert('Text copied to clipboard!');
+      });
     }
 
     function rewrite() {
       const input = document.getElementById('inputText').value;
       if (!input) {
         alert('Please enter some text to rewrite.');
-        return
+        return;
       }
 
       // Simulate AI rewriting (in a real implementation, this would call an AI API)
@@ -431,46 +463,44 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
           rewritten = input.replace(/\bI think\b/gi, 'It is believed that')
                           .replace(/\breally\b/gi, 'significantly')
                           .replace(/\bpretty\b/gi, 'considerably')
-                          .replace(/\bsuper\b/gi, 'extremely')
+                          .replace(/\bsuper\b/gi, 'extremely');
         } else if (tone === 'casual') {
           rewritten = input.replace(/\bTherefore\b/gi, 'So')
                           .replace(/\bFurthermore\b/gi, 'Plus')
                           .replace(/\bAdditionally\b/gi, 'Also')
-                          .replace(/\bConsequently\b/gi, 'That\'s why')
+                          .replace(/\bConsequently\b/gi, 'That\'s why');
         } else if (tone === 'creative') {
           rewritten = input.replace(/\bimportant\b/gi, 'vital')
                           .replace(/\bgood\b/gi, 'excellent')
                           .replace(/\binteresting\b/gi, 'fascinating')
-                          .replace(/\bnew\b/gi, 'innovative')
+                          .replace(/\bnew\b/gi, 'innovative');
         } else if (tone === 'formal') {
           rewritten = input.replace(/\bcan't\b/gi, 'cannot')
                           .replace(/\bwon't\b/gi, 'will not')
                           .replace(/\bI'm\b/gi, 'I am')
-                          .replace(/\bdon't\b/gi, 'do not')
+                          .replace(/\bdon't\b/gi, 'do not');
         } else if (tone === 'friendly') {
           rewritten = input.replace(/\bHello\b/gi, 'Hi')
                           .replace(/\bDear\b/gi, 'Hey')
                           .replace(/\bRegards\b/gi, 'Best')
-                          .replace(/\bSincerely\b/gi, 'Warmly')
+                          .replace(/\bSincerely\b/gi, 'Warmly');
         }
-        result.textContent = rewritten
-      }, 1000)
+        result.textContent = rewritten;
+      }, 1000);
     }
 
     function copyResult() {
       const result = document.getElementById('result').textContent;
       if (result === 'Your rewritten content will appear here...' || result.includes('Rewriting with')) {
-        return
+        return;
       }
       navigator.clipboard.writeText(result).then(() => {
-        alert('Rewritten content copied to clipboard!')
-      })
+        alert('Rewritten content copied to clipboard!');
+      });
     }
   </script>
 
-  </style>
-
-<script src="/knexio-bundle.js"></script>
+  <script src="/knexio-bundle.js"></script>
 
       <footer>
   <p>Free AI-powered tools to boost your productivity.</p>

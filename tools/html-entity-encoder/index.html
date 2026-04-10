@@ -79,7 +79,7 @@
   --border:rgba(255,255,255,.08);
   --text:#fff;
   --sub:#aab3c5;
-  --accent:#4f8cff
+  --accent:#4f8cff;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:system-ui,-apple-system;background:var(--bg);color:var(--text)}
@@ -114,7 +114,13 @@ footer p{margin-bottom:8px}
 footer a{color:var(--sub);text-decoration:none;margin:0 10px}
 footer a:hover{color:var(--accent)}
 @media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.btn-row{flex-direction:column}}
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;, &gt;, &amp; to &amp;lt;, &amp;gt;, &amp;amp;.</p>
+footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
+  <link rel="stylesheet" href="/shared.css">
+</head>
+<body><div class="container">
+<a class="back" href="../index.html">← Back to Tools</a>
+<h1>HTML Entity Encoder</h1>
+<p class="subtitle">Encode and decode HTML entities instantly. Convert special characters like &lt;, &gt;, &amp; to &amp;lt;, &amp;gt;, &amp;amp;.</p>
 
 <div class="ad-banner">
   <ins class="adsbygoogle"
@@ -235,31 +241,29 @@ function encodeEntities() {
   var input = document.getElementById('inputText').value;
   var encoded = input.replace(/[&<>"']/g, function(m) {
     var map = {'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'};
-    return map[m]
+    return map[m];
   });
-  document.getElementById('outputText').value = encoded
+  document.getElementById('outputText').value = encoded;
 }
 
 function decodeEntities() {
   var input = document.getElementById('inputText').value;
   var txt = document.createElement('textarea');
   txt.innerHTML = input;
-  document.getElementById('outputText').value = txt.value
+  document.getElementById('outputText').value = txt.value;
 }
 
 function copyOutput() {
   var output = document.getElementById('outputText');
   output.select();
-  document.execCommand('copy')
+  document.execCommand('copy');
 }
 
 function clearAll() {
   document.getElementById('inputText').value = '';
-  document.getElementById('outputText').value = ''
+  document.getElementById('outputText').value = '';
 }
 </script>
-</style>
-
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>

@@ -26,7 +26,96 @@ textarea{width:100%;min-height:180px;background:var(--bg);border:1px solid var(-
 .faq-item h3{font-size:16px;margin-bottom:8px}.faq-item p{color:var(--sub);line-height:1.6}
 
 @media (max-width:600px){.stat-box{min-width:80px;padding:10px 12px}.stat-value{font-size:20px}}
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;padding-left:20px;line-height:2">
+footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
+  <meta property="og:image" content="https://knexio.xyz/og-image.png">
+
+<!-- Open Graph -->
+<meta property="og:url" content="https://knexio.xyz/tools/text-analyzer/">
+<meta property="og:type" content="WebApplication">
+<meta property="og:site_name" content="Knexio">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is this tool free to use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, this tool is completely free to use. No registration, no login, and no subscription required. Just open the page and start using it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my data safe? Is anything stored on a server?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, your data is safe. All processing happens entirely in your browser \u2014 your input never leaves your device and is not sent to any server."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does this tool work on mobile devices?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The tool is fully responsive and works on smartphones, tablets, and desktop computers."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How accurate is the result?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The tool uses standard algorithms and web APIs to provide accurate results. For critical or professional use, please verify with additional sources."
+      }
+    }
+  ]
+}
+</script>
+  <link rel="stylesheet" href="/shared.css">
+</head>
+<body>
+<div class="container">
+<a class="back" href="../index.html">← Back to Tools</a>
+<h1>Text Analyzer</h1>
+<p class="subtitle">All-in-one text statistics</p>
+
+<div class="panel">
+<textarea id="textInput" placeholder="Paste or type your text here..."></textarea>
+<button class="btn-primary" onclick="analyzeText()">Analyze</button>
+
+<div class="stats-row">
+<div class="stat-box">
+<div class="stat-value" id="wordCount">0</div>
+<div class="stat-label">Words</div>
+</div>
+<div class="stat-box">
+<div class="stat-value" id="charCount">0</div>
+<div class="stat-label">Characters</div>
+</div>
+<div class="stat-box">
+<div class="stat-value" id="charCountNoSpace">0</div>
+<div class="stat-label">No Spaces</div>
+</div>
+<div class="stat-box">
+<div class="stat-value" id="sentenceCount">0</div>
+<div class="stat-label">Sentences</div>
+</div>
+<div class="stat-box">
+<div class="stat-value" id="paragraphCount">0</div>
+<div class="stat-label">Paragraphs</div>
+</div>
+<div class="stat-box">
+<div class="stat-value" id="syllableCount">0</div>
+<div class="stat-label">Syllables</div>
+</div>
+</div>
+</div>
+
+<div class="panel">
+<h2>How to Use</h2>
+<ol style="margin:0 0 24px;padding-left:20px;line-height:2">
 <li><strong>Paste your text</strong> — Copy and paste any article, essay, email, or document into the text area</li>
 <li><strong>View instant statistics</strong> — Word count, character count, sentences, paragraphs, and syllables update as you type</li>
 <li><strong>Copy the results</strong> — One-click copy of your text statistics for reports or academic submissions</li>
@@ -101,26 +190,24 @@ function countSyllables(word) {
   word = word.replace(/(?:[^laeiouy]es|ed|[^laeiouy]e)$/, '');
   word = word.replace(/^y/, '');
   var matches = word.match(/[aeiouy]{1,2}/g);
-  return matches ? matches.length : 1
+  return matches ? matches.length : 1;
 }
 
 function analyzeText() {
   var text = document.getElementById('textInput').value;
-  var words = text.trim().split(/\s+/).filter(function(w) { return w.length > 0 });
+  var words = text.trim().split(/\s+/).filter(function(w) { return w.length > 0; });
   document.getElementById('wordCount').textContent = words.length;
   document.getElementById('charCount').textContent = text.length;
   document.getElementById('charCountNoSpace').textContent = text.replace(/\s/g, '').length;
-  var sentences = text.split(/[.!?]+/).filter(function(s) { return s.trim().length > 0 });
+  var sentences = text.split(/[.!?]+/).filter(function(s) { return s.trim().length > 0; });
   document.getElementById('sentenceCount').textContent = sentences.length;
-  var paragraphs = text.split(/\n\n+/).filter(function(p) { return p.trim().length > 0 });
+  var paragraphs = text.split(/\n\n+/).filter(function(p) { return p.trim().length > 0; });
   document.getElementById('paragraphCount').textContent = paragraphs.length || (text.length > 0 ? 1 : 0);
   var totalSyllables = 0;
-  words.forEach(function(word) { totalSyllables += countSyllables(word) });
-  document.getElementById('syllableCount').textContent = totalSyllables
+  words.forEach(function(word) { totalSyllables += countSyllables(word); });
+  document.getElementById('syllableCount').textContent = totalSyllables;
 }
 </script>
-</style>
-
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>

@@ -79,22 +79,22 @@
       --border: rgba(255,255,255,0.08);
       --text: #fff;
       --sub: #aab3c5;
-      --accent: #4f8cff
+      --accent: #4f8cff;
     }
     * {
       box-sizing: border-box;
       margin: 0;
-      padding: 0
+      padding: 0;
     }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background: var(--bg);
-      color: var(--text)
+      color: var(--text);
     }
     .container {
       max-width: 900px;
       margin: auto;
-      padding: 60px 20px 100px
+      padding: 60px 20px 100px;
     }
     .back {
       display: inline-block;
@@ -102,44 +102,44 @@
       text-decoration: none;
       font-size: 14px;
       margin-bottom: 24px;
-      transition: color 0.2s
+      transition: color 0.2s;
     }
     .back:hover {
-      color: var(--accent)
+      color: var(--accent);
     }
     h1 {
       font-size: 34px;
-      margin-bottom: 10px
+      margin-bottom: 10px;
     }
     h2 {
       font-size: 22px;
       margin: 36px 0 14px;
-      color: var(--text)
+      color: var(--text);
     }
     .subtitle {
       font-size: 16px;
       color: var(--sub);
       margin-bottom: 28px;
-      line-height: 1.6
+      line-height: 1.6;
     }
     .card {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 20px;
-      margin-bottom: 20px
+      margin-bottom: 20px;
     }
     .card-title {
       font-size: 18px;
       font-weight: 600;
       margin-bottom: 16px;
-      color: var(--text)
+      color: var(--text);
     }
     .presets {
       display: flex;
       gap: 8px;
       margin-bottom: 16px;
-      flex-wrap: wrap
+      flex-wrap: wrap;
     }
     .preset-btn {
       padding: 8px 14px;
@@ -150,27 +150,27 @@
       border: 1px solid var(--border);
       color: var(--sub);
       cursor: pointer;
-      transition: all 0.2s
+      transition: all 0.2s;
     }
     .preset-btn:hover {
       border-color: var(--accent);
-      color: var(--accent)
+      color: var(--accent);
     }
     .input-grid {
       display: flex;
       gap: 12px;
       align-items: flex-end;
-      margin-bottom: 16px
+      margin-bottom: 16px;
     }
     .field {
-      flex: 1
+      flex: 1;
     }
     .field label {
       display: block;
       font-size: 14px;
       color: var(--sub);
       margin-bottom: 8px;
-      font-weight: 500
+      font-weight: 500;
     }
     .field input {
       width: 100%;
@@ -180,17 +180,17 @@
       border-radius: 12px;
       color: var(--text);
       font-size: 15px;
-      font-family: inherit
+      font-family: inherit;
     }
     .field input:focus {
       outline: none;
-      border-color: var(--accent)
+      border-color: var(--accent);
     }
     .divider {
       padding: 12px 0;
       color: var(--sub);
       font-size: 18px;
-      font-weight: 600
+      font-weight: 600;
     }
     .ratio-result {
       text-align: center;
@@ -198,70 +198,70 @@
       background: var(--bg);
       border: 1px solid var(--border);
       border-radius: 10px;
-      margin-bottom: 16px
+      margin-bottom: 16px;
     }
     .ratio-big {
       font-size: 36px;
       font-weight: 800;
       color: var(--accent);
       line-height: 1;
-      margin-bottom: 8px
+      margin-bottom: 8px;
     }
     .ratio-label {
       font-size: 14px;
-      color: var(--sub)
+      color: var(--sub);
     }
     .scale-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 12px
+      gap: 12px;
     }
     .scale-result {
       background: var(--bg);
       border: 1px solid var(--border);
       border-radius: 10px;
       padding: 16px;
-      text-align: center
+      text-align: center;
     }
     .scale-val {
       font-size: 28px;
       font-weight: 700;
       color: var(--accent);
-      margin-bottom: 6px
+      margin-bottom: 6px;
     }
     .scale-lbl {
       font-size: 13px;
-      color: var(--sub)
+      color: var(--sub);
     }
     .section {
-      margin-bottom: 24px
+      margin-bottom: 24px;
     }
     .section p {
       color: var(--sub);
       line-height: 1.7;
-      font-size: 15px
+      font-size: 15px;
     }
     .faq-item {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 20px;
-      margin-bottom: 12px
+      margin-bottom: 12px;
     }
     .faq-item h3 {
       font-size: 16px;
       margin-bottom: 8px;
-      color: var(--text)
+      color: var(--text);
     }
     .faq-item p {
       font-size: 14px;
       color: var(--sub);
-      line-height: 1.6
+      line-height: 1.6;
     }
     .tools {
       display: flex;
       gap: 12px;
-      flex-wrap: wrap
+      flex-wrap: wrap;
     }
     .tools a {
       padding: 10px 18px;
@@ -271,50 +271,90 @@
       color: var(--sub);
       text-decoration: none;
       font-size: 14px;
-      transition: all 0.2s
+      transition: all 0.2s;
     }
     .tools a:hover {
       border-color: var(--accent);
-      color: var(--accent)
+      color: var(--accent);
     }
     .ad-banner {
       margin: 32px 0;
       text-align: center;
-      min-height: 90px
+      min-height: 90px;
     }
-    footer{
+    footer {
       margin-top: 40px;
       text-align: center;
       color: var(--sub);
-      font-size: 13px
-    }
+      font-size: 13px;
+    border-top:1px solid var(--border);}
     footer p {
-      margin-bottom: 8px
+      margin-bottom: 8px;
     }
     footer a {
       color: var(--sub);
       text-decoration: none;
       margin: 0 10px;
-      transition: color 0.2s
+      transition: color 0.2s;
     }
     footer a:hover {
-      color: var(--accent)
+      color: var(--accent);
     }
     @media (max-width: 600px) {
       .input-grid {
-        flex-direction: column
+        flex-direction: column;
       }
       .scale-grid {
-        grid-template-columns: 1fr
+        grid-template-columns: 1fr;
       }
       .presets {
-        flex-direction: column
+        flex-direction: column;
       }
       .preset-btn {
-        width: 100%
+        width: 100%;
       }
     }
-  footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;margin:0 auto;max-width:100%;border-radius:8px;"></canvas>
+  footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
+  <link rel="stylesheet" href="/shared.css">
+</head>
+<body>
+<div class="container">
+  <a class="back" href="../index.html">← Back to Tools</a>
+
+  <h1>Aspect Ratio Calculator</h1>
+  <p class="subtitle">Calculate the aspect ratio of any dimensions, scale width or height while keeping the ratio locked. Perfect for images, video, and screen design.</p>
+
+  <!-- Ad Slot 1: Top -->
+  <div class="ad-banner">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="5794572171"
+       data-ad-format="auto"
+       data-full-width-responsive="true">
+  </ins>
+</div>
+
+  <div class="card">
+    <div class="card-title">Calculate Ratio from Dimensions</div>
+    <div class="presets">
+      <button class="preset-btn" onclick="setPreset(16,9)">16:9 Widescreen</button>
+      <button class="preset-btn" onclick="setPreset(4,3)">4:3 Standard</button>
+      <button class="preset-btn" onclick="setPreset(1,1)">1:1 Square</button>
+      <button class="preset-btn" onclick="setPreset(9,16)">9:16 Portrait</button>
+      <button class="preset-btn" onclick="setPreset(21,9)">21:9 Ultrawide</button>
+      <button class="preset-btn" onclick="setPreset(3,2)">3:2 Photo</button>
+    </div>
+    <div class="input-grid">
+      <div class="field"><label>Width (px)</label><input type="number" id="calcW" value="1920" min="1" oninput="calcRatio()"></div>
+      <div class="divider">×</div>
+      <div class="field"><label>Height (px)</label><input type="number" id="calcH" value="1080" min="1" oninput="calcRatio()"></div>
+    </div>
+    <div class="ratio-result">
+      <div class="ratio-big" id="ratioDisplay">16:9</div>
+      <div class="ratio-label">Simplified Ratio · <span id="decimalRatio">1.778</span> decimal</div>
+    </div>
+    <canvas id="previewCanvas" width="400" height="225" style="display:block;margin:0 auto;max-width:100%;border-radius:8px;"></canvas>
   </div>
 
   <div class="card">
@@ -412,7 +452,7 @@
 </div>
 
 <script>
-  function gcd(a, b) { return b === 0 ? a : gcd(b, a % b) }
+  function gcd(a, b) { return b === 0 ? a : gcd(b, a % b); }
 
   function calcRatio() {
     const w = parseInt(document.getElementById('calcW').value) || 1;
@@ -425,7 +465,7 @@
     document.getElementById('ratioW').value = rw;
     document.getElementById('ratioH').value = rh;
     updateScale();
-    drawPreview(rw, rh)
+    drawPreview(rw, rh);
   }
 
   function drawPreview(rw, rh) {
@@ -433,7 +473,7 @@
     const maxW = Math.min(canvas.parentElement.clientWidth - 40, 480);
     const maxH = 220;
     let pw = maxW, ph = Math.round(maxW * rh / rw);
-    if (ph > maxH) { ph = maxH; pw = Math.round(maxH * rw / rh) }
+    if (ph > maxH) { ph = maxH; pw = Math.round(maxH * rw / rh); }
     canvas.width = pw; canvas.height = ph;
     const ctx = canvas.getContext('2d');
     ctx.fillStyle = '#0b1220';
@@ -452,13 +492,13 @@
     ctx.fillStyle = 'rgba(79,140,255,0.8)';
     ctx.font = `bold ${Math.max(14, Math.min(22, pw/8))}px system-ui`;
     ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-    ctx.fillText(rw + ':' + rh, pw/2, ph/2)
+    ctx.fillText(rw + ':' + rh, pw/2, ph/2);
   }
 
   function setPreset(w, h) {
     document.getElementById('calcW').value = w * 100;
     document.getElementById('calcH').value = h * 100;
-    calcRatio()
+    calcRatio();
   }
 
   function updateScale() {
@@ -467,23 +507,21 @@
     const w = parseFloat(document.getElementById('newW').value) || 0;
     const h = parseFloat(document.getElementById('newH').value) || 0;
     document.getElementById('scaledH').textContent = Math.round(w * rh / rw);
-    document.getElementById('scaledW').textContent = Math.round(h * rw / rh)
+    document.getElementById('scaledW').textContent = Math.round(h * rw / rh);
   }
 
   function scaleFromW() {
     updateScale();
-    document.getElementById('newH').value = document.getElementById('scaledH').textContent
+    document.getElementById('newH').value = document.getElementById('scaledH').textContent;
   }
 
   function scaleFromH() {
     updateScale();
-    document.getElementById('newW').value = document.getElementById('scaledW').textContent
+    document.getElementById('newW').value = document.getElementById('scaledW').textContent;
   }
 
   calcRatio();
 </script>
-</style>
-
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>

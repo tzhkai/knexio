@@ -24,7 +24,70 @@ button{background:var(--accent);color:#fff;border:none;padding:12px 24px;border-
 .slider input{flex:1}
 .faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px}
 
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;text-align:center"><ins class="adsbygoogle" style="display:block;min-height:250px" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3617326351" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
+footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
+
+<!-- Open Graph -->
+<meta property="og:url" content="https://knexio.xyz/tools/lottie-player/">
+<meta property="og:type" content="WebApplication">
+<meta property="og:site_name" content="Knexio">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is this tool free to use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, this tool is completely free to use. No registration, no login, and no subscription required. Just open the page and start using it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my data safe? Is anything stored on a server?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, your data is safe. All processing happens entirely in your browser \u2014 your input never leaves your device and is not sent to any server."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does this tool work on mobile devices?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The tool is fully responsive and works on smartphones, tablets, and desktop computers."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How accurate is the result?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The tool uses standard algorithms and web APIs to provide accurate results. For critical or professional use, please verify with additional sources."
+      }
+    }
+  ]
+}
+</script>
+  <link rel="stylesheet" href="/shared.css">
+</head>
+<body>
+<div class="container">
+<a class="back" href="../index.html">← Back to Tools</a>
+<h1>Lottie Player</h1>
+<p class="subtitle">View and test Lottie JSON animations</p>
+<div class="ad-banner">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="5794572171"
+       data-ad-format="auto"
+       data-full-width-responsive="true">
+  </ins>
+
+<!-- Ad: Sidebar -->
+<div class="ad-sidebar" style="margin:20px 0;text-align:center"><ins class="adsbygoogle" style="display:block;min-height:250px" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3617326351" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
 </div>
 <div class="controls">
 <label>Paste Lottie JSON URL or Content</label>
@@ -115,15 +178,13 @@ let animation = null;
 function loadLottie() {
   const json = document.getElementById('json').value;
   if (json) {
-    document.getElementById('preview').innerHTML = '<p style="color:var(--accent)">Lottie animation loaded! (Demo mode)</p>'
+    document.getElementById('preview').innerHTML = '<p style="color:var(--accent)">Lottie animation loaded! (Demo mode)</p>';
   }
 }
-function playAnimation() { alert('Play') }
-function pauseAnimation() { alert('Pause') }
-function setSpeed(s) { document.getElementById('speedVal').textContent = s + 'x' }
+function playAnimation() { alert('Play'); }
+function pauseAnimation() { alert('Pause'); }
+function setSpeed(s) { document.getElementById('speedVal').textContent = s + 'x'; }
 </script>
-</style>
-
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>

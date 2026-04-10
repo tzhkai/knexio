@@ -28,7 +28,58 @@ button{background:var(--accent);color:#fff;border:none;padding:14px 24px;border-
 .result-value{font-weight:600}
 .positive{color:var(--green)}.negative{color:var(--red)}
 .faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px}
-footer{margin-top:60px;text-align:center;color:var(--sub)padding-left:20px;line-height:2">
+footer{margin-top:60px;text-align:center;color:var(--sub)border-top:1px solid var(--border);padding-top:24px}
+</style>
+
+<!-- Open Graph -->
+<meta property="og:url" content="https://knexio.xyz/finance/crypto-profit-calculator/">
+<meta property="og:type" content="WebApplication">
+<meta property="og:site_name" content="Knexio">
+  <link rel="stylesheet" href="/shared.css">
+</head>
+<body>
+<div class="container">
+<a class="back" href="../index.html">← Back to Finance Tools</a>
+<h1>Crypto Profit Calculator</h1>
+<p class="subtitle">Calculate cryptocurrency investment returns</p>
+<div class="ad-banner">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="5794572171"
+       data-ad-format="auto"
+       data-full-width-responsive="true">
+  </ins>
+</div>
+<div class="controls">
+<div class="input-group">
+<label>Amount Purchased</label>
+<input type="number" id="amount" placeholder="0.5">
+</div>
+<div class="input-group">
+<label>Purchase Price (per coin)</label>
+<input type="number" id="buyPrice" placeholder="30000">
+</div>
+<div class="input-group">
+<label>Current Price</label>
+<input type="number" id="currentPrice" placeholder="45000">
+</div>
+<button onclick="calculateCrypto()">Calculate Profit</button>
+</div>
+<div class="result" id="result" style="display:none">
+<div class="result-row"><span class="result-label">Total Investment</span><span class="result-value" id="investment"></span></div>
+<div class="result-row"><span class="result-label">Current Value</span><span class="result-value" id="value"></span></div>
+<div class="result-row"><span class="result-label">Profit/Loss</span><span class="result-value" id="profit"></span></div>
+<div class="result-row"><span class="result-label">ROI</span><span class="result-value" id="roi"></span></div>
+</div>
+<div class="section">
+<p><strong>Free Crypto Profit Calculator</strong> - Calculate cryptocurrency investment returns. Enter amount, purchase price, and current price to see profit, loss, and ROI percentage.</p>
+</div>
+<div class="section">
+<p><strong>How It Works</strong> - Enter how much crypto you bought, the price you paid per coin, and the current price. Click Calculate to see your profit or loss.</p>
+</div>
+<h2>How to Use</h2>
+<ol style="margin:0 0 24px;padding-left:20px;line-height:2">
 <li><strong>Enter the amount purchased</strong> — Type how many coins or tokens you bought</li>
 <li><strong>Enter the purchase price</strong> — Type the price per coin at the time you bought (in USD)</li>
 <li><strong>Enter the current price</strong> — Type the current market price of the cryptocurrency</li>
@@ -98,7 +149,7 @@ function calculateCrypto() {
   
   if (!amount || !buyPrice || !currentPrice) {
     alert('Please enter all values');
-    return
+    return;
   }
   
   const investment = amount * buyPrice;
@@ -115,11 +166,9 @@ function calculateCrypto() {
   roiEl.textContent = (roi >= 0 ? '+' : '') + roi.toFixed(1) + '%';
   roiEl.className = 'result-value ' + (roi >= 0 ? 'positive' : 'negative');
   
-  document.getElementById('result').style.display = 'block'
+  document.getElementById('result').style.display = 'block';
 }
 </script>
-</style>
-
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>

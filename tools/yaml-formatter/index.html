@@ -63,7 +63,30 @@ textarea{width:100%;min-height:350px;background:var(--bg);border:1px solid var(-
 .related-tools a{display:inline-block;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 16px;margin:0 8px 8px 0;color:var(--text);text-decoration:none}
 
 .ad-banner{margin:32px 0;text-align:center;min-height:90px}
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;text-align:center"><ins class="adsbygoogle" style="display:block;min-height:250px" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3617326351" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
+footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
+
+<!-- Open Graph -->
+<meta property="og:site_name" content="Knexio">
+  <link rel="stylesheet" href="/shared.css">
+</head>
+<body>
+<div class="container">
+<a class="back" href="../index.html">← Back to Tools</a>
+
+<h1>YAML Formatter</h1>
+<p class="subtitle">Beautify, validate, and convert YAML</p>
+
+<div class="ad-banner">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="5794572171"
+       data-ad-format="auto"
+       data-full-width-responsive="true">
+  </ins>
+
+<!-- Ad: Sidebar -->
+<div class="ad-sidebar" style="margin:20px 0;text-align:center"><ins class="adsbygoogle" style="display:block;min-height:250px" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3617326351" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
 </div>
 
 <div class="controls">
@@ -166,7 +189,7 @@ const parseYAML = (str) => {
   const parseLine = (line, currentIndent) => {
     line = line.trim();
     if (!line || line.startsWith('#')) return null;
-    return line
+    return line;
   };
   
   // Simple YAML to object parser
@@ -183,12 +206,12 @@ const parseYAML = (str) => {
         if (val.startsWith('"') && val.endsWith('"')) val = val.slice(1, -1);
         if (val.startsWith("'") && val.endsWith("'")) val = val.slice(1, -1);
         if (val === '') val = null;
-        obj[key] = val
+        obj[key] = val;
       }
     });
-    return obj
+    return obj;
   } catch (e) {
-    throw new Error(e.message)
+    throw new Error(e.message);
   }
 };
 
@@ -198,15 +221,15 @@ const yamlToString = (obj, indent = 0) => {
   
   for (const [key, val] of Object.entries(obj)) {
     if (val === null || val === undefined) {
-      result += `${spaces}${key}:\n`
+      result += `${spaces}${key}:\n`;
     } else if (typeof val === 'object') {
-      result += `${spaces}${key}:\n${yamlToString(val, indent + 1)}`
+      result += `${spaces}${key}:\n${yamlToString(val, indent + 1)}`;
     } else {
       const valStr = typeof val === 'string' && val.includes(':') ? `"${val}"` : val;
-      result += `${spaces}${key}: ${valStr}\n`
+      result += `${spaces}${key}: ${valStr}\n`;
     }
   }
-  return result
+  return result;
 };
 
 function formatYAML() {
@@ -214,45 +237,43 @@ function formatYAML() {
   try {
     if (!input.trim()) {
       document.getElementById('output').value = '';
-      return
+      return;
     }
     const obj = parseYAML(input);
-    document.getElementById('output').value = yamlToString(obj)
+    document.getElementById('output').value = yamlToString(obj);
   } catch (e) {
-    document.getElementById('output').value = 'Error: ' + e.message
+    document.getElementById('output').value = 'Error: ' + e.message;
   }
 }
 
 function minifyYAML() {
   formatYAML();
   const output = document.getElementById('output').value;
-  document.getElementById('output').value = output.replace(/\n\s+/g, ' ').replace(/:\s+/g, ':')
+  document.getElementById('output').value = output.replace(/\n\s+/g, ' ').replace(/:\s+/g, ':');
 }
 
 function yamlToJson() {
   const input = document.getElementById('input').value;
   try {
     const obj = parseYAML(input);
-    document.getElementById('output').value = JSON.stringify(obj, null, 2)
+    document.getElementById('output').value = JSON.stringify(obj, null, 2);
   } catch (e) {
-    document.getElementById('output').value = 'Error: ' + e.message
+    document.getElementById('output').value = 'Error: ' + e.message;
   }
 }
 
 function clearAll() {
   document.getElementById('input').value = '';
-  document.getElementById('output').value = ''
+  document.getElementById('output').value = '';
 }
 
 function copyOutput() {
   const output = document.getElementById('output');
   output.select();
   document.execCommand('copy');
-  alert('Copied!')
+  alert('Copied!');
 }
 </script>
-</style>
-
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>

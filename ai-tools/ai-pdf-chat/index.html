@@ -30,7 +30,30 @@ textarea{width:100%;min-height:150px;background:var(--bg);border:1px solid var(-
 .faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px}
 .faq-item h3{font-size:16px;margin-bottom:8px}.faq-item p{color:var(--sub);line-height:1.6}
 footer p{margin:0}
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;margin-bottom:8px;color:var(--sub)">Step 1: Paste your PDF text content</label>
+footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
+
+<!-- Open Graph -->
+<meta property="og:url" content="https://knexio.xyz/ai-tools/ai-pdf-chat/">
+<meta property="og:type" content="WebApplication">
+<meta property="og:site_name" content="Knexio">
+  <link rel="stylesheet" href="/shared.css">
+</head>
+<body>
+<div class="container">
+<a class="back" href="../index.html">← Back to AI Tools</a>
+<h1>AI PDF Chat</h1>
+<p class="subtitle">Chat with your PDF documents</p>
+<div class="ad-banner">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="5794572171"
+       data-ad-format="auto"
+       data-full-width-responsive="true">
+  </ins>
+</div>
+<div class="panel">
+<label style="display:block;margin-bottom:8px;color:var(--sub)">Step 1: Paste your PDF text content</label>
 <textarea id="pdfText" placeholder="Paste the text from your PDF here..."></textarea>
 <button onclick="loadDoc()" style="background:var(--accent);color:#fff;border:none;padding:12px 24px;border-radius:8px;cursor:pointer;font-weight:600">Load Document</button>
 </div>
@@ -69,47 +92,45 @@ function loadDoc() {
   docText = document.getElementById('pdfText').value.trim();
   if (!docText || docText.length < 50) {
     alert('Please paste some document text first');
-    return
+    return;
   }
   var words = docText.split(/\s+/).length;
   document.getElementById('chatPanel').style.display = 'block';
-  document.getElementById('chatBox').innerHTML = '<div class="msg ai"><div class="bubble">Document loaded (' + words + ' words). Ask me anything about it!</div></div>'
+  document.getElementById('chatBox').innerHTML = '<div class="msg ai"><div class="bubble">Document loaded (' + words + ' words). Ask me anything about it!</div></div>';
 }
 function esc(s) {
-  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 }
 function sendMsg() {
   var q = document.getElementById('question').value.trim();
   if (!q) return;
-  if (!docText) { alert('Please load a document first'); return }
+  if (!docText) { alert('Please load a document first'); return; }
   var chatBox = document.getElementById('chatBox');
   chatBox.innerHTML += '<div class="msg user"><div class="bubble">' + esc(q) + '</div></div>';
   document.getElementById('question').value = '';
   var answer = findAnswer(q, docText);
   setTimeout(function() {
     chatBox.innerHTML += '<div class="msg ai"><div class="bubble">' + esc(answer) + '</div></div>';
-    chatBox.scrollTop = chatBox.scrollHeight
-  }, 300)
+    chatBox.scrollTop = chatBox.scrollHeight;
+  }, 300);
 }
 function findAnswer(question, text) {
-  var qWords = question.toLowerCase().split(/\s+/).filter(function(w){ return w.length > 3 });
-  var sentences = text.split(/[.!?]+/).filter(function(s){ return s.trim().length > 20 });
+  var qWords = question.toLowerCase().split(/\s+/).filter(function(w){ return w.length > 3; });
+  var sentences = text.split(/[.!?]+/).filter(function(s){ return s.trim().length > 20; });
   var scored = sentences.map(function(s) {
     var score = 0;
     for (var i = 0; i < qWords.length; i++) {
-      if (s.toLowerCase().indexOf(qWords[i]) !== -1) score++
+      if (s.toLowerCase().indexOf(qWords[i]) !== -1) score++;
     }
-    return { s: s.trim(), score: score }
-  }).sort(function(a, b){ return b.score - a.score });
-  var top = scored.filter(function(x){ return x.score > 0 }).slice(0, 3);
+    return { s: s.trim(), score: score };
+  }).sort(function(a, b){ return b.score - a.score; });
+  var top = scored.filter(function(x){ return x.score > 0; }).slice(0, 3);
   if (top.length === 0) {
-    return "I couldn't find specific information about that in the document. Try rephrasing your question."
+    return "I couldn't find specific information about that in the document. Try rephrasing your question.";
   }
-  return "Based on the document:\n\n" + top.map(function(x){ return x.s }).join('. ') + '.'
+  return "Based on the document:\n\n" + top.map(function(x){ return x.s; }).join('. ') + '.';
 }
 </script>
-</style>
-
 <script src="/knexio-bundle.js"></script>
 <div class="ad-banner footer-ad" style="margin:40px 0;text-align:center"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
 

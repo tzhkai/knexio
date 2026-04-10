@@ -37,13 +37,13 @@
   --border:rgba(255,255,255,.08);
   --text:#fff;
   --sub:#aab3c5;
-  --accent:#4f8cff
+  --accent:#4f8cff;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{
   font-family:system-ui,-apple-system;
   background:var(--bg);
-  color:var(--text)
+  color:var(--text);
 }
 .container{max-width:900px;margin:auto;padding:50px 16px}
 
@@ -54,10 +54,10 @@ body{
   text-decoration: none;
   font-size: 14px;
   margin-bottom: 24px;
-  transition: color 0.2s
+  transition: color 0.2s;
 }
 .back:hover {
-  color: var(--accent)
+  color: var(--accent);
 }
 
 h1{font-size:32px;margin-bottom:8px}
@@ -70,7 +70,7 @@ h3{font-size:18px;margin-bottom:8px}
   border:1px solid var(--border);
   border-radius:14px;
   padding:20px;
-  margin-bottom:20px
+  margin-bottom:20px;
 }
 
 
@@ -85,14 +85,14 @@ textarea:focus{outline:none;border-color:var(--accent)}
   flex-wrap:wrap;
   gap:12px;
   margin-bottom:16px;
-  align-items:center
+  align-items:center;
 }
 .indent-label{
   display:flex;
   align-items:center;
   gap:8px;
   font-size:14px;
-  color:var(--sub)
+  color:var(--sub);
 }
 select{
   padding:8px 12px;
@@ -100,18 +100,18 @@ select{
   border:1px solid var(--border);
   border-radius:8px;
   color:var(--text);
-  cursor:pointer
+  cursor:pointer;
 }
 select:focus{outline:none;border-color:var(--accent)}
 
 .editor-layout{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:16px
+  gap:16px;
 }
 .editor-layout>div{
   display:flex;
-  flex-direction:column
+  flex-direction:column;
 }
 .pane-label{
   display:flex;
@@ -119,12 +119,12 @@ select:focus{outline:none;border-color:var(--accent)}
   align-items:center;
   font-size:13px;
   color:var(--sub);
-  margin-bottom:8px
+  margin-bottom:8px;
 }
 .btn-sm{
   flex:0 0 auto;
   padding:6px 12px;
-  font-size:12px
+  font-size:12px;
 }
 
 .output-box{
@@ -138,7 +138,7 @@ select:focus{outline:none;border-color:var(--accent)}
   font-size:15px;
   overflow:auto;
   white-space:pre-wrap;
-  word-break:break-all
+  word-break:break-all;
 }
 
 .status-bar{
@@ -147,13 +147,13 @@ select:focus{outline:none;border-color:var(--accent)}
   background:var(--bg);
   border-radius:10px;
   font-size:14px;
-  color:var(--sub)
+  color:var(--sub);
 }
 
 .section p{
   color:var(--sub);
   line-height:1.7;
-  margin-bottom:10px
+  margin-bottom:10px;
 }
 
 
@@ -171,37 +171,37 @@ select:focus{outline:none;border-color:var(--accent)}
   border-radius:8px;
   border:1px solid var(--border);
   color:var(--sub);
-  text-decoration:none
+  text-decoration:none;
 }
 .tools a:hover{
   border-color:var(--accent);
-  color:var(--accent)
+  color:var(--accent);
 }
 
 /* 广告样式 */
 .ad-banner {
   margin: 32px 0;
-  text-align: center
+  text-align: center;
 }
 
 /* 统一的 Footer 样式 */
-footer{
+footer {
   margin-top: 40px;
   text-align: center;
   color: var(--sub);
-  font-size: 13px
-}
+  font-size: 13px;
+border-top:1px solid var(--border);}
 footer p {
-  margin-bottom: 8px
+  margin-bottom: 8px;
 }
 footer a {
   color: var(--sub);
   text-decoration: none;
   margin: 0 10px;
-  transition: color 0.2s
+  transition: color 0.2s;
 }
 footer a:hover {
-  color: var(--accent)
+  color: var(--accent);
 }
 
 @media(max-width:600px){
@@ -221,7 +221,70 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
 .stat label,.stat-label,.result-label,.age-label{font-size:12px;color:var(--sub);display:block}
 .result-box{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;margin-top:16px;min-height:100px;white-space:pre-wrap;word-break:break-all;font-size:15px;line-height:1.7;box-sizing:border-box}
 @media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.btn-row{flex-direction:column}}
-  footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;flex:1">
+  footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is this tool free to use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, this tool is completely free to use. No registration, no login, and no subscription required. Just open the page and start using it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my data safe? Is anything stored on a server?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, your data is safe. All processing happens entirely in your browser \u2014 your input never leaves your device and is not sent to any server."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does this tool work on mobile devices?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The tool is fully responsive and works on smartphones, tablets, and desktop computers."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How accurate is the result?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The tool uses standard algorithms and web APIs to provide accurate results. For critical or professional use, please verify with additional sources."
+      }
+    }
+  ]
+}
+</script>
+  <link rel="stylesheet" href="/shared.css">
+</head>
+
+<body><div class="container">
+
+<a class="back" href="../index.html">← Back to Tools</a>
+
+<h1>SQL Formatter</h1>
+<p class="subtitle">Format and beautify SQL queries instantly. Supports MySQL, PostgreSQL, SQL Server, and Oracle. All processing runs in your browser — no data sent anywhere.</p>
+
+<div class="ad-banner">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="5794572171"
+       data-ad-format="auto"
+       data-full-width-responsive="true">
+  </ins>
+</div>
+
+<div class="card">
+  <div class="toolbar">
+    <div class="btn-row" style="margin-top:0;flex:1">
       <button onclick="formatSQL()">Format</button>
       <button class="secondary" onclick="minifySQL()">Minify</button>
       <button class="secondary" onclick="uppercaseSQL()">Uppercase</button>
@@ -313,14 +376,14 @@ const keywords = ['SELECT','FROM','WHERE','AND','OR','NOT','IN','IS','NULL','LIK
 function getIndent(){
   const sel = document.getElementById('indentSel').value;
   if(sel === 'tab') return '\t';
-  return ' '.repeat(parseInt(sel))
+  return ' '.repeat(parseInt(sel));
 }
 
 function formatSQL(){
   const input = document.getElementById('input').value.trim();
   if(!input){
     showStatus('Please enter SQL to format');
-    return
+    return;
   }
 
   const indent = getIndent();
@@ -329,7 +392,7 @@ function formatSQL(){
   // Add spaces around keywords
   keywords.forEach(kw => {
     const regex = new RegExp('\\b'+kw+'\\b', 'gi');
-    sql = sql.replace(regex, ' '+kw.toUpperCase()+' ')
+    sql = sql.replace(regex, ' '+kw.toUpperCase()+' ');
   });
   
   // Remove extra spaces
@@ -355,72 +418,72 @@ function formatSQL(){
     if(trimmed.match(/^ELSE/i)) level++;
     if(trimmed.match(/^END/i)) level--;
     
-    return indent.repeat(level) + trimmed
+    return indent.repeat(level) + trimmed;
   }).join('\n');
   
   document.getElementById('output').textContent = formatted;
-  showStatus('SQL formatted successfully')
+  showStatus('SQL formatted successfully');
 }
 
 function minifySQL(){
   const input = document.getElementById('input').value;
   if(!input.trim()){
     showStatus('Please enter SQL to minify');
-    return
+    return;
   }
   
   const minified = input.replace(/\s+/g, ' ').replace(/\s*([()=<>!+*/,-])\s*/g, '$1').trim();
   document.getElementById('output').textContent = minified;
-  showStatus('SQL minified')
+  showStatus('SQL minified');
 }
 
 function uppercaseSQL(){
   const input = document.getElementById('input').value;
   if(!input.trim()){
     showStatus('Please enter SQL to uppercase');
-    return
+    return;
   }
   
   let sql = input;
   keywords.forEach(kw => {
     const regex = new RegExp('\\b'+kw+'\\b', 'gi');
-    sql = sql.replace(regex, kw.toUpperCase())
+    sql = sql.replace(regex, kw.toUpperCase());
   });
   
   document.getElementById('output').textContent = sql;
-  showStatus('Keywords uppercased')
+  showStatus('Keywords uppercased');
 }
 
 function lowercaseSQL(){
   const input = document.getElementById('input').value;
   if(!input.trim()){
     showStatus('Please enter SQL to lowercase');
-    return
+    return;
   }
   
   let sql = input;
   keywords.forEach(kw => {
     const regex = new RegExp('\\b'+kw+'\\b', 'gi');
-    sql = sql.replace(regex, kw.toLowerCase())
+    sql = sql.replace(regex, kw.toLowerCase());
   });
   
   document.getElementById('output').textContent = sql;
-  showStatus('Keywords lowercased')
+  showStatus('Keywords lowercased');
 }
 
 function clearAll(){
   document.getElementById('input').value = '';
   document.getElementById('output').textContent = '';
-  document.getElementById('statusBar').style.display = 'none'
+  document.getElementById('statusBar').style.display = 'none';
 }
 
 async function pasteClipboard(){
   try{
     const text = await navigator.clipboard.readText();
     document.getElementById('input').value = text;
-    showStatus('Pasted from clipboard')
+    showStatus('Pasted from clipboard');
   }catch(err){
-    showStatus('Unable to paste from clipboard')
+    showStatus('Unable to paste from clipboard');
   }
 }
 
@@ -428,11 +491,11 @@ function copyOutput(){
   const output = document.getElementById('output').textContent;
   if(!output){
     showStatus('No output to copy');
-    return
+    return;
   }
   navigator.clipboard.writeText(output).then(() => {
-    showStatus('Copied to clipboard')
-  })
+    showStatus('Copied to clipboard');
+  });
 }
 
 function showStatus(msg){
@@ -440,15 +503,13 @@ function showStatus(msg){
   bar.textContent = msg;
   bar.style.display = 'block';
   setTimeout(() => {
-    bar.style.display = 'none'
-  }, 3000)
+    bar.style.display = 'none';
+  }, 3000);
 }
 </script>
 
 <script>
 </script>
-</style>
-
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>

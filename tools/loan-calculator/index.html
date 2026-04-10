@@ -88,13 +88,13 @@
   --border:rgba(255,255,255,.08);
   --text:#fff;
   --sub:#aab3c5;
-  --accent:#4f8cff
+  --accent:#4f8cff;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{
   font-family:system-ui,-apple-system;
   background:var(--bg);
-  color:var(--text)
+  color:var(--text);
 }
 .container{max-width:900px;margin:auto;padding:50px 16px}
 
@@ -104,7 +104,7 @@ body{
   text-decoration:none;
   font-size:14px;
   margin-bottom:24px;
-  transition:color 0.2s
+  transition:color 0.2s;
 }
 .back:hover{color:var(--accent)}
 
@@ -117,7 +117,7 @@ h2{font-size:22px;margin-top:30px;margin-bottom:10px}
   border:1px solid var(--border);
   border-radius:14px;
   padding:20px;
-  margin-bottom:20px
+  margin-bottom:20px;
 }
 
 label{display:block;font-size:14px;color:var(--sub);margin-bottom:8px}
@@ -130,7 +130,7 @@ input,select{
   color:var(--text);
   font-size:15px;
   font-family:inherit;
-  margin-bottom:16px
+  margin-bottom:16px;
 }
 input:focus,select:focus{outline:none;border-color:var(--accent)}
 
@@ -148,17 +148,17 @@ button,.btn,.btn-row button{
   cursor:pointer;
   font-size:14px;
   transition:opacity 0.2s;
-  box-sizing:border-box
+  box-sizing:border-box;
 }
 button:hover,.btn:hover{opacity:0.9}
 button.secondary,.btn.secondary,.btn-outline,.btn-row button.secondary{
   background:transparent;
   border:1px solid var(--border);
-  color:var(--sub)
+  color:var(--sub);
 }
 button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{
   border-color:var(--accent);
-  color:var(--accent)
+  color:var(--accent);
 }
 
 .result-box{
@@ -167,49 +167,49 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{
   border-radius:10px;
   padding:20px;
   margin-bottom:16px;
-  text-align:center
+  text-align:center;
 }
 .result-main{
   font-size:36px;
   font-weight:700;
   color:var(--accent);
-  margin-bottom:4px
+  margin-bottom:4px;
 }
 .result-label{font-size:14px;color:var(--sub)}
 .result-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:12px;
-  margin-top:16px
+  margin-top:16px;
 }
 .result-item{
   background:var(--bg);
   padding:12px;
   border-radius:8px;
-  text-align:center
+  text-align:center;
 }
 .result-value{
   font-size:20px;
   font-weight:600;
-  color:var(--accent)
+  color:var(--accent);
 }
 .result-desc{font-size:12px;color:var(--sub)}
 
 table{
   width:100%;
   border-collapse:collapse;
-  font-size:13px
+  font-size:13px;
 }
 th,td{
   padding:10px;
   text-align:left;
-  border-bottom:1px solid var(--border)
+  border-bottom:1px solid var(--border);
 }
 th{color:var(--sub);font-weight:500}
 td{color:var(--text)}
 .schedule-container{
   max-height:400px;
-  overflow-y:auto
+  overflow-y:auto;
 }
 
 .tip{font-size:13px;color:var(--sub);margin-top:10px}
@@ -223,7 +223,7 @@ td{color:var(--text)}
   border-radius:8px;
   border:1px solid var(--border);
   color:var(--sub);
-  text-decoration:none
+  text-decoration:none;
 }
 .tools a:hover{border-color:var(--accent);color:var(--accent)}
 
@@ -234,7 +234,7 @@ td{color:var(--text)}
   border:1px solid var(--border);
   border-radius:12px;
   padding:20px;
-  margin-bottom:12px
+  margin-bottom:12px;
 }
 .faq-item h3{font-size:16px;margin-bottom:8px;color:var(--text)}
 .faq-item p{color:var(--sub);font-size:14px;line-height:1.7;margin:0}
@@ -245,7 +245,7 @@ footer a{
   color:var(--sub);
   text-decoration:none;
   margin:0 10px;
-  transition:color 0.2s
+  transition:color 0.2s;
 }
 footer a:hover{color:var(--accent)}
 
@@ -254,7 +254,109 @@ footer a:hover{color:var(--accent)}
   .result-grid{grid-template-columns:1fr}
   .result-main{font-size:28px}
 }
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;color:var(--sub)">Enter loan details and click Calculate</td></tr>
+footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
+  <link rel="stylesheet" href="/shared.css">
+</head>
+
+<body><div class="container">
+
+<a class="back" href="../index.html">← Back to Tools</a>
+
+<h1>Loan Calculator</h1>
+<p class="subtitle">Calculate monthly payments, total interest, and view amortization schedule for auto, personal, mortgage, and student loans.</p>
+
+<div class="ad-banner">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="5794572171"
+       data-ad-format="auto"
+       data-full-width-responsive="true">
+  </ins>
+</div>
+
+<div class="card">
+  <div class="form-group">
+    <label>Loan Amount</label>
+    <input type="number" id="amount" placeholder="25000" value="25000" min="1000">
+  </div>
+  
+  <div class="input-row">
+    <div class="form-group">
+      <label>Interest Rate (%)</label>
+      <input type="number" id="rate" placeholder="5.5" value="5.5" step="0.01" min="0" max="100">
+    </div>
+    <div class="form-group">
+      <label>Loan Term</label>
+      <input type="number" id="term" placeholder="5" value="5" min="1" max="30">
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label>Term Unit</label>
+    <select id="termUnit">
+      <option value="years" selected>Years</option>
+      <option value="months">Months</option>
+    </select>
+  </div>
+  
+  <div class="form-group">
+    <label>Loan Type</label>
+    <select id="loanType">
+      <option value="auto">Auto Loan</option>
+      <option value="personal" selected>Personal Loan</option>
+      <option value="mortgage">Mortgage</option>
+      <option value="student">Student Loan</option>
+    </select>
+  </div>
+  
+  <div class="btn-row">
+    <button onclick="calculateLoan()">Calculate Loan</button>
+    <button class="secondary" onclick="clearAll()">Clear</button>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Payment Summary</h2>
+  <div class="result-box">
+    <div class="result-main" id="monthlyPayment">$0.00</div>
+    <div class="result-label">Monthly Payment</div>
+  </div>
+  <div class="result-grid">
+    <div class="result-item">
+      <div class="result-value" id="totalPrincipal">$0</div>
+      <div class="result-desc">Total Principal</div>
+    </div>
+    <div class="result-item">
+      <div class="result-value" id="totalInterest">$0</div>
+      <div class="result-desc">Total Interest</div>
+    </div>
+    <div class="result-item">
+      <div class="result-value" id="totalCost">$0</div>
+      <div class="result-desc">Total Cost</div>
+    </div>
+    <div class="result-item">
+      <div class="result-value" id="numPayments">0</div>
+      <div class="result-desc"># of Payments</div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Amortization Schedule</h2>
+  <div class="schedule-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Payment #</th>
+          <th>Payment</th>
+          <th>Principal</th>
+          <th>Interest</th>
+          <th>Balance</th>
+        </tr>
+      </thead>
+      <tbody id="scheduleBody">
+        <tr><td colspan="5" style="text-align:center;color:var(--sub)">Enter loan details and click Calculate</td></tr>
       </tbody>
     </table>
   </div>
@@ -336,7 +438,7 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 
 <script>
 function formatCurrency(num) {
-  return '$' + num.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+  return '$' + num.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 
 function calculateLoan() {
@@ -351,9 +453,9 @@ function calculateLoan() {
   let monthlyPayment;
 
   if (rate === 0) {
-    monthlyPayment = amount / term
+    monthlyPayment = amount / term;
   } else {
-    monthlyPayment = amount * (monthlyRate * Math.pow(1 + monthlyRate, term)) / (Math.pow(1 + monthlyRate, term) - 1)
+    monthlyPayment = amount * (monthlyRate * Math.pow(1 + monthlyRate, term)) / (Math.pow(1 + monthlyRate, term) - 1);
   }
 
   const totalCost = monthlyPayment * term;
@@ -379,12 +481,12 @@ function calculateLoan() {
       <td>${formatCurrency(principalPayment)}</td>
       <td>${formatCurrency(interestPayment)}</td>
       <td>${formatCurrency(balance)}</td>
-    </tr>`
+    </tr>`;
   }
   if (term > 360) {
-    html += `<tr><td colspan="5" style="text-align:center;color:var(--sub)">... ${term - 360} more payments ...</td></tr>`
+    html += `<tr><td colspan="5" style="text-align:center;color:var(--sub)">... ${term - 360} more payments ...</td></tr>`;
   }
-  document.getElementById('scheduleBody').innerHTML = html
+  document.getElementById('scheduleBody').innerHTML = html;
 }
 
 function clearAll() {
@@ -396,13 +498,11 @@ function clearAll() {
   document.getElementById('totalPrincipal').textContent = '$0';
   document.getElementById('totalInterest').textContent = '$0';
   document.getElementById('totalCost').textContent = '$0';
-  document.getElementById('numPayments').textContent = '0'
+  document.getElementById('numPayments').textContent = '0';
 }
 
 calculateLoan();
 </script>
-</style>
-
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>

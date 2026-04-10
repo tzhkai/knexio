@@ -104,7 +104,7 @@
     .faq-item{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;margin-bottom:16px}
     .faq-item h3{font-size:16px;font-weight:600;margin-bottom:12px;color:var(--text)}
     .faq-item p{color:var(--sub);font-size:14px;line-height:1.6;margin:0}
-    footer{text-align:center;padding:40px 20px;margin-top:20px;color:var(--sub);font-size:14px}
+    footer{text-align:center;padding:40px 20px;border-top:1px solid var(--border);margin-top:20px;color:var(--sub);font-size:14px}
     footer a{color:var(--accent);margin:0 10px;transition:color 0.2s}
     footer a:hover{color:var(--accent)}
     footer p{margin-bottom:8px}
@@ -113,7 +113,7 @@
 
 <!-- Open Graph -->
 <meta property="og:site_name" content="Knexio">
-<link rel="stylesheet" href="shared.css">
+  <link rel="stylesheet" href="/shared.css">
 </head>
 <body>
   <div class="container">
@@ -238,17 +238,17 @@
     function calcFederalTax(income, status){
       let brackets;
       if(status==='married'){
-        brackets=[[23200,0.10],[94300,0.12],[201050,0.22],[383900,0.24],[487450,0.32],[731200,0.35],[Infinity,0.37]]
+        brackets=[[23200,0.10],[94300,0.12],[201050,0.22],[383900,0.24],[487450,0.32],[731200,0.35],[Infinity,0.37]];
       } else {
-        brackets=[[11600,0.10],[47150,0.12],[100525,0.22],[191950,0.24],[243725,0.32],[609350,0.35],[Infinity,0.37]]
+        brackets=[[11600,0.10],[47150,0.12],[100525,0.22],[191950,0.24],[243725,0.32],[609350,0.35],[Infinity,0.37]];
       }
       let tax=0,prev=0;
       for(const [limit,rate] of brackets){
         if(income<=prev) break;
         tax+=(Math.min(income,limit)-prev)*rate;
-        prev=limit
+        prev=limit;
       }
-      return tax
+      return tax;
     }
     function calculate(){
       const gross=parseFloat(document.getElementById('grossSalary').value)||0;
@@ -284,7 +284,7 @@
         <div class="result-row"><span class="result-label">Per-period gross</span><span class="result-value">$${fmt(perPeriodGross)}</span></div>
         <div class="result-row"><span class="result-label">Per-period take-home</span><span class="result-value green">$${fmt(perPeriodNet)}</span></div>
         <div class="result-row"><span class="result-label">Effective tax rate</span><span class="result-value">${(((federalTax+stateTax)/gross)*100).toFixed(1)}%</span></div>
-      `
+      `;
     }
     function clearForm(){
       document.getElementById('grossSalary').value='75000';
@@ -293,7 +293,7 @@
       document.getElementById('stateTaxRate').value='5';
       document.getElementById('contrib401k').value='6';
       document.getElementById('otherDeductions').value='0';
-      document.getElementById('results').innerHTML='<div class="result-placeholder">Enter your details and click <strong>Calculate</strong> to see results</div>'
+      document.getElementById('results').innerHTML='<div class="result-placeholder">Enter your details and click <strong>Calculate</strong> to see results</div>';
     }
   </script>
   <script src="/knexio-bundle.js"></script>

@@ -26,7 +26,46 @@ h1{font-size:32px;margin-bottom:8px}.subtitle{color:var(--sub);margin-bottom:32p
 .result-rate{color:var(--sub);font-size:14px}
 .faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px}
 .faq-item h3{font-size:16px;margin-bottom:8px}.faq-item p{color:var(--sub);line-height:1.6}
-footer{margin-top:60px;text-align:center;color:var(--sub)margin-bottom:16px">
+footer{margin-top:60px;text-align:center;color:var(--sub)border-top:1px solid var(--border);padding-top:24px}
+</style>
+
+<!-- Open Graph -->
+<meta property="og:url" content="https://knexio.xyz/finance/currency-converter/">
+<meta property="og:type" content="WebApplication">
+<meta property="og:site_name" content="Knexio">
+  <link rel="stylesheet" href="/shared.css">
+</head>
+<body>
+<div class="container">
+<a class="back" href="../index.html">← Back to Finance Tools</a>
+<h1>Currency Converter</h1>
+<p class="subtitle">Convert between 150+ currencies</p>
+<div class="ad-banner">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="5794572171"
+       data-ad-format="auto"
+       data-full-width-responsive="true">
+  </ins>
+</div>
+<div class="controls">
+<div class="row">
+<input type="number" id="amount" value="1" oninput="convert()">
+<select id="from" onchange="convert()">
+<option value="USD">USD – US Dollar</option>
+<option value="EUR">EUR – Euro</option>
+<option value="GBP">GBP – British Pound</option>
+<option value="JPY">JPY – Japanese Yen</option>
+<option value="CNY">CNY – Chinese Yuan</option>
+<option value="CAD">CAD – Canadian Dollar</option>
+<option value="AUD">AUD – Australian Dollar</option>
+<option value="CHF">CHF – Swiss Franc</option>
+<option value="HKD">HKD – Hong Kong Dollar</option>
+<option value="SGD">SGD – Singapore Dollar</option>
+</select>
+</div>
+<div style="text-align:center;margin-bottom:16px">
 <button class="swap" onclick="swapCurrencies()">⇅</button>
 </div>
 <div class="row">
@@ -87,20 +126,18 @@ function convert() {
   const usd = amount / rates[from];
   const result = usd * rates[to];
   document.getElementById('result').value = result.toFixed(2);
-  document.getElementById('rate').textContent = `1 ${from} = ${(rates[to]/rates[from]).toFixed(4)} ${to} (approximate)`
+  document.getElementById('rate').textContent = `1 ${from} = ${(rates[to]/rates[from]).toFixed(4)} ${to} (approximate)`;
 }
 
 function swapCurrencies() {
   const from = document.getElementById('from');
   const to = document.getElementById('to');
   [from.value, to.value] = [to.value, from.value];
-  convert()
+  convert();
 }
 
 convert();
 </script>
-</style>
-
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>

@@ -22,7 +22,7 @@
       --border: rgba(255,255,255,0.08);
       --text: #fff;
       --sub: #aab3c5;
-      --accent: #4f8cff
+      --accent: #4f8cff;
     }
     
     body {
@@ -31,12 +31,12 @@
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       margin: 0;
       padding: 20px;
-      line-height: 1.6
+      line-height: 1.6;
     }
     
     .container {
       max-width: 900px;
-      margin: 0 auto
+      margin: 0 auto;
     }
     
     .back {
@@ -44,30 +44,30 @@
       color: var(--sub);
       text-decoration: none;
       margin-bottom: 24px;
-      font-size: 14px
+      font-size: 14px;
     }
     
     .back:hover {
-      color: var(--accent)
+      color: var(--accent);
     }
     
     h1 {
       font-size: 32px;
       margin-bottom: 8px;
-      color: var(--text)
+      color: var(--text);
     }
     
     .subtitle {
       color: var(--sub);
       font-size: 18px;
-      margin-bottom: 24px
+      margin-bottom: 24px;
     }
     
     h2 {
       font-size: 22px;
       margin-top: 30px;
       margin-bottom: 10px;
-      color: var(--text)
+      color: var(--text);
     }
     
     .card {
@@ -75,7 +75,7 @@
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 20px;
-      margin-bottom: 20px
+      margin-bottom: 20px;
     }
     
     input[type="text"], input[type="password"] {
@@ -87,19 +87,19 @@
       color: var(--text);
       font-size: 15px;
       box-sizing: border-box;
-      font-family: inherit
+      font-family: inherit;
     }
     
     input:focus {
       outline: none;
-      border-color: var(--accent)
+      border-color: var(--accent);
     }
     
     .btn-row {
       display: flex;
       gap: 10px;
       margin-top: 12px;
-      flex-wrap: wrap
+      flex-wrap: wrap;
     }
     
     button, .btn, .btn-row button {
@@ -112,22 +112,22 @@
       cursor: pointer;
       font-size: 14px;
       transition: opacity 0.2s;
-      box-sizing: border-box
+      box-sizing: border-box;
     }
     
     button:hover, .btn:hover {
-      opacity: 0.9
+      opacity: 0.9;
     }
     
     button.secondary, .btn-secondary, .btn-outline, .btn-row button.secondary {
       background: transparent;
       border: 1px solid var(--border);
-      color: var(--sub)
+      color: var(--sub);
     }
     
     button.secondary:hover, .btn-secondary:hover, .btn-outline:hover {
       border-color: var(--accent);
-      color: var(--accent)
+      color: var(--accent);
     }
     
     .strength-meter {
@@ -136,11 +136,11 @@
       background: var(--bg);
       border-radius: 12px;
       border: 1px solid var(--border);
-      display: none
+      display: none;
     }
     
     .strength-meter.show {
-      display: block
+      display: block;
     }
     
     .meter-container {
@@ -148,33 +148,33 @@
       background: rgba(255,255,255,0.1);
       border-radius: 4px;
       overflow: hidden;
-      margin-bottom: 15px
+      margin-bottom: 15px;
     }
     
     .meter-fill {
       height: 100%;
       transition: width 0.3s ease;
-      border-radius: 4px
+      border-radius: 4px;
     }
     
     .strength-label {
       text-align: center;
       font-size: 16px;
       font-weight: 600;
-      margin-bottom: 15px
+      margin-bottom: 15px;
     }
     
-    .weak .meter-fill { background: #ff6b6b }
-    .weak .strength-label { color: #ff6b6b }
+    .weak .meter-fill { background: #ff6b6b; }
+    .weak .strength-label { color: #ff6b6b; }
     
-    .fair .meter-fill { background: #feca57 }
-    .fair .strength-label { color: #feca57 }
+    .fair .meter-fill { background: #feca57; }
+    .fair .strength-label { color: #feca57; }
     
-    .good .meter-fill { background: #48dbfb }
-    .good .strength-label { color: #48dbfb }
+    .good .meter-fill { background: #48dbfb; }
+    .good .strength-label { color: #48dbfb; }
     
-    .strong .meter-fill { background: #1dd1a1 }
-    .strong .strength-label { color: #1dd1a1 }
+    .strong .meter-fill { background: #1dd1a1; }
+    .strong .strength-label { color: #1dd1a1; }
     
     .criteria-list {
       list-style: none;
@@ -182,7 +182,7 @@
       margin: 0;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 12px
+      gap: 12px;
     }
     
     .criteria-list li {
@@ -193,53 +193,53 @@
       border: 1px solid var(--border);
       border-radius: 10px;
       color: var(--sub);
-      font-size: 14px
+      font-size: 14px;
     }
     
     .criteria-list li .icon {
       width: 20px;
       margin-right: 10px;
       text-align: center;
-      font-weight: bold
+      font-weight: bold;
     }
     
     .criteria-list li.passed {
       color: #1dd1a1;
-      border-color: #1dd1a1
+      border-color: #1dd1a1;
     }
     
     .criteria-list li.passed .icon::before {
-      content: '✓'
+      content: '✓';
     }
     
     .criteria-list li.failed .icon::before {
       content: '✗';
-      color: #ff6b6b
+      color: #ff6b6b;
     }
     
     .criteria-list li.failed {
-      color: var(--sub)
+      color: var(--sub);
     }
     
     .section {
-      margin-bottom: 20px
+      margin-bottom: 20px;
     }
     
     .section p {
       color: var(--sub);
       line-height: 1.7;
-      margin-bottom: 10px
+      margin-bottom: 10px;
     }
     
     .section ul {
       color: var(--sub);
       line-height: 1.7;
       padding-left: 20px;
-      margin-bottom: 10px
+      margin-bottom: 10px;
     }
     
     .section li {
-      margin-bottom: 8px
+      margin-bottom: 8px;
     }
     
     .faq-item {
@@ -247,26 +247,26 @@
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 20px;
-      margin-bottom: 16px
+      margin-bottom: 16px;
     }
     
     .faq-item h3 {
       margin: 0 0 12px 0;
       font-size: 16px;
-      color: var(--text)
+      color: var(--text);
     }
     
     .faq-item p {
       margin: 0;
       color: var(--sub);
-      line-height: 1.6
+      line-height: 1.6;
     }
     
     .tools {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 15px;
-      margin-top: 20px
+      margin-top: 20px;
     }
     
     .tools a {
@@ -279,13 +279,13 @@
       text-decoration: none;
       text-align: center;
       transition: all 0.2s;
-      font-size: 14px
+      font-size: 14px;
     }
     
     .tools a:hover {
       border-color: var(--accent);
       color: var(--accent);
-      transform: translateY(-2px)
+      transform: translateY(-2px);
     }
     
     .ad-banner {
@@ -300,28 +300,198 @@
       align-items: center;
       justify-content: center;
       color: var(--sub);
-      font-size: 14px
+      font-size: 14px;
     }
     
-    footer{
+    footer {
       margin-top: 40px;
-      
-      
+      padding-top: 30px;
+      border-top: 1px solid var(--border);
       text-align: center;
       color: var(--sub);
-      font-size: 14px
+      font-size: 14px;
     }
     
     footer p {
-      margin: 0 0 10px 0
+      margin: 0 0 10px 0;
     }
     
     @media(max-width: 600px) {
       .criteria-list {
-        grid-template-columns: 1fr
+        grid-template-columns: 1fr;
       }
     }
-  footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;text-align:center"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
+  footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Password Strength Checker - Test Your Password",
+    "description": "Check the strength of your password instantly. Get detailed feedback and improve your password security.",
+    "url": "https://knexio.xyz/tools/password-strength-checker/",
+    "publisher": {"@type": "Organization", "name": "Knexio", "url": "https://knexio.xyz"}
+  }
+  </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is my password safe when using this checker?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutely. All password analysis happens locally in your browser using JavaScript. Your password is never sent to any server or stored anywhere. It exists only temporarily in your browser's memory while checking."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What makes a strong password?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Strong passwords are long (16+ characters), use a mix of uppercase, lowercase, numbers, and special characters, and avoid common words or patterns. Random passwords generated by a password manager are typically strongest."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does my password fail the \\\"common password\\\" check?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We check your password against a list of commonly used weak passwords like \\\"password123\\\" or \\\"qwerty\\\". Even if your password meets other criteria, using a common password makes it vulnerable to dictionary attacks."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How accurate is the strength rating?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Our checker provides a reliable assessment based on standard security best practices. However, no tool can predict every possible attack vector. Always use unique passwords for each account and enable two-factor authentication when available."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I change weak passwords immediately?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Weak passwords are vulnerable to brute force attacks. Change them to strong, unique passwords as soon as possible. Use a password generator to create secure passwords and a password manager to remember them."
+      }
+    }
+  ]
+}
+</script>
+  <link rel="stylesheet" href="/shared.css">
+</head>
+<body>
+  <div class="container">
+    <a class="back" href="../index.html">← Back to Tools</a>
+    
+    <h1>Password Strength Checker</h1>
+    <p class="subtitle">Test and improve your password security instantly. All analysis happens locally in your browser - your password is never transmitted or stored.</p>
+    
+    <div class="ad-banner">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="5794572171"
+       data-ad-format="auto"
+       data-full-width-responsive="true">
+  </ins>
+</div>
+    
+    <div class="card">
+      <input type="password" id="password" placeholder="Type or paste your password here" oninput="checkStrength()">
+      
+      <div class="btn-row">
+        <button onclick="toggleVisibility()">Show/Hide</button>
+        <button class="secondary" onclick="clearPassword()">Clear</button>
+      </div>
+      
+      <div class="strength-meter" id="strengthMeter">
+        <div class="strength-label" id="strengthLabel">Password Strength</div>
+        <div class="meter-container">
+          <div class="meter-fill" id="meterFill" style="width: 0%"></div>
+        </div>
+        <ul class="criteria-list" id="criteriaList">
+          <li id="length"><span class="icon"></span>At least 8 characters</li>
+          <li id="uppercase"><span class="icon"></span>Contains uppercase letter</li>
+          <li id="lowercase"><span class="icon"></span>Contains lowercase letter</li>
+          <li id="number"><span class="icon"></span>Contains number</li>
+          <li id="special"><span class="icon"></span>Contains special character</li>
+          <li id="common"><span class="icon"></span>Not a common password</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="section">
+      <p><strong>Free Online Password Strength Checker</strong> - Test how secure your password is in real-time. Our tool analyzes your password against multiple security criteria including length, character variety, and common password databases. Get instant feedback with color-coded strength meter and detailed improvement suggestions. All analysis happens locally in your browser for maximum privacy.</p>
+    </div>
+    
+    <div class="section">
+      <p><strong>How It Works</strong> - Our password strength checker evaluates your password against several security factors:</p>
+      <ul>
+        <li><strong>Length:</strong> Passwords should be at least 8 characters long for basic security, 16+ for maximum protection</li>
+        <li><strong>Character Variety:</strong> Mix of uppercase, lowercase, numbers, and special characters significantly increases strength</li>
+        <li><strong>Common Passwords:</strong> We check against a database of commonly used weak passwords</li>
+        <li><strong>Overall Score:</strong> The strength meter combines all criteria to rate your password from weak to strong</li>
+      </ul>
+      <p>Your password is never transmitted or stored anywhere - all checks happen locally in your browser. This ensures complete privacy while providing accurate security feedback.</p>
+    </div>
+    
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>Is my password safe when using this checker?</h3>
+      <p>Absolutely. All password analysis happens locally in your browser using JavaScript. Your password is never sent to any server or stored anywhere. It exists only temporarily in your browser's memory while checking.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What makes a strong password?</h3>
+      <p>Strong passwords are long (16+ characters), use a mix of uppercase, lowercase, numbers, and special characters, and avoid common words or patterns. Random passwords generated by a password manager are typically strongest.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Why does my password fail the "common password" check?</h3>
+      <p>We check your password against a list of commonly used weak passwords like "password123" or "qwerty". Even if your password meets other criteria, using a common password makes it vulnerable to dictionary attacks.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How accurate is the strength rating?</h3>
+      <p>Our checker provides a reliable assessment based on standard security best practices. However, no tool can predict every possible attack vector. Always use unique passwords for each account and enable two-factor authentication when available.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Should I change weak passwords immediately?</h3>
+      <p>Yes. Weak passwords are vulnerable to brute force attacks. Change them to strong, unique passwords as soon as possible. Use a password generator to create secure passwords and a password manager to remember them.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Can hackers bypass password strength checks?</h3>
+      <p>Strong passwords make brute force attacks extremely difficult, but no password is 100% unbreakable. The best defense is using strong passwords, enabling two-factor authentication, and being vigilant about phishing attempts.</p>
+    </div>
+    
+    <h2>Related Tools</h2>
+    <div class="tools">
+      <a href="../password-generator/">Password Generator</a>
+      <a href="../random-string-generator/">Random String Generator</a>
+      <a href="../pin-code-generator/">PIN Code Generator</a>
+    </div>
+
+    <h3>Related Guides</h3>
+    <div class="tools">
+      <a href="/guides/computer-slow/">Computer Slow</a>
+      <a href="/guides/forgot-password/">Forgot Password</a>
+    </div>
+    
+    
+    <div class="ad-banner">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="5794572171"
+       data-ad-format="auto"
+       data-full-width-responsive="true">
+  </ins>
+</div>
+    
+    
+<!-- Ad: Footer -->
+<div class="ad-banner footer-ad" style="margin:40px 0;text-align:center"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
 <footer>
       <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
       <p style="margin: 8px 0; font-size: 13px;">
@@ -349,7 +519,7 @@
       
       if (password.length === 0) {
         strengthMeter.classList.remove('show');
-        return
+        return;
       }
       
       strengthMeter.classList.add('show');
@@ -373,13 +543,13 @@
       
       if (percentage >= 80) {
         strengthClass = 'strong';
-        strengthText = 'Strong'
+        strengthText = 'Strong';
       } else if (percentage >= 60) {
         strengthClass = 'good';
-        strengthText = 'Good'
+        strengthText = 'Good';
       } else if (percentage >= 40) {
         strengthClass = 'fair';
-        strengthText = 'Fair'
+        strengthText = 'Fair';
       }
       
       strengthMeter.className = 'strength-meter show ' + strengthClass;
@@ -387,23 +557,21 @@
       
       Object.keys(criteria).forEach(key => {
         const element = document.getElementById(key);
-        element.className = criteria[key] ? 'passed' : 'failed'
-      })
+        element.className = criteria[key] ? 'passed' : 'failed';
+      });
     }
     
     function toggleVisibility() {
       const input = document.getElementById('password');
-      input.type = input.type === 'password' ? 'text' : 'password'
+      input.type = input.type === 'password' ? 'text' : 'password';
     }
     
     function clearPassword() {
       document.getElementById('password').value = '';
-      document.getElementById('strengthMeter').classList.remove('show')
+      document.getElementById('strengthMeter').classList.remove('show');
     }
   </script>
   
-  </style>
-
-<script src="/knexio-bundle.js"></script>
+  <script src="/knexio-bundle.js"></script>
 </body>
 </html>

@@ -75,7 +75,82 @@ footer a:hover{opacity:.8}
 .meta-item{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-size:13px;color:var(--sub)}
 .meta-item strong{color:var(--accent)}
 @media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.btn-row{flex-direction:column}.method-tabs{flex-wrap:wrap}}
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;font-family:monospace"></textarea>
+footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is this tool free to use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, this tool is completely free to use. No registration, no login, and no subscription required. Just open the page and start using it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my data safe? Is anything stored on a server?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, your data is safe. All processing happens entirely in your browser \u2014 your input never leaves your device and is not sent to any server."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does this tool work on mobile devices?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The tool is fully responsive and works on smartphones, tablets, and desktop computers."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How accurate is the result?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The tool uses standard algorithms and web APIs to provide accurate results. For critical or professional use, please verify with additional sources."
+      }
+    }
+  ]
+}
+</script>
+  <link rel="stylesheet" href="/shared.css">
+</head>
+<body>
+<div class="container">
+  <a class="back" href="../index.html">← Back to Tools</a>
+
+  <h1>API Tester</h1>
+  <p class="subtitle">Send HTTP requests online. Test GET, POST, PUT, DELETE endpoints and view responses instantly.</p>
+
+  <div class="ad-banner">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="5794572171"
+       data-ad-format="auto"
+       data-full-width-responsive="true">
+  </ins>
+</div>
+
+  <div class="card">
+    <div class="method-tabs">
+      <button class="method-tab active" onclick="setMethod('GET', this)">GET</button>
+      <button class="method-tab" onclick="setMethod('POST', this)">POST</button>
+      <button class="method-tab" onclick="setMethod('PUT', this)">PUT</button>
+      <button class="method-tab" onclick="setMethod('DELETE', this)">DELETE</button>
+    </div>
+
+    <div class="form-group">
+      <label for="urlInput">Endpoint URL</label>
+      <input type="url" id="urlInput" placeholder="https://api.example.com/data" value="https://jsonplaceholder.typicode.com/posts/1">
+    </div>
+
+    <div class="form-group" id="bodyGroup">
+      <label for="reqBody">Request Body (JSON)</label>
+      <textarea class="text-area" id="reqBody" placeholder='{"title": "Hello", "body": "World", "userId": 1}' style="min-height:120px;font-family:monospace"></textarea>
     </div>
 
     <div class="btn-row">
@@ -173,15 +248,15 @@ var currentMethod = 'GET';
 
 function setMethod(method, btn) {
   currentMethod = method;
-  document.querySelectorAll('.method-tab').forEach(function(t){ t.classList.remove('active') });
+  document.querySelectorAll('.method-tab').forEach(function(t){ t.classList.remove('active'); });
   btn.classList.add('active');
   var bodyGroup = document.getElementById('bodyGroup');
-  bodyGroup.style.display = (method === 'GET' || method === 'DELETE') ? 'none' : 'block'
+  bodyGroup.style.display = (method === 'GET' || method === 'DELETE') ? 'none' : 'block';
 }
 
 function sendRequest() {
   var url = document.getElementById('urlInput').value;
-  if (!url) { alert('Please enter a URL'); return }
+  if (!url) { alert('Please enter a URL'); return; }
   var start = Date.now();
   var body = (currentMethod === 'GET' || currentMethod === 'DELETE') ? null : document.getElementById('reqBody').value;
   var options = { method: currentMethod, headers: { 'Content-Type': 'application/json' } };
@@ -195,40 +270,38 @@ function sendRequest() {
         document.getElementById('resSize').textContent = formatBytes(text.length);
         document.getElementById('resBody').value = text;
         document.getElementById('responseSection').style.display = 'block';
-        try { document.getElementById('resBody').value = JSON.stringify(JSON.parse(text), null, 2) } catch(e){}
-      })
+        try { document.getElementById('resBody').value = JSON.stringify(JSON.parse(text), null, 2); } catch(e){}
+      });
     })
     .catch(function(err) {
       document.getElementById('responseSection').style.display = 'block';
       document.getElementById('resStatus').textContent = 'Error';
       document.getElementById('resTime').textContent = '-';
       document.getElementById('resSize').textContent = '-';
-      document.getElementById('resBody').value = 'Error: ' + err.message
-    })
+      document.getElementById('resBody').value = 'Error: ' + err.message;
+    });
 }
 
 function clearRequest() {
   document.getElementById('urlInput').value = '';
   document.getElementById('reqBody').value = '';
   document.getElementById('resBody').value = '';
-  document.getElementById('responseSection').style.display = 'none'
+  document.getElementById('responseSection').style.display = 'none';
 }
 
 function copyResponse() {
-  navigator.clipboard.writeText(document.getElementById('resBody').value)
+  navigator.clipboard.writeText(document.getElementById('resBody').value);
 }
 
 function formatBytes(bytes) {
   if (bytes < 1024) return bytes + ' B';
   if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
-  return (bytes / 1048576).toFixed(1) + ' MB'
+  return (bytes / 1048576).toFixed(1) + ' MB';
 }
 
 // Init
 document.getElementById('bodyGroup').style.display = 'none';
 </script>
-</style>
-
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>

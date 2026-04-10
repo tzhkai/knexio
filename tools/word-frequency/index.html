@@ -88,13 +88,13 @@
   --border:rgba(255,255,255,.08);
   --text:#fff;
   --sub:#aab3c5;
-  --accent:#4f8cff
+  --accent:#4f8cff;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{
   font-family:system-ui,-apple-system;
   background:var(--bg);
-  color:var(--text)
+  color:var(--text);
 }
 .container{max-width:900px;margin:auto;padding:50px 16px}
 
@@ -104,7 +104,7 @@ body{
   text-decoration:none;
   font-size:14px;
   margin-bottom:24px;
-  transition:color 0.2s
+  transition:color 0.2s;
 }
 .back:hover{color:var(--accent)}
 
@@ -117,7 +117,7 @@ h2{font-size:22px;margin-top:30px;margin-bottom:10px}
   border:1px solid var(--border);
   border-radius:14px;
   padding:20px;
-  margin-bottom:20px
+  margin-bottom:20px;
 }
 
 .tip{font-size:13px;color:var(--sub);margin-top:10px}
@@ -131,7 +131,7 @@ h2{font-size:22px;margin-top:30px;margin-bottom:10px}
   border-radius:8px;
   border:1px solid var(--border);
   color:var(--sub);
-  text-decoration:none
+  text-decoration:none;
 }
 .tools a:hover{border-color:var(--accent);color:var(--accent)}
 
@@ -142,7 +142,7 @@ h2{font-size:22px;margin-top:30px;margin-bottom:10px}
   border:1px solid var(--border);
   border-radius:12px;
   padding:20px;
-  margin-bottom:12px
+  margin-bottom:12px;
 }
 .faq-item h3{font-size:16px;margin-bottom:8px;color:var(--text)}
 .faq-item p{color:var(--sub);font-size:14px;line-height:1.7;margin:0}
@@ -153,7 +153,7 @@ footer a{
   color:var(--sub);
   text-decoration:none;
   margin:0 10px;
-  transition:color 0.2s
+  transition:color 0.2s;
 }
 footer a:hover{color:var(--accent)}
 
@@ -188,7 +188,141 @@ tbody tr:hover{background:rgba(255,255,255,.03)}
 td{padding:10px 14px;font-size:14px;color:var(--text)}
 .frequency-bar{height:4px;background:var(--bg);border-radius:2px;margin-top:6px;overflow:hidden}
 .frequency-fill{height:100%;background:var(--accent);border-radius:2px}
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;text-align:center"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
+footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
+  <link rel="stylesheet" href="/shared.css">
+</head>
+
+<body><div class="container">
+
+<a class="back" href="../index.html">← Back to Tools</a>
+
+<h1>Word Frequency Counter</h1>
+<p class="subtitle">Analyze text to find most common words, sort by frequency or alphabetically, and export results.</p>
+
+<div class="ad-banner">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="5794572171"
+       data-ad-format="auto"
+       data-full-width-responsive="true">
+  </ins>
+</div>
+
+<div class="card">
+  <textarea id="textInput" placeholder="Enter or paste your text here to analyze word frequency..."></textarea>
+
+  <div class="options-row">
+    <div class="check-group">
+      <input type="checkbox" id="filterStopWords">
+      <label for="filterStopWords">Filter stop words</label>
+    </div>
+    <div class="check-group">
+      <input type="checkbox" id="caseInsensitive" checked>
+      <label for="caseInsensitive">Case insensitive</label>
+    </div>
+    <div class="check-group">
+      <input type="checkbox" id="sortByFrequency" checked>
+      <label for="sortByFrequency">Sort by frequency</label>
+    </div>
+  </div>
+
+  <div class="btn-row">
+    <button onclick="analyzeText()">Analyze</button>
+    <button class="secondary" onclick="exportCSV()">Export CSV</button>
+    <button class="secondary" onclick="clearText()">Clear</button>
+  </div>
+
+  <div id="results" class="results">
+    <div class="stats">
+      <div class="stat"><span id="totalWords">0</span><label>Total Words</label></div>
+      <div class="stat"><span id="uniqueWords">0</span><label>Unique Words</label></div>
+      <div class="stat"><span id="avgWordLength">0</span><label>Avg Length</label></div>
+    </div>
+
+    <h3>Word Frequency List</h3>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Word</th>
+            <th>Frequency</th>
+            <th>Percentage</th>
+          </tr>
+        </thead>
+        <tbody id="frequencyTable"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<h2>Free Online Word Frequency Counter</h2>
+<div class="section">
+<p>This tool analyzes any text to find the most common words and their frequency counts. Sort by frequency or alphabetically, filter out common stop words, and export results to CSV.</p>
+<p>Use it for SEO keyword research, text analysis, vocabulary studies, or content optimization.</p>
+</div>
+
+<h2>How It Works</h2>
+<div class="section">
+<p>The tool tokenizes your text into individual words, removes punctuation, and counts how often each word appears. It can filter out common "stop words" like "the", "and", "is" to focus on content words.</p>
+<p>Results are sorted either by frequency (most common first) or alphabetically. Export to CSV for use in spreadsheets or data analysis tools.</p>
+</div>
+
+<h2>Frequently Asked Questions</h2>
+
+<div class="faq-item">
+  <h3>What are stop words?</h3>
+  <p>Stop words are common words like "the", "and", "is", "in", "at" that appear frequently in language but carry little meaning. Filtering them helps focus on the actual content words in your text, which is useful for SEO keyword analysis and content research.</p>
+</div>
+
+<div class="faq-item">
+  <h3>How do I interpret the frequency percentage?</h3>
+  <p>The frequency percentage shows what portion of your total words each word represents. For example, if "design" has a frequency of 5%, it means 5 out of every 100 words in your text are "design". This helps identify your main topics and keyword density.</p>
+</div>
+
+<div class="faq-item">
+  <h3>Can I use this for SEO keyword research?</h3>
+  <p>Yes. This tool is great for identifying the most frequently used words in your content or competitors' content. Use it to find primary and secondary keywords, check keyword density, and optimize your content for search engines.</p>
+</div>
+
+<div class="faq-item">
+  <h3>What is the export CSV used for?</h3>
+  <p>The CSV export contains rank, word, frequency, and percentage columns. You can open it in Excel, Google Sheets, or any spreadsheet application for further analysis, charting, or integration into your workflow.</p>
+</div>
+
+<div class="faq-item">
+  <h3>Is my text private?</h3>
+  <p>Yes. All processing happens entirely in your browser using JavaScript. Your text is never uploaded to any server. The tool works completely offline once the page is loaded.</p>
+</div>
+
+<div class="faq-item">
+  <h3>How many words can I analyze?</h3>
+  <p>There is no strict limit, but for best performance we recommend analyzing texts under 100,000 words. The results table shows the top 100 words by frequency to keep the display manageable.</p>
+</div>
+<div class="ad-banner" style="margin:24px 0">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="5794572171"
+       data-ad-format="auto"
+       data-full-width-responsive="true">
+  </ins>
+</div>
+<h2>Related Tools</h2>
+<div class="tools">
+<a href="/tools/word-counter/">Word Counter</a>
+<a href="/tools/character-counter/">Character Counter</a>
+<a href="/tools/keyword-density-checker/">Keyword Density Checker</a>
+</div>
+
+<div class="ad-banner" style="margin-top:40px">
+      <!-- Ad space -->
+    </div>
+
+
+<!-- Ad: Footer -->
+<div class="ad-banner footer-ad" style="margin:40px 0;text-align:center"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
 <footer>
   <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
   <p style="margin: 8px 0; font-size: 13px;">
@@ -226,7 +360,7 @@ function analyzeText() {
   const text = document.getElementById('textInput').value;
   if (!text.trim()) {
     alert('Please enter some text to analyze.');
-    return
+    return;
   }
 
   const filterStop = document.getElementById('filterStopWords').checked;
@@ -236,22 +370,22 @@ function analyzeText() {
   let words = text.replace(/[^\w\s'-]/g, '').split(/\s+/).filter(w => w.length > 0);
 
   if (caseInsensitive) {
-    words = words.map(w => w.toLowerCase())
+    words = words.map(w => w.toLowerCase());
   }
 
   const frequency = {};
   words.forEach(word => {
     if (filterStop && stopWords.has(word)) return;
-    frequency[word] = (frequency[word] || 0) + 1
+    frequency[word] = (frequency[word] || 0) + 1;
   });
 
   wordData = Object.entries(frequency).map(([word, count]) => ({ word, count }));
   totalWordCount = words.filter(w => !filterStop || !stopWords.has(w)).length;
 
   if (sortByFreq) {
-    wordData.sort((a, b) => b.count - a.count)
+    wordData.sort((a, b) => b.count - a.count);
   } else {
-    wordData.sort((a, b) => a.word.localeCompare(b.word))
+    wordData.sort((a, b) => a.word.localeCompare(b.word));
   }
 
   const uniqueWords = wordData.length;
@@ -279,22 +413,22 @@ function analyzeText() {
         </td>
         <td>${percentage}%</td>
       </tr>
-    `
+    `;
   }).join('');
 
-  document.getElementById('results').classList.add('active')
+  document.getElementById('results').classList.add('active');
 }
 
 function exportCSV() {
   if (wordData.length === 0) {
     alert('No data to export. Please analyze text first.');
-    return
+    return;
   }
 
   const csv = 'Rank,Word,Frequency,Percentage\n' +
     wordData.map((item, index) => {
       const percentage = totalWordCount > 0 ? ((item.count / totalWordCount) * 100).toFixed(2) : 0;
-      return `${index + 1},"${item.word}",${item.count},${percentage}%`
+      return `${index + 1},"${item.word}",${item.count},${percentage}%`;
     }).join('\n');
 
   const blob = new Blob([csv], { type: 'text/csv' });
@@ -303,17 +437,15 @@ function exportCSV() {
   a.href = url;
   a.download = 'word-frequency.csv';
   a.click();
-  URL.revokeObjectURL(url)
+  URL.revokeObjectURL(url);
 }
 
 function clearText() {
   document.getElementById('textInput').value = '';
   document.getElementById('results').classList.remove('active');
-  wordData = []
+  wordData = [];
 }
 </script>
-</style>
-
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>

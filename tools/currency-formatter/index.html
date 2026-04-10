@@ -83,13 +83,13 @@
   --border:rgba(255,255,255,.08);
   --text:#fff;
   --sub:#aab3c5;
-  --accent:#4f8cff
+  --accent:#4f8cff;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{
   font-family:system-ui,-apple-system;
   background:var(--bg);
-  color:var(--text)
+  color:var(--text);
 }
 .container{max-width:900px;margin:auto;padding:50px 16px}
 
@@ -99,10 +99,10 @@ body{
   text-decoration: none;
   font-size: 14px;
   margin-bottom: 24px;
-  transition: color 0.2s
+  transition: color 0.2s;
 }
 .back:hover {
-  color: var(--accent)
+  color: var(--accent);
 }
 
 h1{font-size:32px;margin-bottom:8px}
@@ -115,14 +115,14 @@ h3{font-size:18px;margin-bottom:8px}
   border:1px solid var(--border);
   border-radius:14px;
   padding:20px;
-  margin-bottom:20px
+  margin-bottom:20px;
 }
 
 label {
   display: block;
   color: var(--sub);
   font-size: 14px;
-  margin-bottom: 8px
+  margin-bottom: 8px;
 }
 
 input[type="number"],
@@ -134,26 +134,26 @@ select {
   border: 1px solid var(--border);
   border-radius: 12px;
   color: var(--text);
-  font-size: 15px
+  font-size: 15px;
 }
 input:focus, select:focus {
   outline: none;
-  border-color: var(--accent)
+  border-color: var(--accent);
 }
 select {
-  cursor: pointer
+  cursor: pointer;
 }
 
 .form-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 16px;
-  margin-bottom: 20px
+  margin-bottom: 20px;
 }
 
 .field {
   display: flex;
-  flex-direction: column
+  flex-direction: column;
 }
 
 .result-box {
@@ -162,19 +162,19 @@ select {
   border-radius:10px;
   padding:16px;
   margin-top:16px;
-  min-height:100px
+  min-height:100px;
 }
 
 .result-main {
   font-size: 32px;
   font-weight: 700;
   color: var(--accent);
-  margin-bottom: 8px
+  margin-bottom: 8px;
 }
 
 .result-sub {
   font-size: 13px;
-  color: var(--sub)
+  color: var(--sub);
 }
 
 .btn-row {
@@ -210,21 +210,21 @@ button.secondary:hover{
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
-  margin-top: 16px
+  margin-top: 16px;
 }
 
 .col-label {
   font-size: 14px;
   font-weight: 600;
   color: var(--sub);
-  margin-bottom: 8px
+  margin-bottom: 8px;
 }
 
 .currencies-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
   gap: 12px;
-  margin-bottom: 24px
+  margin-bottom: 24px;
 }
 
 .cur-card {
@@ -234,24 +234,24 @@ button.secondary:hover{
   padding: 16px;
   text-align: center;
   cursor: pointer;
-  transition: all 0.2s
+  transition: all 0.2s;
 }
 .cur-card:hover {
   border-color: var(--accent);
-  transform: translateY(-2px)
+  transform: translateY(-2px);
 }
 
 .cur-symbol {
   font-size: 28px;
   font-weight: 700;
   color: var(--accent);
-  margin-bottom: 4px
+  margin-bottom: 4px;
 }
 
 .cur-name {
   font-size: 13px;
   color: var(--sub);
-  margin-bottom: 4px
+  margin-bottom: 4px;
 }
 
 .cur-code {
@@ -261,13 +261,13 @@ button.secondary:hover{
   background: rgba(79,140,255,0.15);
   padding: 4px 8px;
   border-radius: 4px;
-  display: inline-block
+  display: inline-block;
 }
 
 .section p{
   color:var(--sub);
   line-height:1.7;
-  margin-bottom:10px
+  margin-bottom:10px;
 }
 
 .faq-item {
@@ -275,19 +275,19 @@ button.secondary:hover{
   border: 1px solid var(--border);
   border-radius: 14px;
   padding: 20px;
-  margin-bottom: 12px
+  margin-bottom: 12px;
 }
 
 .faq-item h3 {
   font-size: 16px;
   color: var(--text);
-  margin-bottom: 8px
+  margin-bottom: 8px;
 }
 
 .faq-item p {
   color: var(--sub);
   line-height: 1.7;
-  font-size: 14px
+  font-size: 14px;
 }
 
 .tools a{
@@ -297,35 +297,35 @@ button.secondary:hover{
   border-radius:8px;
   border:1px solid var(--border);
   color:var(--sub);
-  text-decoration:none
+  text-decoration:none;
 }
 .tools a:hover{
   border-color:var(--accent);
-  color:var(--accent)
+  color:var(--accent);
 }
 
 .ad-banner {
   margin: 32px 0;
-  text-align: center
+  text-align: center;
 }
 
-footer{
+footer {
   margin-top: 40px;
   text-align: center;
   color: var(--sub);
-  font-size: 13px
-}
+  font-size: 13px;
+border-top:1px solid var(--border);}
 footer p {
-  margin-bottom: 8px
+  margin-bottom: 8px;
 }
 footer a {
   color: var(--sub);
   text-decoration: none;
   margin: 0 10px;
-  transition: color 0.2s
+  transition: color 0.2s;
 }
 footer a:hover {
-  color: var(--accent)
+  color: var(--accent);
 }
 
 @media(max-width:768px){
@@ -347,7 +347,105 @@ textarea{
   box-sizing:border-box
 }
 textarea:focus{outline:none;border-color:var(--accent)}
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;font-weight:600;margin-bottom:20px;">Bulk Number Formatter</div>
+footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
+  <link rel="stylesheet" href="/shared.css">
+</head>
+
+<body><div class="container">
+
+<a class="back" href="../index.html">← Back to Tools</a>
+
+<h1>Currency Formatter</h1>
+<p class="subtitle">Format any number as a currency string in USD, EUR, GBP, JPY, CNY, and 20+ currencies. Customize decimal places, separators, and symbol position.</p>
+
+<div class="ad-banner">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="5794572171"
+       data-ad-format="auto"
+       data-full-width-responsive="true">
+  </ins>
+</div>
+
+<h2>Free Online Currency Formatter</h2>
+<div class="section">
+<p>This free online currency formatter instantly converts any number into a properly formatted currency string. Simply enter your number, select a currency and locale, and see the result instantly. Perfect for invoices, financial reports, price lists, and any application requiring professional currency display.</p>
+<p>The formatter supports 25+ major world currencies including USD, EUR, GBP, JPY, CNY, and more. You can customize decimal places, choose different locale formats (US, UK, European, Asian), and process multiple numbers in bulk. All processing happens in your browser for complete privacy.</p>
+</div>
+
+<div class="card">
+  <div class="form-grid">
+    <div class="field">
+      <label>Number</label>
+      <input type="number" id="numInput" value="1234567.89" step="any" oninput="formatSingle()">
+    </div>
+    <div class="field">
+      <label>Currency</label>
+      <select id="currSelect" onchange="formatSingle()">
+        <option value="USD">USD – US Dollar</option>
+        <option value="EUR">EUR – Euro</option>
+        <option value="GBP">GBP – British Pound</option>
+        <option value="JPY">JPY – Japanese Yen</option>
+        <option value="CNY">CNY – Chinese Yuan</option>
+        <option value="CAD">CAD – Canadian Dollar</option>
+        <option value="AUD">AUD – Australian Dollar</option>
+        <option value="CHF">CHF – Swiss Franc</option>
+        <option value="INR">INR – Indian Rupee</option>
+        <option value="BRL">BRL – Brazilian Real</option>
+        <option value="MXN">MXN – Mexican Peso</option>
+        <option value="KRW">KRW – South Korean Won</option>
+        <option value="RUB">RUB – Russian Ruble</option>
+        <option value="SGD">SGD – Singapore Dollar</option>
+        <option value="HKD">HKD – Hong Kong Dollar</option>
+        <option value="NOK">NOK – Norwegian Krone</option>
+        <option value="SEK">SEK – Swedish Krona</option>
+        <option value="DKK">DKK – Danish Krone</option>
+        <option value="PLN">PLN – Polish Zloty</option>
+        <option value="THB">THB – Thai Baht</option>
+        <option value="TRY">TRY – Turkish Lira</option>
+        <option value="SAR">SAR – Saudi Riyal</option>
+        <option value="ZAR">ZAR – South African Rand</option>
+        <option value="AED">AED – UAE Dirham</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Locale</label>
+      <select id="localeSelect" onchange="formatSingle()">
+        <option value="en-US">en-US (1,234,567.89)</option>
+        <option value="en-GB">en-GB (1,234,567.89)</option>
+        <option value="de-DE">de-DE (1.234.567,89)</option>
+        <option value="fr-FR">fr-FR (1 234 567,89)</option>
+        <option value="ja-JP">ja-JP</option>
+        <option value="zh-CN">zh-CN</option>
+        <option value="ko-KR">ko-KR</option>
+        <option value="ar-SA">ar-SA</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Decimal Places</label>
+      <select id="decimals" onchange="formatSingle()">
+        <option value="auto">Auto (currency default)</option>
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2" selected>2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select>
+    </div>
+  </div>
+  <div class="result-box">
+    <div class="result-main" id="singleResult">$1,234,567.89</div>
+    <div class="result-sub" id="singleLabel">USD · en-US locale · 2 decimal places</div>
+  </div>
+  <div class="btn-row">
+    <button onclick="formatSingle()">Format</button>
+    <button class="secondary" onclick="copyResult()">Copy Result</button>
+  </div>
+</div>
+
+<div class="card">
+  <div style="font-size:16px;font-weight:600;margin-bottom:20px;">Bulk Number Formatter</div>
   <div class="cols">
     <div>
       <div class="col-label">Input (one number per line)</div>
@@ -458,9 +556,9 @@ const CURRENCIES = [
 
 function fmt(num, curr, locale, dec) {
   const opts = {style:'currency', currency:curr};
-  if (dec !== 'auto') { opts.minimumFractionDigits = parseInt(dec); opts.maximumFractionDigits = parseInt(dec) }
-  try { return new Intl.NumberFormat(locale, opts).format(num) }
-  catch(e) { return num.toLocaleString() }
+  if (dec !== 'auto') { opts.minimumFractionDigits = parseInt(dec); opts.maximumFractionDigits = parseInt(dec); }
+  try { return new Intl.NumberFormat(locale, opts).format(num); }
+  catch(e) { return num.toLocaleString(); }
 }
 
 function formatSingle() {
@@ -468,10 +566,10 @@ function formatSingle() {
   const curr = document.getElementById('currSelect').value;
   const locale = document.getElementById('localeSelect').value;
   const dec = document.getElementById('decimals').value;
-  if (isNaN(num)) { document.getElementById('singleResult').textContent = '—'; return }
+  if (isNaN(num)) { document.getElementById('singleResult').textContent = '—'; return; }
   document.getElementById('singleResult').textContent = fmt(num, curr, locale, dec);
   document.getElementById('singleLabel').textContent = `${curr} · ${locale} locale · ${dec === 'auto' ? 'auto' : dec} decimal places`;
-  formatBulk()
+  formatBulk();
 }
 
 function formatBulk() {
@@ -481,30 +579,30 @@ function formatBulk() {
   const dec = document.getElementById('decimals').value;
   const out = lines.map(l => {
     const n = parseFloat(l.trim());
-    return isNaN(n) ? l : fmt(n, curr, locale, dec)
+    return isNaN(n) ? l : fmt(n, curr, locale, dec);
   }).join('\n');
-  document.getElementById('bulkOut').value = out
+  document.getElementById('bulkOut').value = out;
 }
 
 function copyResult() {
   const result = document.getElementById('singleResult').textContent;
   if (result === '—') return;
   navigator.clipboard.writeText(result).then(() => {
-    alert('Result copied!')
-  })
+    alert('Result copied!');
+  });
 }
 
 function copyBulkOutput() {
   const out = document.getElementById('bulkOut').value;
   if (!out) return;
   navigator.clipboard.writeText(out).then(() => {
-    alert('All formatted numbers copied!')
-  })
+    alert('All formatted numbers copied!');
+  });
 }
 
 function clearBulk() {
   document.getElementById('bulkIn').value = '';
-  document.getElementById('bulkOut').value = ''
+  document.getElementById('bulkOut').value = '';
 }
 
 function buildCurrGrid() {
@@ -516,17 +614,15 @@ function buildCurrGrid() {
     div.onclick = () => {
       document.getElementById('currSelect').value = c.code;
       formatSingle();
-      window.scrollTo({top: 0, behavior: 'smooth'})
+      window.scrollTo({top: 0, behavior: 'smooth'});
     };
-    grid.appendChild(div)
-  })
+    grid.appendChild(div);
+  });
 }
 
 buildCurrGrid();
 formatSingle();
 </script>
-
-</style>
 
 <script src="/knexio-bundle.js"></script>
 </body>

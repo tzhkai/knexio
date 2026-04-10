@@ -96,39 +96,39 @@
       --border: rgba(255,255,255,0.08);
       --text: #ffffff;
       --sub: #aab3c5;
-      --accent: #4f8cff
+      --accent: #4f8cff;
     }
 
-    * { box-sizing: border-box }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
       background: linear-gradient(180deg, #0b1220, #070d1a);
-      color: var(--text)
+      color: var(--text);
     }
 
-    a { color: var(--accent); text-decoration: none }
+    a { color: var(--accent); text-decoration: none; }
 
     .container {
       max-width: 920px;
       margin: 0 auto;
-      padding: 60px 20px 100px
+      padding: 60px 20px 100px;
     }
 
     .back {
       display: inline-block;
       margin-bottom: 24px;
       color: var(--sub);
-      font-size: 14px
+      font-size: 14px;
     }
 
-    h1 { font-size: 34px; margin: 0 0 10px }
+    h1 { font-size: 34px; margin: 0 0 10px; }
 
     .subtitle {
       color: var(--sub);
       font-size: 15px;
-      margin-bottom: 24px
+      margin-bottom: 24px;
     }
 
     .ad-banner { margin: 24px 0; text-align: center; min-height: 90px }
@@ -137,7 +137,7 @@
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 14px;
-      padding: 20px
+      padding: 20px;
     }
 
     textarea {
@@ -149,10 +149,10 @@
       background: var(--card);
       color: #fff;
       font-size: 15px;
-      resize: vertical
+      resize: vertical;
     }
 
-    textarea::placeholder { color: #7f8aa3 }
+    textarea::placeholder { color: #7f8aa3; }
 
     input[type="text"],
     select {
@@ -162,15 +162,15 @@
       border: 1px solid var(--border);
       background: var(--card);
       color: #fff;
-      font-size: 15px
+      font-size: 15px;
     }
 
-    input::placeholder { color: #7f8aa3 }
+    input::placeholder { color: #7f8aa3; }
 
     .btn-row {
       display: flex;
       gap: 12px;
-      margin-top: 12px
+      margin-top: 12px;
     }
 
     .btn-row button {
@@ -181,28 +181,28 @@
       color: var(--sub);
       cursor: pointer;
       font-size: 14px;
-      font-weight: 600
+      font-weight: 600;
     }
 
-    .btn-row button:hover { color: #fff; border-color: var(--accent) }
+    .btn-row button:hover { color: #fff; border-color: var(--accent); }
 
     .main-btn {
       background: var(--accent) !important;
       color: #fff !important;
-      border: none !important
+      border: none !important;
     }
 
-    .main-btn:hover { background: #3a7be0 !important }
+    .main-btn:hover { background: #3a7be0 !important; }
 
     .input-group {
-      margin-bottom: 20px
+      margin-bottom: 20px;
     }
 
     label {
       display: block;
       margin-bottom: 8px;
       font-size: 14px;
-      color: var(--sub)
+      color: var(--sub);
     }
 
     .result-box {
@@ -211,44 +211,44 @@
       border-radius: 14px;
       padding: 20px;
       min-height: 200px;
-      margin-top: 20px
+      margin-top: 20px;
     }
 
     .result-label {
       font-size: 13px;
       color: var(--sub);
       margin-bottom: 12px;
-      font-weight: 600
+      font-weight: 600;
     }
 
     .result-content {
       font-size: 15px;
       line-height: 1.75;
       color: var(--text);
-      white-space: pre-wrap
+      white-space: pre-wrap;
     }
 
-    .section { margin-top: 60px }
-    .section h2 { font-size: 24px; margin-bottom: 12px }
-    .section p { color: var(--sub); line-height: 1.75; font-size: 15px }
+    .section { margin-top: 60px; }
+    .section h2 { font-size: 24px; margin-bottom: 12px; }
+    .section p { color: var(--sub); line-height: 1.75; font-size: 15px; }
 
-    .faq { margin-top: 60px }
-    .faq h2 { font-size: 24px; margin-bottom: 20px }
+    .faq { margin-top: 60px; }
+    .faq h2 { font-size: 24px; margin-bottom: 20px; }
     .faq-item {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 20px;
-      margin-bottom: 20px
+      margin-bottom: 20px;
     }
-    .faq-item h3 { font-size: 16px; margin: 0 0 8px }
-    .faq-item p { color: var(--sub); font-size: 14px; line-height: 1.7; margin: 0 }
+    .faq-item h3 { font-size: 16px; margin: 0 0 8px; }
+    .faq-item p { color: var(--sub); font-size: 14px; line-height: 1.7; margin: 0; }
 
     .tools a {
       display: inline-block;
       margin-right: 16px;
       margin-top: 8px;
-      font-size: 14px
+      font-size: 14px;
     }
 
     footer p{margin:0}
@@ -256,83 +256,219 @@
     @media (max-width: 768px) {
       .container {
         padding: 40px 15px 80px !important;
-        max-width: 100% !important
+        max-width: 100% !important;
       }
 
       h1 {
         font-size: 28px !important;
-        line-height: 1.3 !important
+        line-height: 1.3 !important;
       }
 
       h2 {
         font-size: 20px !important;
         margin-top: 36px !important;
-        margin-bottom: 10px !important
+        margin-bottom: 10px !important;
       }
 
       textarea {
         min-height: 180px !important;
-        padding: 12px !important
+        padding: 12px !important;
       }
 
       .btn-row {
-        flex-wrap: wrap
+        flex-wrap: wrap;
       }
 
       .ad-banner {
         margin: 16px 0 !important;
-        min-height: 50px !important
+        min-height: 50px !important;
       }
     }
 
     @media (max-width: 480px) {
       h1 {
-        font-size: 24px !important
+        font-size: 24px !important;
       }
 
       h2 {
-        font-size: 18px !important
+        font-size: 18px !important;
       }
 
       .container {
-        padding: 32px 12px 60px !important
+        padding: 32px 12px 60px !important;
       }
     }
 
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;
+footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
+  <link rel="stylesheet" href="/shared.css">
+</head>
+
+<body>
+  <div class="container">
+    <a class="back" href="../index.html">← Back to AI Tools</a>
+
+    <h1>AI Image Prompt Builder</h1>
+
+    <div class="subtitle">
+      Create detailed prompts for AI image generation.
+    </div>
+
+    <div class="ad-banner">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="5794572171"
+       data-ad-format="auto"
+       data-full-width-responsive="true">
+  </ins>
+</div>
+
+    <div class="card">
+      <div class="input-group">
+        <label>Main Subject</label>
+        <input type="text" id="subject" placeholder="Main subject of the image (e.g., a serene mountain landscape)">
+      </div>
+      
+      <div class="input-group">
+        <label>Art Style</label>
+        <input type="text" id="style" placeholder="Art style (e.g., photorealistic, digital art, oil painting)">
+      </div>
+      
+      <div class="input-group">
+        <label>Additional Details</label>
+        <textarea id="details" placeholder="Additional details (lighting, mood, composition, colors)..."></textarea>
+      </div>
+      
+      <div class="btn-row">
+        <button class="main-btn" onclick="buildPrompt()">Build Prompt</button>
+        <button onclick="clearText()">Clear</button>
+      </div>
+    </div>
+
+    <div class="result-box">
+      <div class="result-label">Generated Prompt:</div>
+      <div class="result-content" id="result">Your prompt will appear here...</div>
+      <div class="btn-row" style="margin-top: 15px">
+        <button onclick="copyPrompt()">Copy Prompt</button>
+      </div>
+    </div>
+
+    <div class="ad-banner" style="margin-top: 40px">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="5794572171"
+       data-ad-format="auto"
+       data-full-width-responsive="true">
+  </ins>
+</div>
+
+    <div class="section">
+      <h2>Free Online AI Image Prompt Builder</h2>
+      <p>
+        Create detailed, effective prompts for AI image generation tools with our free online prompt builder. Simply describe your main subject, specify an art style, and add any additional details about lighting, mood, composition, or colors. Get a polished prompt ready to use with Midjourney, DALL-E, Stable Diffusion, and other popular AI image generators.
+      </p>
+      <p>
+        No registration required, no data storage—just instant prompt generation right in your browser. Perfect for artists, designers, content creators, and anyone creating AI-generated art.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>How It Works</h2>
+      <p>
+        Our AI image prompt builder combines essential visual elements into comprehensive prompts. Start with your main subject—the primary focus of your image. Be specific and descriptive to guide the AI's understanding. Examples include landscapes, portraits, scenes, objects, or abstract concepts.
+      </p>
+      <p>
+        Define your art style to set the aesthetic direction. Choose from photorealistic for lifelike images, digital art for modern graphics, oil painting for classic artistry, watercolor for soft aesthetics, anime style for Japanese animation, 3D render for dimensional depth, or describe any custom style you prefer.
+      </p>
+      <p>
+        Add additional details to refine your vision. Include lighting conditions (golden hour, dramatic, soft natural), mood and atmosphere (peaceful, energetic, mysterious), composition preferences (centered, wide angle, close-up, rule of thirds), and specific color palettes or visual elements. Click build prompt, copy the result, and paste it directly into your AI image generation tool.
+      </p>
+    </div>
+
+    <div class="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <h3>What is an AI image prompt builder?</h3>
+        <p>An AI image prompt builder helps you create detailed, structured prompts for AI image generation tools like Midjourney, DALL-E, and Stable Diffusion. It combines subject, style, and details into comprehensive prompts.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How do I create effective image prompts?</h3>
+        <p>Be specific about your subject, describe the art style, include lighting and mood details, and add composition instructions for best results. The more details you provide, the better the AI understands your vision.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Which AI image tools can I use these prompts with?</h3>
+        <p>These prompts work with most AI image generators including Midjourney, DALL-E, Stable Diffusion, Leonardo AI, and Firefly. The prompt structure is compatible with all major platforms.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What details should I include in image prompts?</h3>
+        <p>Include subject description, art style, lighting, mood, composition, color palette, and any specific details you want in the image. Lighting and composition dramatically affect the final result.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Is my prompt data stored or shared?</h3>
+        <p>No. All processing happens in your browser. Your prompts are never sent to any server or stored anywhere. Your privacy and data security are our top priority.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Is this tool free to use?</h3>
+        <p>Yes. The tool is completely free and works directly in your browser without registration or sign-up required. Use it as often as you need to create prompts for your AI art projects.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Related AI Tools</h2>
+      <div class="tools">
+        <a href="../midjourney-prompt-generator/index.html">Midjourney Prompt Generator</a>
+        <a href="../chatgpt-prompt-generator/index.html">ChatGPT Prompt Generator</a>
+        <a href="../prompt-library/index.html">Prompt Library</a>
+      </div>
+    </div>
+
+    <div class="ad-banner" style="margin-top: 40px">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="5794572171"
+       data-ad-format="auto"
+       data-full-width-responsive="true">
+  </ins>
+</div>
+
+  </div>
+
+  <script>
+    function buildPrompt() {
+      const subject = document.getElementById('subject').value || 'beautiful landscape';
       const style = document.getElementById('style').value || 'photorealistic';
       const details = document.getElementById('details').value;
 
       let prompt = `${subject}, ${style}`;
 
       if (details.trim()) {
-        prompt += `, ${details}`
+        prompt += `, ${details}`;
       }
 
-      document.getElementById('result').textContent = prompt
+      document.getElementById('result').textContent = prompt;
     }
 
     function clearText() {
       document.getElementById('subject').value = '';
       document.getElementById('style').value = '';
       document.getElementById('details').value = '';
-      document.getElementById('result').textContent = 'Your prompt will appear here...'
+      document.getElementById('result').textContent = 'Your prompt will appear here...';
     }
 
     function copyPrompt() {
       const prompt = document.getElementById('result').textContent;
       if (prompt === 'Your prompt will appear here...') {
-        return
+        return;
       }
       navigator.clipboard.writeText(prompt).then(() => {
-        alert('Prompt copied to clipboard!')
-      })
+        alert('Prompt copied to clipboard!');
+      });
     }
   </script>
 
-  </style>
-
-<script src="/knexio-bundle.js"></script>
+  <script src="/knexio-bundle.js"></script>
 
       <footer>
   <p>Free AI-powered tools to boost your productivity.</p>

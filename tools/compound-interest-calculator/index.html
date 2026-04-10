@@ -35,13 +35,13 @@
   --border:rgba(255,255,255,.08);
   --text:#fff;
   --sub:#aab3c5;
-  --accent:#4f8cff
+  --accent:#4f8cff;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{
   font-family:system-ui,-apple-system;
   background:var(--bg);
-  color:var(--text)
+  color:var(--text);
 }
 .container{max-width:900px;margin:auto;padding:50px 16px}
 
@@ -52,10 +52,10 @@ body{
   text-decoration: none;
   font-size: 14px;
   margin-bottom: 24px;
-  transition: color 0.2s
+  transition: color 0.2s;
 }
 .back:hover {
-  color: var(--accent)
+  color: var(--accent);
 }
 
 h1{font-size:32px;margin-bottom:8px}
@@ -68,7 +68,7 @@ h3{font-size:18px;margin-bottom:8px}
   border:1px solid var(--border);
   border-radius:14px;
   padding:20px;
-  margin-bottom:20px
+  margin-bottom:20px;
 }
 
 label{
@@ -76,7 +76,7 @@ label{
   font-size:14px;
   color:var(--sub);
   margin-bottom:8px;
-  font-weight:500
+  font-weight:500;
 }
 
 input[type="number"]{
@@ -87,18 +87,18 @@ input[type="number"]{
   border-radius:12px;
   color:var(--text);
   font-size:15px;
-  font-family:inherit
+  font-family:inherit;
 }
 input[type="number"]:focus{
   outline:none;
-  border-color:var(--accent)
+  border-color:var(--accent);
 }
 
 .input-row{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:12px;
-  margin-bottom:16px
+  margin-bottom:16px;
 }
 
 select{
@@ -110,17 +110,17 @@ select{
   color:var(--text);
   font-size:15px;
   font-family:inherit;
-  cursor:pointer
+  cursor:pointer;
 }
 select:focus{
   outline:none;
-  border-color:var(--accent)
+  border-color:var(--accent);
 }
 
 
 
 
-button:hover { opacity: 0.9 }
+button:hover { opacity: 0.9; }
 
 
 
@@ -129,19 +129,19 @@ button:hover { opacity: 0.9 }
   font-weight:800;
   color:var(--accent);
   line-height:1;
-  margin-bottom:8px
+  margin-bottom:8px;
 }
 
 .result-label{
   font-size:14px;
-  color:var(--sub)
+  color:var(--sub);
 }
 
 .result-grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
   gap:12px;
-  margin-top:16px
+  margin-top:16px;
 }
 
 .result-item{
@@ -149,19 +149,19 @@ button:hover { opacity: 0.9 }
   border:1px solid var(--border);
   border-radius:10px;
   padding:16px;
-  text-align:center
+  text-align:center;
 }
 
 .result-value{
   font-size:28px;
   font-weight:700;
   color:var(--accent);
-  margin-bottom:6px
+  margin-bottom:6px;
 }
 
 .result-desc{
   font-size:13px;
-  color:var(--sub)
+  color:var(--sub);
 }
 
 .info-box{
@@ -169,20 +169,20 @@ button:hover { opacity: 0.9 }
   border:1px solid var(--border);
   border-radius:12px;
   padding:16px;
-  margin-top:16px
+  margin-top:16px;
 }
 
 .info-box h3{
   font-size:16px;
   font-weight:600;
   color:var(--text);
-  margin-bottom:12px
+  margin-bottom:12px;
 }
 
 .info-box p{
   font-size:14px;
   color:var(--sub);
-  line-height:1.7
+  line-height:1.7;
 }
 
 .chart-container{
@@ -196,7 +196,7 @@ button:hover { opacity: 0.9 }
   align-items:flex-end;
   justify-content:space-between;
   gap:4px;
-  overflow-x:auto
+  overflow-x:auto;
 }
 
 .chart-bar{
@@ -204,7 +204,7 @@ button:hover { opacity: 0.9 }
   display:flex;
   flex-direction:column;
   align-items:center;
-  min-width:30px
+  min-width:30px;
 }
 
 .chart-bar-inner{
@@ -212,19 +212,19 @@ button:hover { opacity: 0.9 }
   background:var(--accent);
   border-radius:4px 4px 0 0;
   min-height:20px;
-  transition:height 0.3s
+  transition:height 0.3s;
 }
 
 .chart-label{
   font-size:11px;
   color:var(--sub);
-  margin-top:8px
+  margin-top:8px;
 }
 
 table{
   width:100%;
   border-collapse:collapse;
-  margin-top:16px
+  margin-top:16px;
 }
 
 th{
@@ -234,20 +234,20 @@ th{
   text-align:left;
   font-size:14px;
   font-weight:600;
-  color:var(--text)
+  color:var(--text);
 }
 
 td{
   padding:12px;
   border-bottom:1px solid var(--border);
   font-size:14px;
-  color:var(--sub)
+  color:var(--sub);
 }
 
 .section p{
   color:var(--sub);
   line-height:1.7;
-  margin-bottom:10px
+  margin-bottom:10px;
 }
 
 
@@ -259,37 +259,37 @@ td{
   border-radius:8px;
   border:1px solid var(--border);
   color:var(--sub);
-  text-decoration:none
+  text-decoration:none;
 }
 .tools a:hover{
   border-color:var(--accent);
-  color:var(--accent)
+  color:var(--accent);
 }
 
 /* 广告样式 */
 .ad-banner {
   margin: 32px 0;
-  text-align: center
+  text-align: center;
 }
 
 /* 统一的 Footer 样式 */
-footer{
+footer {
   margin-top: 40px;
   text-align: center;
   color: var(--sub);
-  font-size: 13px
-}
+  font-size: 13px;
+border-top:1px solid var(--border);}
 footer p {
-  margin-bottom: 8px
+  margin-bottom: 8px;
 }
 footer a {
   color: var(--sub);
   text-decoration: none;
   margin: 0 10px;
-  transition: color 0.2s
+  transition: color 0.2s;
 }
 footer a:hover {
-  color: var(--accent)
+  color: var(--accent);
 }
 
 @media(max-width:600px){
@@ -309,7 +309,136 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
 .stat label,.stat-label,.result-label,.age-label{font-size:12px;color:var(--sub);display:block}
 .result-box{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;margin-top:16px;min-height:100px;white-space:pre-wrap;word-break:break-all;font-size:15px;line-height:1.7;box-sizing:border-box}
 @media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.btn-row{flex-direction:column}}
-  footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;text-align:center;width:100%">Click Calculate to see growth chart</div>
+  footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is compound interest?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Compound interest is interest on a loan or deposit calculated based on both the initial principal and the accumulated interest from previous periods. It is often described as interest on interest."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between simple and compound interest?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Simple interest is calculated only on the principal amount. Compound interest is calculated on the principal plus all previously accumulated interest, leading to exponential growth over time."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How often is interest compounded?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Interest can be compounded annually, quarterly, monthly, daily, or continuously. More frequent compounding results in higher returns."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the calculator account for inflation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. This calculator shows nominal growth. To see real purchasing power, subtract an estimated inflation rate from the annual rate."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the result guaranteed?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. This calculator provides estimates based on the inputs you provide. Actual returns may vary due to market conditions, fees, taxes, and other factors."
+      }
+    }
+  ]
+}
+</script>
+  <link rel="stylesheet" href="/shared.css">
+</head>
+
+<body><div class="container">
+
+<a class="back" href="../index.html">← Back to Tools</a>
+<h1>Compound Interest Calculator</h1>
+<p class="subtitle">See how your money grows with compound interest over time</p>
+
+<div class="ad-banner">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="5794572171"
+       data-ad-format="auto"
+       data-full-width-responsive="true">
+  </ins>
+</div>
+
+<div class="card">
+  <div class="input-row">
+    <div>
+      <label>Initial Investment</label>
+      <input type="number" id="principal" placeholder="10000" value="10000">
+    </div>
+    <div>
+      <label>Monthly Contribution</label>
+      <input type="number" id="monthly" placeholder="500" value="500">
+    </div>
+  </div>
+
+  <div class="input-row">
+    <div>
+      <label>Interest Rate (%)</label>
+      <input type="number" id="rate" placeholder="7" value="7" step="0.1">
+    </div>
+    <div>
+      <label>Years</label>
+      <input type="number" id="years" placeholder="20" value="20">
+    </div>
+  </div>
+
+  <div>
+    <label>Compounding Frequency</label>
+    <select id="frequency" onchange="calculateCompound()">
+      <option value="365">Daily</option>
+      <option value="12" selected>Monthly</option>
+      <option value="4">Quarterly</option>
+      <option value="1">Annually</option>
+    </select>
+  </div>
+
+  <div class="btn-row">
+    <button onclick="calculateCompound()">Calculate Growth</button>
+  </div>
+
+  <div class="result-box" id="resultBox" style="display:none">
+    <div class="result-main" id="finalAmount">$0</div>
+    <div class="result-label">Final Amount</div>
+
+    <div class="result-grid">
+      <div class="result-item">
+        <div class="result-value" id="totalPrincipal">$0</div>
+        <div class="result-desc">Total Invested</div>
+      </div>
+      <div class="result-item">
+        <div class="result-value" id="totalInterest">$0</div>
+        <div class="result-desc">Interest Earned</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-box">
+    <h3>The Power of Compounding</h3>
+    <p>Compound interest is often called the "eighth wonder of the world." It means you earn interest not just on your initial investment, but also on the interest you've already earned. The earlier you start, the more powerful it becomes.</p>
+  </div>
+</div>
+
+<h2>Year-by-Year Growth</h2>
+<div class="chart-container" id="chartContainer">
+  <div style="color:var(--sub);text-align:center;width:100%">Click Calculate to see growth chart</div>
 </div>
 
 <h2 style="margin-top:30px">Year-by-Year Breakdown</h2>
@@ -399,7 +528,7 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
 
 <script>
 function formatCurrency(num) {
-  return '$' + Math.round(num).toLocaleString()
+  return '$' + Math.round(num).toLocaleString();
 }
 
 function calculateCompound() {
@@ -447,17 +576,15 @@ function calculateCompound() {
       chartHtml += `<div class="chart-bar">
         <div class="chart-bar-inner" style="height:${height}%"></div>
         <div class="chart-label">Y${year}</div>
-      </div>`
+      </div>`;
     }
   }
 
   document.getElementById('yearTableBody').innerHTML = tableHtml;
-  document.getElementById('chartContainer').innerHTML = chartHtml
+  document.getElementById('chartContainer').innerHTML = chartHtml;
 }
 
 </script>
-
-</style>
 
 <script src="/knexio-bundle.js"></script>
 </body>

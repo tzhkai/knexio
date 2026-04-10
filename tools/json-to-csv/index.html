@@ -79,7 +79,7 @@
   --border:rgba(255,255,255,.08);
   --text:#fff;
   --sub:#aab3c5;
-  --accent:#4f8cff
+  --accent:#4f8cff;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:system-ui,-apple-system;background:var(--bg);color:var(--text)}
@@ -124,7 +124,26 @@ th,td{padding:8px 12px;text-align:left;border-bottom:1px solid var(--border)}
 th{color:var(--accent);font-weight:600}
 tr:hover{background:rgba(255,255,255,.02)}
 @media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.btn-row{flex-direction:column}}
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;font-size:14px;color:var(--text);margin-bottom:6px;">JSON Input</label>
+footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
+  <link rel="stylesheet" href="/shared.css">
+</head>
+<body><div class="container">
+<a class="back" href="../index.html">← Back to Tools</a>
+<h1>JSON to CSV Converter</h1>
+<p class="subtitle">Paste a JSON array of objects and convert it to CSV format instantly. Headers are auto-detected, nested objects are flattened, and you can download the result.</p>
+
+<div class="ad-banner">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="5794572171"
+       data-ad-format="auto"
+       data-full-width-responsive="true">
+  </ins>
+</div>
+
+<div class="card">
+  <label for="input" style="display:block;font-size:14px;color:var(--text);margin-bottom:6px;">JSON Input</label>
   <textarea id="input" placeholder='[{"name":"Alice","age":30,"city":"New York"},{"name":"Bob","age":25,"city":"London"}]'></textarea>
   
   <div class="btn-row">
@@ -244,7 +263,7 @@ function convert() {
   
   if (!input) {
     statusBar.innerHTML = '<span style="color:#ff6b6b">Please enter JSON data</span>';
-    return
+    return;
   }
   
   try {
@@ -252,12 +271,12 @@ function convert() {
     
     if (!Array.isArray(data)) {
       statusBar.innerHTML = '<span style="color:#ff6b6b">Input must be a JSON array of objects</span>';
-      return
+      return;
     }
     
     if (data.length === 0) {
       statusBar.innerHTML = '<span style="color:#ff6b6b">JSON array is empty</span>';
-      return
+      return;
     }
     
     headers = getAllKeys(data);
@@ -268,9 +287,9 @@ function convert() {
     data.forEach(row => {
       const values = headers.map(h => {
         const val = getNestedValue(row, h);
-        return escapeCSV(val)
+        return escapeCSV(val);
       });
-      csvOutput += values.join(delimiter) + '\n'
+      csvOutput += values.join(delimiter) + '\n';
     });
     
     outputDiv.textContent = csvOutput;
@@ -278,10 +297,10 @@ function convert() {
     
     statusBar.innerHTML = `<span style="color:#34d399">Converted ${data.length} rows, ${headers.length} columns</span>`;
     
-    showPreview(data.slice(0, 10))
+    showPreview(data.slice(0, 10));
     
   } catch (e) {
-    statusBar.innerHTML = `<span style="color:#ff6b6b">Invalid JSON: ${e.message}</span>`
+    statusBar.innerHTML = `<span style="color:#ff6b6b">Invalid JSON: ${e.message}</span>`;
   }
 }
 
@@ -291,26 +310,26 @@ function getAllKeys(arr, prefix = '') {
     Object.keys(obj).forEach(key => {
       const fullKey = prefix ? `${prefix}.${key}` : key;
       if (obj[key] !== null && typeof obj[key] === 'object' && !Array.isArray(obj[key])) {
-        getAllKeys([obj[key]], fullKey).forEach(k => keys.add(k))
+        getAllKeys([obj[key]], fullKey).forEach(k => keys.add(k));
       } else {
-        keys.add(fullKey)
+        keys.add(fullKey);
       }
-    })
+    });
   });
-  return Array.from(keys)
+  return Array.from(keys);
 }
 
 function getNestedValue(obj, path) {
-  return path.split('.').reduce((current, key) => (current && current[key] !== undefined) ? current[key] : '', obj)
+  return path.split('.').reduce((current, key) => (current && current[key] !== undefined) ? current[key] : '', obj);
 }
 
 function escapeCSV(val) {
   if (val === null || val === undefined) return '';
   const str = String(val);
   if (str.includes(',') || str.includes('"') || str.includes('\n')) {
-    return `"${str.replace(/"/g, '""')}"`
+    return `"${str.replace(/"/g, '""')}"`;
   }
-  return str
+  return str;
 }
 
 function showPreview(data) {
@@ -319,24 +338,24 @@ function showPreview(data) {
   
   if (data.length === 0) {
     previewWrap.style.display = 'none';
-    return
+    return;
   }
   
   let html = '<thead><tr>' + headers.map(h => `<th>${escapeHTML(h)}</th>`).join('') + '</tr></thead><tbody>';
   
   data.forEach(row => {
-    html += '<tr>' + headers.map(h => `<td>${escapeHTML(getNestedValue(row, h))}</td>`).join('') + '</tr>'
+    html += '<tr>' + headers.map(h => `<td>${escapeHTML(getNestedValue(row, h))}</td>`).join('') + '</tr>';
   });
   
   html += '</tbody>';
   previewTable.innerHTML = html;
-  previewWrap.style.display = 'block'
+  previewWrap.style.display = 'block';
 }
 
 function escapeHTML(str) {
   const div = document.createElement('div');
   div.textContent = String(str);
-  return div.innerHTML
+  return div.innerHTML;
 }
 
 function downloadCSV() {
@@ -347,16 +366,16 @@ function downloadCSV() {
   link.href = URL.createObjectURL(blob);
   link.download = 'data.csv';
   link.click();
-  URL.revokeObjectURL(link.href)
+  URL.revokeObjectURL(link.href);
 }
 
 function pasteClipboard() {
   navigator.clipboard.readText().then(text => {
     document.getElementById('input').value = text;
-    convert()
+    convert();
   }).catch(err => {
-    alert('Failed to paste: ' + err)
-  })
+    alert('Failed to paste: ' + err);
+  });
 }
 
 function loadExample() {
@@ -366,7 +385,7 @@ function loadExample() {
     {"name":"Charlie","age":35,"city":"Paris","email":"charlie@example.com"}
   ];
   document.getElementById('input').value = JSON.stringify(example, null, 2);
-  convert()
+  convert();
 }
 
 function clearAll() {
@@ -375,11 +394,9 @@ function clearAll() {
   document.getElementById('statusBar').innerHTML = '';
   document.getElementById('previewWrap').style.display = 'none';
   document.getElementById('dlBtn').disabled = true;
-  csvOutput = ''
+  csvOutput = '';
 }
 </script>
-</style>
-
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>

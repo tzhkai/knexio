@@ -32,7 +32,90 @@ h1{font-size:32px;margin-bottom:8px}.subtitle{color:var(--sub);margin-bottom:40p
 .faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px;text-align:left}
 .faq-item h3{font-size:16px;margin-bottom:8px}.faq-item p{color:var(--sub);line-height:1.6}
 
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;margin-top:40px">
+footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
+
+<!-- Open Graph -->
+<meta property="og:url" content="https://knexio.xyz/tools/pomodoro-timer/">
+<meta property="og:type" content="WebApplication">
+<meta property="og:site_name" content="Knexio">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is this tool free to use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, this tool is completely free to use. No registration, no login, and no subscription required. Just open the page and start using it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my data safe? Is anything stored on a server?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, your data is safe. All processing happens entirely in your browser \u2014 your input never leaves your device and is not sent to any server."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does this tool work on mobile devices?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The tool is fully responsive and works on smartphones, tablets, and desktop computers."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How accurate is the result?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The tool uses standard algorithms and web APIs to provide accurate results. For critical or professional use, please verify with additional sources."
+      }
+    }
+  ]
+}
+</script>
+  <link rel="stylesheet" href="/shared.css">
+</head>
+<body>
+<div class="container">
+<a class="back" href="../index.html">← Back to Tools</a>
+<h1>Pomodoro Timer</h1>
+<p class="subtitle">Boost productivity with focused work sessions</p>
+<div class="ad-banner">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="5794572171"
+       data-ad-format="auto"
+       data-full-width-responsive="true">
+  </ins>
+</div>
+<div class="tabs">
+<button class="tab active" onclick="setMode('work',this)">Work</button>
+<button class="tab" onclick="setMode('short',this)">Short Break</button>
+<button class="tab" onclick="setMode('long',this)">Long Break</button>
+</div>
+<div class="clock">
+<div class="time" id="time">25:00</div>
+<div class="session" id="session">Session 1 of 4</div>
+</div>
+<div class="btns">
+<button class="btn btn-start" id="startBtn" onclick="toggle()">Start</button>
+<button class="btn btn-reset" onclick="reset()">Reset</button>
+</div>
+<div class="settings">
+<label>Work Duration (minutes)</label>
+<input type="number" id="workMin" value="25" min="1" max="60" onchange="reset()">
+<label>Short Break (minutes)</label>
+<input type="number" id="shortMin" value="5" min="1" max="30" onchange="reset()">
+<label>Long Break (minutes)</label>
+<input type="number" id="longMin" value="15" min="1" max="60" onchange="reset()">
+</div>
+<div class="section" style="text-align:left;margin-top:40px">
 <p><strong>Free Pomodoro Timer</strong> - Use the Pomodoro technique to stay focused. Work for 25 minutes, take a 5-minute break. After 4 sessions, take a longer break. Customize durations to fit your workflow.</p>
 </div>
 <div class="section" style="text-align:left">
@@ -74,7 +157,7 @@ function setMode(m, el) {
   mode = m;
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
   el.classList.add('active');
-  reset()
+  reset();
 }
 
 function reset() {
@@ -82,14 +165,14 @@ function reset() {
   running = false;
   seconds = modes[mode]();
   document.getElementById('startBtn').textContent = 'Start';
-  render()
+  render();
 }
 
 function toggle() {
   if (running) {
     clearInterval(interval);
     running = false;
-    document.getElementById('startBtn').textContent = 'Resume'
+    document.getElementById('startBtn').textContent = 'Resume';
   } else {
     running = true;
     document.getElementById('startBtn').textContent = 'Pause';
@@ -101,10 +184,10 @@ function toggle() {
         document.getElementById('startBtn').textContent = 'Start';
         if (mode === 'work') session = Math.min(session + 1, 4);
         new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAA==').play().catch(()=>{});
-        alert(mode === 'work' ? 'Work session done! Take a break.' : 'Break over! Back to work.')
+        alert(mode === 'work' ? 'Work session done! Take a break.' : 'Break over! Back to work.');
       }
-      render()
-    }, 1000)
+      render();
+    }, 1000);
   }
 }
 
@@ -113,13 +196,11 @@ function render() {
   const s = (seconds % 60).toString().padStart(2, '0');
   document.getElementById('time').textContent = m + ':' + s;
   document.getElementById('session').textContent = 'Session ' + session + ' of 4';
-  document.title = m + ':' + s + ' – Pomodoro Timer'
+  document.title = m + ':' + s + ' – Pomodoro Timer';
 }
 
 reset();
 </script>
-</style>
-
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>

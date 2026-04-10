@@ -88,13 +88,13 @@
   --border:rgba(255,255,255,.08);
   --text:#fff;
   --sub:#aab3c5;
-  --accent:#4f8cff
+  --accent:#4f8cff;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{
   font-family:system-ui,-apple-system;
   background:var(--bg);
-  color:var(--text)
+  color:var(--text);
 }
 .container{max-width:900px;margin:auto;padding:50px 16px}
 
@@ -104,7 +104,7 @@ body{
   text-decoration:none;
   font-size:14px;
   margin-bottom:24px;
-  transition:color 0.2s
+  transition:color 0.2s;
 }
 .back:hover{color:var(--accent)}
 
@@ -117,7 +117,7 @@ h2{font-size:22px;margin-top:30px;margin-bottom:10px}
   border:1px solid var(--border);
   border-radius:14px;
   padding:20px;
-  margin-bottom:20px
+  margin-bottom:20px;
 }
 
 .input-group{margin-bottom:16px}
@@ -134,7 +134,7 @@ h2{font-size:22px;margin-top:30px;margin-bottom:10px}
   border-radius:8px;
   border:1px solid var(--border);
   color:var(--sub);
-  text-decoration:none
+  text-decoration:none;
 }
 .tools a:hover{border-color:var(--accent);color:var(--accent)}
 
@@ -145,7 +145,7 @@ h2{font-size:22px;margin-top:30px;margin-bottom:10px}
   border:1px solid var(--border);
   border-radius:12px;
   padding:20px;
-  margin-bottom:12px
+  margin-bottom:12px;
 }
 .faq-item h3{font-size:16px;margin-bottom:8px;color:var(--text)}
 .faq-item p{color:var(--sub);font-size:14px;line-height:1.7;margin:0}
@@ -156,7 +156,7 @@ footer a{
   color:var(--sub);
   text-decoration:none;
   margin:0 10px;
-  transition:color 0.2s
+  transition:color 0.2s;
 }
 footer a:hover{color:var(--accent)}
 
@@ -183,7 +183,147 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
   .city-list{grid-template-columns:1fr}
   .btn-row{flex-direction:column}
 }
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;text-align:center"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
+footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
+  <link rel="stylesheet" href="/shared.css">
+</head>
+
+<body><div class="container">
+
+<a class="back" href="../index.html">← Back to Tools</a>
+
+<h1>Time Zone Converter</h1>
+<p class="subtitle">Convert time between different cities and time zones. Includes major world cities.</p>
+
+<div class="ad-banner">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="5794572171"
+       data-ad-format="auto"
+       data-full-width-responsive="true">
+  </ins>
+</div>
+
+<div class="card">
+  <div class="input-group">
+    <label>From Time Zone</label>
+    <select id="fromZone">
+      <option value="Asia/Shanghai">Beijing (UTC+8)</option>
+      <option value="America/New_York">New York (UTC-5/-4)</option>
+      <option value="Europe/London">London (UTC+0/+1)</option>
+      <option value="Asia/Tokyo">Tokyo (UTC+9)</option>
+      <option value="Australia/Sydney">Sydney (UTC+10/+11)</option>
+      <option value="Europe/Paris">Paris (UTC+1/+2)</option>
+      <option value="America/Los_Angeles">Los Angeles (UTC-8/-7)</option>
+      <option value="Asia/Dubai">Dubai (UTC+4)</option>
+      <option value="Asia/Singapore">Singapore (UTC+8)</option>
+      <option value="America/Chicago">Chicago (UTC-6/-5)</option>
+    </select>
+  </div>
+
+  <div class="input-group">
+    <label>Date & Time</label>
+    <input type="datetime-local" class="input" id="fromDate">
+  </div>
+
+  <div class="input-group">
+    <label>To Time Zone</label>
+    <select id="toZone">
+      <option value="America/New_York">New York (UTC-5/-4)</option>
+      <option value="Asia/Shanghai">Beijing (UTC+8)</option>
+      <option value="Europe/London">London (UTC+0/+1)</option>
+      <option value="Asia/Tokyo">Tokyo (UTC+9)</option>
+      <option value="Australia/Sydney">Sydney (UTC+10/+11)</option>
+      <option value="Europe/Paris">Paris (UTC+1/+2)</option>
+      <option value="America/Los_Angeles">Los Angeles (UTC-8/-7)</option>
+      <option value="Asia/Dubai">Dubai (UTC+4)</option>
+      <option value="Asia/Singapore">Singapore (UTC+8)</option>
+      <option value="America/Chicago">Chicago (UTC-6/-5)</option>
+    </select>
+  </div>
+
+  <div class="btn-row">
+    <button onclick="convertTimeZone()">Convert Time</button>
+    <button class="secondary" onclick="clearForm()">Clear</button>
+  </div>
+
+  <div class="result-box">
+    <div class="result-time" id="resultTime">--:--</div>
+    <div class="result-date" id="resultDate">--</div>
+  </div>
+
+  <div class="current-times">
+    <h3>Current Times</h3>
+    <div class="city-list" id="cityList"></div>
+  </div>
+</div>
+
+<h2>Free Online Time Zone Converter</h2>
+<div class="section">
+<p>This time zone converter helps you quickly convert time between different cities and time zones. Select source and destination time zones, enter a date and time, and see the equivalent time in the target zone.</p>
+<p>Perfect for scheduling international meetings, coordinating with remote teams, or planning travel across different time zones. All calculations happen instantly in your browser.</p>
+</div>
+
+<h2>How It Works</h2>
+<div class="section">
+<p>The converter uses JavaScript's built-in timezone support to accurately calculate time differences between zones. Select the source and destination time zones from the dropdown menus, which include major world cities.</p>
+<p>Enter the date and time you want to convert, and click "Convert Time". The tool displays the equivalent time in the target zone, including the full date and day of the week. The current times section shows live time updates for major cities.</p>
+</div>
+
+<h2>Frequently Asked Questions</h2>
+
+<div class="faq-item">
+  <h3>How do I convert time zones?</h3>
+  <p>Select the source time zone and enter your date and time. Then select the destination time zone. The converter will show the equivalent time in the target zone, including the correct date if it crosses midnight.</p>
+</div>
+
+<div class="faq-item">
+  <h3>What cities are supported?</h3>
+  <p>The tool includes major world cities across different continents, including Beijing, New York, London, Tokyo, Sydney, Paris, Los Angeles, Dubai, Singapore, and Chicago. These cover the most commonly used time zones for international coordination.</p>
+</div>
+
+<div class="faq-item">
+  <h3>Does it handle daylight saving time?</h3>
+  <p>Yes, the converter uses current timezone offsets which automatically account for daylight saving time when applicable. The calculations are based on the current date, so DST transitions are handled correctly.</p>
+</div>
+
+<div class="faq-item">
+  <h3>Can I convert past or future dates?</h3>
+  <p>Yes. The datetime-local input allows you to select any date and time, past or future. The converter will calculate the equivalent time in the target zone for that specific date, accounting for any historical DST changes.</p>
+</div>
+
+<div class="faq-item">
+  <h3>Is this time zone converter free to use?</h3>
+  <p>Yes, this time zone converter is completely free. No registration or signup is required. Just open the page and start converting times.</p>
+</div>
+
+<div class="faq-item">
+  <h3>Are my calculations saved or stored anywhere?</h3>
+  <p>No. All calculations happen entirely in your browser. No data is sent to any server or stored anywhere.</p>
+</div>
+<div class="ad-banner" style="margin:24px 0">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="5794572171"
+       data-ad-format="auto"
+       data-full-width-responsive="true">
+  </ins>
+</div>
+<h2>Related Tools</h2>
+<div class="tools">
+<a href="/tools/unix-timestamp/">Unix Timestamp</a>
+<a href="/tools/date-converter/">Date Converter</a>
+<a href="/tools/timer-stopwatch/">Timer & Stopwatch</a>
+</div>
+
+<div class="ad-banner" style="margin-top:40px">
+      <!-- Ad space -->
+    </div>
+
+
+<!-- Ad: Footer -->
+<div class="ad-banner footer-ad" style="margin:40px 0;text-align:center"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
 <footer>
   <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
   <p style="margin: 8px 0; font-size: 13px;">
@@ -226,14 +366,14 @@ function getCurrentTimes() {
         <div class="city-time">${time}</div>
         <div style="font-size:11px;color:var(--sub)">${date}</div>
       </div>
-    `
-  }).join('')
+    `;
+  }).join('');
 }
 
 function clearForm() {
   document.getElementById('fromDate').value = '';
   document.getElementById('resultTime').textContent = '--:--';
-  document.getElementById('resultDate').textContent = '--'
+  document.getElementById('resultDate').textContent = '--';
 }
 
 function convertTimeZone() {
@@ -243,7 +383,7 @@ function convertTimeZone() {
   
   if (!fromDateStr) {
     alert('Please select a date and time');
-    return
+    return;
   }
   
   const fromDate = new Date(fromDateStr);
@@ -262,7 +402,7 @@ function convertTimeZone() {
   });
   
   document.getElementById('resultTime').textContent = resultTime;
-  document.getElementById('resultDate').textContent = resultDate
+  document.getElementById('resultDate').textContent = resultDate;
 }
 
 const now = new Date();
@@ -273,8 +413,6 @@ document.getElementById('fromDate').value = localISOTime;
 getCurrentTimes();
 setInterval(getCurrentTimes, 60000);
 </script>
-</style>
-
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>

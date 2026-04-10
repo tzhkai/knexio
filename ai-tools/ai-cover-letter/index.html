@@ -25,7 +25,69 @@ button{background:var(--accent);color:#fff;border:none;cursor:pointer;font-weigh
 .faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px}
 .faq-item h3{font-size:16px;margin-bottom:8px}.faq-item p{color:var(--sub);line-height:1.6}
 footer p{margin:0}
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;
+footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
+
+<!-- Open Graph -->
+<meta property="og:url" content="https://knexio.xyz/ai-tools/ai-cover-letter/">
+<meta property="og:type" content="WebApplication">
+<meta property="og:site_name" content="Knexio">
+  <link rel="stylesheet" href="/shared.css">
+</head>
+<body>
+<div class="container">
+<a class="back" href="../index.html">← Back to AI Tools</a>
+<h1>AI Cover Letter Generator</h1>
+<p class="subtitle">Create professional cover letters instantly</p>
+<div class="ad-banner">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="5794572171"
+       data-ad-format="auto"
+       data-full-width-responsive="true">
+  </ins>
+</div>
+<div class="controls">
+<label>Your Name</label>
+<input type="text" id="name" placeholder="John Smith">
+<label>Job Title Applying For</label>
+<input type="text" id="jobTitle" placeholder="Software Engineer">
+<label>Company Name</label>
+<input type="text" id="company" placeholder="Google">
+<label>Your Key Skills (comma separated)</label>
+<input type="text" id="skills" placeholder="Python, React, leadership">
+<label>Years of Experience</label>
+<select id="experience">
+<option value="entry">Entry Level (0-2 years)</option>
+<option value="mid">Mid Level (3-5 years)</option>
+<option value="senior">Senior Level (6+ years)</option>
+</select>
+<button onclick="generateLetter()">Generate Cover Letter</button>
+</div>
+<div class="output">
+<textarea id="output" placeholder="Your cover letter will appear here..."></textarea>
+<button onclick="copyLetter()">Copy Cover Letter</button>
+</div>
+<div class="section">
+<p><strong>Free AI Cover Letter Generator</strong> - Create tailored cover letters for any job application. Customize by role, company, and experience level. Get professional results in seconds.</p>
+</div>
+<div class="section">
+<p><strong>How It Works</strong> - Enter your name, target job, company, and skills. Select experience level. Click Generate for a professional cover letter ready to customize.</p>
+</div>
+<h2>Frequently Asked Questions</h2>
+<div class="faq-item">
+<h3>Can I edit the generated letter?</h3>
+<p>Yes, the output is fully editable. Add specific achievements and personalize before sending.</p>
+</div>
+<div class="faq-item">
+<h3>How long should a cover letter be?</h3>
+<p>Ideally 3-4 paragraphs, fitting on one page. Our generator creates the right length.</p>
+</div>
+
+</div>
+<script>
+function generateLetter() {
+  const name = document.getElementById('name').value || 'Applicant';
   const job = document.getElementById('jobTitle').value || 'the position';
   const company = document.getElementById('company').value || 'your company';
   const skills = document.getElementById('skills').value || 'relevant skills';
@@ -50,18 +112,16 @@ Thank you for considering my application. I look forward to hearing from you.
 Sincerely,
 ${name}`;
   
-  document.getElementById('output').value = letter
+  document.getElementById('output').value = letter;
 }
 
 function copyLetter() {
   const output = document.getElementById('output');
   output.select();
   document.execCommand('copy');
-  alert('Copied!')
+  alert('Copied!');
 }
 </script>
-</style>
-
 <script src="/knexio-bundle.js"></script>
 <div class="ad-banner footer-ad" style="margin:40px 0;text-align:center"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
 

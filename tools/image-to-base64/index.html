@@ -88,13 +88,13 @@
   --border:rgba(255,255,255,.08);
   --text:#fff;
   --sub:#aab3c5;
-  --accent:#4f8cff
+  --accent:#4f8cff;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{
   font-family:system-ui,-apple-system;
   background:var(--bg);
-  color:var(--text)
+  color:var(--text);
 }
 .container{max-width:900px;margin:auto;padding:50px 16px}
 
@@ -104,7 +104,7 @@ body{
   text-decoration:none;
   font-size:14px;
   margin-bottom:24px;
-  transition:color 0.2s
+  transition:color 0.2s;
 }
 .back:hover{color:var(--accent)}
 
@@ -117,7 +117,7 @@ h2{font-size:22px;margin-top:30px;margin-bottom:10px}
   border:1px solid var(--border);
   border-radius:14px;
   padding:20px;
-  margin-bottom:20px
+  margin-bottom:20px;
 }
 
 .tip{font-size:13px;color:var(--sub);margin-top:10px}
@@ -131,7 +131,7 @@ h2{font-size:22px;margin-top:30px;margin-bottom:10px}
   border-radius:8px;
   border:1px solid var(--border);
   color:var(--sub);
-  text-decoration:none
+  text-decoration:none;
 }
 .tools a:hover{border-color:var(--accent);color:var(--accent)}
 
@@ -142,7 +142,7 @@ h2{font-size:22px;margin-top:30px;margin-bottom:10px}
   border:1px solid var(--border);
   border-radius:12px;
   padding:20px;
-  margin-bottom:12px
+  margin-bottom:12px;
 }
 .faq-item h3{font-size:16px;margin-bottom:8px;color:var(--text)}
 .faq-item p{color:var(--sub);font-size:14px;line-height:1.7;margin:0}
@@ -153,7 +153,7 @@ footer a{
   color:var(--sub);
   text-decoration:none;
   margin:0 10px;
-  transition:color 0.2s
+  transition:color 0.2s;
 }
 footer a:hover{color:var(--accent)}
 
@@ -179,7 +179,7 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
   text-align:center;
   cursor:pointer;
   transition:border-color 0.2s, background 0.2s;
-  background:var(--bg)
+  background:var(--bg);
 }
 .drop-zone:hover,.drop-zone.drag-over{border-color:var(--accent);background:rgba(79,140,255,.05)}
 .drop-zone input[type=file]{display:none}
@@ -204,7 +204,40 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
 .preview-img{max-width:100%;max-height:200px;border-radius:10px;margin-top:12px;display:block}
 
 .out-label{font-size:12px;color:var(--sub);margin-bottom:6px;display:block}
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;margin-top:8px;">PNG · JPG · GIF · WebP · SVG · BMP · up to 10 MB</p>
+footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
+  <link rel="stylesheet" href="/shared.css">
+</head>
+
+<body><div class="container">
+
+<a class="back" href="../index.html">← Back to Tools</a>
+
+<h1>Image to Base64 Converter</h1>
+<p class="subtitle">Convert any image (PNG, JPG, GIF, WebP, SVG) to a Base64 data URI — or decode Base64 back to an image. Drag & drop, paste, or pick a file. All processing happens in your browser.</p>
+
+<div class="ad-banner">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="5794572171"
+       data-ad-format="auto"
+       data-full-width-responsive="true">
+  </ins>
+</div>
+
+<div class="card">
+  <div class="tab-bar">
+    <button class="tab-btn active" onclick="switchTab('encode')">Image → Base64</button>
+    <button class="tab-btn" onclick="switchTab('decode')">Base64 → Image</button>
+  </div>
+
+  <!-- Encode Tab -->
+  <div class="tab-panel active" id="tab-encode">
+    <div class="drop-zone" id="dropZone" onclick="document.getElementById('fileInput').click()">
+      <input type="file" id="fileInput" accept="image/*" onchange="handleFile(this.files[0])">
+      <div class="dz-icon">📁</div>
+      <p><span>Click to browse</span> or drag & drop an image here</p>
+      <p style="font-size:13px;margin-top:8px;">PNG · JPG · GIF · WebP · SVG · BMP · up to 10 MB</p>
     </div>
 
     <div id="encodeResult" style="display:none;margin-top:16px;">
@@ -330,18 +363,18 @@ let currentMime = '';
 let currentFormat = 'datauri';
 
 const dropZone = document.getElementById('dropZone');
-dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over') });
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
 dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
 dropZone.addEventListener('drop', e => {
   e.preventDefault(); dropZone.classList.remove('drag-over');
-  if (e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0])
+  if (e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]);
 });
 
 document.addEventListener('paste', e => {
   const items = e.clipboardData?.items;
   if (!items) return;
   for (const item of items) {
-    if (item.type.startsWith('image/')) { handleFile(item.getAsFile()); break }
+    if (item.type.startsWith('image/')) { handleFile(item.getAsFile()); break; }
   }
 });
 
@@ -361,9 +394,9 @@ function handleFile(file) {
     const img = document.getElementById('previewImg');
     img.src = dataUri; img.style.display = 'block';
     setFormat('datauri');
-    document.getElementById('encodeResult').style.display = 'block'
+    document.getElementById('encodeResult').style.display = 'block';
   };
-  reader.readAsDataURL(file)
+  reader.readAsDataURL(file);
 }
 
 function setFormat(fmt) {
@@ -376,7 +409,7 @@ function setFormat(fmt) {
   else if (fmt === 'plain') out = currentB64;
   else if (fmt === 'css') out = `background-image: url("data:${currentMime};base64,${currentB64}");`;
   else if (fmt === 'html') out = `<img src="data:${currentMime};base64,${currentB64}" alt="" />`;
-  document.getElementById('outputText').value = out
+  document.getElementById('outputText').value = out;
 }
 
 function copyOutput() {
@@ -385,15 +418,15 @@ function copyOutput() {
   navigator.clipboard.writeText(txt).then(() => {
     const btn = document.getElementById('copyBtn');
     btn.textContent = '✅ Copied!';
-    setTimeout(() => { btn.textContent = 'Copy' }, 2000)
-  })
+    setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
+  });
 }
 
 function clearEncode() {
   currentB64 = ''; currentMime = '';
   document.getElementById('encodeResult').style.display = 'none';
   document.getElementById('fileInput').value = '';
-  document.getElementById('previewImg').style.display = 'none'
+  document.getElementById('previewImg').style.display = 'none';
 }
 
 function decodeBase64() {
@@ -403,10 +436,10 @@ function decodeBase64() {
   let mime = 'image/png';
   if (input.startsWith('data:')) {
     const match = input.match(/^data:([^;]+);base64,(.+)$/);
-    if (match) { mime = match[1] }
-    src = input
+    if (match) { mime = match[1]; }
+    src = input;
   } else {
-    src = `data:image/png;base64,${input}`
+    src = `data:image/png;base64,${input}`;
   }
   const img = document.getElementById('decodeImg');
   img.onload = () => {
@@ -415,37 +448,35 @@ function decodeBase64() {
       <div class="meta-item"><b>Height:</b> ${img.naturalHeight}px</div>
       <div class="meta-item"><b>MIME:</b> ${mime}</div>
       <div class="meta-item"><b>Data length:</b> ${input.length.toLocaleString()} chars</div>`;
-    document.getElementById('decodeResult').style.display = 'block'
+    document.getElementById('decodeResult').style.display = 'block';
   };
   img.onerror = () => alert('Invalid Base64 or unsupported image format.');
-  img.src = src
+  img.src = src;
 }
 
 function downloadDecoded() {
   const src = document.getElementById('decodeImg').src;
   const a = document.createElement('a');
-  a.href = src; a.download = 'decoded-image.png'; a.click()
+  a.href = src; a.download = 'decoded-image.png'; a.click();
 }
 
 function clearDecode() {
   document.getElementById('decodeInput').value = '';
-  document.getElementById('decodeResult').style.display = 'none'
+  document.getElementById('decodeResult').style.display = 'none';
 }
 
 function switchTab(name) {
   document.querySelectorAll('.tab-btn').forEach((b, i) => b.classList.toggle('active', ['encode','decode'][i] === name));
   document.getElementById('tab-encode').classList.toggle('active', name === 'encode');
-  document.getElementById('tab-decode').classList.toggle('active', name === 'decode')
+  document.getElementById('tab-decode').classList.toggle('active', name === 'decode');
 }
 
 function formatSize(bytes) {
   if (bytes < 1024) return bytes + ' B';
   if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
-  return (bytes / 1048576).toFixed(2) + ' MB'
+  return (bytes / 1048576).toFixed(2) + ' MB';
 }
 </script>
-</style>
-
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>

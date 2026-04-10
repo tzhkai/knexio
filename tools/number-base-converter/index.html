@@ -79,7 +79,7 @@
   --border:rgba(255,255,255,.08);
   --text:#fff;
   --sub:#aab3c5;
-  --accent:#4f8cff
+  --accent:#4f8cff;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:system-ui,-apple-system;background:var(--bg);color:var(--text)}
@@ -131,7 +131,156 @@ table{width:100%;border-collapse:collapse;font-size:13px}
 th,td{padding:8px 12px;text-align:left;border-bottom:1px solid var(--border)}
 th{color:var(--sub);font-weight:500}
 @media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.btn-row{flex-direction:column}.input-row{flex-direction:column}.results-grid{grid-template-columns:1fr}}
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;text-align:center"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
+footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
+  <link rel="stylesheet" href="/shared.css">
+</head>
+<body><div class="container">
+<a class="back" href="../index.html">← Back to Tools</a>
+<h1>Number Base Converter</h1>
+<p class="subtitle">Convert numbers between binary, decimal, hexadecimal, octal, and any base from 2 to 36.</p>
+
+<div class="ad-banner">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="5794572171"
+       data-ad-format="auto"
+       data-full-width-responsive="true">
+  </ins>
+</div>
+
+<div class="card">
+  <div class="input-row">
+    <div class="input-group" style="flex:2">
+      <label>Enter Number</label>
+      <input type="text" id="inputNumber" placeholder="Enter a number..." value="255">
+    </div>
+    <div class="input-group">
+      <label>From Base</label>
+      <select id="fromBase">
+        <option value="2">Binary (2)</option>
+        <option value="8">Octal (8)</option>
+        <option value="10" selected>Decimal (10)</option>
+        <option value="16">Hexadecimal (16)</option>
+        <option value="36">Base36 (36)</option>
+      </select>
+    </div>
+    <button onclick="convertNumber()">Convert</button>
+  </div>
+
+  <div class="results-grid">
+    <div class="result-box" onclick="copyToClipboard(this)">
+      <h4>Binary (Base 2)</h4>
+      <div class="result-value">0</div>
+    </div>
+    <div class="result-box" onclick="copyToClipboard(this)">
+      <h4>Octal (Base 8)</h4>
+      <div class="result-value">0</div>
+    </div>
+    <div class="result-box" onclick="copyToClipboard(this)">
+      <h4>Decimal (Base 10)</h4>
+      <div class="result-value">0</div>
+    </div>
+    <div class="result-box" onclick="copyToClipboard(this)">
+      <h4>Hexadecimal (Base 16)</h4>
+      <div class="result-value">0</div>
+    </div>
+    <div class="result-box" onclick="copyToClipboard(this)">
+      <h4>Base 32</h4>
+      <div class="result-value">0</div>
+    </div>
+    <div class="result-box" onclick="copyToClipboard(this)">
+      <h4>Base 36</h4>
+      <div class="result-value">0</div>
+    </div>
+  </div>
+
+  <div class="reference-table">
+    <h3>Common Values Reference</h3>
+    <table>
+      <thead>
+        <tr><th>Decimal</th><th>Binary</th><th>Octal</th><th>Hex</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+        <tr><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+        <tr><td>8</td><td>1000</td><td>10</td><td>8</td></tr>
+        <tr><td>16</td><td>10000</td><td>20</td><td>10</td></tr>
+        <tr><td>32</td><td>100000</td><td>40</td><td>20</td></tr>
+        <tr><td>64</td><td>1000000</td><td>100</td><td>40</td></tr>
+        <tr><td>128</td><td>10000000</td><td>200</td><td>80</td></tr>
+        <tr><td>256</td><td>100000000</td><td>400</td><td>100</td></tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <p class="tip">Click any result to copy it to clipboard</p>
+</div>
+
+<div class="copied" id="copiedMsg">Copied!</div>
+
+<h2>Free Online Number Base Converter</h2>
+<div class="section">
+  <p>Our number base converter instantly translates numbers between different numeral systems. Whether you need to convert decimal to binary for programming, hexadecimal for colors, or octal for file permissions, this tool handles it all. Supports bases 2 through 36, covering all practical computing needs.</p>
+</div>
+
+<h2>How It Works</h2>
+<div class="section">
+  <p><strong>Conversion Process:</strong> Enter your number and select the source base (e.g., decimal, binary, hex). The tool converts the input to decimal internally, then displays the result in all common bases simultaneously. Simply click any result to copy it.</p>
+  <p><strong>Supported Bases:</strong> Binary (base 2) uses only 0s and 1s. Octal (base 8) uses digits 0-7. Decimal (base 10) is everyday numbering. Hexadecimal (base 16) uses 0-9 and A-F. Base 32 and 36 extend to alphanumeric characters for compact representation.</p>
+</div>
+
+<h2>Frequently Asked Questions</h2>
+<div class="faq-item">
+  <h3>What number bases does this converter support?</h3>
+  <p>This converter supports any integer base from 2 to 36, including binary, octal, decimal, hexadecimal, base 32, and base 36. The upper limit of 36 is due to using 0-9 and A-Z as digits.</p>
+</div>
+<div class="faq-item">
+  <h3>How do I convert decimal to binary?</h3>
+  <p>Simply enter your decimal number in the input field, make sure "From Base" is set to Decimal (10), and the binary result will appear automatically in the Binary (Base 2) box. Click it to copy.</p>
+</div>
+<div class="faq-item">
+  <h3>What is hexadecimal used for?</h3>
+  <p>Hexadecimal (base 16) is commonly used in computing for representing memory addresses, color codes in web design (#FF0000 for red), and binary data in a more readable format.</p>
+</div>
+<div class="faq-item">
+  <h3>Can I convert very large numbers?</h3>
+  <p>Yes, this converter supports JavaScript's maximum safe integer (9,007,199,254,740,991). For numbers beyond this limit, use BigInt-supporting tools or specialized libraries.</p>
+</div>
+<div class="faq-item">
+  <h3>What's the difference between octal and binary?</h3>
+  <p>Octal uses digits 0-7 and represents 3 bits per digit. Binary uses only 0s and 1s. Octal is sometimes used in Unix file permissions (chmod 755) while binary is the fundamental language of computers.</p>
+</div>
+<div class="faq-item">
+  <h3>Is this converter free to use?</h3>
+  <p>Absolutely. This number base converter is completely free with no limits or restrictions. Use it as often as you need for programming, math, or learning.</p>
+</div>
+<div class="ad-banner" style="margin:24px 0">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="5794572171"
+       data-ad-format="auto"
+       data-full-width-responsive="true">
+  </ins>
+</div>
+<h2>Related Tools</h2>
+<div class="tools">
+<a href="/tools/word-counter/">Word Counter</a>
+<a href="/tools/character-counter/">Character Counter</a>
+<a href="/tools/json-formatter/">Json Formatter</a>
+<a href="/tools/password-generator/">Password Generator</a>
+<a href="/tools/base-converter/">Base Converter</a>
+<a href="/tools/scientific-notation/">Scientific Notation</a>
+</div>
+
+<div class="ad-banner" style="margin-top:40px">
+      <!-- Ad space -->
+    </div>
+
+
+<!-- Ad: Footer -->
+<div class="ad-banner footer-ad" style="margin:40px 0;text-align:center"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
 <footer>
   <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
   <p style="margin: 8px 0; font-size: 13px;">
@@ -155,7 +304,7 @@ function convertNumber() {
     
     if (isNaN(decimal)) {
       alert('Invalid number for selected base');
-      return
+      return;
     }
     
     const results = document.querySelectorAll('.result-value');
@@ -164,9 +313,9 @@ function convertNumber() {
     results[2].textContent = decimal.toString(10);
     results[3].textContent = decimal.toString(16).toUpperCase();
     results[4].textContent = decimal.toString(32).toUpperCase();
-    results[5].textContent = decimal.toString(36).toUpperCase()
+    results[5].textContent = decimal.toString(36).toUpperCase();
   } catch (e) {
-    alert('Conversion error: ' + e.message)
+    alert('Conversion error: ' + e.message);
   }
 }
 
@@ -175,8 +324,8 @@ function copyToClipboard(element) {
   navigator.clipboard.writeText(text).then(() => {
     const msg = document.getElementById('copiedMsg');
     msg.classList.add('show');
-    setTimeout(() => msg.classList.remove('show'), 1500)
-  })
+    setTimeout(() => msg.classList.remove('show'), 1500);
+  });
 }
 
 document.getElementById('inputNumber').addEventListener('input', convertNumber);
@@ -184,8 +333,6 @@ document.getElementById('fromBase').addEventListener('change', convertNumber);
 
 convertNumber();
 </script>
-</style>
-
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>

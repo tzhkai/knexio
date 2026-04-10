@@ -66,7 +66,146 @@ footer p{margin-bottom:8px}
 footer a{color:var(--accent);text-decoration:none;margin:0 8px}
 footer a:hover{opacity:.8}
 @media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.btn-row{flex-direction:column}}
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;text-align:center"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
+footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is this tool free to use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, this tool is completely free to use. No registration, no login, and no subscription required. Just open the page and start using it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my data safe? Is anything stored on a server?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, your data is safe. All processing happens entirely in your browser \u2014 your input never leaves your device and is not sent to any server."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does this tool work on mobile devices?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The tool is fully responsive and works on smartphones, tablets, and desktop computers."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How accurate is the result?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The tool uses standard algorithms and web APIs to provide accurate results. For critical or professional use, please verify with additional sources."
+      }
+    }
+  ]
+}
+</script>
+  <link rel="stylesheet" href="/shared.css">
+</head>
+<body>
+<div class="container">
+  <a class="back" href="../index.html">← Back to Tools</a>
+
+  <h1>HSL to RGB Converter</h1>
+  <p class="subtitle">Convert HSL colors to RGB and Hex instantly with live preview.</p>
+
+  <div class="ad-banner">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="5794572171"
+       data-ad-format="auto"
+       data-full-width-responsive="true">
+  </ins>
+</div>
+
+  <div class="card">
+    <div class="slider-group">
+      <label>Hue <span id="hueValue">200</span>°</label>
+      <input type="range" id="hue" min="0" max="360" value="200" oninput="updateColor()">
+    </div>
+    <div class="slider-group">
+      <label>Saturation <span id="satValue">80</span>%</label>
+      <input type="range" id="saturation" min="0" max="100" value="80" oninput="updateColor()">
+    </div>
+    <div class="slider-group">
+      <label>Lightness <span id="lightValue">50</span>%</label>
+      <input type="range" id="lightness" min="0" max="100" value="50" oninput="updateColor()">
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="color-preview" id="colorPreview"></div>
+    <div class="output-group">
+      <label>RGB</label>
+      <div class="output-row">
+        <input type="text" id="rgbOutput" readonly>
+        <button class="btn" onclick="copyToClipboard('rgbOutput')">Copy</button>
+      </div>
+    </div>
+    <div class="output-group">
+      <label>Hex</label>
+      <div class="output-row">
+        <input type="text" id="hexOutput" readonly>
+        <button class="btn" onclick="copyToClipboard('hexOutput')">Copy</button>
+      </div>
+    </div>
+    <div class="output-group">
+      <label>HSL</label>
+      <div class="output-row">
+        <input type="text" id="hslOutput" readonly>
+        <button class="btn" onclick="copyToClipboard('hslOutput')">Copy</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="ad-banner">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="5794572171"
+       data-ad-format="auto"
+       data-full-width-responsive="true">
+  </ins>
+</div>
+
+  <div class="section">
+    <h2>What Is HSL?</h2>
+    <p>HSL (Hue, Saturation, Lightness) is a color model that represents colors in a way that's more intuitive for humans. Hue is the color type (0-360°), Saturation is the intensity (0-100%), and Lightness is the brightness (0-100%).</p>
+  </div>
+
+  <div class="section">
+    <div class="section">
+      <p><strong>How It Works</strong> - Enter HSL values (Hue 0-360, Saturation 0-100%, Lightness 0-100%) and see instant RGB and HEX equivalents. Use the color picker for visual selection or enter values manually. Copy any format with one click.</p>
+    </div>
+<h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>What's the difference between HSL and RGB?</h3>
+      <p>HSL describes color by hue, saturation, and lightness - more intuitive for humans. RGB describes by red, green, blue values - used by screens.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Can I convert back from RGB to HSL?</h3>
+      <p>Yes, use our RGB to HSL converter for the reverse operation.</p>
+    </div>
+
+    <h2>Related Tools</h2>
+    <div class="tools">
+      <a href="/tools/hex-to-rgb/">Hex to RGB</a>
+      <a href="/tools/color-picker/">Color Picker</a>
+      <a href="/tools/gradient-generator/">Gradient Generator</a>
+    </div>
+  </div>
+
+  
+<!-- Ad: Footer -->
+<div class="ad-banner footer-ad" style="margin:40px 0;text-align:center"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
 <footer>
     <p>Free online tools for developers, designers, and everyone.</p>
     <p style="margin: 8px 0; font-size: 13px;">
@@ -83,14 +222,14 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 function hslToRgb(h, s, l) {
   s /= 100;
   l /= 100;
-  var k = function(n) { return (n + h / 30) % 12 };
+  var k = function(n) { return (n + h / 30) % 12; };
   var a = s * Math.min(l, 1 - l);
-  var f = function(n) { return l - a * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1))) };
-  return [Math.round(255 * f(0)), Math.round(255 * f(8)), Math.round(255 * f(4))]
+  var f = function(n) { return l - a * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1))); };
+  return [Math.round(255 * f(0)), Math.round(255 * f(8)), Math.round(255 * f(4))];
 }
 
 function rgbToHex(r, g, b) {
-  return '#' + [r, g, b].map(function(x) { return x.toString(16).padStart(2, '0') }).join('')
+  return '#' + [r, g, b].map(function(x) { return x.toString(16).padStart(2, '0'); }).join('');
 }
 
 function updateColor() {
@@ -105,19 +244,17 @@ function updateColor() {
   document.getElementById('colorPreview').style.background = 'hsl(' + h + ', ' + s + '%, ' + l + '%)';
   document.getElementById('rgbOutput').value = 'rgb(' + rgb[0] + ', ' + rgb[1] + ', ' + rgb[2] + ')';
   document.getElementById('hexOutput').value = hex;
-  document.getElementById('hslOutput').value = 'hsl(' + h + ', ' + s + '%, ' + l + '%)'
+  document.getElementById('hslOutput').value = 'hsl(' + h + ', ' + s + '%, ' + l + '%)';
 }
 
 function copyToClipboard(id) {
   var el = document.getElementById(id);
   el.select();
-  document.execCommand('copy')
+  document.execCommand('copy');
 }
 
 updateColor();
 </script>
-</style>
-
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>

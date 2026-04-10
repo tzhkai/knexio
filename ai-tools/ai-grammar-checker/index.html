@@ -40,39 +40,39 @@
       --border: rgba(255,255,255,0.08);
       --text: #ffffff;
       --sub: #aab3c5;
-      --accent: #4f8cff
+      --accent: #4f8cff;
     }
 
-    * { box-sizing: border-box }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
       background: linear-gradient(180deg, #0b1220, #070d1a);
-      color: var(--text)
+      color: var(--text);
     }
 
-    a { color: var(--accent); text-decoration: none }
+    a { color: var(--accent); text-decoration: none; }
 
     .container {
       max-width: 920px;
       margin: 0 auto;
-      padding: 60px 20px 100px
+      padding: 60px 20px 100px;
     }
 
     .back {
       display: inline-block;
       margin-bottom: 24px;
       color: var(--sub);
-      font-size: 14px
+      font-size: 14px;
     }
 
-    h1 { font-size: 34px; margin: 0 0 10px }
+    h1 { font-size: 34px; margin: 0 0 10px; }
 
     .subtitle {
       color: var(--sub);
       font-size: 15px;
-      margin-bottom: 24px
+      margin-bottom: 24px;
     }
 
     textarea {
@@ -84,10 +84,10 @@
       background: var(--card);
       color: #fff;
       font-size: 15px;
-      resize: vertical
+      resize: vertical;
     }
 
-    textarea::placeholder { color: #7f8aa3 }
+    textarea::placeholder { color: #7f8aa3; }
 
     input[type="text"],
     select {
@@ -97,15 +97,15 @@
       border: 1px solid var(--border);
       background: var(--card);
       color: #fff;
-      font-size: 15px
+      font-size: 15px;
     }
 
-    input::placeholder { color: #7f8aa3 }
+    input::placeholder { color: #7f8aa3; }
 
     .btn-row {
       display: flex;
       gap: 12px;
-      margin-top: 12px
+      margin-top: 12px;
     }
 
     .btn-row button {
@@ -115,28 +115,28 @@
       background: var(--card);
       color: var(--sub);
       cursor: pointer;
-      font-size: 14px
+      font-size: 14px;
     }
 
-    .btn-row button:hover { color: #fff; border-color: var(--accent) }
+    .btn-row button:hover { color: #fff; border-color: var(--accent); }
 
     .main-btn {
       background: var(--accent) !important;
       color: #fff !important;
-      border: none !important
+      border: none !important;
     }
 
-    .main-btn:hover { background: #3a7be0 !important }
+    .main-btn:hover { background: #3a7be0 !important; }
 
     .input-group {
-      margin-bottom: 20px
+      margin-bottom: 20px;
     }
 
     label {
       display: block;
       margin-bottom: 8px;
       font-size: 14px;
-      color: var(--sub)
+      color: var(--sub);
     }
 
     .result-box {
@@ -145,43 +145,43 @@
       border-radius: 14px;
       padding: 20px;
       min-height: 200px;
-      margin-top: 20px
+      margin-top: 20px;
     }
 
     .result-label {
       font-size: 13px;
       color: var(--sub);
       margin-bottom: 12px;
-      font-weight: 600
+      font-weight: 600;
     }
 
     .result-content {
       font-size: 15px;
       line-height: 1.75;
-      color: var(--text)
+      color: var(--text);
     }
 
-    .section { margin-top: 60px }
-    .section h2 { font-size: 24px; margin-bottom: 12px }
-    .section p { color: var(--sub); line-height: 1.75; font-size: 15px }
+    .section { margin-top: 60px; }
+    .section h2 { font-size: 24px; margin-bottom: 12px; }
+    .section p { color: var(--sub); line-height: 1.75; font-size: 15px; }
 
-    .faq { margin-top: 60px }
-    .faq h2 { font-size: 24px; margin-bottom: 20px }
+    .faq { margin-top: 60px; }
+    .faq h2 { font-size: 24px; margin-bottom: 20px; }
     .faq-item {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 20px;
-      margin-bottom: 16px
+      margin-bottom: 16px;
     }
-    .faq-item h3 { font-size: 16px; margin: 0 0 8px }
-    .faq-item p { color: var(--sub); font-size: 14px; line-height: 1.7; margin: 0 }
+    .faq-item h3 { font-size: 16px; margin: 0 0 8px; }
+    .faq-item p { color: var(--sub); font-size: 14px; line-height: 1.7; margin: 0; }
 
     .tools a {
       display: inline-block;
       margin-right: 16px;
       margin-top: 8px;
-      font-size: 14px
+      font-size: 14px;
     }
 
     footer p{margin:0}
@@ -191,54 +191,173 @@
     @media (max-width: 768px) {
       .container {
         padding: 40px 15px 80px !important;
-        max-width: 100% !important
+        max-width: 100% !important;
       }
 
       h1 {
         font-size: 28px !important;
-        line-height: 1.3 !important
+        line-height: 1.3 !important;
       }
 
       h2 {
         font-size: 20px !important;
         margin-top: 36px !important;
-        margin-bottom: 10px !important
+        margin-bottom: 10px !important;
       }
 
       textarea {
         min-height: 180px !important;
-        padding: 12px !important
+        padding: 12px !important;
       }
 
       .btn-row {
-        flex-wrap: wrap
+        flex-wrap: wrap;
       }
 
       .ad-banner {
         margin: 16px 0 !important;
-        min-height: 50px !important
+        min-height: 50px !important;
       }
     }
 
     @media (max-width: 480px) {
       h1 {
-        font-size: 24px !important
+        font-size: 24px !important;
       }
 
       h2 {
-        font-size: 18px !important
+        font-size: 18px !important;
       }
 
       .container {
-        padding: 32px 12px 60px !important
+        padding: 32px 12px 60px !important;
       }
     }
 
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;
+footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
+  <link rel="stylesheet" href="/shared.css">
+</head>
+
+<body>
+  <div class="container">
+    <a class="back" href="../index.html">← Back to AI Tools</a>
+
+    <h1>AI Grammar Checker</h1>
+
+    <div class="subtitle">
+      Automatically detect and fix grammar, spelling, and punctuation errors.
+    </div>
+
+    <div class="ad-banner">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="5794572171"
+       data-ad-format="auto"
+       data-full-width-responsive="true">
+  </ins>
+</div>
+
+    <textarea id="inputText" placeholder="Paste or type your text here..."></textarea>
+
+    <div class="btn-row">
+      <button class="main-btn" onclick="checkGrammar()">Check Grammar</button>
+      <button onclick="clearText()">Clear</button>
+      <button onclick="copyText()">Copy Result</button>
+    </div>
+
+    <div class="result-box">
+      <div class="result-label">Corrected Text:</div>
+      <div class="result-content" id="result">Your corrected text will appear here...</div>
+    </div>
+
+    <div class="ad-banner" style="margin-top: 40px">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="5794572171"
+       data-ad-format="auto"
+       data-full-width-responsive="true">
+  </ins>
+</div>
+
+    <div class="section">
+      <h2>Free Online AI Grammar Checker</h2>
+      <p>
+        Instantly detect and fix grammar, spelling, and punctuation errors with our free AI grammar checker. Improve your writing quality and communicate more professionally. Perfect for students, professionals, writers, and anyone who wants error-free text. Your content is processed locally in your browser, ensuring complete privacy and security.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>How It Works</h2>
+      <p>
+        Paste or type your text into the input area. This can be anything from a quick email to a full essay or business document. The tool accepts text of any length and works with various types of content including academic writing, business communications, creative writing, and more.
+      </p>
+      <p>
+        Click "Check Grammar" to analyze your text. The AI examines your content for grammatical errors, spelling mistakes, punctuation issues, and style improvements. It identifies common problems like subject-verb agreement, tense consistency, run-on sentences, and incorrect word usage.
+      </p>
+      <p>
+        Review the corrected version displayed in the results area. The tool shows your text with fixes applied, highlighting improvements. You can copy the corrected version to use in your documents, emails, or publications. Always review suggested changes to ensure they match your intended meaning.
+      </p>
+    </div>
+
+    <div class="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <h3>What is an AI grammar checker?</h3>
+        <p>An AI grammar checker uses artificial intelligence to analyze text and automatically detect grammar, spelling, punctuation errors, and suggest improvements for better writing quality.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What errors can it detect?</h3>
+        <p>The tool detects a wide range of errors including grammatical mistakes, spelling errors, punctuation issues, subject-verb agreement problems, tense inconsistencies, and common style issues.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Is this grammar checker free to use?</h3>
+        <p>Yes. The tool is completely free and works directly in your browser without registration. Check unlimited amounts of text to improve your writing quality.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How accurate are the corrections?</h3>
+        <p>The AI provides highly accurate suggestions for common errors. However, always review suggested changes to ensure they match your intended meaning and context, as language can be nuanced.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Is my text data stored or shared?</h3>
+        <p>No. All text processing happens locally in your browser. Your content is never stored on our servers or shared with third parties, ensuring complete privacy.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Can I use this for academic writing?</h3>
+        <p>Yes, the tool is helpful for academic writing. However, always review the suggestions carefully and ensure they align with your institution's style guide and requirements.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Related AI Tools</h2>
+      <div class="tools">
+        <a href="../chatgpt-prompt-generator/index.html">ChatGPT Prompt Generator</a>
+        <a href="../ai-content-rewriter/index.html">AI Content Rewriter</a>
+        <a href="../prompt-library/index.html">Prompt Library</a>
+        <a href="../ai-writing-assistant/index.html">AI Writing Assistant</a>
+      </div>
+    </div>
+
+    <div class="ad-banner" style="margin-top: 40px">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="5794572171"
+       data-ad-format="auto"
+       data-full-width-responsive="true">
+  </ins>
+</div>
+
+  </div>
+
+  <script>
+    function checkGrammar() {
+      const input = document.getElementById('inputText').value.trim();
 
       if (!input) {
         alert('Please enter some text to check');
-        return
+        return;
       }
 
       const result = document.getElementById('result');
@@ -267,31 +386,29 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
         ];
 
         corrections.forEach(({ pattern, replacement }) => {
-          corrected = corrected.replace(pattern, replacement)
+          corrected = corrected.replace(pattern, replacement);
         });
 
-        result.textContent = corrected
-      }, 800)
+        result.textContent = corrected;
+      }, 800);
     }
 
     function clearText() {
       document.getElementById('inputText').value = '';
-      document.getElementById('result').textContent = 'Your corrected text will appear here...'
+      document.getElementById('result').textContent = 'Your corrected text will appear here...';
     }
 
     function copyText() {
       const result = document.getElementById('result');
       if (result && result.textContent !== 'Your corrected text will appear here...' && result.textContent !== 'Checking grammar...') {
         navigator.clipboard.writeText(result.textContent).then(() => {
-          alert('Corrected text copied to clipboard!')
-        })
+          alert('Corrected text copied to clipboard!');
+        });
       }
     }
   </script>
 
-  </style>
-
-<script src="/knexio-bundle.js"></script>
+  <script src="/knexio-bundle.js"></script>
 
       <footer>
   <p>Free AI-powered tools to boost your productivity.</p>

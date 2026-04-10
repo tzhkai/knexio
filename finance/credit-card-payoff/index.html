@@ -105,7 +105,7 @@
     .faq-item{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;margin-bottom:16px}
     .faq-item h3{font-size:16px;font-weight:600;color:var(--text);margin-bottom:8px}
     .faq-item p{font-size:14px;color:var(--sub);margin-bottom:0;line-height:1.6}
-    footer{text-align:center;padding:40px 20px;margin-top:60px;color:var(--sub);font-size:14px}
+    footer{text-align:center;padding:40px 20px;border-top:1px solid var(--border);margin-top:60px;color:var(--sub);font-size:14px}
     footer p{margin-bottom:8px}
     footer a{color:var(--accent);transition:color 0.2s}
     footer a:hover{color:#3d7de0}
@@ -114,7 +114,7 @@
 
 <!-- Open Graph -->
 <meta property="og:site_name" content="Knexio">
-<link rel="stylesheet" href="shared.css">
+  <link rel="stylesheet" href="/shared.css">
 </head>
 <body>
   <div class="container">
@@ -231,7 +231,7 @@
       const minPay=parseFloat(document.getElementById('minPayment').value)||0;
       const fixedPay=parseFloat(document.getElementById('fixedPayment').value)||0;
       const newCharges=parseFloat(document.getElementById('newCharges').value)||0;
-      if(balance<=0){alert('Please enter a valid balance.');return}
+      if(balance<=0){alert('Please enter a valid balance.');return;}
       const monthlyRate=apr/100/12;
       function simulate(monthlyPayment){
         let bal=balance,months=0,totalInt=0;
@@ -240,9 +240,9 @@
           totalInt+=interest;
           bal+=interest+newCharges-monthlyPayment;
           months++;
-          if(bal>=balance*2){return{months:999,totalInt:99999999}}
+          if(bal>=balance*2){return{months:999,totalInt:99999999};}
         }
-        return{months,totalInt:Math.max(0,totalInt)}
+        return{months,totalInt:Math.max(0,totalInt)};
       }
       const resMin=simulate(minPay);
       const resFix=simulate(fixedPay);
@@ -260,7 +260,7 @@
         <div class="result-row"><span class="result-label">Fixed payment total interest</span><span class="result-value green">$${fmt(resFix.totalInt)}</span></div>
         ${resFix.months<resMin.months&&resMin.months<600?`<div class="result-row"><span class="result-label">Interest saved</span><span class="result-value green">$${fmt(resMin.totalInt-resFix.totalInt)}</span></div>`:''}
         <div class="result-row"><span class="result-label">Monthly interest charge</span><span class="result-value">$${fmt(minInterest)}</span></div>
-      `
+      `;
     }
     function clearForm(){
       document.getElementById('balance').value='5000';
@@ -268,7 +268,7 @@
       document.getElementById('minPayment').value='100';
       document.getElementById('fixedPayment').value='200';
       document.getElementById('newCharges').value='0';
-      document.getElementById('results').innerHTML='<div class="result-placeholder">Enter your details and click <strong>Calculate</strong> to see results</div>'
+      document.getElementById('results').innerHTML='<div class="result-placeholder">Enter your details and click <strong>Calculate</strong> to see results</div>';
     }
   </script>
   <script src="/knexio-bundle.js"></script>
