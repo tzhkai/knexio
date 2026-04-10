@@ -382,91 +382,6 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
 <a href="/tools/document-converter/">Document Converter</a>
 </div>
 
-</div>
-
-<script>
-async function handleFile(event) {
-  const file = event.target.files[0];
-  if (!file) return;
-  
-  // 检查文件类型
-  if (!file.name.toLowerCase().endsWith('.pdf')) {
-    alert('Please select a PDF file.');
-    return;
-  }
-  
-  // 检查文件大小（10MB）
-  if (file.size > 10 * 1024 * 1024) {
-    alert('File size exceeds 10MB limit.');
-    return;
-  }
-  
-  // 显示文件信息
-  document.getElementById('fileName').textContent = file.name;
-  document.getElementById('fileSize').textContent = formatFileSize(file.size);
-  
-  // 显示转换面板
-  document.getElementById('convertPanel').style.display = 'block';
-  
-  // 模拟转换进度
-  const progress = document.getElementById('progress');
-  let percent = 0;
-  const interval = setInterval(() => {
-    percent += Math.random() * 15 + 5;
-    if (percent > 100) {
-      percent = 100;
-      clearInterval(interval);
-      // 转换完成，显示下载按钮
-      setTimeout(() => {
-        progress.style.width = '100%';
-        // 这里应该是真实的下载链接，但因为是前端演示，我们提供一个模拟的
-        alert('Conversion complete! Download would start now if this were a real backend.');
-        
-        // 实际部署时这里会调用API并返回真实文件
-        // downloadConvertedFile(file);
-      }, 200);
-    } else {
-      progress.style.width = percent + '%';
-    }
-  }, 200);
-}
-
-function formatFileSize(bytes) {
-  if (bytes < 1024) return bytes + ' B';
-  if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
-  return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
-}
-
-// 拖放支持
-document.addEventListener('DOMContentLoaded', function() {
-  const uploadArea = document.getElementById('uploadArea');
-  const fileInput = document.getElementById('fileInput');
-  
-  uploadArea.addEventListener('dragover', function(e) {
-    e.preventDefault();
-    uploadArea.style.borderColor = 'var(--accent)';
-  });
-  
-  uploadArea.addEventListener('dragleave', function() {
-    uploadArea.style.borderColor = 'var(--border)';
-  });
-  
-  uploadArea.addEventListener('drop', function(e) {
-    e.preventDefault();
-    uploadArea.style.borderColor = 'var(--border)';
-    
-    if (e.dataTransfer.files.length) {
-      fileInput.files = e.dataTransfer.files;
-      // 手动触发change事件
-      const changeEvent = new Event('change', { bubbles: true });
-      fileInput.dispatchEvent(changeEvent);
-    }
-  });
-});
-</script>
-<script src="/knexio-bundle.js"></script>
-
-    
 <!-- Ad: Footer -->
 <div class="ad-banner footer-ad" style="margin:40px 0;text-align:center"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
 <footer>
@@ -479,6 +394,7 @@ document.addEventListener('DOMContentLoaded', function() {
       </p>
       <p>© 2026 Knexio. All rights reserved.</p>
     </footer>
-
+</div>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
