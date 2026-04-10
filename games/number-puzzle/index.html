@@ -20,7 +20,7 @@
     *{box-sizing:border-box;margin:0;padding:0}
     body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:linear-gradient(180deg,var(--bg),var(--bg2));color:var(--text);min-height:100vh}
     a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
-    .wrap{width:fit-content;margin:0 auto;padding:28px 16px 80px;text-align:center}
+    .wrap{max-width:700px;margin:0 auto;padding:28px 16px 80px;text-align:center}
     .back{display:inline-block;margin-bottom:20px;color:var(--sub);font-size:14px;float:left}
     .clearfix::after{content:'';display:table;clear:both}
     h1{font-size:30px;margin-bottom:6px}
@@ -47,7 +47,7 @@
     .seo{margin-top:60px;text-align:left}
     .seo h2{font-size:22px;margin-bottom:10px}
     .seo p{font-size:14px;color:var(--sub);line-height:1.8;margin-bottom:12px}
-    footer{margin-top:60px;font-size:13px;color:var(--sub);text-align:center;border-top:1px solid var(--border);}footer a{color:var(--accent)}
+    footer{max-width:700px;margin:60px auto 0;font-size:13px;color:var(--sub);text-align:center;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}footer a{color:var(--accent);text-decoration:none;margin:0 8px}
 
     /* ==================== 移动端优化 ==================== */
 
@@ -366,21 +366,22 @@
             </p>
         </div>
     </div>
+
+<!-- Ad: Footer -->
+<div class="ad-banner footer-ad" style="margin:40px 0;text-align:center"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
+<footer>
+  <p>Free online games to play anytime. Enjoy classic games, puzzles, and entertainment.</p>
+  <p style="margin: 8px 0; font-size: 13px;">
+    <a href="/about/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">About</a>
+    <a href="/privacy/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Privacy</a>
+    <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
+    <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
+  </p>
+  <p>© 2026 Knexio. All rights reserved.</p>
+</footer>
+
 </div>
 
-
-    <footer>
-      <p>Free online games to play anytime. Enjoy classic games, puzzles, and entertainment.</p>
-      <p style="margin: 8px 0; font-size: 13px;">
-        <a href="/about/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">About</a>
-        <a href="/privacy/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Privacy</a>
-        <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
-        <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
-      </p>
-      <p>© 2026 Knexio. All rights reserved.</p>
-    </footer>
-
-  
 <script>
 // Game init //
   let size=4, tiles=[], emptyIdx=0, moves=0, best={}, timer=null, seconds=0, started=false;
@@ -466,9 +467,9 @@ function render(won=false){
 }
 
 newGame();
-</script></div>
-
+</script>
 
 <script src="/knexio-bundle.js"></script>
+<script src="../../cookie-consent.js"></script>
 </body>
 </html>
