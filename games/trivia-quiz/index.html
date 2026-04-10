@@ -382,4 +382,119 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 </footer>
 
 </body>
+<script>
+// ==================== Trivia Quiz Game Logic ====================
+(function() {
+  'use strict';
+  
+  const questions = [
+    { q: 'What is the capital of France?', options: ['London', 'Paris', 'Berlin', 'Madrid'], answer: 1 },
+    { q: 'Which planet is known as the Red Planet?', options: ['Venus', 'Jupiter', 'Mars', 'Saturn'], answer: 2 },
+    { q: 'What is the largest ocean on Earth?', options: ['Atlantic', 'Indian', 'Arctic', 'Pacific'], answer: 3 },
+    { q: 'How many continents are there?', options: ['5', '6', '7', '8'], answer: 2 },
+    { q: 'What is the chemical symbol for gold?', options: ['Go', 'Gd', 'Au', 'Ag'], answer: 2 },
+    { q: 'Which country invented pizza?', options: ['USA', 'Italy', 'France', 'Spain'], answer: 1 },
+    { q: 'What is the largest mammal?', options: ['Elephant', 'Blue Whale', 'Giraffe', 'Hippopotamus'], answer: 1 },
+    { q: 'How many sides does a hexagon have?', options: ['5', '6', '7', '8'], answer: 1 },
+    { q: 'What year did World War II end?', options: ['1943', '1944', '1945', '1946'], answer: 2 },
+    { q: 'Which element has the atomic number 1?', options: ['Helium', 'Hydrogen', 'Oxygen', 'Carbon'], answer: 1 },
+    { q: 'What is the capital of Japan?', options: ['Beijing', 'Seoul', 'Tokyo', 'Bangkok'], answer: 2 },
+    { q: 'How many planets are in our solar system?', options: ['7', '8', '9', '10'], answer: 1 },
+    { q: 'What is the fastest land animal?', options: ['Lion', 'Cheetah', 'Gazelle', 'Horse'], answer: 1 },
+    { q: 'Which country has the largest population?', options: ['USA', 'India', 'China', 'Indonesia'], answer: 2 },
+    { q: 'What is the square root of 144?', options: ['10', '11', '12', '13'], answer: 2 }
+  ];
+  
+  let currentQuestion = 0;
+  let score = 0;
+  let shuffledQuestions = [];
+  
+  const questionEl = document.getElementById('questionText');
+  const optionsEl = document.getElementById('optionsGrid');
+  const progressEl = document.getElementById('progress');
+  const feedbackEl = document.getElementById('feedback');
+  const quizScreen = document.getElementById('quizScreen');
+  const scoreScreen = document.getElementById('scoreScreen');
+  const scoreBig = document.getElementById('scoreBig');
+  const scoreLabel = document.getElementById('scoreLabel');
+  
+  function shuffle(array) {
+    return [...array].sort(() => Math.random() - 0.5);
+  }
+  
+  window.startQuiz = function() {
+    shuffledQuestions = shuffle(questions).slice(0, 10);
+    currentQuestion = 0;
+    score = 0;
+    
+    quizScreen.style.display = 'block';
+    scoreScreen.style.display = 'none';
+    
+    showQuestion();
+  };
+  
+  function showQuestion() {
+    const q = shuffledQuestions[currentQuestion];
+    questionEl.textContent = q.q;
+    progressEl.textContent = `${currentQuestion + 1}/${shuffledQuestions.length}`;
+    feedbackEl.textContent = '';
+    feedbackEl.className = 'feedback';
+    
+    optionsEl.innerHTML = '';
+    q.options.forEach((opt, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'opt-btn';
+      btn.textContent = opt;
+      btn.onclick = () => selectOption(i);
+      optionsEl.appendChild(btn);
+    });
+  }
+  
+  window.selectOption = function(index) {
+    const q = shuffledQuestions[currentQuestion];
+    const buttons = optionsEl.querySelectorAll('.opt-btn');
+    
+    buttons.forEach((btn, i) => {
+      btn.disabled = true;
+      if (i === q.answer) {
+        btn.classList.add('correct');
+      } else if (i === index && i !== q.answer) {
+        btn.classList.add('wrong');
+      }
+    });
+    
+    if (index === q.answer) {
+      score++;
+      feedbackEl.textContent = '✓ Correct!';
+      feedbackEl.className = 'feedback correct';
+    } else {
+      feedbackEl.textContent = '✗ Wrong!';
+      feedbackEl.className = 'feedback wrong';
+    }
+    
+    currentQuestion++;
+    
+    if (currentQuestion >= shuffledQuestions.length) {
+      setTimeout(showResults, 1000);
+    } else {
+      setTimeout(showQuestion, 1000);
+    }
+  };
+  
+  function showResults() {
+    quizScreen.style.display = 'none';
+    scoreScreen.style.display = 'block';
+    scoreBig.textContent = `${score}/${shuffledQuestions.length}`;
+    
+    const pct = score / shuffledQuestions.length;
+    if (pct >= 0.9) scoreLabel.textContent = 'Excellent! 🎉';
+    else if (pct >= 0.7) scoreLabel.textContent = 'Great job! 👏';
+    else if (pct >= 0.5) scoreLabel.textContent = 'Good effort! 💪';
+    else scoreLabel.textContent = 'Keep learning! 📚';
+  }
+  
+  // Initialize
+  startQuiz();
+})();
+</script>
 </html>

@@ -384,4 +384,123 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 </footer>
 
 </body>
+<script>
+// ==================== Word Scramble Game Logic ====================
+(function() {
+  'use strict';
+  
+  const words = [
+    { word: 'elephant', hint: 'Large gray animal with trunk' },
+    { word: 'computer', hint: 'Electronic device for processing data' },
+    { word: 'rainbow', hint: 'Colorful arc in the sky' },
+    { word: 'mountain', hint: 'Very tall landform' },
+    { word: 'butterfly', hint: 'Insect with colorful wings' },
+    { word: 'adventure', hint: 'Exciting journey or experience' },
+    { word: 'chocolate', hint: 'Sweet brown candy' },
+    { word: 'beautiful', hint: 'Very pretty' },
+    { word: 'wonderful', hint: 'Amazing, delightful' },
+    { word: 'happiness', hint: 'Feeling of joy' },
+    { word: 'algorithm', hint: 'Step-by-step procedure' },
+    { word: 'programming', hint: 'Writing computer code' },
+    { word: 'javascript', hint: 'Popular web programming language' },
+    { word: 'sunshine', hint: 'Light from the sun' },
+    { word: 'keyboard', hint: 'Input device with keys' }
+  ];
+  
+  let currentWord = null;
+  let score = 0;
+  let hintsUsed = 0;
+  let timeLeft = 60;
+  let timerInterval = null;
+  
+  const scrambledEl = document.getElementById('scrambledWord');
+  const inputEl = document.getElementById('answerInput');
+  const feedbackEl = document.getElementById('feedback');
+  const scoreEl = document.getElementById('score');
+  const timerEl = document.getElementById('timer');
+  const timerFill = document.getElementById('timerFill');
+  const hintText = document.getElementById('hintText');
+  
+  function shuffle(word) {
+    return word.split('').sort(() => Math.random() - 0.5).join('');
+  }
+  
+  function newWord() {
+    currentWord = words[Math.floor(Math.random() * words.length)];
+    scrambledEl.textContent = shuffle(currentWord.word).toUpperCase();
+    inputEl.value = '';
+    feedbackEl.textContent = '';
+    feedbackEl.className = 'feedback';
+    hintText.textContent = '';
+    hintsUsed = 0;
+  }
+  
+  window.checkAnswer = function() {
+    const answer = inputEl.value.toLowerCase().trim();
+    
+    if (answer === currentWord.word) {
+      score += Math.max(10, 30 - hintsUsed * 10);
+      scoreEl.textContent = score;
+      feedbackEl.textContent = '✓ Correct! +' + Math.max(10, 30 - hintsUsed * 10);
+      feedbackEl.className = 'feedback correct';
+      setTimeout(newWord, 1000);
+    } else {
+      feedbackEl.textContent = '✗ Try again!';
+      feedbackEl.className = 'feedback wrong';
+    }
+  };
+  
+  window.showHint = function() {
+    if (hintsUsed === 0) {
+      hintText.textContent = '💡 Hint: ' + currentWord.hint;
+      hintsUsed = 1;
+    } else if (hintsUsed === 1) {
+      hintText.textContent = '💡 First letter: ' + currentWord.word[0].toUpperCase();
+      hintsUsed = 2;
+    }
+  };
+  
+  window.skipWord = function() {
+    feedbackEl.textContent = 'Skipped. Answer was: ' + currentWord.word.toUpperCase();
+    feedbackEl.className = 'feedback';
+    setTimeout(newWord, 1500);
+  };
+  
+  function updateTimer() {
+    timeLeft--;
+    timerEl.textContent = timeLeft;
+    timerFill.style.width = (timeLeft / 60 * 100) + '%';
+    
+    if (timeLeft <= 0) {
+      endGame();
+    }
+  }
+  
+  function endGame() {
+    clearInterval(timerInterval);
+    feedbackEl.textContent = `Game Over! Final Score: ${score}`;
+    feedbackEl.className = 'feedback';
+  }
+  
+  window.startGame = function() {
+    score = 0;
+    timeLeft = 60;
+    scoreEl.textContent = '0';
+    timerEl.textContent = '60';
+    timerFill.style.width = '100%';
+    
+    newWord();
+    
+    timerInterval = setInterval(updateTimer, 1000);
+  };
+  
+  // Initialize
+  startGame();
+  
+  // Enter key to check
+  inputEl?.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') checkAnswer();
+  });
+})();
+</script>
 </html>

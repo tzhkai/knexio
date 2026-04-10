@@ -392,4 +392,66 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 </footer>
 
 </body>
+<script>
+// ==================== Dice Roller Game Logic ====================
+(function() {
+  'use strict';
+  
+  let selectedSides = 6;
+  let quantity = 1;
+  let history = [];
+  
+  const displayEl = document.getElementById('diceDisplay');
+  const totalEl = document.getElementById('totalValue');
+  const historyEl = document.getElementById('historyList');
+  const qtyEl = document.getElementById('qtyValue');
+  
+  window.selectDie = function(sides) {
+    selectedSides = sides;
+    document.querySelectorAll('.dice-btn').forEach(btn => {
+      btn.classList.toggle('active', parseInt(btn.dataset.sides) === sides);
+    });
+  };
+  
+  window.changeQty = function(delta) {
+    quantity = Math.max(1, Math.min(10, quantity + delta));
+    qtyEl.textContent = quantity;
+  };
+  
+  window.rollDice = function() {
+    displayEl.classList.add('rolling');
+    
+    setTimeout(() => {
+      const results = [];
+      for (let i = 0; i < quantity; i++) {
+        results.push(Math.floor(Math.random() * selectedSides) + 1);
+      }
+      
+      // Display
+      displayEl.innerHTML = results.map(r => `<div class="die">${r}</div>`).join('');
+      displayEl.classList.remove('rolling');
+      
+      // Total
+      const total = results.reduce((a, b) => a + b, 0);
+      totalEl.textContent = quantity > 1 ? `Total: ${total}` : '';
+      
+      // History
+      const record = `${quantity}D${selectedSides}: [${results.join(', ')}]${quantity > 1 ? ` = ${total}` : ''}`;
+      history.unshift(record);
+      if (history.length > 10) history.pop();
+      historyEl.innerHTML = history.map(h => `<div class="history-item">${h}</div>`).join('');
+    }, 400);
+  };
+  
+  window.clearHistory = function() {
+    history = [];
+    historyEl.innerHTML = '';
+    displayEl.innerHTML = '<div class="die">?</div>';
+    totalEl.textContent = '';
+  };
+  
+  // Initialize display
+  if (displayEl) displayEl.innerHTML = '<div class="die">?</div>';
+})();
+</script>
 </html>

@@ -399,4 +399,140 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 </footer>
 
 </body>
+<script>
+// ==================== Hangman Game Logic ====================
+(function() {
+  'use strict';
+  
+  const wordLists = {
+    'Animals': ['elephant', 'giraffe', 'penguin', 'dolphin', 'butterfly', 'kangaroo', 'octopus', 'cheetah'],
+    'Countries': ['australia', 'brazil', 'canada', 'germany', 'japan', 'mexico', 'spain', 'thailand'],
+    'Foods': ['spaghetti', 'hamburger', 'chocolate', 'pancakes', 'sandwich', 'broccoli', 'avocado', 'mushroom'],
+    'Movies': ['inception', 'gladiator', 'titanic', 'avatar', 'matrix', 'frozen', 'jaws', 'rocky'],
+    'Technology': ['computer', 'keyboard', 'internet', 'software', 'database', 'algorithm', 'network', 'server']
+  };
+  
+  const bodyParts = ['hm-head', 'hm-body', 'hm-leftArm', 'hm-rightArm', 'hm-leftLeg', 'hm-rightLeg'];
+  
+  let currentWord = '';
+  let currentCategory = '';
+  let guessedLetters = [];
+  let wrongGuesses = 0;
+  let gameOver = false;
+  let scores = { wins: 0, losses: 0, streak: 0 };
+  
+  const wordDisplay = document.getElementById('wordDisplay');
+  const categoryEl = document.getElementById('category');
+  const statusEl = document.getElementById('statusText');
+  const lettersEl = document.getElementById('letterButtons');
+  
+  // Initialize
+  startNewGame();
+  createLetterButtons();
+  
+  function startNewGame() {
+    const categories = Object.keys(wordLists);
+    currentCategory = categories[Math.floor(Math.random() * categories.length)];
+    const words = wordLists[currentCategory];
+    currentWord = words[Math.floor(Math.random() * words.length)].toLowerCase();
+    
+    guessedLetters = [];
+    wrongGuesses = 0;
+    gameOver = false;
+    
+    // Reset display
+    categoryEl.textContent = currentCategory;
+    updateWordDisplay();
+    statusEl.textContent = 'Guess a letter!';
+    statusEl.className = 'status-text';
+    
+    // Reset hangman
+    bodyParts.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.style.display = 'none';
+    });
+    
+    // Reset buttons
+    document.querySelectorAll('.letter-btn').forEach(btn => {
+      btn.disabled = false;
+      btn.classList.remove('correct', 'wrong');
+    });
+  }
+  
+  function createLetterButtons() {
+    if (!lettersEl) return;
+    lettersEl.innerHTML = '';
+    for (let i = 65; i <= 90; i++) {
+      const letter = String.fromCharCode(i);
+      const btn = document.createElement('button');
+      btn.className = 'letter-btn';
+      btn.textContent = letter;
+      btn.onclick = () => guessLetter(letter.toLowerCase());
+      lettersEl.appendChild(btn);
+    }
+  }
+  
+  function guessLetter(letter) {
+    if (gameOver || guessedLetters.includes(letter)) return;
+    
+    guessedLetters.push(letter);
+    const btn = document.querySelector(`.letter-btn:nth-child(${letter.charCodeAt(0) - 64})`);
+    
+    if (currentWord.includes(letter)) {
+      btn?.classList.add('correct');
+      updateWordDisplay();
+      
+      // Check win
+      if (!wordDisplay.textContent.includes('_')) {
+        gameOver = true;
+        statusEl.textContent = '🎉 You Won!';
+        statusEl.className = 'status-text status-win';
+        scores.wins++;
+        scores.streak++;
+        updateScores();
+      }
+    } else {
+      btn?.classList.add('wrong');
+      wrongGuesses++;
+      
+      // Show body part
+      if (wrongGuesses <= bodyParts.length) {
+        const part = document.getElementById(bodyParts[wrongGuesses - 1]);
+        if (part) part.style.display = 'block';
+      }
+      
+      // Check lose
+      if (wrongGuesses >= 6) {
+        gameOver = true;
+        statusEl.textContent = `💀 Game Over! Word: ${currentWord.toUpperCase()}`;
+        statusEl.className = 'status-text status-lose';
+        scores.losses++;
+        scores.streak = 0;
+        updateScores();
+      }
+    }
+    
+    if (btn) btn.disabled = true;
+  }
+  
+  function updateWordDisplay() {
+    wordDisplay.textContent = currentWord.split('').map(l => guessedLetters.includes(l) ? l : '_').join(' ');
+  }
+  
+  function updateScores() {
+    document.getElementById('wins').textContent = scores.wins;
+    document.getElementById('losses').textContent = scores.losses;
+    document.getElementById('streak').textContent = scores.streak;
+  }
+  
+  window.resetGame = startNewGame;
+  
+  // Keyboard support
+  document.addEventListener('keydown', (e) => {
+    if (/^[a-zA-Z]$/.test(e.key) && !gameOver) {
+      guessLetter(e.key.toLowerCase());
+    }
+  });
+})();
+</script>
 </html>

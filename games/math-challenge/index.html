@@ -392,4 +392,142 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 </footer>
 
 </body>
+<script>
+// ==================== Math Challenge Game Logic ====================
+(function() {
+  'use strict';
+  
+  let score = 0;
+  let correct = 0;
+  let questionNum = 0;
+  let totalQuestions = 10;
+  let timeLeft = 15;
+  let timerInterval = null;
+  let currentAnswer = 0;
+  
+  const questionEl = document.getElementById('questionText');
+  const optGrid = document.getElementById('optGrid');
+  const feedbackEl = document.getElementById('feedback');
+  const scoreEl = document.getElementById('score');
+  const timerEl = document.getElementById('timer');
+  const timerFill = document.getElementById('timerFill');
+  const quizPanel = document.getElementById('quizPanel');
+  const resultPanel = document.getElementById('resultPanel');
+  const finalScoreEl = document.getElementById('finalScore');
+  const finalDetailEl = document.getElementById('finalDetail');
+  
+  function generateQuestion() {
+    const ops = ['+', '-', '×'];
+    const op = ops[Math.floor(Math.random() * ops.length)];
+    
+    let a, b;
+    if (op === '+') {
+      a = Math.floor(Math.random() * 50) + 1;
+      b = Math.floor(Math.random() * 50) + 1;
+      currentAnswer = a + b;
+    } else if (op === '-') {
+      a = Math.floor(Math.random() * 50) + 10;
+      b = Math.floor(Math.random() * a);
+      currentAnswer = a - b;
+    } else {
+      a = Math.floor(Math.random() * 12) + 1;
+      b = Math.floor(Math.random() * 12) + 1;
+      currentAnswer = a * b;
+    }
+    
+    questionEl.textContent = `${a} ${op} ${b} = ?`;
+    
+    // Generate options
+    const options = [currentAnswer];
+    while (options.length < 4) {
+      const fake = currentAnswer + Math.floor(Math.random() * 21) - 10;
+      if (fake !== currentAnswer && fake >= 0 && !options.includes(fake)) {
+        options.push(fake);
+      }
+    }
+    
+    // Shuffle options
+    options.sort(() => Math.random() - 0.5);
+    
+    // Render options
+    optGrid.innerHTML = '';
+    options.forEach(opt => {
+      const btn = document.createElement('button');
+      btn.className = 'opt-btn';
+      btn.textContent = opt;
+      btn.onclick = () => selectAnswer(opt);
+      optGrid.appendChild(btn);
+    });
+  }
+  
+  window.selectAnswer = function(answer) {
+    questionNum++;
+    
+    if (answer === currentAnswer) {
+      score += 10;
+      correct++;
+      feedbackEl.textContent = '✓ Correct!';
+      feedbackEl.className = 'feedback correct';
+    } else {
+      feedbackEl.textContent = `✗ Answer: ${currentAnswer}`;
+      feedbackEl.className = 'feedback wrong';
+    }
+    
+    scoreEl.textContent = score;
+    
+    if (questionNum >= totalQuestions) {
+      endGame();
+    } else {
+      setTimeout(() => {
+        feedbackEl.textContent = '';
+        generateQuestion();
+        resetTimer();
+      }, 800);
+    }
+  };
+  
+  function resetTimer() {
+    timeLeft = 15;
+    timerEl.textContent = '15';
+    timerFill.style.width = '100%';
+  }
+  
+  function updateTimer() {
+    timeLeft--;
+    timerEl.textContent = timeLeft;
+    timerFill.style.width = (timeLeft / 15 * 100) + '%';
+    
+    if (timeLeft <= 0) {
+      selectAnswer(-1); // Time's up = wrong
+    }
+  }
+  
+  function endGame() {
+    clearInterval(timerInterval);
+    quizPanel.style.display = 'none';
+    resultPanel.style.display = 'block';
+    finalScoreEl.textContent = score;
+    finalDetailEl.textContent = `${correct}/${totalQuestions} correct`;
+  }
+  
+  window.startGame = function() {
+    score = 0;
+    correct = 0;
+    questionNum = 0;
+    scoreEl.textContent = '0';
+    
+    quizPanel.style.display = 'block';
+    resultPanel.style.display = 'none';
+    feedbackEl.textContent = '';
+    
+    generateQuestion();
+    resetTimer();
+    
+    timerInterval = setInterval(updateTimer, 1000);
+  };
+  
+  // Initialize
+  startGame();
+})();
+</script>
 </html>

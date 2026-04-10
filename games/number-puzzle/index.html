@@ -372,4 +372,174 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 </footer>
 
 </body>
+<script>
+// ==================== Number Puzzle (15 Puzzle) Game Logic ====================
+(function() {
+  'use strict';
+  
+  let size = 4;
+  let tiles = [];
+  let emptyIndex = 0;
+  let moves = 0;
+  let best = { 3: null, 4: null, 5: null };
+  let seconds = 0;
+  let timerInterval = null;
+  let isPlaying = false;
+  
+  const boardEl = document.getElementById('board');
+  const movesEl = document.getElementById('movesVal');
+  const bestEl = document.getElementById('bestVal');
+  const timeEl = document.getElementById('timeVal');
+  const statusEl = document.getElementById('statusRow');
+  
+  function initTiles() {
+    tiles = [];
+    for (let i = 1; i < size * size; i++) {
+      tiles.push(i);
+    }
+    tiles.push(0); // Empty tile
+    emptyIndex = size * size - 1;
+  }
+  
+  function shuffle() {
+    // Perform random valid moves to ensure solvability
+    for (let i = 0; i < size * 100; i++) {
+      const neighbors = getNeighbors(emptyIndex);
+      const randomNeighbor = neighbors[Math.floor(Math.random() * neighbors.length)];
+      swapTiles(emptyIndex, randomNeighbor);
+    }
+  }
+  
+  function getNeighbors(index) {
+    const neighbors = [];
+    const row = Math.floor(index / size);
+    const col = index % size;
+    
+    if (row > 0) neighbors.push(index - size);
+    if (row < size - 1) neighbors.push(index + size);
+    if (col > 0) neighbors.push(index - 1);
+    if (col < size - 1) neighbors.push(index + 1);
+    
+    return neighbors;
+  }
+  
+  function swapTiles(i, j) {
+    [tiles[i], tiles[j]] = [tiles[j], tiles[i]];
+    if (tiles[i] === 0) emptyIndex = i;
+    if (tiles[j] === 0) emptyIndex = j;
+  }
+  
+  function render() {
+    boardEl.innerHTML = '';
+    boardEl.style.display = 'grid';
+    boardEl.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+    boardEl.style.gap = '6px';
+    boardEl.style.maxWidth = `${size * 70 + 30}px`;
+    boardEl.style.margin = '0 auto';
+    
+    tiles.forEach((tile, index) => {
+      const div = document.createElement('div');
+      div.className = 'tile' + (tile === 0 ? ' empty' : '');
+      div.textContent = tile === 0 ? '' : tile;
+      div.style.cssText = `
+        aspect-ratio: 1;
+        background: ${tile === 0 ? 'rgba(255,255,255,0.03)' : 'var(--panel)'};
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: ${size === 3 ? '28px' : size === 4 ? '24px' : '18px'};
+        font-weight: 600;
+        cursor: ${tile === 0 ? 'default' : 'pointer'};
+        transition: transform 0.15s, background 0.15s;
+      `;
+      
+      if (tile !== 0) {
+        div.onclick = () => moveTile(index);
+        div.onmouseenter = () => div.style.background = 'rgba(79,140,255,0.2)';
+        div.onmouseleave = () => div.style.background = 'var(--panel)';
+      }
+      
+      boardEl.appendChild(div);
+    });
+  }
+  
+  function moveTile(index) {
+    if (!isPlaying) {
+      isPlaying = true;
+      startTimer();
+    }
+    
+    const neighbors = getNeighbors(emptyIndex);
+    if (neighbors.includes(index)) {
+      swapTiles(index, emptyIndex);
+      moves++;
+      movesEl.textContent = moves;
+      render();
+      
+      if (checkWin()) {
+        endGame();
+      }
+    }
+  }
+  
+  function checkWin() {
+    for (let i = 0; i < tiles.length - 1; i++) {
+      if (tiles[i] !== i + 1) return false;
+    }
+    return tiles[tiles.length - 1] === 0;
+  }
+  
+  function startTimer() {
+    seconds = 0;
+    timerInterval = setInterval(() => {
+      seconds++;
+      const mins = Math.floor(seconds / 60);
+      const secs = seconds % 60;
+      timeEl.textContent = `${mins}:${secs.toString().padStart(2, '0')}`;
+    }, 1000);
+  }
+  
+  function endGame() {
+    clearInterval(timerInterval);
+    isPlaying = false;
+    
+    if (best[size] === null || moves < best[size]) {
+      best[size] = moves;
+      bestEl.textContent = moves;
+    }
+    
+    statusEl.textContent = '🎉 Puzzle Solved!';
+    statusEl.style.color = 'var(--green)';
+  }
+  
+  window.setSize = function(newSize) {
+    size = newSize;
+    document.querySelectorAll('.size-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.textContent === `${size}×${size}`);
+    });
+    bestEl.textContent = best[size] || '—';
+    newGame();
+  };
+  
+  window.newGame = function() {
+    clearInterval(timerInterval);
+    moves = 0;
+    seconds = 0;
+    isPlaying = false;
+    movesEl.textContent = '0';
+    timeEl.textContent = '0:00';
+    statusEl.textContent = 'Click a tile adjacent to the empty space to slide it';
+    statusEl.style.color = '';
+    
+    initTiles();
+    shuffle();
+    render();
+  };
+  
+  // Initialize
+  newGame();
+})();
+</script>
 </html>

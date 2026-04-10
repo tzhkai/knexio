@@ -385,4 +385,105 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 </footer>
 
 </body>
+<script>
+// ==================== Color Match Game Logic ====================
+(function() {
+  'use strict';
+  
+  const colors = [
+    { name: 'Red', hex: '#f87171' },
+    { name: 'Green', hex: '#4ade80' },
+    { name: 'Blue', hex: '#60a5fa' },
+    { name: 'Yellow', hex: '#fbbf24' },
+    { name: 'Purple', hex: '#a78bfa' },
+    { name: 'Pink', hex: '#fb7185' }
+  ];
+  
+  let score = 0;
+  let correct = 0;
+  let timeLeft = 30;
+  let isPlaying = false;
+  let timerInterval = null;
+  let currentColor = null;
+  
+  const colorBox = document.getElementById('colorBox');
+  const colorWord = document.getElementById('colorWord');
+  const scoreEl = document.getElementById('score');
+  const timerEl = document.getElementById('timer');
+  const statusEl = document.getElementById('statusText');
+  const gamePanel = document.getElementById('gamePanel');
+  const resultPanel = document.getElementById('resultPanel');
+  const resultScoreEl = document.getElementById('resultScore');
+  const resultDetailEl = document.getElementById('resultDetail');
+  
+  function newRound() {
+    const textColor = colors[Math.floor(Math.random() * colors.length)];
+    const bgColor = colors[Math.floor(Math.random() * colors.length)];
+    
+    currentColor = textColor;
+    colorBox.style.background = bgColor.hex;
+    colorWord.textContent = textColor.name;
+    colorWord.style.color = textColor.hex;
+  }
+  
+  window.selectColor = function(selectedName) {
+    if (!isPlaying) return;
+    
+    if (selectedName === currentColor.name) {
+      score += 10;
+      correct++;
+      scoreEl.textContent = score;
+      statusEl.textContent = 'Correct! +10';
+      statusEl.style.color = 'var(--green)';
+    } else {
+      score = Math.max(0, score - 5);
+      scoreEl.textContent = score;
+      statusEl.textContent = 'Wrong! -5';
+      statusEl.style.color = 'var(--red)';
+    }
+    
+    newRound();
+  };
+  
+  function updateTimer() {
+    timeLeft--;
+    timerEl.textContent = timeLeft;
+    
+    if (timeLeft <= 0) {
+      endGame();
+    }
+  }
+  
+  window.startGame = function() {
+    score = 0;
+    correct = 0;
+    timeLeft = 30;
+    isPlaying = true;
+    
+    scoreEl.textContent = '0';
+    timerEl.textContent = '30';
+    statusEl.textContent = 'Match the color name!';
+    
+    gamePanel.style.display = 'block';
+    resultPanel.style.display = 'none';
+    
+    newRound();
+    
+    timerInterval = setInterval(updateTimer, 1000);
+  };
+  
+  function endGame() {
+    isPlaying = false;
+    clearInterval(timerInterval);
+    
+    gamePanel.style.display = 'none';
+    resultPanel.style.display = 'block';
+    resultScoreEl.textContent = score;
+    resultDetailEl.textContent = `${correct} correct answers`;
+  }
+  
+  // Initialize
+  if (gamePanel) gamePanel.style.display = 'block';
+})();
+</script>
 </html>

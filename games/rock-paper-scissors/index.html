@@ -398,6 +398,96 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 
 <script src="/knexio-bundle.js"></script>
 </body>
+<script>
+// ==================== Rock Paper Scissors Game Logic ====================
+(function() {
+  'use strict';
+  
+  const choices = ['rock', 'paper', 'scissors'];
+  const emojis = { rock: '🪨', paper: '📄', scissors: '✂️' };
+  
+  let scores = { wins: 0, losses: 0, draws: 0, total: 0 };
+  
+  const playerDisplay = document.getElementById('playerChoice');
+  const cpuDisplay = document.getElementById('cpuChoice');
+  const resultText = document.getElementById('resultText');
+  const winEl = document.getElementById('winCount');
+  const lossEl = document.getElementById('lossCount');
+  const drawEl = document.getElementById('drawCount');
+  const totalEl = document.getElementById('totalCount');
+  
+  window.play = function(playerChoice) {
+    const cpuChoice = choices[Math.floor(Math.random() * 3)];
+    
+    // Animate
+    playerDisplay.textContent = '❓';
+    cpuDisplay.textContent = '❓';
+    playerDisplay.classList.remove('win', 'lose');
+    cpuDisplay.classList.remove('win', 'lose');
+    
+    setTimeout(() => {
+      playerDisplay.textContent = emojis[playerChoice];
+      cpuDisplay.textContent = emojis[cpuChoice];
+      
+      const result = getResult(playerChoice, cpuChoice);
+      
+      if (result === 'win') {
+        scores.wins++;
+        resultText.textContent = 'You Win! 🎉';
+        resultText.className = 'result-text result-win';
+        playerDisplay.classList.add('win');
+        cpuDisplay.classList.add('lose');
+      } else if (result === 'lose') {
+        scores.losses++;
+        resultText.textContent = 'You Lose! 😢';
+        resultText.className = 'result-text result-lose';
+        playerDisplay.classList.add('lose');
+        cpuDisplay.classList.add('win');
+      } else {
+        scores.draws++;
+        resultText.textContent = "It's a Draw! 🤝";
+        resultText.className = 'result-text result-draw';
+      }
+      
+      scores.total++;
+      updateScores();
+    }, 300);
+  };
+  
+  function getResult(player, cpu) {
+    if (player === cpu) return 'draw';
+    if (
+      (player === 'rock' && cpu === 'scissors') ||
+      (player === 'paper' && cpu === 'rock') ||
+      (player === 'scissors' && cpu === 'paper')
+    ) {
+      return 'win';
+    }
+    return 'lose';
+  }
+  
+  function updateScores() {
+    winEl.textContent = scores.wins;
+    lossEl.textContent = scores.losses;
+    drawEl.textContent = scores.draws;
+    totalEl.textContent = scores.total;
+  }
+  
+  window.resetGame = function() {
+    scores = { wins: 0, losses: 0, draws: 0, total: 0 };
+    updateScores();
+    playerDisplay.textContent = '❓';
+    cpuDisplay.textContent = '❓';
+    playerDisplay.classList.remove('win', 'lose');
+    cpuDisplay.classList.remove('win', 'lose');
+    resultText.textContent = 'Pick your choice!';
+    resultText.className = 'result-text';
+  };
+  
+  // Add reset button functionality
+  document.querySelector('.btn-reset')?.addEventListener('click', resetGame);
+})();
+</script>
 </html>
 
 </div>
