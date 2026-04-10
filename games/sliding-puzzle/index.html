@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Sliding Puzzle – Free Online Jigsaw Game | Knexio</title>
-  <meta name="description" content="Play sliding puzzle free online. Slide the tiles to restore the full image. Choose from 3×3 to 5×5 grids. Train your logic skills – no download needed!">
+  <title>Sliding Puzzle</title>
+  <meta name="description" content="Play Sliding Puzzle free online. Slide tiles to arrange them in the correct order. Classic brain teaser in your browser.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="canonical" href="https://knexio.xyz/games/sliding-puzzle/" />
-  <meta property="og:title" content="Sliding Puzzle – Free Online Jigsaw Game | Knexio" />
-  <meta property="og:description" content="Play sliding puzzle free online. Slide the tiles to restore the full image. Choose from 3×3 to 5×5 grids. Train your logic skills – no download needed!" />
+  <meta property="og:title" content="Sliding Puzzle" />
+  <meta property="og:description" content="Slide tiles to arrange them in order. Classic brain teaser!" />
   <meta property="og:url" content="https://knexio.xyz/games/sliding-puzzle/" />
   <meta property="og:type" content="Game" />
   <meta property="og:site_name" content="Knexio" />
@@ -27,7 +27,7 @@
     }
   }
   </script>
-  <style>
+<style>
     .back-link{display:flex;align-items:center;gap:8px;color:var(--accent);text-decoration:none;font-size:14px;font-weight:500;margin-bottom:20px}
     .back-link:hover{text-decoration:underline}
     :root{--bg-dark:#0b1220;--panel:#111a2e;--text:#e0e6f0;--text-secondary:#94a3b8;--accent:#4f8cff;--border:#1e3a5f;--success:#10b981}
@@ -67,7 +67,7 @@
     .info-section h2{font-size:22px;font-weight:700;margin-bottom:16px}
     .info-section p{margin-bottom:12px;color:var(--text-secondary)}
     .info-section ul{margin-left:20px;color:var(--text-secondary)}
-    footer p{margin:0}
+    footer{border-top:1px solid var(--border);padding:30px 0;margin-top:50px;text-align:center;color:var(--text-secondary);font-size:14px}
   .ad-banner{margin:24px 0;text-align:center;min-height:90px}
   
     /* ==================== 移动端优化 ==================== */
@@ -238,7 +238,8 @@
         font-size: 16px !important;
       }
     }
-    footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--text-secondary);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
+    }
+    </style>
   <link rel="stylesheet" href="/shared.css">
 </head>
 <body>
@@ -249,251 +250,230 @@
     <h1>Sliding Puzzle</h1>
     <p class="subtitle">Slide tiles to arrange them in order. Classic brain teaser!</p>
 
-    <div class="game-container">
-      <div class="difficulty-select">
-        <button class="diff-btn active" onclick="setDifficulty(3)">3×3 (Easy)</button>
-        <button class="diff-btn" onclick="setDifficulty(4)">4×4 (Medium)</button>
-        <button class="diff-btn" onclick="setDifficulty(5)">5×5 (Hard)</button>
-      </div>
+    <div class="main-layout">
+      <div class="main-content">
+        <div class="game-container">
+          <div class="difficulty-select">
+            <button class="diff-btn active" onclick="setDifficulty(3)">3×3 (Easy)</button>
+            <button class="diff-btn" onclick="setDifficulty(4)">4×4 (Medium)</button>
+            <button class="diff-btn" onclick="setDifficulty(5)">5×5 (Hard)</button>
+          </div>
 
-      <div class="game-header">
-        <div class="stats">
-          <div class="stat">
-            <div class="stat-value" id="moves">0</div>
-            <div class="stat-label">Moves</div>
+          <div class="game-header">
+            <div class="stats">
+              <div class="stat">
+                <div class="stat-value" id="moves">0</div>
+                <div class="stat-label">Moves</div>
+              </div>
+              <div class="stat">
+                <div class="stat-value" id="time">00:00</div>
+                <div class="stat-label">Time</div>
+              </div>
+            </div>
+            <div class="controls">
+              <button class="btn btn-secondary" onclick="showHint()">💡 Hint</button>
+              <button class="btn" onclick="newGame()">🔄 New Game</button>
+            </div>
           </div>
-          <div class="stat">
-            <div class="stat-value" id="time">00:00</div>
-            <div class="stat-label">Time</div>
+
+          <div id="puzzle" class="puzzle-board"></div>
+
+          <div id="winMessage" class="win-message">
+            <h2>🎉 Congratulations!</h2>
+            <p>You solved the puzzle in <strong id="finalMoves">0</strong> moves and <strong id="finalTime">00:00</strong>!</p>
+            <button class="btn" onclick="newGame()" style="margin-top:15px">Play Again</button>
           </div>
-        
-<!-- Ad: Sidebar -->
-<div class="ad-sidebar" style="margin:20px 0;text-align:center"><ins class="adsbygoogle" style="display:block;min-height:250px" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3617326351" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
-</div>
-        <div class="controls">
-          <button class="btn btn-secondary" onclick="showHint()">💡 Hint</button>
-          <button class="btn" onclick="newGame()">🔄 New Game</button>
+        </div>
+
+  <div class="info-section">
+          <h2>How to Play</h2>
+          <p>The goal is to arrange the numbered tiles in ascending order by sliding them into the empty space.</p>
+          <ul>
+            <li>Click or tap a tile adjacent to the empty space to move it</li>
+            <li>Arrange tiles in order from 1 to 15 (or 8 for 3×3)</li>
+            <li>The empty space should end up in the bottom-right corner</li>
+            <li>Try to solve it in as few moves as possible!</li>
+          </ul>
+          <h2>About Sliding Puzzle</h2>
+          <p>The 15-puzzle (also called Gem Puzzle, Boss Puzzle, or Mystic Square) is a classic sliding puzzle that became popular in the 1880s. It consists of a frame of numbered square tiles in random order with one tile missing.</p>
         </div>
       </div>
 
-      <div id="puzzle" class="puzzle-board"></div>
-
-      <div id="winMessage" class="win-message">
-        <h2>🎉 Congratulations!</h2>
-        <p>You solved the puzzle in <strong id="finalMoves">0</strong> moves and <strong id="finalTime">00:00</strong>!</p>
-        <button class="btn" onclick="newGame()" style="margin-top:15px">Play Again</button>
-      </div>
+      <aside class="sidebar">
+        <div class="ad-sidebar"></div>
+    <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="5794572171" data-ad-format="auto" data-full-width-responsive="true"></ins>
     </div>
-
-    <div class="info-section">
-      <h2>How to Play</h2>
-      <p>The goal is to arrange the numbered tiles in ascending order by sliding them into the empty space.</p>
-      <ul>
-        <li>Click or tap a tile adjacent to the empty space to move it</li>
-        <li>Arrange tiles in order from 1 to 8 (for 3×3) or 1 to 15 (for 4×4)</li>
-        <li>The empty space should end up in the bottom-right corner</li>
-        <li>Try to solve it in as few moves as possible!</li>
-      </ul>
-      <h2>About Sliding Puzzle</h2>
-      <p>The 15-puzzle (also called Gem Puzzle, Boss Puzzle, or Mystic Square) is a classic sliding puzzle that became popular in the 1880s. It consists of a frame of numbered square tiles in random order with one tile missing.</p>
+        <div class="ad-sidebar"></div>
+    <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3617326351" data-ad-format="auto" data-full-width-responsive="true"></ins>
     </div>
+      </aside>
+
   </div>
-<script src="/knexio-bundle.js"></script>
 
-
-  <div class="gameplay-section" style="margin: 60px auto 0; max-width: 800px; padding: 32px 24px; background: var(--panel); border-radius: 18px; border: 1px solid var(--border); text-align: left;">
-    <h2 style="font-size: 28px; margin-bottom: 30px; color: var(--text-main); display: flex; align-items: center;">
-        <span style="background: var(--accent); color: white; width: 36px; height: 36px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 15px; font-size: 18px;">🎮</span>
-        How to Play Sliding Puzzle
-    </h2>
-
-    <div style="margin-bottom: 30px;">
-        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--text-main);">Game Description</h3>
-        <p style="font-size: 15px; color: var(--text-sub); line-height: 1.7; margin-bottom: 20px;">
-            Sliding Puzzle (15 Puzzle) is a classic tile game. Arrange numbered tiles in order by sliding them into the empty space. A timeless brain teaser!
-        </p>
+  <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  </div>
     </div>
 
-    <div style="margin-bottom: 30px;">
-        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--text-main);">How to Play</h3>
-        <ol style="font-size: 15px; color: var(--text-sub); line-height: 1.7; padding-left: 25px; margin-bottom: 20px;">
-            <li style="margin-bottom: 12px;"><strong>Click a tile</strong> adjacent to the empty space to slide it</li>
-            <li style="margin-bottom: 12px;"><strong>Arrange tiles</strong> in numerical order (1, 2, 3... 15)</li>
-            <li style="margin-bottom: 12px;"><strong>Empty space</strong> allows tiles to move</li>
-            <li style="margin-bottom: 12px;"><strong>Only adjacent tiles</strong> can slide into the empty spot</li>
-            <li style="margin-bottom: 12px;"><strong>Complete the sequence</strong> to solve the puzzle</li>
-            <li style="margin-bottom: 12px;"><strong>Fewer moves</strong> = better score</li>
-        </ol>
-    </div>
+      <footer>
+      <p>Free online games to play anytime. Enjoy classic games, puzzles, and entertainment.</p>
+            <p style="margin: 8px 0; font-size: 13px;">
+        <a href="/about/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">About</a>
+        <a href="/privacy/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Privacy</a>
+        <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
+        <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
+      </p>
+      <p>© 2026 Knexio. All rights reserved.</p>
+    </footer>
 
-    <div style="margin-bottom: 30px;">
-        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--text-main);">Pro Tips & Strategies</h3>
-        <ul style="font-size: 15px; color: var(--text-sub); line-height: 1.7; padding-left: 25px; margin-bottom: 20px; list-style: none;">
-            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;"><span style="position: absolute; left: -15px; color: var(--accent);">✓</span> Solve row by row, starting from the top</li>
-            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;"><span style="position: absolute; left: -15px; color: var(--accent);">✓</span> Get the first two rows in place, then work on the bottom</li>
-            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;"><span style="position: absolute; left: -15px; color: var(--accent);">✓</span> Plan several moves ahead to avoid getting stuck</li>
-            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;"><span style="position: absolute; left: -15px; color: var(--accent);">✓</span> Sometimes you need to temporarily disrupt order to make progress</li>
-        </ul>
-    </div>
-</div>
+  <script>
+    let gridSize = 3;
+    let tiles = [];
+    let emptyIndex = 0;
+    let moves = 0;
+    let timer = null;
+    let seconds = 0;
+    let isPlaying = false;
 
-<footer>
-  <p>Free online games to play anytime. Enjoy classic games, puzzles, and entertainment.</p>
-  <p style="margin: 8px 0; font-size: 13px;">
-    <a href="/about/" style="color:var(--accent);text-decoration:none;margin:0 8px;">About</a>
-    <a href="/privacy/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Privacy</a>
-    <a href="/terms/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Terms</a>
-    <a href="/contact/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Contact</a>
-  </p>
-  <p>© 2026 Knexio. All rights reserved.</p>
-</footer><div class="ad-banner" style="margin-top:40px"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="5794572171" data-ad-format="auto" data-full-width-responsive="true"></ins></div><div class="ad-section" style="margin-top:40px;text-align:center"><ins class="adsbygoogle" style="display:block;background:var(--panel);border-radius:12px;padding:15px" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
-
-<script>
-  // ==================== Game State ====================
-  let tiles = [];
-  let gridSize = 3;
-  let emptyIndex = 0;
-  let moves = 0;
-  let seconds = 0;
-  let timer = null;
-  let isPlaying = false;
-
-  function initGame() {
-    createBoard();
-    shuffle();
-    render();
-    startTimer();
-  }
-
-  function createBoard() {
-    tiles = [];
-    for (let i = 0; i < gridSize * gridSize - 1; i++) {
-      tiles.push(i + 1);
-    }
-    tiles.push(0); // Empty tile
-    emptyIndex = tiles.length - 1;
-  }
-
-  function shuffle() {
-    // Start from solved state and make random valid moves
-    for (let i = 0; i < gridSize * 20; i++) {
-      const neighbors = getNeighbors(emptyIndex);
-      const randomNeighbor = neighbors[Math.floor(Math.random() * neighbors.length)];
-      swap(emptyIndex, randomNeighbor);
-      emptyIndex = randomNeighbor;
-    }
-    moves = 0;
-    updateStats();
-  }
-
-  function getNeighbors(index) {
-    const neighbors = [];
-    const row = Math.floor(index / gridSize);
-    const col = index % gridSize;
-
-    if (row > 0) neighbors.push(index - gridSize);
-    if (row < gridSize - 1) neighbors.push(index + gridSize);
-    if (col > 0) neighbors.push(index - 1);
-    if (col < gridSize - 1) neighbors.push(index + 1);
-
-    return neighbors;
-  }
-
-  function swap(i, j) {
-    [tiles[i], tiles[j]] = [tiles[j], tiles[i]];
-  }
-
-  function render() {
-    const puzzle = document.getElementById('puzzle');
-    puzzle.innerHTML = '';
-    puzzle.style.gridTemplateColumns = `repeat(${gridSize}, 80px)`;
-
-    tiles.forEach((tile, index) => {
-      const tileEl = document.createElement('div');
-      tileEl.className = tile === 0 ? 'tile empty' : 'tile';
-      tileEl.textContent = tile === 0 ? '' : tile;
-      tileEl.style.width = '80px';
-      tileEl.style.height = '80px';
-      tileEl.onclick = () => handleTileClick(index);
-      puzzle.appendChild(tileEl);
-    });
-  }
-
-  function handleTileClick(index) {
-    if (!isPlaying) return;
-
-    const neighbors = getNeighbors(emptyIndex);
-    if (neighbors.includes(index)) {
-      swap(emptyIndex, index);
-      emptyIndex = index;
-      moves++;
-      updateStats();
+    function initGame() {
+      createBoard();
+      shuffle();
       render();
+      startTimer();
+    }
 
-      if (checkWin()) {
-        gameWin();
+    function createBoard() {
+      tiles = [];
+      for (let i = 0; i < gridSize * gridSize - 1; i++) {
+        tiles.push(i + 1);
+      }
+      tiles.push(0); // Empty tile
+      emptyIndex = tiles.length - 1;
+    }
+
+    function shuffle() {
+      // Start from solved state and make random valid moves
+      for (let i = 0; i < gridSize * 20; i++) {
+        const neighbors = getNeighbors(emptyIndex);
+        const randomNeighbor = neighbors[Math.floor(Math.random() * neighbors.length)];
+        swap(emptyIndex, randomNeighbor);
+        emptyIndex = randomNeighbor;
+      }
+      moves = 0;
+      updateStats();
+    }
+
+    function getNeighbors(index) {
+      const neighbors = [];
+      const row = Math.floor(index / gridSize);
+      const col = index % gridSize;
+
+      if (row > 0) neighbors.push(index - gridSize);
+      if (row < gridSize - 1) neighbors.push(index + gridSize);
+      if (col > 0) neighbors.push(index - 1);
+      if (col < gridSize - 1) neighbors.push(index + 1);
+
+      return neighbors;
+    }
+
+    function swap(i, j) {
+      [tiles[i], tiles[j]] = [tiles[j], tiles[i]];
+    }
+
+    function render() {
+      const puzzle = document.getElementById('puzzle');
+      puzzle.innerHTML = '';
+      puzzle.style.gridTemplateColumns = `repeat(${gridSize}, 80px)`;
+
+      tiles.forEach((tile, index) => {
+        const tileEl = document.createElement('div');
+        tileEl.className = tile === 0 ? 'tile empty' : 'tile';
+        tileEl.textContent = tile === 0 ? '' : tile;
+        tileEl.style.width = '80px';
+        tileEl.style.height = '80px';
+        tileEl.onclick = () => handleTileClick(index);
+        puzzle.appendChild(tileEl);
+      });
+    }
+
+    function handleTileClick(index) {
+      if (!isPlaying) return;
+
+      const neighbors = getNeighbors(emptyIndex);
+      if (neighbors.includes(index)) {
+        swap(emptyIndex, index);
+        emptyIndex = index;
+        moves++;
+        updateStats();
+        render();
+
+        if (checkWin()) {
+          gameWin();
+        }
       }
     }
-  }
 
-  function checkWin() {
-    for (let i = 0; i < tiles.length - 1; i++) {
-      if (tiles[i] !== i + 1) return false;
+    function checkWin() {
+      for (let i = 0; i < tiles.length - 1; i++) {
+        if (tiles[i] !== i + 1) return false;
+      }
+      return true;
     }
-    return true;
-  }
 
-  function gameWin() {
-    isPlaying = false;
-    clearInterval(timer);
-    document.getElementById('finalMoves').textContent = moves;
-    document.getElementById('finalTime').textContent = formatTime(seconds);
-    document.getElementById('winMessage').classList.add('show');
-  }
+    function gameWin() {
+      isPlaying = false;
+      clearInterval(timer);
+      document.getElementById('finalMoves').textContent = moves;
+      document.getElementById('finalTime').textContent = formatTime(seconds);
+      document.getElementById('winMessage').classList.add('show');
+    }
 
-  function updateStats() {
-    document.getElementById('moves').textContent = moves;
-  }
+    function updateStats() {
+      document.getElementById('moves').textContent = moves;
+    }
 
-  function startTimer() {
-    isPlaying = true;
-    seconds = 0;
-    clearInterval(timer);
-    timer = setInterval(() => {
-      seconds++;
-      document.getElementById('time').textContent = formatTime(seconds);
-    }, 1000);
-  }
+    function startTimer() {
+      isPlaying = true;
+      seconds = 0;
+      clearInterval(timer);
+      timer = setInterval(() => {
+        seconds++;
+        document.getElementById('time').textContent = formatTime(seconds);
+      }, 1000);
+    }
 
-  function formatTime(secs) {
-    const m = Math.floor(secs / 60).toString().padStart(2, '0');
-    const s = (secs % 60).toString().padStart(2, '0');
-    return `${m}:${s}`;
-  }
+    function formatTime(secs) {
+      const m = Math.floor(secs / 60).toString().padStart(2, '0');
+      const s = (secs % 60).toString().padStart(2, '0');
+      return `${m}:${s}`;
+    }
 
-  function setDifficulty(size) {
-    gridSize = size;
-    document.querySelectorAll('.diff-btn').forEach((btn, i) => {
-      btn.classList.toggle('active', i === size - 3);
-    });
-    newGame();
-  }
+    function setDifficulty(size) {
+      gridSize = size;
+      document.querySelectorAll('.diff-btn').forEach((btn, i) => {
+        btn.classList.toggle('active', i === size - 3);
+      });
+      newGame();
+    }
 
-  function newGame() {
-    document.getElementById('winMessage').classList.remove('show');
+    function newGame() {
+      document.getElementById('winMessage').classList.remove('show');
+      initGame();
+    }
+
+    function showHint() {
+      const neighbors = getNeighbors(emptyIndex);
+      // Simple hint: suggest moving tile that gets us closer to solved state
+      alert(`Try moving a tile into the empty space. Valid moves: ${neighbors.filter(i => tiles[i] !== 0).map(i => tiles[i]).join(', ')}`);
+    }
+
+    // Initialize
     initGame();
-  }
+  </script>
 
-  function showHint() {
-    const neighbors = getNeighbors(emptyIndex);
-    const validMoves = neighbors.filter(i => tiles[i] !== 0).map(i => tiles[i]).join(', ');
-    alert(`Try moving a tile into the empty space. Valid moves: ${validMoves || 'none'}`);
-  }
 
-  // Initialize
-  initGame();
-</script>
-
-<script src="/cookie-consent.js"></script>
+  <script src="/knexio-bundle.js"></script>
+  <script src="../../cookie-consent.js"></script>
 </body>
-</html>

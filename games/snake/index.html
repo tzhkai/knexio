@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Snake Game – Free Online Classic Snake | Knexio</title>
-  <meta name="description" content="Play the classic Snake game free online. Control the snake, eat food to grow, avoid walls and yourself. Works in any browser, no download needed. Beat your high score!">
+  <title>Snake</title>
+  <meta name="description" content="Play Snake free online. Eat food, grow longer, avoid walls and yourself. Classic arcade game in your browser.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="canonical" href="https://knexio.xyz/games/snake/" />
-  <meta property="og:title" content="Snake Game – Free Online Classic Snake | Knexio" />
-  <meta property="og:description" content="Play the classic Snake game free online. Control the snake, eat food to grow, avoid walls and yourself. Works in any browser, no download needed. Beat your high score!" />
+  <meta property="og:title" content="Snake" />
+  <meta property="og:description" content="Eat the food, grow longer, avoid the walls and yourself" />
   <meta property="og:url" content="https://knexio.xyz/games/snake/" />
   <meta property="og:type" content="Game" />
   <meta property="og:site_name" content="Knexio" />
@@ -42,7 +42,7 @@
     .mobile-controls{display:none;grid-template-columns:repeat(3,56px);grid-template-rows:repeat(2,56px);gap:8px;justify-content:center;margin-top:16px}
     .dpad{width:56px;height:56px;background:var(--panel);border:1px solid var(--border);border-radius:10px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:22px;user-select:none}
     .dpad:active{background:rgba(79,140,255,.2)}
-    footer p{margin:0}
+    footer{margin-top:60px;font-size:13px;color:var(--sub);text-align:center;border-top:1px solid var(--border);}
   .ad-banner{margin:24px 0;text-align:center;min-height:90px}
   
     /* ==================== 移动端优化 ==================== */
@@ -213,7 +213,7 @@
         font-size: 16px !important;
       }
     }
-    footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
+    </style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -541,16 +541,16 @@ canvas.addEventListener('touchend',e=>{
 <script src="/knexio-bundle.js"></script>
   
     <footer>
-  <p>Free online games — play anytime, no download needed.</p>
-  <p style="margin: 8px 0; font-size: 13px;">
-    <a href="/about/" style="color:var(--accent);text-decoration:none;margin:0 8px;">About</a>
-    <a href="/privacy/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Privacy</a>
-    <a href="/terms/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Terms</a>
-    <a href="/contact/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Contact</a>
-  </p>
-  <p>© 2026 Knexio. All rights reserved.</p>
-</footer>
+      <p>Free online games to play anytime. Enjoy classic games, puzzles, and entertainment.</p>
+      <p style="margin: 8px 0; font-size: 13px;">
+        <a href="/about/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">About</a>
+        <a href="/privacy/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Privacy</a>
+        <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
+        <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
+      </p>
+      <p>© 2026 Knexio. All rights reserved.</p>
+    </footer>
 
-  <script src="/cookie-consent.js"></script>
+
+  <script src="../../cookie-consent.js"></script>
 </body>
-</html>

@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Gomoku – Free Online Five in a Row | Knexio</title>
-  <meta name="description" content="Play Gomoku (Five in a Row) free online. Challenge the AI or play with a friend. 15×15 board, simple rules – be the first to get five in a row to win!">
+  <title>Gomoku</title>
+  <meta name="description" content="Play Gomoku free online. Connect five stones in a row to win. Classic strategy board game against AI. Works in your browser.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="canonical" href="https://knexio.xyz/games/gomoku/" />
-  <meta property="og:title" content="Gomoku – Free Online Five in a Row | Knexio" />
-  <meta property="og:description" content="Play Gomoku (Five in a Row) free online. Challenge the AI or play with a friend. 15×15 board, simple rules – be the first to get five in a row to win!" />
+  <meta property="og:title" content="Gomoku" />
+  <meta property="og:description" content="Five in a Row - Connect 5 stones to win!" />
   <meta property="og:url" content="https://knexio.xyz/games/gomoku/" />
   <meta property="og:type" content="Game" />
   <meta property="og:site_name" content="Knexio" />
@@ -69,9 +69,9 @@
     .info-section p{margin-bottom:12px;color:var(--text-secondary)}
     .info-section ul{margin-left:20px;color:var(--text-secondary)}
     .info-section li{margin-bottom:8px}
-    footer p{margin:0}
-    footer p{margin:0}
-    footer p{margin:0}
+    footer{background:var(--panel);border-top:1px solid var(--border);padding:30px 0;margin-top:50px;text-align:center;color:var(--text-secondary);font-size:14px}
+    footer a{color:var(--accent);text-decoration:none}
+    footer a:hover{text-decoration:underline}
   .ad-banner{margin:24px 0;text-align:center;min-height:90px}
   
     /* ==================== 移动端优化 ==================== */
@@ -242,7 +242,8 @@
         font-size: 16px !important;
       }
     }
-    footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
+    }
+    </style>
   <link rel="stylesheet" href="/shared.css">
 </head>
 <body><div class="container">
@@ -260,10 +261,7 @@
       <div class="game-header">
         <div class="current-player">
           Current: <div class="player-indicator black" id="currentIndicator"></div> <span id="currentText">Black</span>
-        
-<!-- Ad: Sidebar -->
-<div class="ad-sidebar" style="margin:20px 0;text-align:center"><ins class="adsbygoogle" style="display:block;min-height:250px" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3617326351" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
-</div>
+        </div>
         <div class="controls">
           <button class="btn btn-secondary" onclick="undoMove()">↩️ Undo</button>
           <button class="btn" onclick="newGame()">🔄 New Game</button>
@@ -298,370 +296,335 @@
     </div>
 
     </div>
-    <div class="ad-banner" style="margin-top:40px"></div>
-
-    <div class="ad-banner" style="margin-top:40px"></div>
-<script src="/knexio-bundle.js"></script>
-
-    <style>p{margin:0}</style>
-  <div class="gameplay-section" style="margin: 60px auto 0; max-width: 800px; padding: 32px 24px; background: var(--panel); border-radius: 18px; border: 1px solid var(--border); text-align: left;">
-    <h2 style="font-size: 28px; margin-bottom: 30px; color: var(--text-main); display: flex; align-items: center;">
-        <span style="background: var(--accent); color: white; width: 36px; height: 36px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 15px; font-size: 18px;">🎮</span>
-        How to Play Gomoku
-    </h2>
-
-    <div style="margin-bottom: 30px;">
-        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--text-main);">Game Description</h3>
-        <p style="font-size: 15px; color: var(--text-sub); line-height: 1.7; margin-bottom: 20px;">
-            Gomoku (Five in a Row) is an ancient strategy game. Place stones on a grid and be the first to connect five in a row!
-        </p>
+    <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3617326351" data-ad-format="auto" data-full-width-responsive="true"></ins>
     </div>
 
-    <div style="margin-bottom: 30px;">
-        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--text-main);">How to Play</h3>
-        <ol style="font-size: 15px; color: var(--text-sub); line-height: 1.7; padding-left: 25px; margin-bottom: 20px;">
-            <li style="margin-bottom: 12px;"><strong>Click an intersection</strong> to place your stone</li>
-            <li style="margin-bottom: 12px;"><strong>Black plays first</strong>, then players alternate</li>
-            <li style="margin-bottom: 12px;"><strong>Connect 5 stones</strong> in a row to win</li>
-            <li style="margin-bottom: 12px;"><strong>Connections can be</strong> horizontal, vertical, or diagonal</li>
-            <li style="margin-bottom: 12px;"><strong>Overlines</strong> (6+ stones) may or may not count depending on rules</li>
-            <li style="margin-bottom: 12px;"><strong>Block opponent's</strong> four-in-a-row threats</li>
-        </ol>
+          <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins>
     </div>
+    <footer>
+      <p>Free online games to play anytime. Enjoy classic games, puzzles, and entertainment.</p>
+            <p style="margin: 8px 0; font-size: 13px;">
+        <a href="/about/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">About</a>
+        <a href="/privacy/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Privacy</a>
+        <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
+        <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
+      </p>
+      <p>© 2026 Knexio. All rights reserved.</p>
+    </footer>
 
-    <div style="margin-bottom: 30px;">
-        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--text-main);">Pro Tips & Strategies</h3>
-        <ul style="font-size: 15px; color: var(--text-sub); line-height: 1.7; padding-left: 25px; margin-bottom: 20px; list-style: none;">
-            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;"><span style="position: absolute; left: -15px; color: var(--accent);">✓</span> Control the center of the board for maximum flexibility</li>
-            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;"><span style="position: absolute; left: -15px; color: var(--accent);">✓</span> Create multiple threats simultaneously (forks)</li>
-            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;"><span style="position: absolute; left: -15px; color: var(--accent);">✓</span> Watch for open threes - they can become unstoppable fours</li>
-            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;"><span style="position: absolute; left: -15px; color: var(--accent);">✓</span> Defense is crucial - one missed block can end the game</li>
-        </ul>
-    </div>
-</div>
+  <script>// Game init //
+  const BOARD_SIZE = 15;
+    let board = [];
+    let currentPlayer = 'black';
+    let gameMode = 'pvp';
+    let gameOver = false;
+    let moveHistory = [];
 
-<footer>
-  <p>Free online games to play anytime. Enjoy classic games, puzzles, and entertainment.</p>
-  <p style="margin: 8px 0; font-size: 13px;">
-    <a href="/about/" style="color:var(--accent);text-decoration:none;margin:0 8px;">About</a>
-    <a href="/privacy/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Privacy</a>
-    <a href="/terms/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Terms</a>
-    <a href="/contact/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Contact</a>
-  </p>
-  <p>© 2026 Knexio. All rights reserved.</p>
-</footer><div class="ad-banner" style="margin-top:40px"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="5794572171" data-ad-format="auto" data-full-width-responsive="true"></ins></div><div class="ad-section" style="margin-top:40px;text-align:center"><ins class="adsbygoogle" style="display:block;background:var(--panel);border-radius:12px;padding:15px" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
-
-<script>
-// ==================== Gomoku Game Logic ====================
-const BOARD_SIZE = 15;
-let board = [];
-let currentPlayer = 'black';
-let gameMode = 'pvp';
-let gameOver = false;
-let moveHistory = [];
-
-function initGame() {
-  board = Array(BOARD_SIZE).fill(null).map(() => Array(BOARD_SIZE).fill(null));
-  currentPlayer = 'black';
-  gameOver = false;
-  moveHistory = [];
-  renderBoard();
-  updateStatus();
-  hideWinMessage();
-}
-
-function renderBoard() {
-  const boardEl = document.getElementById('board');
-  boardEl.innerHTML = '';
-  boardEl.style.display = 'grid';
-  boardEl.style.gridTemplateColumns = `repeat(${BOARD_SIZE}, 30px)`;
-  boardEl.style.gap = '1px';
-  boardEl.style.background = '#8b4513';
-  boardEl.style.padding = '10px';
-  boardEl.style.borderRadius = '8px';
-  boardEl.style.width = 'fit-content';
-  boardEl.style.margin = '0 auto';
-  
-  for (let row = 0; row < BOARD_SIZE; row++) {
-    for (let col = 0; col < BOARD_SIZE; col++) {
-      const cell = document.createElement('div');
-      cell.style.width = '30px';
-      cell.style.height = '30px';
-      cell.style.background = '#deb887';
-      cell.style.display = 'flex';
-      cell.style.alignItems = 'center';
-      cell.style.justifyContent = 'center';
-      cell.style.cursor = 'pointer';
-      cell.dataset.row = row;
-      cell.dataset.col = col;
-      
-      if (board[row][col]) {
-        const stone = document.createElement('div');
-        stone.style.width = '24px';
-        stone.style.height = '24px';
-        stone.style.borderRadius = '50%';
-        stone.style.background = board[row][col] === 'black' ? '#000' : '#fff';
-        stone.style.border = board[row][col] === 'white' ? '1px solid #ccc' : 'none';
-        stone.style.boxShadow = '2px 2px 4px rgba(0,0,0,0.3)';
-        cell.appendChild(stone);
-      }
-      
-      cell.addEventListener('click', () => handleCellClick(row, col));
-      boardEl.appendChild(cell);
+    function initBoard() {
+      board = Array(BOARD_SIZE).fill(null).map(() => Array(BOARD_SIZE).fill(null));
+      currentPlayer = 'black';
+      gameOver = false;
+      moveHistory = [];
+      document.getElementById('winMessage').classList.remove('show');
+      renderBoard();
+      updateCurrentPlayer();
     }
-  }
-}
 
-function handleCellClick(row, col) {
-  if (gameOver || board[row][col]) return;
-  if (gameMode === 'ai' && currentPlayer === 'white') return;
-  
-  makeMove(row, col);
-}
+    function renderBoard() {
+      const boardEl = document.getElementById('board');
+      boardEl.innerHTML = '';
+      boardEl.style.gridTemplateColumns = `repeat(${BOARD_SIZE}, 26px)`;
 
-function makeMove(row, col) {
-  board[row][col] = currentPlayer;
-  moveHistory.push({ row, col, player: currentPlayer });
-  renderBoard();
-  
-  if (checkWin(row, col)) {
-    gameOver = true;
-    showWinMessage(currentPlayer);
-    return;
-  }
-  
-  if (checkDraw()) {
-    gameOver = true;
-    showWinMessage('draw');
-    return;
-  }
-  
-  currentPlayer = currentPlayer === 'black' ? 'white' : 'black';
-  updateStatus();
-  
-  if (gameMode === 'ai' && currentPlayer === 'white') {
-    setTimeout(makeAIMove, 500);
-  }
-}
+      for (let row = 0; row < BOARD_SIZE; row++) {
+        for (let col = 0; col < BOARD_SIZE; col++) {
+          const cell = document.createElement('div');
+          cell.className = 'cell';
+          cell.dataset.row = row;
+          cell.dataset.col = col;
+          cell.onclick = () => handleClick(row, col);
 
-function checkWin(row, col) {
-  const player = board[row][col];
-  const directions = [[0, 1], [1, 0], [1, 1], [1, -1]];
-  
-  for (const [dr, dc] of directions) {
-    let count = 1;
-    
-    // Check positive direction
-    for (let i = 1; i < 5; i++) {
-      const r = row + dr * i;
-      const c = col + dc * i;
-      if (r >= 0 && r < BOARD_SIZE && c >= 0 && c < BOARD_SIZE && board[r][c] === player) {
-        count++;
-      } else break;
-    }
-    
-    // Check negative direction
-    for (let i = 1; i < 5; i++) {
-      const r = row - dr * i;
-      const c = col - dc * i;
-      if (r >= 0 && r < BOARD_SIZE && c >= 0 && c < BOARD_SIZE && board[r][c] === player) {
-        count++;
-      } else break;
-    }
-    
-    if (count >= 5) return true;
-  }
-  return false;
-}
+          if (board[row][col]) {
+            const stone = document.createElement('div');
+            stone.className = `stone ${board[row][col].color}`;
+            if (moveHistory.length > 0 && 
+                moveHistory[moveHistory.length - 1].row === row && 
+                moveHistory[moveHistory.length - 1].col === col) {
+              stone.classList.add('last');
+            }
+            cell.appendChild(stone);
+          }
 
-function checkDraw() {
-  return board.every(row => row.every(cell => cell !== null));
-}
-
-// ==================== AI Logic ====================
-function makeAIMove() {
-  if (gameOver) return;
-  
-  const move = findBestMove();
-  makeMove(move.row, move.col);
-}
-
-function findBestMove() {
-  // Check for winning move
-  for (let row = 0; row < BOARD_SIZE; row++) {
-    for (let col = 0; col < BOARD_SIZE; col++) {
-      if (!board[row][col]) {
-        board[row][col] = 'white';
-        if (checkWin(row, col)) {
-          board[row][col] = null;
-          return { row, col };
-        }
-        board[row][col] = null;
-      }
-    }
-  }
-  
-  // Block opponent's winning move
-  for (let row = 0; row < BOARD_SIZE; row++) {
-    for (let col = 0; col < BOARD_SIZE; col++) {
-      if (!board[row][col]) {
-        board[row][col] = 'black';
-        if (checkWin(row, col)) {
-          board[row][col] = null;
-          return { row, col };
-        }
-        board[row][col] = null;
-      }
-    }
-  }
-  
-  // Look for open 4 (4 in a row with both ends open)
-  for (let row = 0; row < BOARD_SIZE; row++) {
-    for (let col = 0; col < BOARD_SIZE; col++) {
-      if (!board[row][col]) {
-        board[row][col] = 'white';
-        if (hasOpenFour(row, col, 'white')) {
-          board[row][col] = null;
-          return { row, col };
-        }
-        board[row][col] = null;
-      }
-    }
-  }
-  
-  // Block opponent's open 4
-  for (let row = 0; row < BOARD_SIZE; row++) {
-    for (let col = 0; col < BOARD_SIZE; col++) {
-      if (!board[row][col]) {
-        board[row][col] = 'black';
-        if (hasOpenFour(row, col, 'black')) {
-          board[row][col] = null;
-          return { row, col };
-        }
-        board[row][col] = null;
-      }
-    }
-  }
-  
-  // Prefer center area
-  const centerMoves = [];
-  const otherMoves = [];
-  for (let row = 0; row < BOARD_SIZE; row++) {
-    for (let col = 0; col < BOARD_SIZE; col++) {
-      if (!board[row][col]) {
-        const distFromCenter = Math.abs(row - 7) + Math.abs(col - 7);
-        if (distFromCenter <= 3) {
-          centerMoves.push({ row, col, score: 10 - distFromCenter });
-        } else {
-          otherMoves.push({ row, col, score: 5 });
+          boardEl.appendChild(cell);
         }
       }
     }
-  }
-  
-  const allMoves = [...centerMoves, ...otherMoves];
-  if (allMoves.length > 0) {
-    allMoves.sort((a, b) => b.score - a.score);
-    return allMoves[Math.floor(Math.random() * Math.min(5, allMoves.length))];
-  }
-  
-  return { row: 7, col: 7 };
-}
 
-function hasOpenFour(row, col, player) {
-  const directions = [[0, 1], [1, 0], [1, 1], [1, -1]];
-  
-  for (const [dr, dc] of directions) {
-    let count = 1;
-    let openEnds = 0;
-    
-    // Positive direction
-    for (let i = 1; i < 5; i++) {
-      const r = row + dr * i;
-      const c = col + dc * i;
-      if (r >= 0 && r < BOARD_SIZE && c >= 0 && c < BOARD_SIZE) {
-        if (board[r][c] === player) count++;
-        else if (!board[r][c]) { openEnds++; break; }
-        else break;
+    function handleClick(row, col) {
+      if (gameOver || board[row][col]) return;
+
+      placeStone(row, col);
+
+      if (!gameOver && gameMode === 'ai' && currentPlayer === 'white') {
+        setTimeout(aiMove, 300);
       }
     }
-    
-    // Negative direction
-    for (let i = 1; i < 5; i++) {
-      const r = row - dr * i;
-      const c = col - dc * i;
-      if (r >= 0 && r < BOARD_SIZE && c >= 0 && c < BOARD_SIZE) {
-        if (board[r][c] === player) count++;
-        else if (!board[r][c]) { openEnds++; break; }
-        else break;
+
+    function placeStone(row, col) {
+      board[row][col] = { color: currentPlayer, row, col };
+      moveHistory.push({ row, col, color: currentPlayer });
+
+      renderBoard();
+
+      if (checkWin(row, col)) {
+        gameOver = true;
+        document.getElementById('winnerText').textContent = currentPlayer === 'black' ? 'Black' : 'White';
+        document.getElementById('winMessage').classList.add('show');
+        return;
       }
+
+      if (moveHistory.length === BOARD_SIZE * BOARD_SIZE) {
+        gameOver = true;
+        alert('Draw! The board is full.');
+        return;
+      }
+
+      currentPlayer = currentPlayer === 'black' ? 'white' : 'black';
+      updateCurrentPlayer();
     }
-    
-    if (count >= 4 && openEnds >= 1) return true;
-  }
-  return false;
-}
 
-// ==================== UI Functions ====================
-function setMode(mode) {
-  gameMode = mode;
-  document.querySelectorAll('.mode-btn').forEach(btn => {
-    btn.classList.toggle('active', btn.textContent.toLowerCase().includes(mode === 'ai' ? 'ai' : 'players'));
-  });
-  newGame();
-}
+    function updateCurrentPlayer() {
+      const indicator = document.getElementById('currentIndicator');
+      const text = document.getElementById('currentText');
+      indicator.className = `player-indicator ${currentPlayer}`;
+      text.textContent = currentPlayer === 'black' ? 'Black' : 'White';
+    }
 
-function newGame() {
-  initGame();
-}
+    function checkWin(row, col) {
+      const color = board[row][col].color;
+      const directions = [
+        [0, 1],   // Horizontal
+        [1, 0],   // Vertical
+        [1, 1],   // Diagonal \
+        [1, -1]   // Diagonal /
+      ];
 
-function undoMove() {
-  if (moveHistory.length === 0 || gameOver) return;
-  
-  // Undo both player and AI moves if in AI mode
-  const movesToUndo = (gameMode === 'ai' && moveHistory.length >= 2) ? 2 : 1;
-  
-  for (let i = 0; i < movesToUndo && moveHistory.length > 0; i++) {
-    const lastMove = moveHistory.pop();
-    board[lastMove.row][lastMove.col] = null;
-  }
-  
-  currentPlayer = moveHistory.length % 2 === 0 ? 'black' : 'white';
-  gameOver = false;
-  renderBoard();
-  updateStatus();
-  hideWinMessage();
-}
+      for (const [dr, dc] of directions) {
+        let count = 1;
 
-function updateStatus() {
-  const indicator = document.getElementById('currentIndicator');
-  const text = document.getElementById('currentText');
-  indicator.className = 'player-indicator ' + currentPlayer;
-  text.textContent = currentPlayer === 'black' ? 'Black' : 'White';
-}
+        // Check positive direction
+        for (let i = 1; i < 5; i++) {
+          const r = row + dr * i;
+          const c = col + dc * i;
+          if (r < 0 || r >= BOARD_SIZE || c < 0 || c >= BOARD_SIZE) break;
+          if (board[r][c]?.color === color) count++;
+          else break;
+        }
 
-function showWinMessage(winner) {
-  const winMsg = document.getElementById('winMessage');
-  const winnerText = document.getElementById('winnerText');
-  
-  if (winner === 'draw') {
-    winnerText.textContent = 'It\'s a Draw!';
-    winMsg.querySelector('p').textContent = 'The board is full!';
-  } else {
-    winnerText.textContent = winner === 'black' ? 'Black' : 'White';
-    winMsg.querySelector('p').textContent = 'Five in a row achieved!';
-  }
-  winMsg.style.display = 'block';
-}
+        // Check negative direction
+        for (let i = 1; i < 5; i++) {
+          const r = row - dr * i;
+          const c = col - dc * i;
+          if (r < 0 || r >= BOARD_SIZE || c < 0 || c >= BOARD_SIZE) break;
+          if (board[r][c]?.color === color) count++;
+          else break;
+        }
 
-function hideWinMessage() {
-  document.getElementById('winMessage').style.display = 'none';
-}
+        if (count >= 5) return true;
+      }
+      return false;
+    }
 
-// Initialize
-document.addEventListener('DOMContentLoaded', initGame);
-</script>
+    // ─── Strong AI ────────────────────────────────────────────────────────────
+    // Pattern scores (attack / defense weights)
+    const SCORE = {
+      FIVE:        100000000,   // 五连 — 立刻赢
+      OPEN_FOUR:     500000,    // 活四 — 必赢
+      DOUBLE_THREE:  100000,    // 双活三
+      BLOCKED_FOUR:   50000,    // 冲四
+      OPEN_THREE:     10000,    // 活三
+      BLOCKED_THREE:   1000,    // 眠三
+      OPEN_TWO:         500,    // 活二
+      BLOCKED_TWO:       50,    // 眠二
+      CENTER_BONUS:       3,    // 中心倾向
+    };
 
-<script src="/cookie-consent.js"></script>
+    const DIRECTIONS = [[0,1],[1,0],[1,1],[1,-1]];
+
+    // Count consecutive stones + open ends in one direction
+    function analyzeDirection(row, col, dr, dc, color) {
+      let count = 1;
+      let openEnds = 0;
+      let blocked = 0;
+
+      // Positive direction
+      let r = row + dr, c = col + dc;
+      while (r >= 0 && r < BOARD_SIZE && c >= 0 && c < BOARD_SIZE && board[r][c]?.color === color) {
+        count++; r += dr; c += dc;
+      }
+      if (r >= 0 && r < BOARD_SIZE && c >= 0 && c < BOARD_SIZE && !board[r][c]) openEnds++;
+      else blocked++;
+
+      // Negative direction
+      r = row - dr; c = col - dc;
+      while (r >= 0 && r < BOARD_SIZE && c >= 0 && c < BOARD_SIZE && board[r][c]?.color === color) {
+        count++; r -= dr; c -= dc;
+      }
+      if (r >= 0 && r < BOARD_SIZE && c >= 0 && c < BOARD_SIZE && !board[r][c]) openEnds++;
+      else blocked++;
+
+      return { count, openEnds };
+    }
+
+    // Score a single position for a given color (assuming stone placed there)
+    function scorePosition(row, col, color) {
+      board[row][col] = { color };
+      let score = 0;
+      let openThrees = 0;
+      let blockedFours = 0;
+      let openFours = 0;
+
+      for (const [dr, dc] of DIRECTIONS) {
+        const { count, openEnds } = analyzeDirection(row, col, dr, dc, color);
+        const open = openEnds;
+
+        if (count >= 5) { score += SCORE.FIVE; }
+        else if (count === 4) {
+          if (open === 2) { score += SCORE.OPEN_FOUR; openFours++; }
+          else if (open === 1) { score += SCORE.BLOCKED_FOUR; blockedFours++; }
+        }
+        else if (count === 3) {
+          if (open === 2) { score += SCORE.OPEN_THREE; openThrees++; }
+          else if (open === 1) { score += SCORE.BLOCKED_THREE; }
+        }
+        else if (count === 2) {
+          if (open === 2) score += SCORE.OPEN_TWO;
+          else if (open === 1) score += SCORE.BLOCKED_TWO;
+        }
+      }
+
+      // Double-threat bonus
+      if (openThrees >= 2) score += SCORE.DOUBLE_THREE;
+      if (blockedFours >= 2 || (blockedFours >= 1 && openThrees >= 1)) score += SCORE.OPEN_FOUR;
+
+      // Center bonus
+      const center = Math.floor(BOARD_SIZE / 2);
+      score += SCORE.CENTER_BONUS * (BOARD_SIZE - Math.abs(row - center) - Math.abs(col - center));
+
+      board[row][col] = null;
+      return score;
+    }
+
+    // Collect candidate cells (within 2 of any existing stone)
+    function getCandidates() {
+      const visited = new Set();
+      const candidates = [];
+      const center = Math.floor(BOARD_SIZE / 2);
+
+      let hasStone = false;
+      for (let r = 0; r < BOARD_SIZE; r++)
+        for (let c = 0; c < BOARD_SIZE; c++)
+          if (board[r][c]) { hasStone = true; break; }
+
+      if (!hasStone) return [{ row: center, col: center }];
+
+      for (let row = 0; row < BOARD_SIZE; row++) {
+        for (let col = 0; col < BOARD_SIZE; col++) {
+          if (!board[row][col]) continue;
+          for (let dr = -2; dr <= 2; dr++) {
+            for (let dc = -2; dc <= 2; dc++) {
+              const r = row + dr, c = col + dc;
+              const key = r * BOARD_SIZE + c;
+              if (r >= 0 && r < BOARD_SIZE && c >= 0 && c < BOARD_SIZE && !board[r][c] && !visited.has(key)) {
+                visited.add(key);
+                candidates.push({ row: r, col: c });
+              }
+            }
+          }
+        }
+      }
+      return candidates;
+    }
+
+    function aiMove() {
+      if (gameOver) return;
+
+      const candidates = getCandidates();
+      let bestScore = -Infinity;
+      let bestMove = candidates[0];
+
+      for (const { row, col } of candidates) {
+        // Attack score (AI winning)
+        const attackScore = scorePosition(row, col, 'white');
+        // Defense score (blocking human)
+        const defenseScore = scorePosition(row, col, 'black');
+
+        // Immediately win if possible
+        if (attackScore >= SCORE.FIVE) { bestMove = { row, col }; break; }
+        // Immediately block if human would win
+        if (defenseScore >= SCORE.FIVE) { bestMove = { row, col }; bestScore = SCORE.FIVE - 1; continue; }
+
+        // Weighted combination: slightly prefer attacking
+        const total = attackScore * 1.1 + defenseScore;
+        if (total > bestScore) {
+          bestScore = total;
+          bestMove = { row, col };
+        }
+      }
+
+      if (bestMove) placeStone(bestMove.row, bestMove.col);
+    }
+
+    function hasNeighbor(row, col) {
+      for (let dr = -1; dr <= 1; dr++) {
+        for (let dc = -1; dc <= 1; dc++) {
+          if (dr === 0 && dc === 0) continue;
+          const r = row + dr, c = col + dc;
+          if (r >= 0 && r < BOARD_SIZE && c >= 0 && c < BOARD_SIZE && board[r][c]) return true;
+        }
+      }
+      return false;
+    }
+    // ─── End AI ───────────────────────────────────────────────────────────────
+
+    function setMode(mode) {
+      gameMode = mode;
+      document.querySelectorAll('.mode-btn').forEach(btn => {
+        btn.classList.toggle('active', 
+          (mode === 'pvp' && btn.textContent.includes('2 Players')) ||
+          (mode === 'ai' && btn.textContent.includes('AI'))
+        );
+      });
+      newGame();
+    }
+
+    function undoMove() {
+      if (moveHistory.length === 0 || gameOver) return;
+
+      const lastMove = moveHistory.pop();
+      board[lastMove.row][lastMove.col] = null;
+
+      if (gameMode === 'ai' && moveHistory.length > 0) {
+        const aiMove = moveHistory.pop();
+        board[aiMove.row][aiMove.col] = null;
+      }
+
+      currentPlayer = lastMove.color;
+      gameOver = false;
+      document.getElementById('winMessage').classList.remove('show');
+      renderBoard();
+      updateCurrentPlayer();
+    }
+
+    function newGame() {
+      initBoard();
+    }
+
+    // Initialize
+    initBoard();</script>
+
+
+  <script src="/knexio-bundle.js"></script>
+  <script src="../../cookie-consent.js"></script>
 </body>
-</html>

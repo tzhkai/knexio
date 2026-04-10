@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Connect Four – Free Online Two-Player Game | Knexio</title>
-  <meta name="description" content="Play Connect Four free online with a friend on the same device. Drop chips to connect four in a row – horizontally, vertically, or diagonally. Classic fun!">
+  <title>🔴 Connect Four</title>
+  <meta name="description" content="Play Connect Four free online. Drop discs to connect four in a row. Challenge AI or play with a friend. Works in your browser.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="canonical" href="https://knexio.xyz/games/connect-four/" />
-  <meta property="og:title" content="Connect Four – Free Online Two-Player Game | Knexio" />
-  <meta property="og:description" content="Play Connect Four free online with a friend on the same device. Drop chips to connect four in a row – horizontally, vertically, or diagonally. Classic fun!" />
+  <meta property="og:title" content="🔴 Connect Four" />
+  <meta property="og:description" content="Drop discs to connect 4 in a row. Play against AI or a friend." />
   <meta property="og:url" content="https://knexio.xyz/games/connect-four/" />
   <meta property="og:type" content="Game" />
   <meta property="og:site_name" content="Knexio" />
@@ -37,7 +37,7 @@
     .back:hover{color:var(--accent);}
     h1{font-size:30px;margin-bottom:6px;}
     .subtitle{font-size:15px;color:var(--sub);margin-bottom:20px;}
-    .ad-slot{margin:24px 0;text-align:center;min-height:90px}
+    .ad-slot{margin:20px 0;text-align:center;min-height:90px;background:rgba(255,255,255,0.02);border:1px dashed rgba(255,255,255,0.08);border-radius:8px;display:flex;align-items:center;justify-content:center;}
     .controls{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;align-items:center;}
     .ctrl-label{font-size:13px;color:var(--sub);}
     .seg{display:flex;border:1px solid var(--border);border-radius:10px;overflow:hidden;}
@@ -82,9 +82,9 @@
     .rule-card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:16px;}
     .rule-card h3{font-size:14px;color:var(--accent);margin-bottom:6px;}
     .rule-card p{font-size:13px;color:var(--sub);line-height:1.5;}
-    footer p{margin:0}
-    footer p{margin:0}
-    footer p{margin:0}
+    footer{margin-top:40px;text-align:center;font-size:13px;color:var(--sub);border-top:1px solid var(--border);}
+    footer a{color:var(--sub);margin:0 10px;}
+    footer a:hover{color:var(--accent);}
   .ad-banner{margin:24px 0;text-align:center;min-height:90px}
   
     /* ==================== 移动端优化 ==================== */
@@ -255,7 +255,8 @@
         font-size: 16px !important;
       }
     }
-    footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
+    }
+    </style>
   <link rel="stylesheet" href="/shared.css">
 </head>
 <body><div class="wrap">
@@ -318,420 +319,264 @@
 
   </div>
 
-  <div class="ad-banner" style="margin-top:40px"></div>
+  <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3617326351" data-ad-format="auto" data-full-width-responsive="true"></ins>
   </div>
-
-  <div class="ad-banner" style="margin-top:40px"></div>
-<script src="/knexio-bundle.js"></script>
-
-    <style>p{margin:0}</style>
-  <div class="gameplay-section" style="margin: 60px auto 0; max-width: 800px; padding: 32px 24px; background: var(--panel); border-radius: 18px; border: 1px solid var(--border); text-align: left;">
-    <h2 style="font-size: 28px; margin-bottom: 30px; color: var(--text-main); display: flex; align-items: center;">
-        <span style="background: var(--accent); color: white; width: 36px; height: 36px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 15px; font-size: 18px;">🎮</span>
-        How to Play Connect Four
-    </h2>
-
-    <div style="margin-bottom: 30px;">
-        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--text-main);">Game Description</h3>
-        <p style="font-size: 15px; color: var(--text-sub); line-height: 1.7; margin-bottom: 20px;">
-            Connect Four is a classic strategy game. Drop colored discs into a grid and be the first to connect four in a row - vertically, horizontally, or diagonally!
-        </p>
     </div>
 
-    <div style="margin-bottom: 30px;">
-        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--text-main);">How to Play</h3>
-        <ol style="font-size: 15px; color: var(--text-sub); line-height: 1.7; padding-left: 25px; margin-bottom: 20px;">
-            <li style="margin-bottom: 12px;"><strong>Click a column</strong> to drop your disc into the lowest empty space</li>
-            <li style="margin-bottom: 12px;"><strong>Take turns</strong> with your opponent</li>
-            <li style="margin-bottom: 12px;"><strong>Connect 4 discs</strong> in a row to win</li>
-            <li style="margin-bottom: 12px;"><strong>Connections can be</strong> vertical, horizontal, or diagonal</li>
-            <li style="margin-bottom: 12px;"><strong>Plan ahead</strong> - block opponent's winning moves</li>
-            <li style="margin-bottom: 12px;"><strong>Game is a draw</strong> if the board fills with no winner</li>
-        </ol>
+          <div class="ad-banner" style="margin-top:40px">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins>
     </div>
-
-    <div style="margin-bottom: 30px;">
-        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--text-main);">Pro Tips & Strategies</h3>
-        <ul style="font-size: 15px; color: var(--text-sub); line-height: 1.7; padding-left: 25px; margin-bottom: 20px; list-style: none;">
-            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;"><span style="position: absolute; left: -15px; color: var(--accent);">✓</span> Control the center columns - they offer more winning possibilities</li>
-            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;"><span style="position: absolute; left: -15px; color: var(--accent);">✓</span> Watch for '7' trap setups that create two winning threats</li>
-            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;"><span style="position: absolute; left: -15px; color: var(--accent);">✓</span> Block opponent's three-in-a-row immediately</li>
-            <li style="margin-bottom: 10px; position: relative; padding-left: 10px;"><span style="position: absolute; left: -15px; color: var(--accent);">✓</span> Think two moves ahead - set up your own double threats</li>
-        </ul>
-    </div>
-</div>
-
-<footer>
-  <p>Free online games to play anytime. Enjoy classic games, puzzles, and entertainment.</p>
-  <p style="margin: 8px 0; font-size: 13px;">
-    <a href="/about/" style="color:var(--accent);text-decoration:none;margin:0 8px;">About</a>
-    <a href="/privacy/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Privacy</a>
-    <a href="/terms/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Terms</a>
-    <a href="/contact/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Contact</a>
-  </p>
-  <p>© 2026 Knexio. All rights reserved.</p>
-</footer><div class="ad-banner" style="margin-top:40px"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="5794572171" data-ad-format="auto" data-full-width-responsive="true"></ins></div><div class="ad-section" style="margin-top:40px;text-align:center"><ins class="adsbygoogle" style="display:block;background:var(--panel);border-radius:12px;padding:15px" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
+    <footer>
+      <p>Free online games to play anytime. Enjoy classic games, puzzles, and entertainment.</p>
+            <p style="margin: 8px 0; font-size: 13px;">
+        <a href="/about/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">About</a>
+        <a href="/privacy/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Privacy</a>
+        <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
+        <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
+      </p>
+      <p>© 2026 Knexio. All rights reserved.</p>
+    </footer>
 
 <script>
-// ==================== Connect Four Game Logic ====================
-const ROWS = 6;
-const COLS = 7;
-let board = [];
-let currentPlayer = 'red';
-let gameMode = 'ai';
-let difficulty = 'medium';
-let gameOver = false;
-let scores = { red: 0, yellow: 0, draws: 0 };
+  const ROWS = 6, COLS = 7;
+  let board, currentPlayer, gameOver, mode, difficulty;
+  let scores = {red:0, yellow:0, draws:0};
 
-function initGame() {
-  board = Array(ROWS).fill(null).map(() => Array(COLS).fill(null));
-  currentPlayer = 'red';
-  gameOver = false;
-  renderBoard();
-  renderHoverRow();
-  updateStatus();
-  hideModal();
-}
+  function setMode(m) {
+    mode = m;
+    document.getElementById('btn-vs-ai').classList.toggle('active', m==='ai');
+    document.getElementById('btn-vs-player').classList.toggle('active', m==='2p');
+    document.getElementById('diff-seg').style.opacity = m==='ai' ? '1' : '0.4';
+    newGame();
+  }
 
-function renderBoard() {
-  const grid = document.getElementById('boardGrid');
-  grid.innerHTML = '';
-  
-  for (let row = 0; row < ROWS; row++) {
-    for (let col = 0; col < COLS; col++) {
-      const cell = document.createElement('div');
-      cell.className = 'cell';
-      cell.dataset.row = row;
-      cell.dataset.col = col;
-      
-      if (board[row][col]) {
-        const disc = document.createElement('div');
-        disc.className = `disc ${board[row][col]}`;
-        cell.appendChild(disc);
-      }
-      
+  function setDiff(d) {
+    difficulty = d;
+    document.querySelectorAll('#diff-seg button').forEach((b,i) => b.classList.toggle('active', ['easy','medium','hard'][i]===d));
+    newGame();
+  }
+
+  function newGame() {
+    board = Array.from({length:ROWS}, ()=>Array(COLS).fill(0));
+    currentPlayer = 1; gameOver = false;
+    render(); updateStatus(); closeModal();
+  }
+
+  function render() {
+    const grid = document.getElementById('boardGrid');
+    grid.innerHTML = '';
+    for(let r=0;r<ROWS;r++) for(let c=0;c<COLS;c++){
+      const cell=document.createElement('div');
+      cell.className='cell'+(board[r][c]===1?' red':board[r][c]===2?' yellow':'');
       grid.appendChild(cell);
     }
+    const hover=document.getElementById('hoverRow');
+    hover.innerHTML='';
+    for(let c=0;c<COLS;c++){
+      const hc=document.createElement('div');
+      hc.className='hover-cell';
+      hc.dataset.col=c;
+      hover.appendChild(hc);
+    }
   }
-}
 
-function renderHoverRow() {
-  const hoverRow = document.getElementById('hoverRow');
-  hoverRow.innerHTML = '';
-  
-  for (let col = 0; col < COLS; col++) {
-    const slot = document.createElement('div');
-    slot.className = 'hover-slot';
-    slot.dataset.col = col;
-    slot.addEventListener('click', () => handleColumnClick(col));
-    slot.addEventListener('mouseenter', () => showPreview(col));
-    slot.addEventListener('mouseleave', () => hidePreview());
-    hoverRow.appendChild(slot);
+  function updateStatus() {
+    const disc=document.getElementById('turnDisc');
+    disc.className='disc-indicator '+(currentPlayer===1?'disc-red':'disc-yellow');
+    document.getElementById('statusText').textContent = gameOver ? '' : (currentPlayer===1?'Red':'Yellow')+"'s turn" + (mode==='ai'&&currentPlayer===2?' (AI)':'');
+    document.getElementById('scoreRed').textContent=scores.red;
+    document.getElementById('scoreYellow').textContent=scores.yellow;
+    document.getElementById('scoreDraws').textContent=scores.draws;
   }
-}
 
-function showPreview(col) {
-  if (gameOver) return;
-  const slots = document.querySelectorAll('.hover-slot');
-  slots.forEach((slot, i) => {
-    slot.innerHTML = i === col ? `<div class="preview-disc ${currentPlayer}"></div>` : '';
-  });
-}
-
-function hidePreview() {
-  const slots = document.querySelectorAll('.hover-slot');
-  slots.forEach(slot => slot.innerHTML = '');
-}
-
-function handleColumnClick(col) {
-  if (gameOver) return;
-  if (gameMode === 'ai' && currentPlayer === 'yellow') return;
-  
-  const row = getLowestEmptyRow(col);
-  if (row === -1) return;
-  
-  makeMove(row, col);
-}
-
-function getLowestEmptyRow(col) {
-  for (let row = ROWS - 1; row >= 0; row--) {
-    if (!board[row][col]) return row;
+  function dropDisc(col) {
+    if(gameOver) return;
+    if(mode==='ai' && currentPlayer===2) return;
+    const row = getRow(col);
+    if(row===-1) return;
+    board[row][col]=currentPlayer;
+    const win=checkWin(row,col);
+    render();
+    if(win){endGame(currentPlayer); return;}
+    if(isDraw()){endGame(0); return;}
+    currentPlayer=currentPlayer===1?2:1;
+    updateStatus();
+    if(mode==='ai' && currentPlayer===2) setTimeout(aiMove,400);
   }
-  return -1;
-}
 
-function makeMove(row, col) {
-  board[row][col] = currentPlayer;
-  renderBoard();
-  
-  if (checkWin(row, col)) {
-    gameOver = true;
-    scores[currentPlayer]++;
-    updateScores();
-    showModal(`${currentPlayer === 'red' ? '🔴 Red' : '🟡 Yellow'} Wins!`, 'Connect 4 in a row!');
-    highlightWinningCells();
-    return;
-  }
-  
-  if (checkDraw()) {
-    gameOver = true;
-    scores.draws++;
-    updateScores();
-    showModal('🤝 Draw!', 'The board is full.');
-    return;
-  }
-  
-  currentPlayer = currentPlayer === 'red' ? 'yellow' : 'red';
-  updateStatus();
-  
-  if (gameMode === 'ai' && currentPlayer === 'yellow') {
-    setTimeout(makeAIMove, 500);
-  }
-}
+  function getRow(col){for(let r=ROWS-1;r>=0;r--)if(board[r][col]===0)return r;return -1;}
 
-function checkWin(row, col) {
-  const player = board[row][col];
-  const directions = [[0, 1], [1, 0], [1, 1], [1, -1]];
-  
-  for (const [dr, dc] of directions) {
-    let count = 1;
-    let winningCells = [[row, col]];
-    
-    // Check positive direction
-    for (let i = 1; i < 4; i++) {
-      const r = row + dr * i;
-      const c = col + dc * i;
-      if (r >= 0 && r < ROWS && c >= 0 && c < COLS && board[r][c] === player) {
+  function checkWin(row,col){
+    const p=board[row][col];
+    const dirs=[[0,1],[1,0],[1,1],[1,-1]];
+    for(const[dr,dc]of dirs){
+      let count=1,cells=[[row,col]];
+      for(let d=-1;d<=1;d+=2) for(let i=1;i<4;i++){
+        const r=row+dr*i*d,c=col+dc*i*d;
+        if(r<0||r>=ROWS||c<0||c>=COLS||board[r][c]!==p) break;
+        count++;cells.push([r,c]);
+      }
+      if(count>=4){highlightWin(cells);return true;}
+    }
+    return false;
+  }
+
+  function highlightWin(cells){
+    const grid=document.getElementById('boardGrid');
+    cells.forEach(([r,c])=>grid.children[r*COLS+c].classList.add('win'));
+  }
+
+  function isDraw(){return board[0].every(v=>v!==0);}
+
+  function endGame(winner){
+    gameOver=true;
+    if(winner===1)scores.red++;
+    else if(winner===2)scores.yellow++;
+    else scores.draws++;
+    updateStatus();
+    const titles={1:'🔴 Red Wins!',2:'🟡 Yellow Wins!',0:'🤝 Draw!'};
+    const subs={1:'Great move! Red connected 4 in a row.',2:'Excellent! Yellow connected 4 in a row.',0:'The board is full — nobody wins this time.'};
+    document.getElementById('modalTitle').textContent=titles[winner];
+    document.getElementById('modalSub').textContent=subs[winner];
+    setTimeout(()=>document.getElementById('modal').classList.add('show'),600);
+  }
+
+  function closeModal(){document.getElementById('modal').classList.remove('show');}
+
+  // AI Logic
+  function aiMove(){
+    let col;
+    if(difficulty==='easy') col=randomMove();
+    else if(difficulty==='medium') col=mediumMove();
+    else col=minimaxMove();
+    const row=getRow(col);
+    if(row===-1) return;
+    board[row][col]=2;
+    const win=checkWin(row,col);
+    render();
+    if(win){endGame(2);return;}
+    if(isDraw()){endGame(0);return;}
+    currentPlayer=1;updateStatus();
+  }
+
+  function randomMove(){
+    const valid=[];for(let c=0;c<COLS;c++)if(getRow(c)!==-1)valid.push(c);
+    return valid[Math.floor(Math.random()*valid.length)];
+  }
+
+  function mediumMove(){
+    // Block player win, or take AI win
+    for(let p=2;p>=1;p--){
+      for(let c=0;c<COLS;c++){
+        const r=getRow(c);if(r===-1)continue;
+        board[r][c]=p;
+        if(checkWinSilent(r,c)){board[r][c]=0;return c;}
+        board[r][c]=0;
+      }
+    }
+    return randomMove();
+  }
+
+  function checkWinSilent(row,col){
+    const p=board[row][col];
+    const dirs=[[0,1],[1,0],[1,1],[1,-1]];
+    for(const[dr,dc]of dirs){
+      let count=1;
+      for(let d=-1;d<=1;d+=2)for(let i=1;i<4;i++){
+        const r=row+dr*i*d,c=col+dc*i*d;
+        if(r<0||r>=ROWS||c<0||c>=COLS||board[r][c]!==p)break;
         count++;
-        winningCells.push([r, c]);
-      } else break;
+      }
+      if(count>=4)return true;
     }
-    
-    // Check negative direction
-    for (let i = 1; i < 4; i++) {
-      const r = row - dr * i;
-      const c = col - dc * i;
-      if (r >= 0 && r < ROWS && c >= 0 && c < COLS && board[r][c] === player) {
-        count++;
-        winningCells.push([r, c]);
-      } else break;
+    return false;
+  }
+
+  function minimaxMove(){
+    let best=-Infinity,bestCol=randomMove();
+    for(let c=0;c<COLS;c++){
+      const r=getRow(c);if(r===-1)continue;
+      board[r][c]=2;
+      const score=minimax(board,5,false,-Infinity,Infinity);
+      board[r][c]=0;
+      if(score>best){best=score;bestCol=c;}
     }
-    
-    if (count >= 4) {
-      window.winningCells = winningCells;
-      return true;
+    return bestCol;
+  }
+
+  function minimax(b,depth,isMax,alpha,beta){
+    // Check terminal
+    for(let r=0;r<ROWS;r++)for(let c=0;c<COLS;c++){
+      if(b[r][c]&&checkWinSilent(r,c)) return b[r][c]===2?(depth+1)*100:-(depth+1)*100;
+    }
+    if(depth===0||isDraw()) return evaluateBoard();
+    if(isMax){
+      let best=-Infinity;
+      for(let c=0;c<COLS;c++){
+        const r=getRow(c);if(r===-1)continue;
+        board[r][c]=2;const score=minimax(board,depth-1,false,alpha,beta);board[r][c]=0;
+        best=Math.max(best,score);alpha=Math.max(alpha,score);if(beta<=alpha)break;
+      }
+      return best;
+    }else{
+      let best=Infinity;
+      for(let c=0;c<COLS;c++){
+        const r=getRow(c);if(r===-1)continue;
+        board[r][c]=1;const score=minimax(board,depth-1,true,alpha,beta);board[r][c]=0;
+        best=Math.min(best,score);beta=Math.min(beta,score);if(beta<=alpha)break;
+      }
+      return best;
     }
   }
-  return false;
-}
 
-function highlightWinningCells() {
-  if (!window.winningCells) return;
-  const cells = document.querySelectorAll('.cell');
-  window.winningCells.forEach(([row, col]) => {
-    const index = row * COLS + col;
-    cells[index].classList.add('winning');
+  function evaluateBoard(){
+    let score=0;
+    // Center column preference
+    const center=Math.floor(COLS/2);
+    for(let r=0;r<ROWS;r++){if(board[r][center]===2)score+=3;else if(board[r][center]===1)score-=3;}
+    return score;
+  }
+
+  // Event listeners
+  document.getElementById('boardWrap').addEventListener('click', e=>{
+    if(gameOver)return;
+    const grid=document.getElementById('boardGrid');
+    const cells=[...grid.children];
+    const clicked=e.target.closest('.cell') || e.target;
+    const idx=cells.indexOf(clicked);
+    if(idx!==-1)dropDisc(idx%COLS);
+    else{
+      const rect=document.getElementById('boardWrap').getBoundingClientRect();
+      const cellW=rect.width/COLS;
+      const col=Math.floor((e.clientX-rect.left)/cellW);
+      dropDisc(col);
+    }
   });
-}
 
-function checkDraw() {
-  return board.every(row => row.every(cell => cell !== null));
-}
+  document.getElementById('hoverRow').addEventListener('click',e=>{
+    const col=e.target.dataset.col;
+    if(col!==undefined)dropDisc(+col);
+  });
 
-// ==================== AI Logic ====================
-function makeAIMove() {
-  if (gameOver) return;
-  
-  let col;
-  
-  if (difficulty === 'easy') {
-    col = getRandomValidMove();
-  } else if (difficulty === 'medium') {
-    col = getMediumMove();
-  } else {
-    col = getHardMove();
-  }
-  
-  const row = getLowestEmptyRow(col);
-  makeMove(row, col);
-}
+  document.getElementById('hoverRow').addEventListener('mouseover',e=>{
+    if(gameOver)return;
+    const col=e.target.dataset.col;
+    if(col===undefined)return;
+    document.querySelectorAll('.hover-cell').forEach(h=>h.className='hover-cell');
+    e.target.className='hover-cell '+(currentPlayer===1?'show-red':'show-yellow');
+  });
 
-function getRandomValidMove() {
-  const validCols = [];
-  for (let col = 0; col < COLS; col++) {
-    if (getLowestEmptyRow(col) !== -1) validCols.push(col);
-  }
-  return validCols[Math.floor(Math.random() * validCols.length)];
-}
+  document.getElementById('hoverRow').addEventListener('mouseleave',()=>{
+    document.querySelectorAll('.hover-cell').forEach(h=>h.className='hover-cell');
+  });
 
-function getMediumMove() {
-  // Check for winning move
-  for (let col = 0; col < COLS; col++) {
-    const row = getLowestEmptyRow(col);
-    if (row !== -1) {
-      board[row][col] = 'yellow';
-      if (checkWin(row, col)) {
-        board[row][col] = null;
-        return col;
-      }
-      board[row][col] = null;
-    }
-  }
-  
-  // Block opponent's winning move
-  for (let col = 0; col < COLS; col++) {
-    const row = getLowestEmptyRow(col);
-    if (row !== -1) {
-      board[row][col] = 'red';
-      if (checkWin(row, col)) {
-        board[row][col] = null;
-        return col;
-      }
-      board[row][col] = null;
-    }
-  }
-  
-  // Prefer center
-  const centerCols = [3, 2, 4, 1, 5, 0, 6];
-  for (const col of centerCols) {
-    if (getLowestEmptyRow(col) !== -1) return col;
-  }
-  
-  return getRandomValidMove();
-}
-
-function getHardMove() {
-  // Simple minimax with alpha-beta
-  let bestScore = -Infinity;
-  let bestCol = 3;
-  
-  for (let col = 0; col < COLS; col++) {
-    const row = getLowestEmptyRow(col);
-    if (row !== -1) {
-      board[row][col] = 'yellow';
-      const score = minimax(board, 4, -Infinity, Infinity, false);
-      board[row][col] = null;
-      
-      if (score > bestScore) {
-        bestScore = score;
-        bestCol = col;
-      }
-    }
-  }
-  
-  return bestCol;
-}
-
-function minimax(board, depth, alpha, beta, isMaximizing) {
-  // Check terminal states
-  for (let col = 0; col < COLS; col++) {
-    const row = getLowestEmptyRow(col);
-    if (row !== -1) {
-      board[row][col] = isMaximizing ? 'yellow' : 'red';
-      const win = checkWin(row, col);
-      board[row][col] = null;
-      if (win) return isMaximizing ? 1000 - (6 - depth) : -1000 + (6 - depth);
-    }
-  }
-  
-  if (depth === 0) return evaluateBoard();
-  
-  if (isMaximizing) {
-    let maxScore = -Infinity;
-    for (let col = 0; col < COLS; col++) {
-      const row = getLowestEmptyRow(col);
-      if (row !== -1) {
-        board[row][col] = 'yellow';
-        const score = minimax(board, depth - 1, alpha, beta, false);
-        board[row][col] = null;
-        maxScore = Math.max(maxScore, score);
-        alpha = Math.max(alpha, score);
-        if (beta <= alpha) break;
-      }
-    }
-    return maxScore;
-  } else {
-    let minScore = Infinity;
-    for (let col = 0; col < COLS; col++) {
-      const row = getLowestEmptyRow(col);
-      if (row !== -1) {
-        board[row][col] = 'red';
-        const score = minimax(board, depth - 1, alpha, beta, true);
-        board[row][col] = null;
-        minScore = Math.min(minScore, score);
-        beta = Math.min(beta, score);
-        if (beta <= alpha) break;
-      }
-    }
-    return minScore;
-  }
-}
-
-function evaluateBoard() {
-  let score = 0;
-  // Prefer center control
-  for (let row = 0; row < ROWS; row++) {
-    if (board[row][3] === 'yellow') score += 3;
-    if (board[row][2] === 'yellow' || board[row][4] === 'yellow') score += 2;
-  }
-  return score;
-}
-
-// ==================== UI Functions ====================
-function setMode(mode) {
-  gameMode = mode;
-  document.getElementById('btn-vs-ai').classList.toggle('active', mode === 'ai');
-  document.getElementById('btn-vs-player').classList.toggle('active', mode === '2p');
-  document.getElementById('diff-seg').style.display = mode === 'ai' ? 'flex' : 'none';
+  // Init
+  mode='ai'; difficulty='medium';
   newGame();
-}
+</script></div>
 
-function setDiff(diff) {
-  difficulty = diff;
-  document.querySelectorAll('#diff-seg button').forEach(btn => {
-    btn.classList.toggle('active', btn.textContent.toLowerCase() === diff);
-  });
-}
 
-function newGame() {
-  initGame();
-}
-
-function updateStatus() {
-  const turnDisc = document.getElementById('turnDisc');
-  const statusText = document.getElementById('statusText');
-  turnDisc.className = 'disc-indicator ' + currentPlayer;
-  statusText.textContent = (currentPlayer === 'red' ? 'Red' : 'Yellow') + "'s turn";
-}
-
-function updateScores() {
-  document.getElementById('scoreRed').textContent = scores.red;
-  document.getElementById('scoreYellow').textContent = scores.yellow;
-  document.getElementById('scoreDraws').textContent = scores.draws;
-}
-
-function showModal(title, sub) {
-  document.getElementById('modalTitle').textContent = title;
-  document.getElementById('modalSub').textContent = sub;
-  document.getElementById('modal').style.display = 'flex';
-}
-
-function hideModal() {
-  document.getElementById('modal').style.display = 'none';
-}
-
-// Initialize
-document.addEventListener('DOMContentLoaded', initGame);
-</script>
-
-<style>
-.cell.winning .disc { animation: pulse 0.5s ease-in-out infinite; }
-@keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
-.preview-disc { width: 50px; height: 50px; border-radius: 50%; opacity: 0.5; }
-.preview-disc.red { background: #ff4757; }
-.preview-disc.yellow { background: #ffa502; }
-</style>
-
-<script src="/cookie-consent.js"></script>
+  <script src="/knexio-bundle.js"></script>
+  <script src="../../cookie-consent.js"></script>
 </body>
-</html>

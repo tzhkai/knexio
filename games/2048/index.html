@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>2048 – Free Online Number Puzzle Game | Knexio</title>
-  <meta name="description" content="Play 2048 free online. Swipe to merge identical number tiles and reach 2048. Simple rules, deep strategy. Works in any browser. No download needed!">
+  <title>2048 - Free Online Game | Play Now | Knexio</title>
+  <meta name="description" content="Play 2048 free online. Classic number puzzle game - swipe to combine tiles and reach 2048. Works in your browser.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="canonical" href="https://knexio.xyz/games/2048/" />
-  <meta property="og:title" content="2048 – Free Online Number Puzzle Game | Knexio" />
-  <meta property="og:description" content="Play 2048 free online. Swipe to merge identical number tiles and reach 2048. Simple rules, deep strategy. Works in any browser. No download needed!" />
+  <meta property="og:title" content="Play 2048 Free Online" />
+  <meta property="og:description" content="2048 is a classic number puzzle game where you slide tiles on a 4×4 grid to combine them and reach t..." />
   <meta property="og:url" content="https://knexio.xyz/games/2048/" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://knexio.xyz/og-image.svg" />
@@ -43,7 +43,7 @@
     .seo{margin-top:60px;}
     .seo h2{font-size:20px;margin-bottom:10px;}
     .seo p{font-size:14px;color:var(--sub);line-height:1.8;margin-bottom:14px;}
-    footer p{margin:0}
+    footer{margin-top:60px;text-align:center;font-size:13px;color:var(--sub);border-top:1px solid var(--border);}
 
     /* ==================== 移动端优化 ==================== */
 
@@ -214,7 +214,7 @@
       }
         }
 
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
+</style>
 
   <meta name="keywords" content="2048 game, number puzzle, slide tiles, merge numbers, free online puzzle, addictive math game" /><script type="application/ld+json">
 {
@@ -231,9 +231,6 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
   }
 }
 </script>
-
-<!-- Open Graph -->
-<meta property="og:site_name" content="Knexio">
   <link rel="stylesheet" href="/shared.css">
 </head>
 <body><div class="wrap">
@@ -547,23 +544,22 @@ document.getElementById('gridContainer').addEventListener('touchend',e=>{
 best = parseInt(localStorage.getItem('2048best')||'0');
 document.getElementById('best').textContent = best;
 
-newGame();
-</script></div>
+newGame();</script></div>
 
 
 <script src="/knexio-bundle.js"></script>
   
     <footer>
-  <p>Free online games — play anytime, no download needed.</p>
-  <p style="margin: 8px 0; font-size: 13px;">
-    <a href="/about/" style="color:var(--accent);text-decoration:none;margin:0 8px;">About</a>
-    <a href="/privacy/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Privacy</a>
-    <a href="/terms/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Terms</a>
-    <a href="/contact/" style="color:var(--accent);text-decoration:none;margin:0 8px;">Contact</a>
-  </p>
-  <p>© 2026 Knexio. All rights reserved.</p>
-</footer>
+      <p>Free online games to play anytime. Enjoy classic games, puzzles, and entertainment.</p>
+      <p style="margin: 8px 0; font-size: 13px;">
+        <a href="/about/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">About</a>
+        <a href="/privacy/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Privacy</a>
+        <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
+        <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
+      </p>
+      <p>© 2026 Knexio. All rights reserved.</p>
+    </footer>
 
-  <script src="/cookie-consent.js"></script>
+  <script src="../../cookie-consent.js"></script>
 </body>
 </html>
