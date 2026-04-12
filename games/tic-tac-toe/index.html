@@ -279,6 +279,10 @@
         <p style="font-size: 15px; color: var(--text-sub); line-height: 1.7; margin-bottom: 20px;">
             Tic Tac Toe is a classic two-player strategy game. Players take turns marking X or O on a 3×3 grid. The goal is to get three of your marks in a row—horizontally, vertically, or diagonally—before your opponent does.
         </p>
+<div class="ad-sidebar" style="margin:20px 0;text-align:center">
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3617326351" data-ad-format="vertical" data-full-width-responsive="true"></ins>
+</div>
+
     </div>
 
     <div style="margin-bottom: 30px;">
@@ -373,7 +377,7 @@
         </div>
     </div>
 </div><!-- .wrap -->
-</div><!-- .wrap -->
+
 <footer>
   <div class="ad-banner footer-ad" style="margin:40px 0;text-align:center"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
   <p>Free online games to play anytime. Enjoy classic games, puzzles, and entertainment.</p>
@@ -385,7 +389,6 @@
   </p>
   <p>© 2026 Knexio. All rights reserved.</p>
 </footer>
-
 
   <script>
 let board=Array(9).fill(null), current='X', mode='ai', diff='easy', xW=0, oW=0, dr=0, gameOver=false;
@@ -408,7 +411,11 @@ function render(){
     if(v==='X')cls='cell taken x';if(v==='O')cls='cell taken o';
     const isWinCell=winLine&&winLine.includes(i);
     if(isWinCell)cls+=' win-cell';
-    return '<div class="'+cls+'" data-i="'+i+'">'+(v||'')+'</div>';
+    return '<div class="'+cls+'" data-i="'+i+'">'+(v||'')+'
+<div class="ad-in-article" style="margin:30px 0;text-align:center">
+<ins class="adsbygoogle" style="display:block;text-align:center" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9350673807" data-ad-format="fluid" data-ad-layout="in-article" data-full-width-responsive="true"></ins>
+</div>
+</div>';
   }).join('');
 }
 
