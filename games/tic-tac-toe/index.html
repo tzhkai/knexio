@@ -308,18 +308,6 @@
 <!-- ==================== 广告位优化 ==================== -->
 
 <!-- ==================== 广告位优化 ==================== --><!-- ==================== 广告位优化 ==================== -->
-<div class="ad-section" style="margin-top: 40px; text-align: center;">
-    <ins class="adsbygoogle" 
-         style="display:block; background: var(--panel); border-radius: 12px; padding: 15px;"
-         data-ad-client="ca-pub-2596567349043393" 
-         data-ad-slot="9504968504" 
-         data-ad-format="auto" 
-         data-full-width-responsive="true">
-    </ins>
-    <p style="font-size: 12px; color: var(--text-sub); margin-top: 8px; opacity: 0.7;">
-        Advertisement supports free games development
-    </p>
-</div>
 
 <!-- ==================== 游戏常见问题 (FAQ) ==================== -->
 <div class="faq-section" style="margin: 60px auto 0; max-width: 800px; padding: 32px 24px; background: var(--panel); border-radius: 18px; text-align: left;">
@@ -382,10 +370,10 @@
   <div class="ad-banner footer-ad" style="margin:40px 0;text-align:center"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
   <p>Free online games to play anytime. Enjoy classic games, puzzles, and entertainment.</p>
   <p style="margin: 8px 0; font-size: 13px;">
-    <a href="/about/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">About</a>
-    <a href="/privacy/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Privacy</a>
-    <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
-    <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
+    <a href="/about/">About</a>
+    <a href="/privacy/">Privacy</a>
+    <a href="/terms/">Terms</a>
+    <a href="/contact/">Contact</a>
   </p>
   <p>© 2026 Knexio. All rights reserved.</p>
 </footer>
@@ -412,9 +400,6 @@ function render(){
     const isWinCell=winLine&&winLine.includes(i);
     if(isWinCell)cls+=' win-cell';
     return '<div class="'+cls+'" data-i="'+i+'">'+(v||'')+'
-<div class="ad-in-article" style="margin:30px 0;text-align:center">
-<ins class="adsbygoogle" style="display:block;text-align:center" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9350673807" data-ad-format="fluid" data-ad-layout="in-article" data-full-width-responsive="true"></ins>
-</div>
 </div>';
   }).join('');
 }
@@ -478,3 +463,4 @@ resetGame();
 <script src="../../cookie-consent.js"></script>
 </body>
 </html>
+
