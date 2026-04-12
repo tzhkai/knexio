@@ -434,7 +434,8 @@
             </p>
         </div>
     </div>
-
+</div><!-- .wrap -->
+</div><!-- .wrap -->
 <footer>
 <!-- Ad: Footer -->
 <div class="ad-banner footer-ad" style="margin:40px 0;text-align:center"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9504968504" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
@@ -448,6 +449,7 @@
   </p>
   <p>© 2026 Knexio. All rights reserved.</p>
 </footer>
+
 
 </div>
 
@@ -533,7 +535,7 @@ function gameOver(){
   running=false;clearInterval(gameLoop);
   const ov=document.getElementById('overlay');
   ov.style.display='flex';
-  ov.innerHTML=`<div class="final-score">${score}</div></div><h2>Game Over</h2><p>Best: ${best()}</p><button class="btn" onclick="startGame()">Play Again</button>`;
+  ov.innerHTML=`<div class="final-score">${score}<h2>Game Over</h2><p>Best: ${best()}</p><button class="btn" onclick="startGame()">Play Again</button>`;
 }
 
 // keyboard
