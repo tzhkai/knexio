@@ -252,38 +252,39 @@
 
     /* ── Quick links ── */
     .quick {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 40px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      max-width: 600px;
+      margin: 0 auto 52px;
     }
     .quick a {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 9px 18px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      color: var(--text);
+      display: block;
+      padding: 11px 8px 12px;
+      background: linear-gradient(135deg, var(--accent) 0%, color-mix(in srgb, var(--accent) 75%, #000) 100%);
+      color: #fff;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      text-align: center;
       text-decoration: none;
-      font-size: 14px;
-      font-weight: 500;
-      transition: border-color 0.2s, background 0.2s, transform 0.15s;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.18);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
     }
     .quick a:hover {
-      border-color: var(--accent);
-      background: rgba(79,140,255,0.08);
       transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.28);
+      filter: brightness(1.08);
     }
     .quick .icon {
-      font-size: 16px;
+      display: block;
+      font-size: 18px;
+      margin-bottom: 4px;
     }
 
     /* ── Ad ── */
     .ad-wrap {
-      margin: 0 auto 28px;
+      margin: 0 auto 60px;
       max-width: 500px;
     }
 
@@ -349,10 +350,14 @@
   </div>
 
 <div class="quick">
-    <a href="/"><span class="icon">🏠</span> Home</a>
     <a href="/tools/"><span class="icon">🛠️</span> Tools</a>
     <a href="/games/"><span class="icon">🎮</span> Games</a>
     <a href="/guides/"><span class="icon">📖</span> Guides</a>
+    <a href="/blogs/"><span class="icon">📝</span> Blog</a>
+    <a href="/finance/"><span class="icon">💰</span> Finance</a>
+    <a href="/business/"><span class="icon">💼</span> Business</a>
+    <a href="/ai-tools/"><span class="icon">🤖</span> AI Tools</a>
+    <a href="/about/"><span class="icon">ℹ️</span> About</a>
   </div>
 
   <!-- AdSense -->
@@ -390,7 +395,7 @@
 
 </script>
 <script src="/knexio-bundle.js"></script>
-<footer>
+<footer style="padding-top: 28px; border-top: 1px solid var(--border); margin-top: 8px;">
   <p>Free online tools for developers, designers, and everyone. Simple utilities to make your daily tasks easier.</p>
   <p style="margin: 8px 0; font-size: 13px;">
     <a href="/about/" style="color:var(--accent);text-decoration:none;margin:0 8px;">About</a>
