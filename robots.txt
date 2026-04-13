@@ -1,44 +1,3 @@
-# Sitemap
-Sitemap: https://knexio.xyz/sitemap_index.xml
-
-# Google AdSense
-User-agent: Mediapartners-Google
-Allow: /
-
-# Google
-User-agent: Googlebot
-Allow: /
-
-User-agent: Googlebot-Image
-Allow: /
-
-# Other Search Engines
-User-agent: Bingbot
-Allow: /
-
-User-agent: DuckDuckBot
-Allow: /
-
-# AI Crawlers - Allow (enables AI Overview citations and AI search visibility)
-User-agent: GPTBot
-Allow: /
-
-User-agent: ClaudeBot
-Allow: /
-
-User-agent: Google-Extended
-Allow: /
-
-User-agent: PerplexityBot
-Allow: /
-
-User-agent: anthropic-ai
-Allow: /
-
-User-agent: ChatGPT-User
-Allow: /
-
-# Default
 User-agent: *
 Disallow: /admin/
 Disallow: /config/
@@ -52,3 +11,38 @@ Disallow: /search/
 Disallow: /tag/
 Disallow: /category/
 Disallow: /?s=*
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Mediapartners-Google
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+Sitemap: https://knexio.xyz/sitemap_index.xml

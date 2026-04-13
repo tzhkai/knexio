@@ -313,6 +313,17 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://knexio.xyz/"},
+    {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://knexio.xyz/tools/"},
+    {"@type": "ListItem", "position": 3, "name": "Image Compressor – Compress Images Online Free", "item": "https://knexio.xyz/tools/image-compressor/"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
   "@type": "WebApplication",
   "name": "Image Compressor",
   "url": "https://knexio.xyz/tools/image-compressor/",
@@ -401,12 +412,12 @@
         <div class="compare">
           <div class="compare-box">
             <h4>Original</h4>
-            <img id="originalImg" src="" alt="Original">
+            <img id="originalImg" src="" alt="Original" loading="lazy">
             <div class="file-info" id="originalInfo"></div>
           </div>
           <div class="compare-box">
             <h4>Compressed</h4>
-            <img id="compressedImg" src="" alt="Compressed">
+            <img id="compressedImg" src="" alt="Compressed" loading="lazy">
             <div class="file-info" id="compressedInfo"></div>
           </div>
         </div>

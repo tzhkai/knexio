@@ -19,6 +19,17 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://knexio.xyz/"},
+    {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://knexio.xyz/tools/"},
+    {"@type": "ListItem", "position": 3, "name": "Image to Base64 Converter – Free Online Tool", "item": "https://knexio.xyz/tools/image-to-base64/"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
   "@type": "WebApplication",
   "name": "Image to Base64 Converter",
   "url": "https://knexio.xyz/tools/image-to-base64/",
@@ -262,7 +273,7 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
       </div>
       <span class="out-label">Result</span>
       <textarea class="text-area" id="outputText" readonly style="min-height:120px;font-size:13px;font-family:monospace"></textarea>
-      <img id="previewImg" class="preview-img" alt="Preview" style="display:none;" />
+      <img id="previewImg" class="preview-img" alt="Preview" style="display:none;" loading="lazy" />
       <div class="btn-row">
         <button id="copyBtn" onclick="copyOutput()">Copy</button>
         <button class="secondary" onclick="clearEncode()">Clear</button>
@@ -278,7 +289,7 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
       <button class="secondary" onclick="clearDecode()">Clear</button>
     </div>
     <div id="decodeResult" style="display:none;margin-top:16px;">
-      <img id="decodeImg" class="preview-img" alt="Decoded image" />
+      <img id="decodeImg" class="preview-img" alt="Decoded image" loading="lazy" />
       <div class="meta-row" id="decodeMeta" style="margin-top:14px;"></div>
       <div class="btn-row">
         <button onclick="downloadDecoded()">Download Image</button>

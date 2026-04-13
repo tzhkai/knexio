@@ -19,6 +19,17 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://knexio.xyz/"},
+    {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://knexio.xyz/tools/"},
+    {"@type": "ListItem", "position": 3, "name": "Website Screenshot Tool – Capture Pages Online", "item": "https://knexio.xyz/tools/website-screenshot/"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
     {
@@ -350,7 +361,7 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
   <div id="status" class="status"></div>
 
   <div id="previewBox" class="preview-box">
-    <img id="previewImage" class="preview-image" alt="Screenshot preview">
+    <img id="previewImage" class="preview-image" alt="Screenshot preview" loading="lazy">
     <div class="preview-actions">
       <button class="btn" onclick="downloadScreenshot()">Download Screenshot</button>
       <button class="btn secondary" onclick="closePreview()">Close</button>

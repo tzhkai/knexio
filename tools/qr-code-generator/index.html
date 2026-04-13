@@ -14,6 +14,17 @@
   <meta property="og:site_name" content="Knexio">
   
   <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://knexio.xyz/"},
+    {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://knexio.xyz/tools/"},
+    {"@type": "ListItem", "position": 3, "name": "QR Code Generator – Create QR Codes Free", "item": "https://knexio.xyz/tools/qr-code-generator/"}
+  ]
+}
+</script>
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
@@ -383,7 +394,7 @@
     </div>
     
     <div class="qr-display" id="qrDisplay">
-      <img id="qrImage" src="" alt="QR Code">
+      <img id="qrImage" src="" alt="QR Code" loading="lazy">
       <div class="download-buttons">
         <button class="btn" onclick="downloadPNG()">Download PNG</button>
         <button class="btn secondary" onclick="downloadSVG()">Download SVG</button>
