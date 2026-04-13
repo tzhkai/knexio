@@ -19,18 +19,24 @@ Allow: /
 User-agent: DuckDuckBot
 Allow: /
 
-# AI Crawlers - Block
+# AI Crawlers - Allow (enables AI Overview citations and AI search visibility)
 User-agent: GPTBot
-Disallow: /
+Allow: /
 
 User-agent: ClaudeBot
-Disallow: /
+Allow: /
 
 User-agent: Google-Extended
-Disallow: /
+Allow: /
 
 User-agent: PerplexityBot
-Disallow: /
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
 
 # Default
 User-agent: *
