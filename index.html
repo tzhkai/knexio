@@ -110,10 +110,12 @@
       border: 1px solid var(--border);
       border-top: 3px solid var(--accent);
       border-radius: 14px;
-      padding: 38px 32px 40px;
+      padding: 24px 26px 22px;
       transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
       display: flex;
       flex-direction: column;
+      height: 200px;
+      overflow: hidden;
       box-shadow: 0 2px 12px rgba(0,0,0,0.08);
     }
 
@@ -123,19 +125,23 @@
       border-top-color: var(--accent);
     }
 
-    .nav-card h2 { font-size: 26px; margin-bottom: 14px; letter-spacing: -0.3px; color: var(--text-main); font-weight: 700 }
+    .nav-card h2 { font-size: 22px; margin-bottom: 8px; letter-spacing: -0.2px; color: var(--text-main); font-weight: 700 }
 
     .nav-card p {
-      font-size: 15px;
+      font-size: 13px;
       color: var(--text-sub);
-      line-height: 1.7;
-      margin-bottom: 26px;
-      flex: 1
+      line-height: 1.65;
+      margin-bottom: 16px;
+      flex: 1;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
     }
 
     .nav-card .btn {
       display: inline-block;
-      padding: 11px 26px;
+      padding: 12px 26px;
       background: linear-gradient(135deg, var(--accent) 0%, color-mix(in srgb, var(--accent) 75%, #000) 100%);
       color: #fff;
       border-radius: 10px;
@@ -256,16 +262,17 @@
       }
 
       .nav-card {
-        padding: 24px 20px !important;
+        height: 200px !important; padding: 20px 18px 18px !important;
       }
 
       .nav-card h2 {
-        font-size: 22px !important; margin-bottom: 12px !important
+        font-size: 20px !important; margin-bottom: 8px !important
       }
 
       .nav-card p {
-        font-size: 13.5px !important;
-        margin-bottom: 24px !important
+        font-size: 12.5px !important;
+        margin-bottom: 12px !important;
+        -webkit-line-clamp: 3 !important;
       }
 
       .nav-card .btn {
@@ -307,21 +314,22 @@
       }
 
       .nav-card {
-        padding: 28px 24px !important;
+        height: 200px !important; padding: 20px 16px 18px !important;
       }
 
       .nav-card h2 {
-        font-size: 20px !important; margin-bottom: 12px !important;
+        font-size: 18px !important; margin-bottom: 8px !important;
       }
 
       .nav-card p {
-        font-size: 13px !important;
+        font-size: 12px !important;
         line-height: 1.6 !important;
-        margin-bottom: 22px !important
+        margin-bottom: 12px !important;
+        -webkit-line-clamp: 3 !important;
       }
 
       .nav-card .btn {
-        padding: 9px 20px !important; font-size: 12.5px !important;
+        padding: 9px 18px !important; font-size: 12px !important;
       }
 
       .featured h2 {
