@@ -348,61 +348,14 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
 
-<script>
-function showCalc(type) {
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  event.target.classList.add('active');
-  document.querySelectorAll('.calc-section').forEach(s => s.classList.remove('active'));
-  document.getElementById('calc-' + type).classList.add('active');
-}
-
-function calcWhatIs() {
-  const percent = parseFloat(document.getElementById('whatIsPercent').value);
-  const value = parseFloat(document.getElementById('whatIsValue').value);
-  if (isNaN(percent) || isNaN(value)) {
-    document.getElementById('valueWhatIs').textContent = '0';
-    return;
-  }
-  
-  const result = (percent / 100) * value;
-  document.getElementById('valueWhatIs').textContent = result.toFixed(2);
-}
-
-function calcPercentageOf() {
-  const part = parseFloat(document.getElementById('partValue').value);
-  const whole = parseFloat(document.getElementById('wholeValue').value);
-  if (isNaN(part) || isNaN(whole) || whole === 0) {
-    document.getElementById('valuePercentageOf').textContent = '0%';
-    return;
-  }
-  
-  const result = (part / whole) * 100;
-  document.getElementById('valuePercentageOf').textContent = result.toFixed(2) + '%';
-}
-
-function calcChange() {
-  const oldVal = parseFloat(document.getElementById('oldValue').value);
-  const newVal = parseFloat(document.getElementById('newValue').value);
-  if (isNaN(oldVal) || isNaN(newVal) || oldVal === 0) {
-    document.getElementById('valueChange').textContent = '0%';
-    document.getElementById('labelChange').textContent = 'Change';
-    document.getElementById('valueChange').style.color = 'var(--accent)';
-    return;
-  }
-  
-  const change = ((newVal - oldVal) / oldVal) * 100;
-  const resultEl = document.getElementById('valueChange');
-  const labelEl = document.getElementById('labelChange');
-  
-  resultEl.textContent = (change > 0 ? '+' : '') + change.toFixed(2) + '%';
-  resultEl.style.color = change >= 0 ? 'var(--accent)' : '#f87171';
-  labelEl.textContent = change >= 0 ? 'Increase' : 'Decrease';
-}
-</script>
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

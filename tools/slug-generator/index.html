@@ -478,123 +478,14 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
-
-<script>
-const stopWords = ['a','an','the','and','or','but','in','on','at','to','for','of','with','by','is','are','was','were','be','been','being','have','has','had','do','does','did'];
-
-function toSlug(text, separator, lowercase, removeStop, removeNum){
-  let slug = text.normalize('NFD').replace(/[\u0300-\u036f]/g, ''); // Remove diacritics
-  slug = slug.replace(/[^a-zA-Z0-9\s-]/g, ''); // Remove special chars
-  slug = slug.replace(/\s+/g, separator); // Replace spaces
-  slug = slug.replace(/-+/g, separator); // Replace multiple separators
-  
-  if(lowercase) slug = slug.toLowerCase();
-  if(removeStop){
-    const words = slug.split(separator);
-    slug = words.filter(w => !stopWords.includes(w.toLowerCase())).join(separator);
-  }
-  if(removeNum){
-    slug = slug.replace(/\d+/g, '');
-  }
-  
-  // Clean up
-  slug = slug.replace(new RegExp('^['+separator+']+'), '');
-  slug = slug.replace(new RegExp('['+separator+']+$'), '');
-  
-  return slug;
-}
-
-function convertSingle(){
-  const text = document.getElementById('singleInput').value;
-  const separator = document.getElementById('sepSel').value;
-  const lowercase = document.getElementById('lowercaseChk').checked;
-  const removeStop = document.getElementById('removeStopChk').checked;
-  const removeNum = document.getElementById('removeNumChk').checked;
-  
-  if(!text.trim()){
-    document.getElementById('resultSlug').textContent = '';
-    return;
-  }
-  
-  const slug = toSlug(text, separator, lowercase, removeStop, removeNum);
-  document.getElementById('resultSlug').textContent = slug;
-}
-
-function convertBulk(){
-  const text = document.getElementById('bulkInput').value;
-  const separator = document.getElementById('sepSel').value;
-  const lowercase = document.getElementById('lowercaseChk').checked;
-  const removeStop = document.getElementById('removeStopChk').checked;
-  const removeNum = document.getElementById('removeNumChk').checked;
-  
-  const outputDiv = document.getElementById('bulkOutput');
-  if(!text.trim()){
-    outputDiv.innerHTML = '';
-    return;
-  }
-  
-  const lines = text.split('\n').filter(l => l.trim());
-  let html = '';
-  
-  lines.forEach(line => {
-    const slug = toSlug(line, separator, lowercase, removeStop, removeNum);
-    html += `
-      <div class="bulk-result">
-        <div class="bulk-original">${line}</div>
-        <div class="bulk-slug">${slug}</div>
-        <button onclick="copyText('${slug.replace(/'/g, "\\'")}')" style="flex:0 0 80px;padding:6px;margin-left:12px;font-size:12px">Copy</button>
-      </div>
-    `;
-  });
-  
-  outputDiv.innerHTML = html;
-}
-
-function copySlug(){
-  const slug = document.getElementById('resultSlug').textContent;
-  if(!slug) return;
-  navigator.clipboard.writeText(slug).then(() => {
-    alert('Slug copied!');
-  });
-}
-
-function copyText(text){
-  navigator.clipboard.writeText(text).then(() => {
-    alert('Copied!');
-  });
-}
-
-function copyAllSlugs(){
-  const text = document.getElementById('bulkInput').value;
-  if(!text.trim()) return;
-  
-  const separator = document.getElementById('sepSel').value;
-  const lowercase = document.getElementById('lowercaseChk').checked;
-  const removeStop = document.getElementById('removeStopChk').checked;
-  const removeNum = document.getElementById('removeNumChk').checked;
-  
-  const lines = text.split('\n').filter(l => l.trim());
-  const slugs = lines.map(line => toSlug(line, separator, lowercase, removeStop, removeNum)).join('\n');
-  
-  navigator.clipboard.writeText(slugs).then(() => {
-    alert('All slugs copied!');
-  });
-}
-
-function clearSingle(){
-  document.getElementById('singleInput').value = '';
-  document.getElementById('resultSlug').textContent = '';
-}
-
-function clearBulk(){
-  document.getElementById('bulkInput').value = '';
-  document.getElementById('bulkOutput').innerHTML = '';
-}
-</script>
 
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

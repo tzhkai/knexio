@@ -158,67 +158,14 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
 
-<script>
-let mode = 'work', running = false, interval = null, seconds = 0, session = 1;
-
-const modes = {
-  work: () => parseInt(document.getElementById('workMin').value) * 60,
-  short: () => parseInt(document.getElementById('shortMin').value) * 60,
-  long: () => parseInt(document.getElementById('longMin').value) * 60,
-};
-
-function setMode(m, el) {
-  mode = m;
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  el.classList.add('active');
-  reset();
-}
-
-function reset() {
-  clearInterval(interval);
-  running = false;
-  seconds = modes[mode]();
-  document.getElementById('startBtn').textContent = 'Start';
-  render();
-}
-
-function toggle() {
-  if (running) {
-    clearInterval(interval);
-    running = false;
-    document.getElementById('startBtn').textContent = 'Resume';
-  } else {
-    running = true;
-    document.getElementById('startBtn').textContent = 'Pause';
-    interval = setInterval(() => {
-      seconds--;
-      if (seconds <= 0) {
-        clearInterval(interval);
-        running = false;
-        document.getElementById('startBtn').textContent = 'Start';
-        if (mode === 'work') session = Math.min(session + 1, 4);
-        new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAA==').play().catch(()=>{});
-        alert(mode === 'work' ? 'Work session done! Take a break.' : 'Break over! Back to work.');
-      }
-      render();
-    }, 1000);
-  }
-}
-
-function render() {
-  const m = Math.floor(seconds / 60).toString().padStart(2, '0');
-  const s = (seconds % 60).toString().padStart(2, '0');
-  document.getElementById('time').textContent = m + ':' + s;
-  document.getElementById('session').textContent = 'Session ' + session + ' of 4';
-  document.title = m + ':' + s + ' – Pomodoro Timer';
-}
-
-reset();
-</script>
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

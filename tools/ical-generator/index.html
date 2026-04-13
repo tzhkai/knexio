@@ -175,43 +175,14 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
 
-<script>
-function generateICS() {
-  const title = document.getElementById('title').value || 'Event';
-  const startDate = document.getElementById('startDate').value.replace(/-/g, '');
-  const startTime = (document.getElementById('startTime').value || '090000').replace(':','');
-  const desc = document.getElementById('description').value;
-  const location = document.getElementById('location').value;
-  
-  const ics = `BEGIN:VCALENDAR
-VERSION:2.0
-PRODID:-//Knexio//iCal Generator//EN
-BEGIN:VEVENT
-UID:${Date.now()}@knexio.xyz
-DTSTAMP:${new Date().toISOString().replace(/[-:]/g,'').split('.')[0]}Z
-DTSTART:${startDate}T${startTime}
-SUMMARY:${title}
-DESCRIPTION:${desc}
-LOCATION:${location}
-END:VEVENT
-END:VCALENDAR`;
-  
-  document.getElementById('output').value = ics;
-}
-
-function downloadICS() {
-  const ics = document.getElementById('output').value;
-  const blob = new Blob([ics], {type: 'text/calendar'});
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = 'event.ics';
-  a.click();
-}
-</script>
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

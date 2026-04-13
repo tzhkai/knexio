@@ -194,37 +194,14 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
 
-<script>
-function update() {
-  const type = document.getElementById('type').value;
-  const dir = document.getElementById('direction').value;
-  const c1 = document.getElementById('color1').value;
-  const c2 = document.getElementById('color2').value;
-  
-  let css;
-  if (type === 'linear') {
-    css = `background: linear-gradient(${dir}, ${c1}, ${c2});`;
-  } else {
-    css = `background: radial-gradient(circle, ${c1}, ${c2});`;
-  }
-  
-  document.getElementById('preview').style = css;
-  document.getElementById('cssCode').value = css;
-  document.getElementById('c1').value = c1;
-  document.getElementById('c2').value = c2;
-}
-
-function copyCode() {
-  const code = document.getElementById('cssCode');
-  code.select();
-  document.execCommand('copy');
-  alert('Copied!');
-}
-</script>
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

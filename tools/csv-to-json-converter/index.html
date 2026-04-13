@@ -203,91 +203,14 @@ Jane,25,Los Angeles"></textarea>
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
-</footer>
-</div>
 
-<script>
-    function handleFile(event) {
-      const file = event.target.files[0];
-      if(!file) return;
-      const reader = new FileReader();
-      reader.onload = e => {
-        document.getElementById('csvInput').value = e.target.result;
-        convertToJSON();
-      };
-      reader.readAsText(file);
-    }
-    function convertToJSON() {
-      const csv = document.getElementById('csvInput').value.trim();
-      if(!csv) return;
-      const lines = csv.split('\n');
-      if(lines.length < 2) return alert('CSV must have at least a header row and one data row');
-      const headers = parseCSVLine(lines[0]);
-      const parseNumbers = document.getElementById('parseNumbers').checked;
-      const result = [];
-      for(let i = 1; i < lines.length; i++) {
-        if(!lines[i].trim()) continue;
-        const values = parseCSVLine(lines[i]);
-        const obj = {};
-        headers.forEach((header, index) => {
-          let value = values[index] || '';
-          if(parseNumbers && !isNaN(value) && value !== '') {
-            value = Number(value);
-          }
-          obj[header] = value;
-        });
-        result.push(obj);
-      }
-      const prettyPrint = document.getElementById('prettyPrint').checked;
-      document.getElementById('jsonOutput').value = JSON.stringify(result, null, prettyPrint ? 2 : 0);
-    }
-    function parseCSVLine(line) {
-      const result = [];
-      let current = '';
-      let inQuotes = false;
-      for(let i = 0; i < line.length; i++) {
-        const char = line[i];
-        if(char === '"') {
-          if(inQuotes && line[i + 1] === '"') {
-            current += '"';
-            i++;
-          } else {
-            inQuotes = !inQuotes;
-          }
-        } else if(char === ',' && !inQuotes) {
-          result.push(current.trim());
-          current = '';
-        } else {
-          current += char;
-        }
-      }
-      result.push(current.trim());
-      return result;
-    }
-    function copyJSON() {
-      const output = document.getElementById('jsonOutput');
-      output.select();
-      document.execCommand('copy');
-      alert('JSON copied to clipboard!');
-    }
-    function downloadJSON() {
-      const json = document.getElementById('jsonOutput').value;
-      if(!json) return;
-      const blob = new Blob([json], {type: 'application/json'});
-      const link = document.createElement('a');
-      link.href = URL.createObjectURL(blob);
-      link.download = 'converted.json';
-      link.click();
-    }
-    function clearAll() {
-      document.getElementById('csvInput').value = '';
-      document.getElementById('jsonOutput').value = '';
-    }
-  </script>
-  <script src="/knexio-bundle.js"></script>
-  <script src="../../cookie-consent.js"></script>
+</footer>
+
 <script src="/knexio-bundle.js"></script>
-</div>
 </body>
 </html>
+
+
+

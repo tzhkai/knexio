@@ -503,54 +503,14 @@ console.log(greeting);
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
-</footer>
-</div>
 
-<script>
-    const markdownInput = document.getElementById('markdownInput');
-    const previewPane = document.getElementById('previewPane');
-    
-    function updatePreview() {
-      const markdown = markdownInput.value;
-      if (!markdown.trim()) {
-        previewPane.innerHTML = '<p style="color:var(--sub);font-style:italic;">Paste Markdown above to see preview...</p>';
-        return;
-      }
-      const html = marked.parse(markdown);
-      previewPane.innerHTML = html;
-    }
-    
-    markdownInput.addEventListener('input', updatePreview);
-    
-    function copyMarkdown() {
-      const text = markdownInput.value;
-      if (!text.trim()) {
-        alert('Nothing to copy!');
-        return;
-      }
-      navigator.clipboard.writeText(text).then(() => {
-        alert('Markdown copied to clipboard!');
-      });
-    }
-    
-    function copyHTML() {
-      const html = previewPane.innerHTML;
-      if (!previewPane.querySelector('p') || previewPane.textContent.trim() === 'Paste Markdown above to see preview...') {
-        alert('Nothing to copy!');
-        return;
-      }
-      navigator.clipboard.writeText(html).then(() => {
-        alert('HTML copied to clipboard!');
-      });
-    }
-    
-    function clearAll() {
-      markdownInput.value = '';
-      updatePreview();
-    }
-  </script>
-  
-  <script src="/knexio-bundle.js"></script>
+</footer>
+
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

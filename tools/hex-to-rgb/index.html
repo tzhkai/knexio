@@ -344,102 +344,14 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
 
-<script>
-let currentR=79, currentG=140, currentB=255;
-
-const hexInput = document.getElementById('hexInput');
-const colorPreview = document.getElementById('colorPreview');
-
-function update() {
-  const hex = toHex(currentR,currentG,currentB);
-  colorPreview.style.background = '#'+hex;
-  hexInput.value = hex;
-  document.getElementById('rVal').textContent = currentR;
-  document.getElementById('gVal').textContent = currentG;
-  document.getElementById('bVal').textContent = currentB;
-  const [h,s,l] = rgbToHsl(currentR,currentG,currentB);
-  const [hv,sv,v] = rgbToHsv(currentR,currentG,currentB);
-  document.getElementById('valHex').textContent = '#'+hex;
-  document.getElementById('valRGB').textContent = `rgb(${currentR}, ${currentG}, ${currentB})`;
-  document.getElementById('valHSL').textContent = `hsl(${h}, ${s}%, ${l}%)`;
-  document.getElementById('valHSV').textContent = `hsv(${hv}°, ${sv}%, ${v}%)`;
-  const wc = contrastRatio(currentR,currentG,currentB,255,255,255);
-  const bc = contrastRatio(currentR,currentG,currentB,0,0,0);
-  document.getElementById('valContrast').textContent = `${wc.toFixed(1)}:1 (White ${wc>=4.5?'AA ✅':'❌'}) / ${bc.toFixed(1)}:1 (Black ${bc>=4.5?'AA ✅':'❌'})`;
-}
-
-function fromHex(v) {
-  v = v.replace('#','').trim();
-  if (v.length === 3) v = v.split('').map(c=>c+c).join('');
-  if (v.length !== 6 || !/^[0-9a-f]+$/i.test(v)) return;
-  currentR = parseInt(v.slice(0,2),16);
-  currentG = parseInt(v.slice(2,4),16);
-  currentB = parseInt(v.slice(4,6),16);
-  update();
-}
-
-function fromSliders() {
-  const inputs = document.querySelectorAll('input[type="range"]');
-  currentR = +inputs[0].value;
-  currentG = +inputs[1].value;
-  currentB = +inputs[2].value;
-  update();
-}
-
-function toHex(r,g,b) {
-  return [r,g,b].map(v=>v.toString(16).padStart(2,'0')).join('');
-}
-
-function rgbToHsl(r,g,b) {
-  r/=255; g/=255; b/=255;
-  const max=Math.max(r,g,b), min=Math.min(r,g,b);
-  let h,s,l=(max+min)/2;
-  if(max===min){h=s=0;}else{
-    const d=max-min;
-    s=l>0.5?d/(2-max-min):d/(max+min);
-    if(max===r) h=((g-b)/d+(g<b?6:0))/6;
-    else if(max===g) h=((b-r)/d+2)/6;
-    else h=((r-g)/d+4)/6;
-  }
-  return [Math.round(h*360),Math.round(s*100),Math.round(l*100)];
-}
-
-function rgbToHsv(r,g,b) {
-  r/=255;g/=255;b/=255;
-  const max=Math.max(r,g,b),min=Math.min(r,g,b),d=max-min;
-  let h;
-  const s=max===0?0:d/max, v=max;
-  if(d===0){h=0;}
-  else if(max===r){h=((g-b)/d%6)/6;}
-  else if(max===g){h=((b-r)/d+2)/6;}
-  else{h=((r-g)/d+4)/6;}
-  return [Math.round(h*360),Math.round(s*100),Math.round(v*100)];
-}
-
-function luminance(r,g,b) {
-  return [r,g,b].map(v=>{v/=255;return v<=0.03928?v/12.92:Math.pow((v+0.055)/1.055,2.4);}).reduce((a,v,i)=>a+v*[0.2126,0.7152,0.0722][i],0);
-}
-
-function contrastRatio(r1,g1,b1,r2,g2,b2) {
-  const l1=luminance(r1,g1,b1), l2=luminance(r2,g2,b2);
-  return (Math.max(l1,l2)+0.05)/(Math.min(l1,l2)+0.05);
-}
-
-function copyVal(id) {
-  const text = document.getElementById(id).textContent;
-  navigator.clipboard.writeText(text);
-  alert('Copied: ' + text);
-}
-
-hexInput.addEventListener('input', function() {
-  fromHex(this.value);
-});
-update();
-</script>
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

@@ -317,50 +317,14 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
 
-<script>
-function countCases(){
-  const text = document.getElementById('input').value;
-  
-  const uppercase = (text.match(/[A-Z]/g) || []).length;
-  const lowercase = (text.match(/[a-z]/g) || []).length;
-  const digits = (text.match(/[0-9]/g) || []).length;
-  const spaces = (text.match(/\s/g) || []).length;
-  const special = (text.match(/[^A-Za-z0-9\s]/g) || []).length;
-  const total = text.length;
-  
-  document.getElementById('uppercaseCount').textContent = uppercase;
-  document.getElementById('lowercaseCount').textContent = lowercase;
-  document.getElementById('digitCount').textContent = digits;
-  document.getElementById('spaceCount').textContent = spaces;
-  document.getElementById('specialCount').textContent = special;
-  document.getElementById('totalCount').textContent = total;
-  
-  document.getElementById('stats').style.display = 'grid';
-}
-
-function clearText(){
-  document.getElementById('input').value = '';
-  document.getElementById('stats').style.display = 'none';
-}
-
-function copyText(){
-  const text = document.getElementById('input').value;
-  if(!text){
-    alert('Nothing to copy');
-    return;
-  }
-  navigator.clipboard.writeText(text).then(() => {
-    alert('Copied!');
-  });
-}
-</script>
-
-<script>
-</script>
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

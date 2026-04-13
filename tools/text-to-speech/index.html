@@ -421,129 +421,14 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
 
-<script>
-let synthesis = window.speechSynthesis;
-let utterance = null;
-let isPaused = false;
-
-// Initialize voices
-function loadVoices(){
-  const voices = synthesis.getVoices();
-  const voiceSelect = document.getElementById('voiceSelect');
-  const language = document.getElementById('languageSelect').value;
-  
-  voiceSelect.innerHTML = '<option value="">Default</option>';
-  
-  voices.filter(v => v.lang.startsWith(language.split('-')[0])).forEach((voice, index) => {
-    const option = document.createElement('option');
-    option.value = index;
-    option.textContent = `${voice.name} (${voice.lang})`;
-    voiceSelect.appendChild(option);
-  });
-}
-
-synthesis.onvoiceschanged = loadVoices;
-document.getElementById('languageSelect').addEventListener('change', loadVoices);
-
-function updateRate(){
-  const value = document.getElementById('rateSlider').value;
-  document.getElementById('rateValue').textContent = parseFloat(value).toFixed(1);
-}
-
-function updateCharCount(){
-  const text = document.getElementById('textInput').value;
-  const count = text.length;
-  document.getElementById('charCount').textContent = count;
-  
-  if(count > 5000){
-    document.getElementById('textInput').value = text.substring(0, 5000);
-  }
-}
-
-function showStatus(text, icon = '🔊'){
-  const box = document.getElementById('statusBox');
-  document.getElementById('statusText').textContent = text;
-  document.getElementById('statusIcon').textContent = icon;
-  box.style.display = 'flex';
-}
-
-function speak(){
-  const text = document.getElementById('textInput').value.trim();
-  if(!text){
-    showStatus('Please enter some text', '⚠️');
-    return;
-  }
-  
-  synthesis.cancel();
-  
-  utterance = new SpeechSynthesisUtterance(text);
-  utterance.rate = parseFloat(document.getElementById('rateSlider').value);
-  utterance.lang = document.getElementById('languageSelect').value;
-  
-  const voiceIndex = document.getElementById('voiceSelect').value;
-  if(voiceIndex !== ''){
-    const voices = synthesis.getVoices();
-    const filteredVoices = voices.filter(v => v.lang.startsWith(utterance.lang.split('-')[0]));
-    if(filteredVoices[voiceIndex]){
-      utterance.voice = filteredVoices[voiceIndex];
-    }
-  }
-  
-  utterance.onstart = () => {
-    document.getElementById('pauseBtn').disabled = false;
-    document.getElementById('stopBtn').disabled = false;
-    showStatus('Speaking...', '🔊');
-  };
-  
-  utterance.onend = () => {
-    document.getElementById('pauseBtn').disabled = true;
-    document.getElementById('stopBtn').disabled = true;
-    isPaused = false;
-    document.getElementById('pauseBtn').textContent = '⏸ Pause';
-    showStatus('Finished', '✅');
-  };
-  
-  utterance.onerror = () => {
-    document.getElementById('pauseBtn').disabled = true;
-    document.getElementById('stopBtn').disabled = true;
-    isPaused = false;
-    document.getElementById('pauseBtn').textContent = '⏸ Pause';
-    showStatus('Error occurred', '❌');
-  };
-  
-  synthesis.speak(utterance);
-}
-
-function pauseResume(){
-  if(isPaused){
-    synthesis.resume();
-    isPaused = false;
-    document.getElementById('pauseBtn').textContent = '⏸ Pause';
-    showStatus('Speaking...', '🔊');
-  } else {
-    synthesis.pause();
-    isPaused = true;
-    document.getElementById('pauseBtn').textContent = '▶ Resume';
-    showStatus('Paused', '⏸️');
-  }
-}
-
-function stop(){
-  synthesis.cancel();
-  document.getElementById('pauseBtn').disabled = true;
-  document.getElementById('stopBtn').disabled = true;
-  isPaused = false;
-  document.getElementById('pauseBtn').textContent = '⏸ Pause';
-  showStatus('Stopped', '⏹️');
-}
-</script>
-
-<script>
-</script>
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

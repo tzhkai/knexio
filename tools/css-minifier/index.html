@@ -477,120 +477,14 @@ body {
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
-
-<script>
-let minifiedCode = '';
-
-function minifyCSS() {
-  const input = document.getElementById('input').value;
-  const removeComments = document.getElementById('removeCommentsChk').checked;
-  const removeEmpty = document.getElementById('removeEmptyChk').checked;
-  const statusBar = document.getElementById('statusBar');
-  
-  if (!input.trim()) {
-    showStatus('Please paste CSS code first', true);
-    return;
-  }
-  
-  let result = input;
-  
-  if (removeComments) {
-    result = result.replace(/\/\*[\s\S]*?\*\//g, '');
-  }
-  
-  result = result
-    .replace(/\s+/g, ' ')
-    .replace(/\s*([{}:;,])\s*/g, '$1')
-    .replace(/;\}/g, '}')
-    .trim();
-  
-  if (removeEmpty) {
-    result = result.replace(/[^{}]+\{}/g, '');
-  }
-  
-  minifiedCode = result;
-  document.getElementById('output').textContent = result;
-  
-  const originalSize = input.length;
-  const minifiedSize = result.length;
-  const savedSize = originalSize - minifiedSize;
-  const savingsPct = originalSize > 0 ? ((savedSize / originalSize) * 100).toFixed(2) : 0;
-  
-  document.getElementById('origSize').textContent = formatBytes(originalSize);
-  document.getElementById('miniSize').textContent = formatBytes(minifiedSize);
-  document.getElementById('savedSize').textContent = formatBytes(savedSize);
-  document.getElementById('savingsPct').textContent = savingsPct + '%';
-  document.getElementById('savingsBytes').textContent = '-' + formatBytes(savedSize);
-  document.getElementById('barMini').style.width = savingsPct + '%';
-  document.getElementById('savingsBox').style.display = 'block';
-  document.getElementById('dlBtn').disabled = false;
-  
-  showStatus('CSS minified successfully! Saved ' + savingsPct + '%');
-}
-
-function copyOutput() {
-  if (!minifiedCode) {
-    showStatus('No minified code to copy', true);
-    return;
-  }
-  navigator.clipboard.writeText(minifiedCode).then(() => {
-    showStatus('Copied to clipboard!');
-  });
-}
-
-function downloadCSS() {
-  if (!minifiedCode) {
-    showStatus('No minified code to download', true);
-    return;
-  }
-  const blob = new Blob([minifiedCode], { type: 'text/css' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = 'styles.min.css';
-  a.click();
-  URL.revokeObjectURL(url);
-  showStatus('Downloaded styles.min.css');
-}
-
-function clearAll() {
-  document.getElementById('input').value = '';
-  document.getElementById('output').textContent = '';
-  document.getElementById('savingsBox').style.display = 'none';
-  document.getElementById('dlBtn').disabled = true;
-  document.getElementById('statusBar').style.display = 'none';
-  minifiedCode = '';
-}
-
-function pasteClipboard() {
-  navigator.clipboard.readText().then(text => {
-    document.getElementById('input').value = text;
-    showStatus('Pasted from clipboard');
-  }).catch(err => {
-    showStatus('Could not paste: ' + err.message, true);
-  });
-}
-
-function showStatus(message, isError = false) {
-  const statusBar = document.getElementById('statusBar');
-  statusBar.textContent = message;
-  statusBar.style.display = 'block';
-  statusBar.style.color = isError ? '#ef4444' : 'var(--accent)';
-  statusBar.style.background = isError ? 'rgba(239,68,68,.1)' : 'rgba(79,140,255,.1)';
-}
-
-function formatBytes(bytes) {
-  if (bytes === 0) return '0 B';
-  const k = 1024;
-  const sizes = ['B', 'KB', 'MB'];
-  const i = Math.floor(Math.log(bytes) / Math.log(k));
-  return (bytes / Math.pow(k, i)).toFixed(2) + ' ' + sizes[i];
-}
-</script>
 
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

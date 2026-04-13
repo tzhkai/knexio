@@ -452,81 +452,14 @@
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
 
-<script>
-  function gcd(a, b) { return b === 0 ? a : gcd(b, a % b); }
-
-  function calcRatio() {
-    const w = parseInt(document.getElementById('calcW').value) || 1;
-    const h = parseInt(document.getElementById('calcH').value) || 1;
-    const g = gcd(w, h);
-    const rw = w / g, rh = h / g;
-    document.getElementById('ratioDisplay').textContent = rw + ':' + rh;
-    document.getElementById('decimalRatio').textContent = (w / h).toFixed(3);
-    // sync to scale section
-    document.getElementById('ratioW').value = rw;
-    document.getElementById('ratioH').value = rh;
-    updateScale();
-    drawPreview(rw, rh);
-  }
-
-  function drawPreview(rw, rh) {
-    const canvas = document.getElementById('previewCanvas');
-    const maxW = Math.min(canvas.parentElement.clientWidth - 40, 480);
-    const maxH = 220;
-    let pw = maxW, ph = Math.round(maxW * rh / rw);
-    if (ph > maxH) { ph = maxH; pw = Math.round(maxH * rw / rh); }
-    canvas.width = pw; canvas.height = ph;
-    const ctx = canvas.getContext('2d');
-    ctx.fillStyle = '#0b1220';
-    ctx.fillRect(0, 0, pw, ph);
-    // Draw dashed border
-    ctx.strokeStyle = 'rgba(79,140,255,0.5)';
-    ctx.lineWidth = 2;
-    ctx.setLineDash([6, 4]);
-    ctx.strokeRect(1, 1, pw - 2, ph - 2);
-    // Draw diagonals
-    ctx.strokeStyle = 'rgba(79,140,255,0.15)';
-    ctx.setLineDash([]);
-    ctx.beginPath(); ctx.moveTo(0,0); ctx.lineTo(pw,ph); ctx.stroke();
-    ctx.beginPath(); ctx.moveTo(pw,0); ctx.lineTo(0,ph); ctx.stroke();
-    // Label
-    ctx.fillStyle = 'rgba(79,140,255,0.8)';
-    ctx.font = `bold ${Math.max(14, Math.min(22, pw/8))}px system-ui`;
-    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-    ctx.fillText(rw + ':' + rh, pw/2, ph/2);
-  }
-
-  function setPreset(w, h) {
-    document.getElementById('calcW').value = w * 100;
-    document.getElementById('calcH').value = h * 100;
-    calcRatio();
-  }
-
-  function updateScale() {
-    const rw = parseFloat(document.getElementById('ratioW').value) || 1;
-    const rh = parseFloat(document.getElementById('ratioH').value) || 1;
-    const w = parseFloat(document.getElementById('newW').value) || 0;
-    const h = parseFloat(document.getElementById('newH').value) || 0;
-    document.getElementById('scaledH').textContent = Math.round(w * rh / rw);
-    document.getElementById('scaledW').textContent = Math.round(h * rw / rh);
-  }
-
-  function scaleFromW() {
-    updateScale();
-    document.getElementById('newH').value = document.getElementById('scaledH').textContent;
-  }
-
-  function scaleFromH() {
-    updateScale();
-    document.getElementById('newW').value = document.getElementById('scaledW').textContent;
-  }
-
-  calcRatio();
-</script>
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

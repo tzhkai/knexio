@@ -441,110 +441,14 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
-
-<script>
-let originalImage = null;
-let aspectRatio = 1;
-let isLocked = true;
-
-function handleFile(event) {
-  const file = event.target.files[0];
-  if (!file) return;
-
-  const reader = new FileReader();
-  reader.onload = function(e) {
-    const img = new Image();
-    img.onload = function() {
-      originalImage = img;
-      aspectRatio = img.width / img.height;
-
-      document.getElementById('widthInput').value = img.width;
-      document.getElementById('heightInput').value = img.height;
-      document.getElementById('editorPanel').style.display = 'grid';
-      document.getElementById('imageInfo').textContent = `Original: ${img.width}×${img.height}px`;
-
-      updatePreview(img.width, img.height);
-    };
-    img.src = e.target.result;
-  };
-  reader.readAsDataURL(file);
-}
-
-function updateHeight() {
-  const width = parseInt(document.getElementById('widthInput').value);
-  if (isLocked && width) {
-    const height = Math.round(width / aspectRatio);
-    document.getElementById('heightInput').value = height;
-    updatePreview(width, height);
-  }
-}
-
-function updateWidth() {
-  const height = parseInt(document.getElementById('heightInput').value);
-  if (isLocked && height) {
-    const width = Math.round(height * aspectRatio);
-    document.getElementById('widthInput').value = width;
-    updatePreview(width, height);
-  }
-}
-
-function updatePreview(width, height) {
-  if (!originalImage) return;
-
-  const canvas = document.createElement('canvas');
-  canvas.width = width;
-  canvas.height = height;
-  const ctx = canvas.getContext('2d');
-  ctx.drawImage(originalImage, 0, 0, width, height);
-
-  const previewContainer = document.getElementById('previewContainer');
-  previewContainer.innerHTML = '';
-  const previewImg = canvas.toDataURL('image/jpeg', 0.9);
-  previewContainer.innerHTML = `<img src="${previewImg}" alt="Preview" />`;
-}
-
-function toggleLock() {
-  isLocked = document.getElementById('lockAspect').checked;
-}
-
-function downloadResized() {
-  if (!originalImage) {
-    alert('Please upload an image first');
-    return;
-  }
-
-  const width = parseInt(document.getElementById('widthInput').value);
-  const height = parseInt(document.getElementById('heightInput').value);
-  const format = document.getElementById('formatSelect').value;
-  const quality = parseInt(document.getElementById('quality').value) / 100;
-
-  const canvas = document.createElement('canvas');
-  canvas.width = width;
-  canvas.height = height;
-  const ctx = canvas.getContext('2d');
-  ctx.drawImage(originalImage, 0, 0, width, height);
-
-  const dataUrl = canvas.toDataURL(format, quality);
-  const link = document.createElement('a');
-  link.download = `resized-image.${format.split('/')[1]}`;
-  link.href = dataUrl;
-  link.click();
-}
-
-function resetTool() {
-  document.getElementById('fileInput').value = '';
-  document.getElementById('editorPanel').style.display = 'none';
-  document.getElementById('previewContainer').innerHTML = '<span style="color:var(--sub);">Upload an image to preview</span>';
-  document.getElementById('imageInfo').textContent = '';
-  originalImage = null;
-}
-
-// AdSense initialization
-</script>
 
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

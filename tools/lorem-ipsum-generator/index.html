@@ -449,63 +449,14 @@
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
-</footer>
-</div>
 
-<script>
-    const LOREM_WORDS = "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum curabitur pretium tincidunt lacus nulla gravida orci a odio nullam varius turpis eget feugiat augue pellentesque".split(" ");
-    
-    function randWord() { return LOREM_WORDS[Math.floor(Math.random() * LOREM_WORDS.length)]; }
-    
-    function randSentence(wordCount) {
-      const wc = wordCount || Math.floor(Math.random() * 10) + 8;
-      let words = Array.from({length: wc}, (_, i) => i === 0 ? randWord().charAt(0).toUpperCase() + randWord().slice(1) : randWord());
-      return words.join(" ") + ".";
-    }
-    
-    function randParagraph() {
-      const sentCount = Math.floor(Math.random() * 3) + 3;
-      return Array.from({length: sentCount}, () => randSentence()).join(" ");
-    }
-    
-    function generate() {
-      const type = document.getElementById("genType").value;
-      const amount = Math.max(1, Math.min(100, parseInt(document.getElementById("genAmount").value) || 3));
-      const startLorem = document.getElementById("startLorem").value === "yes";
-      let result = "";
-      
-      if (type === "words") {
-        let words = Array.from({length: amount}, (_, i) => i === 0 && startLorem ? "Lorem" : randWord());
-        if (startLorem && amount > 1) words[1] = "ipsum";
-        result = words.join(" ") + ".";
-      } else if (type === "sentences") {
-        let sentences = Array.from({length: amount}, () => randSentence());
-        if (startLorem) sentences[0] = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
-        result = sentences.join(" ");
-      } else {
-        let paras = Array.from({length: amount}, () => randParagraph());
-        if (startLorem) paras[0] = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. " + paras[0];
-        result = paras.join("\n\n");
-      }
-      
-      document.getElementById("outputText").textContent = result;
-      const wc = result.trim().split(/\s+/).length;
-      document.getElementById("outputMeta").textContent = `${amount} ${type} · ${wc} words · ${result.length} characters`;
-    }
-    
-    function copyText() {
-      const text = document.getElementById("outputText").textContent;
-      if (text) {
-        navigator.clipboard.writeText(text).then(() => {
-          alert('Copied to clipboard!');
-        });
-      }
-    }
-    
-    generate();
-  </script>
-  
-  <script src="/knexio-bundle.js"></script>
+</footer>
+
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

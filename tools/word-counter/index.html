@@ -305,39 +305,14 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
 
-<script>
-const input = document.getElementById("input");
-input.addEventListener("input", update);
-
-function update(){
-  const text = input.value;
-  const words = text.trim()?text.trim().split(/\s+/).length:0;
-  const chars = text.length;
-  const charsNo = text.replace(/\s+/g,"").length;
-  const sentences = text.split(/[.!?]+/).filter(s=>s.trim()).length;
-  const paragraphs = text.split(/\n+/).filter(p=>p.trim()).length;
-  const reading = Math.ceil(words / 200);
-  document.getElementById("words").textContent = words;
-  document.getElementById("chars").textContent = chars;
-  document.getElementById("charsNo").textContent = charsNo;
-  document.getElementById("sentences").textContent = sentences;
-  document.getElementById("paragraphs").textContent = paragraphs;
-  document.getElementById("time").textContent = reading;
-  if(words>0){
-    const avg = Math.round(words / (sentences || 1));
-    document.getElementById("tip").innerText = "Avg sentence length: " + avg + " words";
-  } else {
-    document.getElementById("tip").innerText = "";
-  }
-}
-
-function clearText(){ input.value=""; update(); }
-function copyText(){ navigator.clipboard.writeText(input.value); alert("Copied!"); }
-</script>
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

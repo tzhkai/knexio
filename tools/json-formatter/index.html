@@ -390,85 +390,14 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
 
-<script>
-const input=document.getElementById('input');
-const output=document.getElementById('output');
-const statusBar=document.getElementById('statusBar');
-const indentSel=document.getElementById('indentSel');
-
-function getIndent(){
-  const val=indentSel.value;
-  if(val==='tab')return'\t';
-  return ' '.repeat(parseInt(val));
-}
-
-function formatJSON(){
-  try{
-    const json=JSON.parse(input.value);
-    const indent=getIndent();
-    output.textContent=JSON.stringify(json,null,indent);
-    showStatus('Valid JSON - formatted successfully','success');
-  }catch(e){
-    showStatus('Error: '+e.message,'error');
-    output.textContent='';
-  }
-}
-
-function minifyJSON(){
-  try{
-    const json=JSON.parse(input.value);
-    output.textContent=JSON.stringify(json);
-    showStatus('Valid JSON - minified successfully','success');
-  }catch(e){
-    showStatus('Error: '+e.message,'error');
-    output.textContent='';
-  }
-}
-
-function validateOnly(){
-  try{
-    JSON.parse(input.value);
-    showStatus('Valid JSON!','success');
-    output.textContent='';
-  }catch(e){
-    showStatus('Error: '+e.message,'error');
-    output.textContent='';
-  }
-}
-
-function clearAll(){
-  input.value='';
-  output.textContent='';
-  showStatus('','success');
-}
-
-function pasteClipboard(){
-  navigator.clipboard.readText().then(text=>{
-    input.value=text;
-  }).catch(err=>{
-    alert('Unable to paste. Please use Ctrl+V or Cmd+V.');
-  });
-}
-
-function copyOutput(){
-  if(!output.textContent)return;
-  navigator.clipboard.writeText(output.textContent).then(()=>{
-    alert('Copied!');
-  });
-}
-
-function showStatus(msg,type){
-  statusBar.textContent=msg;
-  statusBar.className='status-bar '+type;
-  if(!msg)statusBar.className='status-bar';
-}
-</script>
-<script>
-</script>
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

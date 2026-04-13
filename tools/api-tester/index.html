@@ -244,69 +244,14 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
 
-<script>
-var currentMethod = 'GET';
-
-function setMethod(method, btn) {
-  currentMethod = method;
-  document.querySelectorAll('.method-tab').forEach(function(t){ t.classList.remove('active'); });
-  btn.classList.add('active');
-  var bodyGroup = document.getElementById('bodyGroup');
-  bodyGroup.style.display = (method === 'GET' || method === 'DELETE') ? 'none' : 'block';
-}
-
-function sendRequest() {
-  var url = document.getElementById('urlInput').value;
-  if (!url) { alert('Please enter a URL'); return; }
-  var start = Date.now();
-  var body = (currentMethod === 'GET' || currentMethod === 'DELETE') ? null : document.getElementById('reqBody').value;
-  var options = { method: currentMethod, headers: { 'Content-Type': 'application/json' } };
-  if (body) options.body = body;
-  fetch(url, options)
-    .then(function(res) {
-      var time = Date.now() - start;
-      document.getElementById('resStatus').textContent = res.status + ' ' + res.statusText;
-      document.getElementById('resTime').textContent = time + 'ms';
-      return res.text().then(function(text) {
-        document.getElementById('resSize').textContent = formatBytes(text.length);
-        document.getElementById('resBody').value = text;
-        document.getElementById('responseSection').style.display = 'block';
-        try { document.getElementById('resBody').value = JSON.stringify(JSON.parse(text), null, 2); } catch(e){}
-      });
-    })
-    .catch(function(err) {
-      document.getElementById('responseSection').style.display = 'block';
-      document.getElementById('resStatus').textContent = 'Error';
-      document.getElementById('resTime').textContent = '-';
-      document.getElementById('resSize').textContent = '-';
-      document.getElementById('resBody').value = 'Error: ' + err.message;
-    });
-}
-
-function clearRequest() {
-  document.getElementById('urlInput').value = '';
-  document.getElementById('reqBody').value = '';
-  document.getElementById('resBody').value = '';
-  document.getElementById('responseSection').style.display = 'none';
-}
-
-function copyResponse() {
-  navigator.clipboard.writeText(document.getElementById('resBody').value);
-}
-
-function formatBytes(bytes) {
-  if (bytes < 1024) return bytes + ' B';
-  if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
-  return (bytes / 1048576).toFixed(1) + ' MB';
-}
-
-// Init
-document.getElementById('bodyGroup').style.display = 'none';
-</script>
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

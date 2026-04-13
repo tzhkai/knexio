@@ -161,48 +161,14 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
 
-<script>
-function getLuminance(hex) {
-  hex = hex.replace('#','');
-  if (hex.length === 3) hex = hex.split('').map(c=>c+c).join('');
-  const r = parseInt(hex.substr(0,2),16)/255;
-  const g = parseInt(hex.substr(2,2),16)/255;
-  const b = parseInt(hex.substr(4,2),16)/255;
-  const toLinear = c => c <= 0.03928 ? c/12.92 : Math.pow((c+0.055)/1.055, 2.4);
-  return 0.2126*toLinear(r) + 0.7152*toLinear(g) + 0.0722*toLinear(b);
-}
-
-function update() {
-  const fg = document.getElementById('fg').value;
-  const bg = document.getElementById('bg').value;
-  document.getElementById('fgHex').value = fg;
-  document.getElementById('bgHex').value = bg;
-  
-  const preview = document.getElementById('preview');
-  preview.style.color = fg;
-  preview.style.background = bg;
-  
-  const l1 = getLuminance(fg);
-  const l2 = getLuminance(bg);
-  const ratio = (Math.max(l1,l2)+0.05)/(Math.min(l1,l2)+0.05);
-  
-  document.getElementById('ratio').textContent = ratio.toFixed(2) + ':1';
-  
-  const badges = document.getElementById('badges');
-  badges.innerHTML = [
-    {label:'AA Normal', pass: ratio >= 4.5},
-    {label:'AA Large', pass: ratio >= 3},
-    {label:'AAA Normal', pass: ratio >= 7},
-    {label:'AAA Large', pass: ratio >= 4.5},
-  ].map(b => `<span class="badge ${b.pass?'pass':'fail'}">${b.label}: ${b.pass?'Pass':'Fail'}</span>`).join('');
-}
-
-update();
-</script>
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

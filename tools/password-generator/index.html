@@ -564,139 +564,14 @@
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
-</footer>
-</div>
 
-<script>
-    let passwordHistory = [];
-    
-    function updateLength(val) {
-      document.getElementById('lengthValue').textContent = val;
-    }
-    
-    function generatePassword() {
-      const length = parseInt(document.getElementById('lengthSlider').value);
-      const useUpper = document.getElementById('uppercase').checked;
-      const useLower = document.getElementById('lowercase').checked;
-      const useNumbers = document.getElementById('numbers').checked;
-      const useSymbols = document.getElementById('symbols').checked;
-      
-      if (!useUpper && !useLower && !useNumbers && !useSymbols) {
-        alert('Please select at least one character type');
-        return;
-      }
-      
-      let chars = '';
-      if (useUpper) chars += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-      if (useLower) chars += 'abcdefghijklmnopqrstuvwxyz';
-      if (useNumbers) chars += '0123456789';
-      if (useSymbols) chars += '!@#$%^&*()_+-=[]{}|;:,.<>?';
-      
-      let password = '';
-      const array = new Uint32Array(length);
-      crypto.getRandomValues(array);
-      
-      for (let i = 0; i < length; i++) {
-        password += chars[array[i] % chars.length];
-      }
-      
-      document.getElementById('passwordOutput').textContent = password;
-      checkStrength(password);
-      addToHistory(password);
-    }
-    
-    function checkStrength(password) {
-      let score = 0;
-      const output = document.getElementById('passwordOutput');
-      const fill = document.getElementById('strengthFill');
-      const text = document.getElementById('strengthText');
-      
-      if (password.length >= 8) score++;
-      if (password.length >= 12) score++;
-      if (password.length >= 16) score++;
-      if (/[a-z]/.test(password) && /[A-Z]/.test(password)) score++;
-      if (/[0-9]/.test(password)) score++;
-      if (/[^a-zA-Z0-9]/.test(password)) score++;
-      
-      output.className = 'password-text';
-      fill.style.width = '0';
-      
-      const colors = {
-        weak: '#ff6b6b',
-        fair: '#feca57',
-        good: '#4f8cff',
-        strong: '#1dd1a1'
-      };
-      
-      if (score <= 2) {
-        output.style.color = colors.weak;
-        fill.style.width = '25%';
-        fill.style.background = colors.weak;
-        text.textContent = 'Weak';
-      } else if (score <= 4) {
-        output.style.color = colors.fair;
-        fill.style.width = '50%';
-        fill.style.background = colors.fair;
-        text.textContent = 'Fair';
-      } else if (score <= 5) {
-        output.style.color = colors.good;
-        fill.style.width = '75%';
-        fill.style.background = colors.good;
-        text.textContent = 'Good';
-      } else {
-        output.style.color = colors.strong;
-        fill.style.width = '100%';
-        fill.style.background = colors.strong;
-        text.textContent = 'Strong';
-      }
-    }
-    
-    function copyPassword() {
-      const pwd = document.getElementById('passwordOutput').textContent;
-      if (!pwd || pwd === 'Click Generate to create a password') return;
-      navigator.clipboard.writeText(pwd).then(() => {
-        alert('Copied!');
-      });
-    }
-    
-    function addToHistory(password) {
-      if (passwordHistory.includes(password)) return;
-      passwordHistory.unshift(password);
-      if (passwordHistory.length > 5) passwordHistory.pop();
-      updateHistoryDisplay();
-    }
-    
-    function updateHistoryDisplay() {
-      const section = document.getElementById('historySection');
-      const list = document.getElementById('historyList');
-      
-      if (passwordHistory.length === 0) {
-        section.style.display = 'none';
-        return;
-      }
-      
-      section.style.display = 'block';
-      list.innerHTML = passwordHistory.map((pwd, i) => `
-        <div class="history-item">
-          <span class="pwd">${pwd}</span>
-          <button class="copy-btn" onclick="copyHistoryPwd(${i})">Copy</button>
-        </div>
-      `).join('');
-    }
-    
-    function copyHistoryPwd(index) {
-      navigator.clipboard.writeText(passwordHistory[index]).then(() => {
-        alert('Copied!');
-      });
-    }
-    
-    function clearHistory() {
-      passwordHistory = [];
-      updateHistoryDisplay();
-    }
-  </script>
-  
-  <script src="/knexio-bundle.js"></script>
+</footer>
+
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

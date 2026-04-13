@@ -538,96 +538,14 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
-
-<script>
-const CURRENCIES = [
-  {code:'USD',symbol:'$',name:'US Dollar'},
-  {code:'EUR',symbol:'€',name:'Euro'},
-  {code:'GBP',symbol:'£',name:'British Pound'},
-  {code:'JPY',symbol:'¥',name:'Japanese Yen'},
-  {code:'CNY',symbol:'¥',name:'Chinese Yuan'},
-  {code:'CAD',symbol:'C$',name:'Canadian Dollar'},
-  {code:'AUD',symbol:'A$',name:'Australian Dollar'},
-  {code:'CHF',symbol:'Fr',name:'Swiss Franc'},
-  {code:'INR',symbol:'₹',name:'Indian Rupee'},
-  {code:'BRL',symbol:'R$',name:'Brazilian Real'},
-  {code:'MXN',symbol:'MX$',name:'Mexican Peso'},
-  {code:'KRW',symbol:'₩',name:'Korean Won'},
-];
-
-function fmt(num, curr, locale, dec) {
-  const opts = {style:'currency', currency:curr};
-  if (dec !== 'auto') { opts.minimumFractionDigits = parseInt(dec); opts.maximumFractionDigits = parseInt(dec); }
-  try { return new Intl.NumberFormat(locale, opts).format(num); }
-  catch(e) { return num.toLocaleString(); }
-}
-
-function formatSingle() {
-  const num = parseFloat(document.getElementById('numInput').value);
-  const curr = document.getElementById('currSelect').value;
-  const locale = document.getElementById('localeSelect').value;
-  const dec = document.getElementById('decimals').value;
-  if (isNaN(num)) { document.getElementById('singleResult').textContent = '—'; return; }
-  document.getElementById('singleResult').textContent = fmt(num, curr, locale, dec);
-  document.getElementById('singleLabel').textContent = `${curr} · ${locale} locale · ${dec === 'auto' ? 'auto' : dec} decimal places`;
-  formatBulk();
-}
-
-function formatBulk() {
-  const lines = document.getElementById('bulkIn').value.split('\n');
-  const curr = document.getElementById('currSelect').value;
-  const locale = document.getElementById('localeSelect').value;
-  const dec = document.getElementById('decimals').value;
-  const out = lines.map(l => {
-    const n = parseFloat(l.trim());
-    return isNaN(n) ? l : fmt(n, curr, locale, dec);
-  }).join('\n');
-  document.getElementById('bulkOut').value = out;
-}
-
-function copyResult() {
-  const result = document.getElementById('singleResult').textContent;
-  if (result === '—') return;
-  navigator.clipboard.writeText(result).then(() => {
-    alert('Result copied!');
-  });
-}
-
-function copyBulkOutput() {
-  const out = document.getElementById('bulkOut').value;
-  if (!out) return;
-  navigator.clipboard.writeText(out).then(() => {
-    alert('All formatted numbers copied!');
-  });
-}
-
-function clearBulk() {
-  document.getElementById('bulkIn').value = '';
-  document.getElementById('bulkOut').value = '';
-}
-
-function buildCurrGrid() {
-  const grid = document.getElementById('currGrid');
-  CURRENCIES.forEach(c => {
-    const div = document.createElement('div');
-    div.className = 'cur-card';
-    div.innerHTML = `<div class="cur-symbol">${c.symbol}</div><div class="cur-name">${c.name}</div><div class="cur-code">${c.code}</div>`;
-    div.onclick = () => {
-      document.getElementById('currSelect').value = c.code;
-      formatSingle();
-      window.scrollTo({top: 0, behavior: 'smooth'});
-    };
-    grid.appendChild(div);
-  });
-}
-
-buildCurrGrid();
-formatSingle();
-</script>
 
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

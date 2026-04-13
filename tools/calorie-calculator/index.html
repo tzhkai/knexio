@@ -543,98 +543,14 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
-
-<script>
-function calculateCalories(){
-  const gender = document.querySelector('input[name="gender"]:checked').value;
-  const age = parseFloat(document.getElementById('age').value);
-  let weight = parseFloat(document.getElementById('weight').value);
-  const weightUnit = document.getElementById('weightUnit').value;
-  let height = parseFloat(document.getElementById('height').value);
-  const heightUnit = document.getElementById('heightUnit').value;
-  const activity = parseFloat(document.getElementById('activity').value);
-
-  if(!age || !weight || !height){
-    alert('Please fill in all fields');
-    return;
-  }
-
-  // Convert to metric if needed
-  if(weightUnit === 'lbs'){
-    weight = weight * 0.453592;
-  }
-  if(heightUnit === 'ft'){
-    // Assuming input is in feet (e.g., 5.8 for 5'8")
-    const feet = Math.floor(height);
-    const inches = Math.round((height - feet) * 10);
-    height = (feet * 30.48) + (inches * 2.54);
-  }
-
-  // Calculate BMR using Mifflin-St Jeor equation
-  let bmr;
-  if(gender === 'male'){
-    bmr = (10 * weight) + (6.25 * height) - (5 * age) + 5;
-  }else{
-    bmr = (10 * weight) + (6.25 * height) - (5 * age) - 161;
-  }
-
-  // Calculate TDEE
-  const tdee = Math.round(bmr * activity);
-
-  // Calculate BMI
-  const heightM = height / 100;
-  const bmi = (weight / (heightM * heightM)).toFixed(1);
-
-  // Calculate ideal weight (BMI 18.5-24.9)
-  const minIdealWeight = (18.5 * heightM * heightM).toFixed(1);
-  const maxIdealWeight = (24.9 * heightM * heightM).toFixed(1);
-  const idealWeightDisplay = `${minIdealWeight}-${maxIdealWeight}`;
-
-  // Calculate calorie targets
-  const maintainCal = tdee;
-  const loseHalfCal = tdee - 500;
-  const loseOneCal = tdee - 1000;
-  const gainHalfCal = tdee + 500;
-
-  // Calculate macros (50% carbs, 25% protein, 25% fat)
-  const carbCal = Math.round(tdee * 0.5);
-  const proteinCal = Math.round(tdee * 0.25);
-  const fatCal = Math.round(tdee * 0.25);
-
-  const carbGrams = Math.round(carbCal / 4);
-  const proteinGrams = Math.round(proteinCal / 4);
-  const fatGrams = Math.round(fatCal / 9);
-
-  // Display results
-  document.getElementById('tdeeResult').textContent = tdee.toLocaleString();
-  document.getElementById('bmrResult').textContent = Math.round(bmr).toLocaleString();
-  document.getElementById('bmiResult').textContent = bmi;
-  document.getElementById('idealWeight').textContent = idealWeightDisplay + ' kg';
-
-  document.getElementById('maintainCal').textContent = maintainCal.toLocaleString();
-  document.getElementById('loseHalfCal').textContent = loseHalfCal.toLocaleString();
-  document.getElementById('loseOneCal').textContent = loseOneCal.toLocaleString();
-  document.getElementById('gainHalfCal').textContent = gainHalfCal.toLocaleString();
-
-  document.getElementById('carbBar').style.width = '50%';
-  document.getElementById('proteinBar').style.width = '25%';
-  document.getElementById('fatBar').style.width = '25%';
-
-  document.getElementById('carbGrams').textContent = carbGrams + 'g carbs';
-  document.getElementById('proteinGrams').textContent = proteinGrams + 'g protein';
-  document.getElementById('fatGrams').textContent = fatGrams + 'g fat';
-
-  document.getElementById('resultContainer').style.display = 'block';
-  document.getElementById('emptyState').style.display = 'none';
-}
-</script>
-
-<script>
-</script>
 
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

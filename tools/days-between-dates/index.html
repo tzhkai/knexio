@@ -379,82 +379,14 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
-
-<script>
-// Set default dates
-const today = new Date();
-const yesterday = new Date(today);
-yesterday.setDate(yesterday.getDate() - 30);
-
-document.getElementById('startDate').value = formatDate(yesterday);
-document.getElementById('endDate').value = formatDate(today);
-
-function formatDate(date) {
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, '0');
-  const day = String(date.getDate()).padStart(2, '0');
-  return `${year}-${month}-${day}`;
-}
-
-function calculateDifference() {
-  const startDate = new Date(document.getElementById('startDate').value);
-  const endDate = new Date(document.getElementById('endDate').value);
-  
-  if (isNaN(startDate.getTime()) || isNaN(endDate.getTime())) {
-    alert('Please select valid start and end dates');
-    return;
-  }
-  
-  if (startDate > endDate) {
-    alert('Start date must be before end date');
-    return;
-  }
-  
-  const diffTime = Math.abs(endDate - startDate);
-  const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-  const diffWeeks = Math.floor(diffDays / 7);
-  const diffMonths = Math.floor(diffDays / 30.44);
-  const diffYears = Math.floor(diffDays / 365.25);
-  const totalHours = Math.floor(diffTime / (1000 * 60 * 60));
-  
-  // Calculate weekdays (excluding Saturday and Sunday)
-  let weekdays = 0;
-  let currentDate = new Date(startDate);
-  while (currentDate <= endDate) {
-    const dayOfWeek = currentDate.getDay();
-    if (dayOfWeek !== 0 && dayOfWeek !== 6) { // Not Sunday (0) or Saturday (6)
-      weekdays++;
-    }
-    currentDate.setDate(currentDate.getDate() + 1);
-  }
-  
-  document.getElementById('daysResult').textContent = diffDays + ' days';
-  document.getElementById('datesRange').textContent = `Between ${formatDate(startDate)} and ${formatDate(endDate)}`;
-  
-  document.getElementById('daysCount').textContent = diffDays;
-  document.getElementById('weeksCount').textContent = diffWeeks;
-  document.getElementById('monthsCount').textContent = diffMonths;
-  document.getElementById('yearsCount').textContent = diffYears;
-  document.getElementById('weekdaysCount').textContent = weekdays;
-  document.getElementById('totalHours').textContent = totalHours;
-  
-  document.getElementById('resultBox').style.display = 'block';
-  document.getElementById('statsBox').style.display = 'grid';
-}
-
-function resetDates() {
-  const yesterday = new Date();
-  yesterday.setDate(yesterday.getDate() - 30);
-  document.getElementById('startDate').value = formatDate(yesterday);
-  document.getElementById('endDate').value = formatDate(new Date());
-  document.getElementById('resultBox').style.display = 'none';
-  document.getElementById('statsBox').style.display = 'none';
-}
-</script>
 
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

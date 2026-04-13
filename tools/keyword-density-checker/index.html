@@ -400,76 +400,14 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
-
-<script>
-const stopWords = new Set(['a','about','above','after','again','against','all','am','an','and','any','are','aren','as','at','be','because','been','before','being','below','between','both','but','by','can','could','did','do','does','doing','don','down','during','each','few','for','from','further','had','has','have','having','he','her','here','hers','herself','him','himself','his','how','i','if','in','into','is','it','its','itself','just','me','more','most','my','myself','no','nor','not','now','of','off','on','once','only','or','other','our','ours','ourselves','out','over','own','same','she','should','so','some','such','than','that','the','their','theirs','them','themselves','then','there','these','they','this','those','through','to','too','under','until','up','very','was','we','were','what','when','where','which','while','who','whom','why','will','with','would','you','your','yours','yourself','yourselves']);
-
-function analyzeKeywords() {
-  const text = document.getElementById('textInput').value.toLowerCase();
-  
-  if (!text.trim()) {
-    alert('Please enter some text to analyze');
-    return;
-  }
-  
-  // Remove punctuation and split into words
-  const words = text.replace(/[^\w\s]/g, '').split(/\s+/).filter(w => w.length > 2 && !stopWords.has(w));
-  
-  const totalWords = words.length;
-  const wordFreq = {};
-  
-  // Count word frequency
-  words.forEach(word => {
-    wordFreq[word] = (wordFreq[word] || 0) + 1;
-  });
-  
-  // Convert to array and sort by frequency
-  const sortedWords = Object.entries(wordFreq)
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 50); // Top 50 words
-  
-  // Update stats
-  document.getElementById('totalWords').textContent = totalWords;
-  document.getElementById('uniqueWords').textContent = Object.keys(wordFreq).length;
-  document.getElementById('topKeyword').textContent = sortedWords[0][0];
-  document.getElementById('avgDensity').textContent = ((sortedWords[0][1] / totalWords) * 100).toFixed(2) + '%';
-  
-  // Update results table
-  const tbody = document.getElementById('resultsBody');
-  tbody.innerHTML = '';
-  
-  sortedWords.forEach(([word, count]) => {
-    const density = ((count / totalWords) * 100).toFixed(2);
-    const row = document.createElement('tr');
-    row.innerHTML = `
-      <td>${word}</td>
-      <td>${count}</td>
-      <td>${density}%</td>
-      <td>
-        <div style="background:var(--bg);border-radius:4px;height:8px;width:100%;">
-          <div style="background:var(--accent);height:100%;border-radius:4px;width:${Math.min(density * 5, 100)}%"></div>
-        </div>
-      </td>
-    `;
-    tbody.appendChild(row);
-  });
-  
-  // Show results
-  document.getElementById('stats').style.display = 'grid';
-  document.getElementById('resultsCard').style.display = 'block';
-}
-
-function clearAll() {
-  document.getElementById('textInput').value = '';
-  document.getElementById('resultsBody').innerHTML = '';
-  document.getElementById('stats').style.display = 'none';
-  document.getElementById('resultsCard').style.display = 'none';
-}
-</script>
 
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

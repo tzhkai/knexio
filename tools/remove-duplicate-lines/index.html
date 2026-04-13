@@ -371,83 +371,14 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
 
-<script>
-const inputArea=document.getElementById('inputArea');
-const outputArea=document.getElementById('outputArea');
-const statsBar=document.getElementById('statsBar');
-
-function updateInStat(){
-  const lines=inputArea.value.split('\n').filter(l=>l.trim());
-  document.getElementById('inStat').textContent=lines.length+' lines';
-}
-
-function deduplicate(){
-  const optCase=document.getElementById('optCase').checked;
-  const optTrim=document.getElementById('optTrim').checked;
-  const optEmpty=document.getElementById('optEmpty').checked;
-  const optSort=document.getElementById('optSort').checked;
-  const optReverse=document.getElementById('optReverse').checked;
-  const optNumbers=document.getElementById('optNumbers').checked;
-
-  let lines=inputArea.value.split('\n');
-  let originalCount=lines.length;
-
-  lines=lines.map(l=>optTrim?l.trim():l);
-  if(optEmpty)lines=lines.filter(l=>l!=='');
-
-  const seen=new Set();
-  const unique=[];
-  for(let line of lines){
-    const key=optCase?line.toLowerCase():line;
-    if(!seen.has(key)){
-      seen.add(key);
-      unique.push(line);
-    }
-  }
-
-  if(optSort)unique.sort((a,b)=>a.localeCompare(b));
-  if(optReverse)unique.reverse();
-  if(optNumbers){
-    unique.forEach((l,i)=>unique[i]=(i+1)+'. '+l);
-  }
-
-  outputArea.value=unique.join('\n');
-  document.getElementById('outStat').textContent=unique.length+' lines';
-
-  statsBar.style.display='block';
-  document.getElementById('s-in').textContent=originalCount;
-  document.getElementById('s-out').textContent=unique.length;
-  document.getElementById('s-rem').textContent=originalCount-unique.length;
-}
-
-function swapPanes(){
-  const temp=inputArea.value;
-  inputArea.value=outputArea.value;
-  outputArea.value=temp;
-  updateInStat();
-}
-
-function clearAll(){
-  inputArea.value='';
-  outputArea.value='';
-  updateInStat();
-  statsBar.style.display='none';
-}
-
-function copyOutput(){
-  if(!outputArea.value)return;
-  navigator.clipboard.writeText(outputArea.value).then(()=>{
-    alert('Copied!');
-  });
-}
-</script>
-
-<script>
-</script>
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

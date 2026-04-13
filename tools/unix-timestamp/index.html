@@ -421,61 +421,14 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
 
-<script>
-function updateCurrentTime() {
-  const now = Math.floor(Date.now() / 1000);
-  document.getElementById('currentTimestamp').textContent = now.toLocaleString();
-}
-
-function timestampToDate() {
-  const ts = document.getElementById('timestampInput').value;
-  if (!ts) return;
-
-  let timestamp = parseInt(ts);
-  // Detect if milliseconds
-  if (timestamp > 1000000000000) {
-    timestamp = Math.floor(timestamp / 1000);
-  }
-
-  const date = new Date(timestamp * 1000);
-  const result = 'UTC: ' + date.toUTCString() + '\nLocal: ' + date.toLocaleString();
-  document.getElementById('dateResult').textContent = result;
-}
-
-function dateToTimestamp() {
-  const dateStr = document.getElementById('dateInput').value;
-  if (!dateStr) return;
-
-  const date = new Date(dateStr);
-  const timestamp = Math.floor(date.getTime() / 1000);
-  document.getElementById('timestampResult').textContent = 
-    'Seconds: ' + timestamp + '\nMilliseconds: ' + (timestamp * 1000);
-}
-
-function setTimestamp(type) {
-  const now = Math.floor(Date.now() / 1000);
-  let ts = now;
-
-  switch(type) {
-    case '+1h': ts += 3600; break;
-    case '+1d': ts += 86400; break;
-    case '+1w': ts += 604800; break;
-  }
-
-  document.getElementById('timestampInput').value = ts;
-  timestampToDate();
-}
-
-setInterval(updateCurrentTime, 1000);
-updateCurrentTime();
-
-</script>
 <script src="/knexio-bundle.js"></script>
-<script src="../../cookie-consent.js"></script>
-
 </body>
 </html>
+
+
+

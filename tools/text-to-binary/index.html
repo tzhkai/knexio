@@ -375,102 +375,14 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
 
-<script>
-let mode = 't2b';
-
-function setMode(newMode){
-  mode = newMode;
-  document.getElementById('mode-t2b').className = mode === 't2b' ? '' : 'secondary';
-  document.getElementById('mode-b2t').className = mode === 'b2t' ? '' : 'secondary';
-  document.getElementById('inputLabel').textContent = mode === 't2b' ? 'Input Text' : 'Input Binary';
-  document.getElementById('outputLabel').textContent = mode === 't2b' ? 'Binary Output' : 'Text Output';
-  document.getElementById('inputArea').placeholder = mode === 't2b' ? 'Type or paste text here...' : 'Paste binary digits here (0s and 1s)...';
-  convert();
-}
-
-function textToBinary(text){
-  return text.split('').map(char => {
-    const code = char.charCodeAt(0);
-    return code.toString(2).padStart(8, '0');
-  }).join(' ');
-}
-
-function binaryToText(binary){
-  const bytes = binary.trim().split(/\s+/);
-  return bytes.map(byte => String.fromCharCode(parseInt(byte, 2))).join('');
-}
-
-function convert(){
-  const input = document.getElementById('inputArea').value;
-  const outputArea = document.getElementById('outputArea');
-  const tableBox = document.getElementById('tableBox');
-  const tableBody = document.getElementById('tableBody');
-  
-  if(!input.trim()){
-    outputArea.textContent = 'Output will appear here...';
-    tableBox.style.display = 'none';
-    return;
-  }
-  
-  if(mode === 't2b'){
-    outputArea.textContent = textToBinary(input);
-    
-    // Build character table
-    let tableHtml = '';
-    input.split('').forEach(char => {
-      const code = char.charCodeAt(0);
-      const binary = code.toString(2).padStart(8, '0');
-      const hex = code.toString(16).toUpperCase();
-      const octal = code.toString(8);
-      
-      tableHtml += `
-        <tr>
-          <td><code>${char === ' ' ? '(space)' : char}</code></td>
-          <td><code>${binary}</code></td>
-          <td>${code}</td>
-          <td><code>${hex}</code></td>
-          <td><code>${octal}</code></td>
-        </tr>
-      `;
-    });
-    tableBody.innerHTML = tableHtml;
-    tableBox.style.display = 'block';
-  } else {
-    try {
-      const text = binaryToText(input);
-      outputArea.textContent = text;
-      tableBox.style.display = 'none';
-    } catch(e) {
-      outputArea.textContent = 'Invalid binary input. Please use 0s and 1s only.';
-      tableBox.style.display = 'none';
-    }
-  }
-}
-
-function copyOutput(){
-  const output = document.getElementById('outputArea').textContent;
-  if(output === 'Output will appear here...' || output === 'Invalid binary input. Please use 0s and 1s only.'){
-    alert('Nothing to copy');
-    return;
-  }
-  navigator.clipboard.writeText(output).then(() => {
-    alert('Copied!');
-  });
-}
-
-function clearAll(){
-  document.getElementById('inputArea').value = '';
-  document.getElementById('outputArea').textContent = 'Output will appear here...';
-  document.getElementById('tableBox').style.display = 'none';
-}
-</script>
-
-<script>
-</script>
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

@@ -505,78 +505,14 @@
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
-</footer>
-</div>
 
-<script>
-    const commonPasswords = [
-      'password', '123456', '12345678', 'qwerty', 'abc123',
-      'monkey', '123456789', 'letmein', '111111', 'admin',
-      'welcome', 'password1', 'sunshine', 'password123', '123qwe'
-    ];
-    
-    function checkStrength() {
-      const password = document.getElementById('password').value;
-      const strengthMeter = document.getElementById('strengthMeter');
-      const strengthLabel = document.getElementById('strengthLabel');
-      const meterFill = document.getElementById('meterFill');
-      
-      if (password.length === 0) {
-        strengthMeter.classList.remove('show');
-        return;
-      }
-      
-      strengthMeter.classList.add('show');
-      
-      const criteria = {
-        length: password.length >= 8,
-        uppercase: /[A-Z]/.test(password),
-        lowercase: /[a-z]/.test(password),
-        number: /[0-9]/.test(password),
-        special: /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password),
-        common: !commonPasswords.includes(password.toLowerCase())
-      };
-      
-      const passedCount = Object.values(criteria).filter(Boolean).length;
-      const percentage = (passedCount / 6) * 100;
-      
-      meterFill.style.width = percentage + '%';
-      
-      let strengthClass = 'weak';
-      let strengthText = 'Weak';
-      
-      if (percentage >= 80) {
-        strengthClass = 'strong';
-        strengthText = 'Strong';
-      } else if (percentage >= 60) {
-        strengthClass = 'good';
-        strengthText = 'Good';
-      } else if (percentage >= 40) {
-        strengthClass = 'fair';
-        strengthText = 'Fair';
-      }
-      
-      strengthMeter.className = 'strength-meter show ' + strengthClass;
-      strengthLabel.textContent = strengthText + ' (' + passedCount + '/6)';
-      
-      Object.keys(criteria).forEach(key => {
-        const element = document.getElementById(key);
-        element.className = criteria[key] ? 'passed' : 'failed';
-      });
-    }
-    
-    function toggleVisibility() {
-      const input = document.getElementById('password');
-      input.type = input.type === 'password' ? 'text' : 'password';
-    }
-    
-    function clearPassword() {
-      document.getElementById('password').value = '';
-      document.getElementById('strengthMeter').classList.remove('show');
-    }
-  </script>
-  
-  <script src="/knexio-bundle.js"></script>
+</footer>
+
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

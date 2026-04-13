@@ -572,122 +572,14 @@
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
 
-<script>
-  let gradType = 'linear';
-  let angle = 135;
-  let stops = [
-    {color:'#4f8cff', pos:0},
-    {color:'#a855f7', pos:100}
-  ];
-
-  const PRESETS = [
-    [{color:'#4f8cff',pos:0},{color:'#a855f7',pos:100}],
-    [{color:'#22c55e',pos:0},{color:'#06b6d4',pos:100}],
-    [{color:'#f97316',pos:0},{color:'#eab308',pos:100}],
-    [{color:'#ec4899',pos:0},{color:'#8b5cf6',pos:100}],
-    [{color:'#0f172a',pos:0},{color:'#1e40af',pos:50},{color:'#0f172a',pos:100}],
-    [{color:'#fbbf24',pos:0},{color:'#f87171',pos:50},{color:'#ec4899',pos:100}],
-    [{color:'#34d399',pos:0},{color:'#3b82f6',pos:100}],
-    [{color:'#f43f5e',pos:0},{color:'#f97316',pos:100}],
-    [{color:'#818cf8',pos:0},{color:'#c084fc',pos:50},{color:'#fb7185',pos:100}],
-    [{color:'#fff',pos:0},{color:'#94a3b8',pos:100}],
-  ];
-
-  function buildGradient() {
-    const stopStr = stops.map(s => `${s.color} ${s.pos}%`).join(', ');
-    if (gradType === 'linear') return `linear-gradient(${angle}deg, ${stopStr})`;
-    if (gradType === 'radial') return `radial-gradient(circle, ${stopStr})`;
-    if (gradType === 'conic') return `conic-gradient(from ${angle}deg, ${stopStr})`;
-  }
-
-  function render() {
-    const grad = buildGradient();
-    document.getElementById('previewBox').style.background = grad;
-    document.getElementById('cssOut').textContent = `background: ${grad};`;
-  }
-
-  function setType(t) {
-    gradType = t;
-    ['linear','radial','conic'].forEach(x => document.getElementById('btn-'+x).classList.toggle('active', x===t));
-    document.getElementById('angle-group').style.display = (t === 'radial') ? 'none' : 'block';
-    render();
-  }
-
-  function updateAngle(v) {
-    angle = +v;
-    document.getElementById('angleVal').textContent = v + '°';
-    render();
-  }
-
-  function renderStops() {
-    const list = document.getElementById('stopsList');
-    list.innerHTML = '';
-    stops.forEach((s, i) => {
-      const row = document.createElement('div');
-      row.className = 'stop-row';
-      row.innerHTML = `
-        <input type="color" value="${s.color}" oninput="stops[${i}].color=this.value;render()">
-        <input type="range" min="0" max="100" value="${s.pos}" oninput="stops[${i}].pos=+this.value;document.getElementById('pos-${i}').textContent=this.value+'%';render()">
-        <span class="stop-pos" id="pos-${i}">${s.pos}%</span>
-        ${stops.length > 2 ? `<button class="stop-remove" onclick="removeStop(${i})">✕</button>` : ''}
-      `;
-      list.appendChild(row);
-    });
-    render();
-  }
-
-  function addStop() {
-    const mid = Math.round((stops[stops.length-2]?.pos + stops[stops.length-1]?.pos) / 2) || 50;
-    stops.splice(stops.length - 1, 0, {color:'#ffffff', pos: Math.min(mid, 99)});
-    renderStops();
-  }
-
-  function removeStop(i) {
-    stops.splice(i, 1);
-    renderStops();
-  }
-
-  function copyCss() {
-    const text = document.getElementById('cssOut').textContent;
-    navigator.clipboard.writeText(text).then(() => {
-      const btn = document.getElementById('copyBtn');
-      btn.textContent = '✅ Copied!';
-      btn.classList.add('copied');
-      setTimeout(() => { btn.textContent = '📋 Copy CSS'; btn.classList.remove('copied'); }, 2000);
-    });
-  }
-
-  function randomGradient() {
-    const rnd = () => '#' + Math.floor(Math.random()*16777215).toString(16).padStart(6,'0');
-    const n = 2 + Math.floor(Math.random() * 2);
-    stops = Array.from({length:n}, (_, i) => ({color: rnd(), pos: Math.round(i / (n-1) * 100)}));
-    angle = Math.floor(Math.random() * 360);
-    document.getElementById('angleRange').value = angle;
-    document.getElementById('angleVal').textContent = angle + '°';
-    renderStops();
-  }
-
-  function buildPresets() {
-    const grid = document.getElementById('presetsGrid');
-    grid.innerHTML = '';
-    PRESETS.forEach((p, i) => {
-      const stopStr = p.map(s => `${s.color} ${s.pos}%`).join(', ');
-      const div = document.createElement('div');
-      div.className = 'preset-swatch';
-      div.style.background = `linear-gradient(135deg, ${stopStr})`;
-      div.title = 'Preset ' + (i+1);
-      div.onclick = () => { stops = p.map(s => ({...s})); renderStops(); };
-      grid.appendChild(div);
-    });
-  }
-
-  buildPresets();
-  renderStops();
-</script>
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

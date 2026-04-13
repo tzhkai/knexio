@@ -459,119 +459,14 @@
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
 
-<script>
-let qrData = '';
-
-function updateFields() {
-  const type = document.getElementById('type').value;
-  const urlField = document.getElementById('urlField');
-  const textField = document.getElementById('textField');
-  const emailFields = document.getElementById('emailFields');
-  const wifiFields = document.getElementById('wifiFields');
-  
-  urlField.style.display = 'none';
-  textField.style.display = 'none';
-  emailFields.style.display = 'none';
-  wifiFields.style.display = 'none';
-  
-  if (type === 'url') {
-    urlField.style.display = 'block';
-  } else if (type === 'text') {
-    textField.style.display = 'block';
-  } else if (type === 'email') {
-    emailFields.style.display = 'block';
-  } else if (type === 'wifi') {
-    wifiFields.style.display = 'block';
-  }
-}
-
-function generateQR() {
-  const type = document.getElementById('type').value;
-  const size = document.getElementById('size').value;
-  const qrDisplay = document.getElementById('qrDisplay');
-  const qrImage = document.getElementById('qrImage');
-  
-  let data = '';
-  
-  if (type === 'url') {
-    data = document.getElementById('url').value.trim();
-    if (!data) {
-      alert('Please enter a URL');
-      return;
-    }
-    if (!data.startsWith('http://') && !data.startsWith('https://')) {
-      data = 'https://' + data;
-    }
-  } else if (type === 'text') {
-    data = document.getElementById('text').value.trim();
-    if (!data) {
-      alert('Please enter text');
-      return;
-    }
-  } else if (type === 'email') {
-    const email = document.getElementById('email').value.trim();
-    const subject = document.getElementById('subject').value.trim();
-    if (!email) {
-      alert('Please enter email address');
-      return;
-    }
-    data = 'mailto:' + email;
-    if (subject) {
-      data += '?subject=' + encodeURIComponent(subject);
-    }
-  } else if (type === 'wifi') {
-    const ssid = document.getElementById('ssid').value.trim();
-    const password = document.getElementById('wifiPassword').value;
-    const encryption = document.getElementById('encryption').value;
-    
-    if (!ssid) {
-      alert('Please enter network name (SSID)');
-      return;
-    }
-    
-    data = 'WIFI:T:' + encryption + ';S:' + ssid + ';';
-    if (encryption !== 'nopass') {
-      data += 'P:' + password + ';';
-    }
-    data += ';;';
-  }
-  
-  qrData = data;
-  const qrUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=' + size + 'x' + size + '&data=' + encodeURIComponent(data);
-  
-  qrImage.src = qrUrl;
-  qrDisplay.classList.add('show');
-}
-
-function downloadPNG() {
-  const qrImage = document.getElementById('qrImage');
-  const a = document.createElement('a');
-  a.href = qrImage.src;
-  a.download = 'qrcode.png';
-  a.target = '_blank';
-  a.click();
-}
-
-function downloadSVG() {
-  alert('SVG download requires converting the PNG to SVG format. For now, please use PNG download.');
-}
-
-function clearAll() {
-  document.getElementById('url').value = '';
-  document.getElementById('text').value = '';
-  document.getElementById('email').value = '';
-  document.getElementById('subject').value = '';
-  document.getElementById('ssid').value = '';
-  document.getElementById('wifiPassword').value = '';
-  document.getElementById('qrDisplay').classList.remove('show');
-  document.getElementById('qrImage').src = '';
-  qrData = '';
-}
-</script>
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

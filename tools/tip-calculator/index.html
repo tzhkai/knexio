@@ -347,58 +347,14 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
 
-<script>
-let selectedTip = 15;
-
-document.querySelectorAll('.tip-btn').forEach(btn => {
-  btn.addEventListener('click', function() {
-    document.querySelectorAll('.tip-btn').forEach(b => b.classList.remove('active'));
-    this.classList.add('active');
-    selectedTip = parseInt(this.dataset.tip);
-    document.getElementById('customTip').value = '';
-  });
-});
-
-document.getElementById('customTip').addEventListener('input', function() {
-  if (this.value) {
-    document.querySelectorAll('.tip-btn').forEach(b => b.classList.remove('active'));
-    selectedTip = parseFloat(this.value) || 0;
-  }
-});
-
-function calculateTip() {
-  const bill = parseFloat(document.getElementById('billAmount').value) || 0;
-  const numPeople = parseInt(document.getElementById('numPeople').value) || 1;
-  
-  if (bill <= 0) {
-    alert('Please enter a valid bill amount');
-    return;
-  }
-  
-  const tipAmount = bill * (selectedTip / 100);
-  const total = bill + tipAmount;
-  
-  document.getElementById('resultBill').textContent = '¥' + bill.toFixed(2);
-  document.getElementById('resultTip').textContent = '¥' + tipAmount.toFixed(2);
-  document.getElementById('resultTotal').textContent = '¥' + total.toFixed(2);
-  
-  if (numPeople > 1) {
-    document.getElementById('perPersonBox').style.display = 'block';
-    const tipPerPerson = tipAmount / numPeople;
-    const totalPerPerson = total / numPeople;
-    document.getElementById('tipPerPerson').textContent = '¥' + tipPerPerson.toFixed(2);
-    document.getElementById('totalPerPerson').textContent = '¥' + totalPerPerson.toFixed(2);
-  } else {
-    document.getElementById('perPersonBox').style.display = 'none';
-  }
-  
-  document.getElementById('results').classList.add('active');
-}
-</script>
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

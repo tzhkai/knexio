@@ -441,110 +441,14 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
-</footer>
-</div>
 
-<script>
-    let generatedStrings = [];
-    
-    function generateString() {
-      const length = parseInt(document.getElementById('length').value) || 16;
-      const quantity = parseInt(document.getElementById('quantity').value) || 1;
-      const uppercase = document.getElementById('uppercase').checked;
-      const lowercase = document.getElementById('lowercase').checked;
-      const numbers = document.getElementById('numbers').checked;
-      const special = document.getElementById('special').checked;
-      const unique = document.getElementById('unique').checked;
-      const resultBox = document.getElementById('resultBox');
-      const resultDisplay = document.getElementById('resultDisplay');
-      const resultInfo = document.getElementById('resultInfo');
-      
-      if (length < 1 || length > 1000) {
-        alert('Length must be between 1 and 1000');
-        return;
-      }
-      
-      if (quantity < 1 || quantity > 100) {
-        alert('Quantity must be between 1 and 100');
-        return;
-      }
-      
-      let chars = '';
-      if (uppercase) chars += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-      if (lowercase) chars += 'abcdefghijklmnopqrstuvwxyz';
-      if (numbers) chars += '0123456789';
-      if (special) chars += '!@#$%^&*()_+-=[]{}|;:,.<>?/';
-      
-      if (!chars) {
-        alert('Please select at least one character type');
-        return;
-      }
-      
-      if (unique && chars.length < length) {
-        alert('Not enough unique characters. Enable more character types or reduce length.');
-        return;
-      }
-      
-      generatedStrings = [];
-      
-      for (let i = 0; i < quantity; i++) {
-        let result = '';
-        let availableChars = chars;
-        
-        for (let j = 0; j < length; j++) {
-          if (unique) {
-            const randomIndex = Math.floor(Math.random() * availableChars.length);
-            result += availableChars[randomIndex];
-            availableChars = availableChars.slice(0, randomIndex) + availableChars.slice(randomIndex + 1);
-          } else {
-            const randomIndex = Math.floor(Math.random() * chars.length);
-            result += chars[randomIndex];
-          }
-        }
-        
-        generatedStrings.push(result);
-      }
-      
-      resultBox.classList.add('show');
-      
-      if (quantity === 1) {
-        resultDisplay.textContent = generatedStrings[0];
-        resultInfo.textContent = `Length: ${length} characters`;
-      } else {
-        resultDisplay.textContent = generatedStrings.join('\n');
-        resultInfo.textContent = `${quantity} strings generated, each ${length} characters`;
-      }
-    }
-    
-    function copyResult() {
-      if (generatedStrings.length === 0) {
-        alert('No results to copy');
-        return;
-      }
-      
-      const text = generatedStrings.join('\n');
-      navigator.clipboard.writeText(text).then(() => {
-        alert('Strings copied to clipboard!');
-      });
-    }
-    
-    function clearAll() {
-      document.getElementById('length').value = 16;
-      document.getElementById('quantity').value = 1;
-      document.getElementById('uppercase').checked = true;
-      document.getElementById('lowercase').checked = true;
-      document.getElementById('numbers').checked = true;
-      document.getElementById('special').checked = false;
-      document.getElementById('unique').checked = false;
-      document.getElementById('resultBox').classList.remove('show');
-      document.getElementById('resultDisplay').textContent = '';
-      document.getElementById('resultInfo').textContent = '';
-      generatedStrings = [];
-    }
-  
-// AdSense initialization
-</script>
+</footer>
+
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

@@ -347,70 +347,14 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
 
-<script>
-document.getElementById('birthDate').max = new Date().toISOString().split('T')[0];
-
-function calculateAge() {
-  const birthDate = new Date(document.getElementById('birthDate').value);
-  if (isNaN(birthDate)) { alert('Please select a valid date'); return; }
-
-  const now = new Date();
-  const diff = now - birthDate;
-
-  let years = now.getFullYear() - birthDate.getFullYear();
-  let months = now.getMonth() - birthDate.getMonth();
-  let days = now.getDate() - birthDate.getDate();
-
-  if (days < 0) { months--; days += new Date(now.getFullYear(), now.getMonth(), 0).getDate(); }
-  if (months < 0) { years--; months += 12; }
-
-  const totalDays = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const totalHours = Math.floor(diff / (1000 * 60 * 60));
-  const totalMinutes = Math.floor(diff / (1000 * 60));
-  const totalSeconds = Math.floor(diff / 1000);
-
-  document.getElementById('ageYears').textContent = years;
-  document.getElementById('ageMonths').textContent = years * 12 + months;
-  document.getElementById('ageDays').textContent = totalDays.toLocaleString();
-  document.getElementById('ageHours').textContent = totalHours.toLocaleString();
-  document.getElementById('ageMinutes').textContent = totalMinutes.toLocaleString();
-  document.getElementById('ageSeconds').textContent = totalSeconds.toLocaleString();
-
-  const nextBirthday = new Date(now.getFullYear(), birthDate.getMonth(), birthDate.getDate());
-  if (nextBirthday < now) nextBirthday.setFullYear(now.getFullYear() + 1);
-  const daysUntil = Math.ceil((nextBirthday - now) / (1000 * 60 * 60 * 24));
-
-  document.getElementById('nextBirthday').textContent = nextBirthday.toLocaleDateString();
-  document.getElementById('daysUntilBirthday').textContent = daysUntil + ' days';
-  document.getElementById('zodiacSign').textContent = getZodiacSign(birthDate.getMonth() + 1, birthDate.getDate());
-  document.getElementById('birthDay').textContent = birthDate.toLocaleDateString('en-US', { weekday: 'long' });
-
-  document.getElementById('resultBox').style.display = 'block';
-}
-
-function getZodiacSign(month, day) {
-  const signs = [
-    { name: 'Capricorn', end: 19 },
-    { name: 'Aquarius', end: 18 },
-    { name: 'Pisces', end: 20 },
-    { name: 'Aries', end: 19 },
-    { name: 'Taurus', end: 20 },
-    { name: 'Gemini', end: 20 },
-    { name: 'Cancer', end: 22 },
-    { name: 'Leo', end: 22 },
-    { name: 'Virgo', end: 22 },
-    { name: 'Libra', end: 22 },
-    { name: 'Scorpio', end: 21 },
-    { name: 'Sagittarius', end: 21 },
-    { name: 'Capricorn', end: 31 }
-  ];
-  return signs[month - 1].name + (day > signs[month - 1].end ? ' / ' + signs[month].name : '');
-}
-</script>
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

@@ -433,71 +433,14 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
-</footer>
-</div>
 
-<script>
-    let generatedPINs = [];
-    
-    function generatePIN() {
-      const length = parseInt(document.getElementById('length').value) || 4;
-      const quantity = parseInt(document.getElementById('quantity').value) || 1;
-      const resultBox = document.getElementById('resultBox');
-      const pinDisplay = document.getElementById('pinDisplay');
-      const history = document.getElementById('history');
-      const historyList = document.getElementById('historyList');
-      
-      if (length < 4 || length > 12) {
-        alert('PIN length must be between 4 and 12');
-        return;
-      }
-      
-      if (quantity < 1 || quantity > 100) {
-        alert('Quantity must be between 1 and 100');
-        return;
-      }
-      
-      generatedPINs = [];
-      
-      for (let i = 0; i < quantity; i++) {
-        let pin = '';
-        for (let j = 0; j < length; j++) {
-          pin += Math.floor(Math.random() * 10);
-        }
-        generatedPINs.push(pin);
-      }
-      
-      pinDisplay.textContent = generatedPINs.join('\n');
-      resultBox.classList.add('show');
-      
-      if (quantity > 1) {
-        history.style.display = 'block';
-        historyList.innerHTML = generatedPINs.map(pin => `<div class="history-item">${pin}</div>`).join('');
-      } else {
-        history.style.display = 'none';
-      }
-    }
-    
-    function copyPIN() {
-      const pinText = generatedPINs.join('\n');
-      navigator.clipboard.writeText(pinText).then(() => {
-        alert('PIN(s) copied to clipboard!');
-      });
-    }
-    
-    function clearAll() {
-      document.getElementById('length').value = 4;
-      document.getElementById('quantity').value = 1;
-      document.getElementById('resultBox').classList.remove('show');
-      document.getElementById('pinDisplay').textContent = '';
-      document.getElementById('history').style.display = 'none';
-      document.getElementById('historyList').innerHTML = '';
-      generatedPINs = [];
-    }
-  
-// AdSense initialization
-</script>
+</footer>
+
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

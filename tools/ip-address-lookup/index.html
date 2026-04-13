@@ -155,41 +155,14 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
 
-<script>
-async function getMyIP() {
-  try {
-    const r = await fetch('https://api.ipify.org?format=json');
-    const d = await r.json();
-    document.getElementById('myIP').textContent = d.ip;
-  } catch(e) {
-    document.getElementById('myIP').textContent = 'Unavailable';
-  }
-}
-
-async function lookupIP() {
-  const ip = document.getElementById('ipInput').value.trim();
-  if (!ip) { alert('Please enter an IP address'); return; }
-  try {
-    const r = await fetch(`https://ipapi.co/${ip}/json/`);
-    const d = await r.json();
-    document.getElementById('resIP').textContent = d.ip || ip;
-    document.getElementById('resCountry').textContent = (d.country_flag_emoji || '') + ' ' + (d.country_name || '-');
-    document.getElementById('resRegion').textContent = d.region || '-';
-    document.getElementById('resCity').textContent = d.city || '-';
-    document.getElementById('resOrg').textContent = d.org || '-';
-    document.getElementById('resTZ').textContent = d.timezone || '-';
-    document.getElementById('result').style.display = 'block';
-  } catch(e) {
-    alert('Lookup failed. Please try again.');
-  }
-}
-
-getMyIP();
-</script>
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

@@ -184,35 +184,14 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
 
-<script>
-function countSyllables(word) {
-  word = word.toLowerCase().replace(/[^a-z]/g, '');
-  if (word.length <= 3) return 1;
-  word = word.replace(/(?:[^laeiouy]es|ed|[^laeiouy]e)$/, '');
-  word = word.replace(/^y/, '');
-  var matches = word.match(/[aeiouy]{1,2}/g);
-  return matches ? matches.length : 1;
-}
-
-function analyzeText() {
-  var text = document.getElementById('textInput').value;
-  var words = text.trim().split(/\s+/).filter(function(w) { return w.length > 0; });
-  document.getElementById('wordCount').textContent = words.length;
-  document.getElementById('charCount').textContent = text.length;
-  document.getElementById('charCountNoSpace').textContent = text.replace(/\s/g, '').length;
-  var sentences = text.split(/[.!?]+/).filter(function(s) { return s.trim().length > 0; });
-  document.getElementById('sentenceCount').textContent = sentences.length;
-  var paragraphs = text.split(/\n\n+/).filter(function(p) { return p.trim().length > 0; });
-  document.getElementById('paragraphCount').textContent = paragraphs.length || (text.length > 0 ? 1 : 0);
-  var totalSyllables = 0;
-  words.forEach(function(word) { totalSyllables += countSyllables(word); });
-  document.getElementById('syllableCount').textContent = totalSyllables;
-}
-</script>
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

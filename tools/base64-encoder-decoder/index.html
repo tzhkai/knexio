@@ -351,74 +351,14 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
-
-<script>
-const input = document.getElementById("input");
-const output = document.getElementById("output");
-
-input.addEventListener("input", updateStats);
-
-function updateStats() {
-  document.getElementById("inputLen").textContent = input.value.length;
-}
-
-function encode() {
-  try {
-    const text = input.value;
-    if (!text) {
-      document.getElementById("tip").textContent = "Please enter text to encode";
-      return;
-    }
-    const encoded = btoa(unescape(encodeURIComponent(text)));
-    output.value = encoded;
-    document.getElementById("outputLen").textContent = encoded.length;
-    document.getElementById("mode").textContent = "Encoded";
-    document.getElementById("tip").textContent = "Text successfully encoded to Base64";
-  } catch (e) {
-    document.getElementById("tip").textContent = "Error: " + e.message;
-  }
-}
-
-function decode() {
-  try {
-    const text = input.value.trim();
-    if (!text) {
-      document.getElementById("tip").textContent = "Please enter Base64 to decode";
-      return;
-    }
-    const decoded = decodeURIComponent(escape(atob(text)));
-    output.value = decoded;
-    document.getElementById("outputLen").textContent = decoded.length;
-    document.getElementById("mode").textContent = "Decoded";
-    document.getElementById("tip").textContent = "Base64 successfully decoded to text";
-  } catch (e) {
-    document.getElementById("tip").textContent = "Error: Invalid Base64 string";
-    output.value = "";
-  }
-}
-
-function clearText() {
-  input.value = "";
-  output.value = "";
-  document.getElementById("inputLen").textContent = "0";
-  document.getElementById("outputLen").textContent = "0";
-  document.getElementById("mode").textContent = "-";
-  document.getElementById("tip").textContent = "";
-}
-
-function copyOutput() {
-  if (output.value) {
-    navigator.clipboard.writeText(output.value);
-    document.getElementById("tip").textContent = "Output copied to clipboard!";
-  }
-}
-
-// AdSense initialization
-</script>
 
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

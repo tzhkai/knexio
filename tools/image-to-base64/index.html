@@ -357,130 +357,14 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
 
-<script>
-let currentB64 = '';
-let currentMime = '';
-let currentFormat = 'datauri';
-
-const dropZone = document.getElementById('dropZone');
-dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
-dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
-dropZone.addEventListener('drop', e => {
-  e.preventDefault(); dropZone.classList.remove('drag-over');
-  if (e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]);
-});
-
-document.addEventListener('paste', e => {
-  const items = e.clipboardData?.items;
-  if (!items) return;
-  for (const item of items) {
-    if (item.type.startsWith('image/')) { handleFile(item.getAsFile()); break; }
-  }
-});
-
-function handleFile(file) {
-  if (!file || !file.type.startsWith('image/')) return alert('Please select a valid image file.');
-  if (file.size > 10 * 1024 * 1024) return alert('File too large. Max size is 10 MB.');
-  const reader = new FileReader();
-  reader.onload = e => {
-    const dataUri = e.target.result;
-    currentMime = file.type;
-    currentB64 = dataUri.split(',')[1];
-    document.getElementById('metaRow').innerHTML = `
-      <div class="meta-item"><b>Name:</b> ${file.name}</div>
-      <div class="meta-item"><b>Size:</b> ${formatSize(file.size)}</div>
-      <div class="meta-item"><b>Type:</b> ${file.type}</div>
-      <div class="meta-item"><b>Base64 Length:</b> ${currentB64.length.toLocaleString()} chars</div>`;
-    const img = document.getElementById('previewImg');
-    img.src = dataUri; img.style.display = 'block';
-    setFormat('datauri');
-    document.getElementById('encodeResult').style.display = 'block';
-  };
-  reader.readAsDataURL(file);
-}
-
-function setFormat(fmt) {
-  currentFormat = fmt;
-  document.querySelectorAll('.format-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('fmt-' + fmt)?.classList.add('active');
-  if (!currentB64) return;
-  let out = '';
-  if (fmt === 'datauri') out = `data:${currentMime};base64,${currentB64}`;
-  else if (fmt === 'plain') out = currentB64;
-  else if (fmt === 'css') out = `background-image: url("data:${currentMime};base64,${currentB64}");`;
-  else if (fmt === 'html') out = `<img src="data:${currentMime};base64,${currentB64}" alt="" />`;
-  document.getElementById('outputText').value = out;
-}
-
-function copyOutput() {
-  const txt = document.getElementById('outputText').value;
-  if (!txt) return;
-  navigator.clipboard.writeText(txt).then(() => {
-    const btn = document.getElementById('copyBtn');
-    btn.textContent = '✅ Copied!';
-    setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
-  });
-}
-
-function clearEncode() {
-  currentB64 = ''; currentMime = '';
-  document.getElementById('encodeResult').style.display = 'none';
-  document.getElementById('fileInput').value = '';
-  document.getElementById('previewImg').style.display = 'none';
-}
-
-function decodeBase64() {
-  let input = document.getElementById('decodeInput').value.trim();
-  if (!input) return alert('Please paste a Base64 string or data URI.');
-  let src = input;
-  let mime = 'image/png';
-  if (input.startsWith('data:')) {
-    const match = input.match(/^data:([^;]+);base64,(.+)$/);
-    if (match) { mime = match[1]; }
-    src = input;
-  } else {
-    src = `data:image/png;base64,${input}`;
-  }
-  const img = document.getElementById('decodeImg');
-  img.onload = () => {
-    document.getElementById('decodeMeta').innerHTML = `
-      <div class="meta-item"><b>Width:</b> ${img.naturalWidth}px</div>
-      <div class="meta-item"><b>Height:</b> ${img.naturalHeight}px</div>
-      <div class="meta-item"><b>MIME:</b> ${mime}</div>
-      <div class="meta-item"><b>Data length:</b> ${input.length.toLocaleString()} chars</div>`;
-    document.getElementById('decodeResult').style.display = 'block';
-  };
-  img.onerror = () => alert('Invalid Base64 or unsupported image format.');
-  img.src = src;
-}
-
-function downloadDecoded() {
-  const src = document.getElementById('decodeImg').src;
-  const a = document.createElement('a');
-  a.href = src; a.download = 'decoded-image.png'; a.click();
-}
-
-function clearDecode() {
-  document.getElementById('decodeInput').value = '';
-  document.getElementById('decodeResult').style.display = 'none';
-}
-
-function switchTab(name) {
-  document.querySelectorAll('.tab-btn').forEach((b, i) => b.classList.toggle('active', ['encode','decode'][i] === name));
-  document.getElementById('tab-encode').classList.toggle('active', name === 'encode');
-  document.getElementById('tab-decode').classList.toggle('active', name === 'decode');
-}
-
-function formatSize(bytes) {
-  if (bytes < 1024) return bytes + ' B';
-  if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
-  return (bytes / 1048576).toFixed(2) + ' MB';
-}
-</script>
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

@@ -463,130 +463,14 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
-
-<script>
-let items = [{description: '', quantity: 1, price: 0}];
-
-document.addEventListener('DOMContentLoaded', function() {
-  document.getElementById('invoiceDate').valueAsDate = new Date();
-  renderItems();
-  updatePreview();
-});
-
-function renderItems() {
-  const container = document.getElementById('itemsContainer');
-  container.innerHTML = items.map((item, index) => `
-    <div class="item-row">
-      <input type="text" placeholder="Description" value="${item.description}" oninput="updateItem(${index}, 'description', this.value)" />
-      <input type="number" placeholder="Qty" value="${item.quantity}" oninput="updateItem(${index}, 'quantity', this.value)" />
-      <input type="number" placeholder="Price" value="${item.price}" oninput="updateItem(${index}, 'price', this.value)" />
-      <input type="text" value="${(item.quantity * item.price).toFixed(2)}" readonly style="background: rgba(0,0,0,0.2);" />
-      <button class="remove-btn" onclick="removeItem(${index})">×</button>
-    </div>
-  `).join('');
-}
-
-function addItem() {
-  items.push({description: '', quantity: 1, price: 0});
-  renderItems();
-  updatePreview();
-}
-
-function removeItem(index) {
-  if(items.length > 1) {
-    items.splice(index, 1);
-    renderItems();
-    updatePreview();
-  }
-}
-
-function updateItem(index, field, value) {
-  items[index][field] = field === 'description' ? value : parseFloat(value) || 0;
-  updatePreview();
-}
-
-function updatePreview() {
-  const currency = document.getElementById('currency').value;
-  const subtotal = items.reduce((sum, item) => sum + (item.quantity * item.price), 0);
-  const taxRate = parseFloat(document.getElementById('taxRate').value) || 0;
-  const tax = subtotal * (taxRate / 100);
-  const total = subtotal + tax;
-
-  document.getElementById('invoicePreview').innerHTML = `
-    <div class="invoice-header">
-      <div class="invoice-title">INVOICE</div>
-      <div style="text-align: right;">
-        <div style="font-size: 14px; color: #666;">#${document.getElementById('invoiceNum').value}</div>
-        <div style="font-size: 14px; color: #666;">${document.getElementById('invoiceDate').value}</div>
-      </div>
-    </div>
-    <div style="display: flex; gap: 60px; margin-bottom: 40px;">
-      <div style="flex: 1;">
-        <h3>From</h3>
-        <p><strong>${document.getElementById('fromName').value || 'Your Company'}</strong></p>
-        <p style="white-space: pre-line; color: #666;">${document.getElementById('fromAddress').value}</p>
-      </div>
-      <div style="flex: 1;">
-        <h3>Bill To</h3>
-        <p><strong>${document.getElementById('toName').value || 'Client Name'}</strong></p>
-        <p style="white-space: pre-line; color: #666;">${document.getElementById('toAddress').value}</p>
-      </div>
-    </div>
-    <table class="invoice-table">
-      <thead>
-        <tr>
-          <th>Description</th>
-          <th>Quantity</th>
-          <th>Price</th>
-          <th style="text-align: right;">Amount</th>
-        </tr>
-      </thead>
-      <tbody>
-        ${items.map(item => `
-          <tr>
-            <td>${item.description || 'Item'}</td>
-            <td>${item.quantity}</td>
-            <td>${currency}${item.price.toFixed(2)}</td>
-            <td style="text-align: right;">${currency}${(item.quantity * item.price).toFixed(2)}</td>
-          </tr>
-        `).join('')}
-      </tbody>
-    </table>
-    <div class="invoice-totals">
-      <div class="row">
-        <span>Subtotal:</span>
-        <span>${currency}${subtotal.toFixed(2)}</span>
-      </div>
-      ${taxRate > 0 ? `
-      <div class="row">
-        <span>Tax (${taxRate}%):</span>
-        <span>${currency}${tax.toFixed(2)}</span>
-      </div>
-      ` : ''}
-      <div class="row total">
-        <span>Total:</span>
-        <span>${currency}${total.toFixed(2)}</span>
-      </div>
-    </div>
-  `;
-}
-
-function clearInvoice() {
-  document.getElementById('fromName').value = '';
-  document.getElementById('fromAddress').value = '';
-  document.getElementById('toName').value = '';
-  document.getElementById('toAddress').value = '';
-  items = [{description: '', quantity: 1, price: 0}];
-  renderItems();
-  updatePreview();
-}
-
-// AdSense initialization
-</script>
 
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

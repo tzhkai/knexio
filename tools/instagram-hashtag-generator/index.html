@@ -384,87 +384,14 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
-
-<script>
-const hashtagCategories = {
-  'fitness': ['#fitness', '#workout', '#gym', '#fitfam', '#fitnessmotivation', '#health', '#training', '#bodybuilding', '#gymlife', '#fit', '#exercise', '#strong', '#motivation', '#lifestyle', '#fitlife', '#muscle', '#fitnessjourney', '#healthy', '#cardio', '#weights', '#gains', '#personaltrainer', '#crossfit', '#yoga', '#running'],
-  'travel': ['#travel', '#travelgram', '#wanderlust', '#travelphotography', '#vacation', '#trip', '#adventure', '#explore', '#travelblogger', '#travelling', '#instatravel', '#traveling', '#holiday', '#nature', '#world', '#photography', '#photooftheday', '#traveler', '#instago', '#travellover', '#tourist', '#travellife', '#landscape', '#beautifuldestinations'],
-  'food': ['#food', '#foodie', '#foodporn', '#foodstagram', '#yummy', '#delicious', '#instafood', '#foodphotography', '#foodlover', '#homemade', '#cooking', '#dinner', '#lunch', '#breakfast', '#yum', '#instagood', '#tasty', '#healthyfood', '#chef', '#homemadefood', '#foodgasm', '#lovefood', '#foodblogger', '#restaurant'],
-  'photography': ['#photography', '#photo', '#photooftheday', '#photographer', '#portrait', '#landscape', '#nature', '#art', '#travelphotography', '#canon', '#nikon', '#sony', '#picoftheday', '#beauty', '#fashion', '#instagood', '#beautiful', '#camera', '#capture', '#pic', '#photojournalism', '#streetphotography'],
-  'fashion': ['#fashion', '#style', '#ootd', '#fashionblogger', '#outfit', '#streetstyle', '#fashionista', '#fashionstyle', '#lookoftheday', '#instafashion', '#fashionphotography', '#trendy', '#styleinspiration', '#outfitoftheday', '#fashionweek', '#fashionable', '#stylish', '#moda', '#fashiondesigner', '#fashionista', '#fashionaddict', '#fashionlovers'],
-  'nature': ['#nature', '#naturephotography', '#landscape', '#outdoors', '#beautiful', '#sky', '#sun', '#photography', '#travel', '#forest', '#wildlife', '#sunset', '#photooftheday', '#mountains', '#natural', '#love', '#flowers', '#green', '#environment', '#earth', '#planet', '#naturelovers', '#picoftheday'],
-  'business': ['#business', '#entrepreneur', '#success', '#motivation', '#marketing', '#startup', '#money', '#leadership', '#smallbusiness', '#entrepreneurs', '#inspiration', '#businessowner', '#goals', '#businesstips', '#entrepreneurship', '#growth', '#mindset', '#hustle', '#branding', '#investment', '#wealth', '#boss', '#ceo', '#management'],
-  'technology': ['#technology', '#tech', '#innovation', '#digital', '#gadgets', '#future', '#software', '#coding', '#programming', '#developer', '#ai', '#artificialintelligence', '#data', '#cybersecurity', '#cloud', '#mobile', '#apps', '#startup', '#iot', '#machinelearning', '#robotics', '#automation', '#smartphone']
-};
-
-let copiedCount = 0;
-
-function generateHashtags() {
-  const topic = document.getElementById('topicInput').value.trim().toLowerCase();
-  const count = parseInt(document.getElementById('countSelect').value);
-  
-  if (!topic) {
-    alert('Please enter a topic or keyword');
-    return;
-  }
-  
-  let hashtags = [];
-  
-  // Find matching category or use general tags
-  let categoryFound = false;
-  for (const [category, tags] of Object.entries(hashtagCategories)) {
-    if (topic.includes(category) || tags.some(tag => tag.includes(topic))) {
-      hashtags = [...tags];
-      categoryFound = true;
-      break;
-    }
-  }
-  
-  // Add some generic tags if category not found
-  if (!categoryFound) {
-    hashtags = [`#${topic}`, `#${topic}life`, `#${topic}lover`, `#${topic}photography`, `#${topic}goals`, `#${topic}daily`, `#${topic}gram`, `#${topic}world`, `#${topic}vibes`, `#${topic}community`];
-    // Add some popular general tags
-    hashtags.push('#instagood', '#photooftheday', '#love', '#beautiful', '#happy', '#follow', '#picoftheday', '#style', '#amazing', '#life', '#followme', '#tbt', '#cute', '#me', '#selfie', '#summer', '#friends', '#repost', '#nature', '#smile', '#fun', '#art');
-  }
-  
-  // Shuffle and select requested count
-  hashtags = hashtags.sort(() => Math.random() - 0.5).slice(0, count);
-  
-  // Display hashtags
-  const output = document.getElementById('hashtagOutput');
-  output.textContent = hashtags.join(' ');
-  
-  // Show results
-  document.getElementById('stats').style.display = 'grid';
-  document.getElementById('resultCard').style.display = 'block';
-  
-  // Update stats
-  document.getElementById('totalCount').textContent = hashtags.length;
-  document.getElementById('copyCount').textContent = copiedCount;
-  document.getElementById('categories').textContent = categoryFound ? 1 : 2;
-}
-
-function copyHashtags() {
-  const hashtags = document.getElementById('hashtagOutput').textContent;
-  navigator.clipboard.writeText(hashtags).then(() => {
-    copiedCount++;
-    document.getElementById('copyCount').textContent = copiedCount;
-    alert('Hashtags copied to clipboard!');
-  });
-}
-
-function clearAll() {
-  document.getElementById('topicInput').value = '';
-  document.getElementById('hashtagOutput').textContent = '';
-  document.getElementById('stats').style.display = 'none';
-  document.getElementById('resultCard').style.display = 'none';
-  copiedCount = 0;
-}
-</script>
 
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

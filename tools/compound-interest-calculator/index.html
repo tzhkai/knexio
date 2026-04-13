@@ -526,70 +526,14 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
-
-<script>
-function formatCurrency(num) {
-  return '$' + Math.round(num).toLocaleString();
-}
-
-function calculateCompound() {
-  const principal = parseFloat(document.getElementById('principal').value) || 0;
-  const monthly = parseFloat(document.getElementById('monthly').value) || 0;
-  const rate = parseFloat(document.getElementById('rate').value) || 0;
-  const years = parseFloat(document.getElementById('years').value) || 0;
-  const frequency = parseInt(document.getElementById('frequency').value) || 12;
-
-  const r = rate / 100;
-  const n = frequency;
-  const t = years;
-  const P = principal;
-  const PMT = monthly * 12;
-
-  const amount = P * Math.pow(1 + r/n, n*t) + (PMT/n) * ((Math.pow(1 + r/n, n*t) - 1) / (r/n));
-  const totalInvested = P + (monthly * 12 * t);
-  const interestEarned = amount - totalInvested;
-
-  document.getElementById('finalAmount').textContent = formatCurrency(amount);
-  document.getElementById('totalPrincipal').textContent = formatCurrency(totalInvested);
-  document.getElementById('totalInterest').textContent = formatCurrency(interestEarned);
-
-  document.getElementById('resultBox').style.display = 'block';
-
-  let chartHtml = '';
-  let tableHtml = '';
-  const maxBars = Math.min(years, 30);
-  const maxAmount = amount;
-
-  for (let year = 1; year <= years; year++) {
-    const yearAmount = P * Math.pow(1 + r/n, n*year) + (PMT/n) * ((Math.pow(1 + r/n, n*year) - 1) / (r/n));
-    const yearInvested = P + (monthly * 12 * year);
-    const yearInterest = yearAmount - yearInvested;
-
-    tableHtml += `<tr>
-      <td>Year ${year}</td>
-      <td>${formatCurrency(yearInvested)}</td>
-      <td>${formatCurrency(yearInterest)}</td>
-      <td>${formatCurrency(yearAmount)}</td>
-    </tr>`;
-
-    if (year <= maxBars) {
-      const height = Math.min(100, (yearAmount / maxAmount) * 100);
-      chartHtml += `<div class="chart-bar">
-        <div class="chart-bar-inner" style="height:${height}%"></div>
-        <div class="chart-label">Y${year}</div>
-      </div>`;
-    }
-  }
-
-  document.getElementById('yearTableBody').innerHTML = tableHtml;
-  document.getElementById('chartContainer').innerHTML = chartHtml;
-}
-
-</script>
 
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

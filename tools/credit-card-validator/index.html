@@ -506,101 +506,14 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
-
-<script>
-  function handleInput(el) {
-    let raw = el.value.replace(/\D/g,'');
-    // Format with spaces every 4
-    el.value = raw.match(/.{1,4}/g)?.join(' ') || raw;
-    validate(raw);
-  }
-
-  function setCard(num) {
-    const el = document.getElementById('cardInput');
-    el.value = num.match(/.{1,4}/g).join(' ');
-    validate(num);
-  }
-
-  function luhn(num) {
-    let sum = 0;
-    let alternate = false;
-    const digits = [];
-    for (let i = num.length - 1; i >= 0; i--) {
-      let n = parseInt(num[i]);
-      const doubled = alternate;
-      if (alternate) {
-        n *= 2;
-        if (n > 9) n -= 9;
-      }
-      digits.unshift({orig: parseInt(num[i]), doubled, final: n});
-      sum += n;
-      alternate = !alternate;
-    }
-    return {valid: sum % 10 === 0, sum, digits};
-  }
-
-  function detectType(num) {
-    if (/^4/.test(num) && (num.length === 13 || num.length === 16)) return {name:'Visa', icon:'💳'};
-    if (/^(5[1-5]|2[2-9][1-9]|[3-6]\d{2}|7[01]\d|720)/.test(num) && num.length === 16) return {name:'Mastercard', icon:'💳'};
-    if (/^3[47]/.test(num) && num.length === 15) return {name:'Amex', icon:'💳'};
-    if (/^(6011|65|64[4-9])/.test(num) && num.length === 16) return {name:'Discover', icon:'💳'};
-    if (/^35(2[89]|[3-8])/.test(num) && num.length === 16) return {name:'JCB', icon:'💳'};
-    if (/^62/.test(num)) return {name:'UnionPay', icon:'💳'};
-    if (/^(300|301|302|303|36|38)/.test(num) && num.length === 14) return {name:"Diners Club", icon:'💳'};
-    if (/^(636)/.test(num)) return {name:'Maestro', icon:'💳'};
-    return null;
-  }
-
-  function validate(raw) {
-    if (!raw) {
-      resetUI(); return;
-    }
-
-    const inp = document.getElementById('cardInput');
-    const l = raw.length;
-    const type = detectType(raw);
-    const {valid, sum, digits} = luhn(raw);
-
-    // Update inputs
-    inp.className = valid ? 'valid' : (l >= 13 ? 'invalid' : '');
-    document.getElementById('typeBadge').textContent = type ? type.name : '?';
-    document.getElementById('validResult').textContent = valid ? '✓ Valid' : '✗ Invalid';
-    document.getElementById('validResult').className = 'value ' + (valid ? 'value-valid' : 'value-invalid');
-    document.getElementById('typeResult').textContent = type ? type.name : 'Unknown';
-    document.getElementById('typeResult').className = 'value ' + (type ? 'value-neutral' : 'value-neutral');
-    document.getElementById('lengthResult').textContent = l + ' digits';
-    document.getElementById('luhnResult').textContent = sum + ' (mod 10 = ' + (sum % 10) + ')';
-
-    // Luhn steps
-    const stepsEl = document.getElementById('luhnSteps');
-    stepsEl.className = 'luhn-steps' + (l >= 8 ? ' visible' : '');
-    if (l >= 8) {
-      document.getElementById('luhnGrid').innerHTML = digits.map(d => `
-        <div class="luhn-cell ${d.doubled ? 'doubled' : ''}">
-          <div class="luhn-orig">${d.orig}</div>
-          <div class="luhn-doubled">${d.doubled ? (d.orig*2 > 9 ? d.orig*2+'-9' : (d.orig===0?'—':'×2='+d.orig*2)) : '—'}</div>
-        </div>`).join('');
-      document.getElementById('luhnSumRow').innerHTML = `Total sum: <strong>${sum}</strong> → ${sum} ÷ 10 remainder <strong>${sum%10}</strong> → ${valid ? '<span style="color:#22c55e">✓ Valid (remainder = 0)</span>' : '<span style="color:#ef4444">✗ Invalid (remainder ≠ 0)</span>'}`;
-    }
-  }
-
-  function resetUI() {
-    document.getElementById('validResult').textContent = '—';
-    document.getElementById('validResult').className = 'value';
-    document.getElementById('typeResult').textContent = '—';
-    document.getElementById('lengthResult').textContent = '—';
-    document.getElementById('luhnResult').textContent = '—';
-    document.getElementById('typeBadge').textContent = '?';
-    document.getElementById('luhnSteps').className = 'luhn-steps';
-    document.getElementById('cardInput').className = '';
-  }
-
-  // AdSense initialization
-  </script>
 
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

@@ -306,49 +306,14 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
-
-<script>
-const input = document.getElementById("input");
-
-input.addEventListener("input", update);
-
-function update(){
-  const text = input.value;
-
-  const sentences = text.split(/[.!?]+/).filter(s=>s.trim()).length;
-  const words = text.trim()?text.trim().split(/\s+/).length:0;
-  const chars = text.length;
-
-  document.getElementById("sentences").textContent = sentences;
-  document.getElementById("words").textContent = words;
-  document.getElementById("chars").textContent = chars;
-
-  if(sentences>0){
-    const avgLen = Math.round(words / sentences);
-    document.getElementById("tip").innerText =
-      "Avg sentence length: " + avgLen + " words";
-  } else {
-    document.getElementById("tip").innerText = "";
-  }
-}
-
-function clearText(){
-  input.value="";
-  update();
-}
-
-function copyText(){
-  navigator.clipboard.writeText(input.value);
-  const btn = event.target;
-  btn.textContent = "Copied!";
-  setTimeout(() => btn.textContent = "Copy", 1500);
-}
-
-</script>
 
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

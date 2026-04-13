@@ -454,104 +454,14 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
-</footer>
-</div>
 
-<script>
-    let generatedNumbers = [];
-    
-    function generateNumber() {
-      const min = parseFloat(document.getElementById('min').value);
-      const max = parseFloat(document.getElementById('max').value);
-      const quantity = parseInt(document.getElementById('quantity').value) || 1;
-      const decimals = parseInt(document.getElementById('decimals').value) || 0;
-      const unique = document.getElementById('unique').checked;
-      const sorted = document.getElementById('sorted').checked;
-      const resultBox = document.getElementById('resultBox');
-      const resultDisplay = document.getElementById('resultDisplay');
-      const resultList = document.getElementById('resultList');
-      
-      if (isNaN(min) || isNaN(max)) {
-        alert('Please enter valid minimum and maximum values');
-        return;
-      }
-      
-      if (min >= max) {
-        alert('Minimum must be less than maximum');
-        return;
-      }
-      
-      if (quantity < 1 || quantity > 1000) {
-        alert('Quantity must be between 1 and 1000');
-        return;
-      }
-      
-      if (unique && (max - min + 1) < quantity) {
-        alert('Not enough unique numbers in range. Increase range or reduce quantity.');
-        return;
-      }
-      
-      generatedNumbers = [];
-      
-      for (let i = 0; i < quantity; i++) {
-        let randomNum;
-        
-        if (unique) {
-          do {
-            randomNum = Math.random() * (max - min) + min;
-            randomNum = parseFloat(randomNum.toFixed(decimals));
-          } while (generatedNumbers.includes(randomNum));
-        } else {
-          randomNum = Math.random() * (max - min) + min;
-          randomNum = parseFloat(randomNum.toFixed(decimals));
-        }
-        
-        generatedNumbers.push(randomNum);
-      }
-      
-      if (sorted) {
-        generatedNumbers.sort((a, b) => a - b);
-      }
-      
-      resultBox.classList.add('show');
-      
-      if (quantity === 1) {
-        resultDisplay.textContent = generatedNumbers[0];
-        resultList.innerHTML = '';
-      } else {
-        resultDisplay.textContent = quantity + ' numbers generated';
-        resultList.innerHTML = generatedNumbers.map(num => `<div class="result-item">${num}</div>`).join('');
-      }
-    }
-    
-    function copyResult() {
-      if (generatedNumbers.length === 0) {
-        alert('No results to copy');
-        return;
-      }
-      
-      const text = generatedNumbers.join(', ');
-      navigator.clipboard.writeText(text).then(() => {
-        alert('Results copied to clipboard!');
-      });
-    }
-    
-    function clearAll() {
-      document.getElementById('min').value = 1;
-      document.getElementById('max').value = 100;
-      document.getElementById('quantity').value = 1;
-      document.getElementById('decimals').value = 0;
-      document.getElementById('unique').checked = false;
-      document.getElementById('sorted').checked = false;
-      document.getElementById('resultBox').classList.remove('show');
-      document.getElementById('resultDisplay').textContent = '';
-      document.getElementById('resultList').innerHTML = '';
-      generatedNumbers = [];
-    }
-  
-// AdSense initialization
-</script>
+</footer>
+
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

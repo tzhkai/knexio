@@ -157,53 +157,14 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
 
-<script>
-function test() {
-  const pattern = document.getElementById('pattern').value;
-  const flags = document.getElementById('flags').value;
-  const str = document.getElementById('testStr').value;
-  const statusEl = document.getElementById('status');
-  const matchesEl = document.getElementById('matches');
-  const countEl = document.getElementById('matchCount');
-
-  if (!pattern) {
-    statusEl.innerHTML = '';
-    matchesEl.innerHTML = '';
-    countEl.textContent = 'Enter a pattern to see matches';
-    return;
-  }
-
-  let regex;
-  try {
-    regex = new RegExp(pattern, flags);
-    statusEl.innerHTML = '<span class="status valid">✓ Valid regex</span>';
-  } catch(e) {
-    statusEl.innerHTML = `<span class="status invalid">✗ ${e.message}</span>`;
-    matchesEl.innerHTML = '';
-    countEl.textContent = '';
-    return;
-  }
-
-  const matches = [...str.matchAll(new RegExp(pattern, flags.includes('g') ? flags : flags + 'g'))];
-  countEl.textContent = `${matches.length} match${matches.length !== 1 ? 'es' : ''} found`;
-
-  matchesEl.innerHTML = matches.slice(0, 20).map((m, i) => `
-    <div class="match-item">
-      <div class="match-label">Match ${i+1} at index ${m.index}</div>
-      <strong>${escapeHtml(m[0])}</strong>
-      ${m.length > 1 ? '<br><span style="color:var(--sub)">Groups: ' + m.slice(1).map((g,j) => `$${j+1}: ${escapeHtml(g||'')}`).join(', ') + '</span>' : ''}
-    </div>
-  `).join('');
-}
-
-function escapeHtml(s) {
-  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-}
-</script>
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

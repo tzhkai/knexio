@@ -370,110 +370,14 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-<script>
-pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-
-let pdfDoc = null;
-let imageUrls = [];
-
-const uploadArea = document.getElementById('uploadArea');
-
-uploadArea.addEventListener('dragover', (e) => {
-  e.preventDefault();
-  uploadArea.classList.add('dragover');
-});
-uploadArea.addEventListener('dragleave', () => {
-  uploadArea.classList.remove('dragover');
-});
-uploadArea.addEventListener('drop', (e) => {
-  e.preventDefault();
-  uploadArea.classList.remove('dragover');
-  const file = e.dataTransfer.files[0];
-  if (file && file.type === 'application/pdf') handleFile(file);
-});
-
-function handleFileSelect(event) {
-  const file = event.target.files[0];
-  if (file) handleFile(file);
-}
-
-async function handleFile(file) {
-  const fileName = document.getElementById('fileName');
-  const convertBtn = document.getElementById('convertBtn');
-  fileName.textContent = file.name;
-  fileName.style.display = 'block';
-  try {
-    const arrayBuffer = await file.arrayBuffer();
-    pdfDoc = await pdfjsLib.getDocument(arrayBuffer).promise;
-    convertBtn.disabled = false;
-  } catch (error) {
-    alert('Error loading PDF: ' + error.message);
-    fileName.textContent = '';
-    fileName.style.display = 'none';
-  }
-}
-
-async function convertPDF() {
-  if (!pdfDoc) return;
-  const format = document.getElementById('format').value;
-  const quality = parseFloat(document.getElementById('quality').value);
-  const scale = parseFloat(document.getElementById('scale').value);
-  const resultBox = document.getElementById('resultBox');
-  const previewContainer = document.getElementById('previewContainer');
-  resultBox.classList.add('show');
-  previewContainer.innerHTML = '';
-  imageUrls = [];
-  const numPages = pdfDoc.numPages;
-  for (let i = 1; i <= numPages; i++) {
-    const page = await pdfDoc.getPage(i);
-    const viewport = page.getViewport({ scale });
-    const canvas = document.createElement('canvas');
-    const context = canvas.getContext('2d');
-    canvas.height = viewport.height;
-    canvas.width = viewport.width;
-    await page.render({ canvasContext: context, viewport }).promise;
-    const dataUrl = canvas.toDataURL(`image/${format}`, quality);
-    imageUrls.push(dataUrl);
-    const previewItem = document.createElement('div');
-    previewItem.className = 'preview-item';
-    previewItem.innerHTML = `
-      <div class="page-number">Page ${i} of ${numPages}</div>
-      <img src="${dataUrl}" alt="Page ${i}">
-      <button class="secondary" style="flex:none;padding:8px 16px;font-size:13px;" onclick="downloadSingle(${i-1})">Download</button>
-    `;
-    previewContainer.appendChild(previewItem);
-  }
-}
-
-function downloadSingle(index) {
-  const a = document.createElement('a');
-  a.href = imageUrls[index];
-  a.download = `page-${index + 1}.png`;
-  a.click();
-}
-
-function downloadAll() {
-  imageUrls.forEach((url, index) => {
-    setTimeout(() => downloadSingle(index), index * 500);
-  });
-}
-
-function reset() {
-  document.getElementById('fileInput').value = '';
-  document.getElementById('fileName').textContent = '';
-  document.getElementById('fileName').style.display = 'none';
-  document.getElementById('convertBtn').disabled = true;
-  document.getElementById('resultBox').classList.remove('show');
-  document.getElementById('previewContainer').innerHTML = '';
-  pdfDoc = null;
-  imageUrls = [];
-}
-</script>
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

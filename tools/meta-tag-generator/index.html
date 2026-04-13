@@ -415,84 +415,14 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
-
-<script>
-function generateTags() {
-  const title = document.getElementById('pageTitle').value.trim();
-  const description = document.getElementById('metaDescription').value.trim();
-  const keywords = document.getElementById('metaKeywords').value.trim();
-  const url = document.getElementById('pageUrl').value.trim() || 'https://yoursite.com/page';
-  const ogImage = document.getElementById('ogImage').value.trim() || 'https://yoursite.com/image.jpg';
-  const siteName = document.getElementById('siteName').value.trim() || 'Your Site Name';
-
-  if (!title || !description) {
-    alert('Please fill in at least title and description');
-    return;
-  }
-
-  // Basic Meta Tags
-  const basicTags = `<meta name="title" content="${title}">
-<meta name="description" content="Free meta tag generator for SEO. Create optimized title tags, meta descriptions, Open Graph, and Twitter Cards for any webpage in seconds.">
-${keywords ? `<meta name="keywords" content="${keywords}">` : ''}`;
-
-  // Open Graph Tags
-  const ogTags = `<meta property="og:title" content="${title}">
-<meta property="og:description" content="${description}">
-<meta property="og:url" content="${url}">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="${siteName}">
-<meta property="og:image" content="${ogImage}">`;
-
-  // Twitter Card Tags
-  const twitterTags = `<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="${title}">
-<meta name="twitter:description" content="${description}">
-<meta name="twitter:image" content="${ogImage}">
-<meta name="twitter:url" content="${url}">`;
-
-  // Canonical Link
-  const canonicalTag = `<link rel="canonical" href="${url}">`;
-
-  document.getElementById('basicTags').textContent = basicTags;
-  document.getElementById('ogTags').textContent = ogTags;
-  document.getElementById('twitterTags').textContent = twitterTags;
-  document.getElementById('canonicalTag').textContent = canonicalTag;
-  
-  document.getElementById('resultBox').style.display = 'block';
-}
-
-function clearAll() {
-  document.getElementById('pageTitle').value = '';
-  document.getElementById('metaDescription').value = '';
-  document.getElementById('metaKeywords').value = '';
-  document.getElementById('pageUrl').value = '';
-  document.getElementById('ogImage').value = '';
-  document.getElementById('siteName').value = '';
-  document.getElementById('resultBox').style.display = 'none';
-}
-
-function copyAllTags() {
-  const allTags = `<!-- Basic Meta Tags -->
-${document.getElementById('basicTags').textContent}
-
-<!-- Open Graph Tags -->
-${document.getElementById('ogTags').textContent}
-
-<!-- Twitter Card Tags -->
-${document.getElementById('twitterTags').textContent}
-
-<!-- Canonical Link -->
-${document.getElementById('canonicalTag').textContent}`;
-  
-  navigator.clipboard.writeText(allTags).then(() => {
-    alert('All meta tags copied to clipboard!');
-  });
-}
-</script>
 
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

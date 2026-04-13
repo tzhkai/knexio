@@ -405,92 +405,14 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
-</footer>
-</div>
 
-<script>
-    const quotes = [
-      { text: "The only way to do great work is to love what you do.", author: "Steve Jobs", category: "motivational" },
-      { text: "Innovation distinguishes between a leader and a follower.", author: "Steve Jobs", category: "business" },
-      { text: "Stay hungry, stay foolish.", author: "Steve Jobs", category: "life" },
-      { text: "The future belongs to those who believe in the beauty of their dreams.", author: "Eleanor Roosevelt", category: "inspirational" },
-      { text: "It is during our darkest moments that we must focus to see the light.", author: "Aristotle", category: "life" },
-      { text: "Success is not final, failure is not fatal: it is the courage to continue that counts.", author: "Winston Churchill", category: "success" },
-      { text: "The best way to predict the future is to create it.", author: "Peter Drucker", category: "business" },
-      { text: "Life is what happens when you're busy making other plans.", author: "John Lennon", category: "life" },
-      { text: "The only thing we have to fear is fear itself.", author: "Franklin D. Roosevelt", category: "motivational" },
-      { text: "Be the change you wish to see in the world.", author: "Mahatma Gandhi", category: "inspirational" },
-      { text: "In the middle of every difficulty lies opportunity.", author: "Albert Einstein", category: "motivational" },
-      { text: "The greatest glory in living lies not in never falling, but in rising every time we fall.", author: "Nelson Mandela", category: "success" },
-      { text: "Your time is limited, don't waste it living someone else's life.", author: "Steve Jobs", category: "life" },
-      { text: "The mind is everything. What you think you become.", author: "Buddha", category: "wisdom" },
-      { text: "Believe you can and you're halfway there.", author: "Theodore Roosevelt", category: "motivational" },
-      { text: "The only impossible journey is the one you never begin.", author: "Tony Robbins", category: "inspirational" },
-      { text: "Success usually comes to those who are too busy to be looking for it.", author: "Henry David Thoreau", category: "success" },
-      { text: "Don't watch the clock; do what it does. Keep going.", author: "Sam Levenson", category: "motivational" },
-      { text: "The secret of getting ahead is getting started.", author: "Mark Twain", category: "success" },
-      { text: "Life is either a daring adventure or nothing at all.", author: "Helen Keller", category: "life" },
-      { text: "Education is the most powerful weapon which you can use to change the world.", author: "Nelson Mandela", category: "wisdom" },
-      { text: "The best way to find yourself is to lose yourself in the service of others.", author: "Mahatma Gandhi", category: "life" },
-      { text: "Do what you can, with what you have, where you are.", author: "Theodore Roosevelt", category: "motivational" },
-      { text: "The greatest wealth is to live content with little.", author: "Plato", category: "wisdom" },
-      { text: "A person who never made a mistake never tried anything new.", author: "Albert Einstein", category: "life" },
-      { text: "The only way to have a friend is to be one.", author: "Ralph Waldo Emerson", category: "life" },
-      { text: "Happiness depends upon ourselves.", author: "Aristotle", category: "life" },
-      { text: "Quality is not an act, it is a habit.", author: "Aristotle", category: "business" },
-      { text: "The customer is the most important visitor on our premises.", author: "Mahatma Gandhi", category: "business" },
-      { text: "In business, the competition will bite you if you keep running.", author: "Ray Kroc", category: "business" }
-    ];
-    
-    let currentQuote = null;
-    
-    function generateQuote() {
-      const category = document.getElementById('category').value;
-      let filteredQuotes = quotes;
-      
-      if (category !== 'all') {
-        filteredQuotes = quotes.filter(q => q.category === category);
-      }
-      
-      const randomIndex = Math.floor(Math.random() * filteredQuotes.length);
-      currentQuote = filteredQuotes[randomIndex];
-      
-      const quoteText = document.getElementById('quoteText');
-      const quoteAuthor = document.getElementById('quoteAuthor');
-      
-      quoteText.textContent = currentQuote.text;
-      quoteAuthor.textContent = currentQuote.author;
-    }
-    
-    function copyQuote() {
-      if (!currentQuote) {
-        alert('Please generate a quote first');
-        return;
-      }
-      
-      const text = `"${currentQuote.text}" — ${currentQuote.author}`;
-      navigator.clipboard.writeText(text).then(() => {
-        alert('Quote copied to clipboard!');
-      });
-    }
-    
-    function shareOnTwitter() {
-      if (!currentQuote) {
-        alert('Please generate a quote first');
-        return;
-      }
-      
-      const text = `"${currentQuote.text}" — ${currentQuote.author}`;
-      const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
-      window.open(twitterUrl, '_blank');
-    }
-    
-    // Generate initial quote
-    generateQuote();
-  
-// AdSense initialization
-</script>
+</footer>
+
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

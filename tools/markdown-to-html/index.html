@@ -159,44 +159,14 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
 
-<script>
-function convert() {
-  const md = document.getElementById('input').value;
-  let html = md
-    .replace(/^### (.*$)/gm, '<h3>$1</h3>')
-    .replace(/^## (.*$)/gm, '<h2>$1</h2>')
-    .replace(/^# (.*$)/gm, '')
-    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\*(.*?)\*/g, '<em>$1</em>')
-    .replace(/`(.*?)`/g, '<code>$1</code>')
-    .replace(/^\- (.*$)/gm, '<li>$1</li>')
-    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>')
-    .replace(/^---$/gm, '<hr>')
-    .replace(/\n\n/g, '</p><p>')
-    .replace(/^(?!<[h|l|p|u|o|b|i|c|a|h])/gm, '<p>')
-    .replace(/(<li>.*<\/li>)/gs, '<ul>$1</ul>');
-  
-  document.getElementById('preview').innerHTML = html;
-}
-
-function copyHTML() {
-  const html = document.getElementById('preview').innerHTML;
-  navigator.clipboard.writeText(html);
-  alert('HTML copied!');
-}
-
-function clearAll() {
-  document.getElementById('input').value = '';
-  document.getElementById('preview').innerHTML = '';
-}
-
-// Auto-convert on input
-document.getElementById('input').addEventListener('input', convert);
-</script>
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

@@ -294,51 +294,14 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
 
-<script>
-function convertNumber() {
-  const input = document.getElementById('inputNumber').value.trim();
-  const fromBase = parseInt(document.getElementById('fromBase').value);
-  
-  if (!input) return;
-  
-  try {
-    const decimal = parseInt(input, fromBase);
-    
-    if (isNaN(decimal)) {
-      alert('Invalid number for selected base');
-      return;
-    }
-    
-    const results = document.querySelectorAll('.result-value');
-    results[0].textContent = decimal.toString(2);
-    results[1].textContent = decimal.toString(8);
-    results[2].textContent = decimal.toString(10);
-    results[3].textContent = decimal.toString(16).toUpperCase();
-    results[4].textContent = decimal.toString(32).toUpperCase();
-    results[5].textContent = decimal.toString(36).toUpperCase();
-  } catch (e) {
-    alert('Conversion error: ' + e.message);
-  }
-}
-
-function copyToClipboard(element) {
-  const text = element.querySelector('.result-value').textContent;
-  navigator.clipboard.writeText(text).then(() => {
-    const msg = document.getElementById('copiedMsg');
-    msg.classList.add('show');
-    setTimeout(() => msg.classList.remove('show'), 1500);
-  });
-}
-
-document.getElementById('inputNumber').addEventListener('input', convertNumber);
-document.getElementById('fromBase').addEventListener('change', convertNumber);
-
-convertNumber();
-</script>
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

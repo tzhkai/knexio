@@ -409,74 +409,14 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
 
-<script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
-  <script>
-    function generateBarcode() {
-      const data = document.getElementById('barcodeData').value;
-      const format = document.getElementById('barcodeFormat').value;
-      const width = parseInt(document.getElementById('barcodeWidth').value);
-      const height = parseInt(document.getElementById('barcodeHeight').value);
-      const showText = document.getElementById('showText').checked;
-
-      if (!data) {
-        document.getElementById('barcode').innerHTML = '';
-        return;
-      }
-
-      try {
-        JsBarcode('#barcode', data, {
-          format: format,
-          width: width,
-          height: height,
-          displayValue: showText,
-          fontSize: 16,
-          margin: 10
-        });
-      } catch(e) {
-        console.error('Barcode generation failed:', e);
-        document.getElementById('barcode').innerHTML = '<p style="color:var(--sub)">Unable to generate barcode. Please check your input.</p>';
-      }
-    }
-
-    function downloadPNG() {
-      const svg = document.getElementById('barcode');
-      const svgData = new XMLSerializer().serializeToString(svg);
-      const canvas = document.createElement('canvas');
-      const ctx = canvas.getContext('2d');
-      const img = new Image();
-
-      img.onload = function() {
-        canvas.width = img.width;
-        canvas.height = img.height;
-        ctx.drawImage(img, 0, 0);
-        const link = document.createElement('a');
-        link.download = 'barcode.png';
-        link.href = canvas.toDataURL('image/png');
-        link.click();
-      };
-
-      img.src = 'data:image/svg+xml;base64,' + btoa(svgData);
-    }
-
-    function downloadSVG() {
-      const svg = document.getElementById('barcode');
-      const svgData = new XMLSerializer().serializeToString(svg);
-      const blob = new Blob([svgData], { type: 'image/svg+xml' });
-      const link = document.createElement('a');
-      link.download = 'barcode.svg';
-      link.href = URL.createObjectURL(blob);
-      link.click();
-    }
-
-    // Initialize
-    generateBarcode();
-  
-// AdSense initialization
-</script>
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

@@ -238,38 +238,14 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
 
-<script>
-function encodeEntities() {
-  var input = document.getElementById('inputText').value;
-  var encoded = input.replace(/[&<>"']/g, function(m) {
-    var map = {'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'};
-    return map[m];
-  });
-  document.getElementById('outputText').value = encoded;
-}
-
-function decodeEntities() {
-  var input = document.getElementById('inputText').value;
-  var txt = document.createElement('textarea');
-  txt.innerHTML = input;
-  document.getElementById('outputText').value = txt.value;
-}
-
-function copyOutput() {
-  var output = document.getElementById('outputText');
-  output.select();
-  document.execCommand('copy');
-}
-
-function clearAll() {
-  document.getElementById('inputText').value = '';
-  document.getElementById('outputText').value = '';
-}
-</script>
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

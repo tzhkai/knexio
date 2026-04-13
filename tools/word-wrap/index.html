@@ -353,94 +353,14 @@ This is a long line of text that needs to be wrapped to a specific character wid
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
 
-<script>
-const textInput = document.getElementById('textInput');
-const charWidth = document.getElementById('charWidth');
-
-textInput.addEventListener('input', updateStats);
-
-function updateStats() {
-  const text = textInput.value;
-  const lines = text.split('\n');
-  
-  document.getElementById('charCount').textContent = text.length;
-  document.getElementById('lineCount').textContent = lines.length;
-  
-  let maxLen = 0;
-  lines.forEach(line => {
-    if (line.length > maxLen) maxLen = line.length;
-  });
-  document.getElementById('maxLineLength').textContent = maxLen;
-}
-
-function wrapText() {
-  const width = parseInt(charWidth.value) || 80;
-  let text = textInput.value;
-  
-  // Split into paragraphs
-  const paragraphs = text.split(/\n\n+/);
-  
-  const wrappedParagraphs = paragraphs.map(para => {
-    // Split words
-    const words = para.split(/\s+/);
-    let result = '';
-    let currentLine = '';
-    
-    words.forEach(word => {
-      if (!word.trim()) return;
-      
-      if (currentLine.length === 0) {
-        currentLine = word;
-      } else if (currentLine.length + 1 + word.length <= width) {
-        currentLine += ' ' + word;
-      } else {
-        result += currentLine + '\n';
-        currentLine = word;
-      }
-    });
-    
-    if (currentLine) {
-      result += currentLine;
-    }
-    
-    return result;
-  });
-  
-  textInput.value = wrappedParagraphs.join('\n\n');
-  updateStats();
-}
-
-function unwrapText() {
-  const text = textInput.value;
-  // Remove all line breaks but preserve paragraph breaks
-  const unwrapped = text.replace(/([^\n])\n(?=[^\n])/g, '$1 ');
-  textInput.value = unwrapped;
-  updateStats();
-}
-
-function copyText() {
-  navigator.clipboard.writeText(textInput.value).then(() => {
-    alert('Text copied to clipboard!');
-  }).catch(err => {
-    alert('Failed to copy text.');
-  });
-}
-
-function clearText() {
-  textInput.value = '';
-  updateStats();
-}
-
-// Initialize stats
-updateStats();
-
-</script>
 <script src="/knexio-bundle.js"></script>
-<script src="../../cookie-consent.js"></script>
-
 </body>
 </html>
+
+
+

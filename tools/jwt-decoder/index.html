@@ -258,108 +258,14 @@ textarea:focus{outline:none;border-color:var(--accent)}
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
-</footer>
-</div>
 
-<script>
-    function decodeJWT() {
-      const input = document.getElementById('jwtInput').value.trim();
-      const resultDiv = document.getElementById('result');
-      const errorDiv = document.getElementById('error');
-      const headerResult = document.getElementById('headerResult');
-      const payloadResult = document.getElementById('payloadResult');
-      const signatureDiv = document.getElementById('signature');
-      const validationDiv = document.getElementById('validation');
-      
-      errorDiv.style.display = 'none';
-      
-      if (!input) {
-        showError('Please enter a JWT token to decode.');
-        return;
-      }
-      
-      const parts = input.split('.');
-      
-      if (parts.length !== 3) {
-        showError('Invalid JWT format. A valid JWT must have exactly three parts separated by dots.');
-        return;
-      }
-      
-      try {
-        const header = JSON.parse(atob(parts[0]));
-        const payload = JSON.parse(atob(parts[1]));
-        const signature = parts[2];
-        
-        headerResult.innerHTML = `<pre>${JSON.stringify(header, null, 2)}</pre>`;
-        payloadResult.innerHTML = `<pre>${JSON.stringify(payload, null, 2)}</pre>`;
-        signatureDiv.innerHTML = `<pre style="word-break:break-all;white-space:pre-wrap;color:var(--accent);">${signature}</pre>`;
-        
-        let validationHTML = '';
-        const now = Math.floor(Date.now() / 1000);
-        
-        if (payload.exp) {
-          const expDate = new Date(payload.exp * 1000);
-          const isExpired = payload.exp < now;
-          validationHTML += `<div class="${isExpired ? 'invalid' : 'valid'}">
-            <strong>Expiration:</strong> ${isExpired ? 'EXPIRED' : 'VALID'}<br>
-            <span style="font-size:13px;margin-left:16px;">${expDate.toLocaleString()}</span>
-          </div>`;
-        } else {
-          validationHTML += '<div class="warning"><strong>Expiration:</strong> Not set</div>';
-        }
-        
-        if (payload.iss) {
-          validationHTML += `<div style="margin-top:8px;"><strong>Issuer:</strong> ${payload.iss}</div>`;
-        }
-        
-        if (payload.sub) {
-          validationHTML += `<div style="margin-top:8px;"><strong>Subject:</strong> ${payload.sub}</div>`;
-        }
-        
-        if (payload.aud) {
-          validationHTML += `<div style="margin-top:8px;"><strong>Audience:</strong> ${Array.isArray(payload.aud) ? payload.aud.join(', ') : payload.aud}</div>`;
-        }
-        
-        if (payload.iat) {
-          const iatDate = new Date(payload.iat * 1000);
-          validationHTML += `<div style="margin-top:8px;"><strong>Issued At:</strong> ${iatDate.toLocaleString()}</div>`;
-        }
-        
-        validationDiv.innerHTML = validationHTML;
-        resultDiv.style.display = 'block';
-        
-      } catch (e) {
-        showError('Failed to decode JWT. Please make sure it\'s a valid Base64Url-encoded token.');
-      }
-    }
-    
-    function showError(message) {
-      const errorDiv = document.getElementById('error');
-      const resultDiv = document.getElementById('result');
-      errorDiv.textContent = message;
-      errorDiv.style.display = 'block';
-      resultDiv.style.display = 'none';
-    }
-    
-    function clearAll() {
-      document.getElementById('jwtInput').value = '';
-      document.getElementById('result').style.display = 'none';
-      document.getElementById('error').style.display = 'none';
-    }
-    
-    function pasteSample() {
-      const sampleToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJleHAiOjE5OTk5OTk5OTl9.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c';
-      document.getElementById('jwtInput').value = sampleToken;
-      decodeJWT();
-    }
-    
-    // Auto-decode on paste
-    document.getElementById('jwtInput').addEventListener('paste', function() {
-      setTimeout(decodeJWT, 100);
-    });
-  </script>
-  
-  <script src="/knexio-bundle.js"></script>
+</footer>
+
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

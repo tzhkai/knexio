@@ -336,120 +336,14 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
 
-<script>
-const stopWords = new Set([
-  'the', 'be', 'to', 'of', 'and', 'a', 'in', 'that', 'have', 'i',
-  'it', 'for', 'not', 'on', 'with', 'he', 'as', 'you', 'do', 'at',
-  'this', 'but', 'his', 'by', 'from', 'they', 'we', 'say', 'her',
-  'she', 'or', 'an', 'will', 'my', 'one', 'all', 'would', 'there',
-  'their', 'what', 'so', 'up', 'out', 'if', 'about', 'who', 'get',
-  'which', 'go', 'me', 'when', 'make', 'can', 'like', 'time', 'no',
-  'just', 'him', 'know', 'take', 'people', 'into', 'year', 'your',
-  'good', 'some', 'could', 'them', 'see', 'other', 'than', 'then',
-  'now', 'look', 'only', 'come', 'its', 'over', 'think', 'also',
-  'back', 'after', 'use', 'two', 'how', 'our', 'work', 'first',
-  'well', 'way', 'even', 'new', 'want', 'because', 'any', 'these',
-  'give', 'day', 'most', 'us', 'is', 'are', 'was', 'were', 'been',
-  'has', 'had', 'does', 'did', 'should', 'must', 'might', 'may'
-]);
-
-let wordData = [];
-let totalWordCount = 0;
-
-function analyzeText() {
-  const text = document.getElementById('textInput').value;
-  if (!text.trim()) {
-    alert('Please enter some text to analyze.');
-    return;
-  }
-
-  const filterStop = document.getElementById('filterStopWords').checked;
-  const caseInsensitive = document.getElementById('caseInsensitive').checked;
-  const sortByFreq = document.getElementById('sortByFrequency').checked;
-
-  let words = text.replace(/[^\w\s'-]/g, '').split(/\s+/).filter(w => w.length > 0);
-
-  if (caseInsensitive) {
-    words = words.map(w => w.toLowerCase());
-  }
-
-  const frequency = {};
-  words.forEach(word => {
-    if (filterStop && stopWords.has(word)) return;
-    frequency[word] = (frequency[word] || 0) + 1;
-  });
-
-  wordData = Object.entries(frequency).map(([word, count]) => ({ word, count }));
-  totalWordCount = words.filter(w => !filterStop || !stopWords.has(w)).length;
-
-  if (sortByFreq) {
-    wordData.sort((a, b) => b.count - a.count);
-  } else {
-    wordData.sort((a, b) => a.word.localeCompare(b.word));
-  }
-
-  const uniqueWords = wordData.length;
-  const avgLength = uniqueWords > 0 ? (wordData.reduce((sum, item) => sum + item.word.length, 0) / uniqueWords).toFixed(1) : 0;
-
-  document.getElementById('totalWords').textContent = totalWordCount;
-  document.getElementById('uniqueWords').textContent = uniqueWords;
-  document.getElementById('avgWordLength').textContent = avgLength;
-
-  const tableBody = document.getElementById('frequencyTable');
-  const maxCount = wordData.length > 0 ? wordData[0].count : 1;
-
-  tableBody.innerHTML = wordData.slice(0, 100).map((item, index) => {
-    const percentage = totalWordCount > 0 ? ((item.count / totalWordCount) * 100).toFixed(2) : 0;
-    const barWidth = (item.count / maxCount) * 100;
-    return `
-      <tr>
-        <td>${index + 1}</td>
-        <td>${item.word}</td>
-        <td>
-          ${item.count}
-          <div class="frequency-bar">
-            <div class="frequency-fill" style="width: ${barWidth}%"></div>
-          </div>
-        </td>
-        <td>${percentage}%</td>
-      </tr>
-    `;
-  }).join('');
-
-  document.getElementById('results').classList.add('active');
-}
-
-function exportCSV() {
-  if (wordData.length === 0) {
-    alert('No data to export. Please analyze text first.');
-    return;
-  }
-
-  const csv = 'Rank,Word,Frequency,Percentage\n' +
-    wordData.map((item, index) => {
-      const percentage = totalWordCount > 0 ? ((item.count / totalWordCount) * 100).toFixed(2) : 0;
-      return `${index + 1},"${item.word}",${item.count},${percentage}%`;
-    }).join('\n');
-
-  const blob = new Blob([csv], { type: 'text/csv' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = 'word-frequency.csv';
-  a.click();
-  URL.revokeObjectURL(url);
-}
-
-function clearText() {
-  document.getElementById('textInput').value = '';
-  document.getElementById('results').classList.remove('active');
-  wordData = [];
-}
-</script>
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

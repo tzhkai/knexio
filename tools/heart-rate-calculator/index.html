@@ -195,33 +195,14 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
-</footer>
-</div>
 
-<script>
-function calculate() {
-  const age = parseInt(document.getElementById('age').value);
-  const resting = parseInt(document.getElementById('resting').value);
-  
-  if (!age || !resting) {
-    alert('Please enter valid numbers');
-    return;
-  }
-  
-  const maxHR = 220 - age;
-  const hrr = maxHR - resting;
-  
-  document.getElementById('max-hr').textContent = maxHR + ' bpm';
-  document.getElementById('zone1').textContent = Math.round(resting + hrr * 0.5) + '-' + Math.round(resting + hrr * 0.6) + ' bpm';
-  document.getElementById('zone2').textContent = Math.round(resting + hrr * 0.6) + '-' + Math.round(resting + hrr * 0.7) + ' bpm';
-  document.getElementById('zone3').textContent = Math.round(resting + hrr * 0.7) + '-' + Math.round(resting + hrr * 0.8) + ' bpm';
-  document.getElementById('zone4').textContent = Math.round(resting + hrr * 0.8) + '-' + Math.round(resting + hrr * 0.9) + ' bpm';
-  document.getElementById('zone5').textContent = Math.round(resting + hrr * 0.9) + '-' + maxHR + ' bpm';
-  
-  document.getElementById('results').style.display = 'block';
-}
-</script>
+</footer>
+
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

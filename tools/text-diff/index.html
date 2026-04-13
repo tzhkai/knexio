@@ -396,55 +396,14 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
-
-<script>
-  function wordTokens(text){ return text.trim().split(/\s+/).filter(w=>w); }
-
-  function lcs(a,b){
-    const m=a.length,n=b.length;
-    const dp=Array.from({length:m+1},()=>new Array(n+1).fill(0));
-    for(let i=1;i<=m;i++) for(let j=1;j<=n;j++)
-      dp[i][j] = a[i-1]===b[j-1] ? dp[i-1][j-1]+1 : Math.max(dp[i-1][j],dp[i][j-1]);
-    const seq=[];let i=m,j=n;
-    while(i>0&&j>0){
-      if(a[i-1]===b[j-1]){seq.unshift({type:'eq',val:a[i-1]});i--;j--;}
-      else if(dp[i-1][j]>=dp[i][j-1]){seq.unshift({type:'del',val:a[i-1]});i--;}
-      else{seq.unshift({type:'add',val:b[j-1]});j--;}
-    }
-    while(i>0){seq.unshift({type:'del',val:a[i-1]});i--;}
-    while(j>0){seq.unshift({type:'add',val:b[j-1]});j--;}
-    return seq;
-  }
-
-  function runDiff(){
-    const a = document.getElementById("textA").value;
-    const b = document.getElementById("textB").value;
-    if(!a.trim()&&!b.trim()) return;
-    const wa = wordTokens(a), wb = wordTokens(b);
-    const diff = lcs(wa,wb);
-    let html="", adds=0, dels=0;
-    diff.forEach(d=>{
-      if(d.type==='eq') html+=d.val+" ";
-      else if(d.type==='add'){html+=`<span class="diff-add">${d.val}</span> `;adds++;}
-      else{html+=`<span class="diff-del">${d.val}</span> `;dels++;}
-    });
-    document.getElementById("diffOutput").innerHTML = html;
-    document.getElementById("wordsA").textContent = wa.length;
-    document.getElementById("addCount").textContent = adds;
-    document.getElementById("delCount").textContent = dels;
-    document.getElementById("diffResult").style.display = "block";
-  }
-
-  function clearAll(){
-    document.getElementById("textA").value="";
-    document.getElementById("textB").value="";
-    document.getElementById("diffResult").style.display="none";
-  }
-</script>
 
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

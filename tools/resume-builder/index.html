@@ -332,111 +332,14 @@ footer p{margin:0}
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
-
-<script>
-function addExperience(){
-  const list = document.getElementById('experienceList');
-  const item = document.createElement('div');
-  item.className = 'experience-item';
-  item.innerHTML = `
-    <input type="text" class="job-title" placeholder="Job Title">
-    <input type="text" class="company" placeholder="Company Name">
-    <input type="text" class="job-date" placeholder="Date Range (e.g., Jan 2020 - Present)">
-    <textarea class="job-desc" placeholder="Key responsibilities and achievements..."></textarea>
-    <button type="button" class="secondary" onclick="this.parentElement.remove()">Remove</button>
-  `;
-  list.appendChild(item);
-}
-
-function addEducation(){
-  const list = document.getElementById('educationList');
-  const item = document.createElement('div');
-  item.className = 'education-item';
-  item.innerHTML = `
-    <input type="text" class="degree" placeholder="Degree / Certificate">
-    <input type="text" class="school" placeholder="School / University">
-    <input type="text" class="edu-date" placeholder="Graduation Year">
-    <button type="button" class="secondary" onclick="this.parentElement.remove()">Remove</button>
-  `;
-  list.appendChild(item);
-}
-
-function generateResume(){
-  const name = document.getElementById('fullName').value;
-  const email = document.getElementById('email').value;
-  const phone = document.getElementById('phone').value;
-  const location = document.getElementById('location').value;
-  const linkedin = document.getElementById('linkedin').value;
-  const summary = document.getElementById('summary').value;
-  const skills = document.getElementById('skills').value;
-  
-  let html = ``;
-  html += `<p style="color:#666;margin-bottom:20px;">${email} | ${phone} | ${location}`;
-  if(linkedin) html += ` | <a href="${linkedin}">LinkedIn</a>`;
-  html += `</p>`;
-  
-  if(summary){
-    html += `<h3>Professional Summary</h3>`;
-    html += `<p>${summary.replace(/\n/g,'<br>')}</p>`;
-  }
-  
-  const expItems = document.querySelectorAll('.experience-item');
-  if(expItems.length > 0 && expItems[0].querySelector('.job-title').value){
-    html += `<h3>Work Experience</h3>`;
-    expItems.forEach(item => {
-      const title = item.querySelector('.job-title').value;
-      const company = item.querySelector('.company').value;
-      const date = item.querySelector('.job-date').value;
-      const desc = item.querySelector('.job-desc').value;
-      if(title){
-        html += `<p><strong>${title}</strong> at ${company}<br><em>${date}</em></p>`;
-        if(desc) html += `<p>${desc.replace(/\n/g,'<br>')}</p>`;
-      }
-    });
-  }
-  
-  const eduItems = document.querySelectorAll('.education-item');
-  if(eduItems.length > 0 && eduItems[0].querySelector('.degree').value){
-    html += `<h3>Education</h3>`;
-    eduItems.forEach(item => {
-      const degree = item.querySelector('.degree').value;
-      const school = item.querySelector('.school').value;
-      const date = item.querySelector('.edu-date').value;
-      if(degree){
-        html += `<p><strong>${degree}</strong>, ${school}<br><em>${date}</em></p>`;
-      }
-    });
-  }
-  
-  if(skills){
-    html += `<h3>Skills</h3>`;
-    html += `<p>${skills.replace(/\n/g,', ')}</p>`;
-  }
-  
-  document.getElementById('resumeContent').innerHTML = html;
-  document.getElementById('resumeOutput').style.display = 'block';
-  document.getElementById('resumeOutput').scrollIntoView({behavior:'smooth'});
-}
-
-function clearForm(){
-  if(confirm('Are you sure you want to clear all fields?')){
-    document.querySelectorAll('input,textarea').forEach(el => el.value = '');
-    document.getElementById('resumeOutput').style.display = 'none';
-  }
-}
-
-function downloadPDF(){
-  window.print();
-}
-
-function printResume(){
-  window.print();
-}
-</script>
 
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

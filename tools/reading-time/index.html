@@ -316,53 +316,14 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
 
-<script>
-function calculate() {
-  const text = document.getElementById('text').value;
-  const wpm = parseInt(document.getElementById('wpm').value) || 200;
-  const speakRate = parseInt(document.getElementById('speakRate').value) || 130;
-
-  const words = text.trim() ? text.trim().split(/\s+/).filter(w => w.length > 0) : [];
-  const wordCount = words.length;
-  const charCount = text.length;
-  const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 0).length;
-  const paragraphs = text.split(/\n\n+/).filter(p => p.trim().length > 0).length || (text.trim() ? 1 : 0);
-
-  const readMin = Math.ceil(wordCount / wpm);
-  const speakMin = Math.ceil(wordCount / speakRate);
-
-  function fmt(min) {
-    if (!min || min === 0) return '0 min';
-    return min < 60 ? min + ' min' : Math.floor(min / 60) + 'h ' + (min % 60) + 'm';
-  }
-
-  document.getElementById('readingTime').textContent = fmt(readMin);
-  document.getElementById('speakingTime').textContent = fmt(speakMin);
-  document.getElementById('wordCount').textContent = wordCount.toLocaleString();
-  document.getElementById('charCount').textContent = charCount.toLocaleString();
-  document.getElementById('sentenceCount').textContent = sentences.toLocaleString();
-  document.getElementById('paragraphCount').textContent = paragraphs.toLocaleString();
-
-  const tip = document.getElementById('tip');
-  if (wordCount > 0) {
-    const avg = Math.round(wordCount / (sentences || 1));
-    tip.textContent = 'Avg sentence length: ' + avg + ' words';
-  } else {
-    tip.textContent = '';
-  }
-}
-
-function clearAll() {
-  document.getElementById('text').value = '';
-  document.getElementById('wpm').value = '200';
-  document.getElementById('speakRate').value = '130';
-  calculate();
-}
-</script>
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

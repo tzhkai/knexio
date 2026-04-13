@@ -281,34 +281,14 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
 
-<script>
-const input = document.getElementById("input");
-input.addEventListener("input", update);
-
-function update() {
-  var text = input.value;
-  var words = text.trim() ? text.trim().split(/\s+/).length : 0;
-  var chars = text.length;
-  var tokens = Math.ceil(chars / 4);
-  document.getElementById("words").textContent = words;
-  document.getElementById("chars").textContent = chars;
-  document.getElementById("sentences").textContent = tokens;
-  var tip = document.getElementById("tip");
-  if (words > 0) {
-    var model = tokens < 500 ? "Short - fits any AI" : tokens < 2000 ? "Standard - most models" : tokens < 8000 ? "Long - premium models" : "Extended - optimize";
-    tip.innerText = "Tip: " + model;
-  } else {
-    tip.innerText = "";
-  }
-}
-
-function clearPrompt() { input.value = ""; update(); }
-function copyPrompt() { navigator.clipboard.writeText(input.value); }
-</script>
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

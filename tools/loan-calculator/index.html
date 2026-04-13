@@ -437,77 +437,14 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
 
-<script>
-function formatCurrency(num) {
-  return '$' + num.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-}
-
-function calculateLoan() {
-  const amount = parseFloat(document.getElementById('amount').value) || 0;
-  const rate = parseFloat(document.getElementById('rate').value) || 0;
-  let term = parseFloat(document.getElementById('term').value) || 0;
-  const termUnit = document.getElementById('termUnit').value;
-
-  if (termUnit === 'years') term *= 12;
-
-  const monthlyRate = rate / 100 / 12;
-  let monthlyPayment;
-
-  if (rate === 0) {
-    monthlyPayment = amount / term;
-  } else {
-    monthlyPayment = amount * (monthlyRate * Math.pow(1 + monthlyRate, term)) / (Math.pow(1 + monthlyRate, term) - 1);
-  }
-
-  const totalCost = monthlyPayment * term;
-  const totalInterest = totalCost - amount;
-
-  document.getElementById('monthlyPayment').textContent = formatCurrency(monthlyPayment);
-  document.getElementById('totalPrincipal').textContent = formatCurrency(amount);
-  document.getElementById('totalInterest').textContent = formatCurrency(totalInterest);
-  document.getElementById('totalCost').textContent = formatCurrency(totalCost);
-  document.getElementById('numPayments').textContent = term;
-
-  let balance = amount;
-  let html = '';
-  for (let i = 1; i <= Math.min(term, 360); i++) {
-    const interestPayment = balance * monthlyRate;
-    const principalPayment = monthlyPayment - interestPayment;
-    balance -= principalPayment;
-    if (balance < 0) balance = 0;
-
-    html += `<tr>
-      <td>${i}</td>
-      <td>${formatCurrency(monthlyPayment)}</td>
-      <td>${formatCurrency(principalPayment)}</td>
-      <td>${formatCurrency(interestPayment)}</td>
-      <td>${formatCurrency(balance)}</td>
-    </tr>`;
-  }
-  if (term > 360) {
-    html += `<tr><td colspan="5" style="text-align:center;color:var(--sub)">... ${term - 360} more payments ...</td></tr>`;
-  }
-  document.getElementById('scheduleBody').innerHTML = html;
-}
-
-function clearAll() {
-  document.getElementById('amount').value = '';
-  document.getElementById('rate').value = '';
-  document.getElementById('term').value = '';
-  document.getElementById('scheduleBody').innerHTML = '<tr><td colspan="5" style="text-align:center;color:var(--sub)">Enter loan details and click Calculate</td></tr>';
-  document.getElementById('monthlyPayment').textContent = '$0.00';
-  document.getElementById('totalPrincipal').textContent = '$0';
-  document.getElementById('totalInterest').textContent = '$0';
-  document.getElementById('totalCost').textContent = '$0';
-  document.getElementById('numPayments').textContent = '0';
-}
-
-calculateLoan();
-</script>
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

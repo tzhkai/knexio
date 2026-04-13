@@ -323,66 +323,14 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
-
-<script>
-const input = document.getElementById("input");
-
-input.addEventListener("input", updateStats);
-
-function updateStats() {
-  const text = input.value;
-  const chars = text.length;
-  const words = text.trim() ? text.trim().split(/\s+/).length : 0;
-  const sentences = text.split(/[.!?]+/).filter(s => s.trim()).length;
-
-  document.getElementById("chars").textContent = chars;
-  document.getElementById("words").textContent = words;
-  document.getElementById("sentences").textContent = sentences;
-
-  if (words > 0) {
-    document.getElementById("tip").innerText = "Text updated. Select a case to convert.";
-  } else {
-    document.getElementById("tip").innerText = "";
-  }
-}
-
-function upper() {
-  input.value = input.value.toUpperCase();
-  updateStats();
-}
-
-function lower() {
-  input.value = input.value.toLowerCase();
-  updateStats();
-}
-
-function titleCase() {
-  input.value = input.value.toLowerCase().replace(/\b\w/g, c => c.toUpperCase());
-  updateStats();
-}
-
-function sentence() {
-  input.value = input.value.toLowerCase().replace(/(^\s*\w|[.!?]\s*\w)/g, c => c.toUpperCase());
-  updateStats();
-}
-
-function clearText() {
-  input.value = "";
-  updateStats();
-}
-
-function copyText() {
-  navigator.clipboard.writeText(input.value);
-  alert("Copied!");
-}
-</script>
-
-<script>
-</script>
 
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

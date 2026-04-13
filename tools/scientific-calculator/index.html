@@ -245,138 +245,14 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
 
-<script>
-var display = document.getElementById('display');
-var history = document.getElementById('history');
-var historyList = document.getElementById('historyList');
-var currentInput = '0';
-var calculationHistory = [];
-var isRadians = false;
-
-function updateDisplay() {
-  display.textContent = currentInput;
-}
-
-function insert(value) {
-  if (currentInput === '0' && !isOperator(value) && value !== '.') {
-    currentInput = value;
-  } else {
-    currentInput += value;
-  }
-  updateDisplay();
-}
-
-function insertFunction(func) {
-  if (currentInput === '0') currentInput = '';
-  currentInput += func + '(';
-  updateDisplay();
-}
-
-function isOperator(char) {
-  return ['+', '-', '*', '/', '^', '%'].indexOf(char) >= 0;
-}
-
-function clearAll() {
-  currentInput = '0';
-  history.textContent = '';
-  updateDisplay();
-}
-
-function backspace() {
-  if (currentInput.length > 1) {
-    currentInput = currentInput.slice(0, -1);
-  } else {
-    currentInput = '0';
-  }
-  updateDisplay();
-}
-
-function setMode(mode) {
-  isRadians = mode === 'rad';
-  document.getElementById('degBtn').className = mode === 'deg' ? 'active' : '';
-  document.getElementById('radBtn').className = mode === 'rad' ? 'active' : '';
-}
-
-function factorial(n) {
-  if (n < 0) return NaN;
-  if (n === 0 || n === 1) return 1;
-  var result = 1;
-  for (var i = 2; i <= n; i++) result *= i;
-  return result;
-}
-
-function evaluate(expr) {
-  expr = expr.replace(/PI/g, 'Math.PI');
-  expr = expr.replace(/E/g, 'Math.E');
-  expr = expr.replace(/(\d+)!/g, function(m, n) { return factorial(parseInt(n)); });
-
-  var trigFuncs = ['sin', 'cos', 'tan'];
-  for (var i = 0; i < trigFuncs.length; i++) {
-    var func = trigFuncs[i];
-    var regex = new RegExp(func + '\\(([^)]+)\\)', 'g');
-    expr = expr.replace(regex, function(m, arg) {
-      var val = evaluate(arg);
-      var rad = isRadians ? val : val * Math.PI / 180;
-      return 'Math.' + func + '(' + rad + ')';
-    });
-  }
-
-  expr = expr.replace(/sqrt\(([^)]+)\)/g, 'Math.sqrt($1)');
-  expr = expr.replace(/log\(([^)]+)\)/g, 'Math.log10($1)');
-  expr = expr.replace(/ln\(([^)]+)\)/g, 'Math.log($1)');
-  expr = expr.replace(/abs\(([^)]+)\)/g, 'Math.abs($1)');
-  expr = expr.replace(/floor\(([^)]+)\)/g, 'Math.floor($1)');
-  expr = expr.replace(/ceil\(([^)]+)\)/g, 'Math.ceil($1)');
-  expr = expr.replace(/\^/g, '**');
-  expr = expr.replace(/(\d+)%/g, '($1/100)');
-
-  try {
-    return Function('"use strict"; return (' + expr + ')')();
-  } catch (e) {
-    return 'Error';
-  }
-}
-
-function calculate() {
-  var expression = currentInput;
-  var result = evaluate(expression);
-  history.textContent = expression + ' =';
-  currentInput = String(result);
-  updateDisplay();
-  calculationHistory.unshift({expr: expression, result: result});
-  if (calculationHistory.length > 10) calculationHistory.pop();
-  updateHistoryList();
-}
-
-function updateHistoryList() {
-  var html = '';
-  for (var i = 0; i < calculationHistory.length; i++) {
-    var item = calculationHistory[i];
-    html += '<div class="history-item"><span class="history-expr">' + item.expr + '</span><span class="history-result">= ' + item.result + '</span></div>';
-  }
-  historyList.innerHTML = html;
-}
-
-document.addEventListener('keydown', function(e) {
-  if (e.key >= '0' && e.key <= '9') insert(e.key);
-  else if (e.key === '.') insert('.');
-  else if (e.key === '+') insert('+');
-  else if (e.key === '-') insert('-');
-  else if (e.key === '*') insert('*');
-  else if (e.key === '/') insert('/');
-  else if (e.key === '^') insert('^');
-  else if (e.key === '(') insert('(');
-  else if (e.key === ')') insert(')');
-  else if (e.key === '%') insert('%');
-  else if (e.key === 'Enter' || e.key === '=') calculate();
-  else if (e.key === 'Escape') clearAll();
-  else if (e.key === 'Backspace') backspace();
-});
-</script>
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

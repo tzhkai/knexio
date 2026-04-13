@@ -337,86 +337,14 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
 
-<script>
-const cities = [
-  { name: 'Beijing', zone: 'Asia/Shanghai' },
-  { name: 'New York', zone: 'America/New_York' },
-  { name: 'London', zone: 'Europe/London' },
-  { name: 'Tokyo', zone: 'Asia/Tokyo' },
-  { name: 'Sydney', zone: 'Australia/Sydney' },
-  { name: 'Paris', zone: 'Europe/Paris' },
-  { name: 'Los Angeles', zone: 'America/Los_Angeles' },
-  { name: 'Dubai', zone: 'Asia/Dubai' },
-  { name: 'Singapore', zone: 'Asia/Singapore' },
-  { name: 'Chicago', zone: 'America/Chicago' },
-  { name: 'Mumbai', zone: 'Asia/Kolkata' },
-  { name: 'Toronto', zone: 'America/Toronto' },
-];
-
-function getCurrentTimes() {
-  const cityList = document.getElementById('cityList');
-  const now = new Date();
-  
-  cityList.innerHTML = cities.map(city => {
-    const time = now.toLocaleTimeString('en-US', { timeZone: city.zone, hour12: false });
-    const date = now.toLocaleDateString('en-US', { timeZone: city.zone, month: 'short', day: 'numeric' });
-    return `
-      <div class="city-item">
-        <div class="city-name">${city.name}</div>
-        <div class="city-time">${time}</div>
-        <div style="font-size:11px;color:var(--sub)">${date}</div>
-      </div>
-    `;
-  }).join('');
-}
-
-function clearForm() {
-  document.getElementById('fromDate').value = '';
-  document.getElementById('resultTime').textContent = '--:--';
-  document.getElementById('resultDate').textContent = '--';
-}
-
-function convertTimeZone() {
-  const fromZone = document.getElementById('fromZone').value;
-  const toZone = document.getElementById('toZone').value;
-  const fromDateStr = document.getElementById('fromDate').value;
-  
-  if (!fromDateStr) {
-    alert('Please select a date and time');
-    return;
-  }
-  
-  const fromDate = new Date(fromDateStr);
-  const resultTime = fromDate.toLocaleTimeString('en-US', { 
-    timeZone: toZone, 
-    hour12: false,
-    hour: '2-digit',
-    minute: '2-digit'
-  });
-  const resultDate = fromDate.toLocaleDateString('en-US', {
-    timeZone: toZone,
-    weekday: 'long',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  });
-  
-  document.getElementById('resultTime').textContent = resultTime;
-  document.getElementById('resultDate').textContent = resultDate;
-}
-
-const now = new Date();
-const localOffset = now.getTimezoneOffset() * 60000;
-const localISOTime = new Date(now - localOffset).toISOString().slice(0, 16);
-document.getElementById('fromDate').value = localISOTime;
-
-getCurrentTimes();
-setInterval(getCurrentTimes, 60000);
-</script>
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

@@ -231,47 +231,14 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
 
-<script>
-function hslToRgb(h, s, l) {
-  s /= 100;
-  l /= 100;
-  var k = function(n) { return (n + h / 30) % 12; };
-  var a = s * Math.min(l, 1 - l);
-  var f = function(n) { return l - a * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1))); };
-  return [Math.round(255 * f(0)), Math.round(255 * f(8)), Math.round(255 * f(4))];
-}
-
-function rgbToHex(r, g, b) {
-  return '#' + [r, g, b].map(function(x) { return x.toString(16).padStart(2, '0'); }).join('');
-}
-
-function updateColor() {
-  var h = parseInt(document.getElementById('hue').value);
-  var s = parseInt(document.getElementById('saturation').value);
-  var l = parseInt(document.getElementById('lightness').value);
-  document.getElementById('hueValue').textContent = h;
-  document.getElementById('satValue').textContent = s;
-  document.getElementById('lightValue').textContent = l;
-  var rgb = hslToRgb(h, s, l);
-  var hex = rgbToHex(rgb[0], rgb[1], rgb[2]);
-  document.getElementById('colorPreview').style.background = 'hsl(' + h + ', ' + s + '%, ' + l + '%)';
-  document.getElementById('rgbOutput').value = 'rgb(' + rgb[0] + ', ' + rgb[1] + ', ' + rgb[2] + ')';
-  document.getElementById('hexOutput').value = hex;
-  document.getElementById('hslOutput').value = 'hsl(' + h + ', ' + s + '%, ' + l + '%)';
-}
-
-function copyToClipboard(id) {
-  var el = document.getElementById(id);
-  el.select();
-  document.execCommand('copy');
-}
-
-updateColor();
-</script>
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

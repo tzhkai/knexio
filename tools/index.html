@@ -933,37 +933,14 @@
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
 
 <script src="/knexio-bundle.js"></script>
-
-
-<script>
-function doSearch() {
-  var searchTerm = document.getElementById("searchtools").value.toLowerCase().trim();
-  var cards = document.querySelectorAll(".grid > a.card, .grid > .card, .nav-card");
-  var found = 0;
-  for (var i = 0; i < cards.length; i++) {
-    var card = cards[i];
-    var title = card.querySelector("h2, h3");
-    var desc = card.querySelector("p");
-    var tag = card.querySelector(".tag");
-    var titleText = title ? title.textContent.toLowerCase() : "";
-    var descText = desc ? desc.textContent.toLowerCase() : "";
-    var tagText = tag ? tag.textContent.toLowerCase() : "";
-    if (searchTerm === "" || titleText.indexOf(searchTerm) !== -1 || descText.indexOf(searchTerm) !== -1 || tagText.indexOf(searchTerm) !== -1) {
-      card.style.display = "";
-      if (searchTerm !== "") found++;
-    } else {
-      card.style.display = "none";
-    }
-  }
-}
-document.getElementById("searchtools").addEventListener("keyup", function(e) {
-  if (e.key === "Enter") doSearch();
-});
-</script>
 </body>
 </html>
+
+
+

@@ -301,58 +301,14 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
 
-<script>
-function updateDisplayInfo() {
-  const w = window.screen.width;
-  const h = window.screen.height;
-  const dpr = window.devicePixelRatio || 1;
-  const iw = window.innerWidth;
-  const ih = window.innerHeight;
-
-  document.getElementById('resolution').textContent = w + ' × ' + h;
-  document.getElementById('windowSize').textContent = iw + ' × ' + ih;
-  document.getElementById('pixelRatio').textContent = dpr + 'x';
-  document.getElementById('colorDepth').textContent = window.screen.colorDepth + '-bit';
-  document.getElementById('orientation').textContent = iw > ih ? 'Landscape' : 'Portrait';
-  document.getElementById('touchSupport').textContent = ('ontouchstart' in window || navigator.maxTouchPoints > 0) ? 'Yes' : 'No';
-
-  document.getElementById('screenWidth').textContent = w + ' px';
-  document.getElementById('screenHeight').textContent = h + ' px';
-  document.getElementById('availWidth').textContent = window.screen.availWidth + ' px';
-  document.getElementById('availHeight').textContent = window.screen.availHeight + ' px';
-  document.getElementById('windowWidth').textContent = iw + ' px';
-  document.getElementById('windowHeight').textContent = ih + ' px';
-
-  document.getElementById('tip').textContent = 'Physical pixels: ' + Math.round(w * dpr) + ' × ' + Math.round(h * dpr);
-}
-
-function copyInfo() {
-  const dpr = window.devicePixelRatio || 1;
-  const text = [
-    'Screen Resolution: ' + window.screen.width + ' × ' + window.screen.height,
-    'Window Size: ' + window.innerWidth + ' × ' + window.innerHeight,
-    'Pixel Ratio: ' + dpr + 'x',
-    'Color Depth: ' + window.screen.colorDepth + '-bit',
-    'Orientation: ' + (window.innerWidth > window.innerHeight ? 'Landscape' : 'Portrait'),
-    'Touch Support: ' + (('ontouchstart' in window || navigator.maxTouchPoints > 0) ? 'Yes' : 'No')
-  ].join('\n');
-  navigator.clipboard.writeText(text).then(() => {
-    const btn = document.querySelectorAll('button')[1];
-    btn.textContent = '✅ Copied!';
-    setTimeout(() => { btn.textContent = 'Copy Info'; }, 2000);
-  });
-}
-
-window.addEventListener('load', updateDisplayInfo);
-window.addEventListener('resize', updateDisplayInfo);
-if (screen.orientation) {
-  screen.orientation.addEventListener('change', updateDisplayInfo);
-}
-</script>
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

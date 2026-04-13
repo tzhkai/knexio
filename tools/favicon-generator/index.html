@@ -440,107 +440,14 @@
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
 
-<script>
-let originalImage = null;
-
-function handleFile(event) {
-  const file = event.target.files[0];
-  if (!file) return;
-  
-  const reader = new FileReader();
-  reader.onload = function(e) {
-    const img = new Image();
-    img.onload = function() {
-      originalImage = img;
-      generatePreviews();
-      document.getElementById('resultPanel').style.display = 'grid';
-      window.scrollTo({top: document.getElementById('resultPanel').offsetTop - 100, behavior: 'smooth'});
-    };
-    img.src = e.target.result;
-  };
-  reader.readAsDataURL(file);
-}
-
-function generatePreviews() {
-  const container = document.getElementById('previewContainer');
-  container.innerHTML = '';
-  
-  const sizes = [16, 32, 192, 512];
-  sizes.forEach(size => {
-    const canvas = document.createElement('canvas');
-    canvas.width = size;
-    canvas.height = size;
-    const ctx = canvas.getContext('2d');
-    ctx.drawImage(originalImage, 0, 0, size, size);
-    
-    const div = document.createElement('div');
-    div.className = 'preview-item';
-    const img = document.createElement('img');
-    img.src = canvas.toDataURL('image/png');
-    img.width = size;
-    img.height = size;
-    const label = document.createElement('span');
-    label.textContent = `${size}x${size}`;
-    div.appendChild(img);
-    div.appendChild(label);
-    container.appendChild(div);
-  });
-}
-
-function downloadPNG(size) {
-  const canvas = document.createElement('canvas');
-  canvas.width = size;
-  canvas.height = size;
-  const ctx = canvas.getContext('2d');
-  ctx.drawImage(originalImage, 0, 0, size, size);
-  
-  const link = document.createElement('a');
-  link.download = `favicon-${size}x${size}.png`;
-  link.href = canvas.toDataURL('image/png');
-  link.click();
-}
-
-function downloadICO() {
-  const sizes = [16, 32, 48, 64];
-  const images = [];
-  
-  sizes.forEach(size => {
-    const canvas = document.createElement('canvas');
-    canvas.width = size;
-    canvas.height = size;
-    const ctx = canvas.getContext('2d');
-    ctx.drawImage(originalImage, 0, 0, size, size);
-    images.push({ data: canvas.toDataURL('image/png'), size: size });
-  });
-  
-  // Simple ICO download as PNG for now (full ICO encoding requires binary manipulation)
-  alert('ICO download not yet available. Please download individual PNG files and combine with an ICO converter tool.');
-}
-
-// Drag and drop support
-const uploadArea = document.getElementById('uploadArea');
-uploadArea.addEventListener('dragover', (e) => {
-  e.preventDefault();
-  uploadArea.style.borderColor = 'var(--accent)';
-});
-uploadArea.addEventListener('dragleave', (e) => {
-  e.preventDefault();
-  uploadArea.style.borderColor = 'var(--border)';
-});
-uploadArea.addEventListener('drop', (e) => {
-  e.preventDefault();
-  uploadArea.style.borderColor = 'var(--border)';
-  const file = e.dataTransfer.files[0];
-  if (file) {
-    document.getElementById('fileInput').files = e.dataTransfer.files;
-    handleFile({ target: document.getElementById('fileInput') });
-  }
-});
-</script>
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

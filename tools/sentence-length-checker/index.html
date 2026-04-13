@@ -195,51 +195,14 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
 
-<script>
-var input = document.getElementById("textInput");
-input.addEventListener("input", updateStats);
-
-function updateStats() {
-  var text = input.value.trim();
-  if (!text) {
-    document.getElementById("sentenceCount").textContent = "0";
-    document.getElementById("wordCount").textContent = "0";
-    document.getElementById("avgLength").textContent = "0";
-    document.getElementById("readabilityNote").style.display = "none";
-    return;
-  }
-  var sentences = text.split(/[.!?]+/).filter(function(s){ return s.trim().length > 0; });
-  var words = text.trim().split(/\s+/).length;
-  var avg = sentences.length ? (words / sentences.length).toFixed(1) : "0";
-  document.getElementById("sentenceCount").textContent = sentences.length;
-  document.getElementById("wordCount").textContent = words;
-  document.getElementById("avgLength").textContent = avg;
-  var noteEl = document.getElementById("readabilityNote");
-  var textEl = document.getElementById("readabilityText");
-  noteEl.style.display = "block";
-  var a = parseFloat(avg);
-  if (a <= 15) {
-    textEl.textContent = "Very readable — sentences are concise and clear.";
-    textEl.style.color = "#34d399";
-  } else if (a <= 20) {
-    textEl.textContent = "Good — average sentence length is within recommended range.";
-    textEl.style.color = "#34d399";
-  } else if (a <= 28) {
-    textEl.textContent = "Moderate — consider breaking up some longer sentences.";
-    textEl.style.color = "#fbbf24";
-  } else {
-    textEl.textContent = "Complex — sentences are quite long; readability may suffer.";
-    textEl.style.color = "#f87171";
-  }
-}
-
-function clearText() { input.value = ""; updateStats(); }
-function copyText() { navigator.clipboard.writeText(input.value); }
-</script>
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+

@@ -169,57 +169,14 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
     <a href="/terms/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Terms</a>
     <a href="/contact/" style="color: var(--accent); text-decoration: none; margin: 0 8px;">Contact</a>
   </p>
+  <footer>
   <p>© 2026 Knexio. All rights reserved.</p>
+
 </footer>
-</div>
 
-<script>
-function generateUUID() {
-  const version = document.getElementById('version').value;
-  const quantity = parseInt(document.getElementById('quantity').value);
-  const uuids = [];
-  
-  for (let i = 0; i < quantity; i++) {
-    if (version === 'v4') {
-      uuids.push(crypto.randomUUID());
-    } else if (version === 'v1') {
-      uuids.push(generateV1());
-    } else if (version === 'v7') {
-      uuids.push(generateV7());
-    }
-  }
-  
-  document.getElementById('output').value = uuids.join('\n');
-}
-
-function generateV1() {
-  const now = Date.now();
-  const timeLow = (now & 0xffffffff).toString(16).padStart(8, '0');
-  const timeMid = ((now >> 32) & 0xffff).toString(16).padStart(4, '0');
-  const timeHiAndVersion = ((now >> 48) & 0x0fff) | 0x1000;
-  const clockSeq = (Math.random() * 0x3fff) | 0x8000;
-  const node = Array.from({length: 6}, () => Math.floor(Math.random() * 256).toString(16).padStart(2, '0')).join('');
-  
-  return `${timeLow}-${timeMid}-${timeHiAndVersion.toString(16).padStart(4, '0')}-${clockSeq.toString(16).padStart(4, '0')}-${node}`;
-}
-
-function generateV7() {
-  const timestamp = Date.now();
-  const timeHi = ((timestamp >> 12) & 0x0fffffff) | 0x70000000;
-  const timeLo = timestamp & 0xffffffff;
-  const clock = (Math.random() * 0x3fff) | 0x8000;
-  const node = Array.from({length: 6}, () => Math.floor(Math.random() * 256).toString(16).padStart(2, '0')).join('');
-  
-  return `${timeLo.toString(16).padStart(8, '0')}-${timeHi.toString(16).padStart(4, '0')}-${clock.toString(16).padStart(4, '0')}-${node}`;
-}
-
-function copyOutput() {
-  const output = document.getElementById('output');
-  output.select();
-  document.execCommand('copy');
-  alert('Copied to clipboard!');
-}
-</script>
 <script src="/knexio-bundle.js"></script>
 </body>
 </html>
+
+
+
