@@ -46,7 +46,7 @@
 <style>
 
     :root {
-      --bg: #0b1220;
+      --bg: #0b1220; --bg2: #070d1a;
       --card: #111a2e;
       --border: rgba(255,255,255,0.08);
       --text: #ffffff;
@@ -59,7 +59,7 @@
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
-      background: linear-gradient(180deg, #0b1220, #070d1a);
+      background: linear-gradient(180deg, var(--bg), var(--bg2));
       color: var(--text);
     }
 
@@ -71,14 +71,9 @@
       padding: 60px 20px 100px;
     }
 
-    .back {
-      display: inline-block;
-      margin-bottom: 24px;
-      color: var(--sub);
-      font-size: 14px;
-    }
+    .back{display:inline-block;color:var(--sub);font-size:14px;margin-bottom:32px;transition:color .2s;text-align:left;text-decoration:none}.back:hover{color:var(--accent)}
 
-    h1 { font-size: 34px; margin: 0 0 10px; }
+    h1{font-size:32px; margin: 0 0 10px; }
 
     .subtitle {
       color: var(--sub);
@@ -256,7 +251,7 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 
 <body>
   <div class="container">
-    <a class="back" href="..">← Back to AI Tools</a>
+    <a class="back" href="/ai-tools/">← Back to AI Tools</a>
 
     <h1>AI Writing Assistant</h1>
 

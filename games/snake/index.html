@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="shortcut icon" type="image/png" href="/favicon.png">
   <title>Snake Game - Classic Arcade Fun | Knexio</title>
   <meta name="description" content="Play Snake free online. Eat food, grow longer, avoid walls and yourself. Classic arcade game in your browser.">
+  <meta name="keywords" content="贪吃蛇, Snake, 经典游戏, 街机游戏, arcade game, online game">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://knexio.xyz/games/snake/" />
   <meta property="og:title" content="Snake" />
   <meta property="og:description" content="Eat the food, grow longer, avoid the walls and yourself" />
@@ -18,7 +22,8 @@
     body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:linear-gradient(180deg,var(--bg),var(--bg2));color:var(--text);min-height:100vh}
     a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
     .wrap{max-width:900px;margin:0 auto;padding:28px 16px 80px;text-align:center}
-    .back{display:inline-block;margin-bottom:20px;color:var(--sub);font-size:14px;float:left}
+    .container{max-width:900px;margin:0 auto;padding:28px 16px 80px;text-align:center}
+    .back{display:inline-block;color:var(--sub);font-size:14px;margin-bottom:32px;transition:color .2s;text-align:left;text-decoration:none;float:left;clear:both}.back:hover{color:var(--accent)}
     .clearfix::after{content:'';display:table;clear:both}
     h1{font-size:30px;margin-bottom:6px}
     .subtitle{color:var(--sub);font-size:14px;margin-bottom:20px}
@@ -52,7 +57,7 @@
       /* 容器布局优化 */
       .container, .wrap {
         padding: 40px 15px 80px !important;
-        max-width: 100% !important;
+        max-width: 900px !important;
       }
       
       /* 标题字体优化 */
@@ -247,9 +252,9 @@
   <meta name="twitter:description" content="Eat the food, grow longer, avoid the walls and yourself" />
   <meta name="twitter:image" content="https://knexio.xyz/og-image.png" />
 </head>
-<body><div class="wrap">
+<body><div class="container">
   <div class="clearfix">
-    <a class="back" href="..">← Back to Games</a>
+    <a class="back" href="/games/">← Back to Games</a>
   </div>
   <h1>Snake</h1>
   <div class="subtitle">Eat the food, grow longer, avoid the walls and yourself</div>
@@ -294,7 +299,7 @@
     </div>
 
 <!-- ==================== 游戏玩法说明 - SEO优化内容 ==================== -->
-<div class="gameplay-section" style="margin: 60px auto 0; max-width: 800px; padding: 32px 24px; background: var(--panel); border-radius: 18px; border: 1px solid var(--border); text-align: left;">
+<div class="gameplay-section" style="margin: 60px auto 0; max-width: 900px; padding: 32px 24px; background: var(--panel); border-radius: 18px; border: 1px solid var(--border); text-align: left;">
     <h2 style="font-size: 28px; margin-bottom: 30px; color: var(--text-main); display: flex; align-items: center;">
         <span style="background: var(--accent); color: white; width: 36px; height: 36px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 15px; font-size: 18px;">🎮</span>
         How to Play Snake
@@ -381,7 +386,7 @@
 <!-- ==================== 广告位优化 ==================== -->
 
 <!-- ==================== 游戏常见问题 (FAQ) ==================== -->
-<div class="faq-section" style="margin: 60px auto 0; max-width: 800px; padding: 32px 24px; background: var(--panel); border-radius: 18px; text-align: left;">
+<div class="faq-section" style="margin: 60px auto 0; max-width: 900px; padding: 32px 24px; background: var(--panel); border-radius: 18px; text-align: left;">
     <h2 style="font-size: 28px; margin-bottom: 30px; color: var(--text-main);">Frequently Asked Questions</h2>
 
     <div class="faq-list">

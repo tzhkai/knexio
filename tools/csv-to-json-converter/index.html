@@ -37,9 +37,11 @@
   }
   </script>
   <style>
-    :root { --bg-dark: #0b1220; --bg-dark-2: #070d1a; --panel: #111a2e; --border: rgba(255,255,255,0.08); --text-main: #ffffff; --text-sub: #aab3c5; --accent: #4f8cff; }
+    :root {
+  --bg:#0b1220;
+  --bg2:#070d1a; --bg-dark: #0b1220; --bg-dark-2: #070d1a; --panel: #111a2e; --border: rgba(255,255,255,0.08); --text-main: #ffffff; --text-sub: #aab3c5; --accent: #4f8cff; }
     * { box-sizing: border-box; }
-    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: linear-gradient(180deg, var(--bg-dark), var(--bg-dark-2)); color: var(--text-main); min-height: 100vh; }
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: linear-gradient(180deg, var(--bg), var(--bg2)); color: var(--text-main); min-height: 100vh; }
     a { color: var(--accent); text-decoration: none; }
     .container { max-width: 900px; margin: 0 auto; padding: 60px 20px 100px; }
     .back { font-size: 14px; color: var(--text-sub); margin-bottom: 24px; display: inline-block; }
@@ -117,7 +119,7 @@
   <meta name="twitter:image" content="https://knexio.xyz/og-image.png" />
 </head>
 <body><div class="container">
-    <a class="back" href="..">← Back to Tools</a>
+    <a class="back" href="/tools/">← Back to Tools</a>
     <h1>CSV to JSON Converter</h1>
     <div class="intro">Convert CSV data to JSON format instantly. Paste your CSV or upload a file.</div>
     

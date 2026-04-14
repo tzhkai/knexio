@@ -115,6 +115,8 @@
 <style>
 
     :root {
+  --bg:#0b1220;
+  --bg2:#070d1a;
       --bg-dark: #0b1220;
       --bg-dark-2: #070d1a;
       --panel: #111a2e;
@@ -129,7 +131,7 @@
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
-      background: linear-gradient(180deg, var(--bg-dark), var(--bg-dark-2));
+      background: linear-gradient(180deg, var(--bg), var(--bg2));
       color: var(--text-main);
     }
 
@@ -137,7 +139,7 @@
     a:hover { text-decoration: underline; }
 
     .container { max-width: 900px; margin: 0 auto; padding: 60px 20px 100px; }
-    .back { font-size: 14px; color: var(--text-sub); margin-bottom: 24px; display: inline-block; }
+    .back{ font-size: 14px; color: var(--text-sub); margin-bottom: 24px; display: inline-block; ;text-decoration:none;transition:opacity .15s,color .15s}
     h1 { font-size: 36px; margin-bottom: 16px; line-height: 1.3; }
 
     .intro {
@@ -349,7 +351,8 @@
       }
         }
 
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
+footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}.back:hover{color:var(--accent)}
+</style>
   <link rel="stylesheet" href="/shared.css">
 
   <meta name="twitter:card" content="summary_large_image" />
@@ -359,7 +362,7 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 </head>
 
 <body><div class="container">
-    <a class="back" href="..">← Back to Guides</a>
+    <a class="back" href="/guides/">← Back to Guides</a>
 
     <h1>Instagram Account Restricted? Here's What to Do</h1>
 

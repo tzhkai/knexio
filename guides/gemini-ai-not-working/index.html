@@ -28,12 +28,14 @@
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why is Google Gemini not working?","acceptedAnswer":{"@type":"Answer","text":"Gemini may not work due to Google server issues, browser cache problems, a signed-out Google account, network restrictions, or regional availability limitations."}},{"@type":"Question","name":"Is Gemini available in all countries?","acceptedAnswer":{"@type":"Answer","text":"Gemini is not available in all countries. It is currently unavailable in some regions including parts of Europe and Asia. Check Google's official availability page for the latest list."}},{"@type":"Question","name":"Why does Gemini keep giving an error?","acceptedAnswer":{"@type":"Answer","text":"Persistent errors are usually caused by an outdated browser, cached data, or a Google account session issue. Clearing cache and signing out then back in usually resolves it."}},{"@type":"Question","name":"Is Gemini Advanced worth it?","acceptedAnswer":{"@type":"Answer","text":"Gemini Advanced (included in Google One AI Premium) offers access to Gemini Ultra, the most capable version, plus integration with Gmail, Docs, and Sheets. It costs $19.99/month."}}]}</script>
 <style>
 
-    :root{--bg-dark:#0b1220;--bg-dark-2:#070d1a;--panel:#111a2e;--border:rgba(255,255,255,0.08);--text-main:#ffffff;--text-sub:#aab3c5;--accent:#4f8cff}
+    :root{
+  --bg:#0b1220;
+  --bg2:#070d1a;--bg-dark:#0b1220;--bg-dark-2:#070d1a;--panel:#111a2e;--border:rgba(255,255,255,0.08);--text-main:#ffffff;--text-sub:#aab3c5;--accent:#4f8cff}
     *{box-sizing:border-box}
-    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Helvetica,Arial,sans-serif;background:linear-gradient(180deg,var(--bg-dark),var(--bg-dark-2));color:var(--text-main)}
+    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Helvetica,Arial,sans-serif;background: linear-gradient(180deg, var(--bg), var(--bg2));color:var(--text-main)}
     a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
     .container{max-width:900px;margin:0 auto;padding:60px 20px 100px}
-    .back{font-size:14px;color:var(--text-sub);margin-bottom:24px;display:inline-block}
+    .back{font-size:14px;color:var(--text-sub);margin-bottom:24px;display:inline-block;text-decoration:none;transition:opacity .15s,color .15s;text-align:left}
     h1{font-size:36px;margin-bottom:16px;line-height:1.3}
     .intro{font-size:17px;color:var(--text-sub);line-height:1.7;margin-bottom:40px;border-left:3px solid var(--accent);padding-left:16px}
     h2{font-size:24px;margin-top:48px;margin-bottom:12px}
@@ -220,7 +222,8 @@
       }
         }
 
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
+footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}.back:hover{color:var(--accent)}
+</style>
   <link rel="stylesheet" href="/shared.css">
 
   <meta name="twitter:card" content="summary_large_image" />
@@ -229,7 +232,7 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
   <meta name="twitter:image" content="https://knexio.xyz/og-image.png" />
 </head>
 <body><div class="container">
-    <a class="back" href="..">← Back to Guides</a>
+    <a class="back" href="/guides/">← Back to Guides</a>
     <h1>Gemini AI Not Working? Try These Fixes</h1>
     <div class="intro">
       If Google Gemini is not loading, showing error messages, or not responding to your prompts, this guide explains the most common causes and how to fix them on any device.

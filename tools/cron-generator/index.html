@@ -38,11 +38,11 @@
 </script>
 
 <style>
-:root{--bg:#0b1220;--card:#111a2e;--border:rgba(255,255,255,.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff}
+:root{--bg:#0b1220; --bg2: #070d1a;--card:#111a2e;--border:rgba(255,255,255,.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:system-ui,-apple-system;background:var(--bg);color:var(--text)}
+body{font-family:system-ui,-apple-system;background: linear-gradient(180deg, var(--bg), var(--bg2));color:var(--text)}
 .container{max-width:900px;margin:auto;padding:50px 16px}
-.back{display:inline-block;margin-bottom:24px;color:var(--sub);font-size:14px;text-decoration:none}
+.back{display:inline-block;color:var(--sub);font-size:14px;margin-bottom:32px;transition:color .2s;text-align:left;text-decoration:none}.back:hover{color:var(--accent)}
 h1{font-size:32px;margin-bottom:8px}
 .subtitle{color:var(--sub);margin-bottom:32px}
 .result{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;margin:24px 0;text-align:center}
@@ -113,7 +113,7 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 </head>
 <body>
 <div class="container">
-<a class="back" href="..">← Back to Tools</a>
+<a class="back" href="/tools/">← Back to Tools</a>
 
 <h1>Cron Expression Generator</h1>
 <p class="subtitle">Build cron schedules visually</p>

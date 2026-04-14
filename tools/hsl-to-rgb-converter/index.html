@@ -34,13 +34,12 @@
 }
 </script>
 <style>
-:root{--bg:#0b1220;--card:#111a2e;--border:rgba(255,255,255,.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff}
+:root{--bg:#0b1220; --bg2: #070d1a;--card:#111a2e;--border:rgba(255,255,255,.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background: linear-gradient(180deg, var(--bg), var(--bg2));color:var(--text);line-height:1.6}
 a{text-decoration:none;color:var(--accent)}
 .container{max-width:900px;margin:0 auto;padding:50px 16px}
-.back{display:inline-block;color:var(--sub);text-decoration:none;font-size:14px;margin-bottom:24px;transition:color .2s}
-.back:hover{color:var(--accent)}
+.back{display:inline-block;color:var(--sub);font-size:14px;margin-bottom:32px;transition:color .2s;text-align:left;text-decoration:none}.back:hover{color:var(--accent)}
 h1{font-size:32px;margin-bottom:8px}
 h2{font-size:22px;margin-top:30px;margin-bottom:10px}
 .subtitle{color:var(--sub);margin-bottom:24px}
@@ -127,7 +126,7 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 </head>
 <body>
 <div class="container">
-  <a class="back" href="..">← Back to Tools</a>
+  <a class="back" href="/tools/">← Back to Tools</a>
 
   <h1>HSL to RGB Converter</h1>
   <p class="subtitle">Convert HSL colors to RGB and Hex instantly with live preview.</p>

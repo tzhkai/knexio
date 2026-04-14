@@ -39,13 +39,12 @@
   </script>
   
   <style>
-:root{--bg:#0b1220;--card:#111a2e;--border:rgba(255,255,255,.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff  --text-sub:#aab3c5;
+:root{--bg:#0b1220; --bg2: #070d1a;--card:#111a2e;--border:rgba(255,255,255,.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff  --text-sub:#aab3c5;
   }
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:system-ui,-apple-system;background:var(--bg);color:var(--text);line-height:1.6}
+body{font-family:system-ui,-apple-system;background: linear-gradient(180deg, var(--bg), var(--bg2));color:var(--text);line-height:1.6}
 .container{max-width:900px;margin:auto;padding:50px 16px}
-.back{display:inline-block;color:var(--sub);text-decoration:none;margin-bottom:16px;font-size:14px}
-.back:hover{color:var(--accent)}
+.back{display:inline-block;color:var(--sub);font-size:14px;margin-bottom:32px;transition:color .2s;text-align:left;text-decoration:none}.back:hover{color:var(--accent)}
 h1{font-size:32px;margin-bottom:12px;font-weight:700}
 .subtitle{font-size:16px;color:var(--sub);margin-bottom:24px;line-height:1.6}
 h2{font-size:24px;margin:40px 0 16px;font-weight:600}
@@ -133,7 +132,7 @@ textarea:focus{outline:none;border-color:var(--accent)}
 </head>
 <body>
   <div class="container">
-    <a class="back" href="..">← Back to Tools</a>
+    <a class="back" href="/tools/">← Back to Tools</a>
     <h1>JWT Decoder</h1>
     <p class="subtitle">Decode JWT tokens instantly. View header, payload, and signature. Validate expiration and claims.</p>
 <div class="ad-sidebar" style="margin:20px 0;text-align:center">

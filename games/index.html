@@ -26,6 +26,8 @@
 <style>
 
     :root {
+  --bg:#0b1220;
+  --bg2:#070d1a;
       --bg-dark: #0b1220;
       --bg-dark-2: #070d1a;
       --panel: #111a2e;
@@ -43,7 +45,7 @@
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
-      background: linear-gradient(180deg, var(--bg-dark), var(--bg-dark-2));
+      background: linear-gradient(180deg, var(--bg), var(--bg2));
       color: var(--text-main);
     }
 
@@ -55,15 +57,10 @@
       padding: 70px 20px 100px;
     }
 
-    .back {
-      display: inline-block;
-      margin-bottom: 28px;
-      font-size: 14px;
-      color: var(--text-sub);
-    }
+    .back { display: inline-block; color: var(--text-sub); font-size: 14px; margin-bottom: 32px; transition: color 0.2s; }
     .back:hover { color: var(--accent); }
 
-    h1 { font-size: 38px; margin-bottom: 12px; }
+    h1{font-size:32px; margin-bottom: 12px; }
 
     .subtitle {
       font-size: 17px;
@@ -250,9 +247,6 @@
         <span class="tag tag-puzzle">Puzzle</span>
         <h2>2048</h2>
         <p>Slide tiles and combine numbers to reach 2048.</p>
-<div class="ad-in-article" style="margin:30px 0;text-align:center">
-<ins class="adsbygoogle" style="display:block;text-align:center" data-ad-client="ca-pub-2596567349043393" data-ad-slot="9350673807" data-ad-format="fluid" data-ad-layout="in-article" data-full-width-responsive="true"></ins>
-</div>
         <span class="btn">Play</span>
       </a>
       <a class="card" href="sudoku/">

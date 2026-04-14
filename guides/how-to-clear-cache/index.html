@@ -22,10 +22,10 @@
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I clear cache in Chrome?","acceptedAnswer":{"@type":"Answer","text":"Press Ctrl+Shift+Delete (Windows) or Cmd+Shift+Delete (Mac). Select 'Cached images and files', choose time range, click 'Clear data'."}},{"@type":"Question","name":"Will clearing cache delete my passwords?","acceptedAnswer":{"@type":"Answer","text":"No, clearing cache does not delete saved passwords. Only clear 'Passwords' if you specifically want to remove them."}}]}</script>
 <style>
-:root{--bg:#0b1220;--card:#111a2e;--border:rgba(255,255,255,.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff}
-*{box-sizing:border-box}body{font-family:system-ui;background:var(--bg);color:var(--text)}
+:root{--bg:#0b1220; --bg2: #070d1a;--card:#111a2e;--border:rgba(255,255,255,.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff}
+*{box-sizing:border-box}body{font-family:system-ui;background: linear-gradient(180deg, var(--bg), var(--bg2));color:var(--text)}
 .container{max-width:900px;margin:auto;padding:50px 16px}
-.back{display:inline-block;margin-bottom:24px;color:var(--sub)}
+.back{display:inline-block;color:var(--sub);font-size:14px;margin-bottom:32px;transition:color .2s;text-align:left;text-decoration:none}.back:hover{color:var(--accent)}
 h1{font-size:36px;margin-bottom:16px}.subtitle{color:var(--sub);font-size:18px;margin-bottom:40px}
 .browser-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
 .tab{padding:10px 20px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--sub);cursor:pointer}
@@ -42,7 +42,8 @@ kbd{background:rgba(255,255,255,.1);padding:3px 8px;border-radius:4px;font-famil
 .notice{background:rgba(79,140,255,.1);border:1px solid rgba(79,140,255,.3);border-radius:8px;padding:16px;margin-bottom:20px;color:var(--sub)}
 .notice strong{color:var(--text)}
 footer p{margin:0}
-footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
+footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}
+</style>
 
 <!-- Open Graph -->
 <meta property="og:url" content="https://knexio.xyz/guides/how-to-clear-cache/">
@@ -57,7 +58,7 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 </head>
 <body>
 <div class="container">
-<a class="back" href="..">← Back to Guides</a>
+<a class="back" href="/guides/">← Back to Guides</a>
 <h1>How to Clear Cache</h1>
 <p class="subtitle">Step-by-step for Chrome, Firefox, Safari, and Edge</p>
 <div class="ad-sidebar" style="margin:20px 0;text-align:center">

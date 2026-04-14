@@ -77,7 +77,7 @@
 </script>
   <style>
     :root {
-      --bg: #0b1220;
+      --bg: #0b1220; --bg2: #070d1a;
       --card: #111a2e;
       --border: rgba(255,255,255,0.08);
       --text: #fff;
@@ -93,7 +93,7 @@
     
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: var(--bg);
+      background: linear-gradient(180deg, var(--bg), var(--bg2));
       color: var(--text);
       margin: 0;
       padding: 20px;
@@ -105,13 +105,7 @@
       margin: 0 auto;
     }
     
-    .back {
-      display: inline-block;
-      color: var(--sub);
-      text-decoration: none;
-      margin-bottom: 24px;
-      font-size: 14px;
-    }
+    .back{display:inline-block;color:var(--sub);font-size:14px;margin-bottom:32px;transition:color .2s;text-align:left;text-decoration:none}.back:hover{color:var(--accent)}
     
     .back:hover {
       color: var(--accent);
@@ -402,7 +396,7 @@
 </head>
 <body>
   <div class="container">
-    <a class="back" href="..">← Back to Tools</a>
+    <a class="back" href="/tools/">← Back to Tools</a>
     
     <h1>Markdown Preview</h1>
     <p class="subtitle">Paste your Markdown and see the rendered HTML instantly. Supports tables, code blocks, and images.</p>

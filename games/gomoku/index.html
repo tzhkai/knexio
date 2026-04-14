@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="shortcut icon" type="image/png" href="/favicon.png">
   <title>Gomoku Game - Five in a Row Strategy | Knexio</title>
   <meta name="description" content="Play Gomoku free online. Connect five stones in a row to win. Classic strategy board game against AI. Works in your browser.">
+  <meta name="keywords" content="五子棋, Gomoku, 棋盘游戏, board game, online game">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://knexio.xyz/games/gomoku/" />
   <meta property="og:title" content="Gomoku" />
   <meta property="og:description" content="Five in a Row - Connect 5 stones to win!" />
@@ -39,12 +43,13 @@
   }
   </script>
 <style>
-    :root{--bg-dark:#0b1220;--panel:#111a2e;--text:#e0e6f0;--text-secondary:#94a3b8;--accent:#4f8cff;--accent-2:#00d4aa;--border:#1e3a5f;--success:#10b981;--danger:#ef4444}
+    :root{
+  --bg:#0b1220;
+  --bg2:#070d1a;--bg-dark:#0b1220;--panel:#111a2e;--text:#e0e6f0;--text-secondary:#94a3b8;--accent:#4f8cff;--accent-2:#00d4aa;--border:#1e3a5f;--success:#10b981;--danger:#ef4444}
     *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg-dark);color:var(--text);line-height:1.6}
+    body{font-family:system-ui,-apple-system,sans-serif;background: linear-gradient(180deg, var(--bg), var(--bg2));color:var(--text);line-height:1.6}
     .container{max-width:900px;margin:0 auto;padding:40px 20px 80px}
-.back-link{display:flex;align-items:center;gap:8px;color:var(--accent);text-decoration:none;font-size:14px;font-weight:500;margin-bottom:20px}
-    .back-link:hover{text-decoration:underline}
+.back{display:inline-block;color:var(--sub);font-size:14px;margin-bottom:32px;transition:color .2s;text-align:left;text-decoration:none;float:left;clear:both}.back:hover{color:var(--accent)}
     .ad-top{width:100%;max-width:728px;margin:20px auto;text-align:center;min-height:90px}
     .ad-bottom{width:100%;max-width:728px;margin:30px auto;text-align:center;min-height:90px}
     h1{font-size:36px;font-weight:800;margin-bottom:10px;text-align:center}
@@ -92,7 +97,7 @@
       /* 容器布局优化 */
       .container, .wrap {
         padding: 40px 15px 80px !important;
-        max-width: 100% !important;
+        max-width: 900px !important;
       }
       
       /* 标题字体优化 */
@@ -263,24 +268,9 @@
   <meta name="twitter:image" content="https://knexio.xyz/og-image.png" />
 </head>
 <body><div class="container">
-    <a href=".." class="back-link">← Back to Games</a>
+    <a href=".." class="back">← Back to Games</a>
 
     <h1>Gomoku</h1>
-
-<h2>Game Strategy Tips</h2>
-<p>Improve your gameplay with these helpful strategies:</p>
-<ul style="margin: 15px 0; padding-left: 25px;">
-  <li><strong>Practice Regularly:</strong> Consistent practice helps develop pattern recognition and strategic thinking.</li>
-  <li><strong>Learn from Mistakes:</strong> Each loss is an opportunity to identify areas for improvement.</li>
-  <li><strong>Stay Patient:</strong> Take your time to think through each move carefully.</li>
-</ul>
-
-<h2>Why Play Brain Games?</h2>
-<p>Brain games help improve cognitive functions including memory, concentration, and problem-solving skills. Regular mental exercise can help keep your mind sharp and engaged.</p>
-
-<div class="ad-banner" style="margin:20px 0;text-align:center">
-<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="5794572171" data-ad-format="auto" data-full-width-responsive="true"></ins>
-</div>
     <p class="subtitle">Five in a Row - Connect 5 stones to win!</p>
 
     <div class="game-container">
@@ -330,43 +320,6 @@
     <div class="ad-banner" style="margin-top:40px">
       <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3617326351" data-ad-format="auto" data-full-width-responsive="true"></ins>
     </div>
-
-    
-<!-- ==================== 游戏玩法说明 - SEO优化内容 ==================== -->
-<div class="gameplay-section" style="margin: 60px auto 0; max-width: 800px; padding: 32px 24px; background: var(--panel); border-radius: 18px; border: 1px solid var(--border); text-align: left;">
-    <h2 style="font-size: 28px; margin-bottom: 30px; color: var(--text-main); display: flex; align-items: center;">
-        <span style="background: var(--accent); color: white; width: 36px; height: 36px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-right: 15px; font-size: 18px;">🎮</span>
-        How to Play Gomoku
-    </h2>
-
-    <div style="margin-bottom: 30px;">
-        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--text-main);">Game Description</h3>
-        <p style="font-size: 15px; color: var(--text-sub); line-height: 1.7; margin-bottom: 20px;">
-            Gomoku (Five in a Row) is an ancient strategy board game played on a 15×15 grid. Be the first to place 5 stones in a row!
-        </p>
-    </div>
-
-    <div style="margin-bottom: 30px;">
-        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--text-main);">Game Rules</h3>
-        <ul style="font-size: 15px; color: var(--text-sub); line-height: 1.8; padding-left: 20px;">
-            <li style="margin-bottom: 8px;">Black plays first, then players alternate</li>
-            <li style="margin-bottom: 8px;">Click any empty intersection to place your stone</li>
-            <li style="margin-bottom: 8px;">Stones cannot be moved once placed</li>
-            <li style="margin-bottom: 8px;">Win by connecting exactly 5 stones horizontally, vertically, or diagonally</li>
-            <li style="margin-bottom: 8px;">More than 5 in a row does not count as a win</li>
-        </ul>
-    </div>
-
-    <div style="margin-bottom: 30px;">
-        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--text-main);">Strategy Tips</h3>
-        <ul style="font-size: 15px; color: var(--text-sub); line-height: 1.8; padding-left: 20px;">
-            <li style="margin-bottom: 8px;">Control the center of the board for more winning lines</li>
-            <li style="margin-bottom: 8px;">Create "open fours" (4 in a row with both ends open) to guarantee a win</li>
-            <li style="margin-bottom: 8px;">Block opponent's potential fives while building your own</li>
-            <li style="margin-bottom: 8px;">Look for double threats - two potential winning lines at once</li>
-        </ul>
-    </div>
-</div>
 
 <footer>
 <!-- Ad: Footer -->

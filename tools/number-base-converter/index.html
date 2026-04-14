@@ -85,7 +85,7 @@
 </script>
 <style>
 :root{
-  --bg:#0b1220;
+  --bg:#0b1220; --bg2: #070d1a;
   --card:#111a2e;
   --border:rgba(255,255,255,.08);
   --text:#fff;
@@ -93,10 +93,9 @@
   --accent:#4f8cff;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:system-ui,-apple-system;background:var(--bg);color:var(--text)}
+body{font-family:system-ui,-apple-system;background: linear-gradient(180deg, var(--bg), var(--bg2));color:var(--text)}
 .container{max-width:900px;margin:auto;padding:50px 16px}
-.back{display:inline-block;color:var(--sub);text-decoration:none;font-size:14px;margin-bottom:24px;transition:color .2s}
-.back:hover{color:var(--accent)}
+.back{display:inline-block;color:var(--sub);font-size:14px;margin-bottom:32px;transition:color .2s;text-align:left;text-decoration:none}.back:hover{color:var(--accent)}
 h1{font-size:32px;margin-bottom:8px}
 h2{font-size:22px;margin-top:30px;margin-bottom:10px}
 .subtitle{color:var(--sub);margin-bottom:24px}
@@ -151,7 +150,7 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
   <meta name="twitter:image" content="https://knexio.xyz/og-image.png" />
 </head>
 <body><div class="container">
-<a class="back" href="..">← Back to Tools</a>
+<a class="back" href="/tools/">← Back to Tools</a>
 <h1>Number Base Converter</h1>
 <p class="subtitle">Convert numbers between binary, decimal, hexadecimal, octal, and any base from 2 to 36.</p>
 <div class="ad-sidebar" style="margin:20px 0;text-align:center">
