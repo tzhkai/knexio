@@ -36,7 +36,7 @@
 <style>
 :root{--bg:#0b1220; --bg2: #070d1a;--card:#111a2e;--border:rgba(255,255,255,.08);--text:#fff;--sub:#aab3c5;--accent:#4f8cff}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background: linear-gradient(180deg, var(--bg), var(--bg2));color:var(--text);line-height:1.6}
+body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background: linear-gradient(180deg, var(--bg), var(--bg2));color:var(--accent);line-height:1.6}
 a{text-decoration:none;color:var(--accent)}
 .container{max-width:900px;margin:0 auto;padding:50px 16px}
 .back{display:inline-block;color:var(--sub);font-size:14px;margin-bottom:32px;transition:color .2s;text-align:left;text-decoration:none}.back:hover{color:var(--accent)}
@@ -59,10 +59,10 @@ footer a{color:var(--accent);text-decoration:none;margin:0 8px}
 footer a:hover{opacity:.8}
 .display{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:16px;min-height:80px;text-align:right}
 .display-history{color:var(--sub);font-size:14px;min-height:20px}
-.display-main{font-size:32px;font-weight:700;color:var(--text);word-break:break-all}
+.display-main{font-size:32px;font-weight:700;color:var(--accent);word-break:break-all}
 .calc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:12px}
 .calc-grid button{padding:14px 8px;font-size:16px;border-radius:8px}
-.calc-grid .num{background:var(--bg);border:1px solid var(--border);color:var(--text)}
+.calc-grid .num{background:var(--bg);border:1px solid var(--border);color:var(--accent)}
 .calc-grid .num:hover{border-color:var(--accent)}
 .calc-grid .op{background:var(--accent);color:#fff}
 .calc-grid .func{background:transparent;border:1px solid var(--border);color:var(--sub);font-size:13px}
