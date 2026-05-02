@@ -7,6 +7,17 @@ footer {
   text-align: center;
 }
 
+/* Content box for blog sections */
+.content-box {
+  width: 100%;
+  max-width: 100%;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 32px 24px;
+  margin: 24px 0;
+}
+
 /* Ensure footer separator matches content width on smaller screens */
 @media (max-width: 768px) {
   footer {
