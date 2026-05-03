@@ -251,6 +251,11 @@
   // Listen for cookie consent update
   window.addEventListener('knexio-consent-update', function(e) {
     if (e.detail && e.detail.consent) {
+      if (e.detail.consent === 'declined') {
+        try {
+          (window.adsbygoogle = window.adsbygoogle || []).requestNonPersonalizedAds = true;
+        } catch(e) {}
+      }
       waitForAdsThenPush();
     }
   });

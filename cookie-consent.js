@@ -76,6 +76,7 @@
         '🍪 We use cookies to improve your experience and show relevant ads.',
         ' By clicking <strong>Accept</strong>, you consent to our use of cookies.',
         ' <a href="/privacy/">Learn more</a>',
+        ' | <a href="#" id="kx-ccpa" style="font-size:12px;">Do Not Sell My Info</a>',
       '</div>',
       '<div class="kx-btns">',
         '<button class="kx-btn kx-decline" id="kx-decline">Decline</button>',
@@ -96,6 +97,17 @@
       hideBanner();
       notifyConsentUpdate('declined');
     });
+
+    // CCPA: Do Not Sell My Personal Information
+    var ccpaLink = document.getElementById('kx-ccpa');
+    if (ccpaLink) {
+      ccpaLink.addEventListener('click', function (e) {
+        e.preventDefault();
+        setCookie(COOKIE_KEY, 'declined', COOKIE_DAYS);
+        hideBanner();
+        notifyConsentUpdate('declined');
+      });
+    }
   }
 
   function hideBanner() {

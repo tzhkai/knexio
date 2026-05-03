@@ -9,8 +9,9 @@
  * 4. 配置事件跟踪和转化跟踪
  */
 
-// Google Analytics 4 配置
-const GA4_MEASUREMENT_ID = 'G-XXXXXXXXXX'; // 需要替换为你的实际测量ID
+// 注意：当前页面的真实GA4实现在 knexio-bundle.js（已配置 G-6VMQH2V72L）
+// 本文件包含独立的事件跟踪函数定义，如需使用请在各页面加载此脚本
+const GA4_MEASUREMENT_ID = 'G-6VMQH2V72L';
 const SITE_NAME = 'Knexio';
 const SITE_URL = 'https://knexio.xyz';
 
