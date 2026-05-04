@@ -89,6 +89,36 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 <h1>Color Contrast Checker</h1>
 <p class="subtitle">Test WCAG accessibility compliance</p>
 
+<div class="controls">
+<div class="row">
+<div class="color-group">
+<label>Text Color</label>
+<input type="color" id="fg" value="#ffffff" oninput="update()">
+<input type="text" id="fgHex" value="#ffffff" oninput="document.getElementById('fg').value=this.value;update()">
+</div>
+<div class="color-group">
+<label>Background Color</label>
+<input type="color" id="bg" value="#0b1220" oninput="update()">
+<input type="text" id="bgHex" value="#0b1220" oninput="document.getElementById('bg').value=this.value;update()">
+</div>
+</div>
+</div>
+<div class="preview" id="preview">Sample Text Preview</div>
+<div class="result">
+<div class="ratio" id="ratio">-</div>
+<div class="badges" id="badges"></div>
+</div>
+
+<div class="ad-sidebar" style="margin:20px 0;text-align:center">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-2596567349043393"
+       data-ad-slot="6034296620"
+       data-ad-format="auto"
+       data-full-width-responsive="true">
+  </ins>
+
+</div>
 <div class="section">
 <h2>Tips for Checking Color Contrast</h2>
 <p>Get accurate WCAG compliance results:</p>
@@ -109,36 +139,6 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
   <li><strong>For any text that overlays images</strong> — semi-transparent overlays and image backgrounds are notorious contrast traps.</li>
   <li><strong>During design handoff</strong> — give developers exact color pairs with passing ratios to avoid back-and-forth.</li>
 </ul>
-</div>
-
-<div class="ad-sidebar" style="margin:20px 0;text-align:center">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-2596567349043393"
-       data-ad-slot="6034296620"
-       data-ad-format="auto"
-       data-full-width-responsive="true">
-  </ins>
-
-</div>
-<div class="controls">
-<div class="row">
-<div class="color-group">
-<label>Text Color</label>
-<input type="color" id="fg" value="#ffffff" oninput="update()">
-<input type="text" id="fgHex" value="#ffffff" oninput="document.getElementById('fg').value=this.value;update()">
-</div>
-<div class="color-group">
-<label>Background Color</label>
-<input type="color" id="bg" value="#0b1220" oninput="update()">
-<input type="text" id="bgHex" value="#0b1220" oninput="document.getElementById('bg').value=this.value;update()">
-</div>
-</div>
-</div>
-<div class="preview" id="preview">Sample Text Preview</div>
-<div class="result">
-<div class="ratio" id="ratio">-</div>
-<div class="badges" id="badges"></div>
 </div>
 <div class="section">
 <p><strong>Free Color Contrast Checker</strong> - Test color combinations for WCAG 2.1 accessibility compliance. Check AA (4.5:1) and AAA (7:1) contrast ratios for normal and large text.</p>
