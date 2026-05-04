@@ -163,6 +163,11 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 <p><strong>How It Works</strong> - Select UUID version and quantity, then click Generate. UUID v4 uses cryptographically secure random numbers. UUID v1 uses timestamp and node ID. UUID v7 uses Unix timestamp for better database performance.</p>
 </div>
 
+<h2>UUID Versions Explained</h2>
+<div class="section">
+  <p><strong>UUID v1:</strong> Generated from the current timestamp and the machine's MAC address. Time-ordered and unique across space and time, but reveals when and where it was created. <strong>UUID v4:</strong> Generated entirely from random numbers — no timestamp or hardware info embedded. The most commonly used version for privacy and simplicity. <strong>UUID v7:</strong> Combines a Unix timestamp prefix with random bytes, producing time-sortable IDs that work well as database primary keys without the indexing fragmentation that random UUIDs cause.</p>
+</div>
+
 <h2>Frequently Asked Questions</h2>
 
 <div class="faq-item">

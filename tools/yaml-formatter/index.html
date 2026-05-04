@@ -193,6 +193,11 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 <h3>Is my data safe?</h3>
 <p>Yes. All formatting, validation, and conversion happens entirely in your browser. Your YAML data is never sent to any server.</p>
 </div>
+<h2>YAML vs. JSON</h2>
+<div class="section">
+  <p>YAML and JSON both represent structured data, but they serve different audiences. <strong>YAML</strong> uses indentation instead of braces and brackets — it's designed to be read and written by humans, making it the go-to for configuration files (Docker, Kubernetes, Ansible, CI/CD pipelines). It supports comments with <code>#</code>, which JSON does not. <strong>JSON</strong> is stricter and machine-oriented — every key needs quotes, every list needs brackets — which makes it faster to parse and the universal format for APIs and web data exchange. Choose YAML when humans need to edit the file regularly; choose JSON when machines are the primary consumer.</p>
+</div>
+
 <h2>Frequently Asked Questions</h2>
 
 <div class="faq-item">
