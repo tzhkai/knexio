@@ -160,7 +160,7 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
       "name": "Is my data safe? Is anything stored on a server?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, your data is safe. All processing happens entirely in your browser \u2014 your input never leaves your device and is not sent to any server."
+        "text": "Yes, your data is safe. All processing happens entirely in your browser — your input never leaves your device and is not sent to any server."
       }
     },
     {
@@ -277,7 +277,12 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function clearPrompt(){document.getElementById('input').value='';document.getElementById('wordCount').textContent='0';document.getElementById('charCount').textContent='0';}
+function copyPrompt(){var el=document.getElementById('input');el.select();el.setSelectionRange(0,99999);navigator.clipboard.writeText(el.value).catch(function(){document.execCommand('copy');});}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

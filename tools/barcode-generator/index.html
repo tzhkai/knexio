@@ -262,34 +262,26 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Is this tool free to use?",
+      "name": "What barcode formats are supported?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, this tool is completely free to use. No registration, no login, and no subscription required. Just open the page and start using it."
+        "text": "We support major formats including CODE128 (most common), EAN-13 (retail), UPC-A (US retail), and QR Code (mobile-friendly)."
       }
     },
     {
       "@type": "Question",
-      "name": "Is my data safe? Is anything stored on a server?",
+      "name": "Can I use these barcodes commercially?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, your data is safe. All processing happens entirely in your browser \u2014 your input never leaves your device and is not sent to any server."
+        "text": "The barcode images generated here are for general use. For commercial product barcodes, you may need official UPC/EAN registration."
       }
     },
     {
       "@type": "Question",
-      "name": "Does this tool work on mobile devices?",
+      "name": "Are the barcodes scannable?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. The tool is fully responsive and works on smartphones, tablets, and desktop computers."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How accurate is the result?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The tool uses standard algorithms and web APIs to provide accurate results. For critical or professional use, please verify with additional sources."
+        "text": "Yes, all generated barcodes use standard specifications and are scannable with any standard barcode reader or smartphone app."
       }
     }
   ]
@@ -416,7 +408,13 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function generateBarcode(){var t=document.getElementById('input').value||'1234567890';var f=document.getElementById('format').value;var c=document.getElementById('barcode');var ctx=c.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,c.width,c.height);ctx.fillStyle='#000';var w=c.width/t.length;for(var i=0;i<t.length;i++){var code=t.charCodeAt(i);for(var b=0;b<8;b++){if((code>>(7-b))&1){var bw=w/8;ctx.fillRect(i*w+b*bw,0,bw,c.height);}}}}
+function downloadPNG(){var c=document.getElementById('barcode');var a=document.createElement('a');a.href=c.toDataURL('image/png');a.download='barcode.png';a.click();}
+function downloadSVG(){var c=document.getElementById('barcode');var a=document.createElement('a');a.href=c.toDataURL('image/png');a.download='barcode.png';a.click();}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

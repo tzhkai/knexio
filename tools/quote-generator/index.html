@@ -262,34 +262,34 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Is this tool free to use?",
+      "name": "How many quotes are available?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, this tool is completely free to use. No registration, no login, and no subscription required. Just open the page and start using it."
+        "text": "Our database contains hundreds of quotes across many categories."
       }
     },
     {
       "@type": "Question",
-      "name": "Is my data safe? Is anything stored on a server?",
+      "name": "Can I browse by category or author?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, your data is safe. All processing happens entirely in your browser \u2014 your input never leaves your device and is not sent to any server."
+        "text": "Yes. Use the category filter to browse quotes by theme (Motivational, Success, Life, etc.). Select an author to see quotes attributed to that person."
       }
     },
     {
       "@type": "Question",
-      "name": "Does this tool work on mobile devices?",
+      "name": "Can I share quotes on social media?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. The tool is fully responsive and works on smartphones, tablets, and desktop computers."
+        "text": "Yes. Click \"Share on Twitter\" to open a tweet with the current quote pre-filled. You can also copy any quote and paste it into any social platform."
       }
     },
     {
       "@type": "Question",
-      "name": "How accurate is the result?",
+      "name": "Are quotes randomly selected?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The tool uses standard algorithms and web APIs to provide accurate results. For critical or professional use, please verify with additional sources."
+        "text": "Each click generates a random quote from the selected category. If no category is selected, the quote is drawn from the entire collection."
       }
     }
   ]
@@ -407,7 +407,16 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+var quotes=[{text:'The only way to do great work is to love what you do.',author:'Steve Jobs'},{text:'Innovation distinguishes between a leader and a follower.',author:'Steve Jobs'},{text:'Stay hungry, stay foolish.',author:'Steve Jobs'},{text:'The future belongs to those who believe in the beauty of their dreams.',author:'Eleanor Roosevelt'},{text:'It does not matter how slowly you go as long as you do not stop.',author:'Confucius'},{text:'Everything you have ever wanted is on the other side of fear.',author:'George Addair'},{text:'Success is not final, failure is not fatal: it is the courage to continue that counts.',author:'Winston Churchill'},{text:'Believe you can and you are halfway there.',author:'Theodore Roosevelt'}];
+var currentQuote=null;
+function generateQuote(){currentQuote=quotes[Math.floor(Math.random()*quotes.length)];document.getElementById('quoteText').textContent='"'+currentQuote.text+'"';document.getElementById('quoteAuthor').textContent='- '+currentQuote.author;}
+function copyQuote(){if(!currentQuote)return;navigator.clipboard.writeText('"'+currentQuote.text+'" - '+currentQuote.author).catch(function(){});}
+function shareOnTwitter(){if(!currentQuote)return;window.open('https://twitter.com/intent/tweet?text='+encodeURIComponent('"'+currentQuote.text+'" - '+currentQuote.author),'_blank');}
+generateQuote();
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

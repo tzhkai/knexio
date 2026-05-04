@@ -53,7 +53,7 @@
       "name": "How do I convert decimal to binary?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Simply enter your decimal number in the input field, make sure \\"From Base\\" is set to Decimal (10), and the binary result will appear automatically in the Binary (Base 2) box. Click it to copy."
+        "text": "Simply enter your decimal number in the input field, make sure \"From Base\" is set to Decimal (10), and the binary result will appear automatically in the Binary (Base 2) box. Click it to copy."
       }
     },
     {
@@ -78,6 +78,14 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Octal uses digits 0-7 and represents 3 bits per digit. Binary uses only 0s and 1s. Octal is sometimes used in Unix file permissions (chmod 755) while binary is the fundamental language of computers."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this converter free to use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutely. This number base converter is completely free with no limits or restrictions. Use it as often as you need for programming, math, or learning."
       }
     }
   ]
@@ -297,7 +305,21 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function copyToClipboard(id) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  el.select(); el.setSelectionRange(0, 99999);
+  navigator.clipboard.writeText(el.value).catch(function(){document.execCommand('copy');});
+}
+</script>
+
+<script>
+function convertNumber(){var inp=document.getElementById('input').value.trim();var from=parseInt(document.getElementById('fromBase').value);var to=parseInt(document.getElementById('toBase').value);try{var dec=parseInt(inp,from);if(isNaN(dec)){document.getElementById('output').value='Invalid input';return;}document.getElementById('output').value=dec.toString(to).toUpperCase();}catch(e){document.getElementById('output').value='Conversion error';}}
+function copyToClipboard(el){var val=el.previousElementSibling.value||el.previousElementSibling.textContent;navigator.clipboard.writeText(val).catch(function(){});}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

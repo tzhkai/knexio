@@ -54,7 +54,7 @@
       "name": "What are stop words?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Stop words are common words like \\"the\\", \\"and\\", \\"is\\", \\"in\\", \\"at\\" that appear frequently in language but carry little meaning. Filtering them helps focus on the actual content words in your text, which is useful for SEO keyword analysis and content research."
+        "text": "Stop words are common words like \"the\", \"and\", \"is\", \"in\", \"at\" that appear frequently in language but carry little meaning. Filtering them helps focus on the actual content words in your text, which is useful for SEO keyword analysis and content research."
       }
     },
     {
@@ -62,7 +62,7 @@
       "name": "How do I interpret the frequency percentage?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The frequency percentage shows what portion of your total words each word represents. For example, if \\"design\\" has a frequency of 5%, it means 5 out of every 100 words in your text are \\"design\\". This helps identify your main topics and keyword density."
+        "text": "The frequency percentage shows what portion of your total words each word represents. For example, if \"design\" has a frequency of 5%, it means 5 out of every 100 words in your text are \"design\". This helps identify your main topics and keyword density."
       }
     },
     {
@@ -87,6 +87,14 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Yes. All processing happens entirely in your browser using JavaScript. Your text is never uploaded to any server. The tool works completely offline once the page is loaded."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many words can I analyze?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "There is no strict limit, but for best performance we recommend analyzing texts under 100,000 words. The results table shows the top 100 words by frequency to keep the display manageable."
       }
     }
   ]
@@ -332,7 +340,22 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function clearText() {
+  var el = document.getElementById('textInput') || document.getElementById('input');
+  if (el) el.value = '';
+  var out = document.getElementById('output');
+  if (out) out.value = out.textContent = '';
+}
+</script>
+
+<script>
+function analyzeText(){var t=document.getElementById('input').value.toLowerCase().replace(/[^a-z\s]/g,'').split(/\s+/).filter(function(w){return w.length>1;});var stops=['the','and','for','are','but','not','you','all','can','had','her','was','one','our','out','has','have','been','some','them','who','will','from','this','that','with','your','which','when','make','like','just','into','over','than','then','also','very','each','about'];var freq={};t.forEach(function(w){if(stops.indexOf(w)===-1){freq[w]=(freq[w]||0)+1;}});var sorted=Object.keys(freq).sort(function(a,b){return freq[b]-freq[a];}).slice(0,50);var h='<table style="width:100%;border-collapse:collapse"><tr><th>Word</th><th>Count</th><th>Frequency</th></tr>';sorted.forEach(function(w){var pct=((freq[w]/t.length)*100).toFixed(2);h+='<tr><td>'+w+'</td><td>'+freq[w]+'</td><td>'+pct+'%</td></tr>';});h+='</table>';document.getElementById('output').innerHTML=h;}
+function exportCSV(){var rows=document.getElementById('output').querySelectorAll('tr');var csv='';rows.forEach(function(r){var cols=r.querySelectorAll('td,th');var row=[];cols.forEach(function(c){row.push('"'+c.textContent+'"');});csv+=row.join(',')+'\n';});var b=new Blob([csv],{type:'text/csv'});var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='word-frequency.csv';a.click();}
+function clearText(){document.getElementById('input').value='';document.getElementById('output').innerHTML='';}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

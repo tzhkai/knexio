@@ -372,7 +372,7 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
       "name": "Is my data safe? Is anything stored on a server?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, your data is safe. All processing happens entirely in your browser \u2014 your input never leaves your device and is not sent to any server."
+        "text": "Yes, your data is safe. All processing happens entirely in your browser — your input never leaves your device and is not sent to any server."
       }
     },
     {
@@ -503,7 +503,13 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function handleInput(el){var v=el.value.replace(/\D/g,'');if(v.length>16)v=v.slice(0,16);el.value=v;if(v.length>=13)validate(v);}
+function setCard(num){document.getElementById('cardNum').value=num;validate(num);}
+function validate(num){num=num.replace(/\D/g,'');var sum=0,alt=false;for(var i=num.length-1;i>=0;i--){var d=parseInt(num[i]);if(alt){d*=2;if(d>9)d-=9;}sum+=d;alt=!alt;}var valid=sum%10===0;document.getElementById('result').textContent=valid?'Valid':'Invalid';document.getElementById('result').style.color=valid?'var(--green)':'var(--red)';var type='';if(/^4/.test(num))type='Visa';else if(/^5[1-5]/.test(num))type='MasterCard';else if(/^3[47]/.test(num))type='Amex';else if(/^6/.test(num))type='Discover';else if(/^35/.test(num))type='JCB';else if(/^62/.test(num))type='UnionPay';document.getElementById('cardType').textContent=type;}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

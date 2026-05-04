@@ -88,6 +88,14 @@
         "@type": "Answer",
         "text": "The screen resolution itself does not change — that is fixed by your hardware. The window size updates in real time as you resize your browser. This tool auto-refreshes both values whenever the window is resized."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this tool accurate for mobile devices?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. On mobile, the tool reads the actual screen dimensions and updates orientation when you rotate your device. Note that mobile browsers often report logical pixels (affected by DPR), so a 1080×1920 phone may show 360×640 CSS pixels with a DPR of 3."
+      }
     }
   ]
 }
@@ -297,7 +305,13 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function updateDisplayInfo(){document.getElementById('width').textContent=window.screen.width;document.getElementById('height').textContent=window.screen.height;document.getElementById('availWidth').textContent=window.screen.availWidth;document.getElementById('availHeight').textContent=window.screen.availHeight;document.getElementById('dpr').textContent=window.devicePixelRatio||1;document.getElementById('colorDepth').textContent=window.screen.colorDepth;document.getElementById('viewportW').textContent=window.innerWidth;document.getElementById('viewportH').textContent=window.innerHeight;}
+function copyInfo(){var t=document.getElementById('info').textContent;navigator.clipboard.writeText(t).catch(function(){});}
+updateDisplayInfo();
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

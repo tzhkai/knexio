@@ -235,34 +235,10 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Is this tool free to use?",
+      "name": "Can I convert binary back to text?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, this tool is completely free to use. No registration, no login, and no subscription required. Just open the page and start using it."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is my data safe? Is anything stored on a server?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, your data is safe. All processing happens entirely in your browser \u2014 your input never leaves your device and is not sent to any server."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does this tool work on mobile devices?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. The tool is fully responsive and works on smartphones, tablets, and desktop computers."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How accurate is the result?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The tool uses standard algorithms and web APIs to provide accurate results. For critical or professional use, please verify with additional sources."
+        "text": "Yes, paste binary code and select decode to get the original text."
       }
     }
   ]
@@ -380,7 +356,29 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function copyOutput(id) {
+  var el = id ? document.getElementById(id) : document.getElementById('output');
+  if (!el) return;
+  var text = el.value || el.textContent || el.innerText;
+  navigator.clipboard.writeText(text).catch(function(){});
+}
+function clearAll(tab) {
+  var el = document.getElementById('input');
+  if (el) el.value = '';
+  var out = document.getElementById('output');
+  if (out) out.value = out.textContent = '';
+}
+</script>
+
+<script>
+function setMode(m){document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active');});document.getElementById('tab-'+m).classList.add('active');event.target.classList.add('active');}
+function convert(){var inp=document.getElementById('input');var out=document.getElementById('output');if(document.getElementById('tab-t2b').classList.contains('active')){var r='';for(var i=0;i<inp.value.length;i++){r+=inp.value.charCodeAt(i).toString(2).padStart(8,'0')+' ';}out.value=r.trim();}else{var parts=inp.value.trim().split(/\s+/);var r='';for(var i=0;i<parts.length;i++){r+=String.fromCharCode(parseInt(parts[i],2));}out.value=r;}}
+function clearAll(){document.getElementById('input').value='';document.getElementById('output').value='';}
+function copyOutput(){var el=document.getElementById('output');el.select();el.setSelectionRange(0,99999);navigator.clipboard.writeText(el.value).catch(function(){document.execCommand('copy');});}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

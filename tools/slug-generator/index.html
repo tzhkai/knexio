@@ -51,7 +51,7 @@
       "name": "What is a URL slug?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "A URL slug is the part of a URL that identifies a specific page in a human-readable format. For example, in \\"example.com/blog/how-to-code\\", the slug is \\"how-to-code\\". Good slugs improve SEO, readability, and user experience."
+        "text": "A URL slug is the part of a URL that identifies a specific page in a human-readable format. For example, in \"example.com/blog/how-to-code\", the slug is \"how-to-code\". Good slugs improve SEO, readability, and user experience."
       }
     },
     {
@@ -84,6 +84,14 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Yes, absolutely. All processing happens locally in your browser using JavaScript. Your text is never sent to any server, ensuring complete privacy and security for your content."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many titles can I convert at once?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "There's no strict limit on bulk conversion. You can paste as many titles as you need (one per line). The tool generates slugs for each line independently, making it perfect for large content migrations."
       }
     }
   ]
@@ -482,7 +490,17 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function convertSingle(){var t=document.getElementById('input').value;document.getElementById('slugOutput').value=slugify(t);}
+function copySlug(){var el=document.getElementById('slugOutput');el.select();el.setSelectionRange(0,99999);navigator.clipboard.writeText(el.value).catch(function(){document.execCommand('copy');});}
+function clearSingle(){document.getElementById('input').value='';document.getElementById('slugOutput').value='';}
+function convertBulk(){var lines=document.getElementById('bulkInput').value.split('\n');var out=lines.map(function(l){return slugify(l);}).join('\n');document.getElementById('bulkOutput').value=out;}
+function copyAllSlugs(){var el=document.getElementById('bulkOutput');el.select();el.setSelectionRange(0,99999);navigator.clipboard.writeText(el.value).catch(function(){document.execCommand('copy');});}
+function clearBulk(){document.getElementById('bulkInput').value='';document.getElementById('bulkOutput').value='';}
+function slugify(t){return t.toLowerCase().replace(/[^\w\s-]/g,'').replace(/[\s_]+/g,'-').replace(/-+/g,'-').replace(/^-|-$/g,'');}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

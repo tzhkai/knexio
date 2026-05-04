@@ -73,34 +73,18 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Is this tool free to use?",
+      "name": "How do I add timestamps in YouTube?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, this tool is completely free to use. No registration, no login, and no subscription required. Just open the page and start using it."
+        "text": "Paste the generated timestamps into your video description. Viewers can click timestamps to jump to that point."
       }
     },
     {
       "@type": "Question",
-      "name": "Is my data safe? Is anything stored on a server?",
+      "name": "What's the format?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, your data is safe. All processing happens entirely in your browser \u2014 your input never leaves your device and is not sent to any server."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does this tool work on mobile devices?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. The tool is fully responsive and works on smartphones, tablets, and desktop computers."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How accurate is the result?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The tool uses standard algorithms and web APIs to provide accurate results. For critical or professional use, please verify with additional sources."
+        "text": "0:00 - Introduction\n1:30 - Main Topic\n5:45 - Conclusion"
       }
     }
   ]
@@ -218,7 +202,24 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function copyOutput(id) {
+  var el = id ? document.getElementById(id) : document.getElementById('output');
+  if (!el) return;
+  var text = el.value || el.textContent || el.innerText;
+  navigator.clipboard.writeText(text).catch(function(){});
+}
+</script>
+
+<script>
+var stamps=[];
+function addTimestamp(){var m=parseInt(document.getElementById('minutes').value)||0;var s=parseInt(document.getElementById('seconds').value)||0;var label=document.getElementById('label').value||'Timestamp';var total=m*60+s;var mm=String(m).padStart(2,'0');var ss=String(s).padStart(2,'0');stamps.push({time:mm+':'+ss,seconds:total,label:label});renderStamps();}
+function generateOutput(){var out=stamps.map(function(s){return s.time+' - '+s.label;}).join('\n');document.getElementById('output').value=out;}
+function copyOutput(){var el=document.getElementById('output');el.select();el.setSelectionRange(0,99999);navigator.clipboard.writeText(el.value).catch(function(){document.execCommand('copy');});}
+function renderStamps(){var h='';stamps.forEach(function(s,i){h+='<div style="display:flex;justify-content:space-between;padding:8px;border-bottom:1px solid var(--border)"><span>'+s.time+' - '+s.label+'</span><button onclick="stamps.splice('+i+',1);renderStamps()" style="background:var(--red);color:#fff;border:none;border-radius:4px;padding:2px 8px;cursor:pointer">x</button></div>';});document.getElementById('stampList').innerHTML=h;}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

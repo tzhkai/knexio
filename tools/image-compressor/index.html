@@ -350,7 +350,7 @@
       "name": "Is my data safe? Is anything stored on a server?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, your data is safe. All processing happens entirely in your browser \u2014 your input never leaves your device and is not sent to any server."
+        "text": "Yes, your data is safe. All processing happens entirely in your browser — your input never leaves your device and is not sent to any server."
       }
     },
     {
@@ -482,7 +482,11 @@
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function downloadCompressed(){var c=document.getElementById('preview');if(!c)return;var a=document.createElement('a');a.href=c.toDataURL('image/jpeg',0.7);a.download='compressed.jpg';a.click();}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

@@ -94,34 +94,26 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Is this tool free to use?",
+      "name": "What HTTP methods are supported?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, this tool is completely free to use. No registration, no login, and no subscription required. Just open the page and start using it."
+        "text": "We support GET, POST, PUT, PATCH, DELETE, and HEAD methods for testing any REST API."
       }
     },
     {
       "@type": "Question",
-      "name": "Is my data safe? Is anything stored on a server?",
+      "name": "Can I add custom headers?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, your data is safe. All processing happens entirely in your browser \u2014 your input never leaves your device and is not sent to any server."
+        "text": "Yes, add any custom headers in the headers section including authorization tokens, content-type, and custom fields."
       }
     },
     {
       "@type": "Question",
-      "name": "Does this tool work on mobile devices?",
+      "name": "Is my data secure?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. The tool is fully responsive and works on smartphones, tablets, and desktop computers."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How accurate is the result?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The tool uses standard algorithms and web APIs to provide accurate results. For critical or professional use, please verify with additional sources."
+        "text": "All requests are made directly from your browser. We don't store any of your API calls or credentials."
       }
     }
   ]
@@ -253,7 +245,15 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+var method='GET';
+function setMethod(m,el){method=m;document.querySelectorAll('.method-btn').forEach(function(b){b.classList.remove('active');});el.classList.add('active');}
+function sendRequest(){var u=document.getElementById('url').value;if(!u)return;var opts={method:method};var body=document.getElementById('body').value;if(body&&method!=='GET'){opts.body=body;var ct=document.getElementById('contentType').value;if(ct)opts.headers={'Content-Type':ct};}document.getElementById('response').textContent='Loading...';fetch(u,opts).then(function(r){return r.text();}).then(function(t){document.getElementById('response').textContent=t;}).catch(function(e){document.getElementById('response').textContent='Error: '+e.message;});}
+function clearRequest(){document.getElementById('url').value='';document.getElementById('body').value='';document.getElementById('response').textContent='';}
+function copyResponse(){var el=document.getElementById('response');navigator.clipboard.writeText(el.textContent).catch(function(){});}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

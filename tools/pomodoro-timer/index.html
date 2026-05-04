@@ -57,34 +57,18 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Is this tool free to use?",
+      "name": "What is the Pomodoro Technique?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, this tool is completely free to use. No registration, no login, and no subscription required. Just open the page and start using it."
+        "text": "A time management method: work 25 minutes, break 5 minutes. Repeat 4 times, then take a 15-30 minute break."
       }
     },
     {
       "@type": "Question",
-      "name": "Is my data safe? Is anything stored on a server?",
+      "name": "Can I customize the timer?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, your data is safe. All processing happens entirely in your browser \u2014 your input never leaves your device and is not sent to any server."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does this tool work on mobile devices?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. The tool is fully responsive and works on smartphones, tablets, and desktop computers."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How accurate is the result?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The tool uses standard algorithms and web APIs to provide accurate results. For critical or professional use, please verify with additional sources."
+        "text": "Yes, adjust work, short break, and long break durations in the settings below the timer."
       }
     }
   ]
@@ -174,7 +158,15 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+var timerInterval, timeLeft=25*60, isRunning=false;
+function setMode(m,el){document.querySelectorAll('.mode-btn').forEach(function(b){b.classList.remove('active');});el.classList.add('active');reset();if(m==='work')timeLeft=25*60;else if(m==='short')timeLeft=5*60;else timeLeft=15*60;updateDisplay();}
+function toggle(){if(isRunning){clearInterval(timerInterval);isRunning=false;document.getElementById('startBtn').textContent='Start';return;}isRunning=true;document.getElementById('startBtn').textContent='Pause';timerInterval=setInterval(function(){timeLeft--;updateDisplay();if(timeLeft<=0){clearInterval(timerInterval);isRunning=false;document.getElementById('startBtn').textContent='Start';try{new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACAf39/gH9/f4B/f3+AgH9/gH9/f3+Af39/gH9/f3+AgH9/f3+Af39/gIB/f39/gH9/f4B/f3+Af39/gH9/gIB/f39/gH9/f4CAf39/f4B/f3+AgH+AgH9/f39/gH9/f4B/f3+Af39/gH9/f4CAf3+AgH9/f3+Af39/gH9/gIB/f3+Af39/gH9/f4B/f3+Af39/gH9/gH9/f3+Af39/gH9/f4B/f3+AgH9/f39/gH9/f4CAf39/f4B/f3+AgH9/gGB/f3+Af39/gH9/f4CAf39/f4B/f3+Af39/gH9/f3+AgH9/gH9/f39/gH9/f4B/f3+Af39/f39/gH9/f4CAf39/f4B/f3+Af39/gIB/f39/gH9/f4B/f3+Af39/f4CAf39/gH9/f3+Af39/gH9/f4B/f3+AgH9/f39/f39/gH9/f4B/f3+Af39/gH9/f4CAf39/f4B/f3+Af39/gH9/f39/gH9/f4B/f3+Af4B/f4B/f3+Af39/gH9/f4B/f3+Af3+AgH9/f39/f3+Af39/gH9/f4B/f3+Af3+AgH9/f39/f39/gH9/f4B/f4B/f3+Af39/gH9/f4B/f3+Af39/gH9/f4B/gH9/f4B/f3+Af3+Af3+AgH9/f4B/f3+Af3+AgH9/f39/f4B/f4B/f3+Af39/gH9/f4B/f3+Af3+AgH9/f4B/f3+Af3+AgH9/f39/f4B/f4B/f3+Af39/gH9/f4B/gH9/f4B/f39/f4B/f4B/f3+Af3+Af3+AgH+Af39/f4B/f4B/f39/f3+gf4B/f3+Af3+AgH+Af39/gH9/f4B/gH9/f4B/gH9/f3+Af39/gH+Af4B/f3+Af3+AgH+Af3+Af4B/gH9/f4B/f3+Af3+Af3+AgH+Af39/gH+Af4B/f3+gf4B/f39/f4B/gH9/f4B/gH9/f4B/gH9/gH+Af3+Af4B/gH9/f3+gf4B/f3+Af3+gkH+Af39/f4B/gH9/f4B/g')().catch(function(){})}catch(e){}}},1000);}
+function reset(){clearInterval(timerInterval);isRunning=false;document.getElementById('startBtn').textContent='Start';updateDisplay();}
+function updateDisplay(){var m=Math.floor(timeLeft/60),s=timeLeft%60;document.getElementById('timer').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

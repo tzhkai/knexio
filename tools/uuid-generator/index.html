@@ -44,9 +44,30 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {"@type": "Question", "name": "What is UUID?", "acceptedAnswer": {"@type": "Answer", "text": "UUID (Universally Unique Identifier) is a 128-bit identifier formatted as a string. Used for unique IDs in databases, APIs, and software."}},
-    {"@type": "Question", "name": "What's the difference between UUID versions?", "acceptedAnswer": {"@type": "Answer", "text": "v1 uses timestamp + node, v4 uses random numbers, v7 uses Unix timestamp + random. v4 is most common for general use."}},
-    {"@type": "Question", "name": "Can I generate multiple UUIDs at once?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, select quantity from 1 to 100 and generate multiple unique IDs instantly."}}
+    {
+      "@type": "Question",
+      "name": "What is UUID?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "UUID (Universally Unique Identifier) is a 128-bit identifier formatted as a 36-character string (8-4-4-4-12). Used for unique IDs in databases, APIs, and software."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the difference between UUID versions?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "UUID v1 uses timestamp and machine node ID. UUID v4 uses cryptographically random numbers (most common). UUID v7 uses Unix timestamp for better sorting performance."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I generate multiple UUIDs at once?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, generate from 1 to 100 UUIDs in a single click. Useful for batch operations and testing."
+      }
+    }
   ]
 }
 </script>
@@ -184,7 +205,21 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function copyOutput(id) {
+  var el = id ? document.getElementById(id) : document.getElementById('output');
+  if (!el) return;
+  var text = el.value || el.textContent || el.innerText;
+  navigator.clipboard.writeText(text).catch(function(){});
+}
+</script>
+
+<script>
+function generateUUID(){var d=new Date().getTime();var u='xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,function(c){var r=(d+Math.random()*16)%16|0;d=Math.floor(d/16);return(c==='x'?r:(r&0x3|0x8)).toString(16);});document.getElementById('output').value=u;}
+function copyOutput(){var el=document.getElementById('output');el.select();el.setSelectionRange(0,99999);navigator.clipboard.writeText(el.value).catch(function(){document.execCommand('copy');});}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

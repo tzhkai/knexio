@@ -34,26 +34,34 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "How do I wrap text?",
+      "name": "Does it break words?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Enter your text, set the character width, and click 'Wrap Text'. The tool will break lines at the specified width."
+        "text": "No, words are kept intact and only broken at word boundaries."
       }
     },
     {
       "@type": "Question",
-      "name": "Can I unwrap text?",
+      "name": "What is the maximum line width?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, click 'Unwrap Text' to remove all line breaks and join text into a single paragraph."
+        "text": "Set any width from 1 to 999 characters. Common presets include 80 characters (terminal/code), 60 characters (email), and 40 characters (Twitter."
       }
     },
     {
       "@type": "Question",
-      "name": "What's the maximum width I can set?",
+      "name": "Can I unwrap text that is already wrapped?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "You can set any width from 1 to 9999 characters, depending on your needs."
+        "text": "Yes. Paste wrapped text and click \"Unwrap\" — the tool removes existing line breaks to produce a single continuous paragraph."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it work with code?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The word wrap tool respects spaces and tabs in your text, making it suitable for wrapping code comments and documentation to a consistent column width."
       }
     }
   ]
@@ -352,7 +360,29 @@ This is a long line of text that needs to be wrapped to a specific character wid
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function copyText() {
+  var el = document.getElementById('textInput') || document.getElementById('input');
+  if (!el) return;
+  el.select(); el.setSelectionRange(0, 99999);
+  navigator.clipboard.writeText(el.value).catch(function(){document.execCommand('copy');});
+}
+function clearText() {
+  var el = document.getElementById('textInput') || document.getElementById('input');
+  if (el) el.value = '';
+  var out = document.getElementById('output');
+  if (out) out.value = out.textContent = '';
+}
+</script>
+
+<script>
+function wrapText(){var w=parseInt(document.getElementById('width').value)||80;var t=document.getElementById('input').value;var out='';var line='';var words=t.split(/\s+/);words.forEach(function(word){if((line+' '+word).trim().length>w&&line){out+=line.trim()+'\n';line=word;}else{line+=(line?' ':'')+word;}});if(line)out+=line.trim();document.getElementById('output').value=out;}
+function unwrapText(){var t=document.getElementById('input').value;document.getElementById('output').value=t.replace(/\n/g,' ').replace(/\s+/g,' ').trim();}
+function copyText(){var el=document.getElementById('output');el.select();el.setSelectionRange(0,99999);navigator.clipboard.writeText(el.value).catch(function(){document.execCommand('copy');});}
+function clearText(){document.getElementById('input').value='';document.getElementById('output').value='';}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

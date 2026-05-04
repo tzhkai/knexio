@@ -34,26 +34,18 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "How do I test my website speed?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Enter your website URL and click 'Test Speed'. The tool will analyze load time, performance metrics, and provide optimization suggestions."
-      }
-    },
-    {
-      "@type": "Question",
       "name": "What metrics are measured?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The tool measures page load time, DNS lookup time, connection time, TTFB (Time to First Byte), and overall performance score."
+        "text": "We measure load time, time to first byte, and content render timing."
       }
     },
     {
       "@type": "Question",
-      "name": "Is this tool free?",
+      "name": "How accurate is the test?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, this website speed test tool is completely free to use with no limits on number of tests."
+        "text": "Results vary based on your network conditions. For consistent results, test multiple times."
       }
     }
   ]
@@ -444,7 +436,11 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function testSpeed(){var u=document.getElementById('url').value;if(!u)return;if(!u.startsWith('http'))u='https://'+u;var start=Date.now();document.getElementById('result').innerHTML='<p>Testing...</p>';var img=new Image();img.onload=function(){var time=Date.now()-start;document.getElementById('result').innerHTML='<p>Load time: <strong>'+time+'ms</strong></p><p>URL: '+u+'</p>';};img.onerror=function(){document.getElementById('result').innerHTML='<p style="color:var(--red)">Could not reach '+u+'</p>';};img.src=u+'?t='+Date.now();}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

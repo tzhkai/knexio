@@ -58,34 +58,18 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Is this tool free to use?",
+      "name": "What Markdown syntax is supported?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, this tool is completely free to use. No registration, no login, and no subscription required. Just open the page and start using it."
+        "text": "Headings (#), bold (**), italic (*), lists (- or 1.), links, code blocks, blockquotes, and horizontal rules."
       }
     },
     {
       "@type": "Question",
-      "name": "Is my data safe? Is anything stored on a server?",
+      "name": "Can I copy the HTML output?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, your data is safe. All processing happens entirely in your browser \u2014 your input never leaves your device and is not sent to any server."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does this tool work on mobile devices?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. The tool is fully responsive and works on smartphones, tablets, and desktop computers."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How accurate is the result?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The tool uses standard algorithms and web APIs to provide accurate results. For critical or professional use, please verify with additional sources."
+        "text": "Yes, click \"Copy HTML\" to copy the raw HTML code to clipboard."
       }
     }
   ]
@@ -184,7 +168,22 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function clearAll(tab) {
+  var el = document.getElementById('input');
+  if (el) el.value = '';
+  var out = document.getElementById('output');
+  if (out) out.value = out.textContent = '';
+}
+</script>
+
+<script>
+function convert(){var md=document.getElementById('input').value;var h=md.replace(/^### (.+)$/gm,'<h3>$1</h3>').replace(/^## (.+)$/gm,'<h2>$1</h2>').replace(/^# (.+)$/gm,'<h1>$1</h1>').replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\*(.+?)\*/g,'<em>$1</em>').replace(/`(.+?)`/g,'<code>$1</code>').replace(/^- (.+)$/gm,'<li>$1</li>').replace(/\n\n/g,'</p><p>');h='<p>'+h+'</p>';h=h.replace(/<li><\/li>/g,'');document.getElementById('output').innerHTML=h;}
+function copyHTML(){var el=document.getElementById('output');navigator.clipboard.writeText(el.innerHTML).catch(function(){});}
+function clearAll(){document.getElementById('input').value='';document.getElementById('output').innerHTML='';}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

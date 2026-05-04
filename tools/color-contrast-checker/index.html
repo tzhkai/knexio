@@ -42,7 +42,9 @@ h1{font-size:32px;margin-bottom:8px}.subtitle{color:var(--sub);margin-bottom:32p
 .fail{background:rgba(248,113,113,.2);color:var(--red);border:1px solid var(--red)}
 .faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px}
 .faq-item h3{font-size:16px;margin-bottom:8px}.faq-item p{color:var(--sub);line-height:1.6}
-
+.section{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:24px}
+.section h2{margin-top:0;font-size:20px}.section ul{margin:12px 0 0;padding-left:22px;color:var(--sub);line-height:1.7}.section li{margin-bottom:8px}.section li strong{color:var(--text)}.section p{color:var(--sub);line-height:1.7;margin:0}
+.ad-sidebar{margin:20px 0;text-align:center}
 footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
 
 <!-- Open Graph -->
@@ -56,34 +58,18 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Is this tool free to use?",
+      "name": "What is WCAG?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, this tool is completely free to use. No registration, no login, and no subscription required. Just open the page and start using it."
+        "text": "Web Content Accessibility Guidelines. AA requires 4.5:1 ratio for normal text, AAA requires 7:1."
       }
     },
     {
       "@type": "Question",
-      "name": "Is my data safe? Is anything stored on a server?",
+      "name": "What ratio do I need?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, your data is safe. All processing happens entirely in your browser \u2014 your input never leaves your device and is not sent to any server."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does this tool work on mobile devices?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. The tool is fully responsive and works on smartphones, tablets, and desktop computers."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How accurate is the result?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The tool uses standard algorithms and web APIs to provide accurate results. For critical or professional use, please verify with additional sources."
+        "text": "WCAG AA (minimum): 4.5:1 for normal text, 3:1 for large text. AAA (enhanced): 7:1 for normal text."
       }
     }
   ]
@@ -103,25 +89,29 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 <h1>Color Contrast Checker</h1>
 <p class="subtitle">Test WCAG accessibility compliance</p>
 
+<div class="section">
 <h2>Tips for Checking Color Contrast</h2>
 <p>Get accurate WCAG compliance results:</p>
-<ul style="margin: 15px 0; padding-left: 25px;">
+<ul>
   <li><strong>Check Both AA and AAA:</strong> AA (4.5:1) is the legal minimum for most sites. AAA (7:1) is ideal for readability but not always required.</li>
   <li><strong>Large Text Has Lower Bars:</strong> Text 18.66px+ bold or 24px+ regular only needs 3:1 for AA. Headings often fall into this category.</li>
   <li><strong>Test on Real Backgrounds:</strong> A gradient or image background can produce wildly different effective contrast — test with the actual background your text sits on.</li>
   <li><strong>Font Weight Matters:</strong> Thin fonts (300 weight) are harder to read than bold at the same contrast ratio. If using light weights, aim higher than the minimum.</li>
 </ul>
+</div>
 
+<div class="section">
 <h2>When to Check Contrast</h2>
 <p>You should verify color contrast anytime you're making design decisions that affect text legibility:</p>
-<ul style="margin: 15px 0; padding-left: 25px;">
+<ul>
   <li><strong>Before launching a new page or component</strong> — catch accessibility issues before they ship.</li>
   <li><strong>When updating brand colors</strong> — a new palette might look great but fail WCAG on certain backgrounds.</li>
   <li><strong>For any text that overlays images</strong> — semi-transparent overlays and image backgrounds are notorious contrast traps.</li>
   <li><strong>During design handoff</strong> — give developers exact color pairs with passing ratios to avoid back-and-forth.</li>
 </ul>
+</div>
 
-<div class="ad-banner">
+<div class="ad-sidebar" style="margin:20px 0;text-align:center">
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-2596567349043393"
@@ -129,8 +119,6 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
        data-ad-format="auto"
        data-full-width-responsive="true">
   </ins>
-
-<!-- Ad: Sidebar -->
 
 </div>
 <div class="controls">
@@ -189,6 +177,69 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
   <p>© 2026 Knexio. All rights reserved.</p>
 </footer>
 
+<script>
+function hexToRgb(hex) {
+  hex = hex.replace('#', '');
+  if (hex.length === 3) hex = hex[0]+hex[0]+hex[1]+hex[1]+hex[2]+hex[2];
+  return {
+    r: parseInt(hex.substring(0,2), 16) / 255,
+    g: parseInt(hex.substring(2,4), 16) / 255,
+    b: parseInt(hex.substring(4,6), 16) / 255
+  };
+}
+
+function linearize(c) {
+  return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
+}
+
+function relativeLuminance(rgb) {
+  return 0.2126 * linearize(rgb.r) + 0.7152 * linearize(rgb.g) + 0.0722 * linearize(rgb.b);
+}
+
+function contrastRatio(l1, l2) {
+  var lighter = Math.max(l1, l2);
+  var darker = Math.min(l1, l2);
+  return (lighter + 0.05) / (darker + 0.05);
+}
+
+function update() {
+  var fg = document.getElementById('fg').value;
+  var bg = document.getElementById('bg').value;
+  
+  // Sync hex text inputs
+  document.getElementById('fgHex').value = fg;
+  document.getElementById('bgHex').value = bg;
+  
+  // Update preview
+  var preview = document.getElementById('preview');
+  preview.style.color = fg;
+  preview.style.backgroundColor = bg;
+  
+  // Calculate contrast
+  var fgLum = relativeLuminance(hexToRgb(fg));
+  var bgLum = relativeLuminance(hexToRgb(bg));
+  var ratio = contrastRatio(fgLum, bgLum);
+  
+  // Display ratio
+  document.getElementById('ratio').textContent = ratio.toFixed(2) + ':1';
+  
+  // WCAG badges
+  var badges = document.getElementById('badges');
+  var aaNormal = ratio >= 4.5;
+  var aaLarge = ratio >= 3;
+  var aaaNormal = ratio >= 7;
+  var aaaLarge = ratio >= 4.5;
+  
+  badges.innerHTML = 
+    '<span class="badge ' + (aaNormal ? 'pass' : 'fail') + '">AA Normal ' + (aaNormal ? '✓' : '✗') + '</span>' +
+    '<span class="badge ' + (aaLarge ? 'pass' : 'fail') + '">AA Large ' + (aaLarge ? '✓' : '✗') + '</span>' +
+    '<span class="badge ' + (aaaNormal ? 'pass' : 'fail') + '">AAA Normal ' + (aaaNormal ? '✓' : '✗') + '</span>' +
+    '<span class="badge ' + (aaaLarge ? 'pass' : 'fail') + '">AAA Large ' + (aaaLarge ? '✓' : '✗') + '</span>';
+}
+
+// Run on load with default values
+update();
+</script>
 <script src="/cookie-consent.js"></script>
   <script src="/knexio-bundle.js"></script>
 </body>

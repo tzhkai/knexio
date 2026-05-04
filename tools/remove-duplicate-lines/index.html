@@ -232,7 +232,7 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
       "name": "Is my data safe? Is anything stored on a server?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, your data is safe. All processing happens entirely in your browser \u2014 your input never leaves your device and is not sent to any server."
+        "text": "Yes, your data is safe. All processing happens entirely in your browser — your input never leaves your device and is not sent to any server."
       }
     },
     {
@@ -368,7 +368,30 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function clearAll(tab) {
+  var el = document.getElementById('input');
+  if (el) el.value = '';
+  var out = document.getElementById('output');
+  if (out) out.value = out.textContent = '';
+}
+function copyOutput(id) {
+  var el = id ? document.getElementById(id) : document.getElementById('output');
+  if (!el) return;
+  var text = el.value || el.textContent || el.innerText;
+  navigator.clipboard.writeText(text).catch(function(){});
+}
+</script>
+
+<script>
+function deduplicate(){var t=document.getElementById('input').value.split('\n');var seen={};var out=[];var dup=0;t.forEach(function(l){var s=l.trim();if(seen[s]){dup++;}else{seen[s]=true;out.push(l);}});document.getElementById('output').value=out.join('\n');document.getElementById('dupCount').textContent=dup;}
+function swapPanes(){var inp=document.getElementById('input'),out=document.getElementById('output');var t=inp.value;inp.value=out.value;out.value=t;}
+function clearAll(){document.getElementById('input').value='';document.getElementById('output').value='';}
+function copyOutput(){var el=document.getElementById('output');el.select();el.setSelectionRange(0,99999);navigator.clipboard.writeText(el.value).catch(function(){document.execCommand('copy');});}
+function updateInStat(){var t=document.getElementById('input').value;document.getElementById('inCount').textContent=t.split('\n').length;}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

@@ -179,34 +179,18 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Is this tool free to use?",
+      "name": "What languages are supported?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, this tool is completely free to use. No registration, no login, and no subscription required. Just open the page and start using it."
+        "text": "The OCR supports multiple languages including English, Spanish, French, German, and more."
       }
     },
     {
       "@type": "Question",
-      "name": "Is my data safe? Is anything stored on a server?",
+      "name": "Can it handle handwriting?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, your data is safe. All processing happens entirely in your browser \u2014 your input never leaves your device and is not sent to any server."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does this tool work on mobile devices?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. The tool is fully responsive and works on smartphones, tablets, and desktop computers."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How accurate is the result?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The tool uses standard algorithms and web APIs to provide accurate results. For critical or professional use, please verify with additional sources."
+        "text": "Best results are with printed or clear text. Handwriting recognition accuracy varies."
       }
     }
   ]
@@ -316,7 +300,21 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function copyText() {
+  var el = document.getElementById('textInput') || document.getElementById('input');
+  if (!el) return;
+  el.select(); el.setSelectionRange(0, 99999);
+  navigator.clipboard.writeText(el.value).catch(function(){document.execCommand('copy');});
+}
+</script>
+
+<script>
+function copyText(){var el=document.getElementById('output');el.select();el.setSelectionRange(0,99999);navigator.clipboard.writeText(el.value).catch(function(){document.execCommand('copy');});}
+function downloadText(){var t=document.getElementById('output').value;var b=new Blob([t],{type:'text/plain'});var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='ocr-text.txt';a.click();}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

@@ -201,7 +201,7 @@ footer p{margin:0}
       "name": "Is my data safe? Is anything stored on a server?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, your data is safe. All processing happens entirely in your browser \u2014 your input never leaves your device and is not sent to any server."
+        "text": "Yes, your data is safe. All processing happens entirely in your browser — your input never leaves your device and is not sent to any server."
       }
     },
     {
@@ -348,7 +348,16 @@ footer p{margin:0}
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function addExperience(){var c=document.getElementById('experienceContainer');var d=document.createElement('div');d.innerHTML='<div style="margin-bottom:12px"><input placeholder="Job Title" style="width:100%;margin-bottom:4px"><input placeholder="Company" style="width:100%;margin-bottom:4px"><input placeholder="Dates (e.g. 2020-2023)" style="width:100%"></div>';c.appendChild(d);}
+function addEducation(){var c=document.getElementById('educationContainer');var d=document.createElement('div');d.innerHTML='<div style="margin-bottom:12px"><input placeholder="Degree" style="width:100%;margin-bottom:4px"><input placeholder="School" style="width:100%;margin-bottom:4px"><input placeholder="Year" style="width:100%"></div>';c.appendChild(d);}
+function generateResume(){var name=document.getElementById('name').value||'Your Name';var email=document.getElementById('email').value;var phone=document.getElementById('phone').value;var summary=document.getElementById('summary').value;var h='<h1>'+name+'</h1><p>'+email+(phone?' | '+phone:'')+'</p>';if(summary)h+='<h2>Summary</h2><p>'+summary+'</p>';h+='<h2>Experience</h2><p>See form entries above</p><h2>Education</h2><p>See form entries above</p>';document.getElementById('preview').innerHTML=h;}
+function clearForm(){document.querySelectorAll('#resumeForm input, #resumeForm textarea').forEach(function(el){el.value='';});document.getElementById('preview').innerHTML='';}
+function downloadPDF(){window.print();}
+function printResume(){window.print();}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

@@ -419,6 +419,14 @@
         "@type": "Answer",
         "text": "Absolutely. These passwords are designed for maximum security. Use them for email, banking, social media, and any account where security matters."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I remember complex passwords?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We recommend using a password manager to securely store your generated passwords. Never write them down or share them with others. Most browsers and operating systems include built-in password managers."
+      }
     }
   ]
 }
@@ -568,7 +576,14 @@
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function updateLength(v){document.getElementById('lenVal').textContent=v;}
+function generatePassword(){var len=parseInt(document.getElementById('length').value)||16;var u='ABCDEFGHIJKLMNOPQRSTUVWXYZ',l='abcdefghijklmnopqrstuvwxyz',n='0123456789',s='!@#$%^&*()_+-=[]{}|;:,.<>?';var chars='';if(document.getElementById('upper').checked)chars+=u;if(document.getElementById('lower').checked)chars+=l;if(document.getElementById('numbers').checked)chars+=n;if(document.getElementById('symbols').checked)chars+=s;if(!chars)chars=l+n;var p='';for(var i=0;i<len;i++)p+=chars.charAt(Math.floor(Math.random()*chars.length));document.getElementById('output').value=p;}
+function copyPassword(){var el=document.getElementById('output');el.select();el.setSelectionRange(0,99999);navigator.clipboard.writeText(el.value).catch(function(){document.execCommand('copy');});}
+function clearHistory(){}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

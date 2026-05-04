@@ -216,34 +216,18 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Is this tool free to use?",
+      "name": "Can I convert specific pages?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, this tool is completely free to use. No registration, no login, and no subscription required. Just open the page and start using it."
+        "text": "Yes, select page range or individual pages to convert."
       }
     },
     {
       "@type": "Question",
-      "name": "Is my data safe? Is anything stored on a server?",
+      "name": "What's the output resolution?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, your data is safe. All processing happens entirely in your browser \u2014 your input never leaves your device and is not sent to any server."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does this tool work on mobile devices?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. The tool is fully responsive and works on smartphones, tablets, and desktop computers."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How accurate is the result?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The tool uses standard algorithms and web APIs to provide accurate results. For critical or professional use, please verify with additional sources."
+        "text": "Default is 150 DPI. Higher DPI produces better quality but larger files."
       }
     }
   ]
@@ -374,7 +358,13 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function convertPDF(){var f=document.getElementById('fileInput').files[0];if(!f)return;var reader=new FileReader();reader.onload=function(e){pdfjsLib.getDocument({data:e.target.result}).promise.then(function(pdf){var pages=pdf.numPages;document.getElementById('pageInfo').textContent=pages+' page(s)';for(var i=1;i<=pages;i++){pdf.getPage(i).then(function(page){var scale=1.5;var vp=page.getViewport({scale:scale});var c=document.createElement('canvas');c.width=vp.width;c.height=vp.height;var ctx=c.getContext('2d');page.render({canvasContext:ctx,viewport:vp});document.getElementById('pages').appendChild(c);}});}});reader.readAsArrayBuffer(f);}
+function reset(){document.getElementById('pages').innerHTML='';document.getElementById('pageInfo').textContent='';}
+function downloadAll(){var canvases=document.getElementById('pages').querySelectorAll('canvas');canvases.forEach(function(c,i){var a=document.createElement('a');a.href=c.toDataURL('image/png');a.download='page-'+(i+1)+'.png';a.click();});}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

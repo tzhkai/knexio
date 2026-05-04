@@ -34,26 +34,18 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "How do I take a screenshot of a website?",
+      "name": "Does it capture the whole page?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Enter the URL of the website you want to screenshot and click 'Take Screenshot'. The tool will capture a full-page screenshot that you can download."
+        "text": "Yes, captures the full page including content below the fold."
       }
     },
     {
       "@type": "Question",
-      "name": "What viewport sizes are supported?",
+      "name": "Can I capture multiple pages?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "You can choose from common viewport sizes: Desktop (1920x1080), Tablet (768x1024), and Mobile (375x667) to see how the site looks on different devices."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is this tool free to use?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, this website screenshot tool is completely free to use with no limits on the number of screenshots."
+        "text": "Enter each URL separately to capture multiple pages."
       }
     }
   ]
@@ -407,7 +399,13 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function takeScreenshot(){var u=document.getElementById('url').value;if(!u)return;if(!u.startsWith('http'))u='https://'+u;document.getElementById('preview').innerHTML='<p>Loading screenshot...</p>';var img=document.createElement('img');img.src='https://api.apiflash.com/v1/urltoimage?access_key=demo&url='+encodeURIComponent(u)+'&width=1280&height=800';img.style.maxWidth='100%';img.onload=function(){document.getElementById('preview').innerHTML='';document.getElementById('preview').appendChild(img);};img.onerror=function(){document.getElementById('preview').innerHTML='<p style="color:var(--red)">Screenshot failed. Try a different URL.</p>';};}
+function downloadScreenshot(){var img=document.getElementById('preview').querySelector('img');if(!img)return;var a=document.createElement('a');a.href=img.src;a.download='screenshot.png';a.click();}
+function closePreview(){document.getElementById('preview').innerHTML='';}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

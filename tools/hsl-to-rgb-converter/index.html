@@ -85,34 +85,18 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Is this tool free to use?",
+      "name": "What's the difference between HSL and RGB?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, this tool is completely free to use. No registration, no login, and no subscription required. Just open the page and start using it."
+        "text": "HSL describes color by hue, saturation, and lightness - more intuitive for humans. RGB describes by red, green, blue values - used by screens."
       }
     },
     {
       "@type": "Question",
-      "name": "Is my data safe? Is anything stored on a server?",
+      "name": "Can I convert back from RGB to HSL?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, your data is safe. All processing happens entirely in your browser \u2014 your input never leaves your device and is not sent to any server."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does this tool work on mobile devices?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. The tool is fully responsive and works on smartphones, tablets, and desktop computers."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How accurate is the result?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The tool uses standard algorithms and web APIs to provide accurate results. For critical or professional use, please verify with additional sources."
+        "text": "Yes, use our RGB to HSL converter for the reverse operation."
       }
     }
   ]
@@ -246,7 +230,21 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function copyToClipboard(id) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  el.select(); el.setSelectionRange(0, 99999);
+  navigator.clipboard.writeText(el.value).catch(function(){document.execCommand('copy');});
+}
+</script>
+
+<script>
+function updateColor(){var h=parseInt(document.getElementById('hVal').value)||0;var s=parseInt(document.getElementById('sVal').value)||0;var l=parseInt(document.getElementById('lVal').value)||0;s/=100;l/=100;var c=(1-Math.abs(2*l-1))*s;var x=c*(1-Math.abs((h/60)%2-1));var m=l-c/2;var r,g,b;if(h<60){r=c;g=x;b=0;}else if(h<120){r=x;g=c;b=0;}else if(h<180){r=0;g=c;b=x;}else if(h<240){r=0;g=x;b=c;}else if(h<300){r=x;g=0;b=c;}else{r=c;g=0;b=x;}r=Math.round((r+m)*255);g=Math.round((g+m)*255);b=Math.round((b+m)*255);var hex='#'+r.toString(16).padStart(2,'0')+g.toString(16).padStart(2,'0')+b.toString(16).padStart(2,'0');document.getElementById('rgbOutput').value='rgb('+r+', '+g+', '+b+')';document.getElementById('hexOutput').value=hex;document.getElementById('preview').style.backgroundColor=hex;}
+function copyToClipboard(id){var el=document.getElementById(id);el.select();el.setSelectionRange(0,99999);navigator.clipboard.writeText(el.value).catch(function(){document.execCommand('copy');});}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

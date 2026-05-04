@@ -88,6 +88,14 @@
         "@type": "Answer",
         "text": "While standard BMI categories apply to adults (18+), body composition changes with age. Older adults may have different ideal ranges. This calculator includes age for reference but uses standard adult categories. Consult healthcare providers for age-specific recommendations."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "Is BMI accurate for everyone?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "BMI is a general indicator and may not be accurate for everyone. It doesn't account for muscle mass, bone density, or body composition. Athletes with high muscle mass may have a high BMI despite being healthy. Always consult a healthcare professional for personalized advice."
+      }
     }
   ]
 }
@@ -423,7 +431,23 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function clearAll(tab) {
+  var el = document.getElementById('input');
+  if (el) el.value = '';
+  var out = document.getElementById('output');
+  if (out) out.value = out.textContent = '';
+}
+</script>
+
+<script>
+function setUnit(u){document.querySelectorAll('.unit-btn').forEach(function(b){b.classList.remove('active');});event.target.classList.add('active');document.getElementById('unit').value=u;if(u==='metric'){document.getElementById('metric-fields').style.display='block';document.getElementById('imperial-fields').style.display='none';}else{document.getElementById('metric-fields').style.display='none';document.getElementById('imperial-fields').style.display='block';}}
+function setGender(g){document.querySelectorAll('.gender-btn').forEach(function(b){b.classList.remove('active');});event.target.classList.add('active');document.getElementById('gender').value=g;}
+function calculateBMI(){var u=document.getElementById('unit').value;var h,w;if(u==='metric'){h=parseFloat(document.getElementById('height-cm').value)/100;w=parseFloat(document.getElementById('weight-kg').value);}else{var ft=parseFloat(document.getElementById('height-ft').value)||0;var inch=parseFloat(document.getElementById('height-in').value)||0;h=(ft*12+inch)*0.0254;w=parseFloat(document.getElementById('weight-lb').value)*0.453592;}if(!h||!w||h<=0||w<=0){document.getElementById('bmi-result').textContent='--';return;}var bmi=w/(h*h);document.getElementById('bmi-result').textContent=bmi.toFixed(1);var cat='';if(bmi<18.5)cat='Underweight';else if(bmi<25)cat='Normal';else if(bmi<30)cat='Overweight';else cat='Obese';document.getElementById('bmi-category').textContent=cat;}
+function clearAll(){document.getElementById('height-cm').value='';document.getElementById('weight-kg').value='';document.getElementById('height-ft').value='';document.getElementById('height-in').value='';document.getElementById('weight-lb').value='';document.getElementById('bmi-result').textContent='--';document.getElementById('bmi-category').textContent='';}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

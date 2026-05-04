@@ -88,6 +88,14 @@
         "@type": "Answer",
         "text": "Yes, this time zone converter is completely free. No registration or signup is required. Just open the page and start converting times."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "Are my calculations saved or stored anywhere?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. All calculations happen entirely in your browser. No data is sent to any server or stored anywhere."
+      }
     }
   ]
 }
@@ -333,7 +341,12 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function convertTimeZone(){var dt=document.getElementById('datetime').value;var f=document.getElementById('fromTz').value;var t=document.getElementById('toTz').value;if(!dt){document.getElementById('result').textContent='Select a date and time';return;}var d=new Date(dt);try{var opts={timeZone:t,year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false};var fmt=new Intl.DateTimeFormat('en-US',opts);var parts=fmt.formatToParts(d);var result='';parts.forEach(function(p){result+=p.value;});document.getElementById('result').textContent=result;}catch(e){document.getElementById('result').textContent='Conversion error';}}
+function clearForm(){document.getElementById('datetime').value='';document.getElementById('result').textContent='';}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

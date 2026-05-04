@@ -343,7 +343,11 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function calculateAge(){var b=new Date(document.getElementById('birthdate').value);var now=new Date();var years=now.getFullYear()-b.getFullYear();var months=now.getMonth()-b.getMonth();var days=now.getDate()-b.getDate();if(days<0){months--;var prev=new Date(now.getFullYear(),now.getMonth(),0);days+=prev.getDate();}if(months<0){years--;months+=12;}document.getElementById('years').textContent=years;document.getElementById('months').textContent=months;document.getElementById('days').textContent=days;}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

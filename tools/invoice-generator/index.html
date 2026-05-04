@@ -296,7 +296,7 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
       "name": "Is my data safe? Is anything stored on a server?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, your data is safe. All processing happens entirely in your browser \u2014 your input never leaves your device and is not sent to any server."
+        "text": "Yes, your data is safe. All processing happens entirely in your browser — your input never leaves your device and is not sent to any server."
       }
     },
     {
@@ -460,7 +460,13 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function updatePreview(){var data={from:document.getElementById('from').value,to:document.getElementById('to').value,date:document.getElementById('date').value,number:document.getElementById('number').value};var h='<h2>Invoice #'+data.number+'</h2><p>Date: '+data.date+'</p><p>From: '+data.from+'</p><p>To: '+data.to+'</p>';document.getElementById('preview').innerHTML=h;}
+function addItem(){var container=document.getElementById('items');var div=document.createElement('div');div.innerHTML='<input placeholder="Item" style="flex:2"><input type="number" placeholder="Qty" style="width:80px"><input type="number" placeholder="Price" style="width:100px">';container.appendChild(div);}
+function clearInvoice(){document.getElementById('from').value='';document.getElementById('to').value='';document.getElementById('date').value='';document.getElementById('number').value='';document.getElementById('items').innerHTML='';document.getElementById('preview').innerHTML='';}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

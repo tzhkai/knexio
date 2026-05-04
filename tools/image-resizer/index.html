@@ -284,7 +284,7 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
       "name": "Is my data safe? Is anything stored on a server?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, your data is safe. All processing happens entirely in your browser \u2014 your input never leaves your device and is not sent to any server."
+        "text": "Yes, your data is safe. All processing happens entirely in your browser — your input never leaves your device and is not sent to any server."
       }
     },
     {
@@ -438,7 +438,14 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function updateWidth(){var w=parseInt(document.getElementById('width').value)||0;var f=document.getElementById('fileInput').files[0];if(f&&w){var img=new Image();img.onload=function(){var r=img.height/img.width;document.getElementById('height').value=Math.round(w*r);};img.src=URL.createObjectURL(f);}}
+function updateHeight(){var h=parseInt(document.getElementById('height').value)||0;var f=document.getElementById('fileInput').files[0];if(f&&h){var img=new Image();img.onload=function(){var r=img.width/img.height;document.getElementById('width').value=Math.round(h*r);};img.src=URL.createObjectURL(f);}}
+function downloadResized(){var c=document.getElementById('previewCanvas');if(!c)return;var a=document.createElement('a');a.href=c.toDataURL('image/png');a.download='resized.png';a.click();}
+function resetTool(){document.getElementById('width').value='';document.getElementById('height').value='';document.getElementById('previewCanvas').getContext('2d').clearRect(0,0,c.width,c.height);}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

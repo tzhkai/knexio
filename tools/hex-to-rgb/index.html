@@ -88,6 +88,14 @@
         "@type": "Answer",
         "text": "WCAG (Web Content Accessibility Guidelines) contrast ratio measures text readability against a background. AA requires 4.5:1 for normal text and 3:1 for large text. The tool checks both white and black text."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this converter free to use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, this converter is completely free. No registration or signup is required. Just open the page and start converting colors."
+      }
     }
   ]
 }
@@ -340,7 +348,17 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function hexToRgb(hex){hex=hex.replace('#','');if(hex.length===3)hex=hex[0]+hex[0]+hex[1]+hex[1]+hex[2]+hex[2];return{r:parseInt(hex.substring(0,2),16),g:parseInt(hex.substring(2,4),16),b:parseInt(hex.substring(4,6),16)};}
+function rgbToHsl(r,g,b){r/=255;g/=255;b/=255;var max=Math.max(r,g,b),min=Math.min(r,g,b);var h,s,l=(max+min)/2;if(max===min){h=s=0;}else{var d=max-min;s=l>0.5?d/(2-max-min):d/(max+min);switch(max){case r:h=((g-b)/d+(g<b?6:0))/6;break;case g:h=((b-r)/d+2)/6;break;case b:h=((r-g)/d+4)/6;break;}}return{h:Math.round(h*360),s:Math.round(s*100),l:Math.round(l*100)};}
+function rgbToHsv(r,g,b){r/=255;g/=255;b/=255;var max=Math.max(r,g,b),min=Math.min(r,g,b);var h,s,v=max;var d=max-min;s=max===0?0:d/max;if(max===min){h=0;}else{switch(max){case r:h=((g-b)/d+(g<b?6:0))/6;break;case g:h=((b-r)/d+2)/6;break;case b:h=((r-g)/d+4)/6;break;}}return{h:Math.round(h*360),s:Math.round(s*100),v:Math.round(v*100)};}
+function fromHex(v){var rgb=hexToRgb(v);document.getElementById('valR').value=rgb.r;document.getElementById('valG').value=rgb.g;document.getElementById('valB').value=rgb.b;var hsl=rgbToHsl(rgb.r,rgb.g,rgb.b);document.getElementById('valH').value=hsl.h;document.getElementById('valS').value=hsl.s;document.getElementById('valL').value=hsl.l;var hsv=rgbToHsv(rgb.r,rgb.g,rgb.b);document.getElementById('valHsv').value=hsv.h;document.getElementById('valSv').value=hsv.s;document.getElementById('valV').value=hsv.v;updateDisplay(rgb);}
+function fromSliders(){var r=parseInt(document.getElementById('valR').value)||0;var g=parseInt(document.getElementById('valG').value)||0;var b=parseInt(document.getElementById('valB').value)||0;var h='#'+r.toString(16).padStart(2,'0')+g.toString(16).padStart(2,'0')+b.toString(16).padStart(2,'0');document.getElementById('hexInput').value=h;var hsl=rgbToHsl(r,g,b);var hsv=rgbToHsv(r,g,b);document.getElementById('valH').value=hsl.h;document.getElementById('valS').value=hsl.s;document.getElementById('valL').value=hsl.l;document.getElementById('valHsv').value=hsv.h;document.getElementById('valSv').value=hsv.s;document.getElementById('valV').value=hsv.v;updateDisplay({r:r,g:g,b:b});}
+function updateDisplay(rgb){document.getElementById('valHex').textContent='#'+rgb.r.toString(16).padStart(2,'0')+rgb.g.toString(16).padStart(2,'0')+rgb.b.toString(16).padStart(2,'0');document.getElementById('valRGB').textContent='rgb('+rgb.r+', '+rgb.g+', '+rgb.b+')';var hsl=rgbToHsl(rgb.r,rgb.g,rgb.b);document.getElementById('valHSL').textContent='hsl('+hsl.h+', '+hsl.s+'%, '+hsl.l+'%)';var hsv=rgbToHsv(rgb.r,rgb.g,rgb.b);document.getElementById('valHSV').textContent='hsv('+hsv.h+', '+hsv.s+'%, '+hsv.v+'%)';document.getElementById('preview').style.backgroundColor='rgb('+rgb.r+','+rgb.g+','+rgb.b+')';}
+function copyVal(id){var el=document.getElementById(id);navigator.clipboard.writeText(el.textContent).catch(function(){});}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

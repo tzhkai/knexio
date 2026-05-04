@@ -83,6 +83,14 @@
         "@type": "Answer",
         "text": "Twitter Cards are specialized meta tags that enable rich media attachments in tweets. They allow you to add images, videos, and other media to your tweets when your content is shared, increasing engagement and click-through rates."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a canonical link?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A canonical link tells search engines which version of a page should be indexed when multiple versions exist (e.g., HTTP vs HTTPS, or with/without www). This prevents duplicate content issues and ensures SEO authority is consolidated to your preferred URL."
+      }
     }
   ]
 }
@@ -412,7 +420,22 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function clearAll(tab) {
+  var el = document.getElementById('input');
+  if (el) el.value = '';
+  var out = document.getElementById('output');
+  if (out) out.value = out.textContent = '';
+}
+</script>
+
+<script>
+function generateTags(){var t=document.getElementById('title').value,d=document.getElementById('desc').value,u=document.getElementById('url').value,img=document.getElementById('image').value;var out='<!-- Primary Meta Tags -->\n<title>'+t+'</title>\n<meta name="title" content="'+t+'">\n<meta name="description" content="'+d+'">\n\n<!-- Open Graph -->\n<meta property="og:title" content="'+t+'">\n<meta property="og:description" content="'+d+'">\n<meta property="og:url" content="'+u+'">\n<meta property="og:image" content="'+img+'">\n<meta property="og:type" content="website">\n\n<!-- Twitter -->\n<meta name="twitter:card" content="summary_large_image">\n<meta name="twitter:title" content="'+t+'">\n<meta name="twitter:description" content="'+d+'">\n<meta name="twitter:image" content="'+img+'">';document.getElementById('output').value=out;}
+function clearAll(){document.getElementById('title').value='';document.getElementById('desc').value='';document.getElementById('url').value='';document.getElementById('image').value='';document.getElementById('output').value='';}
+function copyAllTags(){var el=document.getElementById('output');el.select();el.setSelectionRange(0,99999);navigator.clipboard.writeText(el.value).catch(function(){document.execCommand('copy');});}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

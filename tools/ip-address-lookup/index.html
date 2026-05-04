@@ -54,34 +54,18 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Is this tool free to use?",
+      "name": "How accurate is IP geolocation?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, this tool is completely free to use. No registration, no login, and no subscription required. Just open the page and start using it."
+        "text": "Country-level accuracy is ~95%. City-level accuracy varies and may be off by 50-100 miles."
       }
     },
     {
       "@type": "Question",
-      "name": "Is my data safe? Is anything stored on a server?",
+      "name": "Can I look up IPv6 addresses?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, your data is safe. All processing happens entirely in your browser \u2014 your input never leaves your device and is not sent to any server."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does this tool work on mobile devices?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. The tool is fully responsive and works on smartphones, tablets, and desktop computers."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How accurate is the result?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The tool uses standard algorithms and web APIs to provide accurate results. For critical or professional use, please verify with additional sources."
+        "text": "Yes, the tool supports both IPv4 and IPv6 address lookups."
       }
     }
   ]
@@ -183,7 +167,11 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function lookupIP(){var ip=document.getElementById('ipInput').value;fetch('https://ipapi.co/'+(ip||'')+'/json/').then(function(r){return r.json();}).then(function(d){var h='';h+='IP: '+d.ip+'\n';h+='City: '+d.city+'\n';h+='Region: '+d.region+'\n';h+='Country: '+d.country_name+'\n';h+='ISP: '+d.org+'\n';h+='Timezone: '+d.timezone;document.getElementById('result').textContent=h;}).catch(function(){document.getElementById('result').textContent='Lookup failed. Try again.';});}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

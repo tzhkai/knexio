@@ -523,7 +523,11 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function calculateCompound(){var p=parseFloat(document.getElementById('principal').value)||0;var r=(parseFloat(document.getElementById('rate').value)||0)/100;var n=parseInt(document.getElementById('compound').value)||1;var t=parseFloat(document.getElementById('time').value)||0;var a=p*Math.pow(1+r/n,n*t);document.getElementById('result').textContent='$'+a.toFixed(2);document.getElementById('interest-earned').textContent='$'+(a-p).toFixed(2);}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

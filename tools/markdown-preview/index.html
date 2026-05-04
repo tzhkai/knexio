@@ -53,7 +53,7 @@
       "name": "Can I export the rendered HTML?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes! Click the \\"Copy HTML\\" button to copy the rendered HTML code to your clipboard. You can then paste it into any HTML editor, content management system, or website. The HTML includes inline styles for basic formatting."
+        "text": "Yes! Click the \"Copy HTML\" button to copy the rendered HTML code to your clipboard. You can then paste it into any HTML editor, content management system, or website. The HTML includes inline styles for basic formatting."
       }
     },
     {
@@ -70,6 +70,14 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Absolutely! This tool is perfect for previewing GitHub README files, documentation, blog posts, and any Markdown content. Copy your README content here, see how it looks, then copy the HTML for use elsewhere or paste the Markdown back."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this tool free to use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, the Markdown preview tool is completely free to use with no registration required. There's no limit on the amount of text you can preview or how many times you can use it. Works on any modern browser."
       }
     }
   ]
@@ -507,7 +515,22 @@ console.log(greeting);
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function clearAll(tab) {
+  var el = document.getElementById('input');
+  if (el) el.value = '';
+  var out = document.getElementById('output');
+  if (out) out.value = out.textContent = '';
+}
+</script>
+
+<script>
+function copyMarkdown(){var el=document.getElementById('input');el.select();el.setSelectionRange(0,99999);navigator.clipboard.writeText(el.value).catch(function(){document.execCommand('copy');});}
+function copyHTML(){var el=document.getElementById('output');navigator.clipboard.writeText(el.innerHTML).catch(function(){});}
+function clearAll(){document.getElementById('input').value='';document.getElementById('output').innerHTML='';}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

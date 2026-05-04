@@ -305,34 +305,18 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Is this tool free to use?",
+      "name": "What pagination styles are available?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, this tool is completely free to use. No registration, no login, and no subscription required. Just open the page and start using it."
+        "text": "We provide standard numbered pagination, prev/next only, and compact ellipsis style."
       }
     },
     {
       "@type": "Question",
-      "name": "Is my data safe? Is anything stored on a server?",
+      "name": "Is the code responsive?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, your data is safe. All processing happens entirely in your browser \u2014 your input never leaves your device and is not sent to any server."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does this tool work on mobile devices?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. The tool is fully responsive and works on smartphones, tablets, and desktop computers."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How accurate is the result?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The tool uses standard algorithms and web APIs to provide accurate results. For critical or professional use, please verify with additional sources."
+        "text": "Yes, the generated pagination works on mobile and desktop screens."
       }
     }
   ]
@@ -486,7 +470,23 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function clearAll(tab) {
+  var el = document.getElementById('input');
+  if (el) el.value = '';
+  var out = document.getElementById('output');
+  if (out) out.value = out.textContent = '';
+}
+</script>
+
+<script>
+function generatePagination(){var t=parseInt(document.getElementById('total').value)||10;var c=parseInt(document.getElementById('current').value)||1;var style=document.getElementById('style').value;var h='<nav><ul style="display:flex;gap:8px;list-style:none;padding:0">';if(c>1)h+='<li><a href="?page='+(c-1)+'">Prev</a></li>';for(var i=1;i<=t;i++){h+='<li><a href="?page='+i+'"'+(i===c?' style="font-weight:bold"':'')+'>'+i+'</a></li>';}if(c<t)h+='<li><a href="?page='+(c+1)+'">Next</a></li>';h+='</ul></nav>';document.getElementById('output').value=h;}
+function clearAll(){document.getElementById('total').value='';document.getElementById('current').value='';document.getElementById('output').value='';}
+function copyHTML(){var el=document.getElementById('output');el.select();el.setSelectionRange(0,99999);navigator.clipboard.writeText(el.value).catch(function(){document.execCommand('copy');});}
+function copyCSS(){navigator.clipboard.writeText('.pagination{display:flex;gap:8px;list-style:none}.pagination a{padding:8px 12px;border:1px solid #ddd;border-radius:4px;text-decoration:none}').catch(function(){});}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

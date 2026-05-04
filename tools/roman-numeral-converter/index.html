@@ -79,6 +79,14 @@
         "@type": "Answer",
         "text": "Yes! Simply enter the year (e.g., 2024 → MMXXIV) to see its Roman numeral representation. Great for movie credits, book editions, or events."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this converter free to use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutely. This Roman numeral converter is completely free with no limits or restrictions. Use it as often as you need."
+      }
     }
   ]
 }
@@ -267,7 +275,12 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function setMode(m){document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active');});document.getElementById('tab-'+m).classList.add('active');event.target.classList.add('active');}
+function convert(){var inp=document.getElementById('input'),out=document.getElementById('output');if(document.getElementById('tab-n2r').classList.contains('active')){var n=parseInt(inp.value);if(isNaN(n)||n<1||n>3999){out.value='Enter a number 1-3999';return;}var v=[1000,900,500,400,100,90,50,40,10,9,5,4,1];var s=['M','CM','D','CD','C','XC','L','XL','X','IX','V','IV','I'];var r='';for(var i=0;i<v.length;i++){while(n>=v[i]){r+=s[i];n-=v[i];}}out.value=r;}else{var r={'I':1,'V':5,'X':10,'L':50,'C':100,'D':500,'M':1000};var t=inp.value.toUpperCase();var total=0,prev=0;for(var i=t.length-1;i>=0;i--){var val=r[t[i]]||0;total+=val>=prev?val:-val;prev=val;}out.value=total||'Invalid Roman numeral';}}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

@@ -88,6 +88,14 @@
         "@type": "Answer",
         "text": "Yes. Use the Speaking Time result for video scripts or voice-overs. A 10-minute video needs roughly 1,300 words at 130 WPM. Adjust the speaking speed to match your presenter's natural pace for a more accurate estimate."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "How accurate is the reading time estimate?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The estimate is based on average reading speed and is a reliable approximation for most content. Actual reading time may vary depending on content complexity, formatting, images, and the individual reader's familiarity with the topic."
+      }
     }
   ]
 }
@@ -114,7 +122,7 @@ body{
 
 h1{font-size:32px;margin-bottom:8px}
 h2{font-size:22px;margin-top:30px;margin-bottom:10px}
-.subtitle{color:var(--sub);margin-bottom:24px}
+.subtitle{color:var(--sub);margin-bottom:24px;text-align:left}
 
 .card{
   background:var(--card);
@@ -126,7 +134,8 @@ h2{font-size:22px;margin-top:30px;margin-bottom:10px}
 
 .tip{font-size:13px;color:var(--sub);margin-top:10px}
 
-.section p{color:var(--sub);line-height:1.7;margin-bottom:10px}
+.section{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:24px}
+.section h2{margin-top:0;font-size:20px}.section ul{margin:12px 0 0;padding-left:22px;color:var(--sub);line-height:1.7}.section li{margin-bottom:8px}.section li strong{color:var(--text)}.section p{color:var(--sub);line-height:1.7;margin:0}
 
 .tools a{
   display:inline-block;
@@ -312,7 +321,21 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function clearAll(tab) {
+  var el = document.getElementById('input');
+  if (el) el.value = '';
+  var out = document.getElementById('output');
+  if (out) out.value = out.textContent = '';
+}
+</script>
+
+<script>
+function calculate(){var t=document.getElementById('input').value;var w=t.trim()?t.trim().split(/\s+/).length:0;document.getElementById('wordCount').textContent=w;var min=w/200;document.getElementById('readTime').textContent=min<1?'< 1 min':Math.ceil(min)+' min';document.getElementById('speakTime').textContent=Math.ceil(w/130)+' min';}
+function clearAll(){document.getElementById('input').value='';document.getElementById('wordCount').textContent='0';document.getElementById('readTime').textContent='0 min';document.getElementById('speakTime').textContent='0 min';}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

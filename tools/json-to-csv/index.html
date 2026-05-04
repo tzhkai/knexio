@@ -45,7 +45,7 @@
       "name": "What JSON format does this converter support?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "This converter expects a JSON array of objects. Each object represents a row, and the keys become the CSV headers. For example: [{\\"name\\":\\"Alice\\",\\"age\\":30},{\\"name\\":\\"Bob\\",\\"age\\":25}]."
+        "text": "The converter supports a JSON array of objects as input, which is the most common format for tabular data. Each object in the array becomes one row in the CSV output."
       }
     },
     {
@@ -53,7 +53,7 @@
       "name": "How are nested objects handled?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Nested objects are automatically flattened using dot notation. For example, {\\"user\\":{\\"name\\":\\"Alice\\"}} becomes a column named \\"user.name\\" with the value \\"Alice\\"."
+        "text": "Nested objects are flattened to their string representation in the CSV output. For complex nested JSON, consider flattening the structure first for best results."
       }
     },
     {
@@ -61,7 +61,7 @@
       "name": "Can I use different delimiters?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, you can choose between comma (,), semicolon (;), tab (TSV), or pipe (|) delimiters. This is useful for importing into different spreadsheet applications that may require specific formats."
+        "text": "The default output uses commas as delimiters. Values containing commas, quotes, or newlines are automatically wrapped in double quotes per the CSV standard."
       }
     },
     {
@@ -69,7 +69,7 @@
       "name": "What happens with special characters?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Special characters, quotes, and newlines are automatically escaped according to CSV standards. This ensures the output can be correctly imported into spreadsheet applications without parsing errors."
+        "text": "Special characters like commas, quotes, and newlines are properly escaped according to the CSV specification to ensure valid output."
       }
     },
     {
@@ -77,7 +77,15 @@
       "name": "Is there a file size limit?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "There's no strict file size limit, but very large JSON files (over 10MB) may take longer to process due to browser limitations. For larger files, consider using server-side conversion tools."
+        "text": "Processing happens entirely in your browser, so the limit depends on your device memory. Very large JSON files (100MB+) may cause performance issues."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my data secure?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. All conversion happens locally in your browser. Your data is never uploaded to any server, stored, or shared."
       }
     }
   ]
@@ -254,7 +262,30 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function pasteClipboard() {
+  navigator.clipboard.readText().then(function(text){
+    var el = document.getElementById('input') || document.getElementById('textInput');
+    if (el) el.value = text;
+  }).catch(function(){});
+}
+function clearAll(tab) {
+  var el = document.getElementById('input');
+  if (el) el.value = '';
+  var out = document.getElementById('output');
+  if (out) out.value = out.textContent = '';
+}
+</script>
+
+<script>
+function convert(){var t=document.getElementById('input').value;try{var data=JSON.parse(t);if(!Array.isArray(data)){document.getElementById('output').value='Input must be a JSON array';return;}if(!data.length){document.getElementById('output').value='';return;}var keys=Object.keys(data[0]);var csv=keys.join(',')+'\n';data.forEach(function(row){var vals=keys.map(function(k){var v=row[k];if(typeof v==='string'&&(v.includes(',')||v.includes('"')||v.includes('\n')))return '"'+v.replace(/"/g,'""')+'"';return v;}).join(',');csv+=vals+'\n';});document.getElementById('output').value=csv;}catch(e){document.getElementById('output').value='Invalid JSON';}}
+function downloadCSV(){var t=document.getElementById('output').value;var b=new Blob([t],{type:'text/csv'});var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='data.csv';a.click();}
+function pasteClipboard(){navigator.clipboard.readText().then(function(t){document.getElementById('input').value=t;}).catch(function(){});}
+function loadExample(){document.getElementById('input').value='[{\n  "name": "John",\n  "age": 30,\n  "city": "New York"\n},\n{\n  "name": "Jane",\n  "age": 25,\n  "city": "London"\n}]';}
+function clearAll(){document.getElementById('input').value='';document.getElementById('output').value='';}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

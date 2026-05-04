@@ -79,6 +79,14 @@
         "@type": "Answer",
         "text": "There's no strict file size limit, but very large XML files (over 10MB) may take longer to process due to browser limitations. For larger files, consider using server-side formatting tools."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my data secure?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutely. All processing happens locally in your browser. Your XML code is never sent to any server, making it completely safe for sensitive configurations, API responses, or confidential data."
+      }
     }
   ]
 }
@@ -265,7 +273,37 @@ Example:
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function clearAll(tab) {
+  var el = document.getElementById('input');
+  if (el) el.value = '';
+  var out = document.getElementById('output');
+  if (out) out.value = out.textContent = '';
+}
+function pasteClipboard() {
+  navigator.clipboard.readText().then(function(text){
+    var el = document.getElementById('input') || document.getElementById('textInput');
+    if (el) el.value = text;
+  }).catch(function(){});
+}
+function copyOutput(id) {
+  var el = id ? document.getElementById(id) : document.getElementById('output');
+  if (!el) return;
+  var text = el.value || el.textContent || el.innerText;
+  navigator.clipboard.writeText(text).catch(function(){});
+}
+</script>
+
+<script>
+function formatXML(){var t=document.getElementById('input').value;var r='',indent=0;t.replace(/>\s*</g,'><').replace(/<[^>]+>/g,function(m){if(m.match(/^<\//))indent--;r+='  '.repeat(Math.max(0,indent))+m+'\n';if(!m.match(/\/>|^<\//)&&!m.match(/^<\?|^<!/))indent++;return m;});document.getElementById('output').value=r.trim();}
+function minifyXML(){var t=document.getElementById('input').value;document.getElementById('output').value=t.replace(/>\s+</g,'><').trim();}
+function validateXML(){var t=document.getElementById('input').value;try{var p=new DOMParser();var d=p.parseFromString(t,'text/xml');var err=d.querySelector('parsererror');document.getElementById('output').value=err?'Invalid XML: '+err.textContent:'Valid XML';}catch(e){document.getElementById('output').value='Invalid XML';}}
+function clearAll(){document.getElementById('input').value='';document.getElementById('output').value='';}
+function pasteClipboard(){navigator.clipboard.readText().then(function(t){document.getElementById('input').value=t;}).catch(function(){});}
+function copyOutput(){var el=document.getElementById('output');el.select();el.setSelectionRange(0,99999);navigator.clipboard.writeText(el.value).catch(function(){document.execCommand('copy');});}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

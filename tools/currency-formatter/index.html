@@ -65,7 +65,7 @@
       "name": "Can I control decimal places?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes! You can set decimal places to 0, 1, 2, 3, or 4, or choose \\"Auto\\" to use the currency's default. For example, JPY typically uses 0 decimal places, while most other currencies use 2. This lets you customize the display for your needs."
+        "text": "Yes! You can set decimal places to 0, 1, 2, 3, or 4, or choose \"Auto\" to use the currency's default. For example, JPY typically uses 0 decimal places, while most other currencies use 2. This lets you customize the display for your needs."
       }
     },
     {
@@ -82,6 +82,14 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Absolutely. All formatting happens entirely in your browser using JavaScript. Your numbers are never sent to any server, ensuring complete privacy and security for your financial data. This makes it safe to use for invoices, quotes, and sensitive calculations."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I copy formatted results?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes! Click \"Copy Result\" to copy the single formatted number, or use \"Copy All\" in the bulk section to copy all formatted numbers at once. The results are ready to paste into documents, spreadsheets, or any application."
       }
     }
   ]
@@ -535,7 +543,15 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function formatSingle(){var v=parseFloat(document.getElementById('amount').value)||0;var c=document.getElementById('currency').value;var l=document.getElementById('locale').value;try{document.getElementById('result').value=new Intl.NumberFormat(l,{style:'currency',currency:c}).format(v);}catch(e){document.getElementById('result').value='$'+v.toFixed(2);}}
+function copyResult(){var el=document.getElementById('result');el.select();el.setSelectionRange(0,99999);navigator.clipboard.writeText(el.value).catch(function(){document.execCommand('copy');});}
+function formatBulk(){var lines=document.getElementById('bulkInput').value.split('\n');var c=document.getElementById('currency').value;var l=document.getElementById('locale').value;var out=lines.map(function(line){var v=parseFloat(line);if(isNaN(v))return line;try{return new Intl.NumberFormat(l,{style:'currency',currency:c}).format(v);}catch(e){return '$'+v.toFixed(2);}}).join('\n');document.getElementById('bulkOutput').value=out;}
+function copyBulkOutput(){var el=document.getElementById('bulkOutput');el.select();el.setSelectionRange(0,99999);navigator.clipboard.writeText(el.value).catch(function(){document.execCommand('copy');});}
+function clearBulk(){document.getElementById('bulkInput').value='';document.getElementById('bulkOutput').value='';}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

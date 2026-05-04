@@ -54,7 +54,7 @@
       "name": "How is monthly payment calculated?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Monthly payment is calculated using the amortization formula: M = P × [r(1+r)^n] / [(1+r)^n-1], where M is monthly payment, P is principal, r is monthly interest rate, and n is number of payments. This accounts for compound interest over the loan term."
+        "text": "Monthly payment = P * r * (1+r)^n / ((1+r)^n - 1), where P is the principal, r is the monthly interest rate, and n is the number of payments."
       }
     },
     {
@@ -62,7 +62,7 @@
       "name": "What is an amortization schedule?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "An amortization schedule is a table showing each loan payment over time. It breaks down how much of each payment goes toward principal versus interest. Early in the loan, most payments go to interest. Over time, more goes to principal."
+        "text": "An amortization schedule shows each payment broken down into principal and interest over the life of the loan. Early payments go mostly to interest, later payments mostly to principal."
       }
     },
     {
@@ -70,7 +70,7 @@
       "name": "Should I choose a longer or shorter loan term?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Shorter terms have higher monthly payments but less total interest. Longer terms have lower monthly payments but more total interest over the loan's life. Choose based on your budget and total cost preference."
+        "text": "Shorter terms have higher monthly payments but less total interest. Longer terms have lower monthly payments but more total interest. Choose based on your monthly budget and long-term goals."
       }
     },
     {
@@ -78,7 +78,7 @@
       "name": "What loan types does this calculator support?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "This calculator works for auto loans, personal loans, mortgages, and student loans. The calculation method is the same for all types, though typical interest rates and terms vary by loan type."
+        "text": "The calculator works for any fixed-rate amortizing loan: mortgages, auto loans, personal loans, and student loans. It does not support variable-rate or interest-only loans."
       }
     },
     {
@@ -86,7 +86,15 @@
       "name": "Can I calculate a loan with 0% interest?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, simply enter 0 as the interest rate. The calculator will handle zero-interest loans by dividing the principal evenly across the payment period."
+        "text": "Yes, the calculator handles 0% interest loans. In that case, the monthly payment is simply the principal divided by the number of months."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this calculator accurate?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The calculator uses the standard amortization formula and provides accurate estimates. For exact figures, always verify with your lender."
       }
     }
   ]
@@ -435,7 +443,21 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function clearAll(tab) {
+  var el = document.getElementById('input');
+  if (el) el.value = '';
+  var out = document.getElementById('output');
+  if (out) out.value = out.textContent = '';
+}
+</script>
+
+<script>
+function calculateLoan(){var p=parseFloat(document.getElementById('amount').value)||0;var r=(parseFloat(document.getElementById('rate').value)||0)/100/12;var n=(parseFloat(document.getElementById('term').value)||0)*12;if(!p||!r||!n){document.getElementById('monthly').textContent='--';return;}var m=p*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);document.getElementById('monthly').textContent='$'+m.toFixed(2);var total=m*n;document.getElementById('total').textContent='$'+total.toFixed(2);document.getElementById('interest').textContent='$'+(total-p).toFixed(2);}
+function clearAll(){document.getElementById('amount').value='';document.getElementById('rate').value='';document.getElementById('term').value='';document.getElementById('monthly').textContent='--';document.getElementById('total').textContent='--';document.getElementById('interest').textContent='--';}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

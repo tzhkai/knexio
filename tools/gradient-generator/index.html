@@ -54,7 +54,7 @@
       "name": "Can I add more than two colors to a gradient?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Absolutely! Click \\"Add Color Stop\\" to include unlimited colors. Each color can be positioned independently (0-100%) creating complex multi-color gradients. The order of stops determines the color transition sequence."
+        "text": "Absolutely! Click \"Add Color Stop\" to include unlimited colors. Each color can be positioned independently (0-100%) creating complex multi-color gradients. The order of stops determines the color transition sequence."
       }
     },
     {
@@ -70,7 +70,7 @@
       "name": "How do I use the generated CSS code?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Click \\"Copy CSS\\" and paste it into your CSS file or HTML style attribute. The code includes the gradient function with all your settings. Apply it to background, background-image, or any CSS property accepting images."
+        "text": "Click \"Copy CSS\" and paste it into your CSS file or HTML style attribute. The code includes the gradient function with all your settings. Apply it to background, background-image, or any CSS property accepting images."
       }
     },
     {
@@ -79,6 +79,14 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Yes, CSS gradients are supported in all modern browsers including Chrome, Firefox, Safari, and Edge. Our generator uses standard syntax ensuring maximum compatibility. No vendor prefixes are needed for current browser versions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use gradients for print designs?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "CSS gradients are designed for screen displays, not print. For print, use solid colors or raster images. However, gradients are perfect for web design, mobile apps, and digital presentations."
       }
     }
   ]
@@ -576,7 +584,19 @@
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+var stops=[{color:'#4f8cff',pos:0},{color:'#a78bfa',pos:100}],gradType='linear',angle=90;
+function setType(t){gradType=t;document.querySelectorAll('.type-btn').forEach(function(b){b.classList.remove('active');});event.target.classList.add('active');render();}
+function updateAngle(v){angle=parseInt(v);render();}
+function addStop(){var c='#'+Math.floor(Math.random()*16777215).toString(16).padStart(6,'0');stops.push({color:c,pos:50+Math.floor(Math.random()*50)});stops.sort(function(a,b){return a.pos-b.pos;});renderStops();render();}
+function copyCss(){navigator.clipboard.writeText(document.getElementById('cssOutput').value).catch(function(){});}
+function randomGradient(){stops=[{color:'#'+Math.floor(Math.random()*16777215).toString(16).padStart(6,'0'),pos:0},{color:'#'+Math.floor(Math.random()*16777215).toString(16).padStart(6,'0'),pos:100}];angle=Math.floor(Math.random()*360);renderStops();render();}
+function render(){var s=stops.map(function(s){return s.color+' '+s.pos+'%';}).join(', ');var css;if(gradType==='linear')css='linear-gradient('+angle+'deg, '+s+')';else if(gradType==='radial')css='radial-gradient(circle, '+s+')';else css='conic-gradient(from '+angle+'deg, '+s+')';document.getElementById('preview').style.background=css;document.getElementById('cssOutput').value='background: '+css+';';}
+function renderStops(){var h='';stops.forEach(function(s,i){h+='<div style="display:flex;gap:8px;align-items:center;margin-bottom:8px"><input type="color" value="'+s.color+'" onchange="stops['+i+'].color=this.value;render()"><input type="range" min="0" max="100" value="'+s.pos+'" oninput="stops['+i+'].pos=parseInt(this.value);render()" style="flex:1"><span>'+s.pos+'%</span><button onclick="stops.splice('+i+',1);renderStops();render()" style="background:var(--red);color:#fff;border:none;border-radius:4px;padding:2px 8px;cursor:pointer">x</button></div>';});document.getElementById('stops').innerHTML=h;}
+renderStops();render();
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

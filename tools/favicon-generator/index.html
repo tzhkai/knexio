@@ -79,6 +79,14 @@
         "@type": "Answer",
         "text": "The tool uses high-quality resampling algorithms to maintain image quality during resizing. However, upsizing smaller images may result in some quality loss. For best results, start with a high-resolution source image (at least 512x512 pixels)."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my data safe and private?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutely! All image processing happens entirely in your browser. Your images are never uploaded to any server. No data is stored or transmitted outside your device. Complete privacy and security."
+      }
     }
   ]
 }
@@ -442,7 +450,12 @@
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function downloadICO(){var c=document.getElementById('preview');if(!c)return;var a=document.createElement('a');a.href=c.toDataURL();a.download='favicon.ico';a.click();}
+function downloadPNG(size){var c=document.getElementById('preview');if(!c)return;var tmp=document.createElement('canvas');tmp.width=size;tmp.height=size;var ctx=tmp.getContext('2d');ctx.drawImage(c,0,0,size,size);var a=document.createElement('a');a.href=tmp.toDataURL('image/png');a.download='favicon-'+size+'x'+size+'.png';a.click();}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

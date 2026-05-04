@@ -197,7 +197,7 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
       "name": "Is Base64 encoding secure?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Base64 is not encryption \u2014 it is purely an encoding method. Anyone can decode a Base64 string. For secure data transmission, use HTTPS and proper encryption algorithms."
+        "text": "Base64 is not encryption — it is purely an encoding method. Anyone can decode a Base64 string. For secure data transmission, use HTTPS and proper encryption algorithms."
       }
     },
     {
@@ -348,7 +348,27 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function clearText() {
+  var el = document.getElementById('textInput') || document.getElementById('input');
+  if (el) el.value = '';
+  var out = document.getElementById('output');
+  if (out) out.value = out.textContent = '';
+}
+function copyOutput(id) {
+  var el = id ? document.getElementById(id) : document.getElementById('output');
+  if (!el) return;
+  var text = el.value || el.textContent || el.innerText;
+  navigator.clipboard.writeText(text).catch(function(){});
+}
+</script>
+
+<script>
+function encode(){var t=document.getElementById('input').value;document.getElementById('output').value=btoa(unescape(encodeURIComponent(t)));}
+function decode(){var t=document.getElementById('input').value;try{document.getElementById('output').value=decodeURIComponent(escape(atob(t)));}catch(e){document.getElementById('output').value='Invalid Base64 input';}}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

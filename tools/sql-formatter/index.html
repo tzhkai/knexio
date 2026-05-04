@@ -234,34 +234,10 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Is this tool free to use?",
+      "name": "Which SQL dialects are supported?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, this tool is completely free to use. No registration, no login, and no subscription required. Just open the page and start using it."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is my data safe? Is anything stored on a server?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, your data is safe. All processing happens entirely in your browser \u2014 your input never leaves your device and is not sent to any server."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does this tool work on mobile devices?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. The tool is fully responsive and works on smartphones, tablets, and desktop computers."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How accurate is the result?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The tool uses standard algorithms and web APIs to provide accurate results. For critical or professional use, please verify with additional sources."
+        "text": "We support MySQL, PostgreSQL, SQLite, SQL Server, and Oracle syntax."
       }
     }
   ]
@@ -394,7 +370,38 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function clearAll(tab) {
+  var el = document.getElementById('input');
+  if (el) el.value = '';
+  var out = document.getElementById('output');
+  if (out) out.value = out.textContent = '';
+}
+function pasteClipboard() {
+  navigator.clipboard.readText().then(function(text){
+    var el = document.getElementById('input') || document.getElementById('textInput');
+    if (el) el.value = text;
+  }).catch(function(){});
+}
+function copyOutput(id) {
+  var el = id ? document.getElementById(id) : document.getElementById('output');
+  if (!el) return;
+  var text = el.value || el.textContent || el.innerText;
+  navigator.clipboard.writeText(text).catch(function(){});
+}
+</script>
+
+<script>
+function formatSQL(){var t=document.getElementById('input').value;var kw=['SELECT','FROM','WHERE','AND','OR','ORDER BY','GROUP BY','HAVING','JOIN','LEFT JOIN','RIGHT JOIN','INNER JOIN','OUTER JOIN','ON','INSERT INTO','VALUES','UPDATE','SET','DELETE FROM','CREATE TABLE','ALTER TABLE','DROP TABLE','LIMIT','OFFSET','UNION','AS','IN','NOT IN','BETWEEN','LIKE','IS NULL','IS NOT NULL','CASE','WHEN','THEN','ELSE','END','DISTINCT','COUNT','SUM','AVG','MAX','MIN'];var r=t.replace(/\s+/g,' ');kw.forEach(function(k){var re=new RegExp('\\b'+k+'\\b','gi');r=r.replace(re,k);});r=r.replace(/\b(SELECT|FROM|WHERE|JOIN|ORDER BY|GROUP BY|HAVING|LIMIT|UNION)\b/gi,'\n$1').replace(/\b(AND|OR)\b/gi,'\n  $1').replace(/\b(LEFT|RIGHT|INNER|OUTER)\s+(JOIN)\b/gi,'\n$1 $2');document.getElementById('output').value=r.replace(/\n\n+/g,'\n').trim();}
+function minifySQL(){var t=document.getElementById('input').value;document.getElementById('output').value=t.replace(/\s+/g,' ').trim();}
+function uppercaseSQL(){document.getElementById('output').value=document.getElementById('input').value.toUpperCase();}
+function lowercaseSQL(){document.getElementById('output').value=document.getElementById('input').value.toLowerCase();}
+function clearAll(){document.getElementById('input').value='';document.getElementById('output').value='';}
+function pasteClipboard(){navigator.clipboard.readText().then(function(t){document.getElementById('input').value=t;}).catch(function(){});}
+function copyOutput(){var el=document.getElementById('output');el.select();el.setSelectionRange(0,99999);navigator.clipboard.writeText(el.value).catch(function(){document.execCommand('copy');});}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

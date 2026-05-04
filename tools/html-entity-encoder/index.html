@@ -53,7 +53,7 @@
       "name": "Which characters need to be encoded?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The most common characters that require encoding are: &amp; (ampersand), &lt; (less than), &gt; (greater than), \\" (double quote), and ' (single quote). Other special characters like ©, ®, and € also have entity codes."
+        "text": "The most common characters that require encoding are: & (ampersand), < (less than), > (greater than), \" (double quote), and ' (single quote). Other special characters like ©, ®, and € also have entity codes."
       }
     },
     {
@@ -61,7 +61,7 @@
       "name": "What's the difference between named and numeric entities?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Named entities use readable names like &amp;lt; for &lt;. Numeric entities use decimal (&amp;#60;) or hexadecimal (&amp;#x3C;) representations. Both work the same, but named entities are easier to remember and read in code."
+        "text": "Named entities use readable names like < for <. Numeric entities use decimal (&#60;) or hexadecimal (&#x3C;) representations. Both work the same, but named entities are easier to remember and read in code."
       }
     },
     {
@@ -69,7 +69,7 @@
       "name": "Can I encode Unicode characters?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, any Unicode character can be encoded as a numeric HTML entity. For example, the copyright symbol © can be written as &amp;#169; or &amp;#xA9;. This is useful for displaying special symbols that might not be supported in all character encodings."
+        "text": "Yes, any Unicode character can be encoded as a numeric HTML entity. For example, the copyright symbol © can be written as &#169; or &#xA9;. This is useful for displaying special symbols that might not be supported in all character encodings."
       }
     },
     {
@@ -78,6 +78,14 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "All processing happens locally in your browser. Your text is never sent to any server, making it completely safe for sensitive content, passwords, or confidential code snippets."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use this in my own projects?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "This tool is free to use for any purpose. The encoding and decoding logic is straightforward and can be implemented in JavaScript with built-in DOM methods like createElement and innerHTML."
       }
     }
   ]
@@ -243,6 +251,28 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
   <p>© 2026 Knexio. All rights reserved.</p>
 </footer>
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function copyOutput(id) {
+  var el = id ? document.getElementById(id) : document.getElementById('output');
+  if (!el) return;
+  var text = el.value || el.textContent || el.innerText;
+  navigator.clipboard.writeText(text).catch(function(){});
+}
+function clearAll(tab) {
+  var el = document.getElementById('input');
+  if (el) el.value = '';
+  var out = document.getElementById('output');
+  if (out) out.value = out.textContent = '';
+}
+</script>
+
+<script>
+function encodeEntities(){var t=document.getElementById('input').value;var d=document.createElement('div');d.textContent=t;document.getElementById('output').value=d.innerHTML;}
+function decodeEntities(){var t=document.getElementById('input').value;var d=document.createElement('div');d.innerHTML=t;document.getElementById('output').value=d.textContent;}
+function copyOutput(){var el=document.getElementById('output');el.select();el.setSelectionRange(0,99999);navigator.clipboard.writeText(el.value).catch(function(){document.execCommand('copy');});}
+function clearAll(){document.getElementById('input').value='';document.getElementById('output').value='';}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>

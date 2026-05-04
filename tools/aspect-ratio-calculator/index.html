@@ -79,6 +79,14 @@
         "@type": "Answer",
         "text": "Absolutely! For YouTube, use 16:9 (widescreen). For Instagram stories and TikTok, use 9:16 (portrait). For Instagram square posts, use 1:1. The calculator helps you resize images while keeping the correct proportions for each platform's requirements."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the difference between 4:3 and 16:9?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "4:3 is the older, boxier aspect ratio used by traditional TVs (640×480, 800×600, 1024×768). 16:9 is the widescreen format used by modern displays. 4:3 is better for older content and some photography, while 16:9 is ideal for movies, TV shows, and web design."
+      }
     }
   ]
 }
@@ -454,7 +462,16 @@
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function setPreset(w,h){document.getElementById('w1').value=w;document.getElementById('h1').value=h;calcRatio();}
+function calcRatio(){var w=parseInt(document.getElementById('w1').value)||0;var h=parseInt(document.getElementById('h1').value)||0;if(!w||!h)return;var g=gcd(w,h);document.getElementById('ratio').textContent=(w/g)+':'+(h/g);updateScale();}
+function updateScale(){var w1=parseInt(document.getElementById('w1').value)||0;var h1=parseInt(document.getElementById('h1').value)||0;if(!w1||!h1)return;var r=w1/h1;var w2=parseInt(document.getElementById('w2').value)||0;if(w2)document.getElementById('h2').value=Math.round(w2/r);}
+function gcd(a,b){return b?gcd(b,a%b):a;}
+function scaleFromW(){updateScale();}
+function scaleFromH(){var w1=parseInt(document.getElementById('w1').value)||0;var h1=parseInt(document.getElementById('h1').value)||0;if(!w1||!h1)return;var r=w1/h1;var h2=parseInt(document.getElementById('h2').value)||0;if(h2)document.getElementById('w2').value=Math.round(h2*r);}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

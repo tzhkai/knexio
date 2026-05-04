@@ -86,7 +86,15 @@
       "name": "Can I use this for calculating discounts?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Absolutely. To calculate a discounted price, use the \\"What is X% of Y?\\" calculator to find the discount amount, then subtract it from the original price. For example, 20% off $100 means the discount is $20, so the final price is $80."
+        "text": "Absolutely. To calculate a discounted price, use the \"What is X% of Y?\" calculator to find the discount amount, then subtract it from the original price. For example, 20% off $100 means the discount is $20, so the final price is $80."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are my calculations saved or stored anywhere?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. All calculations happen entirely in your browser. No data is sent to any server or stored anywhere."
       }
     }
   ]
@@ -344,7 +352,14 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function showCalc(type){document.querySelectorAll('.calc-panel').forEach(function(p){p.style.display='none';});document.getElementById(type).style.display='block';document.querySelectorAll('.calc-tab').forEach(function(t){t.classList.remove('active');});event.target.classList.add('active');}
+function calcWhatIs(){var p=parseFloat(document.getElementById('wi-percent').value)||0;var n=parseFloat(document.getElementById('wi-number').value)||0;document.getElementById('wi-result').textContent=(p/100*n).toFixed(2);}
+function calcPercentageOf(){var a=parseFloat(document.getElementById('po-a').value)||0;var b=parseFloat(document.getElementById('po-b').value)||0;document.getElementById('po-result').textContent=b?(a/b*100).toFixed(2)+'%':'N/A';}
+function calcChange(){var oldV=parseFloat(document.getElementById('ch-old').value)||0;var newV=parseFloat(document.getElementById('ch-new').value)||0;var diff=((newV-oldV)/oldV*100);document.getElementById('ch-result').textContent=oldV?diff.toFixed(2)+'%':'N/A';}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

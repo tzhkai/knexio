@@ -84,46 +84,6 @@ textarea:focus{outline:none;border-color:var(--accent)}
     footer { border-top: 1px solid var(--border); padding-top: 24px; margin-top: 40px; text-align: center; color: var(--text-sub); font-size: 14px; }
   footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
   
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Is this tool free to use?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, this tool is completely free to use. No registration, no login, and no subscription required. Just open the page and start using it."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is my data safe? Is anything stored on a server?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, your data is safe. All processing happens entirely in your browser \u2014 your input never leaves your device and is not sent to any server."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does this tool work on mobile devices?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. The tool is fully responsive and works on smartphones, tablets, and desktop computers."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How accurate is the result?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The tool uses standard algorithms and web APIs to provide accurate results. For critical or professional use, please verify with additional sources."
-      }
-    }
-  ]
-}
-</script>
   
 
   <meta name="twitter:card" content="summary_large_image" />
@@ -267,7 +227,22 @@ textarea:focus{outline:none;border-color:var(--accent)}
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function clearAll(tab) {
+  var el = document.getElementById('input');
+  if (el) el.value = '';
+  var out = document.getElementById('output');
+  if (out) out.value = out.textContent = '';
+}
+</script>
+
+<script>
+function decodeJWT(){var t=document.getElementById('input').value.trim();var parts=t.split('.');if(parts.length!==3){document.getElementById('output').innerHTML='<p style="color:var(--red)">Invalid JWT format</p>';return;}try{var header=JSON.parse(atob(parts[0]));var payload=JSON.parse(atob(parts[1]));document.getElementById('output').innerHTML='<h3>Header</h3><pre>'+JSON.stringify(header,null,2)+'</pre><h3>Payload</h3><pre>'+JSON.stringify(payload,null,2)+'</pre>';}catch(e){document.getElementById('output').innerHTML='<p style="color:var(--red)">Decode error: '+e.message+'</p>';}}
+function clearAll(){document.getElementById('input').value='';document.getElementById('output').innerHTML='';}
+function pasteSample(){document.getElementById('input').value='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c';}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

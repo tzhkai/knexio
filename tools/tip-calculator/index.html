@@ -88,6 +88,14 @@
         "@type": "Answer",
         "text": "Yes, this tip calculator is completely free. No registration or signup is required. Just open the page and start calculating tips."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "Are my calculations saved or stored anywhere?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. All calculations happen entirely in your browser. No data is sent to any server or stored anywhere."
+      }
     }
   ]
 }
@@ -343,7 +351,11 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function calculateTip(){var b=parseFloat(document.getElementById('bill').value)||0;var p=parseFloat(document.getElementById('tipPercent').value)||15;var peo=parseInt(document.getElementById('people').value)||1;var tip=b*p/100;var total=b+tip;document.getElementById('tipAmount').textContent='$'+tip.toFixed(2);document.getElementById('totalBill').textContent='$'+total.toFixed(2);document.getElementById('perPerson').textContent='$'+(total/peo).toFixed(2);}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

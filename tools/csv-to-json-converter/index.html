@@ -79,34 +79,18 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Is this tool free to use?",
+      "name": "How are headers handled?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, this tool is completely free to use. No registration, no login, and no subscription required. Just open the page and start using it."
+        "text": "By default, the first row of CSV is used as property names. You can toggle this option if your CSV doesn't have headers."
       }
     },
     {
       "@type": "Question",
-      "name": "Is my data safe? Is anything stored on a server?",
+      "name": "Can I handle nested CSV data?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, your data is safe. All processing happens entirely in your browser \u2014 your input never leaves your device and is not sent to any server."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does this tool work on mobile devices?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. The tool is fully responsive and works on smartphones, tablets, and desktop computers."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How accurate is the result?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The tool uses standard algorithms and web APIs to provide accurate results. For critical or professional use, please verify with additional sources."
+        "text": "The converter creates flat JSON by default. For nested structures, use our advanced options or preprocess your CSV."
       }
     }
   ]
@@ -227,7 +211,23 @@ Jane,25,Los Angeles"></textarea>
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function clearAll(tab) {
+  var el = document.getElementById('input');
+  if (el) el.value = '';
+  var out = document.getElementById('output');
+  if (out) out.value = out.textContent = '';
+}
+</script>
+
+<script>
+function convertToJSON(){var csv=document.getElementById('input').value.trim();var lines=csv.split('\n');if(lines.length<2){document.getElementById('output').value='[]';return;}var headers=lines[0].split(',').map(function(h){return h.trim();});var result=[];for(var i=1;i<lines.length;i++){var obj={};var vals=lines[i].split(',');for(var j=0;j<headers.length;j++){obj[headers[j]]=(vals[j]||'').trim();}result.push(obj);}document.getElementById('output').value=JSON.stringify(result,null,2);}
+function clearAll(){document.getElementById('input').value='';document.getElementById('output').value='';}
+function copyJSON(){var el=document.getElementById('output');el.select();el.setSelectionRange(0,99999);navigator.clipboard.writeText(el.value).catch(function(){document.execCommand('copy');});}
+function downloadJSON(){var t=document.getElementById('output').value;var b=new Blob([t],{type:'application/json'});var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='data.json';a.click();}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

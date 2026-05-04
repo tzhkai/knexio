@@ -253,7 +253,7 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
       "name": "Is my data safe? Is anything stored on a server?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, your data is safe. All processing happens entirely in your browser \u2014 your input never leaves your device and is not sent to any server."
+        "text": "Yes, your data is safe. All processing happens entirely in your browser — your input never leaves your device and is not sent to any server."
       }
     },
     {
@@ -386,7 +386,37 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function clearAll(tab) {
+  var el = document.getElementById('input');
+  if (el) el.value = '';
+  var out = document.getElementById('output');
+  if (out) out.value = out.textContent = '';
+}
+function pasteClipboard() {
+  navigator.clipboard.readText().then(function(text){
+    var el = document.getElementById('input') || document.getElementById('textInput');
+    if (el) el.value = text;
+  }).catch(function(){});
+}
+function copyOutput(id) {
+  var el = id ? document.getElementById(id) : document.getElementById('output');
+  if (!el) return;
+  var text = el.value || el.textContent || el.innerText;
+  navigator.clipboard.writeText(text).catch(function(){});
+}
+</script>
+
+<script>
+function encodeURL(){var t=document.getElementById('input').value;document.getElementById('output').value=encodeURIComponent(t);}
+function decodeURL(){var t=document.getElementById('input').value;try{document.getElementById('output').value=decodeURIComponent(t);}catch(e){document.getElementById('output').value='Invalid URL encoding';}}
+function swapText(){var inp=document.getElementById('input'),out=document.getElementById('output');var t=inp.value;inp.value=out.value;out.value=t;}
+function clearAll(){document.getElementById('input').value='';document.getElementById('output').value='';}
+function pasteClipboard(){navigator.clipboard.readText().then(function(t){document.getElementById('input').value=t;}).catch(function(){});}
+function copyOutput(){var el=document.getElementById('output');el.select();el.setSelectionRange(0,99999);navigator.clipboard.writeText(el.value).catch(function(){document.execCommand('copy');});}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

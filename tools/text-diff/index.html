@@ -258,7 +258,7 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
       "name": "Is my data safe? Is anything stored on a server?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, your data is safe. All processing happens entirely in your browser \u2014 your input never leaves your device and is not sent to any server."
+        "text": "Yes, your data is safe. All processing happens entirely in your browser — your input never leaves your device and is not sent to any server."
       }
     },
     {
@@ -393,7 +393,21 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function clearAll(tab) {
+  var el = document.getElementById('input');
+  if (el) el.value = '';
+  var out = document.getElementById('output');
+  if (out) out.value = out.textContent = '';
+}
+</script>
+
+<script>
+function runDiff(){var l=document.getElementById('left').value.split('\n'),r=document.getElementById('right').value.split('\n');var o='';var max=Math.max(l.length,r.length);for(var i=0;i<max;i++){var ll=l[i]||'',rr=r[i]||'';if(ll===rr){o+='<div style="color:var(--sub)">  '+ll+'</div>';}else{o+='<div style="background:rgba(248,113,113,0.15)">- '+ll+'</div>';o+='<div style="background:rgba(52,211,153,0.15)">+ '+rr+'</div>';}}document.getElementById('output').innerHTML=o;}
+function clearAll(){document.getElementById('left').value='';document.getElementById('right').value='';document.getElementById('output').innerHTML='';}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

@@ -433,6 +433,14 @@
         "@type": "Answer",
         "text": "Yes, the timer and stopwatch are fully responsive and work perfectly on smartphones and tablets. The touch-friendly buttons and large displays make it easy to use on any screen size."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my timing data stored or transmitted?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. All timing happens locally in your browser using JavaScript. No data is sent to any server or stored anywhere. Your timer settings and laps exist only while the page is open and are cleared when you close it."
+      }
     }
   ]
 }
@@ -571,6 +579,53 @@
   <p>© 2026 Knexio. All rights reserved.</p>
 </footer>
 
+<script>
+(function(){
+var timerInterval, swInterval, timerRemaining=0, swStart=0, swElapsed=0, swRunning=false, timerRunning=false, laps=[];
+
+function pad(n,d){d=d||2;var s=String(n);while(s.length<d)s='0'+s;return s;}
+function fmtTimer(sec){var h=Math.floor(sec/3600),m=Math.floor((sec%3600)/60),s=Math.floor(sec%60);return pad(h)+':'+pad(m)+':'+pad(s);}
+function fmtSW(ms){var m=Math.floor(ms/60000),s=Math.floor((ms%60000)/1000),cs=Math.floor((ms%1000)/10);return pad(m)+':'+pad(s)+'.'+pad(cs,2);}
+
+window.switchTab=function(tab){
+  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});
+  document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active');});
+  document.getElementById('tab-'+tab).classList.add('active');
+  event.target.classList.add('active');
+};
+
+window.setPreset=function(h,m,s){
+  document.getElementById('t-h').value=h;
+  document.getElementById('t-m').value=m;
+  document.getElementById('t-s').value=s;
+  timerReset();
+};
+
+window.timerToggle=function(){
+  if(timerRunning){clearInterval(timerInterval);timerRunning=false;document.getElementById('timer-btn').textContent='Start';document.getElementById('timer-display').classList.remove('running');return;}
+  if(timerRemaining<=0){var h=parseInt(document.getElementById('t-h').value)||0,m=parseInt(document.getElementById('t-m').value)||0,s=parseInt(document.getElementById('t-s').value)||0;timerRemaining=h*3600+m*60+s;if(timerRemaining<=0)return;}
+  timerRunning=true;document.getElementById('timer-btn').textContent='Pause';document.getElementById('timer-display').classList.add('running');document.getElementById('timer-display').classList.remove('done');
+  timerInterval=setInterval(function(){
+    timerRemaining--;document.getElementById('timer-display').textContent=fmtTimer(timerRemaining);
+    if(timerRemaining<=0){clearInterval(timerInterval);timerRunning=false;document.getElementById('timer-btn').textContent='Start';document.getElementById('timer-display').classList.add('done');try{new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACAf39/f4B/f3+AgH9/gH9/f3+Af39/gH9/f3+AgH9/f3+Af39/gIB/f39/gH9/f4B/f3+Af39/gH9/gIB/f39/gH9/f4CAf39/f4B/f3+AgH+AgH9/f39/gH9/f4B/f3+Af39/gH9/f4CAf3+AgH9/f3+Af39/gH9/gIB/f3+Af39/gH9/f4B/f3+Af39/gH9/gH9/f3+Af39/gH9/f4B/f3+AgH9/f39/gH9/f4CAf39/f4B/f3+AgH9/gGB/f3+Af39/gH9/f4CAf39/f4B/f3+Af39/gH9/f3+AgH9/gH9/f39/gH9/f4B/f3+Af39/f39/gH9/f4CAf39/f4B/f3+Af39/gIB/f39/gH9/f4B/f3+Af39/f4CAf39/gH9/f3+Af39/gH9/f4B/f3+AgH9/f39/f39/gH9/f4B/f3+Af39/gH9/f4CAf39/f4B/f3+Af39/gH9/f39/gH9/f4B/f3+Af4B/f4B/f3+Af39/gH9/f4B/f3+Af3+AgH9/f39/f3+Af39/gH9/f4B/f3+Af3+AgH9/f39/f39/gH9/f4B/f4B/f3+Af39/gH9/f4B/f3+Af39/gH9/f4B/gH9/f4B/f3+Af3+Af3+AgH9/f4B/f3+Af3+AgH9/f39/f4B/f4B/f3+Af39/gH9/f4B/f3+Af3+AgH9/f4B/f3+Af3+AgH9/f39/f4B/f4B/f3+Af39/gH9/f4B/gH9/f4B/f39/f4B/f4B/f3+Af3+Af3+AgH+Af39/f4B/f4B/f39/f3+gf4B/f3+Af3+AgH+Af39/gH9/f4B/gH9/f4B/gH9/f3+Af39/gH+Af4B/f3+Af3+AgH+Af3+Af4B/gH9/f4B/f3+Af3+Af3+AgH+Af39/gH+Af4B/f3+gf4B/f39/f4B/gH9/f4B/gH9/f4B/gH9/gH+Af3+Af4B/gH9/f3+gf4B/f3+Af3+gkH+Af39/f4B/gH9/f4B/g')().catch(function(){})}catch(e){}}
+  },1000);
+};
+
+window.timerReset=function(){clearInterval(timerInterval);timerRunning=false;timerRemaining=0;var h=parseInt(document.getElementById('t-h').value)||0,m=parseInt(document.getElementById('t-m').value)||0,s=parseInt(document.getElementById('t-s').value)||0;timerRemaining=h*3600+m*60+s;document.getElementById('timer-display').textContent=fmtTimer(timerRemaining);document.getElementById('timer-btn').textContent='Start';document.getElementById('timer-display').classList.remove('running','done');};
+
+window.swToggle=function(){
+  if(swRunning){clearInterval(swInterval);swRunning=false;swElapsed+=Date.now()-swStart;document.getElementById('sw-btn').textContent='Start';document.getElementById('lap-btn').disabled=true;return;}
+  swRunning=true;swStart=Date.now();document.getElementById('sw-btn').textContent='Pause';document.getElementById('lap-btn').disabled=false;
+  swInterval=setInterval(function(){var total=swElapsed+(Date.now()-swStart);document.getElementById('sw-display').textContent=fmtSW(total);},30);
+};
+
+window.swLap=function(){var total=swElapsed+(Date.now()-swStart);laps.unshift(fmtSW(total));var html='';for(var i=0;i<laps.length;i++){html+='<div class="lap-item"><span>Lap '+(laps.length-i)+'</span><span>'+laps[i]+'</span></div>';}document.getElementById('lap-list').innerHTML=html;};
+
+window.swReset=function(){clearInterval(swInterval);swRunning=false;swElapsed=0;laps=[];document.getElementById('sw-display').textContent='00:00.000';document.getElementById('sw-btn').textContent='Start';document.getElementById('lap-btn').disabled=true;document.getElementById('lap-list').innerHTML='';};
+
+timerReset();
+})();
+</script>
 <script src="/cookie-consent.js"></script>
   <script src="/knexio-bundle.js"></script>
 </body>

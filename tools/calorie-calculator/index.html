@@ -325,7 +325,7 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
       "name": "Is my data safe? Is anything stored on a server?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, your data is safe. All processing happens entirely in your browser \u2014 your input never leaves your device and is not sent to any server."
+        "text": "Yes, your data is safe. All processing happens entirely in your browser — your input never leaves your device and is not sent to any server."
       }
     },
     {
@@ -540,7 +540,11 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function calculateCalories(){var age=parseInt(document.getElementById('age').value)||30;var w=parseFloat(document.getElementById('weight').value)||70;var h=parseFloat(document.getElementById('height').value)||170;var g=document.querySelector('input[name="gender"]:checked')?document.querySelector('input[name="gender"]:checked').value:'male';var act=parseFloat(document.getElementById('activity').value)||1.2;var bmr;if(g==='male'){bmr=10*w+6.25*h-5*age+5;}else{bmr=10*w+6.25*h-5*age-161;}document.getElementById('bmr').textContent=Math.round(bmr)+' kcal/day';document.getElementById('tdee').textContent=Math.round(bmr*act)+' kcal/day';}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

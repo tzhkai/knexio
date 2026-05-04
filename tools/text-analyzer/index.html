@@ -36,6 +36,9 @@ textarea{width:100%;min-height:180px;background:var(--bg);border:1px solid var(-
 .btn-primary{background:var(--accent);color:#fff;border:none;padding:12px 24px;border-radius:8px;cursor:pointer;font-size:15px;font-weight:600}
 .faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px}
 .faq-item h3{font-size:16px;margin-bottom:8px}.faq-item p{color:var(--sub);line-height:1.6}
+.section{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:24px}
+.section h2{margin-top:0;font-size:20px}.section ul{margin:12px 0 0;padding-left:22px;color:var(--sub);line-height:1.7}.section li{margin-bottom:8px}.section li strong{color:var(--text)}.section p{color:var(--sub);line-height:1.7;margin:0}
+.ad-sidebar{margin:20px 0;text-align:center}
 
 @media (max-width:600px){.stat-box{min-width:80px;padding:10px 12px}.stat-value{font-size:20px}}
 footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-top:60px;text-align:center;color:var(--sub);font-size:13px;border-top:1px solid var(--border);padding-top:30px}footer p{margin:0}</style>
@@ -52,34 +55,34 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Is this tool free to use?",
+      "name": "What's the difference from Word Counter?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, this tool is completely free to use. No registration, no login, and no subscription required. Just open the page and start using it."
+        "text": "Word Counter focuses on detailed word analysis with reading time estimates. This tool provides comprehensive text statistics all at once."
       }
     },
     {
       "@type": "Question",
-      "name": "Is my data safe? Is anything stored on a server?",
+      "name": "How is syllable count calculated?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, your data is safe. All processing happens entirely in your browser \u2014 your input never leaves your device and is not sent to any server."
+        "text": "Syllable count is estimated using a heuristic algorithm that counts vowel groups in English words. It is approximate but accurate for most common words."
       }
     },
     {
       "@type": "Question",
-      "name": "Does this tool work on mobile devices?",
+      "name": "Is my text sent to any server?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. The tool is fully responsive and works on smartphones, tablets, and desktop computers."
+        "text": "No. All text analysis happens entirely in your browser. Your content is never transmitted, stored, or logged."
       }
     },
     {
       "@type": "Question",
-      "name": "How accurate is the result?",
+      "name": "What is estimated reading time?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The tool uses standard algorithms and web APIs to provide accurate results. For critical or professional use, please verify with additional sources."
+        "text": "Reading time is calculated at an average of 200–250 words per minute. The estimate adjusts based on the total word count of your text."
       }
     }
   ]
@@ -138,35 +141,39 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3617326351" data-ad-format="rectangle" data-full-width-responsive="true"></ins>
 </div>
 
-<div class="panel">
+<div class="section">
 <h2>How to Use</h2>
-<ol style="margin:0 0 24px;padding-left:20px;line-height:2">
-<li><strong>Paste your text</strong> — Copy and paste any article, essay, email, or document into the text area</li>
-<li><strong>View instant statistics</strong> — Word count, character count, sentences, paragraphs, and syllables update as you type</li>
-<li><strong>Copy the results</strong> — One-click copy of your text statistics for reports or academic submissions</li>
+<ol style="margin:12px 0 0;padding-left:22px;color:var(--sub);line-height:1.7">
+<li style="margin-bottom:8px"><strong>Paste your text</strong> — Copy and paste any article, essay, email, or document into the text area</li>
+<li style="margin-bottom:8px"><strong>View instant statistics</strong> — Word count, character count, sentences, paragraphs, and syllables update as you type</li>
+<li style="margin-bottom:8px"><strong>Copy the results</strong> — One-click copy of your text statistics for reports or academic submissions</li>
 </ol>
+</div>
 
+<div class="section">
 <h2>Features</h2>
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:24px">
-<div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:16px">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:12px">
+<div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:16px">
 <strong>📊 All-in-One Stats</strong>
-<p style="margin:8px 0 0;font-size:14px">Word count, character count, sentences, paragraphs, syllables, and reading time estimates</p>
+<p style="margin:8px 0 0;font-size:14px;color:var(--sub)">Word count, character count, sentences, paragraphs, syllables, and reading time estimates</p>
 
 </div>
-<div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:16px">
+<div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:16px">
 <strong>⚡ Real-Time Updates</strong>
-<p style="margin:8px 0 0;font-size:14px">Statistics update as you type — no need to click a button to see your counts</p>
+<p style="margin:8px 0 0;font-size:14px;color:var(--sub)">Statistics update as you type — no need to click a button to see your counts</p>
 </div>
-<div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:16px">
+<div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:16px">
 <strong>📝 Syllable Counter</strong>
-<p style="margin:8px 0 0;font-size:14px">Estimates syllable count per word and total — useful for poetry, rap, or speech writing</p>
+<p style="margin:8px 0 0;font-size:14px;color:var(--sub)">Estimates syllable count per word and total — useful for poetry, rap, or speech writing</p>
 </div>
-<div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:16px">
+<div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:16px">
 <strong>📋 Copy Stats</strong>
-<p style="margin:8px 0 0;font-size:14px">Export your text statistics with one click for use in essays, reports, or submissions</p>
+<p style="margin:8px 0 0;font-size:14px;color:var(--sub)">Export your text statistics with one click for use in essays, reports, or submissions</p>
+</div>
 </div>
 </div>
 
+<div class="section">
 <h2>How It Works</h2>
 <div class="faq-item">
 <h3>What's the difference from Word Counter?</h3>
@@ -184,11 +191,9 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 <h3>What is estimated reading time?</h3>
 <p>Reading time is calculated at an average of 200–250 words per minute. The estimate adjusts based on the total word count of your text.</p>
 </div>
-<h2>Frequently Asked Questions</h2>
-<p style="color:var(--sub);line-height:1.7">Paste any text and click "Analyze" to see word count, character count (with and without spaces), sentences, paragraphs, and estimated syllables.</p>
 </div>
 
-<h2>FAQ</h2>
+<h2>Frequently Asked Questions</h2>
 <div class="faq-item">
 <h3>What's the difference from Word Counter?</h3>
 <p><a href="../word-counter/">Word Counter</a> focuses on detailed word analysis with reading time estimates. This tool provides comprehensive text statistics all at once.</p>
@@ -208,6 +213,28 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
   <p>© 2026 Knexio. All rights reserved.</p>
 </footer>
 
+<script>
+function analyzeText() {
+  var text = document.getElementById('textInput').value;
+  document.getElementById('wordCount').textContent = text.trim() ? text.trim().split(/\s+/).length : 0;
+  document.getElementById('charCount').textContent = text.length;
+  document.getElementById('charCountNoSpace').textContent = text.replace(/\s/g, '').length;
+  var sentences = text.match(/[.!?]+\s/g);
+  document.getElementById('sentenceCount').textContent = sentences ? sentences.length : (text.trim() ? 1 : 0);
+  var paragraphs = text.trim() ? text.trim().split(/\n\n+/).filter(function(p){return p.trim()}).length : 0;
+  document.getElementById('paragraphCount').textContent = paragraphs;
+  var words = text.trim().toLowerCase().split(/\s+/).filter(function(w){return w.length > 0});
+  var syllableCount = 0;
+  for (var i = 0; i < words.length; i++) {
+    var word = words[i].replace(/[^a-z]/g, '');
+    if (!word) continue;
+    word = word.replace(/(?:[^laeiouy]es|ed|[^laeiouy]e)$/, '').replace(/^y/, '');
+    var syllables = word.match(/[aeiouy]{1,2}/g);
+    syllableCount += syllables ? syllables.length : 1;
+  }
+  document.getElementById('syllableCount').textContent = syllableCount;
+}
+</script>
 <script src="/cookie-consent.js"></script>
   <script src="/knexio-bundle.js"></script>
 </body>

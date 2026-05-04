@@ -179,34 +179,18 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Is this tool free to use?",
+      "name": "What's the difference between case and character?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, this tool is completely free to use. No registration, no login, and no subscription required. Just open the page and start using it."
+        "text": "Case counts letters (upper/lower), character counts all characters including numbers and symbols."
       }
     },
     {
       "@type": "Question",
-      "name": "Is my data safe? Is anything stored on a server?",
+      "name": "Can I see percentage breakdown?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, your data is safe. All processing happens entirely in your browser \u2014 your input never leaves your device and is not sent to any server."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does this tool work on mobile devices?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. The tool is fully responsive and works on smartphones, tablets, and desktop computers."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How accurate is the result?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The tool uses standard algorithms and web APIs to provide accurate results. For critical or professional use, please verify with additional sources."
+        "text": "The tool shows both counts and percentages for each category."
       }
     }
   ]
@@ -322,7 +306,28 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function clearText() {
+  var el = document.getElementById('textInput') || document.getElementById('input');
+  if (el) el.value = '';
+  var out = document.getElementById('output');
+  if (out) out.value = out.textContent = '';
+}
+function copyText() {
+  var el = document.getElementById('textInput') || document.getElementById('input');
+  if (!el) return;
+  el.select(); el.setSelectionRange(0, 99999);
+  navigator.clipboard.writeText(el.value).catch(function(){document.execCommand('copy');});
+}
+</script>
+
+<script>
+function countCases(){var t=document.getElementById('input').value;var upper=(t.match(/[A-Z]/g)||[]).length;var lower=(t.match(/[a-z]/g)||[]).length;var total=upper+lower;document.getElementById('output').innerHTML='<p>Uppercase: <strong>'+upper+'</strong> ('+(total?(upper/total*100).toFixed(1):0)+'%)</p><p>Lowercase: <strong>'+lower+'</strong> ('+(total?(lower/total*100).toFixed(1):0)+'%)</p>';}
+function clearText(){document.getElementById('input').value='';document.getElementById('output').innerHTML='';}
+function copyText(){var el=document.getElementById('output');navigator.clipboard.writeText(el.textContent).catch(function(){});}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

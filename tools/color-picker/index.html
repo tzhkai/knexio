@@ -78,7 +78,7 @@
       "name": "How do I copy the color code?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Click the \\"Copy CSS\\" button to copy the color code in CSS format (e.g., background-color: #4f8cff;). The code is copied to your clipboard and ready to paste into your project."
+        "text": "Click the \"Copy CSS\" button to copy the color code in CSS format (e.g., background-color: #4f8cff;). The code is copied to your clipboard and ready to paste into your project."
       }
     },
     {
@@ -87,6 +87,14 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Yes, this color picker is completely free. No registration or signup is required. Just open the page and start exploring colors."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are my color choices saved or stored anywhere?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. All color selections and conversions happen entirely in your browser. No data is sent to any server or stored anywhere."
       }
     }
   ]
@@ -326,7 +334,12 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function randomColor(){var r=Math.floor(Math.random()*256),g=Math.floor(Math.random()*256),b=Math.floor(Math.random()*256);var h='#'+r.toString(16).padStart(2,'0')+g.toString(16).padStart(2,'0')+b.toString(16).padStart(2,'0');document.getElementById('colorPicker').value=h;document.getElementById('hexVal').value=h;document.getElementById('preview').style.backgroundColor=h;}
+function copyCSS(){var el=document.getElementById('hexVal');navigator.clipboard.writeText(el.value).catch(function(){});}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

@@ -276,7 +276,7 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
       "name": "Is my data safe? Is anything stored on a server?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, your data is safe. All processing happens entirely in your browser \u2014 your input never leaves your device and is not sent to any server."
+        "text": "Yes, your data is safe. All processing happens entirely in your browser — your input never leaves your device and is not sent to any server."
       }
     },
     {
@@ -402,7 +402,21 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function clearAll(tab) {
+  var el = document.getElementById('input');
+  if (el) el.value = '';
+  var out = document.getElementById('output');
+  if (out) out.value = out.textContent = '';
+}
+</script>
+
+<script>
+function generateHashes(){var t=document.getElementById('input').value;var out='';if(document.getElementById('chk-md5').checked){out+='MD5: not available in browser (requires crypto library)\n';}if(document.getElementById('chk-sha1').checked){crypto.subtle.digest('SHA-1',new TextEncoder().encode(t)).then(function(h){var a=Array.from(new Uint8Array(h)).map(function(b){return b.toString(16).padStart(2,'0');}).join('');document.getElementById('sha1-out').textContent=a;});}if(document.getElementById('chk-sha256').checked){crypto.subtle.digest('SHA-256',new TextEncoder().encode(t)).then(function(h){var a=Array.from(new Uint8Array(h)).map(function(b){return b.toString(16).padStart(2,'0');}).join('');document.getElementById('sha256-out').textContent=a;});}}
+function clearAll(){document.getElementById('input').value='';}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

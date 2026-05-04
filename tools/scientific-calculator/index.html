@@ -85,34 +85,10 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Is this tool free to use?",
+      "name": "What scientific functions are supported?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, this tool is completely free to use. No registration, no login, and no subscription required. Just open the page and start using it."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is my data safe? Is anything stored on a server?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, your data is safe. All processing happens entirely in your browser \u2014 your input never leaves your device and is not sent to any server."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does this tool work on mobile devices?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. The tool is fully responsive and works on smartphones, tablets, and desktop computers."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How accurate is the result?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The tool uses standard algorithms and web APIs to provide accurate results. For critical or professional use, please verify with additional sources."
+        "text": "Trigonometry (sin, cos, tan), logarithms, exponentials, powers, roots, and more."
       }
     }
   ]
@@ -253,7 +229,26 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function clearAll(tab) {
+  var el = document.getElementById('input');
+  if (el) el.value = '';
+  var out = document.getElementById('output');
+  if (out) out.value = out.textContent = '';
+}
+</script>
+
+<script>
+var expr='',mode='deg';
+function setMode(m){mode=m;document.querySelectorAll('.mode-btn').forEach(function(b){b.classList.remove('active');});event.target.classList.add('active');}
+function insertFunction(f){expr+=f+'(';document.getElementById('display').value=expr;}
+function insert(v){expr+=v;document.getElementById('display').value=expr;}
+function backspace(){expr=expr.slice(0,-1);document.getElementById('display').value=expr;}
+function clearAll(){expr='';document.getElementById('display').value='';document.getElementById('result').textContent='';}
+function calculate(){try{var e=expr.replace(/PI/g,Math.PI).replace(/E(?![xp])/g,Math.E).replace(/\^/g,'**').replace(/!/g,'');var trig=['sin','cos','tan','asin','acos','atan','log','ln','sqrt','abs','floor','ceil'];trig.forEach(function(fn){var re=new RegExp(fn+'\\(','g');e=e.replace(re,'Math.'+fn+'(');});if(mode==='deg'){e=e.replace(/Math\.(sin|cos|tan)\(/g,function(m,p){return 'Math.'+p+'(Math.PI/180*';});e=e.replace(/Math\.(asin|acos|atan)\(/g,function(m,p){return '180/Math.PI*Math.'+p+'(';});}e=e.replace(/Math\.log\(/g,'Math.log10(');e=e.replace(/Math\.ln\(/g,'Math.log(');var r=eval(e);document.getElementById('result').textContent=r;document.getElementById('display').value=expr+' = '+r;expr=String(r);}catch(e){document.getElementById('result').textContent='Error';}}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

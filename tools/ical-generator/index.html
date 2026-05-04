@@ -48,34 +48,42 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Is this tool free to use?",
+      "name": "What calendars work with .ics files?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, this tool is completely free to use. No registration, no login, and no subscription required. Just open the page and start using it."
+        "text": "Apple Calendar, Google Calendar, Microsoft Outlook, Yahoo Calendar, and any other calendar app that supports the .ics (iCalendar) standard — which is virtually all of them."
       }
     },
     {
       "@type": "Question",
-      "name": "Is my data safe? Is anything stored on a server?",
+      "name": "How do I import into Google Calendar?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, your data is safe. All processing happens entirely in your browser \u2014 your input never leaves your device and is not sent to any server."
+        "text": "In Google Calendar, go to Settings → Import & export → Select your .ics file and choose the calendar to import into → Click Import. The event will appear immediately."
       }
     },
     {
       "@type": "Question",
-      "name": "Does this tool work on mobile devices?",
+      "name": "Can I add multiple events at once?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. The tool is fully responsive and works on smartphones, tablets, and desktop computers."
+        "text": "Yes. Create multiple events one at a time and download each .ics file, or use a calendar app that supports bulk .ics imports for multiple files."
       }
     },
     {
       "@type": "Question",
-      "name": "How accurate is the result?",
+      "name": "Is my data sent to any server?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The tool uses standard algorithms and web APIs to provide accurate results. For critical or professional use, please verify with additional sources."
+        "text": "No. All event details stay in your browser. The .ics file is generated entirely on your device using JavaScript — no data is ever transmitted."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What calendars work with .ics?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Google Calendar, Apple Calendar, Outlook, and most calendar apps."
       }
     }
   ]
@@ -197,7 +205,12 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function generateICS(){var s=document.getElementById('summary').value||'Event';var start=document.getElementById('start').value;var end=document.getElementById('end').value;var desc=document.getElementById('desc').value||'';var loc=document.getElementById('location').value||'';var ics='BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//Knexio//EN\nBEGIN:VEVENT\nSUMMARY:'+s+'\nDTSTART:'+start.replace(/[-:]/g,'')+'00\nDTEND:'+end.replace(/[-:]/g,'')+'00\n';if(desc)ics+='DESCRIPTION:'+desc+'\n';if(loc)ics+='LOCATION:'+loc+'\n';ics+='END:VEVENT\nEND:VCALENDAR';document.getElementById('icsOutput').value=ics;}
+function downloadICS(){var t=document.getElementById('icsOutput').value;var b=new Blob([t],{type:'text/calendar'});var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='event.ics';a.click();}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

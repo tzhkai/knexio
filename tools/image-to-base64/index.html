@@ -54,7 +54,7 @@
       "name": "What is a Base64 data URI?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "A data URI embeds file content directly in HTML or CSS as text, in the format data:[mimetype];base64,[data]. This eliminates the need for a separate HTTP request to load the image, which can be useful for small icons or email templates."
+        "text": "A data URI embeds file content directly in HTML or CSS as text, in the format data:[mimetype];base64,[data]. This eliminates the need for a separate HTTP request to load the image."
       }
     },
     {
@@ -62,7 +62,7 @@
       "name": "When should I use Base64 for images?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Base64 is best for small images under 10–20 KB, such as icons, logos, or inline email graphics. For larger images, using standard URLs is more efficient because Base64 encoding increases file size by ~33%."
+        "text": "Base64 is best for small images under 10-20 KB, such as icons, logos, or inline email graphics. For larger images, using standard URLs is more efficient."
       }
     },
     {
@@ -70,7 +70,7 @@
       "name": "Is my image uploaded to a server?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. All conversion happens entirely inside your browser using JavaScript. Your image file is never sent to any server. The tool works completely offline once the page is loaded."
+        "text": "No. All encoding and decoding happens entirely in your browser using JavaScript. Your images never leave your device."
       }
     },
     {
@@ -78,7 +78,7 @@
       "name": "What image formats are supported?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The tool supports all common image formats: PNG, JPG/JPEG, GIF, WebP, SVG, and BMP. The maximum file size is 10 MB. For very large images, consider using a regular image URL instead of Base64."
+        "text": "The tool supports common image formats including PNG, JPEG, GIF, WebP, SVG, and ICO files."
       }
     },
     {
@@ -86,7 +86,15 @@
       "name": "How do I use the Base64 output in HTML?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Use the HTML format option to get a ready-to-paste &lt;img&gt; tag. For CSS, use the CSS format option to get a background-image rule. You can also copy the plain Base64 string for use in JSON or JavaScript."
+        "text": "Copy the generated Base64 string and use it as the src attribute of an img tag. The format is data:[mimetype];base64,[encoded-data]."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I decode a Base64 string back to an image?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, switch to the Decode tab, paste your Base64 string, and the tool will reconstruct the original image for preview and download."
       }
     }
   ]
@@ -353,7 +361,26 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function copyOutput(id) {
+  var el = id ? document.getElementById(id) : document.getElementById('output');
+  if (!el) return;
+  var text = el.value || el.textContent || el.innerText;
+  navigator.clipboard.writeText(text).catch(function(){});
+}
+</script>
+
+<script>
+function switchTab(t){document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});document.querySelectorAll('.tab-panel').forEach(function(p){p.style.display='none';});document.getElementById('tab-'+t).style.display='block';event.target.classList.add('active');}
+function setFormat(f){document.getElementById('format').value=f;}
+function clearEncode(){document.getElementById('base64Output').value='';}
+function decodeBase64(){var b64=document.getElementById('base64Input').value;var f=document.getElementById('format').value||'datauri';try{var bin=atob(b64.replace(/^data:[^;]+;base64,/,''));var bytes=new Uint8Array(bin.length);for(var i=0;i<bin.length;i++)bytes[i]=bin.charCodeAt(i);var blob=new Blob([bytes]);var url=URL.createObjectURL(blob);document.getElementById('decodedImg').src=url;}catch(e){document.getElementById('decodedImg').alt='Invalid Base64';}}
+function clearDecode(){document.getElementById('base64Input').value='';document.getElementById('decodedImg').src='';}
+function downloadDecoded(){var a=document.createElement('a');a.href=document.getElementById('decodedImg').src;a.download='decoded-image';a.click();}
+function copyOutput(){var el=document.getElementById('base64Output');el.select();el.setSelectionRange(0,99999);navigator.clipboard.writeText(el.value).catch(function(){document.execCommand('copy');});}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

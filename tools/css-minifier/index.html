@@ -319,7 +319,7 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
       "name": "Is my data safe? Is anything stored on a server?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, your data is safe. All processing happens entirely in your browser \u2014 your input never leaves your device and is not sent to any server."
+        "text": "Yes, your data is safe. All processing happens entirely in your browser — your input never leaves your device and is not sent to any server."
       }
     },
     {
@@ -474,7 +474,36 @@ body {
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function copyOutput(id) {
+  var el = id ? document.getElementById(id) : document.getElementById('output');
+  if (!el) return;
+  var text = el.value || el.textContent || el.innerText;
+  navigator.clipboard.writeText(text).catch(function(){});
+}
+function clearAll(tab) {
+  var el = document.getElementById('input');
+  if (el) el.value = '';
+  var out = document.getElementById('output');
+  if (out) out.value = out.textContent = '';
+}
+function pasteClipboard() {
+  navigator.clipboard.readText().then(function(text){
+    var el = document.getElementById('input') || document.getElementById('textInput');
+    if (el) el.value = text;
+  }).catch(function(){});
+}
+</script>
+
+<script>
+function minifyCSS(){var t=document.getElementById('input').value;document.getElementById('output').value=t.replace(/\/\*[\s\S]*?\*\//g,'').replace(/\s+/g,' ').replace(/\s*([{}:;,])\s*/g,'$1').replace(/;}/g,'}').trim();}
+function downloadCSS(){var t=document.getElementById('output').value;var b=new Blob([t],{type:'text/css'});var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='style.min.css';a.click();}
+function copyOutput(){var el=document.getElementById('output');el.select();el.setSelectionRange(0,99999);navigator.clipboard.writeText(el.value).catch(function(){document.execCommand('copy');});}
+function clearAll(){document.getElementById('input').value='';document.getElementById('output').value='';}
+function pasteClipboard(){navigator.clipboard.readText().then(function(t){document.getElementById('input').value=t;}).catch(function(){});}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

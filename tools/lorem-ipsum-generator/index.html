@@ -318,10 +318,10 @@
     },
     {
       "@type": "Question",
-      "name": "Should I start with \\\"Lorem ipsum\\\"?",
+      "name": "Should I start with \"Lorem ipsum\"?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The traditional \\\"Lorem ipsum\\\" opening is recognizable and signals placeholder content to designers and clients. However, you can disable this option if you prefer text that starts mid-sentence, which can look more natural in certain designs."
+        "text": "The traditional \"Lorem ipsum\" opening is recognizable and signals placeholder content to designers and clients. However, you can disable this option if you prefer text that starts mid-sentence, which can look more natural in certain designs."
       }
     },
     {
@@ -330,6 +330,14 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "No, Lorem Ipsum should only be used during design and development. Always replace it with real, meaningful content before launching. Placeholder text hurts SEO and user experience since it provides no value to visitors."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this tool free to use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, the Lorem Ipsum generator is completely free with no registration required. Generate as much text as you need, copy it instantly, and use it in any of your projects. Works on all modern browsers and devices."
       }
     }
   ]
@@ -453,7 +461,21 @@
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function copyText() {
+  var el = document.getElementById('textInput') || document.getElementById('input');
+  if (!el) return;
+  el.select(); el.setSelectionRange(0, 99999);
+  navigator.clipboard.writeText(el.value).catch(function(){document.execCommand('copy');});
+}
+</script>
+
+<script>
+function generate(){var p=parseInt(document.getElementById('paragraphs').value)||3;var words=['lorem','ipsum','dolor','sit','amet','consectetur','adipiscing','elit','sed','do','eiusmod','tempor','incididunt','ut','labore','et','dolore','magna','aliqua','ut','enim','ad','minim','veniam','quis','nostrud','exercitation','ullamco','laboris','nisi','ut','aliquip','ex','ea','commodo','consequat','duis','aute','irure','dolor','in','reprehenderit','in','voluptate','velit','esse','cillum','dolore','eu','fugiat','nulla','pariatur','excepteur','sint','occaecat','cupidatat','non','proident','sunt','in','culpa','qui','officia','deserunt','mollit','anim','id','est','laborum'];var out='';for(var i=0;i<p;i++){var s='';for(var j=0;j<8+Math.floor(Math.random()*8);j++){s+=words[Math.floor(Math.random()*words.length)]+(j===0?' ':' ');}s=s.charAt(0).toUpperCase()+s.slice(1).trim()+'.';out+=s+(i<p-1?'\n\n':'');}document.getElementById('output').value=out;}
+function copyText(){var el=document.getElementById('output');el.select();el.setSelectionRange(0,99999);navigator.clipboard.writeText(el.value).catch(function(){document.execCommand('copy');});}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

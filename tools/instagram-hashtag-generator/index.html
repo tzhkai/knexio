@@ -83,6 +83,14 @@
         "@type": "Answer",
         "text": "The generator supports popular categories including fitness, travel, food, photography, fashion, nature, business, and technology. If your topic doesn't match these categories, the tool creates custom hashtags based on your keyword and adds popular general hashtags."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "Are these hashtags optimized for Instagram's algorithm?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The hashtags are curated from popular, frequently-used sets across various niches. While we can't guarantee algorithm performance, using relevant, mixed-combination hashtags (niche + general) is a proven strategy for maximizing reach and engagement on Instagram."
+      }
     }
   ]
 }
@@ -381,7 +389,22 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function clearAll(tab) {
+  var el = document.getElementById('input');
+  if (el) el.value = '';
+  var out = document.getElementById('output');
+  if (out) out.value = out.textContent = '';
+}
+</script>
+
+<script>
+function generateHashtags(){var t=document.getElementById('topic').value.trim();var tags={'travel':['travel','wanderlust','travelgram','instatravel','adventure','explore','vacation','trip','travelphotography'],'food':['food','foodie','instafood','yummy','delicious','foodporn','homemade','cooking','foodphotography'],'fitness':['fitness','gym','workout','fit','fitnessmotivation','health','training','gymlife','bodybuilding'],'tech':['tech','technology','coding','programming','developer','software','startup','innovation','digital'],'fashion':['fashion','style','ootd','fashionblogger','instafashion','outfit','model','beauty','look'],'art':['art','artist','drawing','illustration','creative','artwork','painting','sketch','design'],'music':['music','musician','song','singer','musicvideo','hiphop','rap','beat','producer'],'nature':['nature','naturephotography','landscape','sunset','outdoors','sky','photography','wildlife']};var topic=t.toLowerCase();var found=tags[topic]||tags['travel'];var all=found.join(' ');document.getElementById('output').value='#'+all.replace(/ /g,' #');}
+function clearAll(){document.getElementById('topic').value='';document.getElementById('output').value='';}
+function copyHashtags(){var el=document.getElementById('output');el.select();el.setSelectionRange(0,99999);navigator.clipboard.writeText(el.value).catch(function(){document.execCommand('copy');});}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

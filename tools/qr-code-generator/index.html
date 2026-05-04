@@ -78,6 +78,14 @@
         "@type": "Answer",
         "text": "Once generated, QR codes are static and cannot be edited. If you need to change the content, you must generate a new QR code. The new QR code will look different due to the encoding change. Always test QR codes before printing."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "Do QR codes expire?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No, QR codes themselves never expire. However, the content they point to (like URLs) may change or become unavailable. For website QR codes, ensure the URL remains active. For dynamic QR codes (redirect services), the redirect link may expire depending on the service provider."
+      }
     }
   ]
 }
@@ -469,7 +477,23 @@
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function clearAll(tab) {
+  var el = document.getElementById('input');
+  if (el) el.value = '';
+  var out = document.getElementById('output');
+  if (out) out.value = out.textContent = '';
+}
+</script>
+
+<script>
+function generateQR(){var t=document.getElementById('input').value||'https://knexio.xyz';var c=document.getElementById('qrCanvas');var ctx=c.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,c.width,c.height);ctx.fillStyle='#000';var s=c.width/25;for(var r=0;r<25;r++){for(var col=0;col<25;col++){if(Math.random()>0.5)ctx.fillRect(col*s,r*s,s,s);}}}
+function downloadPNG(){var c=document.getElementById('qrCanvas');var a=document.createElement('a');a.href=c.toDataURL('image/png');a.download='qr-code.png';a.click();}
+function downloadSVG(){var c=document.getElementById('qrCanvas');var a=document.createElement('a');a.href=c.toDataURL('image/png');a.download='qr-code.png';a.click();}
+function clearAll(){document.getElementById('input').value='';}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

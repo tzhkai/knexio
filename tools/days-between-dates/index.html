@@ -227,7 +227,7 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
       "name": "Is my data safe? Is anything stored on a server?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, your data is safe. All processing happens entirely in your browser \u2014 your input never leaves your device and is not sent to any server."
+        "text": "Yes, your data is safe. All processing happens entirely in your browser — your input never leaves your device and is not sent to any server."
       }
     },
     {
@@ -376,7 +376,12 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function calculateDifference(){var d1=new Date(document.getElementById('date1').value);var d2=new Date(document.getElementById('date2').value);if(isNaN(d1)||isNaN(d2)){document.getElementById('diff').textContent='--';return;}var diff=Math.abs(d2-d1);var days=Math.floor(diff/(1000*60*60*24));document.getElementById('diff').textContent=days+' days';document.getElementById('weeks').textContent=(days/7).toFixed(1)+' weeks';}
+function resetDates(){document.getElementById('date1').value='';document.getElementById('date2').value='';document.getElementById('diff').textContent='--';document.getElementById('weeks').textContent='--';}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

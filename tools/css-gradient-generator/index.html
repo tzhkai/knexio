@@ -63,34 +63,42 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Is this tool free to use?",
+      "name": "What gradient types are supported?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, this tool is completely free to use. No registration, no login, and no subscription required. Just open the page and start using it."
+        "text": "Linear gradients, radial gradients, and diagonal gradients are fully supported. You can also set a custom angle in degrees for precise control."
       }
     },
     {
       "@type": "Question",
-      "name": "Is my data safe? Is anything stored on a server?",
+      "name": "Can I add more than two colors?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, your data is safe. All processing happens entirely in your browser \u2014 your input never leaves your device and is not sent to any server."
+        "text": "Yes. Add up to 5 color stops. Each stop has a color and a position percentage so you can create complex multi-color gradients."
       }
     },
     {
       "@type": "Question",
-      "name": "Does this tool work on mobile devices?",
+      "name": "Is the output compatible with all browsers?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. The tool is fully responsive and works on smartphones, tablets, and desktop computers."
+        "text": "The CSS code uses the standard linear-gradient() and radial-gradient() syntax, which works in all modern browsers including Chrome, Firefox, Safari, and Edge."
       }
     },
     {
       "@type": "Question",
-      "name": "How accurate is the result?",
+      "name": "Can I use this on mobile?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The tool uses standard algorithms and web APIs to provide accurate results. For critical or professional use, please verify with additional sources."
+        "text": "Yes. The gradient generator is fully responsive and works on mobile browsers, tablets, and desktop alike."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What gradient types?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Supports linear and radial gradients."
       }
     }
   ]
@@ -216,7 +224,11 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function copyCode(){var el=document.getElementById('cssOutput')||document.getElementById('output');if(el){el.select();el.setSelectionRange(0,99999);navigator.clipboard.writeText(el.value).catch(function(){document.execCommand('copy');});}}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

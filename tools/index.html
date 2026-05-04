@@ -682,7 +682,11 @@
   </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function doSearch(){var q=document.getElementById('searchtools').value.toLowerCase();var cards=document.querySelectorAll('.card');cards.forEach(function(c){var t=c.textContent.toLowerCase();c.style.display=t.includes(q)?'flex':'none';});}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

@@ -74,34 +74,26 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Is this tool free to use?",
+      "name": "What is my maximum heart rate?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, this tool is completely free to use. No registration, no login, and no subscription required. Just open the page and start using it."
+        "text": "Max HR = 220 minus your age. For a 30-year-old, max is 190 bpm."
       }
     },
     {
       "@type": "Question",
-      "name": "Is my data safe? Is anything stored on a server?",
+      "name": "Which zone is best for fat loss?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, your data is safe. All processing happens entirely in your browser \u2014 your input never leaves your device and is not sent to any server."
+        "text": "Zone 2 (60-70% of max) is optimal for burning fat through sustained aerobic exercise."
       }
     },
     {
       "@type": "Question",
-      "name": "Does this tool work on mobile devices?",
+      "name": "Should I exercise in the maximum zone?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. The tool is fully responsive and works on smartphones, tablets, and desktop computers."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How accurate is the result?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The tool uses standard algorithms and web APIs to provide accurate results. For critical or professional use, please verify with additional sources."
+        "text": "Only for short bursts. Zone 5 is for athletes doing high-intensity interval training."
       }
     }
   ]
@@ -217,7 +209,11 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function calculate(){var age=parseInt(document.getElementById('age').value)||30;var max=220-age;document.getElementById('maxHR').textContent=max+' bpm';document.getElementById('zone1').textContent=Math.round(max*0.5)+' - '+Math.round(max*0.6)+' bpm';document.getElementById('zone2').textContent=Math.round(max*0.6)+' - '+Math.round(max*0.7)+' bpm';document.getElementById('zone3').textContent=Math.round(max*0.7)+' - '+Math.round(max*0.8)+' bpm';document.getElementById('zone4').textContent=Math.round(max*0.8)+' - '+Math.round(max*0.9)+' bpm';document.getElementById('zone5').textContent=Math.round(max*0.9)+' - '+max+' bpm';}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

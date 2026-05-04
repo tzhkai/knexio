@@ -235,7 +235,7 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
       "name": "Is my data safe? Is anything stored on a server?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, your data is safe. All processing happens entirely in your browser \u2014 your input never leaves your device and is not sent to any server."
+        "text": "Yes, your data is safe. All processing happens entirely in your browser — your input never leaves your device and is not sent to any server."
       }
     },
     {
@@ -382,7 +382,22 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function clearAll(tab) {
+  var el = document.getElementById('input');
+  if (el) el.value = '';
+  var out = document.getElementById('output');
+  if (out) out.value = out.textContent = '';
+}
+</script>
+
+<script>
+function generateOEmbed(){var u=document.getElementById('url').value;var t=document.getElementById('type').value;var w=parseInt(document.getElementById('width').value)||640;var h=parseInt(document.getElementById('height').value)||360;var o={'version':'1.0','type':t,'width':w,'height':h,'title':document.getElementById('title').value||'Embedded Content','url':u};if(t==='photo'){o.url=document.getElementById('imageUrl').value||u;o.width=w;o.height=h;}if(t==='video'){o.html='<iframe width="'+w+'" height="'+h+'" src="'+u+'" frameborder="0" allowfullscreen></iframe>';}document.getElementById('output').value=JSON.stringify(o,null,2);}
+function clearAll(){document.getElementById('url').value='';document.getElementById('output').value='';}
+function copyCode(){var el=document.getElementById('output');el.select();el.setSelectionRange(0,99999);navigator.clipboard.writeText(el.value).catch(function(){document.execCommand('copy');});}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

@@ -283,34 +283,34 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Is this tool free to use?",
+      "name": "Generated PINs",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, this tool is completely free to use. No registration, no login, and no subscription required. Just open the page and start using it."
+        "text": "Each PIN is generated using a cryptographically secure random number generator in your browser, ensuring true randomness for each PIN."
       }
     },
     {
       "@type": "Question",
-      "name": "Is my data safe? Is anything stored on a server?",
+      "name": "Are these PINs secure?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, your data is safe. All processing happens entirely in your browser \u2014 your input never leaves your device and is not sent to any server."
+        "text": "Yes, we use cryptographically secure random number generation."
       }
     },
     {
       "@type": "Question",
-      "name": "Does this tool work on mobile devices?",
+      "name": "What length PINs can I generate?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. The tool is fully responsive and works on smartphones, tablets, and desktop computers."
+        "text": "You can generate PINs from 4 to 8 digits. Standard bank card PINs are 4 digits. Device unlock codes often use 4–6 digits. Higher security applications may use 6–8 digits."
       }
     },
     {
       "@type": "Question",
-      "name": "How accurate is the result?",
+      "name": "Can I download all generated PINs at once?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The tool uses standard algorithms and web APIs to provide accurate results. For critical or professional use, please verify with additional sources."
+        "text": "Yes. Set the quantity and click \"Generate PIN\" to generate multiple PINs, then download them as a plain text file."
       }
     }
   ]
@@ -435,7 +435,22 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function clearAll(tab) {
+  var el = document.getElementById('input');
+  if (el) el.value = '';
+  var out = document.getElementById('output');
+  if (out) out.value = out.textContent = '';
+}
+</script>
+
+<script>
+function generatePIN(){var len=parseInt(document.getElementById('length').value)||4;var count=parseInt(document.getElementById('count').value)||1;var out='';for(var j=0;j<count;j++){var p='';for(var i=0;i<len;i++)p+=Math.floor(Math.random()*10);out+=p+(j<count-1?'\n':'');}document.getElementById('output').value=out;}
+function clearAll(){document.getElementById('output').value='';}
+function copyPIN(){var el=document.getElementById('output');el.select();el.setSelectionRange(0,99999);navigator.clipboard.writeText(el.value).catch(function(){document.execCommand('copy');});}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

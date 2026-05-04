@@ -62,7 +62,7 @@
       "name": "How do you separate letters and words in Morse code?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Letters within a word are separated by a single space. Words are separated by a forward slash (/) or three spaces. For example: \\"HI THERE\\" = .... .. / - .... . .-. ."
+        "text": "Letters within a word are separated by a single space. Words are separated by a forward slash (/) or three spaces. For example: \"HI THERE\" = .... .. / - .... . .-. ."
       }
     },
     {
@@ -70,7 +70,7 @@
       "name": "What is WPM (Words Per Minute) in Morse code?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "WPM measures how fast Morse code is transmitted. 1 WPM is based on sending the word \\"PARIS\\" once per minute. Beginners typically start at 5–10 WPM, while experienced operators can reach 25–30 WPM or higher."
+        "text": "WPM measures how fast Morse code is transmitted. 1 WPM is based on sending the word \"PARIS\" once per minute. Beginners typically start at 5–10 WPM, while experienced operators can reach 25–30 WPM or higher."
       }
     },
     {
@@ -86,7 +86,15 @@
       "name": "Can I listen to Morse code?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. After converting text to Morse code, click the \\"Play Audio\\" button to hear the dots and dashes beeps. Adjust the WPM slider to change playback speed. The audio uses the standard 650 Hz tone frequency."
+        "text": "Yes. After converting text to Morse code, click the \"Play Audio\" button to hear the dots and dashes beeps. Adjust the WPM slider to change playback speed. The audio uses the standard 650 Hz tone frequency."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What characters are supported?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The tool supports all letters (A–Z), numbers (0–9), and common punctuation including period, comma, question mark, exclamation mark, slash, at sign, ampersand, colon, apostrophe, parentheses, hyphen, plus sign, and equals sign."
       }
     }
   ]
@@ -333,7 +341,34 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function copyOutput(id) {
+  var el = id ? document.getElementById(id) : document.getElementById('output');
+  if (!el) return;
+  var text = el.value || el.textContent || el.innerText;
+  navigator.clipboard.writeText(text).catch(function(){});
+}
+function clearAll(tab) {
+  var el = document.getElementById('input');
+  if (el) el.value = '';
+  var out = document.getElementById('output');
+  if (out) out.value = out.textContent = '';
+}
+</script>
+
+<script>
+var morse={'A':'.-','B':'-...','C':'-.-.','D':'-..','E':'.','F':'..-.','G':'--.','H':'....','I':'..','J':'.---','K':'-.-','L':'.-..','M':'--','N':'-.','O':'---','P':'.--.','Q':'--.-','R':'.-.','S':'...','T':'-','U':'..-','V':'...-','W':'.--','X':'-..-','Y':'-.--','Z':'--..','0':'-----','1':'.----','2':'..---','3':'...--','4':'....-','5':'.....','6':'-....','7':'--...','8':'---..','9':'----.',' ':'/'};var rev={};for(var k in morse)rev[morse[k]]=k;
+function switchTab(t){document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});document.querySelectorAll('.tab-panel').forEach(function(p){p.style.display='none';});document.getElementById('tab-'+t).style.display='block';event.target.classList.add('active');}
+function encodeText(){var t=document.getElementById('encodeInput').value.toUpperCase();var r='';for(var i=0;i<t.length;i++){r+=(morse[t[i]]||t[i])+' ';}document.getElementById('encodeOutput').value=r.trim();}
+function playMorse(){var t=document.getElementById('encodeOutput').value;var ctx=new(window.AudioContext||window.webkitAudioContext)();var dot=0.08;var time=0;for(var i=0;i<t.length;i++){var c=t[i];if(c==='.'){beep(ctx,time,dot);time+=dot*2;}else if(c==='-'){beep(ctx,time,dot*3);time+=dot*4;}else if(c===' '){time+=dot*3;}else if(c==='/'){time+=dot*7;}}}
+function beep(ctx,start,dur){var o=ctx.createOscillator();var g=ctx.createGain();o.connect(g);g.connect(ctx.destination);o.frequency.value=700;o.type='sine';g.gain.setValueAtTime(0.3,ctx.currentTime+start);g.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+start+dur);o.start(ctx.currentTime+start);o.stop(ctx.currentTime+start+dur);}
+function updateWPM(){var wpm=parseInt(document.getElementById('wpm').value)||20;document.getElementById('wpmVal').textContent=wpm;}
+function decodeMorse(){var t=document.getElementById('decodeInput').value.trim().split(/\s+/);var r='';for(var i=0;i<t.length;i++){r+=rev[t[i]]||t[i];}document.getElementById('decodeOutput').value=r;}
+function copyOutput(id){var el=document.getElementById(id);el.select();el.setSelectionRange(0,99999);navigator.clipboard.writeText(el.value).catch(function(){document.execCommand('copy');});}
+function clearAll(tab){if(tab==='encode'){document.getElementById('encodeInput').value='';document.getElementById('encodeOutput').value='';}else{document.getElementById('decodeInput').value='';document.getElementById('decodeOutput').value='';}}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

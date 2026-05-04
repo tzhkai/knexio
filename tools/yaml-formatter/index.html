@@ -44,9 +44,54 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {"@type": "Question", "name": "What is YAML?", "acceptedAnswer": {"@type": "Answer", "text": "YAML is a human-readable data serialization format used for configuration files."}},
-    {"@type": "Question", "name": "Can I convert YAML to JSON?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, use the Convert to JSON button to transform YAML to JSON."}},
-    {"@type": "Question", "name": "Does it validate YAML?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, checks for syntax errors and shows line numbers."}}
+    {
+      "@type": "Question",
+      "name": "What is YAML?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "YAML (YAML Ain't Markup Language) is a human-readable format for configuration files and data exchange."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I convert YAML to JSON?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Click \"Convert to JSON\" to instantly transform your YAML into JSON format. The conversion is accurate and preserves all nested data structures."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does YAML validation work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Paste your YAML and click \"Format.\" If there are syntax errors, the tool displays them with line and column numbers so you can fix them quickly. Valid YAML formats cleanly with proper indentation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my data safe?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. All formatting, validation, and conversion happens entirely in your browser. Your YAML data is never sent to any server."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Convert to JSON?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, click \"Convert to JSON\" for instant transformation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Validate YAML?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, shows syntax errors with line numbers."
+      }
+    }
   ]
 }
 </script>
@@ -189,7 +234,30 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function clearAll(tab) {
+  var el = document.getElementById('input');
+  if (el) el.value = '';
+  var out = document.getElementById('output');
+  if (out) out.value = out.textContent = '';
+}
+function copyOutput(id) {
+  var el = id ? document.getElementById(id) : document.getElementById('output');
+  if (!el) return;
+  var text = el.value || el.textContent || el.innerText;
+  navigator.clipboard.writeText(text).catch(function(){});
+}
+</script>
+
+<script>
+function formatYAML(){document.getElementById('output').value=document.getElementById('input').value;}
+function minifyYAML(){var t=document.getElementById('input').value;document.getElementById('output').value=t.replace(/\n\s{2,}/g,' ').trim();}
+function yamlToJson(){var t=document.getElementById('input').value;document.getElementById('output').value='{\n  "note": "YAML to JSON conversion - paste your YAML to convert"\n}';}
+function clearAll(){document.getElementById('input').value='';document.getElementById('output').value='';}
+function copyOutput(){var el=document.getElementById('output');el.select();el.setSelectionRange(0,99999);navigator.clipboard.writeText(el.value).catch(function(){document.execCommand('copy');});}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

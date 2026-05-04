@@ -362,10 +362,10 @@
     },
     {
       "@type": "Question",
-      "name": "Why does my password fail the \\\"common password\\\" check?",
+      "name": "Why does my password fail the \"common password\" check?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "We check your password against a list of commonly used weak passwords like \\\"password123\\\" or \\\"qwerty\\\". Even if your password meets other criteria, using a common password makes it vulnerable to dictionary attacks."
+        "text": "We check your password against a list of commonly used weak passwords like \"password123\" or \"qwerty\". Even if your password meets other criteria, using a common password makes it vulnerable to dictionary attacks."
       }
     },
     {
@@ -382,6 +382,14 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Yes. Weak passwords are vulnerable to brute force attacks. Change them to strong, unique passwords as soon as possible. Use a password generator to create secure passwords and a password manager to remember them."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can hackers bypass password strength checks?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Strong passwords make brute force attacks extremely difficult, but no password is 100% unbreakable. The best defense is using strong passwords, enabling two-factor authentication, and being vigilant about phishing attempts."
       }
     }
   ]
@@ -509,7 +517,13 @@
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function checkStrength(){var p=document.getElementById('password').value;var s=0;if(p.length>=8)s++;if(p.length>=12)s++;if(/[A-Z]/.test(p))s++;if(/[a-z]/.test(p))s++;if(/[0-9]/.test(p))s++;if(/[^A-Za-z0-9]/.test(p))s++;var levels=['Very Weak','Weak','Fair','Good','Strong','Very Strong'];var colors=['#ef4444','#f97316','#eab308','#22c55e','#16a34a','#15803d'];var lvl=Math.min(s,5);document.getElementById('strengthLabel').textContent=levels[lvl];document.getElementById('strengthBar').style.width=(lvl+1)*16.6+'%';document.getElementById('strengthBar').style.backgroundColor=colors[lvl];}
+function toggleVisibility(){var el=document.getElementById('password');el.type=el.type==='password'?'text':'password';}
+function clearPassword(){document.getElementById('password').value='';document.getElementById('strengthLabel').textContent='';document.getElementById('strengthBar').style.width='0%';}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

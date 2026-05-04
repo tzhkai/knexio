@@ -34,26 +34,10 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "What is Unix timestamp?",
+      "name": "What's the current timestamp?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Unix timestamp is the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC. It's also called epoch time or POSIX time."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How do I convert Unix timestamp to date?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Enter the Unix timestamp in the input field and click 'Convert to Date'. The tool will display both UTC and local time formats."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the Year 2038 problem?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The Year 2038 problem is a time computing bug where 32-bit systems can't represent times after 03:14:07 UTC on January 19, 2038 (timestamp 2,147,483,647). Most modern systems use 64-bit timestamps to avoid this issue."
+        "text": "The tool shows the current Unix timestamp in real-time."
       }
     }
   ]
@@ -424,7 +408,13 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
 </footer>
 
 <script src="/cookie-consent.js"></script>
-  <script src="/knexio-bundle.js"></script>
+  
+<script>
+function timestampToDate(){var ts=parseInt(document.getElementById('tsInput').value);if(isNaN(ts)){document.getElementById('dateOutput').value='Invalid timestamp';return;}var d=new Date(ts*1000);document.getElementById('dateOutput').value=d.toISOString().replace('T',' ').slice(0,19);}
+function dateToTimestamp(){var d=new Date(document.getElementById('dateInput').value);document.getElementById('tsOutput').value=Math.floor(d.getTime()/1000);}
+function setTimestamp(opt){var now=Math.floor(Date.now()/1000);if(opt==='now'){document.getElementById('tsInput').value=now;timestampToDate();}else if(opt==='+1h'){document.getElementById('tsInput').value=now+3600;timestampToDate();}else if(opt==='+1d'){document.getElementById('tsInput').value=now+86400;timestampToDate();}else if(opt==='+1w'){document.getElementById('tsInput').value=now+604800;timestampToDate();}}
+</script>
+<script src="/knexio-bundle.js"></script>
 </body>
 </html>
 
