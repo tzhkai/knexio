@@ -167,16 +167,23 @@ Jane,25,Los Angeles"></textarea>
 <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2596567349043393" data-ad-slot="3617326351" data-ad-format="rectangle" data-full-width-responsive="true"></ins>
 </div>
 
-<h2>Tips for Using This Tool</h2>
-<p>Get the most out of this tool with these helpful tips:</p>
+<h2>Tips for Converting CSV to JSON</h2>
+<p>Avoid common issues when converting your data:</p>
 <ul style="margin: 15px 0; padding-left: 25px;">
-  <li><strong>Save Your Results:</strong> Use the copy or download buttons to save your work for later reference.</li>
-  <li><strong>Experiment Freely:</strong> Try different inputs and settings to explore all possibilities.</li>
-  <li><strong>Share Results:</strong> Easily share your results with colleagues or on social media.</li>
+  <li><strong>Check Your Header Row:</strong> The first row becomes JSON property names. Make sure headers are consistent, lowercase if needed, and free of special characters that break as keys.</li>
+  <li><strong>Watch for Commas in Quoted Fields:</strong> Values like "New York, NY" must be properly quoted in your CSV, or they'll split into wrong columns.</li>
+  <li><strong>Toggle "Parse Numbers" with Care:</strong> Keep it on when numeric fields should be JSON numbers. Turn it off if IDs like "00123" should stay as strings to preserve leading zeros.</li>
+  <li><strong>Validate the Output JSON:</strong> After conversion, copy the JSON and run it through a validator or <code>JSON.parse()</code> to catch any edge cases before using it in production.</li>
 </ul>
 
-<h2>Why Use Online Tools?</h2>
-<p>Online tools offer convenience and accessibility. No software installation required - simply open your browser and start using. Our tools are designed to be fast, free, and easy to use for everyone.</p>
+<h2>Common CSV Issues to Watch For</h2>
+<p>CSV is deceptively simple. These pitfalls trip up even experienced developers:</p>
+<ul style="margin: 15px 0; padding-left: 25px;">
+  <li><strong>Inconsistent delimiters:</strong> Some systems export with semicolons instead of commas. If your output looks wrong, check what delimiter your data uses.</li>
+  <li><strong>Trailing empty rows:</strong> A blank line at the end of a CSV creates an empty object in JSON. Trim your data if you get unexpected empty entries.</li>
+  <li><strong>Nested data isn't supported:</strong> CSV is flat — you can't represent nested objects or arrays directly. If you need hierarchical JSON, pre-process your data first.</li>
+  <li><strong>Encoding issues:</strong> Characters like accents or emoji can break if the CSV isn't UTF-8. If special characters appear garbled, check your file encoding.</li>
+</ul>
 
 <div class="section">
       <p><strong>How It Works</strong> - Paste your CSV data or upload a CSV file. The converter parses the data and outputs JSON in real-time. Choose between array of objects or nested structure format. Copy the result or download as a JSON file.</p>

@@ -333,16 +333,23 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
 
 
 
-<h2>Tips for Using This Tool</h2>
-<p>Get the most out of this tool with these helpful tips:</p>
+<h2>Tips for Testing Website Speed</h2>
+<p>Get meaningful, actionable results:</p>
 <ul style="margin: 15px 0; padding-left: 25px;">
-  <li><strong>Save Your Results:</strong> Use the copy or download buttons to save your work for later reference.</li>
-  <li><strong>Experiment Freely:</strong> Try different inputs and settings to explore all possibilities.</li>
-  <li><strong>Share Results:</strong> Easily share your results with colleagues or on social media.</li>
+  <li><strong>Run Multiple Tests:</strong> Network conditions fluctuate. Run 3-5 tests and look at the median, not the best or worst result. A single fast load might just be a lucky cache hit.</li>
+  <li><strong>TTFB Tells You About the Server:</strong> Time to First Byte measures how long the server takes to start responding. A high TTFB (>500ms) usually means slow backend processing — address this before optimizing frontend assets.</li>
+  <li><strong>Test Specific Pages, Not Just the Homepage:</strong> Your homepage might be optimized while inner pages are heavy with unoptimized images and third-party scripts. Test the pages your users actually visit most.</li>
+  <li><strong>Compare With and Without Caching:</strong> First visit (cold cache) shows the worst-case experience for new users. Subsequent visits show the best case. Both matter — optimize for the cold case first.</li>
 </ul>
 
-<h2>Why Use Online Tools?</h2>
-<p>Online tools offer convenience and accessibility. No software installation required - simply open your browser and start using. Our tools are designed to be fast, free, and easy to use for everyone.</p>
+<h2>How to Read Speed Test Results</h2>
+<p>Numbers alone don't tell the story — context does:</p>
+<ul style="margin: 15px 0; padding-left: 25px;">
+  <li><strong>Load Time under 2s:</strong> Good. Users stay engaged. Focus on maintaining this as you add features.</li>
+  <li><strong>Load Time 2-4s:</strong> At risk. Every additional second of load time drops conversion rates by ~7%. Audit images, scripts, and third-party embeds.</li>
+  <li><strong>Load Time over 4s:</strong> Problematic. 53% of mobile users abandon sites that take longer than 3 seconds. Prioritize reducing total page weight and deferring non-critical scripts.</li>
+  <li><strong>TTFB under 200ms:</strong> Healthy server response. Over 500ms: investigate backend queries, server location, or hosting plan.</li>
+</ul>
 
 
 

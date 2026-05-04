@@ -355,16 +355,23 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
 
 
   
-<h2>Tips for Using This Tool</h2>
-<p>Get the most out of this tool with these helpful tips:</p>
+<h2>Tips for Generating Pagination</h2>
+<p>Build pagination that works for real users:</p>
 <ul style="margin: 15px 0; padding-left: 25px;">
-  <li><strong>Save Your Results:</strong> Use the copy or download buttons to save your work for later reference.</li>
-  <li><strong>Experiment Freely:</strong> Try different inputs and settings to explore all possibilities.</li>
-  <li><strong>Share Results:</strong> Easily share your results with colleagues or on social media.</li>
+  <li><strong>Test Edge Cases:</strong> Always check how the pagination looks on page 1 (no "previous"), the last page (no "next"), and with only 1-2 total pages. These states break sloppy pagination.</li>
+  <li><strong>Adjust Max Visible for Mobile:</strong> 5+ page buttons look fine on desktop but overflow on narrow screens. Test at 320px width and reduce visible pages if needed.</li>
+  <li><strong>Copy Both HTML and CSS:</strong> The HTML structure alone won't look right without the accompanying CSS. Grab both tabs before pasting into your project.</li>
+  <li><strong>Use the Preview:</strong> Toggle between styles (default, rounded, pill, minimal) in the preview before copying. A style that looks great in isolation may clash with your site's design.</li>
 </ul>
 
-<h2>Why Use Online Tools?</h2>
-<p>Online tools offer convenience and accessibility. No software installation required - simply open your browser and start using. Our tools are designed to be fast, free, and easy to use for everyone.</p>
+<h2>Common Pagination Mistakes</h2>
+<p>Avoid these pitfalls that degrade user experience:</p>
+<ul style="margin: 15px 0; padding-left: 25px;">
+  <li><strong>Hiding navigation when it's needed most:</strong> "Previous" should be disabled (not hidden) on page 1, and "Next" on the last page. Hiding them changes the layout and confuses muscle memory.</li>
+  <li><strong>Too many visible page numbers:</strong> Google search results show 10 page links max. More than that becomes noise. Use ellipsis (...) to collapse the middle range.</li>
+  <li><strong>Forgetting keyboard accessibility:</strong> Pagination links must be focusable and navigable via Tab. Generated code should use <code>&lt;a&gt;</code> tags with <code>href</code> attributes, not <code>&lt;div&gt;</code> click handlers.</li>
+  <li><strong>Inconsistent spacing:</strong> Uneven gaps between page numbers — especially around ellipsis — make the component look sloppy. The generated CSS handles this, but watch for overrides from your site styles.</li>
+</ul>
 
 
 

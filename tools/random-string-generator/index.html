@@ -326,16 +326,23 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
 
 
   
-<h2>Tips for Using This Tool</h2>
-<p>Get the most out of this tool with these helpful tips:</p>
+<h2>Tips for Generating Random Strings</h2>
+<p>Build strings that are both secure and usable:</p>
 <ul style="margin: 15px 0; padding-left: 25px;">
-  <li><strong>Save Your Results:</strong> Use the copy or download buttons to save your work for later reference.</li>
-  <li><strong>Experiment Freely:</strong> Try different inputs and settings to explore all possibilities.</li>
-  <li><strong>Share Results:</strong> Easily share your results with colleagues or on social media.</li>
+  <li><strong>Include All Character Types for Passwords:</strong> A password with only lowercase letters is weak regardless of length. Check uppercase, numbers, and special characters to maximize entropy per character.</li>
+  <li><strong>Exclude Similar Characters for User-Facing Codes:</strong> Characters like 0/O and l/1/I are easily confused. If humans will read or type the string (coupon codes, license keys), toggle the ambiguous character exclusion option.</li>
+  <li><strong>Length Matters More Than Complexity:</strong> A 20-character lowercase-only string is stronger than an 8-character string with all symbols. When in doubt, increase length first, then add character variety.</li>
+  <li><strong>Generate Batches for Testing:</strong> Need 50 API keys for a load test? Set quantity to 50 and generate them all at once. Use the "Copy All" button to grab the list.</li>
 </ul>
 
-<h2>Why Use Online Tools?</h2>
-<p>Online tools offer convenience and accessibility. No software installation required - simply open your browser and start using. Our tools are designed to be fast, free, and easy to use for everyone.</p>
+<h2>How to Choose Character Types</h2>
+<p>The character sets you pick directly affect both security and usability:</p>
+<ul style="margin: 15px 0; padding-left: 25px;">
+  <li><strong>Passwords &amp; secrets:</strong> Check all four boxes (uppercase, lowercase, numbers, symbols). At 16+ characters, this creates strings that are effectively unguessable.</li>
+  <li><strong>API keys &amp; tokens:</strong> Uppercase + lowercase + numbers (no symbols) gives you 62 possible characters per position. This is the standard for Stripe, GitHub, and most API key formats.</li>
+  <li><strong>User-facing codes:</strong> Uppercase + numbers only — and consider excluding ambiguous characters. A 6-character code from 28 unambiguous characters is still ~480 million combinations, enough for email verification.</li>
+  <li><strong>Filenames &amp; IDs:</strong> Lowercase + numbers only. Avoids case-sensitivity issues across Windows/Mac/Linux and makes the string URL-safe.</li>
+</ul>
 
 
 

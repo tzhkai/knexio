@@ -285,16 +285,23 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
 
 
 
-<h2>Tips for Using This Tool</h2>
-<p>Get the most out of this tool with these helpful tips:</p>
+<h2>Tips for Formatting SQL</h2>
+<p>Get readable queries that your team will thank you for:</p>
 <ul style="margin: 15px 0; padding-left: 25px;">
-  <li><strong>Save Your Results:</strong> Use the copy or download buttons to save your work for later reference.</li>
-  <li><strong>Experiment Freely:</strong> Try different inputs and settings to explore all possibilities.</li>
-  <li><strong>Share Results:</strong> Easily share your results with colleagues or on social media.</li>
+  <li><strong>Format Before Debugging:</strong> A messy one-line SQL query is nearly impossible to reason about. Paste it here and format first — the structure reveals missing joins, broken conditions, and logic errors that are invisible in minified code.</li>
+  <li><strong>Choose Your Indent Width Thoughtfully:</strong> 2 spaces keeps deeply nested subqueries from running off the screen. 4 spaces makes the structure more obvious at a glance. Pick one and stick with it across your team.</li>
+  <li><strong>Uppercase Keywords for Scanability:</strong> When <code>SELECT</code>, <code>FROM</code>, <code>WHERE</code>, and <code>JOIN</code> are uppercased, your eye can jump directly to each clause. Use the "Uppercase" button after formatting to apply this convention.</li>
+  <li><strong>Minify for Embedding:</strong> Need to embed a query in application code as a string? Format it first for readability during development, then use the "Minify" button to produce the compact version that goes into your source file.</li>
 </ul>
 
-<h2>Why Use Online Tools?</h2>
-<p>Online tools offer convenience and accessibility. No software installation required - simply open your browser and start using. Our tools are designed to be fast, free, and easy to use for everyone.</p>
+<h2>Why Format SQL</h2>
+<p>A well-formatted query isn't just aesthetic — it directly impacts your productivity:</p>
+<ul style="margin: 15px 0; padding-left: 25px;">
+  <li><strong>Debugging speed:</strong> A formatted query exposes missing join conditions, incorrect GROUP BY clauses, and unbalanced parentheses instantly. You'll spot bugs in seconds that would take minutes in a tangled one-liner.</li>
+  <li><strong>Code review:</strong> Reviewers can follow the logic of a formatted query. A minified 300-character SELECT is almost guaranteed to get a "please reformat" comment.</li>
+  <li><strong>Refactoring:</strong> Need to add a new column or change a join type? Consistent formatting means you can locate the right clause without scanning the entire query.</li>
+  <li><strong>Portability:</strong> The formatter normalizes dialect quirks into consistent structure, making it easier to port a query from MySQL to PostgreSQL or vice versa.</li>
+</ul>
 
 
 

@@ -122,16 +122,23 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 <p class="subtitle">Add timestamps to your video descriptions</p>
 
 
-<h2>Tips for Using This Tool</h2>
-<p>Get the most out of this tool with these helpful tips:</p>
+<h2>Tips for YouTube Timestamps</h2>
+<p>Create chapter markers that actually work:</p>
 <ul style="margin: 15px 0; padding-left: 25px;">
-  <li><strong>Save Your Results:</strong> Use the copy or download buttons to save your work for later reference.</li>
-  <li><strong>Experiment Freely:</strong> Try different inputs and settings to explore all possibilities.</li>
-  <li><strong>Share Results:</strong> Easily share your results with colleagues or on social media.</li>
+  <li><strong>First Timestamp Must Be 0:00:</strong> YouTube requires the first chapter to start at 0:00 for automatic chapter detection to work. Without it, YouTube won't generate the chapter scrubber bar.</li>
+  <li><strong>Each Line Needs Both Time and Description:</strong> YouTube parses each line as <code>MM:SS - Description</code>. The dash separator and description are both required — a bare timestamp with no label won't create a chapter.</li>
+  <li><strong>Keep Descriptions Short:</strong> Long descriptions get cut off in the video player's chapter overlay. Aim for 2-5 words that identify the section clearly (e.g. "Introduction" not "In this section we will cover the background and context").</li>
+  <li><strong>Chapters Must Be in Order:</strong> Timestamps must increase sequentially. A 5:00 chapter followed by a 3:00 chapter breaks the entire chapter list — YouTube ignores the out-of-order entry.</li>
 </ul>
 
-<h2>Why Use Online Tools?</h2>
-<p>Online tools offer convenience and accessibility. No software installation required - simply open your browser and start using. Our tools are designed to be fast, free, and easy to use for everyone.</p>
+<h2>How YouTube Chapters Work</h2>
+<p>When you paste timestamps into a video description, YouTube automatically converts them into clickable chapters:</p>
+<ul style="margin: 15px 0; padding-left: 25px;">
+  <li><strong>Automatic detection:</strong> YouTube scans the description for timestamp lines. If the first line starts at 0:00 and all timestamps are in ascending order, the video gets chapter markers on the progress bar.</li>
+  <li><strong>Minimum requirements:</strong> You need at least 3 chapters (including 0:00), and each chapter must be at least 10 seconds long. Shorter chapters are ignored.</li>
+  <li><strong>Clickable time links:</strong> Even without chapter detection, timestamps in the format <code>MM:SS</code> or <code>HH:MM:SS</code> become clickable links in the description. Viewers can jump directly to that moment.</li>
+  <li><strong>SEO benefit:</strong> Well-structured chapters help YouTube understand your video's content, which can improve search rankings and surface your video in suggested clips.</li>
+</ul>
 
 <div class="ad-banner">
   <ins class="adsbygoogle"

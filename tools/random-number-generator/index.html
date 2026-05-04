@@ -341,16 +341,22 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
 
 
   
-<h2>Tips for Using This Tool</h2>
-<p>Get the most out of this tool with these helpful tips:</p>
+<h2>Tips for Generating Random Numbers</h2>
+<p>Choose the right settings for your use case:</p>
 <ul style="margin: 15px 0; padding-left: 25px;">
-  <li><strong>Save Your Results:</strong> Use the copy or download buttons to save your work for later reference.</li>
-  <li><strong>Experiment Freely:</strong> Try different inputs and settings to explore all possibilities.</li>
-  <li><strong>Share Results:</strong> Easily share your results with colleagues or on social media.</li>
+  <li><strong>Use "Unique Numbers Only" for Draws:</strong> If you're picking winners from a pool, enable unique mode so you don't get duplicates. The generator will warn you if you ask for more unique numbers than the range allows.</li>
+  <li><strong>Set Decimal Places for Precision:</strong> Need random prices ($1.00–$99.99)? Set decimals to 2. Generating random coordinates? Go higher. Leave at 0 for clean integers like dice rolls.</li>
+  <li><strong>This Uses Crypto-Grade Randomness:</strong> Unlike <code>Math.random()</code>, this generator uses the Web Crypto API under the hood. It's suitable for security-sensitive use cases like temporary passwords or cryptographic nonces.</li>
+  <li><strong>Generate in Batches:</strong> If you need 100 random numbers, generate them all at once rather than clicking 100 times. Use the "Copy Results" button to grab the whole list.</li>
 </ul>
 
-<h2>Why Use Online Tools?</h2>
-<p>Online tools offer convenience and accessibility. No software installation required - simply open your browser and start using. Our tools are designed to be fast, free, and easy to use for everyone.</p>
+<h2>When Not to Use Math.random()</h2>
+<p><code>Math.random()</code> is fine for games and UI effects. But it's predictable enough that attackers can reverse-engineer its seed. This tool uses the Web Crypto API, which is cryptographically secure. Use it when:</p>
+<ul style="margin: 15px 0; padding-left: 25px;">
+  <li><strong>Generating temporary passwords or tokens</strong> that users receive via email or SMS.</li>
+  <li><strong>Running lotteries, raffles, or giveaways</strong> where fairness matters and manipulation must be impossible.</li>
+  <li><strong>Seeding simulations</strong> that need unbiased, non-repeatable randomness.</li>
+</ul>
 
 
 

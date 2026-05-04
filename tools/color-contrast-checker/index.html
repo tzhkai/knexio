@@ -103,16 +103,23 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 <h1>Color Contrast Checker</h1>
 <p class="subtitle">Test WCAG accessibility compliance</p>
 
-<h2>Tips for Using This Tool</h2>
-<p>Get the most out of this tool with these helpful tips:</p>
+<h2>Tips for Checking Color Contrast</h2>
+<p>Get accurate WCAG compliance results:</p>
 <ul style="margin: 15px 0; padding-left: 25px;">
-  <li><strong>Save Your Results:</strong> Use the copy or download buttons to save your work for later reference.</li>
-  <li><strong>Experiment Freely:</strong> Try different inputs and settings to explore all possibilities.</li>
-  <li><strong>Share Results:</strong> Easily share your results with colleagues or on social media.</li>
+  <li><strong>Check Both AA and AAA:</strong> AA (4.5:1) is the legal minimum for most sites. AAA (7:1) is ideal for readability but not always required.</li>
+  <li><strong>Large Text Has Lower Bars:</strong> Text 18.66px+ bold or 24px+ regular only needs 3:1 for AA. Headings often fall into this category.</li>
+  <li><strong>Test on Real Backgrounds:</strong> A gradient or image background can produce wildly different effective contrast — test with the actual background your text sits on.</li>
+  <li><strong>Font Weight Matters:</strong> Thin fonts (300 weight) are harder to read than bold at the same contrast ratio. If using light weights, aim higher than the minimum.</li>
 </ul>
 
-<h2>Why Use Online Tools?</h2>
-<p>Online tools offer convenience and accessibility. No software installation required - simply open your browser and start using. Our tools are designed to be fast, free, and easy to use for everyone.</p>
+<h2>When to Check Contrast</h2>
+<p>You should verify color contrast anytime you're making design decisions that affect text legibility:</p>
+<ul style="margin: 15px 0; padding-left: 25px;">
+  <li><strong>Before launching a new page or component</strong> — catch accessibility issues before they ship.</li>
+  <li><strong>When updating brand colors</strong> — a new palette might look great but fail WCAG on certain backgrounds.</li>
+  <li><strong>For any text that overlays images</strong> — semi-transparent overlays and image backgrounds are notorious contrast traps.</li>
+  <li><strong>During design handoff</strong> — give developers exact color pairs with passing ratios to avoid back-and-forth.</li>
+</ul>
 
 <div class="ad-banner">
   <ins class="adsbygoogle"

@@ -105,16 +105,23 @@ footer{max-width:900px;margin-left:auto;margin-right:auto;display:block;margin-t
 <p class="subtitle">Test regular expressions in real time</p>
 
 
-<h2>Tips for Using This Tool</h2>
-<p>Get the most out of this tool with these helpful tips:</p>
+<h2>Tips for Testing Regex</h2>
+<p>Debug patterns faster and avoid common traps:</p>
 <ul style="margin: 15px 0; padding-left: 25px;">
-  <li><strong>Save Your Results:</strong> Use the copy or download buttons to save your work for later reference.</li>
-  <li><strong>Experiment Freely:</strong> Try different inputs and settings to explore all possibilities.</li>
-  <li><strong>Share Results:</strong> Easily share your results with colleagues or on social media.</li>
+  <li><strong>Start Without Flags, Then Add Them:</strong> Test your pattern without any flags first. Once it matches, add <code>g</code> (global) to find all matches, <code>i</code> for case-insensitive, or <code>m</code> to make <code>^</code> and <code>$</code> match per-line.</li>
+  <li><strong>Test with Edge Cases:</strong> Try an empty string, a string with only the pattern you're matching, and a string with extra whitespace. A regex that passes on clean test data will fail on real-world input.</li>
+  <li><strong>Watch for Catastrophic Backtracking:</strong> Patterns with nested quantifiers like <code>(a+)+b</code> can freeze your browser on certain inputs. If the tester hangs or the page becomes unresponsive, your regex has a backtracking problem.</li>
+  <li><strong>Use Capture Groups to Extract Data:</strong> Wrapping part of your pattern in parentheses <code>(...)</code> creates a capture group. The tester shows group matches separately — invaluable when you're pulling values out of text rather than just validating format.</li>
 </ul>
 
-<h2>Why Use Online Tools?</h2>
-<p>Online tools offer convenience and accessibility. No software installation required - simply open your browser and start using. Our tools are designed to be fast, free, and easy to use for everyone.</p>
+<h2>Common Regex Pitfalls</h2>
+<p>Even experienced developers hit these regularly:</p>
+<ul style="margin: 15px 0; padding-left: 25px;">
+  <li><strong><code>.</code> doesn't match newlines:</strong> The dot matches any character except <code>\n</code>. Use <code>[\s\S]</code> or the <code>s</code> (dotAll) flag if you need to match across lines.</li>
+  <li><strong>Greedy vs. lazy quantifiers:</strong> <code>.*</code> grabs as much as possible, often more than you want. Try <code>.*?</code> (lazy) when you need the smallest match — especially important in HTML parsing.</li>
+  <li><strong>Forgetting to escape special characters:</strong> <code>.</code>, <code>+</code>, <code>*</code>, <code>?</code>, <code>[</code>, <code>(</code>, <code>{</code>, <code>|</code>, <code>^</code>, and <code>$</code> all have special meaning. If you want the literal character, escape it with <code>\</code>.</li>
+  <li><strong>Assuming <code>\d</code> only matches 0-9:</strong> In most engines <code>\d</code> matches Unicode digits too (e.g. Arabic numerals). If you strictly need ASCII 0-9, use <code>[0-9]</code> explicitly.</li>
+</ul>
 
 
 <div class="panel">
