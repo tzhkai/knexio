@@ -329,15 +329,19 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
   <div id="statusBar" class="status-bar"></div>
 </div>
 
-<h2>How to Use</h2>
+<h2>What This Tool Does</h2>
 <div class="section">
-<p>Paste raw or minified JSON into the input box. Click Beautify to format it with proper indentation, Minify to compress it, or Validate to check for errors. Use Copy button to grab output.</p>
-
+<p>Paste ugly, minified, or broken JSON and get it back clean. Three modes: <strong>Beautify</strong> (proper indentation, line breaks), <strong>Minify</strong> (compress to one line), and <strong>Validate</strong> (find syntax errors with exact line numbers). All processing happens in your browser — nothing sent to a server.</p>
 </div>
 
-<h2>How It Works</h2>
+<h2>When You'd Reach for This</h2>
 <div class="section">
-<p>The tool parses and reformats JSON with proper indentation and line breaks. Syntax errors are highlighted with exact line and position for quick debugging. All processing happens locally in your browser.</p>
+<ul>
+  <li><strong>Decoding API responses.</strong> Got a giant minified JSON blob from an API? Beautify it to actually read what's in there.</li>
+  <li><strong>Debugging config files.</strong> JSON with a missing comma or bracket? Validate mode tells you exactly which line is broken.</li>
+  <li><strong>Prepping for production.</strong> Need to shrink a config file before deployment? Minify strips all whitespace.</li>
+  <li><strong>Code review.</strong> Quickly format messy JSON from a teammate's PR to make it readable.</li>
+</ul>
 </div>
 
 <h2>Frequently Asked Questions</h2>
@@ -388,7 +392,8 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
 
 </footer>
 
-<script src="/knexio-bundle.js"></script>
+<script src="/cookie-consent.js"></script>
+  <script src="/knexio-bundle.js"></script>
 </body>
 </html>
 

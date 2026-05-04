@@ -344,16 +344,19 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
   🔒 <strong>Security Note:</strong> All hashing is performed locally in your browser using the Web Crypto API. Your data never leaves your device.
 </div>
 
-<h2>How to Use</h2>
+<h2>What This Tool Does</h2>
 <div class="section">
-<p>Enter the text you want to hash, select which hash algorithms to use (MD5, SHA-1, SHA-256, or SHA-512), and click "Generate Hashes". The tool instantly generates cryptographic hash values that you can copy.</p>
-
+<p>Generate MD5, SHA-1, SHA-256, and SHA-512 hashes from any text. Select one or multiple algorithms at once, paste your input, and get the hash values instantly. Uses the Web Crypto API — everything runs in your browser.</p>
 </div>
 
-<h2>How It Works</h2>
+<h2>When You'd Reach for This</h2>
 <div class="section">
-<p>Hashing uses mathematical algorithms to convert any text into a fixed-length string of characters. This hash is unique to the original input – even a small change in text results in a completely different hash.</p>
-<p>The Web Crypto API ensures secure, standards-based hashing performed entirely in your browser. No data is sent to any server.</p>
+<ul>
+  <li><strong>Verifying file integrity.</strong> Compare hash values to confirm a downloaded file hasn't been tampered with.</li>
+  <li><strong>Checking passwords.</strong> Store and compare password hashes without ever seeing the original password.</li>
+  <li><strong>Generating cache keys.</strong> Hash a URL or query string for a unique cache identifier.</li>
+  <li><strong>Data deduplication.</strong> Use hashes as fingerprints to find duplicate records.</li>
+</ul>
 </div>
 
 <h2>Frequently Asked Questions</h2>
@@ -400,7 +403,8 @@ button.secondary:hover,.btn.secondary:hover,.btn-outline:hover{border-color:var(
 
 </footer>
 
-<script src="/knexio-bundle.js"></script>
+<script src="/cookie-consent.js"></script>
+  <script src="/knexio-bundle.js"></script>
 </body>
 </html>
 
