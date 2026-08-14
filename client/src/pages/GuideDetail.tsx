@@ -1,0 +1,29 @@
+/** Style note: Field Notes for Better Work — a readable field guide with narrow evidence rail and one restrained copy action. */
+import { AlertCircle, ArrowLeft, ArrowUpRight, CheckCircle2, ClipboardCheck, Clock3, Layers3, Link2, Quote, Sparkles } from "lucide-react";
+import { Link, useParams } from "wouter";
+import CopyPrompt from "@/components/CopyPrompt";
+import Layout from "@/components/Layout";
+import { SeoMeta } from "@/components/SeoMeta";
+import { getGuide, guides } from "@/lib/content";
+
+export default function GuideDetail() {
+  const { slug } = useParams<{ slug: string }>(); const guide = getGuide(slug);
+  if (!guide) return <Layout><section className="not-found-wrap"><span className="eyebrow">Missing from the index</span><h1>That workflow is not in the library.</h1><Link href="/guides" className="primary-button">Return to the guides <ArrowUpRight size={17} /></Link></section></Layout>;
+  const related = guides.filter(item => item.slug !== guide.slug && (item.category === guide.category || item.level === guide.level)).slice(0, 2);
+  return <Layout><SeoMeta title={guide.title} description={guide.dek} /><article className="guide-article">
+    <div className="article-topline"><Link href="/guides" className="back-link"><ArrowLeft size={15} /> Back to the library</Link><span>Updated {guide.updated}</span></div>
+    <header className="article-header"><div className="article-stamp-wrap"><span className="stamp">{guide.level}</span><span className="article-category">{guide.category}</span></div><h1>{guide.title}</h1><p>{guide.dek}</p><div className="article-meta"><span><Clock3 size={15} /> {guide.readingTime}</span><span><Layers3 size={15} /> One task, one workflow</span><span><ClipboardCheck size={15} /> Includes review checks</span></div></header>
+    {guide.image && <figure className="article-figure"><img src={guide.image} alt={guide.imageAlt || ""} /><figcaption>Illustration for this workflow. The guide below is a reusable starting pattern, not a claim of automated accuracy.</figcaption></figure>}
+    <div className="article-layout"><aside className="article-rail" aria-label="Guide overview"><div className="rail-block"><span className="rail-label">The point</span><p>{guide.takeaway}</p></div><div className="rail-block"><span className="rail-label">Use it when</span><p>You have enough context to describe the task, but want help structuring a first pass.</p></div><div className="rail-block"><span className="rail-label">Do not use it for</span><p>High-stakes decisions without qualified human review, or facts you cannot verify.</p></div></aside>
+      <div className="article-body"><section className="article-intro"><Quote size={25} /><p>This guide gives you a reusable starting pattern. It is designed to help you see the work more clearly; it is not a substitute for judgment, source checking, or responsibility for the result.</p></section>
+        <section className="article-section"><div className="section-number">01</div><div><span className="eyebrow">Set up the task</span><h2>Prepare the inputs before you ask for output.</h2><p>The model only sees what you give it. Spend a few minutes naming the reader, desired result, and uncertain information. This makes a first draft easier to assess and reduces the need for decorative rewriting later.</p></div></section>
+        <section className="prompt-block" aria-label="Copyable AI prompt"><div className="prompt-heading"><div><span className="eyebrow">A starting prompt</span><h2>Give the task a useful brief.</h2></div><CopyPrompt prompt={guide.prompt} /></div><pre>{guide.prompt}</pre><p className="prompt-disclaimer"><AlertCircle size={15} /> Replace every bracketed field with your real context. Read the output before reuse.</p></section>
+        <section className="article-section steps-section"><div className="section-number">02</div><div><span className="eyebrow">Work the system</span><h2>Four steps that keep the result usable.</h2><ol className="workflow-steps">{guide.steps.map((step, index) => <li key={step}><span>{index + 1}</span><p>{step}</p></li>)}</ol></div></section>
+        {guide.sections.map((section, index) => <section className="article-text-section" key={section.title}><span className="article-text-index">0{index + 3}</span><div><h2>{section.title}</h2><p>{section.body}</p></div></section>)}
+        <section className="review-section"><div className="review-title"><CheckCircle2 size={23} /><div><span className="eyebrow">Before you use the output</span><h2>Run a human check.</h2></div></div><ul>{guide.checks.map(check => <li key={check}><CheckCircle2 size={16} /> {check}</li>)}</ul></section>
+        <section className="field-note-wide"><Sparkles size={20} /><div><span>Field note</span><p>AI is strongest here when it makes missing information, structure, and options easier to see. The moment an output becomes a claim, commitment, or decision, bring a person back into the loop.</p></div></section>
+      </div></div>
+    <section className="related-guides"><div><span className="eyebrow">Keep reading</span><h2>Related ways to work.</h2></div><div className="related-list">{related.map(item => <Link href={`/guides/${item.slug}`} key={item.slug} className="related-item"><span>{item.category}</span><strong>{item.title}</strong><ArrowUpRight size={18} /></Link>)}</div></section>
+    <section className="article-source-note"><Link2 size={16} /><p>Want to understand how this library approaches sources, AI assistance, updates, and corrections? Read the <Link href="/editorial-policy">editorial method</Link>.</p></section>
+  </article></Layout>;
+}

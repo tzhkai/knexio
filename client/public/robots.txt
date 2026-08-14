@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Before launch, add the absolute sitemap URL for the connected public domain.
+
