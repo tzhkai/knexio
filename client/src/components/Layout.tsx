@@ -2,12 +2,14 @@
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { ArrowUpRight, Menu, X } from "lucide-react";
+import { useCookieConsent } from "@/components/CookieConsent";
 
 const navItems = [{ href: "/guides", label: "Library" }, { href: "/guides/brief-first-prompt-pattern", label: "Start here" }, { href: "/editorial-policy", label: "Method" }, { href: "/about", label: "About" }];
 const active = (path: string, href: string) => href === "/guides" ? path === href : path === href;
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const [location] = useLocation(); const [open, setOpen] = useState(false);
+  const { openSettings } = useCookieConsent();
   return <div className="site-shell">
     <header className="site-header"><div className="header-inner">
       <Link href="/" className="brand-lockup" aria-label="Workflow Library home"><img className="brand-mark" src="/manus-storage/workflow-library-mark_89833f8a.png" alt="" /><span className="brand-name">Workflow<br />Library</span></Link>
@@ -19,7 +21,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <footer className="site-footer"><div className="footer-top">
       <div className="footer-brand"><img className="footer-mark" src="/manus-storage/workflow-library-mark_89833f8a.png" alt="" /><p>Clearer work, one useful system at a time.</p></div>
       <div className="footer-column"><span className="footer-label">Explore</span><Link href="/guides">All guides</Link><Link href="/guides/brief-first-prompt-pattern">Start with prompts</Link><Link href="/editorial-policy">Editorial method</Link></div>
-      <div className="footer-column"><span className="footer-label">Site information</span><Link href="/about">About the library</Link><Link href="/privacy">Privacy</Link><Link href="/contact">Contact</Link></div>
+      <div className="footer-column"><span className="footer-label">Site information</span><Link href="/about">About the library</Link><Link href="/privacy">Privacy</Link><button className="footer-settings" type="button" onClick={openSettings}>Cookie settings</button><Link href="/contact">Contact</Link></div>
       <div className="footer-note"><span className="footer-label">A practical note</span><p>AI can help structure work. It cannot take responsibility for facts, decisions, or relationships.</p></div>
     </div><div className="footer-bottom"><span>© 2026 Workflow Library</span><span>Independent educational publishing project</span></div></footer>
   </div>;
