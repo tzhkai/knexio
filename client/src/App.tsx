@@ -7,9 +7,10 @@ import { ThemeProvider } from "@/contexts/ThemeContext";
 import Home from "@/pages/Home";
 import Guides from "@/pages/Guides";
 import GuideDetail from "@/pages/GuideDetail";
+import TopicPage from "@/pages/TopicPage";
 import NotFound from "@/pages/NotFound";
 import { About, Contact, EditorialPolicy } from "@/pages/InfoPages";
 import Privacy from "@/pages/Privacy";
 import { CookieConsentProvider } from "@/components/CookieConsent";
-function Router() { return <Switch><Route path="/" component={Home} /><Route path="/guides" component={Guides} /><Route path="/guides/:slug" component={GuideDetail} /><Route path="/about" component={About} /><Route path="/editorial-policy" component={EditorialPolicy} /><Route path="/privacy" component={Privacy} /><Route path="/contact" component={Contact} /><Route component={NotFound} /></Switch>; }
+function Router() { return <Switch><Route path="/" component={Home} /><Route path="/guides" component={Guides} /><Route path="/guides/:slug" component={GuideDetail} /><Route path="/workflows/:topic" component={TopicPage} /><Route path="/about" component={About} /><Route path="/editorial-policy" component={EditorialPolicy} /><Route path="/privacy" component={Privacy} /><Route path="/contact" component={Contact} /><Route component={NotFound} /></Switch>; }
 export default function App() { return <ErrorBoundary><ThemeProvider defaultTheme="light"><TooltipProvider><CookieConsentProvider><Toaster /><Router /></CookieConsentProvider></TooltipProvider></ThemeProvider></ErrorBoundary>; }

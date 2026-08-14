@@ -1,0 +1,11 @@
+{
+  "name": "Workflow Library",
+  "short_name": "Workflow Library",
+  "description": "Practical AI workflows, prompts, and human review checks for everyday knowledge work.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#f6f2ea",
+  "theme_color": "#176b5b",
+  "icons": [{ "src": "/manus-storage/workflow-library-mark_89833f8a.png", "sizes": "any", "type": "image/png" }]
+}
+

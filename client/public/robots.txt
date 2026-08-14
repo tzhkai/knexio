@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /404
 
-# Before launch, add the absolute sitemap URL for the connected public domain.
-
+# Generate the final absolute sitemap directive after binding the public domain:
+# SITE_URL=https://www.example.com pnpm sitemap
