@@ -203,7 +203,8 @@ function vitePluginStorageProxy(): Plugin {
   };
 }
 
-const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector(), vitePluginStorageProxy()];
+// Keep the production runtime after #root so the React entry can mount on every static route.
+const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime({ injectTo: "body" }), vitePluginManusDebugCollector(), vitePluginStorageProxy()];
 
 export default defineConfig({
   plugins,
