@@ -240,3 +240,10 @@
 - [x] 核对生产环境的 AdSense 脚本和 ads.txt；Privacy & messaging 已由用户确认发布。
 - [ ] 在提交 AdSense 审核前填入真实发布者身份与受监控的隐私联系邮箱。
 - [x] 交付可执行的索引维护与 AdSense 审核提交结论。
+
+## 发布者与隐私联系信息更新
+
+- [x] 核对公开 Privacy Policy 和相关披露中的发布者与联系信息位置。
+- [x] 将发布者品牌名称更新为 Knexio，并填入 tzhkai6@gmail.com 作为隐私联系邮箱。
+- [x] 验证页面文案、构建产物和移动端可读性。
+- [ ] 同步至 GitHub 与 Cloudflare Pages，并复核生产页面内容。
