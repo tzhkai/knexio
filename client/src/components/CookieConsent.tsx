@@ -1,6 +1,6 @@
 /**
  * Style note: Field Notes for Better Work — consent controls are calm, specific, and reversible.
- * Optional analytics and advertising are not activated by this component until the visitor chooses them.
+ * Optional site analytics is not activated until the visitor chooses it; advertising consent is reserved for a certified CMP.
  */
 import { Check, ChevronDown, Cookie, ShieldCheck, X } from "lucide-react";
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
@@ -9,7 +9,6 @@ import { Link } from "wouter";
 type ConsentRecord = {
   necessary: true;
   analytics: boolean;
-  advertising: boolean;
   updatedAt: string;
   expiresAt: number;
 };
@@ -92,8 +91,8 @@ export function CookieConsentProvider({ children }: { children: React.ReactNode 
 
   const contextValue = useMemo(() => ({ consent, openSettings: () => setSettingsOpen(true) }), [consent]);
 
-  return <CookieConsentContext.Provider value={contextValue}><style>{consentStyles}</style><AnalyticsLoader enabled={Boolean(consent?.analytics)} />{children}<CookieConsentSurface ready={ready} consent={consent} settingsOpen={settingsOpen} closeSettings={() => setSettingsOpen(false)} onSave={(analytics, advertising) => {
-    const next: ConsentRecord = { necessary: true, analytics, advertising, updatedAt: new Date().toISOString(), expiresAt: Date.now() + CONSENT_DAYS * 24 * 60 * 60 * 1000 };
+  return <CookieConsentContext.Provider value={contextValue}><style>{consentStyles}</style><AnalyticsLoader enabled={Boolean(consent?.analytics)} />{children}<CookieConsentSurface ready={ready} consent={consent} settingsOpen={settingsOpen} closeSettings={() => setSettingsOpen(false)} onSave={(analytics) => {
+    const next: ConsentRecord = { necessary: true, analytics, updatedAt: new Date().toISOString(), expiresAt: Date.now() + CONSENT_DAYS * 24 * 60 * 60 * 1000 };
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
     setConsent(next);
     setSettingsOpen(false);
@@ -106,15 +105,15 @@ export function useCookieConsent() {
   return value;
 }
 
-function CookieConsentSurface({ ready, consent, settingsOpen, closeSettings, onSave }: { ready: boolean; consent: ConsentRecord | null; settingsOpen: boolean; closeSettings: () => void; onSave: (analytics: boolean, advertising: boolean) => void }) {
+function CookieConsentSurface({ ready, consent, settingsOpen, closeSettings, onSave }: { ready: boolean; consent: ConsentRecord | null; settingsOpen: boolean; closeSettings: () => void; onSave: (analytics: boolean) => void }) {
   const [expanded, setExpanded] = useState(false);
-  const [draft, setDraft] = useState({ analytics: false, advertising: false });
-  useEffect(() => { setDraft({ analytics: Boolean(consent?.analytics), advertising: Boolean(consent?.advertising) }); }, [consent, settingsOpen]);
+  const [analyticsAllowed, setAnalyticsAllowed] = useState(false);
+  useEffect(() => { setAnalyticsAllowed(Boolean(consent?.analytics)); }, [consent, settingsOpen]);
   if (!ready || (consent && !settingsOpen)) return null;
   const isSettings = Boolean(consent && settingsOpen);
   return <aside className="cookie-consent" role={isSettings ? "dialog" : "region"} aria-modal={isSettings || undefined} aria-label={isSettings ? "Cookie preferences" : "Cookie notice"}>
-    <div className="cookie-consent-inner"><div className="cookie-consent-heading"><div><h2 className="cookie-consent-title"><Cookie size={20} /> {isSettings ? "Cookie preferences" : "Your choices, kept visible."}</h2><p>{isSettings ? "Change optional categories at any time. Necessary local storage keeps this choice available for the next visit." : "We save your choice on this device. Optional analytics loads only if you allow it; advertising technology is not active in this version."} <Link href="/privacy">Read the privacy notice</Link>.</p></div>{isSettings && <button className="cookie-close" type="button" aria-label="Close cookie preferences" onClick={closeSettings}><X size={18} /></button>}</div>
-      {!expanded && !isSettings ? <div className="cookie-actions"><button className="cookie-primary" type="button" onClick={() => onSave(true, true)}>Accept optional cookies</button><button className="cookie-secondary" type="button" onClick={() => onSave(false, false)}>Reject optional</button><button className="cookie-text-button" type="button" onClick={() => setExpanded(true)}>Manage choices <ChevronDown size={14} /></button></div> : <div className="cookie-preferences"><h3>Choose by purpose</h3><p>Necessary storage is always on because it records your decision. Optional choices are off until you save them.</p><CookieOption label="Necessary preferences" detail="Stores your consent choice in this browser for up to 180 days." enabled disabled onToggle={() => undefined} /><CookieOption label="Analytics" detail="Loads the site’s usage measurement script after you agree, to help understand pages and navigation." enabled={draft.analytics} onToggle={() => setDraft(item => ({ ...item, analytics: !item.analytics }))} /><CookieOption label="Advertising" detail="Reserved for disclosed Google advertising and related measurement if the publisher enables them later." enabled={draft.advertising} onToggle={() => setDraft(item => ({ ...item, advertising: !item.advertising }))} /><div className="cookie-actions"><button className="cookie-primary" type="button" onClick={() => onSave(draft.analytics, draft.advertising)}><Check size={15} /> Save choices</button><button className="cookie-secondary" type="button" onClick={() => onSave(false, false)}>Reject optional</button></div></div>}
+    <div className="cookie-consent-inner"><div className="cookie-consent-heading"><div><h2 className="cookie-consent-title"><Cookie size={20} /> {isSettings ? "Cookie preferences" : "Your choices, kept visible."}</h2><p>{isSettings ? "Change site analytics at any time. Necessary local storage keeps this choice available for the next visit." : "We save your choice on this device. Site analytics loads only if you allow it. Google advertising consent, if advertising is enabled later, will be managed through a certified consent platform."} <Link href="/privacy">Read the privacy notice</Link>.</p></div>{isSettings && <button className="cookie-close" type="button" aria-label="Close cookie preferences" onClick={closeSettings}><X size={18} /></button>}</div>
+      {!expanded && !isSettings ? <div className="cookie-actions"><button className="cookie-primary" type="button" onClick={() => onSave(true)}>Allow site analytics</button><button className="cookie-secondary" type="button" onClick={() => onSave(false)}>Reject optional</button><button className="cookie-text-button" type="button" onClick={() => setExpanded(true)}>Manage choices <ChevronDown size={14} /></button></div> : <div className="cookie-preferences"><h3>Choose by purpose</h3><p>Necessary storage is always on because it records your decision. This control manages site analytics only; it does not collect or store a Google advertising choice.</p><CookieOption label="Necessary preferences" detail="Stores your consent choice in this browser for up to 180 days." enabled disabled onToggle={() => undefined} /><CookieOption label="Site analytics" detail="Loads the site’s usage-measurement script after you agree, to help understand pages and navigation." enabled={analyticsAllowed} onToggle={() => setAnalyticsAllowed((current) => !current)} /><div className="cookie-actions"><button className="cookie-primary" type="button" onClick={() => onSave(analyticsAllowed)}><Check size={15} /> Save choices</button><button className="cookie-secondary" type="button" onClick={() => onSave(false)}>Reject optional</button></div></div>}
     </div>
   </aside>;
 }

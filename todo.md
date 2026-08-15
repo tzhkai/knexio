@@ -214,4 +214,12 @@
 - [x] 将隐私政策模板重构为公开可读且清晰分段的独立页面。
 - [x] 核对页脚、Cookie 设置入口与页面内锚点可访问性。
 - [x] 验证 TypeScript、生产构建及桌面/移动端页面布局。
-- [ ] 推送 GitHub 以触发 Cloudflare Pages 自动部署。
+- [x] 推送 GitHub 以触发 Cloudflare Pages 自动部署。
+
+## Google Privacy & messaging / 认证 CMP 接入
+
+- [x] 核对 AdSense 账户、域名、Privacy & messaging 和 Google 认证 CMP 的可用前提；共享浏览器接管显示异常，改由用户本机后台完成账户操作。
+- [x] 审计当前 Cookie 横幅、分析脚本与广告代码的实际加载状态。
+- [x] 提供用户本机浏览器中的 Google Privacy & messaging 正式同意消息配置步骤。
+- [x] 调整自定义 Cookie 控制，避免与正式 CMP 的同意状态冲突。
+- [ ] 验证 EEA/UK/Swiss 同意路径、隐私披露与生产发布状态。
