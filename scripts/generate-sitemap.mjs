@@ -32,10 +32,13 @@ const guides = [
   "meeting-follow-up-email",
   "decision-log-from-project-notes",
   "weekly-priorities-from-project-list",
+  "meeting-agenda-from-notes",
+  "customer-feedback-theme-map",
+  "project-handoff-brief",
 ];
 const topics = ["research-and-decisions", "writing-and-updates", "meetings-and-follow-up", "planning-and-priorities"];
-const routes = ["/", "/guides", "/about", "/editorial-policy", "/privacy", "/contact", ...guides.map(slug => `/guides/${slug}`), ...topics.map(slug => `/workflows/${slug}`)];
-const lastmod = "2026-08-14";
+const routes = ["/", "/guides", "/about", "/editorial-policy", "/privacy", "/terms", "/contact", ...guides.map(slug => `/guides/${slug}`), ...topics.map(slug => `/workflows/${slug}`)];
+const lastmod = "2026-08-15";
 const xmlEscape = (value) => value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&apos;");
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${routes.map(route => `  <url><loc>${xmlEscape(`${origin}${route}`)}</loc><lastmod>${lastmod}</lastmod></url>`).join("\n")}\n</urlset>\n`;
 const robots = `User-agent: *\nAllow: /\nDisallow: /404\n\nSitemap: ${origin}/sitemap.xml\n`;
