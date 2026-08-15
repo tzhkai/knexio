@@ -144,3 +144,26 @@
 - [x] 在操作前确认新的 sitemap 提交、旧条目移除与索引请求范围。
 - [x] 执行确认的 Search Console 更新操作。
 - [x] 核对结果并记录后续索引监测重点。
+
+## 全站 Meta 与 Open Graph 优化
+
+- [x] 盘点公开路由、当前标题、描述、canonical 与社交预览标签。
+- [x] 为首页、内容库、专题、文章、信息页和 404 页制定差异化摘要策略。
+- [x] 实现全站 Meta、Open Graph、Twitter 与图像 alt 字段优化。
+- [x] 验证主要路由的标签输出、生产构建和分享预览字段。
+- [ ] 同步优化到 GitHub 并核对 Cloudflare 自动发布。
+
+## GitHub 同步授权恢复
+
+- [x] 诊断当前 GitHub 会话、仓库权限与本地待推送提交状态。
+- [x] 恢复安全写入授权，或准备用户可见的仓库同步替代操作。
+- [ ] 推送已创建的 Meta 与 Open Graph 优化提交至 main。
+- [ ] 核对 Cloudflare Pages 自动构建及生产 Meta 输出。
+- [ ] 保存同步完成后的可恢复项目版本。
+
+## Sitemap 无法抓取诊断
+
+- [x] 核对 sitemap.xml、robots.txt、HTTP 响应头与 Googlebot 访问结果。
+- [x] 排查 Cloudflare 缓存、规范域名、内容格式和 Search Console 抓取时间差。
+- [x] 验证生产 sitemap 可访问；当前未发现需要改动的文件、robots 或部署配置。
+- [ ] 若 72 小时后仍未读取，经确认后更新 Search Console sitemap 提交并记录抓取监测结论。

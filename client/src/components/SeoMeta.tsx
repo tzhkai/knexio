@@ -1,8 +1,21 @@
 /** Style note: Field Notes for Better Work — metadata stays precise, useful, and free of hype. */
 import { useEffect } from "react";
+import { heroImage } from "@/lib/content";
 type JsonLd = Record<string, unknown> | Record<string, unknown>[];
 type SchemaContext = { origin: string; pageUrl: string };
-type SeoMetaProps = { title: string; description: string; type?: "website" | "article"; image?: string; noIndex?: boolean; schema?: (context: SchemaContext) => JsonLd };
+type SeoMetaProps = {
+  title: string;
+  description: string;
+  type?: "website" | "article";
+  image?: string;
+  imageAlt?: string;
+  noIndex?: boolean;
+  publishedTime?: string;
+  modifiedTime?: string;
+  section?: string;
+  tags?: string[];
+  schema?: (context: SchemaContext) => JsonLd;
+};
 const fieldNoteRefinements = `
   .brand-name { position:relative; padding-left:10px; }
   .brand-name::before { content:""; position:absolute; top:1px; bottom:1px; left:0; width:1px; background:var(--green); }
@@ -31,22 +44,49 @@ function upsertMeta(attribute: "name" | "property", key: string, value: string) 
   element.content = value;
 }
 
-export function SeoMeta({ title, description, type = "website", image, noIndex = false, schema }: SeoMetaProps) {
+function removeMeta(attribute: "name" | "property", key: string) {
+  document.querySelector(`meta[${attribute}="${key}"]`)?.remove();
+}
+
+function syncMeta(attribute: "name" | "property", key: string, value?: string) {
+  if (value) upsertMeta(attribute, key, value);
+  else removeMeta(attribute, key);
+}
+
+export function SeoMeta({ title, description, type = "website", image = heroImage, imageAlt = "Workflow Library field guide for practical AI workflows", noIndex = false, publishedTime, modifiedTime, section, tags = [], schema }: SeoMetaProps) {
   useEffect(() => {
     document.title = `${title} | Workflow Library`;
     const origin = window.location.origin;
-    const pageUrl = `${origin}${window.location.pathname}`;
-    const imageUrl = image ? (image.startsWith("http") ? image : `${origin}${image}`) : undefined;
+    const pathname = window.location.pathname === "/" ? "/" : window.location.pathname.replace(/\/$/, "");
+    const pageUrl = `${origin}${pathname}`;
+    const imageUrl = image.startsWith("http") ? image : `${origin}${image}`;
     upsertMeta("name", "description", description);
     upsertMeta("name", "robots", noIndex ? "noindex,follow" : "index,follow");
+    upsertMeta("name", "googlebot", noIndex ? "noindex,follow" : "index,follow,max-image-preview:large,max-snippet:-1");
     upsertMeta("property", "og:title", title);
     upsertMeta("property", "og:description", description);
     upsertMeta("property", "og:type", type);
     upsertMeta("property", "og:url", pageUrl);
-    upsertMeta("name", "twitter:card", imageUrl ? "summary_large_image" : "summary");
+    upsertMeta("property", "og:site_name", "Workflow Library");
+    upsertMeta("property", "og:locale", "en_US");
+    upsertMeta("property", "og:image", imageUrl);
+    upsertMeta("property", "og:image:secure_url", imageUrl);
+    upsertMeta("property", "og:image:alt", imageAlt);
+    upsertMeta("name", "twitter:card", "summary_large_image");
     upsertMeta("name", "twitter:title", title);
     upsertMeta("name", "twitter:description", description);
-    if (imageUrl) { upsertMeta("property", "og:image", imageUrl); upsertMeta("name", "twitter:image", imageUrl); }
+    upsertMeta("name", "twitter:image", imageUrl);
+    upsertMeta("name", "twitter:image:alt", imageAlt);
+    syncMeta("property", "article:published_time", type === "article" ? publishedTime : undefined);
+    syncMeta("property", "article:modified_time", type === "article" ? modifiedTime : undefined);
+    syncMeta("property", "article:section", type === "article" ? section : undefined);
+    document.querySelectorAll('meta[property="article:tag"]').forEach(element => element.remove());
+    if (type === "article") tags.forEach(tag => {
+      const tagMeta = document.createElement("meta");
+      tagMeta.setAttribute("property", "article:tag");
+      tagMeta.content = tag;
+      document.head.appendChild(tagMeta);
+    });
     let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
     if (!canonical) {
       canonical = document.createElement("link");
@@ -64,6 +104,6 @@ export function SeoMeta({ title, description, type = "website", image, noIndex =
     const webPage: Record<string, unknown> = { "@type": "WebPage", "@id": `${pageUrl}#webpage`, name: title, description, url: pageUrl, isPartOf: { "@type": "WebSite", name: "Workflow Library", url: origin } };
     const additions = schema?.({ origin, pageUrl });
     schemaScript.text = JSON.stringify({ "@context": "https://schema.org", "@graph": [webPage, ...(additions ? (Array.isArray(additions) ? additions : [additions]) : [])] });
-  }, [title, description, type, image, noIndex, schema]);
+  }, [title, description, type, image, imageAlt, noIndex, publishedTime, modifiedTime, section, tags, schema]);
   return <style>{fieldNoteRefinements}</style>;
 }

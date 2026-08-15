@@ -40,6 +40,14 @@ Search Console 已确认“已成功提交站点地图”，并在列表中登�
 
 已打开“安全问题”报告，页面同样显示“未检测到任何问题”。因此，本次审计未发现 Search Console 中显示的人工处置措施或安全问题。
 
+## Sitemap 无法抓取复核
+
+Search Console 当前仍将 `https://knexio.xyz/sitemap.xml` 显示为“类型：未知”“状态：无法抓取”“上次读取时间：空”“已发现的网页：0”。这表示 Google 尚未记录一次成功读取，而不是对 XML 内容给出了具体格式错误。
+
+生产环境的独立复核显示，使用 Googlebot 用户代理请求该 URL 返回 HTTP 200、`Content-Type: application/xml`、2,475 字节响应体和有效 XML 声明；文件使用标准 sitemap namespace，含 24 个 `https://knexio.xyz` 规范 URL。`/robots.txt` 同样返回 HTTP 200、`text/plain; charset=utf-8`，允许爬取并准确引用该 sitemap。域名通过 Cloudflare 的 IPv4/IPv6 网络正常解析。
+
+当前没有证据表明 sitemap 文件、robots 规则、HTTPS 或基础 Cloudflare 响应阻止了 Googlebot。由于该提交仍处于首次处理阶段，暂不重复提交、删除或修改 sitemap；应等待 Search Console 完成首次读取。若 72 小时后仍无“上次读取时间”，再检查 Cloudflare 的 WAF/Bot 管理日志，并在确认没有拦截规则后通过 Search Console 移除并重新提交同一完整 HTTPS 地址。
+
 ## 建议的后续操作
 
 1. 提交 `https://knexio.xyz/sitemap.xml`。
