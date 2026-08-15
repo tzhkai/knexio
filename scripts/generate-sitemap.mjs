@@ -37,7 +37,7 @@ const guides = [
   "project-handoff-brief",
 ];
 const topics = ["research-and-decisions", "writing-and-updates", "meetings-and-follow-up", "planning-and-priorities"];
-const routes = ["/", "/guides", "/about", "/editorial-policy", "/privacy", "/terms", "/contact", ...guides.map(slug => `/guides/${slug}`), ...topics.map(slug => `/workflows/${slug}`)];
+const routes = ["/", "/guides", "/series", "/about", "/editorial-policy", "/privacy", "/terms", "/contact", ...guides.map(slug => `/guides/${slug}`), ...topics.map(slug => `/workflows/${slug}`)];
 const lastmod = "2026-08-15";
 const xmlEscape = (value) => value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&apos;");
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${routes.map(route => `  <url><loc>${xmlEscape(`${origin}${route}`)}</loc><lastmod>${lastmod}</lastmod></url>`).join("\n")}\n</urlset>\n`;
