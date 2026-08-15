@@ -5,13 +5,14 @@
 import { Cookie, ExternalLink, ShieldCheck } from "lucide-react";
 import Layout from "@/components/Layout";
 import { SeoMeta } from "@/components/SeoMeta";
+import SiteBreadcrumb, { breadcrumbListSchema } from "@/components/SiteBreadcrumb";
 import { useCookieConsent } from "@/components/CookieConsent";
 import PrivacyEnhancements from "@/components/PrivacyEnhancements";
 
 export default function Privacy() {
   const { consent, openSettings } = useCookieConsent();
   const preferenceText = !consent ? "You have not saved a choice yet." : `Saved ${new Date(consent.updatedAt).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })}: analytics ${consent.analytics ? "allowed" : "rejected"}; advertising ${consent.advertising ? "allowed" : "rejected"}.`;
-  return <Layout><SeoMeta title="Privacy & cookie notice" description="Workflow Library's transparent notice for consent choices, optional analytics, and future disclosed advertising technology." /><PrivacyEnhancements />
+  return <Layout><SeoMeta title="Privacy & cookie notice" description="Workflow Library's transparent notice for consent choices, optional analytics, and future disclosed advertising technology." schema={({ origin, pageUrl }) => breadcrumbListSchema(origin, pageUrl, [{ label: "Home", href: "/" }, { label: "Privacy & Cookie" }])} /><PrivacyEnhancements /><SiteBreadcrumb items={[{ label: "Home", href: "/" }, { label: "Privacy & Cookie" }]} />
     <section className="legal-page"><span className="eyebrow">Privacy & cookie notice</span><h1>Plain language about<br />data and choices.</h1><p className="legal-lede">Last updated: August 14, 2026. This notice describes the website’s current behavior. Before public launch, the publisher must replace the unfinished operator and contact details with accurate information for the final domain and jurisdictions served.</p>
       <div className="privacy-choice-panel"><div><ShieldCheck size={23} /><div><span className="eyebrow">Your current browser choice</span><p>{preferenceText}</p></div></div><button type="button" className="primary-button" onClick={openSettings}>Manage cookie choices</button></div>
       <div className="legal-content">

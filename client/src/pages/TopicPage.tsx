@@ -4,6 +4,7 @@ import { Link, useParams } from "wouter";
 import Layout from "@/components/Layout";
 import GuideCard from "@/components/GuideCard";
 import { SeoMeta } from "@/components/SeoMeta";
+import SiteBreadcrumb, { breadcrumbListSchema } from "@/components/SiteBreadcrumb";
 import { guides, topicClusters } from "@/lib/content";
 
 const topicStyles = `
@@ -13,9 +14,9 @@ const topicStyles = `
 export default function TopicPage() {
   const { topic: slug } = useParams<{ topic: string }>();
   const topic = topicClusters.find(item => item.slug === slug);
-  if (!topic) return <Layout><SeoMeta title="Topic not found" description="This topic is not in the Workflow Library index." noIndex /><section className="not-found-wrap"><h1>This topic is not in the index.</h1><Link href="/guides" className="primary-button">Return to the library <ArrowUpRight size={16} /></Link></section></Layout>;
+  if (!topic) return <Layout><SeoMeta title="Topic not found" description="This topic is not in the Workflow Library index." noIndex /><SiteBreadcrumb items={[{ label: "Home", href: "/" }, { label: "Library", href: "/guides" }, { label: "Topic not found" }]} /><section className="not-found-wrap"><h1>This topic is not in the index.</h1><Link href="/guides" className="primary-button">Return to the library <ArrowUpRight size={16} /></Link></section></Layout>;
   const entries = topic.guideSlugs.map(guideSlug => guides.find(guide => guide.slug === guideSlug)).filter(Boolean);
-  return <Layout><SeoMeta title={topic.seoTitle} description={topic.description} schema={({ origin, pageUrl }) => ({ "@type": "CollectionPage", name: topic.title, description: topic.description, url: pageUrl, mainEntity: { "@type": "ItemList", numberOfItems: entries.length, itemListElement: entries.map((guide, index) => ({ "@type": "ListItem", position: index + 1, name: guide!.title, url: `${origin}/guides/${guide!.slug}` })) } })} /><style>{topicStyles}</style>
+  return <Layout><SeoMeta title={topic.seoTitle} description={topic.description} schema={({ origin, pageUrl }) => ([{ "@type": "CollectionPage", name: topic.title, description: topic.description, url: pageUrl, mainEntity: { "@type": "ItemList", numberOfItems: entries.length, itemListElement: entries.map((guide, index) => ({ "@type": "ListItem", position: index + 1, name: guide!.title, url: `${origin}/guides/${guide!.slug}` })) } }, breadcrumbListSchema(origin, pageUrl, [{ label: "Home", href: "/" }, { label: "Library", href: "/guides" }, { label: topic.shortTitle }])])} /><style>{topicStyles}</style><SiteBreadcrumb items={[{ label: "Home", href: "/" }, { label: "Library", href: "/guides" }, { label: topic.shortTitle }]} />
     <section className="topic-hero"><div><Link href="/guides" className="topic-return"><ArrowLeft size={15} /> Back to the library</Link><span className="eyebrow">Workflow cluster / {topic.number}</span><h1>{topic.title}</h1><p>{topic.description}</p></div><aside className="topic-rail"><strong>Use this shelf when</strong><p>{topic.useWhen}</p></aside></section>
     <div className="topic-link-row" aria-label="Other workflow topics">{topicClusters.filter(item => item.slug !== topic.slug).map(item => <Link key={item.slug} href={`/workflows/${item.slug}`}>{item.shortTitle}</Link>)}</div>
     <section className="topic-intro"><div><span className="eyebrow">How to use these guides</span><h2>{topic.introTitle}</h2></div><div><p>{topic.intro}</p><p>Start with the task that already has enough context to inspect. Treat the generated output as a working surface, keep uncertainty visible, and use the related guide only when it helps the next human decision.</p></div></section>
