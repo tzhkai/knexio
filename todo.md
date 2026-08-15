@@ -106,3 +106,10 @@
 - [x] 实现专题聚合页、导航入口、面包屑与结构化路径。
 - [x] 优化手机端阶段浏览和内部链接体验。
 - [x] 完成专题路由、跨设备审阅和生产构建验证。
+
+## Search Console sitemap 与 robots 发布文档
+
+- [x] 审阅当前规范 URL、sitemap 脚本和 robots 规则。
+- [x] 编写正式域名替换后的 sitemap 规划与 robots.txt 模板。
+- [x] 编写 Search Console 验证、提交、检查和持续维护步骤。
+- [x] 保存发布文档并核对其与当前路由一致。
