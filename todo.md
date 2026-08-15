@@ -136,3 +136,11 @@
 - [x] 重新验证静态产物、正式构建和页面图片加载。
 - [x] 同步优化图片到 GitHub 并核对 Cloudflare 自动发布。
 - [ ] 保存可恢复的项目版本。
+
+## Google Search Console 更新与索引监测
+
+- [x] 检查 Google Search Console 登录状态与 knexio.xyz 属性访问权限。
+- [x] 审计已提交 sitemap、旧站条目和核心新 URL 的状态。
+- [x] 在操作前确认新的 sitemap 提交、旧条目移除与索引请求范围。
+- [x] 执行确认的 Search Console 更新操作。
+- [x] 核对结果并记录后续索引监测重点。
