@@ -2,5 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /404
 
-# Generate the final absolute sitemap directive after binding the public domain:
-# SITE_URL=https://www.example.com pnpm sitemap
+Sitemap: https://knexio.xyz/sitemap.xml

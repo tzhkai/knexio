@@ -1,0 +1,46 @@
+name: Deploy Workflow Library to Cloudflare Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cloudflare-pages-production
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out production branch
+        uses: actions/checkout@v4
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install locked dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Validate TypeScript
+        run: pnpm check
+
+      - name: Build canonical production site
+        env:
+          SITE_URL: https://knexio.xyz
+        run: pnpm build:cloudflare
+
+      - name: Deploy static site to Cloudflare Pages
+        run: pnpm dlx wrangler@3 pages deploy dist/public --project-name=knexio-site --branch=main
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: 2636b35e232e4eee44c3f7333b6a857d

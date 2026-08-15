@@ -19,7 +19,7 @@ export type Guide = {
   checks: string[];
 };
 
-export const heroImage = "/manus-storage/workflow-library-hero_9395f16b.png";
+export const heroImage = "/images/workflow-library-hero.webp";
 
 export const guides: Guide[] = [
   {
@@ -27,7 +27,7 @@ export const guides: Guide[] = [
     title: "Turn scattered sources into a one-page research brief",
     dek: "Use AI to create a starting structure without losing the sources and questions that make research trustworthy.",
     category: "Research", readingTime: "8 min read", level: "Everyday", updated: "14 Aug 2026", publishedAt: "2026-08-14T09:00:00+08:00", updatedAt: "2026-08-14T09:00:00+08:00", topics: ["research brief", "AI research workflow", "source checking", "research prompt"],
-    image: "/manus-storage/research-brief-workflow_69715abb.png", imageAlt: "Research materials arranged around a concise paper outline on a warm desk",
+    image: "/images/research-brief-workflow.webp", imageAlt: "Research materials arranged around a concise paper outline on a warm desk",
     takeaway: "Ask for a traceable brief, not a confident-sounding summary.",
     prompt: `You are helping me prepare a one-page research brief.\n\nGoal: [state the decision or question]\nAudience: [who will read it]\nSource notes: [paste labeled notes and links]\n\nFirst, group the notes by claim. Preserve the source label beside each claim. Then produce: (1) the question, (2) three evidence-backed findings, (3) open questions, and (4) a short recommendation only if the notes support one. Flag claims that lack a source, are dated, or need verification. Do not invent facts or citations.`,
     steps: ["Name the decision before collecting anything.", "Label each pasted note with its source and date.", "Ask AI to organize claims and expose gaps.", "Open original sources for decision-critical claims."],
@@ -58,7 +58,7 @@ export const guides: Guide[] = [
     title: "Turn meeting notes into an action list people can use",
     dek: "Move from a rough transcript to clear tasks without letting decisions, owners, or due dates disappear.",
     category: "Meetings", readingTime: "7 min read", level: "Everyday", updated: "14 Aug 2026", publishedAt: "2026-08-14T09:20:00+08:00", updatedAt: "2026-08-14T09:20:00+08:00", topics: ["meeting notes", "action items", "AI meeting workflow", "meeting summary prompt"],
-    image: "/manus-storage/meeting-to-action-workflow_5633d357.png", imageAlt: "Loose meeting notes visually organized into clean action cards",
+    image: "/images/meeting-to-action-workflow.webp", imageAlt: "Loose meeting notes visually organized into clean action cards",
     takeaway: "A meeting action list is a record of commitments, not a cleaned-up transcript.",
     prompt: `Convert these meeting notes into an action list.\n\nNotes: [paste notes]\n\nCreate a table with: action, owner, due date, supporting context, and confidence. Keep a separate section for decisions and unresolved questions. If an owner or date is not stated, write “Unassigned” or “Not stated”; do not guess. End by listing the three details I should confirm with the group.`,
     steps: ["Capture enough context to distinguish an idea from a decision.", "Ask the model to preserve uncertainty instead of filling gaps.", "Review the output while the meeting is fresh.", "Store the confirmed list where the team tracks work."],
@@ -74,7 +74,7 @@ export const guides: Guide[] = [
     title: "Build a one-week content plan from real audience questions",
     dek: "Create a modest publishing plan by starting with questions people already ask instead of a pile of generic trends.",
     category: "Planning", readingTime: "8 min read", level: "Deep dive", updated: "14 Aug 2026", publishedAt: "2026-08-14T09:30:00+08:00", updatedAt: "2026-08-14T09:30:00+08:00", topics: ["content plan", "audience questions", "AI content planning", "content workflow"],
-    image: "/manus-storage/ai-content-plan-workflow_8d2ce05c.png", imageAlt: "A paper-based weekly planning layout with workflow notes on a warm desk",
+    image: "/images/ai-content-plan-workflow.webp", imageAlt: "A paper-based weekly planning layout with workflow notes on a warm desk",
     takeaway: "AI can help cluster questions; only your audience can tell you which ones matter.",
     prompt: `Help me make a one-week content plan from these real audience questions.\n\nAudience: [who they are]\nGoal: [the outcome the content should help with]\nQuestions and feedback: [paste source questions]\nCapacity: [number of pieces and available time]\n\nGroup the questions into themes. Propose a realistic weekly plan with one primary piece and supporting pieces. For each item, state the reader question, the promise the page can honestly make, the needed original input from us, and a suggested internal link. Do not suggest topics unrelated to the supplied questions.`,
     steps: ["Collect questions from places you can actually inspect.", "Choose the one outcome the week should help a reader achieve.", "Use AI to cluster language and reveal recurring frustrations.", "Add your own examples, evidence, and review before publishing."],
