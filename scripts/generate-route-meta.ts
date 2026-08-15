@@ -112,9 +112,9 @@ function staticHead(baseHead: string, meta: RouteMeta) {
     .map((match) => match[0])
     .filter((link) => !/rel=["']canonical["']/i.test(link))
     .join("\n    ");
-  const preservedAdScripts = [...baseHead.matchAll(/<script\b[^>]*\bsrc=["'][^"']+["'][^>]*><\/script>/gi)]
+  const preservedRuntimeScripts = [...baseHead.matchAll(/<script\b[^>]*\bsrc=["'][^"']+["'][^>]*><\/script>/gi)]
     .map((match) => match[0])
-    .filter((script) => /pagead2\.googlesyndication\.com\/pagead\/js\/adsbygoogle\.js/i.test(script))
+    .filter((script) => /type=["']module["']|pagead2\.googlesyndication\.com\/pagead\/js\/adsbygoogle\.js/i.test(script))
     .join("\n    ");
   return `<head>
     <meta charset="UTF-8" />
@@ -122,7 +122,7 @@ function staticHead(baseHead: string, meta: RouteMeta) {
     <meta name="theme-color" content="#176B5B" />
     ${metadataTags(meta)}
     ${preservedLinks}
-    ${preservedAdScripts}
+    ${preservedRuntimeScripts}
   </head>`;
 }
 
