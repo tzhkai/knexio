@@ -167,3 +167,11 @@
 - [x] 排查 Cloudflare 缓存、规范域名、内容格式和 Search Console 抓取时间差。
 - [x] 验证生产 sitemap 可访问；当前未发现需要改动的文件、robots 或部署配置。
 - [ ] 若 72 小时后仍未读取，经确认后更新 Search Console sitemap 提交并记录抓取监测结论。
+
+## Sitemap Index 兼容性迁移
+
+- [x] 设计 sitemap_index.xml 与核心页面、指南、专题子 sitemap 的规范 URL 分组。
+- [x] 生成 sitemap_index.xml、子 sitemap 并更新 robots.txt 引用。
+- [x] 验证本地构建与生产静态产物的 sitemap 索引、子 sitemap 和 XML 结构。
+- [x] 同步 sitemap 结构到 GitHub 与 Cloudflare，确认生产响应。
+- [x] 经确认后在 Search Console 提交 sitemap_index.xml；Google 已成功读取并发现 115 个网页，旧失败记录待界面移除入口可用时清理。

@@ -48,6 +48,12 @@ Search Console 当前仍将 `https://knexio.xyz/sitemap.xml` 显示为“类型�
 
 当前没有证据表明 sitemap 文件、robots 规则、HTTPS 或基础 Cloudflare 响应阻止了 Googlebot。由于该提交仍处于首次处理阶段，暂不重复提交、删除或修改 sitemap；应等待 Search Console 完成首次读取。若 72 小时后仍无“上次读取时间”，再检查 Cloudflare 的 WAF/Bot 管理日志，并在确认没有拦截规则后通过 Search Console 移除并重新提交同一完整 HTTPS 地址。
 
+## Sitemap Index 切换结果
+
+基于该域名历史兼容模式，站点已改为 `sitemap_index.xml` 加三个子 sitemap（核心页面、指南、专题），并把 `robots.txt` 的 `Sitemap:` 行切换为 index。Cloudflare Pages 已部署该结构；生产端和 Googlebot 用户代理均可读取 index、三个子文件、兼容 `sitemap.xml` 与 robots 文件。
+
+已在 Search Console 提交 `https://knexio.xyz/sitemap_index.xml`。提交后报告立即显示其类型为“站点地图索引”、状态为“成功”、具有当日上次读取时间，并报告发现 115 个网页；这确认 Google 已成功读取新的 index。旧 `https://knexio.xyz/sitemap.xml` 提交记录仍显示“无法抓取”，但线上兼容文件会保留；后续应只保留 index 作为正式 Search Console 提交入口，并在界面可访问移除入口时删除旧记录。
+
 ## 建议的后续操作
 
 1. 提交 `https://knexio.xyz/sitemap.xml`。

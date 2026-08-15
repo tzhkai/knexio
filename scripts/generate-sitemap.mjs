@@ -1,4 +1,4 @@
-/** Generate sitemap.xml and robots.txt only after the final public domain is known. */
+/** Generate a sitemap index, purpose-led child sitemaps, and robots.txt after the final public domain is known. */
 import { mkdir, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
@@ -37,13 +37,28 @@ const guides = [
   "project-handoff-brief",
 ];
 const topics = ["research-and-decisions", "writing-and-updates", "meetings-and-follow-up", "planning-and-priorities"];
-const routes = ["/", "/guides", "/series", "/about", "/editorial-policy", "/privacy", "/terms", "/contact", ...guides.map(slug => `/guides/${slug}`), ...topics.map(slug => `/workflows/${slug}`)];
+const pageRoutes = ["/", "/guides", "/series", "/about", "/editorial-policy", "/privacy", "/terms", "/contact"];
+const guideRoutes = guides.map(slug => `/guides/${slug}`);
+const workflowRoutes = topics.map(slug => `/workflows/${slug}`);
+const sitemapGroups = [
+  { file: "sitemap-pages.xml", routes: pageRoutes },
+  { file: "sitemap-guides.xml", routes: guideRoutes },
+  { file: "sitemap-workflows.xml", routes: workflowRoutes },
+];
+const routes = sitemapGroups.flatMap(group => group.routes);
 const lastmod = "2026-08-15";
 const xmlEscape = (value) => value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&apos;");
-const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${routes.map(route => `  <url><loc>${xmlEscape(`${origin}${route}`)}</loc><lastmod>${lastmod}</lastmod></url>`).join("\n")}\n</urlset>\n`;
-const robots = `User-agent: *\nAllow: /\nDisallow: /404\n\nSitemap: ${origin}/sitemap.xml\n`;
+const createUrlset = (groupRoutes) => `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${groupRoutes.map(route => `  <url><loc>${xmlEscape(`${origin}${route}`)}</loc><lastmod>${lastmod}</lastmod></url>`).join("\n")}\n</urlset>\n`;
+const sitemapIndex = `<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapGroups.map(({ file }) => `  <sitemap><loc>${xmlEscape(`${origin}/${file}`)}</loc><lastmod>${lastmod}</lastmod></sitemap>`).join("\n")}\n</sitemapindex>\n`;
+const robots = `User-agent: *\nAllow: /\nDisallow: /404\n\nSitemap: ${origin}/sitemap_index.xml\n`;
 const here = path.dirname(fileURLToPath(import.meta.url));
 const publicDir = process.env.SITEMAP_OUTPUT_DIR ? path.resolve(process.env.SITEMAP_OUTPUT_DIR) : path.resolve(here, "..", "client", "public");
 await mkdir(publicDir, { recursive: true });
-await Promise.all([writeFile(path.join(publicDir, "sitemap.xml"), sitemap, "utf8"), writeFile(path.join(publicDir, "robots.txt"), robots, "utf8")]);
-console.log(`Generated sitemap.xml and robots.txt for ${origin} (${routes.length} canonical URLs).`);
+await Promise.all([
+  ...sitemapGroups.map(({ file, routes: groupRoutes }) => writeFile(path.join(publicDir, file), createUrlset(groupRoutes), "utf8")),
+  writeFile(path.join(publicDir, "sitemap_index.xml"), sitemapIndex, "utf8"),
+  // Keep the previously submitted address valid while Search Console migrates to sitemap_index.xml.
+  writeFile(path.join(publicDir, "sitemap.xml"), sitemapIndex, "utf8"),
+  writeFile(path.join(publicDir, "robots.txt"), robots, "utf8"),
+]);
+console.log(`Generated sitemap_index.xml, ${sitemapGroups.length} child sitemaps, compatibility sitemap.xml, and robots.txt for ${origin} (${routes.length} canonical URLs).`);
