@@ -6,7 +6,8 @@ import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbP
 export type Crumb = { label: string; href?: string };
 
 export function breadcrumbListSchema(origin: string, pageUrl: string, items: Crumb[]) {
-  return { "@type": "BreadcrumbList", itemListElement: items.map((item, index) => ({ "@type": "ListItem", position: index + 1, name: item.label, item: item.href ? `${origin}${item.href}` : pageUrl })) };
+  const canonicalCrumbUrl = (href: string) => href === "/" ? `${origin}/` : `${origin}${href.replace(/\/$/, "")}/`;
+  return { "@type": "BreadcrumbList", itemListElement: items.map((item, index) => ({ "@type": "ListItem", position: index + 1, name: item.label, item: item.href ? canonicalCrumbUrl(item.href) : pageUrl })) };
 }
 
 export default function SiteBreadcrumb({ items, compact = false }: { items: Crumb[]; compact?: boolean }) {

@@ -66,7 +66,7 @@ function absoluteUrl(value: string) {
 }
 
 function routeUrl(routePath: string) {
-  return routePath === "/" ? `${origin}/` : `${origin}${routePath}`;
+  return routePath === "/" ? `${origin}/` : `${origin}${routePath.replace(/\/$/, "")}/`;
 }
 
 function metadataTags(meta: RouteMeta) {

@@ -175,3 +175,13 @@
 - [x] 验证本地构建与生产静态产物的 sitemap 索引、子 sitemap 和 XML 结构。
 - [x] 同步 sitemap 结构到 GitHub 与 Cloudflare，确认生产响应。
 - [x] 经确认后在 Search Console 提交 sitemap_index.xml；Google 已成功读取并发现 115 个网页，旧失败记录待界面移除入口可用时清理。
+
+## 核心文章 URL 检查与索引请求
+
+- [x] 按搜索意图、内容集群与站内权重挑选 5 个候选核心 URL，并排除已请求页面。
+- [x] 检查内容库候选 URL，发现 `/guides` 与 Google 选择的 `/guides/` canonical 不一致。
+- [x] 统一目录路由的尾斜杠 canonical、sitemap、静态 Meta 和面包屑结构化数据输出。
+- [x] 部署并验证规范路径修复；Googlebot 生产响应中的 canonical、Open Graph 和 sitemap 已统一。
+- [x] 检查规范化后的候选 URL：内容库已收录；研究专题、研究简报和会议行动清单尚未被发现。
+- [x] 经确认后为研究专题、研究简报与会议行动清单发起一次索引请求；均已触发实时测试，未重复提交。
+- [x] 记录请求范围与未来 7 天的复查重点。

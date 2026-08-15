@@ -57,7 +57,7 @@ export function SeoMeta({ title, description, type = "website", image = heroImag
   useEffect(() => {
     document.title = `${title} | Workflow Library`;
     const origin = window.location.origin;
-    const pathname = window.location.pathname === "/" ? "/" : window.location.pathname.replace(/\/$/, "");
+    const pathname = window.location.pathname === "/" ? "/" : `${window.location.pathname.replace(/\/$/, "")}/`;
     const pageUrl = `${origin}${pathname}`;
     const imageUrl = image.startsWith("http") ? image : `${origin}${image}`;
     upsertMeta("name", "description", description);

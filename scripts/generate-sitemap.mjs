@@ -48,7 +48,8 @@ const sitemapGroups = [
 const routes = sitemapGroups.flatMap(group => group.routes);
 const lastmod = "2026-08-15";
 const xmlEscape = (value) => value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&apos;");
-const createUrlset = (groupRoutes) => `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${groupRoutes.map(route => `  <url><loc>${xmlEscape(`${origin}${route}`)}</loc><lastmod>${lastmod}</lastmod></url>`).join("\n")}\n</urlset>\n`;
+const canonicalUrl = (route) => route === "/" ? `${origin}/` : `${origin}${route.replace(/\/$/, "")}/`;
+const createUrlset = (groupRoutes) => `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${groupRoutes.map(route => `  <url><loc>${xmlEscape(canonicalUrl(route))}</loc><lastmod>${lastmod}</lastmod></url>`).join("\n")}\n</urlset>\n`;
 const sitemapIndex = `<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapGroups.map(({ file }) => `  <sitemap><loc>${xmlEscape(`${origin}/${file}`)}</loc><lastmod>${lastmod}</lastmod></sitemap>`).join("\n")}\n</sitemapindex>\n`;
 const robots = `User-agent: *\nAllow: /\nDisallow: /404\n\nSitemap: ${origin}/sitemap_index.xml\n`;
 const here = path.dirname(fileURLToPath(import.meta.url));
