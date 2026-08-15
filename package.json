@@ -10,6 +10,7 @@
     "preview": "vite preview --host",
     "check": "tsc --noEmit",
     "sitemap": "node scripts/generate-sitemap.mjs",
+    "build:cloudflare": "pnpm sitemap && pnpm build",
     "format": "prettier --write ."
   },
   "dependencies": {

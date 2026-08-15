@@ -113,3 +113,10 @@
 - [x] 编写正式域名替换后的 sitemap 规划与 robots.txt 模板。
 - [x] 编写 Search Console 验证、提交、检查和持续维护步骤。
 - [x] 保存发布文档并核对其与当前路由一致。
+
+## Cloudflare Pages 外部部署准备
+
+- [x] 审阅静态构建、SPA 路由与 Cloudflare Pages 兼容性。
+- [x] 确认 Cloudflare Pages 自动 SPA 回退，并添加要求正式 SITE_URL 的生产构建脚本。
+- [x] 编写构建、域名、sitemap、缓存和发布后验证步骤。
+- [x] 验证构建产物与回退配置可随静态包输出。
