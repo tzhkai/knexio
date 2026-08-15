@@ -6,7 +6,11 @@ import "./index.css";
 function mountApp() {
   const root = document.getElementById("root");
   if (!root) {
-    document.addEventListener("DOMContentLoaded", mountApp, { once: true });
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", mountApp, { once: true });
+    } else {
+      window.requestAnimationFrame(mountApp);
+    }
     return;
   }
   createRoot(root).render(<App />);
