@@ -169,3 +169,15 @@ export const topicClusters = [
   { slug: "meetings-and-follow-up", number: "03", shortTitle: "Meetings & follow-up", title: "Meeting records that become useful follow-up, not forgotten transcripts.", seoTitle: "AI meeting notes and follow-up email workflow", description: "AI workflows for turning meeting notes into confirmed action items, clear follow-up emails, and visible decisions without inventing commitments.", useWhen: "You have rough notes or a transcript and need to separate decisions, actions, owners, dates, and questions that still need confirmation.", introTitle: "A useful record makes ambiguity visible.", intro: "AI can help sort a long conversation. It should not turn an unassigned idea into a promised task or invent a due date that the group never agreed to.", guideSlugs: ["meeting-notes-to-action-list", "meeting-follow-up-email", "clear-project-update-prompt"] },
   { slug: "planning-and-priorities", number: "04", shortTitle: "Planning & priorities", title: "Plans small enough to start and clear enough to review.", seoTitle: "AI project planning and weekly priorities workflows", description: "Practical AI planning workflows for choosing weekly priorities, creating a credible first project step, and building content plans from real audience questions.", useWhen: "You have more possible tasks than useful attention, and need a modest plan that makes risks, assumptions, and the next decision easier to see.", introTitle: "Make the next move credible before making the plan bigger.", intro: "These workflows favor the smallest useful plan over a confident-looking backlog. They turn loose tasks into an inspectable starting point while reserving trade-offs for a human owner.", guideSlugs: ["weekly-priorities-from-project-list", "thirty-minute-project-starting-plan", "one-week-content-plan-from-questions"] }
 ] as const;
+
+/** Rank only existing library guides by task proximity; no popularity or behavioral data is invented. */
+export const getRecommendedGuides = (current: Guide, limit = 3) => {
+  const clusters = topicClusters as ReadonlyArray<{ slug: string; guideSlugs: readonly string[] }>;
+  const sharedClusters = clusters.filter(cluster => cluster.guideSlugs.includes(current.slug)).map(cluster => cluster.slug);
+  return guides.filter(candidate => candidate.slug !== current.slug).map(candidate => {
+    const candidateClusters = clusters.filter(cluster => cluster.guideSlugs.includes(candidate.slug)).map(cluster => cluster.slug);
+    const sharedTopicCount = candidate.topics.filter(topic => current.topics.includes(topic)).length;
+    const score = (candidate.category === current.category ? 7 : 0) + (candidate.level === current.level ? 1 : 0) + (candidateClusters.some(cluster => sharedClusters.includes(cluster)) ? 5 : 0) + sharedTopicCount * 3;
+    return { candidate, score };
+  }).sort((a, b) => b.score - a.score || a.candidate.title.localeCompare(b.candidate.title)).slice(0, limit).map(({ candidate }) => candidate);
+};
