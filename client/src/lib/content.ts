@@ -208,6 +208,13 @@ export const guides: Guide[] = [
 export const categories = ["All", "Research", "Writing", "Planning", "Meetings"] as const;
 export const getGuide = (slug: string | undefined) => guides.find((guide) => guide.slug === slug);
 
+/** Follow the library's real publication order; this does not infer popularity or user behavior. */
+export const getAdjacentGuides = (current: Guide) => {
+  const ordered = [...guides].sort((a, b) => new Date(a.publishedAt).getTime() - new Date(b.publishedAt).getTime());
+  const currentIndex = ordered.findIndex(guide => guide.slug === current.slug);
+  return { previous: currentIndex > 0 ? ordered[currentIndex - 1] : null, next: currentIndex >= 0 && currentIndex < ordered.length - 1 ? ordered[currentIndex + 1] : null };
+};
+
 export const topicClusters = [
   { slug: "research-and-decisions", number: "01", shortTitle: "Research & decisions", title: "Research notes that lead to a clear next decision.", seoTitle: "AI research workflow and decision log templates", description: "Practical AI workflows for research briefs, evidence checks, and decision records that keep source labels and unresolved questions visible.", useWhen: "You have notes, source links, or project context, but need to separate evidence, assumptions, and a decision that still needs an owner.", introTitle: "Keep the trail back to what supports the claim.", intro: "This collection is for work where a tidy summary is not enough. Use it to make the question, evidence, options, and missing information easier for a person to inspect.", guideSlugs: ["research-brief-from-scattered-sources", "decision-log-from-project-notes", "customer-feedback-theme-map", "brief-first-prompt-pattern"] },
   { slug: "writing-and-updates", number: "02", shortTitle: "Writing & updates", title: "Work updates that say what changed, what matters, and what happens next.", seoTitle: "AI prompts for project updates and clear work writing", description: "Practical AI writing workflows for project updates, first drafts, and follow-up messages that preserve context, ownership, and open questions.", useWhen: "You have raw notes and need a reader-ready draft without inflating progress, guessing dates, or hiding the one action that matters.", introTitle: "Write toward a reader’s next decision.", intro: "These guides help turn working notes into clear communication. They keep the difference between a draft, an agreement, a request, and a confirmed next step visible.", guideSlugs: ["clear-project-update-prompt", "brief-first-prompt-pattern", "meeting-follow-up-email"] },

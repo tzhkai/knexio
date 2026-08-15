@@ -1,0 +1,18 @@
+/** Style note: Field Notes for Better Work — sequential reading is a quiet filing path between real records. */
+import { ArrowLeft, ArrowRight, BookOpenCheck } from "lucide-react";
+import { Link } from "wouter";
+import { getAdjacentGuides, type Guide } from "@/lib/content";
+
+const sequentialStyles = `
+  .sequential-reading { display:grid; grid-template-columns:1fr 1fr; margin-top:58px; border-top:1px solid var(--ink); border-bottom:1px solid var(--rule); } .sequence-item,.sequence-empty { display:flex; flex-direction:column; min-height:150px; padding:23px 24px; } .sequence-item { color:var(--ink); transition:background 180ms var(--ease-out),color 180ms var(--ease-out); } .sequence-item:first-child,.sequence-empty:first-child { border-right:1px solid var(--rule); } .sequence-item:hover { background:var(--green-pale); } .sequence-kicker { display:flex; align-items:center; gap:7px; color:var(--green); font-size:9px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; } .sequence-item h2,.sequence-empty h2 { max-width:430px; margin:16px 0 0; font-family:"DM Serif Display",Georgia,serif; font-size:26px; font-weight:400; letter-spacing:-.035em; line-height:1.06; } .sequence-item .sequence-arrow { margin-top:auto; padding-top:17px; color:#647068; transition:transform 180ms var(--ease-out),color 180ms var(--ease-out); } .sequence-item:last-child .sequence-arrow { margin-left:auto; } .sequence-item:hover .sequence-arrow { color:var(--green); } .sequence-item:first-child:hover .sequence-arrow { transform:translateX(-3px); } .sequence-item:last-child:hover .sequence-arrow { transform:translateX(3px); } .sequence-empty { background:rgba(237,245,241,.36); color:#68716b; } .sequence-empty p { max-width:330px; margin:13px 0 0; font-size:12px; line-height:1.6; } @media (max-width:760px) { .sequential-reading { grid-template-columns:1fr; margin-top:45px; } .sequence-item,.sequence-empty { min-height:0; padding:20px 18px; } .sequence-item:first-child,.sequence-empty:first-child { border-right:0; border-bottom:1px solid var(--rule); } .sequence-item h2,.sequence-empty h2 { margin-top:12px; font-size:24px; } .sequence-item .sequence-arrow { position:absolute; right:18px; margin:0; padding:0; } .sequence-item { position:relative; padding-right:51px; } .sequence-item:last-child .sequence-arrow { margin:0; } }
+`;
+
+function EmptyRecord({ direction }: { direction: "previous" | "next" }) {
+  const isPrevious = direction === "previous";
+  return <div className="sequence-empty"><span className="sequence-kicker"><BookOpenCheck size={14} /> {isPrevious ? "Earlier record" : "Later record"}</span><h2>{isPrevious ? "This is the first filed guide." : "This is the latest filed guide."}</h2><p>{isPrevious ? "Browse the library to choose another practical starting point." : "New guides are added when a task earns a useful, reviewed record."}</p></div>;
+}
+
+export default function SequentialReading({ guide }: { guide: Guide }) {
+  const { previous, next } = getAdjacentGuides(guide);
+  return <nav className="sequential-reading" aria-label="Previous and next guide"><style>{sequentialStyles}</style>{previous ? <Link className="sequence-item" href={`/guides/${previous.slug}`}><span className="sequence-kicker"><ArrowLeft size={14} /> Previous guide</span><h2>{previous.title}</h2><ArrowLeft className="sequence-arrow" size={18} aria-hidden="true" /></Link> : <EmptyRecord direction="previous" />}{next ? <Link className="sequence-item" href={`/guides/${next.slug}`}><span className="sequence-kicker">Next guide <ArrowRight size={14} /></span><h2>{next.title}</h2><ArrowRight className="sequence-arrow" size={18} aria-hidden="true" /></Link> : <EmptyRecord direction="next" />}</nav>;
+}
