@@ -231,3 +231,10 @@
 - [x] 验证 TypeScript、生产构建、静态页面的广告脚本与 Cookie/CMP 边界。
 - [ ] 推送 GitHub 并确认 Cloudflare Pages 自动部署成功。
 - [ ] 提供 AdSense 后台的最终验证与审核提交清单。
+
+## 索引巩固与 AdSense 审核前核查
+
+- [x] 核对其余核心主题页和高意图指南的 Google 索引覆盖。
+- [x] 审计已收录页面的内部链接、canonical、内容稳定性和高优先级相邻路径。
+- [ ] 核对生产环境的 AdSense 脚本、ads.txt、Privacy & messaging 与真实运营信息的提交前状态。
+- [ ] 交付可执行的索引维护与 AdSense 审核提交结论。
