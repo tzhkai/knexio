@@ -24,3 +24,8 @@ The `sc-domain:knexio.xyz` property reported **63 indexed pages**, **413 not ind
 ## Notes
 
 All three checked topic pages are present in the current sitemap and are publicly reachable, so the missing discovery data appears to be a crawl/discovery gap rather than an intentional noindex directive. Inspect the remaining topic hub and priority guides before issuing a small, prioritized set of new requests; do not submit all URLs at once.
+
+## Submitted requests
+
+- `https://knexio.xyz/workflows/writing-and-updates/` — submitted on 15 August 2026 after the related guide-to-hub internal links were deployed. Search Console confirmed that the URL was added to the priority crawl queue. This is a crawl request, not a guarantee of indexing.
+- `https://knexio.xyz/workflows/meetings-and-follow-up/` — a request was attempted on 15 August 2026, but Search Console returned “Something went wrong. There was a problem submitting your indexing request. Please try again later.” Do not retry repeatedly in the same session; retry once later from URL Inspection after the current request queue has settled.

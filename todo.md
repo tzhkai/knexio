@@ -222,19 +222,21 @@
 - [x] 审计当前 Cookie 横幅、分析脚本与广告代码的实际加载状态。
 - [x] 提供用户本机浏览器中的 Google Privacy & messaging 正式同意消息配置步骤。
 - [x] 调整自定义 Cookie 控制，避免与正式 CMP 的同意状态冲突。
-- [ ] 验证 EEA/UK/Swiss 同意路径、隐私披露与生产发布状态。
+- [x] 核对用户确认已发布的 European regulations message、生产 AdSense 脚本和 ads.txt；站点 Cookie 控制仅管理分析。
+- [ ] 以 EEA/UK/Swiss 测试流量或 Privacy & messaging 预览复核已发布消息的真实访客展示。
 
 ## AdSense 基础代码接入
 
 - [x] 核对已发布 Privacy & messaging 前提、现有广告脚本状态与全站 head 输出。
 - [x] 在全站 head 接入 `ca-pub-2596567349043393` 的 AdSense 基础代码，不预置内容内广告位。
 - [x] 验证 TypeScript、生产构建、静态页面的广告脚本与 Cookie/CMP 边界。
-- [ ] 推送 GitHub 并确认 Cloudflare Pages 自动部署成功。
-- [ ] 提供 AdSense 后台的最终验证与审核提交清单。
+- [x] 推送 GitHub 并确认 Cloudflare Pages 自动部署成功。
+- [x] 提供 AdSense 后台的最终验证与审核提交清单。
 
 ## 索引巩固与 AdSense 审核前核查
 
 - [x] 核对其余核心主题页和高意图指南的 Google 索引覆盖。
 - [x] 审计已收录页面的内部链接、canonical、内容稳定性和高优先级相邻路径。
-- [ ] 核对生产环境的 AdSense 脚本、ads.txt、Privacy & messaging 与真实运营信息的提交前状态。
-- [ ] 交付可执行的索引维护与 AdSense 审核提交结论。
+- [x] 核对生产环境的 AdSense 脚本和 ads.txt；Privacy & messaging 已由用户确认发布。
+- [ ] 在提交 AdSense 审核前填入真实发布者身份与受监控的隐私联系邮箱。
+- [x] 交付可执行的索引维护与 AdSense 审核提交结论。
