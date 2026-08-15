@@ -1,41 +1,45 @@
-# Workflow Library：AdSense 基础代码接入评估
+# Workflow Library：AdSense 基础代码与 CMP 状态
 
-**评估日期：** 2026-08-15  
-**提供的发布商 ID：** `ca-pub-2596567349043393`  
-**结论：** 若 AdSense 后台已将 `knexio.xyz` 添加到 **Sites** 并要求连接网站/验证所有权，**现在应添加所提供的基础脚本作为验证步骤的一部分**；但不应在未完成 CMP 与隐私披露更新前启用广告展示或手动广告位。
+**更新日期：** 2026-08-15  
+**发布商 ID：** `ca-pub-2596567349043393`  
+**站点：** `https://knexio.xyz`
 
-## 官方要求与本项目的对应关系
+## 当前结论
 
-| 事项 | AdSense 官方要求 | 当前网站状态 | 结论 |
-|---|---|---|---|
-| 网站验证 | AdSense 可使用位于 `<head>` 的代码片段验证站点；验证后才能请求审核。[1] | 尚未检测到所提供的 AdSense 代码。 | 当后台处于“Requires review / 连接网站”时，应加入基础代码。 |
-| 审核与展示 | 提交审核后，AdSense 会核验所有权和政策合规；完成后才标记为可展示广告，通常需数日、某些情况可达 2–4 周。[1] | 当前尚未说明 AdSense 后台的站点状态。 | 基础代码可用于连接/验证；不把它视为审核通过或开始展示广告。 |
-| Cookie 同意 | EEA、英国、瑞士流量在投放个性化广告时要求使用 Google 认证且集成 IAB TCF 的 CMP。[2] | 站点有自定义 Cookie 横幅，能记录 advertising 选择，但不是 Google 认证 CMP，且不会加载广告脚本。 | 当前横幅可继续管理本地偏好，但不能单独承担该地区广告同意方案。 |
-| 透明披露与撤回 | 需要清晰说明 Google/其他方的数据使用，并让撤回同意与给予同意一样容易。[3] | 现有 Privacy 页和横幅明确说明“广告技术尚未启用”，设置入口可再次打开。 | 在实际启用 AdSense 前，必须改为真实数据处理和广告披露，并加入 Google 数据使用链接。 |
+AdSense 基础脚本现已部署在全站 `<head>`，并已验证其会保留在首页、隐私页及指南页的静态 HTML 中。根目录 `ads.txt` 也已发布。用户已确认在 AdSense 后台发布 **Privacy & messaging European regulations message**。网站自己的 Cookie 控制现仅管理可选站点分析，不会记录或覆盖 Google 广告同意。
 
-## 推荐接入顺序
+基础脚本用于连接、验证和让 AdSense 识别站点；它本身不等于审核通过，也不应被理解为保证广告已经开始展示。尚未在文章中预置手动广告位，以避免在审核前损害阅读体验。
 
-1. 在 AdSense 的 **Sites** 中确认 `https://knexio.xyz` 已添加，且后台要求“连接网站”或代码验证。
-2. 将发布商提供的基础脚本放入全站 `<head>`，且只添加一次；这一步用于站点验证，不等于添加广告展示位。
-3. 发布代码后，用 AdSense 的 **Verify / Request review** 操作发起审核。
-4. 在审核等待期，完成真实发布者、联系、隐私和广告披露信息；不要为提高获批概率添加诱导点击、占位广告位或广告密集布局。
-5. 在实际展示广告前，选择并配置 Google Privacy & messaging 的认证 CMP，或一款 Google 认证第三方 CMP；据此替换/集成当前自定义广告同意流程。
-6. 仅在站点状态为可展示广告且 CMP、隐私披露和广告位置均完成后，启用自动广告或逐个手动广告位。
+## 已完成项目
 
-## 当前不应做的事项
+| 项目 | 实施状态 | 核对方式 |
+|---|---|---|
+| AdSense 基础脚本 | 已在 `client/index.html` 的 `<head>` 加入一次。 | 构建后的首页、隐私页和代表指南页均已检查脚本存在。 |
+| `ads.txt` | 已在根路径 `/ads.txt` 发布 `google.com, pub-2596567349043393, DIRECT, f08c47fec0942fa0`。 | 生产构建输出已检查。 |
+| European regulations message | 用户确认已在本机 AdSense 后台发布。 | 应在 AdSense 的 Privacy & messaging 中保持为 Published，并仅应用于 `knexio.xyz`。 |
+| 自定义 Cookie 横幅 | 只管理必要存储和可选站点分析。 | 无 advertising 类别，不会把普通本地偏好误作 Google CMP 同意。 |
+| 隐私披露 | Privacy 页面提供 Google 数据使用链接、Google CMP 前置条件与 Cookie 设置入口。 | 仍需在真正开始直接收集信息或展示广告前补充真实发布者与隐私联系信息。 |
 
-- 不要仅因已有发布商 ID 就在文章中插入 `<ins class="adsbygoogle">` 广告位。
-- 不要把基础脚本无条件地绑定到现有 `advertising` 开关，然后误认为这等同于 EEA/英国/瑞士的认证 CMP 同意信号。
-- 不要继续在 Privacy 页写“广告技术尚未启用”，如果 AdSense 广告开始实际加载。
+## 上线后在 AdSense 后台核对
 
-## 下一步判断
+1. 在 **Sites** 中确认 `knexio.xyz` 的状态已从“需要代码”更新为可验证、准备审核或已在审核中。
+2. 在 **Privacy & messaging → European regulations** 中确认消息状态为 **Published**，选择的网站仅为 `knexio.xyz`，并包含拒绝、同意和管理选项的路径。
+3. 打开 `https://knexio.xyz/ads.txt`，确认它精确返回一行发布商声明，且没有跳转、验证码或访问限制。
+4. 使用 AdSense 的预览或符合条件的 EEA、UK 或 Swiss 测试流量检查 European regulations message；不要用站点自己的分析 Cookie 横幅替代该测试。
+5. 将实际运营者名称与受监控的隐私邮箱填入 Privacy 页面后，再发起或继续 AdSense 审核。
 
-如果 AdSense 后台明确显示“添加代码以验证/连接网站”，建议下一次改动只实施**基础验证脚本**，并同时将 Cookie 文案改为“广告尚未展示，CMP 将在广告启用前配置”。若后台并未要求验证代码，或你暂不提交审核，则可以暂缓脚本，先完成真实运营信息与 CMP 决策。
+## 仍不应做的事项
+
+- 不要在审核未完成时插入伪装为内容的 `<ins class="adsbygoogle">` 广告位。
+- 不要将广告脚本加载与站点分析 Cookie 的“允许”动作绑定；广告同意由已发布的 Google CMP 流程处理。
+- 不要在未提供真实发布者身份和可用隐私联系渠道的情况下，将站点描述为已完成全部广告运营披露。
 
 ## References
 
 [1] [Google AdSense Help — Add a new site to your AdSense sites list](https://support.google.com/adsense/answer/12169212?hl=en)
 
-[2] [Google AdSense Help — Consent management requirements for serving ads in the EEA, UK, and Switzerland](https://support.google.com/adsense/answer/13554116?hl=en)
+[2] [Google AdSense Help — Create a European regulations message](https://support.google.com/adsense/answer/10960768?hl=en)
 
-[3] [Google — Help with the EU user consent policy](https://www.google.com/intl/en_uk/about/company/user-consent-policy-help/)
+[3] [Google AdSense Help — Consent management requirements for publishers](https://support.google.com/adsense/answer/13554116?hl=en)
+
+[4] [Google — Help with the EU user consent policy](https://www.google.com/intl/en_uk/about/company/user-consent-policy-help/)

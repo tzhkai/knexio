@@ -112,12 +112,17 @@ function staticHead(baseHead: string, meta: RouteMeta) {
     .map((match) => match[0])
     .filter((link) => !/rel=["']canonical["']/i.test(link))
     .join("\n    ");
+  const preservedAdScripts = [...baseHead.matchAll(/<script\b[^>]*\bsrc=["'][^"']+["'][^>]*><\/script>/gi)]
+    .map((match) => match[0])
+    .filter((script) => /pagead2\.googlesyndication\.com\/pagead\/js\/adsbygoogle\.js/i.test(script))
+    .join("\n    ");
   return `<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
     <meta name="theme-color" content="#176B5B" />
     ${metadataTags(meta)}
     ${preservedLinks}
+    ${preservedAdScripts}
   </head>`;
 }
 

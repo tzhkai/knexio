@@ -223,3 +223,11 @@
 - [x] 提供用户本机浏览器中的 Google Privacy & messaging 正式同意消息配置步骤。
 - [x] 调整自定义 Cookie 控制，避免与正式 CMP 的同意状态冲突。
 - [ ] 验证 EEA/UK/Swiss 同意路径、隐私披露与生产发布状态。
+
+## AdSense 基础代码接入
+
+- [x] 核对已发布 Privacy & messaging 前提、现有广告脚本状态与全站 head 输出。
+- [x] 在全站 head 接入 `ca-pub-2596567349043393` 的 AdSense 基础代码，不预置内容内广告位。
+- [x] 验证 TypeScript、生产构建、静态页面的广告脚本与 Cookie/CMP 边界。
+- [ ] 推送 GitHub 并确认 Cloudflare Pages 自动部署成功。
+- [ ] 提供 AdSense 后台的最终验证与审核提交清单。
