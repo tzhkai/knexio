@@ -223,7 +223,7 @@
 - [x] 提供用户本机浏览器中的 Google Privacy & messaging 正式同意消息配置步骤。
 - [x] 调整自定义 Cookie 控制，避免与正式 CMP 的同意状态冲突。
 - [x] 核对用户确认已发布的 European regulations message、生产 AdSense 脚本和 ads.txt；站点 Cookie 控制仅管理分析。
-- [ ] 在 AdSense Privacy & messaging 预览或测试流量中完成一次 EEA/UK/Swiss 展示复核；当前仅确认消息已发布，尚未完成该项实测。
+- [x] 在 AdSense Privacy & messaging 预览中完成 EEA/UK/Swiss 欧洲法规消息展示复核；确认 knexio.xyz 消息已发布，预览显示 Knexio、Consent 与 Manage options；未宣称完成真实地理位置流量测试，详见 ADSENSE-CMP-PREVIEW-CHECK-2026-08-16.md。
 
 ## AdSense 基础代码接入
 
