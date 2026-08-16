@@ -227,6 +227,53 @@ First, separate the notes into evidence, assumptions, options, and unresolved qu
     checks: ["Can the reader identify one decision owner and one decision question?", "Does every material claim retain a source label, date, or clear “needs verification” marker?", "Are options described separately from any recommendation?", "Did the draft avoid inventing a cost, date, approval, owner, or source?", "Is the next confirmation specific enough for the decision owner to act on?"]
     },
   {
+    slug: "turn-rough-notes-into-decision-email",
+    title: "Turn rough notes into a decision-ready email",
+    dek: "Use AI to organize a messy update into context, options, a clear request, and the details a recipient still needs to confirm.",
+    category: "Writing", readingTime: "7 min read", level: "Everyday", updated: "16 Aug 2026", publishedAt: "2026-08-16T11:20:00+08:00", updatedAt: "2026-08-16T11:20:00+08:00", topics: ["AI email prompt", "decision-ready email", "project communication", "email writing workflow"],
+    takeaway: "A decision-ready email makes the requested response easier without pretending that a draft is already agreement.",
+    prompt: `Turn these rough notes into a decision-ready email.
+
+Recipient and role: [who will read it]
+Context: [why this matters now]
+Notes: [paste labeled notes]
+Decision or response needed: [what the recipient may need to decide]
+Tone: [direct, warm, concise, or other]
+
+Use this structure only if the information supports it: context, what changed, options or recommendation, request, and details to confirm. Preserve names, dates, costs, and commitments exactly as supplied. If the notes do not support a recommendation, present the options and write “recommendation not established.” End with one specific response requested from the recipient. List any missing information before the email body.`,
+    steps: ["Name the recipient’s decision or response before drafting.", "Separate confirmed facts from suggestions in the notes.", "Ask AI to expose missing details before it writes the email.", "Check every name, date, amount, and commitment against the source notes before sending."],
+    sections: [
+      { title: "Start with the response you need", body: "Many work emails become long because the writer begins with a full history. Start by naming what the recipient needs to decide, approve, answer, or simply know. That gives the draft a useful boundary and helps the reader scan for the next move." },
+      { title: "Keep options distinct from a recommendation", body: "A list of possible paths is not the same as a recommendation. Ask the model to keep those sections separate, especially when the notes contain preferences but no confirmed decision. This prevents a polished email from making an informal suggestion sound approved." },
+      { title: "Use a confirmation line as a safety rail", body: "When a detail is missing, a visible confirmation request is more useful than a plausible guess. Keep questions concrete: which date, which owner, which amount, or which option should be recorded? A short verification line protects the accuracy of the entire message." }
+    ],
+    checks: ["Can the recipient tell what response is needed within the first few lines?", "Are facts, options, recommendations, and open questions separated?", "Did the draft preserve supplied names, dates, amounts, and commitments exactly?", "Are missing details visible before the email is sent?", "Does the email end with one specific next response?"]
+  },
+  {
+    slug: "weekly-review-from-completed-and-blocked-work",
+    title: "Create a weekly review from completed and blocked work",
+    dek: "Turn a task list into a short review that shows progress, blockers, carryover work, and the next priority without inflating what got done.",
+    category: "Planning", readingTime: "7 min read", level: "Everyday", updated: "16 Aug 2026", publishedAt: "2026-08-16T11:30:00+08:00", updatedAt: "2026-08-16T11:30:00+08:00", topics: ["weekly review template", "AI weekly planning", "blocked tasks", "productivity review"],
+    takeaway: "A weekly review is valuable when it makes unfinished work and the reason for carryover easier to act on.",
+    prompt: `Create a factual weekly review from the work log below.
+
+Review period: [date range]
+Goal for the period: [goal]
+Completed work: [list with evidence or links]
+In progress: [list]
+Blocked or waiting: [list and stated dependency]
+New requests: [list]
+
+Produce four sections: completed, carryover, blockers, and next priority. For each carryover item, state why it remains open only when the log says why. Mark missing reasons as “Not stated.” Do not infer productivity, urgency, ownership, or completion. Finish with three questions a human owner should answer before setting next week’s priorities.`,
+    steps: ["Set the review period and intended outcome.", "Separate completed, in-progress, blocked, and new work before summarizing.", "Include evidence or links for completed work where available.", "Choose next priorities only after a human reviews dependencies and capacity."],
+    sections: [
+      { title: "A review is not a performance story", body: "A weekly review should help the next planning conversation, not make a task list sound better. Keep completed work tied to observable evidence and let unfinished work retain its real status. This makes the record useful even when the week did not go to plan." },
+      { title: "Carryover needs a reason or an explicit gap", body: "When a task moves forward, the next person needs to know whether it is blocked, deprioritized, waiting for input, or simply unfinished. If the work log does not say, label the reason as unknown rather than asking AI to fill it in." },
+      { title: "Let dependencies shape next week", body: "A review becomes a plan only after someone considers time, people, decisions, and external dependencies. Ask the model to surface those questions, then let the accountable person decide what deserves attention and what should leave the list." }
+    ],
+    checks: ["Can completed work be traced to a stated result or link?", "Are carryover reasons taken from the log rather than inferred?", "Are blocked items tied to an explicit dependency or marked as unknown?", "Does the review distinguish a summary from a new priority decision?", "Are next-week questions assigned to a human owner?"]
+  },
+  {
     slug: "evidence-matrix-from-source-notes",
     title: "Build an evidence matrix from source notes before making a decision",
     dek: "Turn scattered claims into a reviewable matrix that shows support, gaps, confidence, and the next verification step.",
@@ -261,9 +308,9 @@ export const getAdjacentGuides = (current: Guide) => {
 
 export const topicClusters = [
   { slug: "research-and-decisions", number: "01", shortTitle: "Research & decisions", title: "Research notes that lead to a clear next decision.", seoTitle: "AI research workflow and decision log templates", description: "Practical AI workflows for research briefs, evidence checks, and decision records that keep source labels and unresolved questions visible.", useWhen: "You have notes, source links, or project context, but need to separate evidence, assumptions, and a decision that still needs an owner.", introTitle: "Keep the trail back to what supports the claim.", intro: "This collection is for work where a tidy summary is not enough. Use it to make the question, evidence, options, and missing information easier for a person to inspect.", guideSlugs: ["research-brief-from-scattered-sources", "project-notes-to-decision-memo", "decision-log-from-project-notes", "customer-feedback-theme-map", "evidence-matrix-from-source-notes", "brief-first-prompt-pattern"] },
-  { slug: "writing-and-updates", number: "02", shortTitle: "Writing & updates", title: "Work updates that say what changed, what matters, and what happens next.", seoTitle: "AI prompts for project updates and clear work writing", description: "Practical AI writing workflows for project updates, first drafts, and follow-up messages that preserve context, ownership, and open questions.", useWhen: "You have raw notes and need a reader-ready draft without inflating progress, guessing dates, or hiding the one action that matters.", introTitle: "Write toward a reader’s next decision.", intro: "These guides help turn working notes into clear communication. They keep the difference between a draft, an agreement, a request, and a confirmed next step visible.", guideSlugs: ["clear-project-update-prompt", "brief-first-prompt-pattern", "meeting-follow-up-email"] },
+  { slug: "writing-and-updates", number: "02", shortTitle: "Writing & updates", title: "Work updates that say what changed, what matters, and what happens next.", seoTitle: "AI prompts for project updates and clear work writing", description: "Practical AI writing workflows for project updates, first drafts, and follow-up messages that preserve context, ownership, and open questions.", useWhen: "You have raw notes and need a reader-ready draft without inflating progress, guessing dates, or hiding the one action that matters.", introTitle: "Write toward a reader’s next decision.", intro: "These guides help turn working notes into clear communication. They keep the difference between a draft, an agreement, a request, and a confirmed next step visible.", guideSlugs: ["clear-project-update-prompt", "brief-first-prompt-pattern", "meeting-follow-up-email", "turn-rough-notes-into-decision-email"] },
   { slug: "meetings-and-follow-up", number: "03", shortTitle: "Meetings & follow-up", title: "Meeting records that become useful follow-up, not forgotten transcripts.", seoTitle: "AI meeting notes and follow-up email workflow", description: "AI workflows for turning meeting notes into confirmed action items, clear follow-up emails, and visible decisions without inventing commitments.", useWhen: "You have rough notes or a transcript and need to separate decisions, actions, owners, dates, and questions that still need confirmation.", introTitle: "A useful record makes ambiguity visible.", intro: "AI can help sort a long conversation. It should not turn an unassigned idea into a promised task or invent a due date that the group never agreed to.", guideSlugs: ["meeting-notes-to-action-list", "meeting-agenda-from-notes", "meeting-follow-up-email", "clear-project-update-prompt"] },
-  { slug: "planning-and-priorities", number: "04", shortTitle: "Planning & priorities", title: "Plans small enough to start and clear enough to review.", seoTitle: "AI project planning and weekly priorities workflows", description: "Practical AI planning workflows for choosing weekly priorities, creating a credible first project step, and building content plans from real audience questions.", useWhen: "You have more possible tasks than useful attention, and need a modest plan that makes risks, assumptions, and the next decision easier to see.", introTitle: "Make the next move credible before making the plan bigger.", intro: "These workflows favor the smallest useful plan over a credible starting point while reserving trade-offs for a human owner.", guideSlugs: ["weekly-priorities-from-project-list", "project-handoff-brief", "thirty-minute-project-starting-plan", "one-week-content-plan-from-questions"] }
+  { slug: "planning-and-priorities", number: "04", shortTitle: "Planning & priorities", title: "Plans small enough to start and clear enough to review.", seoTitle: "AI project planning and weekly priorities workflows", description: "Practical AI planning workflows for choosing weekly priorities, creating a credible first project step, and building content plans from real audience questions.", useWhen: "You have more possible tasks than useful attention, and need a modest plan that makes risks, assumptions, and the next decision easier to see.", introTitle: "Make the next move credible before making the plan bigger.", intro: "These workflows favor the smallest useful plan over a credible starting point while reserving trade-offs for a human owner.", guideSlugs: ["weekly-priorities-from-project-list", "project-handoff-brief", "thirty-minute-project-starting-plan", "one-week-content-plan-from-questions", "weekly-review-from-completed-and-blocked-work"] }
 ] as const;
 
 /** A curated learning path uses existing records only; it is a reading order, not a claim of a completed curriculum. */

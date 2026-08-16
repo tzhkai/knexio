@@ -36,6 +36,8 @@ const guides = [
   "customer-feedback-theme-map",
   "project-handoff-brief",
   "project-notes-to-decision-memo",
+  "turn-rough-notes-into-decision-email",
+  "weekly-review-from-completed-and-blocked-work",
   "evidence-matrix-from-source-notes",
 ];
 const topics = ["research-and-decisions", "writing-and-updates", "meetings-and-follow-up", "planning-and-priorities"];
