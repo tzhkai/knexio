@@ -125,7 +125,7 @@
 
 - [x] 审计旧仓库的默认分支、目录结构、构建配置和 Cloudflare 线索。
 - [x] 对比旧仓库与 Workflow Library 的文件范围，列出应替换、保留和移除的内容。
-- [ ] 在推送前取得对覆盖分支、仓库可见性及自动发布的明确确认。
+- [x] 在推送前取得对覆盖分支、仓库可见性及自动发布的明确确认。
 - [x] 在授权后创建可回退的迁移提交并推送到远程仓库。
 - [x] 核对远程提交与 Cloudflare Pages 自动构建状态。
 
@@ -135,7 +135,7 @@
 - [x] 压缩图片并保留完整构图与网页所需清晰度。
 - [x] 重新验证静态产物、正式构建和页面图片加载。
 - [x] 同步优化图片到 GitHub 并核对 Cloudflare 自动发布。
-- [ ] 保存可恢复的项目版本。
+- [x] 保存可恢复的项目版本。
 
 ## Google Search Console 更新与索引监测
 
@@ -151,15 +151,15 @@
 - [x] 为首页、内容库、专题、文章、信息页和 404 页制定差异化摘要策略。
 - [x] 实现全站 Meta、Open Graph、Twitter 与图像 alt 字段优化。
 - [x] 验证主要路由的标签输出、生产构建和分享预览字段。
-- [ ] 同步优化到 GitHub 并核对 Cloudflare 自动发布。
+- [x] 同步优化到 GitHub 并核对 Cloudflare 自动发布。
 
 ## GitHub 同步授权恢复
 
 - [x] 诊断当前 GitHub 会话、仓库权限与本地待推送提交状态。
 - [x] 恢复安全写入授权，或准备用户可见的仓库同步替代操作。
-- [ ] 推送已创建的 Meta 与 Open Graph 优化提交至 main。
-- [ ] 核对 Cloudflare Pages 自动构建及生产 Meta 输出。
-- [ ] 保存同步完成后的可恢复项目版本。
+- [x] 推送已创建的 Meta 与 Open Graph 优化提交至 main。
+- [x] 核对 Cloudflare Pages 自动构建及生产 Meta 输出。
+- [x] 保存同步完成后的可恢复项目版本。
 
 ## Sitemap 无法抓取诊断
 
@@ -238,7 +238,7 @@
 - [x] 核对其余核心主题页和高意图指南的 Google 索引覆盖。
 - [x] 审计已收录页面的内部链接、canonical、内容稳定性和高优先级相邻路径。
 - [x] 核对生产环境的 AdSense 脚本和 ads.txt；Privacy & messaging 已由用户确认发布。
-- [ ] 在提交 AdSense 审核前填入真实发布者身份与受监控的隐私联系邮箱。
+- [x] 在提交 AdSense 审核前填入真实发布者身份与受监控的隐私联系邮箱。
 - [x] 交付可执行的索引维护与 AdSense 审核提交结论。
 
 ## 发布者与隐私联系信息更新
@@ -268,7 +268,7 @@
 - [x] 撰写原创 Decision memo 指南及可复制输入检查资产。
 - [x] 将新指南加入 Research & decisions 专题、相关推荐与相邻阅读路径。
 - [x] 验证生产构建、sitemap、旧 URL 静态 404 产物、SEO 头部及移动端展示。
-- [ ] 保存检查点并同步 GitHub/Cloudflare，记录后续抓取请求时点。
+- [x] 保存检查点并同步 GitHub/Cloudflare，记录后续抓取请求时点。
 
 
 ## 内容质量补强：Evidence Matrix
@@ -279,4 +279,4 @@
 - [x] 为内容数据增加可执行测试并运行类型检查、测试与生产构建。
 - [x] 验证移动端页面并保存内容补强检查点。
 - [x] 不创建 48 小时提醒；保留现有 Search Console 资源。
-- [ ] 保存包含 Evidence Matrix、Writing、Planning 指南、sitemap 更新、测试与移动端复核结果的项目检查点。
+- [x] 保存包含 Evidence Matrix、Writing、Planning 指南、sitemap 更新、测试与移动端复核结果的项目检查点。
