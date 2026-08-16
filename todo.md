@@ -166,7 +166,7 @@
 - [x] 核对 sitemap.xml、robots.txt、HTTP 响应头与 Googlebot 访问结果。
 - [x] 排查 Cloudflare 缓存、规范域名、内容格式和 Search Console 抓取时间差。
 - [x] 验证生产 sitemap 可访问；当前未发现需要改动的文件、robots 或部署配置。
-- [ ] 若 72 小时后仍未读取，经确认后更新 Search Console sitemap 提交并记录抓取监测结论。
+- [x] sitemap_index.xml 已成功读取并发现网页；若未来出现新的读取异常，再按 Search Console 状态单独复查。
 
 ## Sitemap Index 兼容性迁移
 
@@ -223,7 +223,7 @@
 - [x] 提供用户本机浏览器中的 Google Privacy & messaging 正式同意消息配置步骤。
 - [x] 调整自定义 Cookie 控制，避免与正式 CMP 的同意状态冲突。
 - [x] 核对用户确认已发布的 European regulations message、生产 AdSense 脚本和 ads.txt；站点 Cookie 控制仅管理分析。
-- [ ] 以 EEA/UK/Swiss 测试流量或 Privacy & messaging 预览复核已发布消息的真实访客展示。
+- [ ] 在 AdSense Privacy & messaging 预览或测试流量中完成一次 EEA/UK/Swiss 展示复核；当前仅确认消息已发布，尚未完成该项实测。
 
 ## AdSense 基础代码接入
 
