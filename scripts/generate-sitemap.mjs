@@ -35,6 +35,7 @@ const guides = [
   "meeting-agenda-from-notes",
   "customer-feedback-theme-map",
   "project-handoff-brief",
+  "project-notes-to-decision-memo",
 ];
 const topics = ["research-and-decisions", "writing-and-updates", "meetings-and-follow-up", "planning-and-priorities"];
 const pageRoutes = ["/", "/guides", "/series", "/about", "/editorial-policy", "/privacy", "/terms", "/contact"];
@@ -46,7 +47,7 @@ const sitemapGroups = [
   { file: "sitemap-workflows.xml", routes: workflowRoutes },
 ];
 const routes = sitemapGroups.flatMap(group => group.routes);
-const lastmod = "2026-08-15";
+const lastmod = "2026-08-16";
 const xmlEscape = (value) => value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&apos;");
 const canonicalUrl = (route) => route === "/" ? `${origin}/` : `${origin}${route.replace(/\/$/, "")}/`;
 const createUrlset = (groupRoutes) => `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${groupRoutes.map(route => `  <url><loc>${xmlEscape(canonicalUrl(route))}</loc><lastmod>${lastmod}</lastmod></url>`).join("\n")}\n</urlset>\n`;
