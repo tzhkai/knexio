@@ -36,6 +36,7 @@ const guides = [
   "customer-feedback-theme-map",
   "project-handoff-brief",
   "project-notes-to-decision-memo",
+  "evidence-matrix-from-source-notes",
 ];
 const topics = ["research-and-decisions", "writing-and-updates", "meetings-and-follow-up", "planning-and-priorities"];
 const pageRoutes = ["/", "/guides", "/series", "/about", "/editorial-policy", "/privacy", "/terms", "/contact"];

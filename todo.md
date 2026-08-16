@@ -269,3 +269,14 @@
 - [x] 将新指南加入 Research & decisions 专题、相关推荐与相邻阅读路径。
 - [x] 验证生产构建、sitemap、旧 URL 静态 404 产物、SEO 头部及移动端展示。
 - [ ] 保存检查点并同步 GitHub/Cloudflare，记录后续抓取请求时点。
+
+
+## 内容质量补强：Evidence Matrix
+
+- [ ] 审计 Writing、Meetings、Planning 专题内容覆盖与质量空白。
+- [x] 规划并撰写 Evidence Matrix 高意图指南。
+- [x] 将新指南接入专题、相关推荐、sitemap 与静态 SEO 路由。
+- [x] 为内容数据增加可执行测试并运行类型检查、测试与生产构建。
+- [x] 验证移动端页面并保存内容补强检查点。
+- [x] 不创建 48 小时提醒；保留现有 Search Console 资源。
+- [ ] 保存包含 Evidence Matrix 指南、sitemap 更新、测试与移动端复核结果的项目检查点。
