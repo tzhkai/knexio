@@ -1,4 +1,5 @@
-import { ChevronDown, CircleHelp } from "lucide-react";
+import { ArrowUpRight, ChevronDown, CircleHelp } from "lucide-react";
+import { Link } from "wouter";
 
 export const meetingGuideFaqs = [
   {
@@ -49,6 +50,7 @@ export default function MeetingGuideFaq() {
     <div className="meeting-faq-list">
       {meetingGuideFaqs.map(item => <details className="meeting-faq-item" key={item.question}><summary>{item.question}<ChevronDown size={16} aria-hidden="true" /></summary><div className="meeting-faq-answer">{item.answer}</div></details>)}
     </div>
+    <p className="meeting-faq-related">Want the full comparison? <Link href="/workflows/meetings/meeting-minutes-vs-decision-brief/">Read the guide to meeting minutes vs decision briefs <ArrowUpRight size={14} /></Link></p>
   </section>;
 }
 

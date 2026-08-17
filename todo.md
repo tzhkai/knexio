@@ -351,3 +351,11 @@
 - [x] 增加桌面侧边悬浮目录、移动端可用的目录入口和锚点跳转；FAQ 已加入目录。
 - [x] 验证 FAQ、TOC、分享按钮、模板下载和文章正文的可访问性与布局；桌面与手机视口均已复核。
 - [x] 运行测试、生产构建并保存可恢复版本；8 项 Vitest、TypeScript 检查和生产构建均通过。
+
+## 会议纪要与决策简报子页面、TOC 高亮
+
+- [x] 审计现有 FAQ、Meetings 内链与 TOC 实现。
+- [x] 创建会议纪要与决策简报差异独立子页面，并加入 SEO 元数据与结构化内容；已生成静态 canonical、Article JSON-LD 和 sitemap 页面入口。
+- [x] 在 FAQ、Meetings 指南、专题页和相关指南之间建立自然内链。
+- [x] 为桌面侧边 TOC 增加滚动高亮当前章节，保持移动端目录可用；使用 IntersectionObserver 与 aria-current。
+- [x] 更新 sitemap，运行测试、移动端回归、生产构建并保存可恢复版本；8 项 Vitest、TypeScript 检查、桌面/手机截图、sitemap 生成和生产构建均通过。
