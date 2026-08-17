@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { getGuide, guides, topicClusters } from "./content";
 import { coreByCategory } from "@/components/CoreWorkflowLinks";
+import { MEETING_NOTES_TEMPLATE } from "@/components/MeetingNotesTemplate";
 
 describe("workflow library content", () => {
   it("publishes the evidence matrix guide with practical review fields", () => {
@@ -23,6 +24,13 @@ describe("workflow library content", () => {
     expect(guide?.prompt).toContain("Not confirmed");
     expect(guide?.prompt).toContain("Do not invent commitments");
     expect(guide?.checks.length).toBeGreaterThanOrEqual(4);
+  });
+
+  it("provides a meeting record template with explicit uncertainty fields", () => {
+    expect(MEETING_NOTES_TEMPLATE).toContain("## Confirmed decisions");
+    expect(MEETING_NOTES_TEMPLATE).toContain("## Open questions");
+    expect(MEETING_NOTES_TEMPLATE).toContain("## Not confirmed");
+    expect(MEETING_NOTES_TEMPLATE).toContain("## Verification checklist");
   });
 
   it("connects the meetings decision brief to the meetings cluster", () => {
