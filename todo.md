@@ -296,3 +296,11 @@
 - [x] 区分旧 URL 可访问、可索引与仍有历史曝光三种情况；历史曝光不等于当前页面仍存在。
 - [x] 判断旧站链接是否会影响新站抓取、关键词归因或 AdSense 审核；当前 404 旧 URL 不会自动转化为新站点击，但历史数据仍会短期留在报告中。
 - [x] 交付纠正后的新站流量结论与旧 URL 清理方案。
+
+## 旧 URL 301、SEO 基础审计与 sitemap 提交
+
+- [x] 审计旧 URL 与新页面的相关性；当前没有一对一等价新页面，因此保留真实 404，不添加不相关的 301。
+- [x] 检查新上线指南的 TDK、H1/H2、canonical、Open Graph 和结构化数据；三篇新指南均通过基础检查。
+- [x] 核验生产 sitemap_index.xml、子 sitemap、robots.txt 与规范 URL 覆盖；均返回 200，索引包含 3 个子 sitemap。
+- [x] 在 Google Search Console 确认 sitemap_index.xml 已成功提交，已发现网页 82；本次不重复提交。
+- [ ] 保存映射、SEO 审计与 sitemap 操作的可恢复版本。
