@@ -312,3 +312,12 @@
 - [x] 为相关研究、写作、会议和计划页面添加自然的描述性内部链接；按 Research、Writing、Planning 分类接入核心工作流链接模块。
 - [x] 验证 404 状态、SEO 静态路由、桌面/移动端显示与生产构建；未知 URL 返回 404，正式页面已展示三个核心入口，类型检查、测试和构建均通过。
 - [x] 保存内部链接优化后的可恢复版本。
+
+## Meetings 核心指南、sitemap 与 TDK 审计
+
+- [x] 审计 Meetings 专题缺口与现有核心页面 SEO 基线。
+- [x] 撰写并实现一篇与其他核心指南同级的 Meetings 任务型指南：meeting-notes-to-decision-brief。
+- [x] 将新指南接入 Meetings 专题、相关推荐和相关页面内部链接；已接入专题、顺序阅读、详情页核心链接和 404 入口。
+- [x] 核验 sitemap_index.xml、子 sitemap、正式 sitemap URL 覆盖与 XML 格式；新 slug 已进入 sitemap-guides.xml。
+- [x] 审计 Evidence Matrix、Writing、Planning、Meetings 核心页面的 TDK、canonical、关键词和结构化数据；title、description、canonical 和 JSON-LD 已生成，未添加无效 meta keywords。
+- [ ] 运行测试、生产构建、部署并保存可恢复版本。

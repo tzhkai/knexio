@@ -6,18 +6,21 @@ const coreByCategory = {
   Research: "evidence-matrix-from-source-notes",
   Writing: "clear-project-update-prompt",
   Planning: "one-week-content-plan-from-questions",
+  Meetings: "meeting-notes-to-decision-brief",
 } as const;
 
 const coreLabels = {
   Research: "Evidence check before a decision",
   Writing: "Clear project update",
   Planning: "One-week plan from real questions",
+  Meetings: "Meeting decision brief",
 } as const;
 
 const coreDescriptions = {
   Research: "Turn source notes into a reviewable matrix with visible support, gaps, and next checks.",
   Writing: "Turn rough progress notes into a reader-ready update without inflating status or commitments.",
   Planning: "Build a modest publishing plan from real audience questions and available capacity.",
+  Meetings: "Separate confirmed decisions from discussion and unconfirmed commitments.",
 } as const;
 
 const styles = `
