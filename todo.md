@@ -335,4 +335,4 @@
 
 - [x] 将当前会议纪要模板、核心指南分享按钮和 sitemap 状态记录同步到用户指定的 GitHub main。
 - [x] 核对 GitHub main 的最新提交与变更文件；远端 main 已更新至 5ab10dbeef994af0a6f34b29dc6d2599bd71a323，未执行 Cloudflare Publish。
-- [ ] 保存 GitHub-only 同步结果的可恢复版本。
+- [x] 保存 GitHub-only 同步结果的可恢复版本；最新项目检查点为 08f88b99。
