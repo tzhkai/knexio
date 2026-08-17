@@ -321,3 +321,11 @@
 - [x] 核验 sitemap_index.xml、子 sitemap、正式 sitemap URL 覆盖与 XML 格式；新 slug 已进入 sitemap-guides.xml。
 - [x] 审计 Evidence Matrix、Writing、Planning、Meetings 核心页面的 TDK、canonical、关键词和结构化数据；title、description、canonical 和 JSON-LD 已生成，未添加无效 meta keywords。
 - [x] 运行测试、生产构建、部署并保存可恢复版本；6 项 Vitest、类型检查、sitemap 生成、生产构建、GitHub Actions 和正式 URL 回归均通过。
+
+## 会议纪要模板、社交分享与 sitemap 复核
+
+- [x] 审计 Meetings 新指南、下载资产位置、现有分享组件和 sitemap 提交状态。
+- [x] 创建可下载的会议纪要模板，并接入 Meetings 新指南；下载为无追踪 Markdown 文件。
+- [x] 为 Evidence Matrix、Planning 等核心指南增加可访问、无第三方追踪的分享按钮；现有 ShareArticle 组件已统一应用于指南详情页。
+- [x] 核验 sitemap_index.xml 最新生产状态，并在 Search Console 确认读取；当前状态成功、已发现 82 个网页，生产 sitemap 已包含 Meetings 新指南。
+- [ ] 运行测试、移动端回归、生产构建、部署并保存可恢复版本。
