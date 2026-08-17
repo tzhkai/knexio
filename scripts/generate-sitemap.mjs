@@ -42,7 +42,7 @@ const guides = [
   "evidence-matrix-from-source-notes",
 ];
 const topics = ["research-and-decisions", "writing-and-updates", "meetings-and-follow-up", "planning-and-priorities"];
-const pageRoutes = ["/", "/guides", "/series", "/about", "/editorial-policy", "/privacy", "/terms", "/contact"];
+const pageRoutes = ["/", "/guides", "/series", "/about", "/editorial-policy", "/privacy", "/terms", "/contact", "/workflows/meetings/meeting-minutes-vs-decision-brief/"];
 const guideRoutes = guides.map(slug => `/guides/${slug}`);
 const workflowRoutes = topics.map(slug => `/workflows/${slug}`);
 const sitemapGroups = [

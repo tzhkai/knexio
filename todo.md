@@ -329,10 +329,40 @@
 - [x] 为 Evidence Matrix、Planning 等核心指南增加可访问、无第三方追踪的分享按钮；现有 ShareArticle 组件已统一应用于指南详情页。
 - [x] 核验 sitemap_index.xml 最新生产状态，并在 Search Console 确认读取；当前状态成功、已发现 82 个网页，生产 sitemap 已包含 Meetings 新指南。
 - [x] 运行测试、移动端回归、生产构建并保存可恢复版本；7 项 Vitest、类型检查、移动端截图、生产构建和 sitemap/Search Console 核验均完成。
-- [ ] 在 Manus 管理界面点击最新检查点的 Publish，将会议模板与分享更新同步到 Cloudflare Pages。
+- [x] 用户改为仅同步 GitHub，因此不执行 Manus/Cloudflare Publish。
 
 ## GitHub-only 同步
 
-- [ ] 将当前会议纪要模板、核心指南分享按钮和 sitemap 状态记录同步到用户指定的 GitHub main。
-- [ ] 核对 GitHub main 的最新提交与变更文件；不执行 Cloudflare Publish。
-- [ ] 保存 GitHub-only 同步结果的可恢复版本。
+- [x] 将当前会议纪要模板、核心指南分享按钮和 sitemap 状态记录同步到用户指定的 GitHub main。
+- [x] 核对 GitHub main 的最新提交与变更文件；远端 main 已更新至 5ab10dbeef994af0a6f34b29dc6d2599bd71a323，未执行 Cloudflare Publish。
+- [x] 保存 GitHub-only 同步结果的可恢复版本；最新项目检查点为 08f88b99。
+
+## Meetings 指南 Search Console 索引请求
+
+- [x] 确认新增 Meetings 指南及相关核心 URL；本轮唯一新增指南为 meeting-notes-to-decision-brief。
+- [x] 在 Search Console 逐个请求新增 URL 编入索引；已提交 https://knexio.xyz/guides/meeting-notes-to-decision-brief/。
+- [x] 记录每个 URL 的状态；Search Console 显示“已请求编入索引”，但当前仍未收录，详见 SEARCH-CONSOLE-INDEX-REQUESTS-2026-08-17.md。
+- [x] 交付索引请求清单和后续观察建议。
+
+## Meetings FAQ 与侧边 TOC
+
+- [x] 审计 Meetings 指南现有结构、标题锚点与 FAQ 长尾问题机会。
+- [x] 增加真实任务导向的 FAQ 模块与 FAQPage JSON-LD；覆盖决策简报、协议边界、不完整记录、会议纪要差异和人工核对等问题。
+- [x] 增加桌面侧边悬浮目录、移动端可用的目录入口和锚点跳转；FAQ 已加入目录。
+- [x] 验证 FAQ、TOC、分享按钮、模板下载和文章正文的可访问性与布局；桌面与手机视口均已复核。
+- [x] 运行测试、生产构建并保存可恢复版本；8 项 Vitest、TypeScript 检查和生产构建均通过。
+
+## 会议纪要与决策简报子页面、TOC 高亮
+
+- [x] 审计现有 FAQ、Meetings 内链与 TOC 实现。
+- [x] 创建会议纪要与决策简报差异独立子页面，并加入 SEO 元数据与结构化内容；已生成静态 canonical、Article JSON-LD 和 sitemap 页面入口。
+- [x] 在 FAQ、Meetings 指南、专题页和相关指南之间建立自然内链。
+- [x] 为桌面侧边 TOC 增加滚动高亮当前章节，保持移动端目录可用；使用 IntersectionObserver 与 aria-current。
+- [x] 更新 sitemap，运行测试、移动端回归、生产构建并保存可恢复版本；8 项 Vitest、TypeScript 检查、桌面/手机截图、sitemap 生成和生产构建均通过。
+
+## 最新代码同步、线上回归与子页面索引
+
+- [ ] 将独立差异子页面、FAQ 内链和 TOC 滚动高亮代码同步到 GitHub main。
+- [ ] 核对 GitHub main 提交，并检查线上子页面、Meetings 指南和 sitemap 响应。
+- [ ] 在 Search Console 为 /workflows/meetings/meeting-minutes-vs-decision-brief/ 请求编入索引。
+- [ ] 记录同步、线上回归和索引请求结果并保存可恢复版本。

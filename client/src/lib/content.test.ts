@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import { getGuide, guides, topicClusters } from "./content";
 import { coreByCategory } from "@/components/CoreWorkflowLinks";
 import { MEETING_NOTES_TEMPLATE } from "@/components/MeetingNotesTemplate";
+import { meetingGuideFaqs, meetingGuideFaqSchema } from "@/components/MeetingGuideFaq";
 
 describe("workflow library content", () => {
   it("publishes the evidence matrix guide with practical review fields", () => {
@@ -52,6 +53,15 @@ describe("workflow library content", () => {
     expect(guideSlugs.has(coreByCategory.Writing)).toBe(true);
     expect(guideSlugs.has(coreByCategory.Planning)).toBe(true);
     expect(guideSlugs.has(coreByCategory.Meetings)).toBe(true);
+  });
+
+  it("publishes the Meetings FAQ with searchable questions and FAQPage schema", () => {
+    expect(meetingGuideFaqs.length).toBeGreaterThanOrEqual(5);
+    expect(meetingGuideFaqs.some((item) => item.question.includes("decision brief"))).toBe(true);
+    const schema = meetingGuideFaqSchema();
+    expect(schema["@type"]).toBe("FAQPage");
+    expect(schema.mainEntity).toHaveLength(meetingGuideFaqs.length);
+    expect(schema.mainEntity.every((item) => item.acceptedAnswer.text.length > 40)).toBe(true);
   });
 
   it("keeps every topic guide reference resolvable", () => {
