@@ -320,4 +320,4 @@
 - [x] 将新指南接入 Meetings 专题、相关推荐和相关页面内部链接；已接入专题、顺序阅读、详情页核心链接和 404 入口。
 - [x] 核验 sitemap_index.xml、子 sitemap、正式 sitemap URL 覆盖与 XML 格式；新 slug 已进入 sitemap-guides.xml。
 - [x] 审计 Evidence Matrix、Writing、Planning、Meetings 核心页面的 TDK、canonical、关键词和结构化数据；title、description、canonical 和 JSON-LD 已生成，未添加无效 meta keywords。
-- [ ] 运行测试、生产构建、部署并保存可恢复版本。
+- [x] 运行测试、生产构建、部署并保存可恢复版本；6 项 Vitest、类型检查、sitemap 生成、生产构建、GitHub Actions 和正式 URL 回归均通过。
