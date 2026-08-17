@@ -73,3 +73,28 @@ Search Console 的数据存在延迟，且新站上线时间与报告窗口不�
 建议将当前状态定义为“**新站搜索数据尚未形成，旧站历史数据仍占主导**”。接下来 7–14 天内不应因 0 点击而频繁改版，也不建议删除 Search Console 资源。应保持 sitemap、规范 URL 和专题内部链接稳定，并在 Search Console 产生新数据后，重点观察：新指南 URL 是否出现曝光；查询词是否从旧站故障词转向会议、研究、写作和计划任务；以及平均排名是否从 50 名以外进入 20–40 名区间。
 
 本次原始指标与新站窗口记录见：`SEARCH-CONSOLE-QUERY-DATA-2026-08-17.md`。
+
+
+## 用户纠正后的数据边界复核
+
+用户确认新站于 2026-08-16 前后刚上线，因此此前三个月报告中的 125 次曝光不能用于评价新 Workflow Library。该数据窗口覆盖 2026-05-16 至 2026-08-15，明显包含换站前历史；真正的新站上线后窗口 2026-08-14 至 2026-08-15 甚至早于用户确认的新站正式上线时间，因此只能说明报告尚未包含新站上线后的有效搜索数据，不能说明新站长期没有曝光。
+
+### 旧站 URL 生产响应
+
+对 Search Console 三个月网页维度中曝光较高的代表性旧 URL 进行生产检查，结果如下：
+
+| URL 类别 | 示例 | 当前 HTTP 状态 | 结论 |
+|---|---|---:|---|
+| 旧 Gemini 故障指南 | `/guides/gemini-ai-not-working/` | 404 | 旧 URL 已从当前站点内容中移除；Search Console 历史曝光仍会保留一段时间 |
+| 旧 ChatGPT/Steam/Slack 指南 | `/guides/chatgpt-not-working/`、`/guides/steam-not-opening/` | 404 | 可访问历史记录不等于当前页面仍存在 |
+| 旧博客、游戏 URL | `/blogs/ai-code-assistant-tools/`、`/games/mini-crossword/` | 404 | 当前生产站点未继续提供这些旧内容 |
+| 新 Evidence Matrix 指南 | `/guides/evidence-matrix-from-source-notes/` | 200 | 新指南已发布；此前使用错误的猜测路径 `/guides/evidence-matrix/` 才会返回 404 |
+| 新 Writing 指南 | `/guides/clear-project-update-prompt/` | 200 | 新指南已发布 |
+| 新 Planning 指南 | `/guides/one-week-content-plan-from-questions/` | 200 | 响应较大导致 curl 下载超时，但已返回 HTTP 200，不是 404 |
+| 随机不存在路径 | `/this-route-should-not-exist-2026/` | 404 | 静态 404 规则有效 |
+
+因此，“旧站链接还能登录/打开”的感觉可能来自三个不同现象：浏览器历史记录仍能打开域名、Search Console 仍显示历史 URL，或旧链接返回当前统一 404 页面。当前抽查没有发现这些旧 URL 继续返回 200 内容；它们的历史曝光也不会自动转化为新站点击。
+
+## 修正后的结论
+
+截至 2026-08-17，不能用 Search Console 的三个月报告判断新站流量。新站昨天刚上线，Search Console 通常还需要抓取、处理和报告延迟；目前最可靠的结论是：新站刚完成发布，尚无足够的上线后数据可供关键词判断。后续应从新站正式上线日开始建立观察窗口，至少等待 3–7 天再评价曝光，等待 7–14 天再根据查询词调整标题与内容；期间不删除 Search Console 资源，也不因旧站历史词修改新站主题定位。
