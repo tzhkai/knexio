@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { getGuide, guides, topicClusters } from "./content";
+import { coreByCategory } from "@/components/CoreWorkflowLinks";
 
 describe("workflow library content", () => {
   it("publishes the evidence matrix guide with practical review fields", () => {
@@ -17,6 +18,14 @@ describe("workflow library content", () => {
     const researchCluster = topicClusters.find((topic) => topic.slug === "research-and-decisions");
 
     expect(researchCluster?.guideSlugs).toContain("evidence-matrix-from-source-notes");
+  });
+
+  it("maps each core category to a published guide", () => {
+    const guideSlugs = new Set(guides.map((guide) => guide.slug));
+
+    expect(guideSlugs.has(coreByCategory.Research)).toBe(true);
+    expect(guideSlugs.has(coreByCategory.Writing)).toBe(true);
+    expect(guideSlugs.has(coreByCategory.Planning)).toBe(true);
   });
 
   it("keeps every topic guide reference resolvable", () => {

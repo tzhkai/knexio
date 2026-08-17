@@ -304,3 +304,11 @@
 - [x] 核验生产 sitemap_index.xml、子 sitemap、robots.txt 与规范 URL 覆盖；均返回 200，索引包含 3 个子 sitemap。
 - [x] 在 Google Search Console 确认 sitemap_index.xml 已成功提交，已发现网页 82；本次不重复提交。
 - [x] 保存映射、SEO 审计与 sitemap 操作的可恢复版本。
+
+## 404 引导与新指南内部链接优化
+
+- [x] 审计当前 404 页面和三篇新指南的主题关系。
+- [x] 设计 404 到 Evidence Matrix、Writing、Planning 及核心入口的引导结构。
+- [x] 为相关研究、写作、会议和计划页面添加自然的描述性内部链接；按 Research、Writing、Planning 分类接入核心工作流链接模块。
+- [ ] 验证 404 状态、SEO 静态路由、桌面/移动端显示与生产构建。
+- [ ] 保存内部链接优化后的可恢复版本。
