@@ -328,4 +328,11 @@
 - [x] 创建可下载的会议纪要模板，并接入 Meetings 新指南；下载为无追踪 Markdown 文件。
 - [x] 为 Evidence Matrix、Planning 等核心指南增加可访问、无第三方追踪的分享按钮；现有 ShareArticle 组件已统一应用于指南详情页。
 - [x] 核验 sitemap_index.xml 最新生产状态，并在 Search Console 确认读取；当前状态成功、已发现 82 个网页，生产 sitemap 已包含 Meetings 新指南。
-- [ ] 运行测试、移动端回归、生产构建、部署并保存可恢复版本。
+- [x] 运行测试、移动端回归、生产构建并保存可恢复版本；7 项 Vitest、类型检查、移动端截图、生产构建和 sitemap/Search Console 核验均完成。
+- [x] 用户改为仅同步 GitHub，因此不执行 Manus/Cloudflare Publish。
+
+## GitHub-only 同步
+
+- [x] 将当前会议纪要模板、核心指南分享按钮和 sitemap 状态记录同步到用户指定的 GitHub main。
+- [x] 核对 GitHub main 的最新提交与变更文件；远端 main 已更新至 5ab10dbeef994af0a6f34b29dc6d2599bd71a323，未执行 Cloudflare Publish。
+- [ ] 保存 GitHub-only 同步结果的可恢复版本。
