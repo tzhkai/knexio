@@ -343,3 +343,11 @@
 - [x] 在 Search Console 逐个请求新增 URL 编入索引；已提交 https://knexio.xyz/guides/meeting-notes-to-decision-brief/。
 - [x] 记录每个 URL 的状态；Search Console 显示“已请求编入索引”，但当前仍未收录，详见 SEARCH-CONSOLE-INDEX-REQUESTS-2026-08-17.md。
 - [x] 交付索引请求清单和后续观察建议。
+
+## Meetings FAQ 与侧边 TOC
+
+- [x] 审计 Meetings 指南现有结构、标题锚点与 FAQ 长尾问题机会。
+- [x] 增加真实任务导向的 FAQ 模块与 FAQPage JSON-LD；覆盖决策简报、协议边界、不完整记录、会议纪要差异和人工核对等问题。
+- [x] 增加桌面侧边悬浮目录、移动端可用的目录入口和锚点跳转；FAQ 已加入目录。
+- [x] 验证 FAQ、TOC、分享按钮、模板下载和文章正文的可访问性与布局；桌面与手机视口均已复核。
+- [x] 运行测试、生产构建并保存可恢复版本；8 项 Vitest、TypeScript 检查和生产构建均通过。
