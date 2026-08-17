@@ -303,4 +303,4 @@
 - [x] 检查新上线指南的 TDK、H1/H2、canonical、Open Graph 和结构化数据；三篇新指南均通过基础检查。
 - [x] 核验生产 sitemap_index.xml、子 sitemap、robots.txt 与规范 URL 覆盖；均返回 200，索引包含 3 个子 sitemap。
 - [x] 在 Google Search Console 确认 sitemap_index.xml 已成功提交，已发现网页 82；本次不重复提交。
-- [ ] 保存映射、SEO 审计与 sitemap 操作的可恢复版本。
+- [x] 保存映射、SEO 审计与 sitemap 操作的可恢复版本。
