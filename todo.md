@@ -359,3 +359,10 @@
 - [x] 在 FAQ、Meetings 指南、专题页和相关指南之间建立自然内链。
 - [x] 为桌面侧边 TOC 增加滚动高亮当前章节，保持移动端目录可用；使用 IntersectionObserver 与 aria-current。
 - [x] 更新 sitemap，运行测试、移动端回归、生产构建并保存可恢复版本；8 项 Vitest、TypeScript 检查、桌面/手机截图、sitemap 生成和生产构建均通过。
+
+## 最新代码同步、线上回归与子页面索引
+
+- [x] 将独立差异子页面、FAQ 内链和 TOC 滚动高亮代码同步到 GitHub main。
+- [x] 核对 GitHub main 提交，并检查线上子页面、Meetings 指南和 sitemap 响应。
+- [x] 在 Search Console 为 /workflows/meetings/meeting-minutes-vs-decision-brief/ 请求编入索引。
+- [x] 记录同步、线上回归和索引请求结果并保存可恢复版本。
