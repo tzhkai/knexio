@@ -336,3 +336,10 @@
 - [x] 将当前会议纪要模板、核心指南分享按钮和 sitemap 状态记录同步到用户指定的 GitHub main。
 - [x] 核对 GitHub main 的最新提交与变更文件；远端 main 已更新至 5ab10dbeef994af0a6f34b29dc6d2599bd71a323，未执行 Cloudflare Publish。
 - [x] 保存 GitHub-only 同步结果的可恢复版本；最新项目检查点为 08f88b99。
+
+## Meetings 指南 Search Console 索引请求
+
+- [x] 确认新增 Meetings 指南及相关核心 URL；本轮唯一新增指南为 meeting-notes-to-decision-brief。
+- [x] 在 Search Console 逐个请求新增 URL 编入索引；已提交 https://knexio.xyz/guides/meeting-notes-to-decision-brief/。
+- [x] 记录每个 URL 的状态；Search Console 显示“已请求编入索引”，但当前仍未收录，详见 SEARCH-CONSOLE-INDEX-REQUESTS-2026-08-17.md。
+- [x] 交付索引请求清单和后续观察建议。
