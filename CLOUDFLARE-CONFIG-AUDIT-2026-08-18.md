@@ -45,3 +45,21 @@ Worker 生产页面显示项目存在生产环境，并有 `域 1`、`Workers 0`
 用户明确确认后，删除了 `markdowmaster.site.markdownmaster.site` 这一条 Tunnel DNS 记录（内容为 `storyflow`，原目标为 `a1988140-001e-4af5-804c-a967f2b6a917.cfargotunnel.com`）。未删除正常的 `storyflow.markdownmaster.site` Tunnel 记录，也未修改主站 CNAME、MX 或 TXT 记录。
 
 删除后 Cloudflare DNS 列表显示使用量由 10/200 降为 9/200；目标错误记录不再出现，正常 Tunnel 和 `tool-markdown.pages.dev` CNAME 仍存在。回归请求结果：`https://markdownmaster.site` 返回 HTTP 200，`https://www.markdownmaster.site` 返回 HTTP 200 并跳转到规范域名，`https://storyflow.markdownmaster.site` 返回 HTTP 200。
+
+## Worker 路由与历史 Pages 项目复核
+
+### affiliate-link-injector
+
+生产 Worker 当前绑定的路由是 `markdownmaster.site/*`，即覆盖 markdownmaster.site 的所有路径，而不是仅覆盖某个 affiliate 工具路径或特定内容目录。Worker 生产 URL 为 `affiliate-link-injector.tianzhenkai.workers.dev`，近期约有 1.1k 请求且错误为 0；绑定页显示它连接了 D1 数据库 `saas-sites-db`，绑定名称为 `DB`。本轮代码编辑器未加载出可读源码，因此不能仅凭页面确认它是否只在 HTML 页面中注入 affiliate 内容。
+
+该路由范围从最小权限和故障隔离角度看偏宽，尤其会覆盖 HTML 页面、robots.txt、sitemap、静态资源和 404 路径。建议先保留现状以避免影响 affiliate 业务，但下一步应根据代码实际用途将路由收窄为明确的路径模式，例如仅覆盖需要注入的内容目录，或至少在 Worker 内明确跳过 `/_assets/*`、`/robots.txt`、`/sitemap*.xml`、静态文件和错误响应。任何收窄前应使用临时路由或预览版本验证。
+
+### persona-pop
+
+`persona-pop` 当前生产域名只有 `persona-pop-2h2.pages.dev`，自定义域页面显示没有绑定外部域名。生产部署来自 `main` 分支，最近部署约 3 个月前，部署状态成功。对生产地址的实际请求返回 HTTP 200，页面标题为“人设发疯生成器 | Persona Pop”。因此它不是损坏资源，而是一个仍可访问的历史 Pages 项目；是否归档取决于是否仍需要该 pages.dev 链接、历史分享链接或 main 分支部署。当前不应直接删除。更安全的做法是先确认无外部引用，再禁用自动部署/保留备份，最后由用户明确确认后归档或删除。
+
+### storyflow 域名关系澄清
+
+用户判断正确：`storyflow.markdownmaster.site` 位于 `markdownmaster.site` 域名之下。它是该域的 Tunnel DNS 记录，内容标记为 `storyflow`，与 markdownmaster.site 业务域名同属一个 Cloudflare Zone。
+
+另一个 `api.knexio.xyz` 位于 `knexio.xyz` 域名之下，当前 DNS 为 CNAME `storyflow-api.tianzhenkai.workers.dev`，对应 Cloudflare Worker 项目 `storyflow-api`。因此 `storyflow.markdownmaster.site` 与 `api.knexio.xyz` 是两个不同的主机名、不同的 Zone、不同的接入链路；不能把它们视为同一个域名。之前把“storyflow”提示写成 `api.knexio.xyz`，是将 Worker 项目名称/接口域名与 markdownmaster.site 下的 Tunnel 记录混淆，现已更正。

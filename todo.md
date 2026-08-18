@@ -395,3 +395,10 @@
 - [x] 按用户确认删除 `markdowmaster.site.markdownmaster.site` 这一条 Tunnel DNS 记录。
 - [x] 验证 `storyflow.markdownmaster.site` 正常记录、markdownmaster.site 与 www 站点访问不受影响；DNS 列表保留正常 Tunnel，三个入口均返回 HTTP 200，www 跳转到规范域名。
 - [x] 记录 Cloudflare 变更结果并保存可恢复项目版本。
+
+## Worker 路由与历史 Pages 项目复核
+
+- [x] 复核 affiliate-link-injector 的实际自定义域、路由匹配范围、请求量、绑定和最近部署；当前为 `markdownmaster.site/*` 全站路由、约 1.1k 请求、绑定 D1 `saas-sites-db`。
+- [x] 检查 persona-pop 的当前部署、域名、访问状态与资源使用，判断是否可归档；当前 pages.dev 返回 HTTP 200、无自定义域、约 3 个月未更新，建议确认外部引用后再归档。
+- [x] 区分 storyflow.markdownmaster.site Tunnel 与 api.knexio.xyz / storyflow-api Worker 的域名和用途；已确认它们属于不同 Zone 和不同接入链路。
+- [x] 保存复核记录和可恢复项目版本，未经明确确认不删除或停用项目。
