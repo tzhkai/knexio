@@ -402,3 +402,10 @@
 - [x] 检查 persona-pop 的当前部署、域名、访问状态与资源使用，判断是否可归档；当前 pages.dev 返回 HTTP 200、无自定义域、约 3 个月未更新，建议确认外部引用后再归档。
 - [x] 区分 storyflow.markdownmaster.site Tunnel 与 api.knexio.xyz / storyflow-api Worker 的域名和用途；已确认它们属于不同 Zone 和不同接入链路。
 - [x] 保存复核记录和可恢复项目版本，未经明确确认不删除或停用项目。
+
+## 依赖证据核查：affiliate Worker 与 persona-pop
+
+- [x] 检查 affiliate-link-injector 的生产代码、D1 配置、指标和实际 HTML/路径行为，判断是否仍在使用；确认 Worker 仍在生产使用，近期约 1.1k 请求，主页和内容页均实际注入联盟按钮。
+- [x] 检查 persona-pop 的部署历史、域名、仓库/项目引用和公开访问证据，判断是否存在实际依赖；未找到当前项目或 GitHub 仓库引用，但其 pages.dev 仍返回 HTTP 200。
+- [x] 根据证据制定保留、收窄、停用或归档建议，不在证据不足时执行破坏性操作；建议保留 affiliate Worker，迁移职责后再收窄路由；persona-pop 先核对外部引用，再归档而非删除。
+- [x] 保存证据核查记录和可恢复项目版本。

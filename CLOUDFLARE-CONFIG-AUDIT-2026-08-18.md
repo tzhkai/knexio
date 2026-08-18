@@ -63,3 +63,24 @@ Worker 生产页面显示项目存在生产环境，并有 `域 1`、`Workers 0`
 用户判断正确：`storyflow.markdownmaster.site` 位于 `markdownmaster.site` 域名之下。它是该域的 Tunnel DNS 记录，内容标记为 `storyflow`，与 markdownmaster.site 业务域名同属一个 Cloudflare Zone。
 
 另一个 `api.knexio.xyz` 位于 `knexio.xyz` 域名之下，当前 DNS 为 CNAME `storyflow-api.tianzhenkai.workers.dev`，对应 Cloudflare Worker 项目 `storyflow-api`。因此 `storyflow.markdownmaster.site` 与 `api.knexio.xyz` 是两个不同的主机名、不同的 Zone、不同的接入链路；不能把它们视为同一个域名。之前把“storyflow”提示写成 `api.knexio.xyz`，是将 Worker 项目名称/接口域名与 markdownmaster.site 下的 Tunnel 记录混淆，现已更正。
+
+
+## 依赖证据核查补充
+
+### affiliate-link-injector
+
+- GitHub `tzhkai/saas-stack` 中存在对应源代码：`apps/tool-markdown/worker/affiliate.js`，明确配置路由 `markdownmaster.site/*`、源站 `tool-markdown.pages.dev` 和 D1 `saas-sites-db`。
+- Worker 对 HTML 响应注入浮动联盟按钮，并承担 HTTPS、www、尾斜杠、旧 URL 301、robots.txt、sitemap 重定向和源站代理职责；静态资源、robots.txt、sitemap 不注入。未迁移这些逻辑前不应停用。
+- 线上核验结果：主页、`/tools/`、联盟相关文章均出现 `id="afw"`；实际注入数据包含两个站内链接：`https://markdownmaster.site` 与 `https://markdownmaster.site/editor/`。
+- Cloudflare 指标显示该 Worker 近期约 1.1k 请求，绑定 D1 `saas-sites-db`；D1 近 24 小时约 790 次查询、0 次写入、3 张表。结论：Worker 仍在生产使用，不建议删除；全站路由虽偏宽，但收窄前必须先迁移并验证其重定向、robots、sitemap 和代理职责。
+
+### persona-pop
+
+- GitHub 账户仓库及已检查的上游仓库中未发现 `persona-pop`、`persona` 或 `pop` 相关源代码路径和引用。
+- Cloudflare Pages 项目仅有 `persona-pop-2h2.pages.dev`，无自定义域，最近约三个月未更新，生产地址仍返回 HTTP 200。
+- 结论：当前没有证据证明它被现有项目或自定义域依赖；但 pages.dev 仍可访问，建议先核对部署历史、外部分享链接和 Analytics，再执行归档。优先归档而不是删除。
+
+### storyflow 域名关系
+
+- `storyflow.markdownmaster.site` 是 `markdownmaster.site` Zone 下的 Tunnel 入口。
+- `api.knexio.xyz` 属于 `knexio.xyz` Zone，指向 `storyflow-api` Worker，是另一条 API 链路；两者不可互相替代。
