@@ -415,5 +415,19 @@
 - [x] 核对 affiliate-link-injector 源码的所有路径分支、目标路径和源站代理职责。
 - [x] 制定重定向、robots、sitemap、静态资源和 HTML 注入职责的迁移方案；已形成分阶段迁移报告，当前不直接收窄全站路由。
 - [x] 检查 persona-pop Analytics 数据、部署历史、自定义域和外部访问证据；过去 24 小时和 30 天均无可用数据，Web Analytics 未启用。
-- [ ] 归档 persona-pop：当前无自定义域、无代码引用且无近期 Analytics 数据，但由于 Web Analytics 未启用，尚不能严格证明历史上没有外部流量；待确认采用“无近期活跃依赖”标准后执行可恢复归档。
+- [x] 归档 persona-pop：已检查归档入口；Cloudflare 仅提供永久删除，没有可恢复归档，且用户不确认用途，因此安全停止，未删除。
 - [x] 保存 affiliate 迁移方案和 persona-pop 证据；归档尚未执行。
+
+## persona-pop 可恢复归档执行
+
+- [x] 检查 Cloudflare 控制台是否提供归档、暂停部署或断开 Git 连接等可恢复动作；设置页仅显示永久删除，没有独立归档按钮。
+- [x] 若存在可恢复动作则执行；本次仅发现永久删除入口，已停止，不删除项目。
+- [x] 验证 persona-pop 项目清单、pages.dev 响应、域名和部署状态；项目仍保留，生产 pages.dev 返回 200，无自定义域。
+- [x] 记录用户确认、执行结果和可恢复版本；已记录为未执行破坏性操作。
+
+## persona-pop 来源与用途确认
+
+- [x] 在用户不确认用途的情况下暂停 persona-pop 删除或停用操作；未执行删除、停用或永久性变更。
+- [x] 核查 persona-pop Pages 元数据、部署来源、页面内容、关联资源和公开访问状态；确认它是“人设发疯生成器”中文轻量工具，最近成功部署于 2026-05-20，包含 app.js、index.html、styles.css。
+- [x] 对照 GitHub、DNS、域名、Workers/Pages 项目和当前业务代码，寻找可能的依赖；未发现当前主站、markdownmaster.site、knexio.xyz 或 GitHub 仓库引用。
+- [x] 给出保留、停用或删除前的安全条件，并保存核查结果；建议先保留，确认不再需要该独立中文工具后再考虑永久删除。

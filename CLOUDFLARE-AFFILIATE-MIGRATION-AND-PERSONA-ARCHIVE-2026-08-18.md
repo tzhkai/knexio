@@ -62,3 +62,10 @@ Worker 的 HTML 注入只发生在 `content-type` 包含 `text/html` 且响应�
 affiliate-link-injector **暂不应删除或直接收窄**。它当前至少承担 301 重定向、规范化、robots、sitemap、Pages 代理和 HTML 联盟按钮注入六类职责。合理方案是先拆分职责，再逐项迁移，最后才停用 Worker。
 
 persona-pop **具备归档条件，但目前不具备“严格证明从未有外部流量”的条件**。当前最稳妥的动作是保留备份后执行可恢复归档；不建议永久删除。
+
+
+## persona-pop 用途识别补充
+
+通过访问生产地址和最近成功部署详情，已确认它不是空白占位项目，而是一个中文工具页面“人设发疯生成器 | Persona Pop”。页面说明为：输入一句人设，一键生成适合朋友圈、小红书和群聊传播的发疯文案图。当前生产部署为 `persona-pop-2h2.pages.dev`，最近成功部署时间为 **2026 年 5 月 20 日 12:37 PM**；部署版本上传 3 个文件：`app.js`、`index.html`、`styles.css`，没有环境变量。`app.js` 中包含本地文案生成逻辑、分享文案和图片相关字符串，未发现 GitHub、外部 API 或当前 `knexio.xyz` / `markdownmaster.site` 的引用。
+
+因此，它更像是一个以前单独制作的轻量中文内容工具，而不是当前 Workflow Library 或 markdownmaster.site 的组成部分。项目仍有公开 pages.dev 地址，不能在用户不确认用途时删除；当前最安全的处置是保留项目和部署备份，并在确认不再需要该中文工具后再考虑永久删除。Cloudflare 设置页没有发现独立的归档按钮，只有永久删除入口。
