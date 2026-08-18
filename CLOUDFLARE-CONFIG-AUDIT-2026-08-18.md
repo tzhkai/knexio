@@ -84,3 +84,11 @@ Worker 生产页面显示项目存在生产环境，并有 `域 1`、`Workers 0`
 
 - `storyflow.markdownmaster.site` 是 `markdownmaster.site` Zone 下的 Tunnel 入口。
 - `api.knexio.xyz` 属于 `knexio.xyz` Zone，指向 `storyflow-api` Worker，是另一条 API 链路；两者不可互相替代。
+
+
+## persona-pop Analytics 与归档前核查补充
+
+- Cloudflare Pages Analytics 生产页显示当前默认“过去 24 小时”：请求成功 0、错误 0、子请求 0；内部错误、脚本异常、CPU 超时、内存超限和客户端断开均为 0；页面同时显示 Web Analytics 未启用。
+- 已将时间范围切换为“过去 30 天”，页面顶部确认范围已变为过去 30 天；图表随后进入加载/无可用曲线状态，当前未显示可计量请求，需以页面最终刷新结果为准。由于 Web Analytics 未启用，无法从该项目取得访问者来源、国家、引用页等更细粒度数据。
+- persona-pop 部署历史页未在当前加载结果中展示可读的部署条目；此前项目概览已确认仅有 `persona-pop-2h2.pages.dev`、无自定义域、最近成功部署约 3 个月前。当前证据支持“没有近期 Cloudflare Pages 请求和没有自定义域”，但不足以证明历史上从未有外部访问。
+- 归档决策边界：在 30 天 Analytics 最终确认 0 请求、无自定义域、无仓库/项目引用后，可执行“归档/停用自动部署”而非永久删除；若 Analytics 无法提供历史数据，则应保留备份并要求用户确认后再归档。

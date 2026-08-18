@@ -409,3 +409,11 @@
 - [x] 检查 persona-pop 的部署历史、域名、仓库/项目引用和公开访问证据，判断是否存在实际依赖；未找到当前项目或 GitHub 仓库引用，但其 pages.dev 仍返回 HTTP 200。
 - [x] 根据证据制定保留、收窄、停用或归档建议，不在证据不足时执行破坏性操作；建议保留 affiliate Worker，迁移职责后再收窄路由；persona-pop 先核对外部引用，再归档而非删除。
 - [x] 保存证据核查记录和可恢复项目版本。
+
+## affiliate 路径迁移与 persona-pop 归档核查
+
+- [x] 核对 affiliate-link-injector 源码的所有路径分支、目标路径和源站代理职责。
+- [x] 制定重定向、robots、sitemap、静态资源和 HTML 注入职责的迁移方案；已形成分阶段迁移报告，当前不直接收窄全站路由。
+- [x] 检查 persona-pop Analytics 数据、部署历史、自定义域和外部访问证据；过去 24 小时和 30 天均无可用数据，Web Analytics 未启用。
+- [ ] 归档 persona-pop：当前无自定义域、无代码引用且无近期 Analytics 数据，但由于 Web Analytics 未启用，尚不能严格证明历史上没有外部流量；待确认采用“无近期活跃依赖”标准后执行可恢复归档。
+- [x] 保存 affiliate 迁移方案和 persona-pop 证据；归档尚未执行。
