@@ -381,3 +381,11 @@
 - [x] 详细检查 Evidence Matrix 的实时网址状态、抓取允许性、canonical、sitemap 来源、页面 SEO 头部和结构化数据；未发现站点配置或抓取阻断错误，当前主要是 Google 尚未发现或处理 URL。
 - [x] 核对未发现需要修复的页面配置问题；TypeScript、8 项 Vitest、生产构建、HTTP 200 和专题整页渲染均通过。
 - [x] 保存本轮索引请求与页面审计结果的可恢复版本。
+
+## Cloudflare 多项目配置审计
+
+- [x] 只读核对 Cloudflare 账户中的所有域名、Workers 与 Pages 项目清单；确认 2 个域名和 5 个 Workers/Pages 项目。
+- [x] 审计 knexio.xyz 的 DNS、SSL/TLS、缓存、规则、安全和部署关联设置；未执行任何配置变更。
+- [x] 审计 markdownmaster.site 及其他 Cloudflare 项目的关键设置，识别重复、过时或不合理配置；发现疑似拼写错误 Tunnel、旧 persona-pop 项目及需确认的 Worker 路由。
+- [x] 整理按风险等级分类的修改建议，未经用户明确确认不执行配置变更。
+- [x] 保存本轮 Cloudflare 审计记录和可恢复版本；详见 CLOUDFLARE-CONFIG-AUDIT-2026-08-18.md。
