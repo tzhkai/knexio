@@ -389,3 +389,9 @@
 - [x] 审计 markdownmaster.site 及其他 Cloudflare 项目的关键设置，识别重复、过时或不合理配置；发现疑似拼写错误 Tunnel、旧 persona-pop 项目及需确认的 Worker 路由。
 - [x] 整理按风险等级分类的修改建议，未经用户明确确认不执行配置变更。
 - [x] 保存本轮 Cloudflare 审计记录和可恢复版本；详见 CLOUDFLARE-CONFIG-AUDIT-2026-08-18.md。
+
+## 清理 markdownmaster.site 疑似错误 Tunnel 记录
+
+- [x] 按用户确认删除 `markdowmaster.site.markdownmaster.site` 这一条 Tunnel DNS 记录。
+- [x] 验证 `storyflow.markdownmaster.site` 正常记录、markdownmaster.site 与 www 站点访问不受影响；DNS 列表保留正常 Tunnel，三个入口均返回 HTTP 200，www 跳转到规范域名。
+- [x] 记录 Cloudflare 变更结果并保存可恢复项目版本。

@@ -39,3 +39,9 @@ Worker 生产页面显示项目存在生产环境，并有 `域 1`、`Workers 0`
 ## 本轮不修改原则
 
 本轮没有点击保存、删除、停用、清除缓存、修改 DNS、修改路由或修改 SSL/缓存设置。任何删除疑似历史项目、Tunnel 记录、路由或邮件记录的操作都需要先确认用途和备份方案。
+
+## 已执行变更：删除疑似拼写错误 Tunnel 记录
+
+用户明确确认后，删除了 `markdowmaster.site.markdownmaster.site` 这一条 Tunnel DNS 记录（内容为 `storyflow`，原目标为 `a1988140-001e-4af5-804c-a967f2b6a917.cfargotunnel.com`）。未删除正常的 `storyflow.markdownmaster.site` Tunnel 记录，也未修改主站 CNAME、MX 或 TXT 记录。
+
+删除后 Cloudflare DNS 列表显示使用量由 10/200 降为 9/200；目标错误记录不再出现，正常 Tunnel 和 `tool-markdown.pages.dev` CNAME 仍存在。回归请求结果：`https://markdownmaster.site` 返回 HTTP 200，`https://www.markdownmaster.site` 返回 HTTP 200 并跳转到规范域名，`https://storyflow.markdownmaster.site` 返回 HTTP 200。
