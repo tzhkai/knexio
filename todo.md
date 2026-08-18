@@ -366,3 +366,10 @@
 - [x] 核对 GitHub main 提交，并检查线上子页面、Meetings 指南和 sitemap 响应。
 - [x] 在 Search Console 为 /workflows/meetings/meeting-minutes-vs-decision-brief/ 请求编入索引。
 - [x] 记录同步、线上回归和索引请求结果并保存可恢复版本。
+
+## 已收录链接未显示在页面 Tab 的核查
+
+- [x] 确认用户所说的三个已编入索引链接及其当前 Search Console 状态；实时检查显示不同 URL 分别处于已收录、已发现未收录或尚未识别状态。
+- [x] 检查三个链接是否存在于内容数据、对应专题页和 Tab/筛选列表的展示条件中；专题页绑定正常，站内 Tab 不读取 Search Console 收录状态。
+- [x] 验证无需修改站内展示逻辑；当前差异来自 Search Console 报告更新时间和“已请求/已发现/已收录”状态含义，不是页面 Tab 的代码缺失。
+- [x] 保存核查结果；详细状态已追加至 SEARCH-CONSOLE-INDEX-REQUESTS-2026-08-17.md。

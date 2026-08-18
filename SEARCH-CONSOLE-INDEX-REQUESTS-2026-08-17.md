@@ -32,3 +32,11 @@ Search Console 当前显示：
 - 正式 URL `https://knexio.xyz/workflows/meetings/meeting-minutes-vs-decision-brief/` 回归结果：HTTP 200；响应正文包含页面 title、canonical、Article JSON-LD、robots index/follow 以及应用入口。
 - Search Console 网址检查：首次状态为“网址尚未收录到 Google / Google 无法识别此网址”，且当时尚未检测到引荐站点地图；随后已完成实际网址测试并提交“请求编入索引”。最终界面显示“已请求编入索引”，网址已添加到优先抓取队列。Google 明确提示重复提交不会提高队列优先级。
 - 本次仅提交该新页面；没有重复提交已成功读取的 sitemap_index.xml，也没有宣称页面已被收录。
+
+## 2026-08-18 — 网页报告与实时网址检查差异
+
+- Search Console “网页索引编制”报告显示：上次更新日期为 2026/8/14；当时统计为 59 个已编入索引、421 个未编入索引。因此该 Tab 不是实时列表，不能用来判断前两天刚处理页面的即时状态。
+- 实时检查 `https://knexio.xyz/guides/evidence-matrix-from-source-notes/` 时，页面未显示“网址已收录到 Google”；首次结果为“Google 无法识别此网址”，需要等待实时检查结论或再次检查。
+- 实时检查 `https://knexio.xyz/guides/clear-project-update-prompt/` 完成后，状态为“已发现 - 尚未编入索引”，发现来源为 `https://knexio.xyz/sitemap_index.xml`，明确不是“已编入索引”。
+- 实时检查 `https://knexio.xyz/guides/meeting-notes-to-action-list/` 完成后，状态为“网址已收录到 Google / 网页已编入索引”。这说明 Search Console 的 URL 检查结果和“网页”总报告存在更新时间差异。
+- 结论：用户看到的“已编入索引”必须以对应 URL 检查页面明确显示“网址已收录到 Google”为准；“已请求编入索引”和“已发现”均不等于已收录。网站自身的专题/分类 Tab 也不会读取 Search Console 状态，它只按本地内容数据渲染。
