@@ -373,3 +373,11 @@
 - [x] 检查三个链接是否存在于内容数据、对应专题页和 Tab/筛选列表的展示条件中；专题页绑定正常，站内 Tab 不读取 Search Console 收录状态。
 - [x] 验证无需修改站内展示逻辑；当前差异来自 Search Console 报告更新时间和“已请求/已发现/已收录”状态含义，不是页面 Tab 的代码缺失。
 - [x] 保存核查结果；详细状态已追加至 SEARCH-CONSOLE-INDEX-REQUESTS-2026-08-17.md。
+
+## 重新索引请求与 Evidence Matrix 状态审计
+
+- [x] 为当前处于“已发现—尚未编入索引”的目标页面提交一次重新编入索引请求，并记录结果；Evidence Matrix 已提交，Clear project update 在复查时已自行进入已收录状态。
+- [x] 核对 Evidence Matrix、Clear project update、One-week content plan 三个指南的本地内容数据、专题绑定、站内路由和页面渲染；三个专题卡片均已显示对应指南。
+- [x] 详细检查 Evidence Matrix 的实时网址状态、抓取允许性、canonical、sitemap 来源、页面 SEO 头部和结构化数据；未发现站点配置或抓取阻断错误，当前主要是 Google 尚未发现或处理 URL。
+- [x] 核对未发现需要修复的页面配置问题；TypeScript、8 项 Vitest、生产构建、HTTP 200 和专题整页渲染均通过。
+- [x] 保存本轮索引请求与页面审计结果的可恢复版本。

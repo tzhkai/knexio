@@ -40,3 +40,12 @@ Search Console 当前显示：
 - 实时检查 `https://knexio.xyz/guides/clear-project-update-prompt/` 完成后，状态为“已发现 - 尚未编入索引”，发现来源为 `https://knexio.xyz/sitemap_index.xml`，明确不是“已编入索引”。
 - 实时检查 `https://knexio.xyz/guides/meeting-notes-to-action-list/` 完成后，状态为“网址已收录到 Google / 网页已编入索引”。这说明 Search Console 的 URL 检查结果和“网页”总报告存在更新时间差异。
 - 结论：用户看到的“已编入索引”必须以对应 URL 检查页面明确显示“网址已收录到 Google”为准；“已请求编入索引”和“已发现”均不等于已收录。网站自身的专题/分类 Tab 也不会读取 Search Console 状态，它只按本地内容数据渲染。
+
+## 2026-08-18 — Evidence Matrix 重新请求与专题显示核查
+
+- Search Console 实时检查 `https://knexio.xyz/guides/evidence-matrix-from-source-notes/`：当前仍显示“网址尚未收录到 Google / Google 无法识别此网址”；页面未报告抓取、规范网址或抓取允许性的具体错误，主要是 Google 尚未发现或处理该 URL。
+- 已完成一次实际网址测试，并点击“请求编入索引”；Search Console 最终显示“已请求编入索引”，网址已加入优先抓取队列。该状态不代表已经收录，也不应重复提交。
+- 重新检查期间，`https://knexio.xyz/guides/clear-project-update-prompt/` 已显示“网址已收录到 Google / 网页已编入索引”，因此本次没有重复提交该 URL；`https://knexio.xyz/guides/meeting-notes-to-action-list/` 仍显示已编入索引。
+- 本地内容配置核对：Evidence Matrix 绑定到 Research & decisions；Clear project update 绑定到 Writing & updates，并作为 Meetings 的关联指南；One-week content plan 绑定到 Planning & priorities。三个指南均有可解析定义、`/guides/:slug` 路由、sitemap/静态 SEO 元数据和专题卡片。
+- 线上专题页回归：Research、Writing、Planning 三个专题均返回 HTTP 200，整页截图确认三个目标指南分别出现在对应的“Filed in this topic”卡片列表中。三个指南页面均返回 HTTP 200，title、description、canonical、Article JSON-LD 和页面正文入口存在。
+- Evidence Matrix 页面未发现明显抓取阻断：线上返回 HTTP 200；robots 为 index/follow；canonical 为 `https://knexio.xyz/guides/evidence-matrix-from-source-notes/`；构建产物含页面 JSON-LD。TypeScript、8 项 Vitest 与生产构建均通过。
