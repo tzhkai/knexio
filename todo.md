@@ -431,3 +431,16 @@
 - [x] 核查 persona-pop Pages 元数据、部署来源、页面内容、关联资源和公开访问状态；确认它是“人设发疯生成器”中文轻量工具，最近成功部署于 2026-05-20，包含 app.js、index.html、styles.css。
 - [x] 对照 GitHub、DNS、域名、Workers/Pages 项目和当前业务代码，寻找可能的依赖；未发现当前主站、markdownmaster.site、knexio.xyz 或 GitHub 仓库引用。
 - [x] 给出保留、停用或删除前的安全条件，并保存核查结果；建议先保留，确认不再需要该独立中文工具后再考虑永久删除。
+
+## 永久删除 persona-pop
+
+- [ ] 按用户最终确认永久删除 Cloudflare Pages 项目 `persona-pop`，仅限该项目。
+- [ ] 验证 persona-pop 项目、pages.dev 地址和其他 Cloudflare 项目/域名不受影响。
+- [ ] 保存永久删除结果和项目审计记录。
+
+## 旧 URL 清理与 Workflow Library 集群优化
+
+- [ ] 审计 knexio.xyz 旧站残余 URL，建立可验证的 301/404 分类与映射清单。
+- [ ] 为旧 URL 制定分阶段、可回滚的 Cloudflare Redirect Rules/Bulk Redirects 执行策略。
+- [ ] 为 Workflow Library 现有专题建立内容集群、枢纽页和内部链接矩阵。
+- [ ] 制定锚文本、孤立页检查、更新频率和 Search Console 监测指标。
