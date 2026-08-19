@@ -587,3 +587,9 @@
 - [x] 使用真实 EEA、UK、Swiss 测试网络或官方地区预览验证首屏、拒绝、管理和撤回流程。
 - [x] 在 AdSense Policy Center 核对 CMP coverage、no-CMP、低覆盖率或政策提示。
 - [x] 记录已验证证据、地区测试限制和下一步操作。
+
+## CMP 官方预览与持续政策监测
+
+- [x] 重新打开 Google 官方 GDPR CMP 预览并尝试完成同意、拒绝、管理和撤回四步。
+- [x] 复查 AdSense Policy Center 是否出现 No CMP、Low coverage 或欧洲法规提示。
+- [x] 记录当前环境是否具备真实 EEA/UK/Swiss 出口 IP，并保存验证边界。
