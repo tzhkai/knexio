@@ -466,3 +466,9 @@
 - [x] 将两个工具迁移到新站，接入路由、导航、相关指南、SEO 元数据和 sitemap。
 - [x] 为两个工具补充功能测试、生产构建和桌面/移动端回归验证。
 - [x] 制定两个旧 URL 到新 URL 的一对一 301 规则、验证命令和 Cloudflare 配置指南。
+
+## 工具页代码与结构化数据交付
+
+- [x] 整理 AI Prompt Word Counter 和 Markdown Preview 的语义化 HTML 与 Tailwind 风格结构。
+- [x] 整理两条旧静态文件入口的 Cloudflare Redirect Rules 表达式。
+- [x] 起草两个工具页面适用的 WebApplication JSON-LD 结构化数据。
