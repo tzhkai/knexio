@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { buildShareLinks, countPromptWords, renderMarkdown } from "./Tools";
+import { buildShareLinks, clearLocalDraft, countPromptWords, readLocalDraft, renderMarkdown, writeLocalDraft } from "./Tools";
 
 describe("Workflow utilities", () => {
   it("counts prompt words using whitespace boundaries", () => {
@@ -16,6 +16,8 @@ describe("Workflow utilities", () => {
   });
 
   it("builds encoded social sharing links", () => { const links = buildShareLinks("https://knexio.xyz/tools/markdown-preview/?a=1&b=2", "Markdown Preview & Notes"); expect(links.linkedIn).toContain("%26"); expect(links.x).toContain("Markdown%20Preview%20%26%20Notes"); expect(links.facebook).toContain("markdown-preview"); });
+
+  it("falls back safely when local storage is unavailable", () => { expect(readLocalDraft("missing-key", "fallback")).toBe("fallback"); expect(() => writeLocalDraft("key", "value")).not.toThrow(); expect(() => clearLocalDraft("key")).not.toThrow(); });
 
   it("escapes raw HTML instead of interpreting it", () => {
     const html = renderMarkdown("<script>alert('x')</script>");
