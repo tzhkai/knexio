@@ -73,4 +73,16 @@ describe("workflow library content", () => {
       }
     }
   });
+
+  it("keeps every published guide practically complete", () => {
+    for (const guide of guides) {
+      expect(guide.dek.length, `${guide.slug} needs a description`).toBeGreaterThan(40);
+      expect(guide.topics.length, `${guide.slug} needs topic terms`).toBeGreaterThanOrEqual(3);
+      expect(guide.prompt.length, `${guide.slug} needs a usable prompt`).toBeGreaterThan(120);
+      expect(guide.steps.length, `${guide.slug} needs practical steps`).toBeGreaterThanOrEqual(3);
+      expect(guide.sections.length, `${guide.slug} needs explanatory sections`).toBeGreaterThanOrEqual(2);
+      expect(guide.checks.length, `${guide.slug} needs review checks`).toBeGreaterThanOrEqual(4);
+      expect(guide.updatedAt).toMatch(/^2026-/);
+    }
+  });
 });

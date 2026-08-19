@@ -3,11 +3,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { allSitemapRoutes, canonicalRouteUrl, guideSitemapRoutes, staticSitemapRoutes, workflowSitemapRoutes } from "./site-routes";
 
-const configuredUrl = process.env.SITE_URL;
-if (!configuredUrl) {
-  console.error("SITE_URL is required. Example: SITE_URL=https://www.example.com pnpm sitemap");
-  process.exit(1);
-}
+const configuredUrl = process.env.SITE_URL || "https://knexio.xyz";
 
 let origin: string;
 try {
