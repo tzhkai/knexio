@@ -558,3 +558,10 @@
 - [x] 选择可控的安装位置，避免未经审阅的脚本自动执行。
 - [x] 安装或生成安全版本并完成 Skill 格式验证。
 - [x] 交付安装结果、调用方式和已知限制。
+
+## Knexio 线上 AdSense Site Auditor 审计
+
+- [x] 对 knexio.xyz 完整执行 AdSense Site Auditor 线上检查清单。
+- [x] 核验 Privacy Policy、Cookie 横幅、CMP、广告脚本和隐私披露的一致性。
+- [x] 对所有 Unknown 和 High 风险记录证据、修复步骤和验收标准。
+- [x] 交付完整 Pass/Fail/Unknown/N-A 审计报告及优先级行动方案。
