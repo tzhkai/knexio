@@ -5,8 +5,9 @@ import { ArrowUpRight, Menu, X } from "lucide-react";
 import { useCookieConsent } from "@/components/CookieConsent";
 import SiteBreadcrumb from "@/components/SiteBreadcrumb";
 
-const navItems = [{ href: "/guides", label: "Library" }, { href: "/series", label: "Read in order" }, { href: "/guides/brief-first-prompt-pattern", label: "Start here" }, { href: "/editorial-policy", label: "Method" }, { href: "/about", label: "About" }];
-const active = (path: string, href: string) => href === "/guides" ? path === href : path === href;
+const navItems = [{ href: "/guides/", label: "Library" }, { href: "/series", label: "Read in order" }, { href: "/guides/brief-first-prompt-pattern", label: "Start here" }, { href: "/editorial-policy", label: "Method" }, { href: "/about", label: "About" }];
+const normalizePath = (value: string) => value.replace(/\/+$/, "") || "/";
+const active = (path: string, href: string) => normalizePath(path) === normalizePath(href);
 const staticPageLabels: Record<string, string> = { "/about": "About", "/editorial-policy": "Editorial method", "/contact": "Contact", "/privacy": "Privacy policy", "/terms": "Terms of use" };
 const layoutRefinements = `
   main { position:relative; } .publication-imprint { position:absolute; top:18px; right:max(24px,calc((100vw - 1360px)/2)); z-index:2; display:flex; align-items:center; gap:7px; color:var(--green); font-size:8px; font-weight:800; letter-spacing:.11em; line-height:1; text-transform:uppercase; } .publication-imprint img { width:18px; height:18px; object-fit:contain; } .publication-imprint span { padding-left:7px; border-left:1px solid var(--green); }
