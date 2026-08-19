@@ -21,6 +21,12 @@ export type Guide = {
 
 export const heroImage = "/images/workflow-library-hero.webp";
 
+/** Public tools are listed once so navigation, SEO metadata, and sitemaps cannot drift apart. */
+export const toolRoutes = [
+  { slug: "ai-prompt-word-counter", path: "/tools/ai-prompt-word-counter/", title: "AI Prompt Word Counter — Count Words and Characters", description: "Count words, characters, and lines in an AI prompt locally in your browser before you send it." },
+  { slug: "markdown-preview", path: "/tools/markdown-preview/", title: "Markdown Preview — Preview Notes and Prompts Locally", description: "Preview Markdown notes, prompts, and first drafts locally in your browser with a simple, safe writing surface." },
+] as const;
+
 export const guides: Guide[] = [
   {
     slug: "research-brief-from-scattered-sources",

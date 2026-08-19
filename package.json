@@ -10,7 +10,7 @@
     "preview": "vite preview --host",
     "check": "tsc --noEmit",
     "test": "vitest run",
-    "sitemap": "node scripts/generate-sitemap.mjs",
+    "sitemap": "tsx scripts/generate-sitemap.ts",
     "build:cloudflare": "pnpm sitemap && pnpm build",
     "format": "prettier --write ."
   },
