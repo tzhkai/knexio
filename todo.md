@@ -472,3 +472,10 @@
 - [x] 整理 AI Prompt Word Counter 和 Markdown Preview 的语义化 HTML 与 Tailwind 风格结构。
 - [x] 整理两条旧静态文件入口的 Cloudflare Redirect Rules 表达式。
 - [x] 起草两个工具页面适用的 WebApplication JSON-LD 结构化数据。
+
+## 工具页移动端、动画与分享优化
+
+- [x] 检查 AI Prompt Word Counter 和 Markdown Preview 的手机布局、输入区、按钮和预览区可用性。
+- [x] 添加尊重 prefers-reduced-motion 的页面进入过渡和按钮点击反馈。
+- [x] 添加原生 Web Share、社交分享链接和复制页面链接功能。
+- [x] 补充分享逻辑测试并完成桌面/移动端回归验证。
