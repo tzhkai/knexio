@@ -593,3 +593,9 @@
 - [x] 重新打开 Google 官方 GDPR CMP 预览并尝试完成同意、拒绝、管理和撤回四步。
 - [x] 复查 AdSense Policy Center 是否出现 No CMP、Low coverage 或欧洲法规提示。
 - [x] 记录当前环境是否具备真实 EEA/UK/Swiss 出口 IP，并保存验证边界。
+
+## CMP 四步测试再次尝试
+
+- [x] 检查 AdSense 后台是否出现可见的 European regulations 官方预览入口。
+- [x] 尝试完成 Consent、Reject、Manage options 和撤回同意四步。
+- [x] 记录是否具备真实 EEA/UK/Swiss 出口 IP，并交付可复核结果或阻塞原因。
