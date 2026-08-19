@@ -434,13 +434,13 @@
 
 ## 永久删除 persona-pop
 
-- [ ] 按用户最终确认永久删除 Cloudflare Pages 项目 `persona-pop`，仅限该项目。
-- [ ] 验证 persona-pop 项目、pages.dev 地址和其他 Cloudflare 项目/域名不受影响。
-- [ ] 保存永久删除结果和项目审计记录。
+- [x] 按用户最终确认永久删除 Cloudflare Pages 项目 `persona-pop`，仅限该项目。
+- [x] 验证 persona-pop 项目、pages.dev 地址和其他 Cloudflare 项目/域名不受影响。
+- [x] 保存永久删除结果和项目审计记录。
 
 ## 旧 URL 清理与 Workflow Library 集群优化
 
-- [ ] 审计 knexio.xyz 旧站残余 URL，建立可验证的 301/404 分类与映射清单。
-- [ ] 为旧 URL 制定分阶段、可回滚的 Cloudflare Redirect Rules/Bulk Redirects 执行策略。
-- [ ] 为 Workflow Library 现有专题建立内容集群、枢纽页和内部链接矩阵。
-- [ ] 制定锚文本、孤立页检查、更新频率和 Search Console 监测指标。
+- [x] 审计 knexio.xyz 旧站残余 URL，建立可验证的 301/404 分类与映射清单。
+- [x] 为旧 URL 制定分阶段、可回滚的 Cloudflare Redirect Rules/Bulk Redirects 执行策略。
+- [x] 为 Workflow Library 现有专题建立内容集群、枢纽页和内部链接矩阵。
+- [x] 制定锚文本、孤立页检查、更新频率和 Search Console 监测指标。
