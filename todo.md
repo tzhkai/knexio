@@ -571,5 +571,5 @@
 - [x] 审查 GitHub、Cloudflare Pages 部署提交、构建配置和线上 404 根因。
 - [x] 修复并发布 AI Prompt Word Counter 与 Markdown Preview 工具页。
 - [x] 验证两个工具页的 HTTP、SEO、交互和移动端回归。
-- [ ] 在 EEA/UK/Swiss 预览或测试环境核验 Google CMP 同意、拒绝、管理和撤回流程。
+- [x] 在 EEA/UK/Swiss 预览或测试环境核验 Google CMP 同意、拒绝、管理和撤回流程。
 - [x] 检查分析脚本真实加载状态，并据证据更新 Privacy 的提供方、用途、位置和保留期限。
