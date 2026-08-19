@@ -54,3 +54,15 @@
 用户提到的“GA 最近 28 天低跳出率页面”当前无法与 `knexio.xyz` 生产站建立可靠对应关系。两个可访问的 Google Analytics 资源都显示 Chrome Web Store 扩展相关页面；生产站源码也没有 GA4 Measurement ID。因此，现有低跳出率不能证明旧站页面有真实外部用户，更不能仅凭该指标判断国家或用户质量。
 
 可信度：高。证据包括 GA4 资源名称和页面标题、资源 ID 切换结果、生产首页脚本扫描、项目 CookieConsent 实现和预览网络请求记录。
+
+## 2026-08-19 工具页导航与新功能验证补充
+
+在本地预览中直接访问 `/guides/` 返回 Workflow Library 指南库页面，包含 17 个 guides、专题筛选和搜索控件。页面右上角 `Browse guides` 的 href 为 `/guides/`，点击后仍停留在该指南库页面，说明按钮目标已可访问；此前无效更可能是 `/guides` 与尾斜杠路由不一致或旧预览状态导致。当前页面的 Cookie consent 浮层会遮挡移动端部分内容，但不影响顶部导航链接。
+
+本轮还完成了 Markdown Preview 全屏入口、Token 模型扩展和上下文警告的本地代码与构建验证：17 项测试通过，TypeScript、sitemap 和生产构建通过。
+
+
+Markdown Preview 浏览器回归：页面可见 `Full-screen mode` 按钮；点击后按钮文本变为 `Exit full screen`，编辑区和预览区进入固定双栏沉浸式布局，顶部工具栏和同步滚动开关仍可访问。
+
+
+AI Prompt Word Counter 浏览器回归：模型下拉框实际显示 `GPT-4 style estimate`、`Claude 3.5 estimate` 和 `Gemini 1.5 estimate`；Token 统计、复制和导出控件均正常呈现。上下文警告在安全阈值时隐藏，达到近阈值或超过阈值时通过 `tool-context-warning` 显示。

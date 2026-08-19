@@ -21,9 +21,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <header className="site-header"><div className="header-inner">
       <Link href="/" className="brand-lockup" aria-label="Workflow Library home"><img className="brand-mark" src="/images/workflow-library-mark.webp" alt="" /><span className="brand-name">Workflow<br />Library</span></Link>
       <nav className="desktop-nav" aria-label="Primary navigation">{navItems.map(item => <Link key={item.href} href={item.href} className={active(location, item.href) ? "nav-link active" : "nav-link"}>{item.label}</Link>)}</nav>
-      <Link href="/guides" className="header-cta">Browse guides <ArrowUpRight size={14} /></Link>
+      <Link href="/guides/" className="header-cta">Browse guides <ArrowUpRight size={14} /></Link>
       <button className="mobile-menu-toggle" type="button" aria-label={open ? "Close navigation" : "Open navigation"} onClick={() => setOpen(!open)}>{open ? <X size={22} /> : <Menu size={22} />}</button>
-    </div>{open && <nav className="mobile-nav" aria-label="Mobile navigation">{navItems.map(item => <Link key={item.href} href={item.href} className="mobile-nav-link" onClick={() => setOpen(false)}>{item.label}</Link>)}<Link href="/guides" className="mobile-nav-link mobile-nav-cta" onClick={() => setOpen(false)}>Browse all guides <ArrowUpRight size={15} /></Link></nav>}</header>
+    </div>{open && <nav className="mobile-nav" aria-label="Mobile navigation">{navItems.map(item => <Link key={item.href} href={item.href} className="mobile-nav-link" onClick={() => setOpen(false)}>{item.label}</Link>)}<Link href="/guides/" className="mobile-nav-link mobile-nav-cta" onClick={() => setOpen(false)}>Browse all guides <ArrowUpRight size={15} /></Link></nav>}</header>
     <style>{layoutRefinements}</style><main><div className="publication-imprint" aria-hidden="true"><img src="/images/workflow-library-mark.webp" alt="" /><span>W—L / Field record</span></div>{staticPageLabel && <SiteBreadcrumb items={[{ label: "Home", href: "/" }, { label: staticPageLabel }]} />}{children}</main>
     <footer className="site-footer"><div className="footer-top">
       <div className="footer-brand"><img className="footer-mark" src="/images/workflow-library-mark.webp" alt="" /><p>Clearer work, one useful system at a time.</p></div>

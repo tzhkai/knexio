@@ -500,3 +500,11 @@
 - [x] 为 Markdown Preview 增加编辑区与预览区可开关的同步滚动，并优化长文本滚动体验。
 - [x] 为 AI Prompt Word Counter 和 Markdown Preview 添加带二次确认弹窗的一键清空流程。
 - [x] 补充同步滚动、确认弹窗和清空逻辑测试，并完成桌面/移动端回归验证。
+
+## 导航、全屏和扩展 Token 功能
+
+- [x] 检查并修复右上角 Browse guides 按钮的实际导航行为。
+- [x] 为 Markdown Preview 增加可退出、可访问的全屏编辑模式。
+- [x] 扩展 Claude 3.5、Gemini 1.5 等模型的 Token 估算选项。
+- [x] 为接近模型上下文上限的提示词增加视觉警告和明确说明。
+- [x] 补充导航、全屏、Token 估算和警告测试，并完成桌面/移动端回归验证。

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { buildShareLinks, clearLocalDraft, countPromptWords, estimateTokenCount, highlightCode, readLocalDraft, renderMarkdown, syncScrollPosition, writeLocalDraft } from "./Tools";
+import { buildShareLinks, clearLocalDraft, countPromptWords, estimateTokenCount, highlightCode, readLocalDraft, renderMarkdown, syncScrollPosition, tokenWarningLevel, writeLocalDraft } from "./Tools";
 
 describe("Workflow utilities", () => {
   it("counts prompt words using whitespace boundaries", () => {
@@ -7,7 +7,9 @@ describe("Workflow utilities", () => {
     expect(countPromptWords("   ")).toBe(0);
   });
 
-  it("estimates tokens transparently without claiming exact model tokenization", () => { expect(estimateTokenCount("abcd", "gpt-4")).toBe(1); expect(estimateTokenCount("abcdefgh", "claude")).toBe(3); expect(estimateTokenCount("", "gemini")).toBe(0); });
+  it("estimates tokens transparently without claiming exact model tokenization", () => { expect(estimateTokenCount("abcd", "gpt-4")).toBe(1); expect(estimateTokenCount("abcdefgh", "claude-3-5")).toBe(3); expect(estimateTokenCount("", "gemini-1-5")).toBe(0); });
+
+  it("flags prompts near or above the selected context planning limit", () => { expect(tokenWarningLevel(6554, "gpt-4")).toBe("near"); expect(tokenWarningLevel(8192, "gpt-4")).toBe("over"); expect(tokenWarningLevel(160000, "claude-3-5")).toBe("near"); });
 
   it("highlights supported code keywords while escaping markup", () => { const html = highlightCode("const value = \"<safe>\";", "js"); expect(html).toContain("code-keyword"); expect(html).toContain("code-string"); expect(html).toContain("&lt;safe&gt;"); });
 
