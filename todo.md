@@ -458,3 +458,11 @@
 - [x] 核实旧站访问数据是否真正对应页面，并区分真实用户、站主调试、扩展数据和自动化流量。
 - [x] 评估恢复旧页面、迁移到 knexio.xyz 或重做为新工具的 SEO、AdSense、维护和安全风险。
 - [x] 制定页面级处置建议，并设计恢复后的 200、canonical、sitemap、analytics 和 Search Console 验证方案。
+
+## 工具迁移：AI Prompt Word Counter 与 Markdown Preview
+
+- [x] 审计旧版 `ai-prompt-word-counter` 和 `markdown-preview` 的功能、脚本依赖、隐私边界与旧 URL。
+- [x] 设计并实现符合 Workflow Library 风格的统一工具页模板和交互规范。
+- [x] 将两个工具迁移到新站，接入路由、导航、相关指南、SEO 元数据和 sitemap。
+- [x] 为两个工具补充功能测试、生产构建和桌面/移动端回归验证。
+- [x] 制定两个旧 URL 到新 URL 的一对一 301 规则、验证命令和 Cloudflare 配置指南。

@@ -37,6 +37,8 @@ const staticRoutes: RouteMeta[] = [
   { path: "/contact", title: "Contact the editorial desk", description: "Contact Workflow Library about editorial corrections, privacy requests, accessibility feedback, and commercial disclosures." },
   { path: "/404", title: "Page not found", description: "This page is not in the Workflow Library index.", noIndex: true },
   { path: "/workflows/meetings/meeting-minutes-vs-decision-brief/", title: "Meeting Minutes vs Decision Brief: What to Keep and What to Change", description: "Learn the practical difference between meeting minutes and a decision brief, when to use each, and how to transform notes without inventing agreement.", type: "article", section: "Meetings", tags: ["meeting minutes vs decision brief", "decision brief", "meeting notes", "AI meeting workflow"] },
+  { path: "/tools/ai-prompt-word-counter/", title: "AI Prompt Word Counter — Count Words and Characters", description: "Count words, characters, and lines in an AI prompt locally in your browser before you send it." },
+  { path: "/tools/markdown-preview/", title: "Markdown Preview — Preview Notes and Prompts Locally", description: "Preview Markdown notes, prompts, and first drafts locally in your browser with a simple, safe writing surface." },
 ];
 
 const guideRoutes: RouteMeta[] = guides.map((guide) => ({
