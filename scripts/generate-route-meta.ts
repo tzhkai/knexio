@@ -1,7 +1,7 @@
 /** Build-time SEO entry generator: Field Notes metadata stays factual, task-led, and readable without JavaScript. */
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 import { guides, heroImage, toolRoutes, topicClusters } from "../client/src/lib/content";
 
 type RouteMeta = {
@@ -26,7 +26,7 @@ const origin = new URL(configuredOrigin).origin;
 const brand = "Workflow Library";
 const defaultImageAlt = "Workflow Library field guide for practical AI workflows";
 
-const staticRoutes: RouteMeta[] = [
+export const staticRoutes: RouteMeta[] = [
   { path: "/", title: "Practical AI workflows, prompts, and review checks", description: "Practical AI workflows for research, writing, meeting notes, and project planning. Each guide includes a scoped prompt, clear limits, and human review checks.", image: heroImage, imageAlt: "A calm desk arranged with research notes, paper, and an understated laptop" },
   { path: "/guides", title: "AI workflows for research, writing, meetings, and planning", description: "Browse practical AI workflows for research briefs, project updates, meeting action lists, content planning, and focused first drafts." },
   { path: "/series", title: "AI workflow guides: read in order", description: "Follow a four-stage AI workflow reading path: frame the work, make decisions visible, run the conversation, and carry the record forward." },
@@ -40,7 +40,7 @@ const staticRoutes: RouteMeta[] = [
   ...toolRoutes.map((tool) => ({ path: tool.path, title: tool.title, description: tool.description })),
 ];
 
-const guideRoutes: RouteMeta[] = guides.map((guide) => ({
+export const guideRoutes: RouteMeta[] = guides.map((guide) => ({
   path: `/guides/${guide.slug}`,
   title: guide.title,
   description: guide.dek,
@@ -53,7 +53,7 @@ const guideRoutes: RouteMeta[] = guides.map((guide) => ({
   tags: guide.topics,
 }));
 
-const topicRoutes: RouteMeta[] = topicClusters.map((topic) => ({
+export const topicRoutes: RouteMeta[] = topicClusters.map((topic) => ({
   path: `/workflows/${topic.slug}`,
   title: topic.seoTitle,
   description: topic.description,
@@ -67,7 +67,7 @@ function absoluteUrl(value: string) {
   return value.startsWith("http") ? value : `${origin}${value}`;
 }
 
-function routeUrl(routePath: string) {
+export function routeUrl(routePath: string) {
   return routePath === "/" ? `${origin}/` : `${origin}${routePath.replace(/\/$/, "")}/`;
 }
 
@@ -128,7 +128,7 @@ function staticHead(baseHead: string, meta: RouteMeta) {
   </head>`;
 }
 
-function outputPath(routePath: string) {
+export function outputPath(routePath: string) {
   return routePath === "/" ? path.join(outputDir, "index.html") : path.join(outputDir, routePath.slice(1), "index.html");
 }
 
@@ -136,11 +136,14 @@ const baseHtml = await readFile(path.join(outputDir, "index.html"), "utf8");
 const baseHead = baseHtml.match(/<head>[\s\S]*?<\/head>/i)?.[0];
 if (!baseHead) throw new Error("Could not locate the Vite HTML head for route metadata generation.");
 
-const allRoutes = [...staticRoutes, ...guideRoutes, ...topicRoutes];
-await Promise.all(allRoutes.map(async (meta) => {
-  const destination = outputPath(meta.path);
-  await mkdir(path.dirname(destination), { recursive: true });
-  await writeFile(destination, baseHtml.replace(baseHead, staticHead(baseHead, meta)), "utf8");
-}));
+export const allRoutes: RouteMeta[] = [...staticRoutes, ...guideRoutes, ...topicRoutes];
 
-console.log(`Generated static Meta, Open Graph, Twitter, canonical, and JSON-LD heads for ${allRoutes.length} routes at ${origin}.`);
+if (import.meta.url === pathToFileURL(process.argv[1] ?? "").href) {
+  await Promise.all(allRoutes.map(async (meta) => {
+    const destination = outputPath(meta.path);
+    await mkdir(path.dirname(destination), { recursive: true });
+    await writeFile(destination, baseHtml.replace(baseHead, staticHead(baseHead, meta)), "utf8");
+  }));
+
+  console.log(`Generated static Meta, Open Graph, Twitter, canonical, and JSON-LD heads for ${allRoutes.length} routes at ${origin}.`);
+}
