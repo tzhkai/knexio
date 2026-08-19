@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { buildShareLinks, clearLocalDraft, countPromptWords, estimateTokenCount, highlightCode, readLocalDraft, renderMarkdown, writeLocalDraft } from "./Tools";
+import { buildShareLinks, clearLocalDraft, countPromptWords, estimateTokenCount, highlightCode, readLocalDraft, renderMarkdown, syncScrollPosition, writeLocalDraft } from "./Tools";
 
 describe("Workflow utilities", () => {
   it("counts prompt words using whitespace boundaries", () => {
@@ -18,6 +18,8 @@ describe("Workflow utilities", () => {
     expect(html.__html).toContain("<ul><li>One</li><li>Two</li></ul>");
     expect(html.__html).toContain("<blockquote>Check it.</blockquote>"); expect(renderMarkdown("```js\nconst ready = true;\n```").__html).toContain("code-keyword");
   });
+
+  it("maps scroll positions proportionally between long panels", () => { const source = { scrollHeight: 1000, clientHeight: 100, scrollTop: 450 } as HTMLElement; const target = { scrollHeight: 600, clientHeight: 200, scrollTop: 0 } as HTMLElement; syncScrollPosition(source, target); expect(target.scrollTop).toBe(200); });
 
   it("builds encoded social sharing links", () => { const links = buildShareLinks("https://knexio.xyz/tools/markdown-preview/?a=1&b=2", "Markdown Preview & Notes"); expect(links.linkedIn).toContain("%26"); expect(links.x).toContain("Markdown%20Preview%20%26%20Notes"); expect(links.facebook).toContain("markdown-preview"); });
 
