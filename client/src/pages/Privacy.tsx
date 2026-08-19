@@ -27,7 +27,6 @@ export default function Privacy() {
   return <Layout>
     <SeoMeta title="Privacy policy & cookie notice" description="Workflow Library's privacy policy for Cookie choices, optional analytics, Google AdSense base code, and the advertising consent route used for applicable regions." schema={({ origin, pageUrl }) => breadcrumbListSchema(origin, pageUrl, [{ label: "Home", href: "/" }, { label: "Privacy policy" }])} />
     <PrivacyEnhancements />
-    <SiteBreadcrumb items={[{ label: "Home", href: "/" }, { label: "Privacy policy" }]} />
     <section className="legal-page privacy-policy-page">
       <span className="eyebrow">Privacy policy · Cookie notice</span>
       <h1>Plain language about<br />data and choices.</h1>

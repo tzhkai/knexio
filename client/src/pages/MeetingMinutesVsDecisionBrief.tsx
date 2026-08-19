@@ -60,7 +60,7 @@ export default function MeetingMinutesVsDecisionBrief() {
       section="Meetings"
       tags={["meeting minutes vs decision brief", "decision brief", "meeting notes", "AI meeting workflow"]}
       schema={({ origin, pageUrl: canonicalUrl }) => ([
-        { "@type": "Article", headline: "Meeting Minutes vs Decision Brief: What to Keep and What to Change", description: "A practical comparison of meeting minutes and decision briefs.", author: { "@type": "Organization", name: "Workflow Library", url: `${origin}/about` }, publisher: { "@type": "Organization", name: "Workflow Library", url: origin }, mainEntityOfPage: { "@id": canonicalUrl }, articleSection: "Meetings", keywords: "meeting minutes vs decision brief, decision brief, meeting notes" },
+        { "@type": "Article", headline: "Meeting Minutes vs Decision Brief: What to Keep and What to Change", description: "A practical comparison of meeting minutes and decision briefs.", author: { "@type": "Organization", name: "Knexio", url: `${origin}/about`, email: "tzhkai6@gmail.com" }, publisher: { "@type": "Organization", name: "Knexio", url: origin, email: "tzhkai6@gmail.com" }, mainEntityOfPage: { "@id": canonicalUrl }, articleSection: "Meetings", keywords: "meeting minutes vs decision brief, decision brief, meeting notes" },
         breadcrumbListSchema(origin, canonicalUrl, [{ label: "Home", href: "/" }, { label: "Meetings", href: "/workflows/meetings-and-follow-up/" }, { label: "Meeting minutes vs decision brief" }]),
       ])}
     />
