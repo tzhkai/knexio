@@ -599,3 +599,10 @@
 - [x] 检查 AdSense 后台是否出现可见的 European regulations 官方预览入口。
 - [x] 尝试完成 Consent、Reject、Manage options 和撤回同意四步。
 - [x] 记录是否具备真实 EEA/UK/Swiss 出口 IP，并交付可复核结果或阻塞原因。
+
+## AdSense Skill 重新安装
+
+- [x] 检查现有 adsense-site-auditor 安装位置、版本和完整性。
+- [x] 重新审查指定 GitHub 仓库内容和安全边界。
+- [x] 覆盖安装指定仓库版本并通过 Skill 格式验证。
+- [x] 交付安装状态、版本和可用性说明。
