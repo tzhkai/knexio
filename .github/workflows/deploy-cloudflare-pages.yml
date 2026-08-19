@@ -31,6 +31,9 @@ jobs:
       - name: Install locked dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Install headless Chromium for prerendering
+        run: pnpm exec playwright install --with-deps chromium
+
       - name: Validate TypeScript
         run: pnpm check
 

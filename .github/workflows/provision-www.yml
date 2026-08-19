@@ -1,0 +1,101 @@
+name: Provision www.knexio.xyz (DNS + Pages domain)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  provision-www:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Resolve knexio.xyz zone
+        id: zone
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          response=$(curl -sS \
+            -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+            "https://api.cloudflare.com/client/v4/zones?name=knexio.xyz")
+          zone_id=$(printf '%s' "$response" | jq -r '.result[0].id // empty')
+          if [ -z "$zone_id" ]; then
+            echo "Could not resolve zone_id. Response:"
+            printf '%s' "$response" | jq .
+            exit 1
+          fi
+          echo "zone_id=$zone_id" >> "$GITHUB_OUTPUT"
+          echo "Resolved zone_id=$zone_id"
+
+      - name: Check existing www DNS record
+        id: check
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          ZONE_ID: ${{ steps.zone.outputs.zone_id }}
+        run: |
+          existing=$(curl -sS \
+            -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+            "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records?name=www.knexio.xyz")
+          count=$(printf '%s' "$existing" | jq '.result | length')
+          if [ "$count" -gt 0 ]; then
+            printf '%s' "$existing" | jq -r '.result[0].id'
+            echo "record_exists=true" >> "$GITHUB_OUTPUT"
+            echo "www record already exists."
+          else
+            echo "record_exists=false" >> "$GITHUB_OUTPUT"
+            echo "No www record found; will create one."
+          fi
+
+      - name: Create www CNAME to knexio-site.pages.dev
+        if: steps.check.outputs.record_exists == 'false'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          ZONE_ID: ${{ steps.zone.outputs.zone_id }}
+        run: |
+          created=$(curl -sS -X POST \
+            -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+            -H "Content-Type: application/json" \
+            "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
+            -d '{"type":"CNAME","name":"www","content":"knexio-site.pages.dev","proxied":true,"ttl":1,"comment":"AdSense audit fix 2026-08-19: serve www.knexio.xyz from the Workflow Library Pages project"}')
+          success=$(printf '%s' "$created" | jq -r '.success')
+          if [ "$success" != "true" ]; then
+            echo "Failed to create www record. Response:"
+            printf '%s' "$created" | jq .
+            exit 1
+          fi
+          printf '%s' "$created" | jq -r '.result.id'
+          echo "Created www CNAME -> knexio-site.pages.dev"
+
+      - name: Register www.knexio.xyz as Pages custom domain (best effort)
+        continue-on-error: true
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          ACCOUNT_ID: 2636b35e232e4eee44c3f7333b6a857d
+        run: |
+          result=$(curl -sS -X POST \
+            -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+            -H "Content-Type: application/json" \
+            "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/pages/projects/knexio-site/domains" \
+            -d '{"name":"www.knexio.xyz"}')
+          printf '%s' "$result" | jq .
+          echo "Pages custom domain registration attempted (best effort)."
+
+      - name: Wait for DNS + certificate propagation
+        run: sleep 30
+
+      - name: Verify www.knexio.xyz responds
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          for i in 1 2 3 4 5 6; do
+            status=$(curl -sS -o /tmp/www-body.html -w '%{http_code}' --max-time 20 https://www.knexio.xyz/ || echo "000")
+            if [ "$status" = "200" ]; then
+              title=$(grep -o '<title>[^<]*' /tmp/www-body.html | head -1)
+              echo "www.knexio.xyz returned HTTP $status with <title>$title</title>"
+              exit 0
+            fi
+            echo "Attempt $i: HTTP $status; retrying in 15s..."
+            sleep 15
+          done
+          echo "www.knexio.xyz did not become healthy after retries."
+          exit 1
