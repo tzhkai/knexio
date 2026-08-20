@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { buildShareLinks, clearLocalDraft, countPromptWords, estimateTokenCount, highlightCode, MARKDOWN_PRESET_TEMPLATE, COUNTER_PRESET_TEMPLATE, readLocalDraft, renderMarkdown, resolvePresetTemplate, syncScrollPosition, tokenWarningLevel, writeLocalDraft } from "./Tools";
+import { buildShareLinks, clearLocalDraft, countPromptWords, estimateTokenCount, highlightCode, MARKDOWN_PRESET_TEMPLATE, COUNTER_PRESET_TEMPLATE, parseTemplateExport, readLocalDraft, renderMarkdown, resolvePresetTemplate, serializeTemplateExport, syncScrollPosition, tokenWarningLevel, writeLocalDraft } from "./Tools";
 
 describe("Workflow utilities", () => {
   it("counts prompt words using whitespace boundaries", () => {
@@ -19,6 +19,13 @@ describe("Workflow utilities", () => {
   it("prefers a saved custom template and falls back to the default", () => {
     expect(resolvePresetTemplate(" My custom brief ", "Default brief")).toBe("My custom brief");
     expect(resolvePresetTemplate("   ", "Default brief")).toBe("Default brief");
+  });
+
+  it("round-trips template JSON and rejects unsupported files", () => {
+    const exported = serializeTemplateExport("  My portable template  ");
+    expect(parseTemplateExport(exported)).toBe("My portable template");
+    expect(() => parseTemplateExport(JSON.stringify({ version: 2, template: "No" }))).toThrow("Unsupported template file");
+    expect(() => parseTemplateExport(JSON.stringify({ version: 1, template: "" }))).toThrow("Template must contain");
   });
 
   it("flags prompts near or above the selected context planning limit", () => { expect(tokenWarningLevel(6554, "gpt-4")).toBe("near"); expect(tokenWarningLevel(8192, "gpt-4")).toBe("over"); expect(tokenWarningLevel(160000, "claude-3-5")).toBe("near"); });
