@@ -637,3 +637,13 @@
 - [x] 建立当前 32 个 sitemap URL 的页面类型、正文深度和独立价值审阅表
 - [x] 识别可能被 Google 视为薄弱内容的页面并按风险排序
 - [x] 交付 ads.txt 结论与薄弱内容修复清单
+
+## Writing 专题、工具示例与 ads.txt 防回归
+- [x] 为 Writing & Updates 增加按顺序阅读路径引导
+- [x] 为 Writing & Updates 补充任务输入与输出说明
+- [x] 为 AI Prompt Word Counter 增加真实使用示例、限制和可验证场景
+- [x] 为 Markdown Preview 增加真实使用示例、限制和可验证场景
+- [x] 将线上 ads.txt 记录同步到本地仓库
+- [x] 添加发布商 ID ads.txt 防回归测试
+- [x] 运行测试、类型检查、生产构建和移动端回归
+- [x] 保存检查点并交付变更说明
