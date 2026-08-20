@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { buildShareLinks, clearLocalDraft, countPromptWords, estimateTokenCount, highlightCode, readLocalDraft, renderMarkdown, syncScrollPosition, tokenWarningLevel, writeLocalDraft } from "./Tools";
+import { buildShareLinks, clearLocalDraft, countPromptWords, estimateTokenCount, highlightCode, MARKDOWN_PRESET_TEMPLATE, COUNTER_PRESET_TEMPLATE, readLocalDraft, renderMarkdown, syncScrollPosition, tokenWarningLevel, writeLocalDraft } from "./Tools";
 
 describe("Workflow utilities", () => {
   it("counts prompt words using whitespace boundaries", () => {
@@ -8,6 +8,13 @@ describe("Workflow utilities", () => {
   });
 
   it("estimates tokens transparently without claiming exact model tokenization", () => { expect(estimateTokenCount("abcd", "gpt-4")).toBe(1); expect(estimateTokenCount("abcdefgh", "claude-3-5")).toBe(3); expect(estimateTokenCount("", "gemini-1-5")).toBe(0); });
+
+  it("keeps practical copyable presets for both tools", () => {
+    expect(COUNTER_PRESET_TEMPLATE).toContain("Audience:");
+    expect(COUNTER_PRESET_TEMPLATE).toContain("do not invent owners or dates");
+    expect(MARKDOWN_PRESET_TEMPLATE).toContain("## Confirmed");
+    expect(MARKDOWN_PRESET_TEMPLATE).toContain("## Open questions");
+  });
 
   it("flags prompts near or above the selected context planning limit", () => { expect(tokenWarningLevel(6554, "gpt-4")).toBe("near"); expect(tokenWarningLevel(8192, "gpt-4")).toBe("over"); expect(tokenWarningLevel(160000, "claude-3-5")).toBe("near"); });
 
