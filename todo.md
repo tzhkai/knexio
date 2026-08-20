@@ -613,3 +613,27 @@
 - [x] 运行推送前测试并确认提交内容范围。
 - [x] 将新修改安全推送到 GitHub main。
 - [x] 核对远程提交并记录 Cloudflare 后续部署步骤。
+
+## Cloudflare knexio.xyz www DNS 核对
+
+- [x] 打开 Cloudflare 并确认目标域名为 knexio.xyz。
+- [x] 核对 DNS Records 是否存在 www CNAME 指向 knexio-site.pages.dev。
+- [x] 记录代理状态和核对结果，不修改其他域名配置。
+
+## Cloudflare 添加 www CNAME
+
+- [x] 在 Cloudflare 中确认当前 zone 为 knexio.xyz。
+- [x] 添加并保存 `www CNAME knexio-site.pages.dev`，不修改其他 zone。
+- [x] 复核记录、权威 DNS 传播和 www HTTPS 访问。
+
+## 当前 Sitemap 与持续审核优化
+- [x] 核验线上 sitemap.xml、sitemap_index.xml 与主域名规范
+- [x] 对照核心页面清单检查 sitemap 是否遗漏或包含错误主机名
+- [x] 制定 Google Search Console 与 AdSense 审核的持续优化清单
+- [x] 交付 sitemap 核验结论、风险项与周期执行计划
+
+## ads.txt 与 32 个 URL 薄弱内容审阅
+- [x] 核验线上与本地 ads.txt 的发布商 ID、格式、主域名路径和 HTTP 响应
+- [x] 建立当前 32 个 sitemap URL 的页面类型、正文深度和独立价值审阅表
+- [x] 识别可能被 Google 视为薄弱内容的页面并按风险排序
+- [x] 交付 ads.txt 结论与薄弱内容修复清单
