@@ -23,7 +23,7 @@ const TOKEN_MODELS: Record<TokenModel, { label: string; charsPerToken: number; c
 export const COUNTER_PRESET_TEMPLATE = `Task: turn these notes into a concise project update\nAudience: [who needs to read this]\nContext: [one sentence of background]\nRaw notes: [paste dated notes here]\nConstraints: preserve uncertainty; do not invent owners or dates\nOutput: Progress, Decision, Risk, Next step, and one clear ask`;
 export const MARKDOWN_PRESET_TEMPLATE = `# Reviewable handoff\n\n## Context\n[What is changing and who needs to know?]\n\n## Confirmed\n- Owner: [name or Unassigned]\n- Due: [date or Not stated]\n\n## Open questions\n- [What still needs confirmation?]\n\n> Check the source record before sending.`;
 export function resolvePresetTemplate(custom: string, fallback: string) { return custom.trim() || fallback; }
-export function serializeTemplateExport(template: string) { return JSON.stringify({ version: 1, template: template.trim(), exportedAt: new Date().toISOString() }, null, 2); }
+export function serializeTemplateExport(template: string, metadata: { tool?: string; label?: string } = {}) { return JSON.stringify({ version: 1, template: template.trim(), tool: metadata.tool || "workflow-library", label: metadata.label || "Custom template", exportedAt: new Date().toISOString() }, null, 2); }
 export function parseTemplateExport(raw: string) { const parsed: unknown = JSON.parse(raw); if (!parsed || typeof parsed !== "object" || (parsed as { version?: unknown }).version !== 1 || typeof (parsed as { template?: unknown }).template !== "string") throw new Error("Unsupported template file"); const template = (parsed as { template: string }).template.trim(); if (!template || template.length > 100_000) throw new Error("Template must contain between 1 and 100,000 characters"); return template; }
 export function estimateTokenCount(source: string, model: TokenModel = "gpt-4") { const charsPerToken = TOKEN_MODELS[model].charsPerToken; return source.trim() ? Math.max(1, Math.ceil(source.length / charsPerToken)) : 0; }
 export function tokenWarningLevel(tokens: number, model: TokenModel) { const limit = TOKEN_MODELS[model].contextLimit; if (tokens >= limit) return "over" as const; if (tokens >= limit * .8) return "near" as const; return "safe" as const; }
@@ -52,7 +52,7 @@ function PresetTemplateButton({ template, storageKey, onApply }: { template: str
     writeLocalDraft(storageKey, value); setCustomTemplate(value); setDraft(value); setStatus("Custom template saved"); announce("Custom template saved");
   };
   const resetDefault = () => { clearLocalDraft(storageKey); setCustomTemplate(""); setDraft(""); setStatus("Default template restored"); announce("Default template restored"); };
-  const exportTemplate = () => { downloadTextFile("workflow-library-template.json", serializeTemplateExport(activeTemplate), "application/json;charset=utf-8"); setStatus("Template JSON exported"); announce("Template exported"); };
+  const exportTemplate = () => { const tool = storageKey.endsWith(":markdown") ? "markdown-preview" : "ai-prompt-word-counter"; const label = customTemplate.trim() ? "Custom template" : "Default template"; downloadTextFile(`${tool}-template.json`, serializeTemplateExport(activeTemplate, { tool, label }), "application/json;charset=utf-8"); setStatus("Template JSON exported"); announce("Template exported"); };
   const importTemplate = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     event.target.value = "";
