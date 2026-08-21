@@ -1,7 +1,18 @@
-import { describe, expect, it } from "vitest";
-import { buildShareLinks, clearLocalDraft, countPromptWords, estimateTokenCount, highlightCode, MARKDOWN_PRESET_TEMPLATE, COUNTER_PRESET_TEMPLATE, parseTemplateExport, readLocalDraft, renderMarkdown, resolvePresetTemplate, serializeTemplateExport, syncScrollPosition, tokenWarningLevel, writeLocalDraft } from "./Tools";
+import { describe, expect, it, vi } from "vitest";
+import { buildShareLinks, clearLocalDraft, copyTextToClipboard, countPromptWords, estimateTokenCount, highlightCode, MARKDOWN_PRESET_TEMPLATE, COUNTER_PRESET_TEMPLATE, parseTemplateExport, readLocalDraft, renderMarkdown, resolvePresetTemplate, serializeTemplateExport, syncScrollPosition, tokenWarningLevel, writeLocalDraft } from "./Tools";
 
 describe("Workflow utilities", () => {
+  it("copies non-empty results through the available clipboard API", async () => {
+    const writeText = vi.fn().mockResolvedValue(undefined);
+    Object.defineProperty(navigator, "clipboard", { configurable: true, value: { writeText } });
+    await expect(copyTextToClipboard("Words: 4\nCharacters: 28")).resolves.toBe(true);
+    expect(writeText).toHaveBeenCalledWith("Words: 4\nCharacters: 28");
+  });
+
+  it("rejects an empty result instead of reporting a false success", async () => {
+    await expect(copyTextToClipboard("")).resolves.toBe(false);
+  });
+
   it("counts prompt words using whitespace boundaries", () => {
     expect(countPromptWords("  Give me a brief\nwith sources. ")).toBe(6);
     expect(countPromptWords("   ")).toBe(0);
