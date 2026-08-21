@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { buildPromptCounterShareText, buildShareLinks, clearLocalDraft, copyTextToClipboard, countPromptWords, estimateTokenCount, highlightCode, MARKDOWN_PRESET_TEMPLATE, COUNTER_PRESET_TEMPLATE, parseTemplateExport, readLocalDraft, renderMarkdown, resolvePresetTemplate, serializeTemplateExport, syncScrollPosition, tokenWarningLevel, writeLocalDraft } from "./Tools";
+import { addShareUtm, buildPromptCounterReport, buildPromptCounterShareText, buildShareLinks, clearLocalDraft, copyTextToClipboard, countPromptWords, estimateTokenCount, highlightCode, MARKDOWN_PRESET_TEMPLATE, COUNTER_PRESET_TEMPLATE, parseTemplateExport, readLocalDraft, renderMarkdown, resolvePresetTemplate, serializeTemplateExport, syncScrollPosition, tokenWarningLevel, writeLocalDraft } from "./Tools";
 
 describe("Workflow utilities", () => {
   it("copies non-empty results through the available clipboard API", async () => {
@@ -13,11 +13,24 @@ describe("Workflow utilities", () => {
     await expect(copyTextToClipboard("")).resolves.toBe(false);
   });
 
+  it("adds source, medium, and campaign UTM parameters to a share URL", () => {
+    const tracked = new URL(addShareUtm("https://knexio.xyz/tools/ai-prompt-word-counter/", "linkedin"));
+    expect(tracked.searchParams.get("utm_source")).toBe("linkedin");
+    expect(tracked.searchParams.get("utm_medium")).toBe("social");
+    expect(tracked.searchParams.get("utm_campaign")).toBe("prompt-counter-share");
+  });
+
   it("builds a share text with the canonical tool URL and current statistics", () => {
     const shareText = buildPromptCounterShareText("https://knexio.xyz/tools/ai-prompt-word-counter/", { words: 12, characters: 86, lines: 4, model: "GPT-4", tokens: 22 });
     expect(shareText).toContain("Words: 12");
     expect(shareText).toContain("Estimated tokens (GPT-4): 22");
     expect(shareText).toContain("https://knexio.xyz/tools/ai-prompt-word-counter/");
+  });
+
+  it("builds a TXT report with the current prompt and statistics", () => {
+    const report = buildPromptCounterReport("Task: summarize these notes", { words: 4, characters: 28, lines: 1, model: "GPT-4", tokens: 7 });
+    expect(report).toContain("Estimated tokens (GPT-4): 7");
+    expect(report).toContain("Prompt:\nTask: summarize these notes");
   });
 
   it("counts prompt words using whitespace boundaries", () => {
