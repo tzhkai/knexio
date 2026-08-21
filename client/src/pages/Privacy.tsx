@@ -41,10 +41,17 @@ function GoogleAdvertisingConsentControl() {
 }
 
 const policyLinks = [
+  { href: "#scope", label: "Scope" },
   { href: "#information", label: "Information" },
   { href: "#cookies", label: "Cookies" },
+  { href: "#analytics", label: "Analytics" },
   { href: "#advertising", label: "Advertising" },
+  { href: "#regional-consent", label: "EEA / UK / CH" },
+  { href: "#sharing", label: "Sharing" },
+  { href: "#retention", label: "Retention" },
   { href: "#rights", label: "Your choices" },
+  { href: "#security", label: "Security" },
+  { href: "#changes", label: "Changes" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -72,7 +79,7 @@ export default function Privacy() {
       <div className="privacy-choice-panel"><div><ShieldCheck size={23} /><div><span className="eyebrow">Your current browser choice</span><p>{preferenceText}</p></div></div><button type="button" className="primary-button" onClick={openSettings}>Manage cookie choices</button></div>
       <aside className="privacy-implementation-note" aria-label="Publisher information"><CircleAlert size={19} /><div><strong>Publisher information.</strong><p>Workflow Library is published under the Knexio site brand. Privacy questions can be sent to <a href="mailto:tzhkai6@gmail.com">tzhkai6@gmail.com</a>. If a jurisdiction requires a legal entity name, registered address, or another disclosure, the publisher will add that information here before it applies.</p></div></aside>
 
-      <div className="legal-content">
+      <div className="legal-content" aria-label="Privacy policy content">
         <section id="scope"><div><h2>Scope of this policy</h2><p>This policy applies to the public pages of Workflow Library at <strong>knexio.xyz</strong>. Workflow Library is an independent educational publishing project for practical AI workflows in research, writing, meetings, and planning. It does not govern third-party services a reader chooses to visit through an external link.</p><p>The public edition is designed for reading. It does not invite visitors to create accounts, submit comments, upload files, pay for a service, or subscribe to a newsletter.</p></div></section>
         <section id="information"><div><h2>Information handled today</h2><p>The Site does not ask visitors for names, email addresses, passwords, payment details, health information, identity documents, or message contents. Ordinary technical request information may be processed to deliver a web page, including browser type, device characteristics, referring page, request time, page address, IP address, and approximate location derived from IP address.</p><p>The Site stores one necessary local-storage record named <strong>workflow-library-cookie-consent-v1</strong>. It records the browser’s optional Cookie choices, the time of that choice, and a 180-day expiry. It is used to remember the choice on that browser and is not designed to identify a person.</p></div></section>
         <section id="cookies"><div><h2>Cookies and local storage</h2><p>Necessary local storage saves a reader’s consent choice. Optional site analytics is intended to load only after a reader allows it through the Cookie banner or Cookie settings. <strong>In the latest production test, allowing site analytics did not load a third-party analytics provider.</strong> The Site’s custom Cookie control does not collect or store a Google advertising choice.</p><p>You can use <button type="button" className="inline-policy-button" onClick={openSettings}>Cookie settings</button> on this page or in the footer to accept, reject, or change site-analytics choices. Changing a choice affects future optional script loading on that browser. Browser controls may also allow you to clear or block storage; doing so can reset saved preferences.</p></div></section>

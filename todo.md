@@ -732,3 +732,19 @@
 - [x] 使用官方 Privacy & Messaging 预览核验四步结构和控件；真实 EEA/UK/Swiss 运行时旅程仍待地区网络验证
 - [x] 核对并统一 Privacy、About、Contact 与可见发布商身份信息
 - [x] 验证公开页面、构建和后台结果并交付状态
+
+## Privacy 与 About 专业排版及全站隐私入口
+- [x] 为 Privacy Policy 增加目录导航、章节锚点和清晰段落分隔
+- [x] 为 About Us 增加目录导航、章节锚点和清晰段落分隔
+- [x] 在全站页脚增加隐私设置/管理同意入口，并验证可重新打开 Cookie 设置
+- [x] 完成测试、类型检查、生产构建和移动端回归
+- [x] 保存检查点并交付变更说明
+
+
+## Privacy and trust-page polish — continuation
+
+- [x] Optimize Privacy Policy typography, full-section TOC, anchors, and chapter separation
+- [x] Optimize About page typography, section TOC, anchors, and trust-page grouping
+- [x] Add persistent Privacy settings floating control using the existing consent provider
+- [x] Run tests, type checks, Cloudflare build, and responsive visual verification
+- [x] Review this TODO and save a final checkpoint
