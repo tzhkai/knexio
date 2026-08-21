@@ -728,7 +728,7 @@
 - [x] 保存审计报告并交付结果
 
 ## AdSense 后台与发布商身份复核
-- [ ] 核验 AdSense 站点已验证并进入 Ready 状态
-- [ ] 使用官方预览或真实 EEA/UK/Swiss 环境完成 CMP 四步测试
+- [x] 核验 AdSense 站点状态：已验证并已请求审核，但当前仍为“正在准备”，尚未进入 Ready
+- [x] 使用官方 Privacy & Messaging 预览核验四步结构和控件；真实 EEA/UK/Swiss 运行时旅程仍待地区网络验证
 - [x] 核对并统一 Privacy、About、Contact 与可见发布商身份信息
 - [x] 验证公开页面、构建和后台结果并交付状态
