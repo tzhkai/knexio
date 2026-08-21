@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { addShareUtm, buildPromptCounterReport, buildPromptCounterShareText, buildPromptCounterStatsReport, buildShareLinks, clearLocalDraft, copyTextToClipboard, countPromptWords, estimateTokenCount, highlightCode, MARKDOWN_PRESET_TEMPLATE, COUNTER_PRESET_TEMPLATE, parseTemplateExport, readLocalDraft, readPromptHistory, renderMarkdown, resolvePresetTemplate, savePromptHistory, serializeTemplateExport, syncScrollPosition, tokenWarningLevel, writeLocalDraft } from "./Tools";
+import { addShareUtm, buildPromptCounterReport, buildPromptCounterShareText, buildPromptCounterStatsReport, buildShareLinks, clearLocalDraft, clearPromptHistory, copyTextToClipboard, countPromptWords, estimateTokenCount, highlightCode, MARKDOWN_PRESET_TEMPLATE, COUNTER_PRESET_TEMPLATE, parseTemplateExport, readLocalDraft, readPromptHistory, renderMarkdown, resolvePresetTemplate, savePromptHistory, serializePromptHistory, parsePromptHistoryExport, serializeTemplateExport, syncScrollPosition, tokenWarningLevel, writeLocalDraft } from "./Tools";
 
 describe("Workflow utilities", () => {
   it("copies non-empty results through the available clipboard API", async () => {
@@ -49,6 +49,20 @@ describe("Workflow utilities", () => {
     expect(history[0].text).toBe("Prompt 5");
     savePromptHistory(key, { text: "Prompt 3", words: 2, characters: 9, lines: 1, model: "gpt-4", tokens: 3, savedAt: 10 });
     expect(readPromptHistory(key)[0].text).toBe("Prompt 3");
+  });
+
+  it("round-trips prompt history JSON and rejects invalid versions", () => {
+    const entries = [{ text: "Task: review notes", words: 3, characters: 18, lines: 1, model: "gpt-4", tokens: 5, savedAt: 10 }];
+    const imported = parsePromptHistoryExport(serializePromptHistory(entries));
+    expect(imported).toEqual(entries);
+    expect(() => parsePromptHistoryExport(JSON.stringify({ version: 2, entries }))).toThrow();
+  });
+
+  it("clears prompt history through the storage helper", () => {
+    const storage = new Map<string, string>([["history", "[]"]]);
+    vi.stubGlobal("window", { localStorage: { getItem: (name: string) => storage.get(name) ?? null, setItem: (name: string, value: string) => storage.set(name, value), removeItem: (name: string) => storage.delete(name) } });
+    expect(clearPromptHistory("history")).toEqual([]);
+    expect(storage.has("history")).toBe(false);
   });
 
   it("counts prompt words using whitespace boundaries", () => {
