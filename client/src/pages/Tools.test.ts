@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { addShareUtm, buildPromptCounterReport, buildPromptCounterShareText, buildShareLinks, clearLocalDraft, copyTextToClipboard, countPromptWords, estimateTokenCount, highlightCode, MARKDOWN_PRESET_TEMPLATE, COUNTER_PRESET_TEMPLATE, parseTemplateExport, readLocalDraft, renderMarkdown, resolvePresetTemplate, serializeTemplateExport, syncScrollPosition, tokenWarningLevel, writeLocalDraft } from "./Tools";
+import { addShareUtm, buildPromptCounterReport, buildPromptCounterShareText, buildPromptCounterStatsReport, buildShareLinks, clearLocalDraft, copyTextToClipboard, countPromptWords, estimateTokenCount, highlightCode, MARKDOWN_PRESET_TEMPLATE, COUNTER_PRESET_TEMPLATE, parseTemplateExport, readLocalDraft, renderMarkdown, resolvePresetTemplate, serializeTemplateExport, syncScrollPosition, tokenWarningLevel, writeLocalDraft } from "./Tools";
 
 describe("Workflow utilities", () => {
   it("copies non-empty results through the available clipboard API", async () => {
@@ -25,6 +25,12 @@ describe("Workflow utilities", () => {
     expect(shareText).toContain("Words: 12");
     expect(shareText).toContain("Estimated tokens (GPT-4): 22");
     expect(shareText).toContain("https://knexio.xyz/tools/ai-prompt-word-counter/");
+  });
+
+  it("keeps a stats-only TXT report free of the prompt body", () => {
+    const report = buildPromptCounterStatsReport({ words: 4, characters: 28, lines: 1, model: "GPT-4", tokens: 7 });
+    expect(report).toContain("Words: 4");
+    expect(report).not.toContain("Prompt:");
   });
 
   it("builds a TXT report with the current prompt and statistics", () => {
