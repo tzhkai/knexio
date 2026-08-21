@@ -21,6 +21,37 @@ const authorRecordStyles = `
 `;
 const formatEditorialDate = (value: string) => new Intl.DateTimeFormat("en-US", { day: "numeric", month: "short", year: "numeric" }).format(new Date(value));
 
+const contextualGuideLinks: Record<string, { label: string; href: string; description: string }[]> = {
+  "meeting-agenda-from-notes": [
+    { label: "整理会议行动项", href: "/guides/meeting-notes-to-action-list/", description: "把议程中的结果转成带负责人和日期的可确认记录。" },
+    { label: "写会议跟进邮件", href: "/guides/meeting-follow-up-email/", description: "在会后确认决定、行动和仍待核实的细节。" },
+    { label: "比较会议纪要与决策简报", href: "/workflows/meetings/meeting-minutes-vs-decision-brief/", description: "判断下一步需要完整记录还是面向决策者的摘要。" },
+  ],
+  "meeting-follow-up-email": [
+    { label: "从会议记录提取行动项", href: "/guides/meeting-notes-to-action-list/", description: "先确认哪些内容是真正的承诺，哪些仍是讨论。" },
+    { label: "建立决策记录", href: "/guides/decision-log-from-project-notes/", description: "当邮件需要解释选择和取舍时，保留完整决策依据。" },
+    { label: "写清晰的项目更新", href: "/guides/clear-project-update-prompt/", description: "把已确认的会议结果带入更广泛的项目沟通。" },
+  ],
+  "weekly-priorities-from-project-list": [
+    { label: "制定 30 分钟起步计划", href: "/guides/thirty-minute-project-starting-plan/", description: "把本周优先级进一步缩小为今天可以开始的第一步。" },
+    { label: "从已完成和阻塞工作做周复盘", href: "/guides/weekly-review-from-completed-and-blocked-work/", description: "用当前记录检查哪些工作应该继续、停止或升级。" },
+    { label: "整理项目交接简报", href: "/guides/project-handoff-brief/", description: "在优先级变化或人员交接时保留决定、风险和依赖。" },
+  ],
+  "decision-log-from-project-notes": [
+    { label: "用证据矩阵检查来源", href: "/guides/evidence-matrix-from-source-notes/", description: "把支持、缺口和需要复核的证据放在决定之前。" },
+    { label: "从项目笔记写决策备忘录", href: "/guides/project-notes-to-decision-memo/", description: "当一个决定需要面向读者解释建议和取舍时继续阅读。" },
+    { label: "把决定交接给下一位负责人", href: "/guides/project-handoff-brief/", description: "让未来读者知道什么已确认、什么仍不确定。" },
+  ],
+};
+
+const contextualLinkStyles = `.guide-context-links { margin-top: 28px; padding: 18px 0 4px; border-top: 1px solid var(--rule); } .guide-context-links-heading { color: var(--green); font-size: 10px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; } .guide-context-links-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 12px; } .guide-context-link { display: block; min-height: 100%; padding: 13px 14px; border: 1px solid var(--rule); color: var(--ink); transition: background 160ms var(--ease-out), border-color 160ms var(--ease-out), transform 160ms var(--ease-out); } .guide-context-link:hover { background: var(--green-pale); border-color: var(--green); transform: translateY(-1px); } .guide-context-link strong { display: block; font-size: 12px; line-height: 1.35; } .guide-context-link span { display: block; margin-top: 6px; color: #656961; font-size: 11px; line-height: 1.5; } @media (max-width: 760px) { .guide-context-links-grid { grid-template-columns: 1fr; } }`;
+
+function ContextualGuideLinks({ slug }: { slug: string }) {
+  const links = contextualGuideLinks[slug];
+  if (!links) return null;
+  return <section className="guide-context-links" aria-labelledby="guide-context-links-title"><style>{contextualLinkStyles}</style><div id="guide-context-links-title" className="guide-context-links-heading">Continue this workflow</div><div className="guide-context-links-grid">{links.map(link => <Link key={link.href} className="guide-context-link" href={link.href}><strong>{link.label}</strong><span>{link.description}</span></Link>)}</div></section>;
+}
+
 export default function GuideDetail() {
   const { slug } = useParams<{ slug: string }>(); const guide = getGuide(slug);
   if (!guide) return <Layout><SeoMeta title="Guide not found" description="This guide is not in the Workflow Library index." noIndex /><SiteBreadcrumb items={[{ label: "Home", href: "/" }, { label: "Library", href: "/guides" }, { label: "Guide not found" }]} /><section className="not-found-wrap"><span className="eyebrow">Missing from the index</span><h1>That workflow is not in the library.</h1><Link href="/guides" className="primary-button">Return to the guides <ArrowUpRight size={17} /></Link></section></Layout>;
@@ -37,6 +68,7 @@ export default function GuideDetail() {
         {guide.sections.map((section, index) => <section className="article-text-section" id={`guide-section-${index + 4}`} key={section.title}><span className="article-text-index">{String(index + 4).padStart(2, "0")}</span><div><h2>{section.title}</h2><p>{section.body}</p></div></section>)}
         <section className="review-section" id="human-check"><div className="review-title"><CheckCircle2 size={23} /><div><span className="eyebrow">Before you use the output</span><h2>Run a human check.</h2></div></div><ul>{guide.checks.map(check => <li key={check}><CheckCircle2 size={16} /> {check}</li>)}</ul></section>
         {guide.slug === "meeting-notes-to-decision-brief" && <><MeetingNotesTemplate /><MeetingGuideFaq /></>}
+        <ContextualGuideLinks slug={guide.slug} />
         <section className="field-note-wide"><Sparkles size={20} /><div><span>Field note</span><p>AI is strongest here when it makes missing information, structure, and options easier to see. The moment an output becomes a claim, commitment, or decision, bring a person back into the loop.</p></div></section>
         <section className="author-record" aria-labelledby="editorial-record-title"><div className="author-seal" aria-hidden="true">W—L</div><div className="author-copy"><span className="eyebrow">Author & review record</span><h2 id="editorial-record-title">Maintained by Workflow Library’s editorial desk.</h2><p>This guide is published by Workflow Library, an independent educational project for practical AI workflows. The editorial desk reviews task scope, source visibility, stated limits, and the human checks readers need before reusing an output. It does not claim a personal credential, test result, or lived experience that has not been published and verified.</p><Link href="/about" className="text-link">About the publication <ArrowUpRight size={15} /></Link></div><div className="author-facts" aria-label="Article publication details"><div><BadgeCheck size={15} /><span><strong>Editorial record</strong>Organization byline</span></div><div><CalendarDays size={15} /><span><strong>Published</strong><time dateTime={guide.publishedAt}>{formatEditorialDate(guide.publishedAt)}</time></span></div><div><ShieldCheck size={15} /><span><strong>Last reviewed</strong><time dateTime={guide.updatedAt}>{formatEditorialDate(guide.updatedAt)}</time></span></div></div></section>
       </div></div>

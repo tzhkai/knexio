@@ -55,6 +55,23 @@ describe("workflow library content", () => {
     expect(guideSlugs.has(coreByCategory.Meetings)).toBe(true);
   });
 
+  it("keeps the first reinforcement batch rich enough for re-evaluation", () => {
+    const targets = [
+      "meeting-agenda-from-notes",
+      "meeting-follow-up-email",
+      "weekly-priorities-from-project-list",
+      "decision-log-from-project-notes",
+    ];
+
+    for (const slug of targets) {
+      const guide = getGuide(slug);
+      expect(guide, `${slug} should be published`).toBeDefined();
+      expect(guide?.sections.length, `${slug} should include expanded context`).toBeGreaterThanOrEqual(7);
+      expect(guide?.checks.length, `${slug} should include human review checks`).toBeGreaterThanOrEqual(5);
+      expect(guide?.updatedAt, `${slug} should record the substantive update`).toBe("2026-08-21T09:00:00+08:00");
+    }
+  });
+
   it("publishes the Meetings FAQ with searchable questions and FAQPage schema", () => {
     expect(meetingGuideFaqs.length).toBeGreaterThanOrEqual(5);
     expect(meetingGuideFaqs.some((item) => item.question.includes("decision brief"))).toBe(true);

@@ -748,3 +748,28 @@
 - [x] Add persistent Privacy settings floating control using the existing consent provider
 - [x] Run tests, type checks, Cloudflare build, and responsive visual verification
 - [x] Review this TODO and save a final checkpoint
+
+
+## Search Console 未收录 URL 评估模板
+
+- [x] 建立 0–10 分 URL 评估字段与优先级规则
+- [x] 生成可直接使用的 Excel/CSV 模板，并包含示例行与公式
+- [x] 验证公式、筛选、下拉选项、格式和使用说明
+- [x] 交付模板文件及简明操作指南
+
+
+## 5–7 分页面内容与内链补强清单
+
+- [x] 按 Research、Writing、Meetings、Planning 和 Tools 集群盘点适合先补强的页面
+- [x] 为候选页面制定页面级内容扩充、内链来源、锚文本和验收标准
+- [x] 建立补强后的重新评分与索引请求判断流程
+- [x] 交付 Knexio 页面优化清单
+
+
+## 第一批 5–7 分页面补强实施
+
+- [x] 补强 Meeting Agenda、Meeting Follow-up、Weekly Priorities、Decision Log 四篇指南的内容结构和真实使用场景
+- [x] 补强 AI Prompt Word Counter 工具页的使用场景、限制说明和相关指南内链
+- [x] 为第一批页面补充上下游专题链接、相关文章链接和任务型锚文本
+- [x] 为新增内容与内链增加回归测试并完成生产构建和关键页面视觉验证
+- [x] 复评第一批页面并给出是否进入索引请求候选池的建议
