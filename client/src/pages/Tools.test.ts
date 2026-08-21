@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { addShareUtm, buildPromptCounterReport, buildPromptCounterShareText, buildPromptCounterStatsReport, buildShareLinks, clearLocalDraft, clearPromptHistory, copyTextToClipboard, mergePromptHistory, countPromptWords, estimateTokenCount, highlightCode, MARKDOWN_PRESET_TEMPLATE, COUNTER_PRESET_TEMPLATE, parseTemplateExport, readLocalDraft, readPromptHistory, readPromptHistoryImportMode, renderMarkdown, resolvePresetTemplate, savePromptHistory, serializePromptHistory, parsePromptHistoryExport, serializeTemplateExport, syncScrollPosition, tokenWarningLevel, writeLocalDraft } from "./Tools";
+import { addShareUtm, buildPromptCounterReport, aiPromptCounterSchema, buildPromptCounterShareText, buildPromptCounterStatsReport, buildShareLinks, clearLocalDraft, clearPromptHistory, copyTextToClipboard, mergePromptHistory, countPromptWords, estimateTokenCount, highlightCode, MARKDOWN_PRESET_TEMPLATE, COUNTER_PRESET_TEMPLATE, parseTemplateExport, readLocalDraft, readPromptHistory, readPromptHistoryImportMode, renderMarkdown, resolvePresetTemplate, savePromptHistory, serializePromptHistory, parsePromptHistoryExport, serializeTemplateExport, syncScrollPosition, tokenWarningLevel, writeLocalDraft } from "./Tools";
 
 describe("Workflow utilities", () => {
   it("copies non-empty results through the available clipboard API", async () => {
@@ -49,6 +49,16 @@ describe("Workflow utilities", () => {
     expect(history[0].text).toBe("Prompt 5");
     savePromptHistory(key, { text: "Prompt 3", words: 2, characters: 9, lines: 1, model: "gpt-4", tokens: 3, savedAt: 10 });
     expect(readPromptHistory(key)[0].text).toBe("Prompt 3");
+  });
+
+  it("exposes truthful AI Prompt Word Counter JSON-LD fields", () => {
+    const schema = aiPromptCounterSchema({ origin: "https://knexio.xyz", pageUrl: "https://knexio.xyz/tools/ai-prompt-word-counter/" });
+    expect(schema["@type"]).toBe("WebApplication");
+    expect(schema["@id"]).toBe("https://knexio.xyz/tools/ai-prompt-word-counter/#application");
+    expect(schema.isAccessibleForFree).toBe(true);
+    expect(schema.featureList).toContain("Local browser processing");
+    expect(schema.creator).toMatchObject({ "@type": "Organization", name: "Knexio" });
+    expect(schema.potentialAction).toMatchObject({ "@type": "UseAction" });
   });
 
   it("restores a valid import preference and falls back to merge", () => {

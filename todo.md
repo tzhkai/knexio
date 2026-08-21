@@ -857,3 +857,10 @@
 - [x] 完成测试、构建和关键页面验证
 - [x] 将已验证修改推送到 tzhkai/knexio 的 main
 - [x] 记录推送结果、部署前提和后续 Search Console 观察事项
+
+
+## AI Prompt Word Counter JSON-LD
+
+- [x] 审阅工具页当前 WebApplication、BreadcrumbList 和 WebPage schema
+- [x] 补充准确的工具功能、免费使用和本地处理结构化数据，避免重复 schema
+- [x] 增加 schema 回归测试并完成生产构建、预渲染核对和检查点保存
