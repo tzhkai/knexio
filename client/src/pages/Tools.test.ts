@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { addShareUtm, buildPromptCounterReport, buildPromptCounterShareText, buildPromptCounterStatsReport, buildShareLinks, clearLocalDraft, clearPromptHistory, copyTextToClipboard, countPromptWords, estimateTokenCount, highlightCode, MARKDOWN_PRESET_TEMPLATE, COUNTER_PRESET_TEMPLATE, parseTemplateExport, readLocalDraft, readPromptHistory, renderMarkdown, resolvePresetTemplate, savePromptHistory, serializePromptHistory, parsePromptHistoryExport, serializeTemplateExport, syncScrollPosition, tokenWarningLevel, writeLocalDraft } from "./Tools";
+import { addShareUtm, buildPromptCounterReport, buildPromptCounterShareText, buildPromptCounterStatsReport, buildShareLinks, clearLocalDraft, clearPromptHistory, copyTextToClipboard, mergePromptHistory, countPromptWords, estimateTokenCount, highlightCode, MARKDOWN_PRESET_TEMPLATE, COUNTER_PRESET_TEMPLATE, parseTemplateExport, readLocalDraft, readPromptHistory, renderMarkdown, resolvePresetTemplate, savePromptHistory, serializePromptHistory, parsePromptHistoryExport, serializeTemplateExport, syncScrollPosition, tokenWarningLevel, writeLocalDraft } from "./Tools";
 
 describe("Workflow utilities", () => {
   it("copies non-empty results through the available clipboard API", async () => {
@@ -49,6 +49,16 @@ describe("Workflow utilities", () => {
     expect(history[0].text).toBe("Prompt 5");
     savePromptHistory(key, { text: "Prompt 3", words: 2, characters: 9, lines: 1, model: "gpt-4", tokens: 3, savedAt: 10 });
     expect(readPromptHistory(key)[0].text).toBe("Prompt 3");
+  });
+
+  it("merges prompt history by text, keeps the latest entry, and caps at five", () => {
+    const existing = [{ text: "Keep", words: 1, characters: 4, lines: 1, model: "gpt-4", tokens: 1, savedAt: 2 }, { text: "Old", words: 1, characters: 3, lines: 1, model: "gpt-4", tokens: 1, savedAt: 1 }];
+    const incoming = Array.from({ length: 6 }, (_, index) => ({ text: index === 0 ? "Keep" : `New ${index}`, words: 1, characters: 4, lines: 1, model: "gpt-4", tokens: 1, savedAt: index === 0 ? 9 : index + 3 }));
+    const merged = mergePromptHistory(existing, incoming);
+    expect(merged).toHaveLength(5);
+    expect(merged[0].text).toBe("Keep");
+    expect(merged[0].savedAt).toBe(9);
+    expect(merged.some(entry => entry.text === "Old")).toBe(false);
   });
 
   it("round-trips prompt history JSON and rejects invalid versions", () => {
