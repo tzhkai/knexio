@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { buildShareLinks, clearLocalDraft, copyTextToClipboard, countPromptWords, estimateTokenCount, highlightCode, MARKDOWN_PRESET_TEMPLATE, COUNTER_PRESET_TEMPLATE, parseTemplateExport, readLocalDraft, renderMarkdown, resolvePresetTemplate, serializeTemplateExport, syncScrollPosition, tokenWarningLevel, writeLocalDraft } from "./Tools";
+import { buildPromptCounterShareText, buildShareLinks, clearLocalDraft, copyTextToClipboard, countPromptWords, estimateTokenCount, highlightCode, MARKDOWN_PRESET_TEMPLATE, COUNTER_PRESET_TEMPLATE, parseTemplateExport, readLocalDraft, renderMarkdown, resolvePresetTemplate, serializeTemplateExport, syncScrollPosition, tokenWarningLevel, writeLocalDraft } from "./Tools";
 
 describe("Workflow utilities", () => {
   it("copies non-empty results through the available clipboard API", async () => {
@@ -11,6 +11,13 @@ describe("Workflow utilities", () => {
 
   it("rejects an empty result instead of reporting a false success", async () => {
     await expect(copyTextToClipboard("")).resolves.toBe(false);
+  });
+
+  it("builds a share text with the canonical tool URL and current statistics", () => {
+    const shareText = buildPromptCounterShareText("https://knexio.xyz/tools/ai-prompt-word-counter/", { words: 12, characters: 86, lines: 4, model: "GPT-4", tokens: 22 });
+    expect(shareText).toContain("Words: 12");
+    expect(shareText).toContain("Estimated tokens (GPT-4): 22");
+    expect(shareText).toContain("https://knexio.xyz/tools/ai-prompt-word-counter/");
   });
 
   it("counts prompt words using whitespace boundaries", () => {
