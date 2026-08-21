@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { addShareUtm, buildPromptCounterReport, buildPromptCounterShareText, buildPromptCounterStatsReport, buildShareLinks, clearLocalDraft, copyTextToClipboard, countPromptWords, estimateTokenCount, highlightCode, MARKDOWN_PRESET_TEMPLATE, COUNTER_PRESET_TEMPLATE, parseTemplateExport, readLocalDraft, renderMarkdown, resolvePresetTemplate, serializeTemplateExport, syncScrollPosition, tokenWarningLevel, writeLocalDraft } from "./Tools";
+import { addShareUtm, buildPromptCounterReport, buildPromptCounterShareText, buildPromptCounterStatsReport, buildShareLinks, clearLocalDraft, copyTextToClipboard, countPromptWords, estimateTokenCount, highlightCode, MARKDOWN_PRESET_TEMPLATE, COUNTER_PRESET_TEMPLATE, parseTemplateExport, readLocalDraft, readPromptHistory, renderMarkdown, resolvePresetTemplate, savePromptHistory, serializeTemplateExport, syncScrollPosition, tokenWarningLevel, writeLocalDraft } from "./Tools";
 
 describe("Workflow utilities", () => {
   it("copies non-empty results through the available clipboard API", async () => {
@@ -37,6 +37,18 @@ describe("Workflow utilities", () => {
     const report = buildPromptCounterReport("Task: summarize these notes", { words: 4, characters: 28, lines: 1, model: "GPT-4", tokens: 7 });
     expect(report).toContain("Estimated tokens (GPT-4): 7");
     expect(report).toContain("Prompt:\nTask: summarize these notes");
+  });
+
+  it("keeps prompt history local, deduplicated, and capped at five entries", () => {
+    const key = "test:prompt-history";
+    const storage = new Map<string, string>();
+    vi.stubGlobal("window", { localStorage: { getItem: (name: string) => storage.get(name) ?? null, setItem: (name: string, value: string) => storage.set(name, value), removeItem: (name: string) => storage.delete(name) } });
+    for (let index = 0; index < 6; index += 1) savePromptHistory(key, { text: `Prompt ${index}`, words: 2, characters: 9, lines: 1, model: "gpt-4", tokens: 3, savedAt: index });
+    const history = readPromptHistory(key);
+    expect(history).toHaveLength(5);
+    expect(history[0].text).toBe("Prompt 5");
+    savePromptHistory(key, { text: "Prompt 3", words: 2, characters: 9, lines: 1, model: "gpt-4", tokens: 3, savedAt: 10 });
+    expect(readPromptHistory(key)[0].text).toBe("Prompt 3");
   });
 
   it("counts prompt words using whitespace boundaries", () => {
