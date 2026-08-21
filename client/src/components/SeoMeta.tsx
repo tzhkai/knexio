@@ -55,12 +55,14 @@ function syncMeta(attribute: "name" | "property", key: string, value?: string) {
 
 export function SeoMeta({ title, description, type = "website", image = heroImage, imageAlt = "Workflow Library field guide for practical AI workflows", noIndex = false, publishedTime, modifiedTime, section, tags = [], schema }: SeoMetaProps) {
   useEffect(() => {
-    document.title = `${title} | Workflow Library`;
+    document.title = title.endsWith("| Workflow Library") ? title : `${title} | Workflow Library`;
     const origin = window.location.origin;
     const pathname = window.location.pathname === "/" ? "/" : `${window.location.pathname.replace(/\/$/, "")}/`;
     const pageUrl = `${origin}${pathname}`;
     const imageUrl = image.startsWith("http") ? image : `${origin}${image}`;
     upsertMeta("name", "description", description);
+    upsertMeta("name", "author", "Knexio");
+    upsertMeta("name", "theme-color", "#f4f0e8");
     upsertMeta("name", "robots", noIndex ? "noindex,follow" : "index,follow");
     upsertMeta("name", "googlebot", noIndex ? "noindex,follow" : "index,follow,max-image-preview:large,max-snippet:-1");
     upsertMeta("property", "og:title", title);
