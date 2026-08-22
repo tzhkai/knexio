@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { addShareUtm, buildPromptCounterReport, aiPromptCounterSchema, aiPromptCounterFaqSchema, AI_PROMPT_COUNTER_TITLE, AI_PROMPT_COUNTER_DESCRIPTION, AI_PROMPT_COUNTER_FAQ, buildPromptCounterShareText, buildPromptCounterStatsReport, buildShareLinks, clearLocalDraft, clearPromptHistory, copyTextToClipboard, mergePromptHistory, countPromptWords, estimateTokenCount, highlightCode, MARKDOWN_PRESET_TEMPLATE, COUNTER_PRESET_TEMPLATE, parseTemplateExport, readLocalDraft, readPromptHistory, readPromptHistoryImportMode, renderMarkdown, resolvePresetTemplate, savePromptHistory, serializePromptHistory, parsePromptHistoryExport, serializeTemplateExport, syncScrollPosition, tokenWarningLevel, writeLocalDraft } from "./Tools";
+import { addShareUtm, buildPromptCounterReport, aiPromptCounterSchema, aiPromptCounterFaqSchema, AI_PROMPT_COUNTER_TITLE, AI_PROMPT_COUNTER_DESCRIPTION, AI_PROMPT_COUNTER_FAQ, buildPromptCounterShareText, buildPromptCounterStatsReport, buildShareLinks, clearLocalDraft, clearPromptHistory, copyTextToClipboard, mergePromptHistory, countPromptWords, estimateTokenCount, estimateReadingMinutes, estimateSpeakingMinutes, formatMinutes, highlightCode, MARKDOWN_PRESET_TEMPLATE, COUNTER_PRESET_TEMPLATE, parseTemplateExport, readLocalDraft, readPromptHistory, readPromptHistoryImportMode, renderMarkdown, resolvePresetTemplate, savePromptHistory, serializePromptHistory, parsePromptHistoryExport, serializeTemplateExport, syncScrollPosition, tokenWarningLevel, writeLocalDraft } from "./Tools";
 
 describe("Workflow utilities", () => {
   it("copies non-empty results through the available clipboard API", async () => {
@@ -111,6 +111,10 @@ describe("Workflow utilities", () => {
   });
 
   it("estimates tokens transparently without claiming exact model tokenization", () => { expect(estimateTokenCount("abcd", "gpt-4")).toBe(1); expect(estimateTokenCount("abcdefgh", "claude-3-5")).toBe(3); expect(estimateTokenCount("", "gemini-1-5")).toBe(0); });
+
+  it("calculates practical reading and speaking time estimates", () => { expect(estimateReadingMinutes(0)).toBe(0); expect(estimateReadingMinutes(201)).toBe(2); expect(estimateSpeakingMinutes(130)).toBe(1); expect(formatMinutes(3)).toBe("3 min"); });
+
+  it("keeps FAQ data available for the accessible accordion and schema", () => { expect(AI_PROMPT_COUNTER_FAQ.length).toBeGreaterThanOrEqual(4); expect(AI_PROMPT_COUNTER_FAQ.every(item => item.question && item.answer)).toBe(true); });
 
   it("keeps practical copyable presets for both tools", () => {
     expect(COUNTER_PRESET_TEMPLATE).toContain("Audience:");
