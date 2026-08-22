@@ -920,8 +920,8 @@
 - [x] 在模型选择器中显示 GPT-4、Claude 3.5 与 Gemini 1.5 的最大 Context Window。
 - [x] 为成本计算、费率格式化和文件类型校验补充 Vitest 回归测试。
 - [ ] 完成最终 pnpm test、pnpm check、pnpm build:cloudflare 与桌面/移动端回归。
-- [ ] 推送最终改动到 GitHub main 并保存可恢复检查点。
-- [ ] 交付 AdSense 审核与 Search Console 持续维护清单。
+- [x] 推送最终改动到 GitHub main 并保存可恢复检查点。
+- [x] 交付 AdSense 审核与 Search Console 持续维护清单。
 
 ---
 
@@ -932,16 +932,16 @@
 - [x] 在模型选择器中显示 GPT-4、Claude 3.5 与 Gemini 1.5 的最大 Context Window。
 - [x] 为成本计算、费率格式化和文件类型校验补充 Vitest 回归测试。
 - [ ] 完成最终 pnpm test、pnpm check、pnpm build:cloudflare 与桌面/移动端回归。
-- [ ] 推送最终改动到 GitHub main 并保存可恢复检查点。
-- [ ] 交付 AdSense 审核与 Search Console 持续维护清单。
+- [x] 推送最终改动到 GitHub main 并保存可恢复检查点。
+- [x] 交付 AdSense 审核与 Search Console 持续维护清单。
 
 ---
 
 ## AI Prompt Word Counter 最终 UI 增强（待办）
 
 - [ ] 完成最终 pnpm test、pnpm check、pnpm build:cloudflare 与桌面/移动端回归。
-- [ ] 推送最终改动到 GitHub main 并保存可恢复检查点。
-- [ ] 交付 AdSense 审核与 Search Console 持续维护清单。
+- [x] 推送最终改动到 GitHub main 并保存可恢复检查点。
+- [x] 交付 AdSense 审核与 Search Console 持续维护清单。
 
 ---
 
@@ -949,5 +949,5 @@
 
 - [x] 完成最终 pnpm test 与 pnpm check；当前 48 项测试通过。
 - [x] 完成 Cloudflare 生产构建与桌面/移动端截图回归。
-- [ ] 推送最终改动到 GitHub main 并保存可恢复检查点。
-- [ ] 交付 AdSense 审核与 Search Console 持续维护清单。
+- [x] 推送最终改动到 GitHub main 并保存可恢复检查点。
+- [x] 交付 AdSense 审核与 Search Console 持续维护清单。
