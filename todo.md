@@ -904,3 +904,50 @@
 - [x] 根据所选模型和估算 Token 展示透明标注的预估 API 成本
 - [x] 将清空按钮移动到文本输入框右上角，并保留二次确认与撤销能力
 - [x] 增加成本、复制反馈和清空交互测试，完成构建、移动端验证并保存检查点
+
+
+## 成本 Tooltip、文件拖拽与上下文窗口
+
+- [ ] 为预估 API 成本增加费率 Tooltip，并说明估算口径
+- [ ] 为文本输入框增加 TXT/MD 文件拖拽导入和类型/大小保护
+- [ ] 在模型下拉选项中显示各模型最大 Context Window
+- [ ] 增加新交互测试，完成构建、移动端验证并保存检查点
+
+## AI Prompt Word Counter 最终 UI 增强
+
+- [x] 为预估 API 成本添加可访问的费率 Tooltip，并明确其为规划性估算。
+- [x] 为提示词输入区添加 TXT/MD 拖拽导入、文件类型校验与 500 KB 大小保护。
+- [x] 在模型选择器中显示 GPT-4、Claude 3.5 与 Gemini 1.5 的最大 Context Window。
+- [x] 为成本计算、费率格式化和文件类型校验补充 Vitest 回归测试。
+- [ ] 完成最终 pnpm test、pnpm check、pnpm build:cloudflare 与桌面/移动端回归。
+- [ ] 推送最终改动到 GitHub main 并保存可恢复检查点。
+- [ ] 交付 AdSense 审核与 Search Console 持续维护清单。
+
+---
+
+## AI Prompt Word Counter 最终 UI 增强（完成记录）
+
+- [x] 为预估 API 成本添加可访问的费率 Tooltip，并明确其为规划性估算。
+- [x] 为提示词输入区添加 TXT/MD 拖拽导入、文件类型校验与 500 KB 大小保护。
+- [x] 在模型选择器中显示 GPT-4、Claude 3.5 与 Gemini 1.5 的最大 Context Window。
+- [x] 为成本计算、费率格式化和文件类型校验补充 Vitest 回归测试。
+- [ ] 完成最终 pnpm test、pnpm check、pnpm build:cloudflare 与桌面/移动端回归。
+- [ ] 推送最终改动到 GitHub main 并保存可恢复检查点。
+- [ ] 交付 AdSense 审核与 Search Console 持续维护清单。
+
+---
+
+## AI Prompt Word Counter 最终 UI 增强（待办）
+
+- [ ] 完成最终 pnpm test、pnpm check、pnpm build:cloudflare 与桌面/移动端回归。
+- [ ] 推送最终改动到 GitHub main 并保存可恢复检查点。
+- [ ] 交付 AdSense 审核与 Search Console 持续维护清单。
+
+---
+
+## AI Prompt Word Counter 最终 UI 增强（最新状态）
+
+- [x] 完成最终 pnpm test 与 pnpm check；当前 48 项测试通过。
+- [x] 完成 Cloudflare 生产构建与桌面/移动端截图回归。
+- [ ] 推送最终改动到 GitHub main 并保存可恢复检查点。
+- [ ] 交付 AdSense 审核与 Search Console 持续维护清单。

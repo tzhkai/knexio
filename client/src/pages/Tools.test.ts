@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { addShareUtm, buildPromptCounterReport, aiPromptCounterSchema, aiPromptCounterFaqSchema, AI_PROMPT_COUNTER_TITLE, AI_PROMPT_COUNTER_DESCRIPTION, AI_PROMPT_COUNTER_FAQ, buildPromptCounterShareText, buildPromptCounterStatsReport, buildShareLinks, clearLocalDraft, clearPromptHistory, copyTextToClipboard, mergePromptHistory, countPromptWords, estimateTokenCount, estimateReadingMinutes, estimateSpeakingMinutes, formatMinutes, buildPromptCounterQuickStats, readPromptModelPreference, highlightCode, MARKDOWN_PRESET_TEMPLATE, COUNTER_PRESET_TEMPLATE, parseTemplateExport, readLocalDraft, readPromptHistory, readPromptHistoryImportMode, renderMarkdown, resolvePresetTemplate, savePromptHistory, serializePromptHistory, parsePromptHistoryExport, serializeTemplateExport, syncScrollPosition, tokenWarningLevel, writeLocalDraft } from "./Tools";
+import { addShareUtm, buildPromptCounterReport, aiPromptCounterSchema, aiPromptCounterFaqSchema, AI_PROMPT_COUNTER_TITLE, AI_PROMPT_COUNTER_DESCRIPTION, AI_PROMPT_COUNTER_FAQ, buildPromptCounterShareText, buildPromptCounterStatsReport, buildShareLinks, clearLocalDraft, clearPromptHistory, copyTextToClipboard, mergePromptHistory, countPromptWords, estimateTokenCount, estimateReadingMinutes, estimateSpeakingMinutes, formatMinutes, buildPromptCounterQuickStats, readPromptModelPreference, estimatePromptApiCost, formatEstimatedCost, isSupportedPromptFile, highlightCode, MARKDOWN_PRESET_TEMPLATE, COUNTER_PRESET_TEMPLATE, parseTemplateExport, readLocalDraft, readPromptHistory, readPromptHistoryImportMode, renderMarkdown, resolvePresetTemplate, savePromptHistory, serializePromptHistory, parsePromptHistoryExport, serializeTemplateExport, syncScrollPosition, tokenWarningLevel, writeLocalDraft } from "./Tools";
 
 describe("Workflow utilities", () => {
   it("copies non-empty results through the available clipboard API", async () => {
@@ -111,6 +111,10 @@ describe("Workflow utilities", () => {
   });
 
   it("estimates tokens transparently without claiming exact model tokenization", () => { expect(estimateTokenCount("abcd", "gpt-4")).toBe(1); expect(estimateTokenCount("abcdefgh", "claude-3-5")).toBe(3); expect(estimateTokenCount("", "gemini-1-5")).toBe(0); });
+
+  it("calculates transparent planning cost and formats tiny values", () => { expect(estimatePromptApiCost(1_000_000, "gpt-4")).toBe(30); expect(estimatePromptApiCost(1_000_000, "claude-3-5")).toBe(3); expect(formatEstimatedCost(0)).toBe("$0.0000"); });
+
+  it("accepts only TXT and Markdown prompt files", () => { expect(isSupportedPromptFile({ name: "notes.txt", type: "text/plain" })).toBe(true); expect(isSupportedPromptFile({ name: "brief.MD", type: "" })).toBe(true); expect(isSupportedPromptFile({ name: "image.png", type: "image/png" })).toBe(false); });
 
   it("restores a valid model preference and safely falls back for invalid values", () => { const storage = new Map<string, string>([["model", "claude-3-5"]]); vi.stubGlobal("window", { localStorage: { getItem: (name: string) => storage.get(name) ?? null, setItem: (name: string, value: string) => storage.set(name, value), removeItem: (name: string) => storage.delete(name) } }); expect(readPromptModelPreference("model")).toBe("claude-3-5"); storage.set("model", "invalid-model"); expect(readPromptModelPreference("model")).toBe("gpt-4"); });
 
