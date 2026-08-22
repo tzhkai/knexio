@@ -864,3 +864,11 @@
 - [x] 审阅工具页当前 WebApplication、BreadcrumbList 和 WebPage schema
 - [x] 补充准确的工具功能、免费使用和本地处理结构化数据，避免重复 schema
 - [x] 增加 schema 回归测试并完成生产构建、预渲染核对和检查点保存
+
+
+## 工具 FAQ、Meta 与抓取文件自动化
+
+- [x] 为 AI Prompt Word Counter 增加可见 FAQ 模块和 FAQPage JSON-LD
+- [x] 统一工具页 Meta Title、Description 与 JSON-LD 描述和核心关键词
+- [x] 检查并完善 sitemap.xml、sitemap_index.xml 和 robots.txt 的构建自动生成流程
+- [x] 增加 FAQ、Meta、sitemap 和 robots 回归测试，完成构建、视觉验证并保存检查点

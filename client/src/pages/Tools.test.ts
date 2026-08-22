@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { addShareUtm, buildPromptCounterReport, aiPromptCounterSchema, buildPromptCounterShareText, buildPromptCounterStatsReport, buildShareLinks, clearLocalDraft, clearPromptHistory, copyTextToClipboard, mergePromptHistory, countPromptWords, estimateTokenCount, highlightCode, MARKDOWN_PRESET_TEMPLATE, COUNTER_PRESET_TEMPLATE, parseTemplateExport, readLocalDraft, readPromptHistory, readPromptHistoryImportMode, renderMarkdown, resolvePresetTemplate, savePromptHistory, serializePromptHistory, parsePromptHistoryExport, serializeTemplateExport, syncScrollPosition, tokenWarningLevel, writeLocalDraft } from "./Tools";
+import { addShareUtm, buildPromptCounterReport, aiPromptCounterSchema, aiPromptCounterFaqSchema, AI_PROMPT_COUNTER_TITLE, AI_PROMPT_COUNTER_DESCRIPTION, AI_PROMPT_COUNTER_FAQ, buildPromptCounterShareText, buildPromptCounterStatsReport, buildShareLinks, clearLocalDraft, clearPromptHistory, copyTextToClipboard, mergePromptHistory, countPromptWords, estimateTokenCount, highlightCode, MARKDOWN_PRESET_TEMPLATE, COUNTER_PRESET_TEMPLATE, parseTemplateExport, readLocalDraft, readPromptHistory, readPromptHistoryImportMode, renderMarkdown, resolvePresetTemplate, savePromptHistory, serializePromptHistory, parsePromptHistoryExport, serializeTemplateExport, syncScrollPosition, tokenWarningLevel, writeLocalDraft } from "./Tools";
 
 describe("Workflow utilities", () => {
   it("copies non-empty results through the available clipboard API", async () => {
@@ -59,6 +59,17 @@ describe("Workflow utilities", () => {
     expect(schema.featureList).toContain("Local browser processing");
     expect(schema.creator).toMatchObject({ "@type": "Organization", name: "Knexio" });
     expect(schema.potentialAction).toMatchObject({ "@type": "UseAction" });
+  });
+
+  it("keeps FAQ schema and visible FAQ copy aligned with metadata", () => {
+    const faq = aiPromptCounterFaqSchema("https://knexio.xyz/tools/ai-prompt-word-counter/");
+    expect(faq["@type"]).toBe("FAQPage");
+    expect(faq.mainEntity).toHaveLength(AI_PROMPT_COUNTER_FAQ.length);
+    expect(faq.mainEntity[0].name).toBe(AI_PROMPT_COUNTER_FAQ[0].question);
+    expect(faq.mainEntity[0].acceptedAnswer.text).toBe(AI_PROMPT_COUNTER_FAQ[0].answer);
+    expect(AI_PROMPT_COUNTER_TITLE).toContain("AI Prompt Word Counter");
+    expect(AI_PROMPT_COUNTER_DESCRIPTION).toContain("words");
+    expect(AI_PROMPT_COUNTER_DESCRIPTION).toContain("characters");
   });
 
   it("restores a valid import preference and falls back to merge", () => {
