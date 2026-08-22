@@ -951,3 +951,12 @@
 - [x] 完成 Cloudflare 生产构建与桌面/移动端截图回归。
 - [x] 推送最终改动到 GitHub main 并保存可恢复检查点。
 - [x] 交付 AdSense 审核与 Search Console 持续维护清单。
+
+## AI Prompt Word Counter 导出、拖拽与历史增强
+
+- [x] 增加包含 Prompt 内容与 Token 统计的长图导出，并提供 PNG 下载。
+- [x] 增加包含 Prompt 内容与 Token 统计的 PDF 导出，明确本地生成与失败提示。
+- [x] 优化 TXT/MD 拖拽区域高亮动画、拖拽状态可访问性与不支持格式的友好错误提示。
+- [x] 增加最近 5 条 Prompt 的本地历史保存、去重、恢复与清空交互。
+- [x] 为导出、拖拽和历史逻辑补充 Vitest 测试，并完成桌面/移动端回归。
+- [x] 完成生产构建、保存检查点并同步 GitHub main。

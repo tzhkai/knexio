@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { addShareUtm, buildPromptCounterReport, aiPromptCounterSchema, aiPromptCounterFaqSchema, AI_PROMPT_COUNTER_TITLE, AI_PROMPT_COUNTER_DESCRIPTION, AI_PROMPT_COUNTER_FAQ, buildPromptCounterShareText, buildPromptCounterStatsReport, buildShareLinks, clearLocalDraft, clearPromptHistory, copyTextToClipboard, mergePromptHistory, countPromptWords, estimateTokenCount, estimateReadingMinutes, estimateSpeakingMinutes, formatMinutes, buildPromptCounterQuickStats, readPromptModelPreference, estimatePromptApiCost, formatEstimatedCost, isSupportedPromptFile, highlightCode, MARKDOWN_PRESET_TEMPLATE, COUNTER_PRESET_TEMPLATE, parseTemplateExport, readLocalDraft, readPromptHistory, readPromptHistoryImportMode, renderMarkdown, resolvePresetTemplate, savePromptHistory, serializePromptHistory, parsePromptHistoryExport, serializeTemplateExport, syncScrollPosition, tokenWarningLevel, writeLocalDraft } from "./Tools";
+import { addShareUtm, buildPromptCounterReport, buildPromptCounterExportLines, buildPromptCounterExportTitle, buildPromptCounterPrintHtml, isSupportedPromptExportFile, aiPromptCounterSchema, aiPromptCounterFaqSchema, AI_PROMPT_COUNTER_TITLE, AI_PROMPT_COUNTER_DESCRIPTION, AI_PROMPT_COUNTER_FAQ, buildPromptCounterShareText, buildPromptCounterStatsReport, buildShareLinks, clearLocalDraft, clearPromptHistory, copyTextToClipboard, mergePromptHistory, countPromptWords, estimateTokenCount, estimateReadingMinutes, estimateSpeakingMinutes, formatMinutes, buildPromptCounterQuickStats, readPromptModelPreference, estimatePromptApiCost, formatEstimatedCost, isSupportedPromptFile, highlightCode, MARKDOWN_PRESET_TEMPLATE, COUNTER_PRESET_TEMPLATE, parseTemplateExport, readLocalDraft, readPromptHistory, readPromptHistoryImportMode, renderMarkdown, resolvePresetTemplate, savePromptHistory, serializePromptHistory, parsePromptHistoryExport, serializeTemplateExport, syncScrollPosition, tokenWarningLevel, writeLocalDraft } from "./Tools";
 
 describe("Workflow utilities", () => {
   it("copies non-empty results through the available clipboard API", async () => {
@@ -26,6 +26,12 @@ describe("Workflow utilities", () => {
     expect(shareText).toContain("Estimated tokens (GPT-4): 22");
     expect(shareText).toContain("https://knexio.xyz/tools/ai-prompt-word-counter/");
   });
+
+  it("builds a shareable long-report data set with prompt and token statistics", () => { const stats = { words: 12, characters: 86, lines: 4, model: "GPT-4", tokens: 22, readingMinutes: 1, speakingMinutes: 1, estimatedCost: "$0.0007" }; const lines = buildPromptCounterExportLines("Task: summarize notes", stats); expect(buildPromptCounterExportTitle(stats)).toContain("GPT-4"); expect(lines).toContain("Estimated tokens: 22"); expect(lines).toContain("Task: summarize notes"); });
+
+  it("creates printable PDF-preview HTML with escaped prompt content", () => { const html = buildPromptCounterPrintHtml("<script>alert(1)</script>", { words: 1, characters: 28, lines: 1, model: "GPT-4", tokens: 7 }); expect(html).toContain("Save as PDF"); expect(html).toContain("&lt;script&gt;"); expect(html).not.toContain("<script>alert(1)"); });
+
+  it("accepts only TXT and Markdown files for prompt import/export flows", () => { expect(isSupportedPromptExportFile({ name: "notes.txt" })).toBe(true); expect(isSupportedPromptExportFile({ name: "brief.MD" })).toBe(true); expect(isSupportedPromptExportFile({ name: "report.pdf" })).toBe(false); });
 
   it("keeps a stats-only TXT report free of the prompt body", () => {
     const report = buildPromptCounterStatsReport({ words: 4, characters: 28, lines: 1, model: "GPT-4", tokens: 7 });
