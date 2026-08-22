@@ -872,3 +872,19 @@
 - [x] 统一工具页 Meta Title、Description 与 JSON-LD 描述和核心关键词
 - [x] 检查并完善 sitemap.xml、sitemap_index.xml 和 robots.txt 的构建自动生成流程
 - [x] 增加 FAQ、Meta、sitemap 和 robots 回归测试，完成构建、视觉验证并保存检查点
+
+
+## FAQ Accordion、模型切换与时间指标
+
+- [ ] 将工具页 FAQ 升级为移动端友好的 Accordion 折叠交互
+- [ ] 为 Token 进度组件增加 GPT-4、Claude 3、Gemini 下拉切换并动态更新上限
+- [ ] 在统计结果面板增加预计阅读时间和预计朗读时间
+- [ ] 增加新交互与计算逻辑测试，完成构建、移动端验证并保存检查点
+
+
+## AI Prompt Word Counter 价值与搜索需求评估
+
+- [x] 评估工具的实际使用场景、差异化价值和与 Knexio 定位的匹配度
+- [x] 研究核心词及相关长尾搜索需求、竞争和替代意图
+- [x] 结合现有页面数据给出保留、改名或重构建议
+- [x] 整理来源、证据和可执行决策报告
