@@ -13,4 +13,9 @@ describe("priority plan template", () => {
     expect(PRIORITY_PLAN_MARKDOWN_TEMPLATE).toContain("## Priority record");
     expect(PRIORITY_PLAN_MARKDOWN_TEMPLATE).toContain("Do not invent certainty, urgency, capacity, approval, owners, or dates.");
   });
+
+  it("keeps the Markdown template suitable for clipboard use without an external URL", () => {
+    expect(PRIORITY_PLAN_MARKDOWN_TEMPLATE).not.toMatch(/https?:\/\//);
+    expect(PRIORITY_PLAN_MARKDOWN_TEMPLATE).toContain("## Human review before commitment");
+  });
 });

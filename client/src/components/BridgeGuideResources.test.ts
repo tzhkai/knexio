@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { BRIDGE_GUIDE_RESOURCES } from "./BridgeGuideResources";
+import { BRIDGE_GUIDE_RESOURCES, BRIDGE_RESOURCE_FILTERS, filterBridgeGuideResources } from "./BridgeGuideResources";
 
 describe("bridge guide resources", () => {
   it("keeps the resource block grounded in two local tools and two connected guides", () => {
@@ -18,5 +18,12 @@ describe("bridge guide resources", () => {
       "evidence-matrix-from-source-notes",
       "weekly-priorities-from-project-list",
     ]);
+  });
+
+  it("filters the resource choices without changing their stable identifiers", () => {
+    expect(BRIDGE_RESOURCE_FILTERS.map((filter) => filter.value)).toEqual(["all", "tool", "read"]);
+    expect(filterBridgeGuideResources("all")).toHaveLength(4);
+    expect(filterBridgeGuideResources("tool").map((item) => item.slug)).toEqual(["markdown-preview", "ai-prompt-word-counter"]);
+    expect(filterBridgeGuideResources("read").map((item) => item.slug)).toEqual(["evidence-matrix-from-source-notes", "weekly-priorities-from-project-list"]);
   });
 });
