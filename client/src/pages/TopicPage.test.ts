@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { buildTopicPathSummary, meetingsPathSteps, MEETINGS_PATH_STORAGE_KEY, parseMeetingsPathProgress, TOPIC_PATH_STORAGE_KEYS } from "./TopicPage";
+import { buildTopicPathSummary, meetingsPathSteps, MEETINGS_PATH_STORAGE_KEY, parseMeetingsPathProgress, TOPIC_PATH_RECOMMENDATIONS, TOPIC_PATH_STORAGE_KEYS } from "./TopicPage";
 
 describe("Meetings topic path", () => {
   it("connects agenda, action list, follow-up, decision guidance, and the counter through valid task routes", () => {
@@ -23,5 +23,12 @@ describe("Meetings topic path", () => {
     expect(summary).toContain("Meetings path: 2/4 steps complete (50%)");
     expect(summary).toContain("Set the next meeting up → Separate the commitments");
     expect(summary).toContain("Next: Send the shared record");
+  });
+
+  it("links every topic shelf to a distinct, task-relevant next workflow path", () => {
+    expect(TOPIC_PATH_RECOMMENDATIONS["research-and-decisions"].href).toBe("/workflows/planning-and-priorities/");
+    expect(TOPIC_PATH_RECOMMENDATIONS["planning-and-priorities"].href).toBe("/workflows/meetings-and-follow-up/");
+    expect(TOPIC_PATH_RECOMMENDATIONS["meetings-and-follow-up"].href).toBe("/workflows/writing-and-updates/");
+    expect(TOPIC_PATH_RECOMMENDATIONS["writing-and-updates"].href).toBe("/workflows/research-and-decisions/");
   });
 });
