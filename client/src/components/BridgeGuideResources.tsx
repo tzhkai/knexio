@@ -1,11 +1,13 @@
 import { ArrowUpRight, BookOpenCheck, Braces, FileText } from "lucide-react";
 import { Link } from "wouter";
+import { useCookieConsent } from "@/components/CookieConsent";
+import { trackRelatedResourceClick } from "@/lib/optional-analytics";
 
 export const BRIDGE_GUIDE_RESOURCES = [
-  { kind: "Tool", icon: Braces, title: "Markdown Preview", description: "Inspect headings, source labels, and lists in research notes before carrying them into a planning record.", href: "/tools/markdown-preview/" },
-  { kind: "Tool", icon: Braces, title: "AI Prompt Word Counter", description: "Compare a raw planning prompt with a smaller, reviewable brief before you send it to a model.", href: "/tools/ai-prompt-word-counter/" },
-  { kind: "Read", icon: FileText, title: "Build an evidence matrix from source notes", description: "Make support, limitations, confidence, and verification steps visible before choosing a priority.", href: "/guides/evidence-matrix-from-source-notes/" },
-  { kind: "Read", icon: BookOpenCheck, title: "Plan weekly priorities from a crowded project list", description: "Turn a confirmed decision into a modest weekly focus without hiding dependencies or capacity limits.", href: "/guides/weekly-priorities-from-project-list/" },
+  { kind: "Tool", slug: "markdown-preview", icon: Braces, title: "Markdown Preview", description: "Inspect headings, source labels, and lists in research notes before carrying them into a planning record.", href: "/tools/markdown-preview/" },
+  { kind: "Tool", slug: "ai-prompt-word-counter", icon: Braces, title: "AI Prompt Word Counter", description: "Compare a raw planning prompt with a smaller, reviewable brief before you send it to a model.", href: "/tools/ai-prompt-word-counter/" },
+  { kind: "Read", slug: "evidence-matrix-from-source-notes", icon: FileText, title: "Build an evidence matrix from source notes", description: "Make support, limitations, confidence, and verification steps visible before choosing a priority.", href: "/guides/evidence-matrix-from-source-notes/" },
+  { kind: "Read", slug: "weekly-priorities-from-project-list", icon: BookOpenCheck, title: "Plan weekly priorities from a crowded project list", description: "Turn a confirmed decision into a modest weekly focus without hiding dependencies or capacity limits.", href: "/guides/weekly-priorities-from-project-list/" },
 ] as const;
 
 const styles = `
@@ -16,5 +18,6 @@ const styles = `
 `;
 
 export default function BridgeGuideResources() {
-  return <section className="bridge-guide-resources" id="related-resources" aria-labelledby="related-resources-title"><style>{styles}</style><span className="eyebrow">Tools and follow-up reading</span><h2 id="related-resources-title">Related resources for the next review.</h2><p>Use these only when they clarify the evidence trail, narrow the planning record, or prepare a human decision. None of them confirms a priority for you.</p><div className="bridge-guide-resource-grid">{BRIDGE_GUIDE_RESOURCES.map(resource => { const Icon = resource.icon; return <Link key={resource.href} href={resource.href} className="bridge-guide-resource"><span className="bridge-guide-resource-kind"><Icon size={13} aria-hidden="true" /> {resource.kind}</span><strong>{resource.title}</strong><p>{resource.description}</p><span className="bridge-guide-resource-action">Open resource <ArrowUpRight size={13} aria-hidden="true" /></span></Link>; })}</div></section>;
+  const { consent } = useCookieConsent();
+  return <section className="bridge-guide-resources" id="related-resources" aria-labelledby="related-resources-title"><style>{styles}</style><span className="eyebrow">Tools and follow-up reading</span><h2 id="related-resources-title">Related resources for the next review.</h2><p>Use these only when they clarify the evidence trail, narrow the planning record, or prepare a human decision. None of them confirms a priority for you.</p><div className="bridge-guide-resource-grid">{BRIDGE_GUIDE_RESOURCES.map(resource => { const Icon = resource.icon; return <Link key={resource.href} href={resource.href} className="bridge-guide-resource" onClick={() => trackRelatedResourceClick(Boolean(consent?.analytics), "evidence-to-priority-plan", resource.kind.toLowerCase(), resource.slug)}><span className="bridge-guide-resource-kind"><Icon size={13} aria-hidden="true" /> {resource.kind}</span><strong>{resource.title}</strong><p>{resource.description}</p><span className="bridge-guide-resource-action">Open resource <ArrowUpRight size={13} aria-hidden="true" /></span></Link>; })}</div></section>;
 }

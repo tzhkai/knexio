@@ -12,5 +12,11 @@ describe("bridge guide resources", () => {
       "/guides/evidence-matrix-from-source-notes/",
       "/guides/weekly-priorities-from-project-list/",
     ]);
+    expect(BRIDGE_GUIDE_RESOURCES.map((item) => item.slug)).toEqual([
+      "markdown-preview",
+      "ai-prompt-word-counter",
+      "evidence-matrix-from-source-notes",
+      "weekly-priorities-from-project-list",
+    ]);
   });
 });
