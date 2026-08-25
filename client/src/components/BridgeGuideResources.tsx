@@ -14,6 +14,15 @@ export const BRIDGE_GUIDE_RESOURCES = [
 export const BRIDGE_RESOURCE_FILTERS = [{ value: "all", label: "All resources" }, { value: "tool", label: "Tools" }, { value: "read", label: "Reading" }] as const;
 export const BRIDGE_GUIDE_EMPTY_STATE_RESOURCES = [BRIDGE_GUIDE_RESOURCES[0], BRIDGE_GUIDE_RESOURCES[2]] as const;
 export type BridgeResourceFilter = (typeof BRIDGE_RESOURCE_FILTERS)[number]["value"];
+export const BRIDGE_RESOURCE_TITLE_ONLY_STORAGE_KEY = "knexio.bridge-guide.title-only.v1";
+
+export function readTitleOnlyPreference(storage: Pick<Storage, "getItem"> | null | undefined) {
+  try { return storage?.getItem(BRIDGE_RESOURCE_TITLE_ONLY_STORAGE_KEY) === "true"; } catch { return false; }
+}
+
+export function writeTitleOnlyPreference(storage: Pick<Storage, "setItem"> | null | undefined, value: boolean) {
+  try { if (!storage) return false; storage.setItem(BRIDGE_RESOURCE_TITLE_ONLY_STORAGE_KEY, String(value)); return true; } catch { return false; }
+}
 
 export function filterBridgeGuideResources(filter: BridgeResourceFilter) {
   return filter === "all" ? BRIDGE_GUIDE_RESOURCES : BRIDGE_GUIDE_RESOURCES.filter((resource) => resource.kind.toLowerCase() === filter);
@@ -69,10 +78,13 @@ export default function BridgeGuideResources() {
   const [filter, setFilter] = useState<BridgeResourceFilter>("all");
   const [query, setQuery] = useState("");
   const [titleOnly, setTitleOnly] = useState(false);
+  const [hasLoadedTitleOnlyPreference, setHasLoadedTitleOnlyPreference] = useState(false);
   const [isFiltering, setIsFiltering] = useState(false);
   const searchInputRef = useRef<HTMLInputElement>(null);
   const resources = searchBridgeGuideResources(filter, query, titleOnly);
   const matchSummary = buildResourceMatchSummary(resources.length, query, titleOnly);
+  useEffect(() => { setTitleOnly(readTitleOnlyPreference(window.localStorage)); setHasLoadedTitleOnlyPreference(true); }, []);
+  useEffect(() => { if (hasLoadedTitleOnlyPreference) writeTitleOnlyPreference(window.localStorage, titleOnly); }, [hasLoadedTitleOnlyPreference, titleOnly]);
   useEffect(() => { setIsFiltering(true); const frame = window.requestAnimationFrame(() => setIsFiltering(false)); return () => window.cancelAnimationFrame(frame); }, [filter, query, titleOnly]);
   useEffect(() => { const focusSearch = (event: KeyboardEvent) => { if (!isResourceSearchShortcut(event) || isTextEntryTarget(event.target) || event.defaultPrevented) return; event.preventDefault(); searchInputRef.current?.focus(); }; window.addEventListener("keydown", focusSearch); return () => window.removeEventListener("keydown", focusSearch); }, []);
   const clearSearch = () => { setQuery(""); searchInputRef.current?.focus(); };

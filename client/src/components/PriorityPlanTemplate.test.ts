@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { buildPriorityPlanCsv, buildPriorityPlanCsvWithBlankRows, normalizeBlankRowCount, PRIORITY_PLAN_BLANK_ROW_STORAGE_KEY, PRIORITY_PLAN_CSV_COLUMNS, PRIORITY_PLAN_CSV_ROW, PRIORITY_PLAN_MARKDOWN_TABLE, PRIORITY_PLAN_MARKDOWN_TEMPLATE, PRIORITY_PLAN_TEMPLATE_URL, readBlankRowPreference, writeBlankRowPreference } from "./PriorityPlanTemplate";
+import { buildPriorityPlanCsv, buildPriorityPlanCsvWithBlankRows, buildPriorityPlanFileName, formatPrintDate, normalizeBlankRowCount, normalizeProjectName, PRIORITY_PLAN_BLANK_ROW_STORAGE_KEY, PRIORITY_PLAN_CSV_COLUMNS, PRIORITY_PLAN_CSV_ROW, PRIORITY_PLAN_MARKDOWN_TABLE, PRIORITY_PLAN_MARKDOWN_TEMPLATE, PRIORITY_PLAN_TEMPLATE_URL, readBlankRowPreference, writeBlankRowPreference } from "./PriorityPlanTemplate";
 
 describe("priority plan template", () => {
   it("uses the deployed webdev asset URL for the editable workbook", () => {
@@ -59,5 +59,12 @@ describe("priority plan template", () => {
     expect(readBlankRowPreference(storage)).toBe(25);
     expect(readBlankRowPreference({ getItem: () => { throw new Error("blocked"); } })).toBeNull();
     expect(writeBlankRowPreference({ setItem: () => { throw new Error("blocked"); } }, 6)).toBe(false);
+  });
+
+  it("uses a cleaned project name in local export filenames and formats a stable print date", () => {
+    expect(normalizeProjectName("  Q4   Planning / Review  ")).toBe("Q4 Planning / Review");
+    expect(buildPriorityPlanFileName("Q4 Planning / Review", "csv", "-10-blank-rows")).toBe("q4-planning-review-plan-10-blank-rows.csv");
+    expect(buildPriorityPlanFileName("", "md")).toBe("research-to-priority-plan.md");
+    expect(formatPrintDate(new Date("2026-08-25T12:00:00Z"))).toBe("August 25, 2026");
   });
 });

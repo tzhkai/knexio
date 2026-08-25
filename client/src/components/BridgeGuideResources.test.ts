@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { BRIDGE_GUIDE_EMPTY_STATE_RESOURCES, BRIDGE_GUIDE_RESOURCES, BRIDGE_RESOURCE_FILTERS, buildResourceMatchSummary, filterBridgeGuideResources, isResourceSearchShortcut, searchBridgeGuideResources, splitResourceHighlight } from "./BridgeGuideResources";
+import { BRIDGE_GUIDE_EMPTY_STATE_RESOURCES, BRIDGE_GUIDE_RESOURCES, BRIDGE_RESOURCE_FILTERS, BRIDGE_RESOURCE_TITLE_ONLY_STORAGE_KEY, buildResourceMatchSummary, filterBridgeGuideResources, isResourceSearchShortcut, readTitleOnlyPreference, searchBridgeGuideResources, splitResourceHighlight, writeTitleOnlyPreference } from "./BridgeGuideResources";
 
 describe("bridge guide resources", () => {
   it("keeps the resource block grounded in two local tools and two connected guides", () => {
@@ -66,5 +66,16 @@ describe("bridge guide resources", () => {
     expect(buildResourceMatchSummary(1, "markdown")).toBe("1 related resource match “markdown”");
     expect(buildResourceMatchSummary(0, "missing")).toBe("0 related resources match “missing”");
     expect(buildResourceMatchSummary(1, "markdown", true)).toBe("1 related resource match “markdown” in titles only");
+  });
+
+  it("stores the title-only preference locally and safely falls back when storage is unavailable", () => {
+    const values = new Map<string, string>();
+    const storage = { getItem: (key: string) => values.get(key) ?? null, setItem: (key: string, value: string) => values.set(key, value) };
+    expect(readTitleOnlyPreference(storage)).toBe(false);
+    expect(writeTitleOnlyPreference(storage, true)).toBe(true);
+    expect(values.get(BRIDGE_RESOURCE_TITLE_ONLY_STORAGE_KEY)).toBe("true");
+    expect(readTitleOnlyPreference(storage)).toBe(true);
+    expect(readTitleOnlyPreference({ getItem: () => { throw new Error("blocked"); } })).toBe(false);
+    expect(writeTitleOnlyPreference({ setItem: () => { throw new Error("blocked"); } }, true)).toBe(false);
   });
 });
