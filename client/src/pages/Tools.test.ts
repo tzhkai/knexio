@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { addShareUtm, buildPromptCounterReport, buildPromptCounterShareText, buildShareLinks, clearLocalDraft, copyTextToClipboard, countPromptWords, estimateTokenCount, highlightCode, MARKDOWN_PRESET_TEMPLATE, COUNTER_PRESET_TEMPLATE, parseTemplateExport, readLocalDraft, renderMarkdown, resolvePresetTemplate, serializeTemplateExport, syncScrollPosition, tokenWarningLevel, writeLocalDraft } from "./Tools";
+import { addShareUtm, buildPromptCounterReport, buildPromptCounterShareText, buildShareLinks, buildTimestampedPromptCounterReport, clearLocalDraft, copyTextToClipboard, countPromptWords, estimateTokenCount, formatExportTimestamp, getCounterShortcutAction, highlightCode, MARKDOWN_PRESET_TEMPLATE, COUNTER_PRESET_TEMPLATE, parseTemplateExport, readLocalDraft, renderMarkdown, resolvePresetTemplate, serializeTemplateExport, syncScrollPosition, tokenWarningLevel, writeLocalDraft } from "./Tools";
 
 describe("Workflow utilities", () => {
   it("copies non-empty results through the available clipboard API", async () => {
@@ -38,6 +38,18 @@ describe("Workflow utilities", () => {
     expect(report).toContain("Words: 2");
     expect(report).not.toContain("Confidential prompt");
     expect(report).not.toContain("Prompt:");
+  });
+
+  it("adds a stable local timestamp to the TXT filename and report header", () => {
+    const date = new Date(2026, 7, 25, 9, 4, 7);
+    expect(formatExportTimestamp(date)).toBe("2026-08-25_09-04-07");
+    expect(buildTimestampedPromptCounterReport("Prompt", { words: 1, characters: 6, lines: 1, model: "GPT-4", tokens: 2 }, false, date)).toContain(`Exported: ${date.toLocaleString()}`);
+  });
+
+  it("recognizes only modified keyboard shortcuts for export and clear", () => {
+    expect(getCounterShortcutAction({ key: "e", ctrlKey: true, metaKey: false, shiftKey: true, altKey: false })).toBe("export");
+    expect(getCounterShortcutAction({ key: "Backspace", ctrlKey: false, metaKey: true, shiftKey: true, altKey: false })).toBe("clear");
+    expect(getCounterShortcutAction({ key: "e", ctrlKey: false, metaKey: false, shiftKey: false, altKey: false })).toBeNull();
   });
 
   it("counts prompt words using whitespace boundaries", () => {
