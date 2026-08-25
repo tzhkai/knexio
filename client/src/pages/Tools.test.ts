@@ -33,6 +33,13 @@ describe("Workflow utilities", () => {
     expect(report).toContain("Prompt:\nTask: summarize these notes");
   });
 
+  it("builds a statistics-only TXT report without the original prompt", () => {
+    const report = buildPromptCounterReport("Confidential prompt", { words: 2, characters: 19, lines: 1, model: "GPT-4", tokens: 5 }, false);
+    expect(report).toContain("Words: 2");
+    expect(report).not.toContain("Confidential prompt");
+    expect(report).not.toContain("Prompt:");
+  });
+
   it("counts prompt words using whitespace boundaries", () => {
     expect(countPromptWords("  Give me a brief\nwith sources. ")).toBe(6);
     expect(countPromptWords("   ")).toBe(0);
