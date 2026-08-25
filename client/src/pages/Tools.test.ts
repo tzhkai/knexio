@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { addShareUtm, buildPromptCounterReport, buildPromptCounterShareText, buildShareLinks, buildTimestampedPromptCounterReport, clearLocalDraft, copyTextToClipboard, countPromptWords, estimateTokenCount, formatExportTimestamp, getCounterShortcutAction, highlightCode, MARKDOWN_PRESET_TEMPLATE, COUNTER_PRESET_TEMPLATE, parseTemplateExport, PROMPT_COUNTER_FAQS, promptCounterStructuredData, readLocalDraft, renderMarkdown, resolvePresetTemplate, serializeTemplateExport, syncScrollPosition, tokenWarningLevel, writeLocalDraft } from "./Tools";
+import { addShareUtm, buildPromptCounterReport, buildPromptCounterShareText, buildShareLinks, buildTimestampedPromptCounterReport, clearLocalDraft, contextUsagePercentage, copyTextToClipboard, countPromptWords, estimateTokenCount, formatExportTimestamp, getCounterShortcutAction, highlightCode, MARKDOWN_PRESET_TEMPLATE, COUNTER_PRESET_TEMPLATE, parseTemplateExport, PROMPT_COUNTER_FAQS, promptCounterStructuredData, readLocalDraft, renderMarkdown, resolvePresetTemplate, serializeTemplateExport, syncScrollPosition, tokenWarningLevel, writeLocalDraft } from "./Tools";
 
 describe("Workflow utilities", () => {
   it("copies non-empty results through the available clipboard API", async () => {
@@ -86,6 +86,13 @@ describe("Workflow utilities", () => {
   });
 
   it("flags prompts near or above the selected context planning limit", () => { expect(tokenWarningLevel(6554, "gpt-4")).toBe("near"); expect(tokenWarningLevel(8192, "gpt-4")).toBe("over"); expect(tokenWarningLevel(160000, "claude-3-5")).toBe("near"); });
+
+  it("calculates a bounded context usage percentage for the visual progress bar", () => {
+    expect(contextUsagePercentage(4096, "gpt-4")).toBe(50);
+    expect(contextUsagePercentage(1000000, "gemini-1-5")).toBe(100);
+    expect(contextUsagePercentage(2000000, "gemini-1-5")).toBe(100);
+    expect(contextUsagePercentage(0, "claude-3-5")).toBe(0);
+  });
 
   it("highlights supported code keywords while escaping markup", () => { const html = highlightCode("const value = \"<safe>\";", "js"); expect(html).toContain("code-keyword"); expect(html).toContain("code-string"); expect(html).toContain("&lt;safe&gt;"); });
 

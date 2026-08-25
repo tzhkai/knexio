@@ -836,3 +836,11 @@
 - [x] 优化 Prompt Counter 在 375px 移动端的输入、模型参考、统计与操作区密度和可读性
 - [x] 完成测试、生产构建、移动端视觉验证并保存检查点
 - [x] 已记录：等待 Search Console 索引请求错误恢复至少 24 小时后，再决定是否对两个未收录 URL 各重试一次；本轮不重复提交
+
+## Prompt Counter 独立价值、站点地图与模型进度条
+
+- [x] 为 Prompt Counter 增加匿名化长提示词优化的真实工作场景示例
+- [x] 为模型上下文参考增加动态可访问进度条和接近限制时的红色预警
+- [x] 更新 sitemap 生成源中 Prompt Counter 与 Meeting Agenda 的 lastmod，并验证生成的 XML
+- [x] 为新增示例、进度计算和 sitemap lastmod 增加回归测试
+- [x] 完成生产构建、站点地图、桌面/移动端视觉验证并保存检查点

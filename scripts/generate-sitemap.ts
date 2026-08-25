@@ -2,6 +2,7 @@ import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { allSitemapRoutes, canonicalRouteUrl, guideSitemapRoutes, staticSitemapRoutes, workflowSitemapRoutes } from "./site-routes";
+import { DEFAULT_SITEMAP_LASTMOD, sitemapLastmodForRoute } from "./sitemap-metadata";
 
 const configuredUrl = process.env.SITE_URL || "https://knexio.xyz";
 
@@ -22,14 +23,14 @@ if (uniqueRoutes.size !== normalizedRoutes.length) {
 }
 
 const xmlEscape = (value: string) => value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&apos;");
-const lastmod = new Date().toISOString().slice(0, 10);
-const createUrlset = (routes: readonly string[]) => `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${routes.map((route) => `  <url><loc>${xmlEscape(canonicalRouteUrl(origin, route))}</loc><lastmod>${lastmod}</lastmod></url>`).join("\n")}\n</urlset>\n`;
+const createUrlset = (routes: readonly string[]) => `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${routes.map((route) => `  <url><loc>${xmlEscape(canonicalRouteUrl(origin, route))}</loc><lastmod>${sitemapLastmodForRoute(route)}</lastmod></url>`).join("\n")}\n</urlset>\n`;
 const sitemapGroups = [
   { file: "sitemap-pages.xml", routes: staticSitemapRoutes },
   { file: "sitemap-guides.xml", routes: guideSitemapRoutes },
   { file: "sitemap-workflows.xml", routes: workflowSitemapRoutes },
 ] as const;
-const sitemapIndex = `<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapGroups.map(({ file }) => `  <sitemap><loc>${xmlEscape(`${origin}/${file}`)}</loc><lastmod>${lastmod}</lastmod></sitemap>`).join("\n")}\n</sitemapindex>\n`;
+const sitemapGroupLastmod = (routes: readonly string[]) => routes.reduce((latest, route) => sitemapLastmodForRoute(route) > latest ? sitemapLastmodForRoute(route) : latest, DEFAULT_SITEMAP_LASTMOD);
+const sitemapIndex = `<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapGroups.map(({ file, routes }) => `  <sitemap><loc>${xmlEscape(`${origin}/${file}`)}</loc><lastmod>${sitemapGroupLastmod(routes)}</lastmod></sitemap>`).join("\n")}\n</sitemapindex>\n`;
 const robots = `User-agent: *\nAllow: /\nDisallow: /404\n\nSitemap: ${origin}/sitemap_index.xml\n`;
 const here = path.dirname(fileURLToPath(import.meta.url));
 const publicDir = process.env.SITEMAP_OUTPUT_DIR ? path.resolve(process.env.SITEMAP_OUTPUT_DIR) : path.resolve(here, "..", "client", "public");
