@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { BRIDGE_GUIDE_RESOURCES, BRIDGE_RESOURCE_FILTERS, filterBridgeGuideResources } from "./BridgeGuideResources";
+import { BRIDGE_GUIDE_RESOURCES, BRIDGE_RESOURCE_FILTERS, filterBridgeGuideResources, searchBridgeGuideResources } from "./BridgeGuideResources";
 
 describe("bridge guide resources", () => {
   it("keeps the resource block grounded in two local tools and two connected guides", () => {
@@ -25,5 +25,12 @@ describe("bridge guide resources", () => {
     expect(filterBridgeGuideResources("all")).toHaveLength(4);
     expect(filterBridgeGuideResources("tool").map((item) => item.slug)).toEqual(["markdown-preview", "ai-prompt-word-counter"]);
     expect(filterBridgeGuideResources("read").map((item) => item.slug)).toEqual(["evidence-matrix-from-source-notes", "weekly-priorities-from-project-list"]);
+  });
+
+  it("searches titles, descriptions and stable slugs within the selected category", () => {
+    expect(searchBridgeGuideResources("all", "prompt").map((item) => item.slug)).toEqual(["ai-prompt-word-counter"]);
+    expect(searchBridgeGuideResources("tool", "markdown").map((item) => item.slug)).toEqual(["markdown-preview"]);
+    expect(searchBridgeGuideResources("read", "source").map((item) => item.slug)).toEqual(["evidence-matrix-from-source-notes"]);
+    expect(searchBridgeGuideResources("read", "counter")).toEqual([]);
   });
 });
