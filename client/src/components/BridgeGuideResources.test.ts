@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { BRIDGE_GUIDE_RESOURCES, BRIDGE_RESOURCE_FILTERS, filterBridgeGuideResources, isResourceSearchShortcut, searchBridgeGuideResources } from "./BridgeGuideResources";
+import { BRIDGE_GUIDE_EMPTY_STATE_RESOURCES, BRIDGE_GUIDE_RESOURCES, BRIDGE_RESOURCE_FILTERS, filterBridgeGuideResources, isResourceSearchShortcut, searchBridgeGuideResources, splitResourceHighlight } from "./BridgeGuideResources";
 
 describe("bridge guide resources", () => {
   it("keeps the resource block grounded in two local tools and two connected guides", () => {
@@ -38,5 +38,20 @@ describe("bridge guide resources", () => {
     expect(isResourceSearchShortcut({ key: "/", metaKey: false, ctrlKey: false, altKey: false, shiftKey: false })).toBe(true);
     expect(isResourceSearchShortcut({ key: "/", metaKey: true, ctrlKey: false, altKey: false, shiftKey: false })).toBe(false);
     expect(isResourceSearchShortcut({ key: "k", metaKey: false, ctrlKey: false, altKey: false, shiftKey: false })).toBe(false);
+  });
+
+  it("splits case-insensitive matches into safe text segments and keeps direct empty-state links", () => {
+    expect(splitResourceHighlight("AI Prompt Word Counter", "prompt")).toEqual([
+      { text: "AI ", isMatch: false },
+      { text: "Prompt", isMatch: true },
+      { text: " Word Counter", isMatch: false },
+    ]);
+    expect(splitResourceHighlight("<review>", "review")).toEqual([
+      { text: "<", isMatch: false },
+      { text: "review", isMatch: true },
+      { text: ">", isMatch: false },
+    ]);
+    expect(splitResourceHighlight("Markdown Preview", "")).toEqual([{ text: "Markdown Preview", isMatch: false }]);
+    expect(BRIDGE_GUIDE_EMPTY_STATE_RESOURCES.map((item) => item.slug)).toEqual(["markdown-preview", "evidence-matrix-from-source-notes"]);
   });
 });

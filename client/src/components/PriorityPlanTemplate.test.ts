@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { buildPriorityPlanCsv, PRIORITY_PLAN_CSV_COLUMNS, PRIORITY_PLAN_CSV_ROW, PRIORITY_PLAN_MARKDOWN_TABLE, PRIORITY_PLAN_MARKDOWN_TEMPLATE, PRIORITY_PLAN_TEMPLATE_URL } from "./PriorityPlanTemplate";
+import { buildPriorityPlanCsv, buildPriorityPlanCsvWithBlankRows, PRIORITY_PLAN_CSV_COLUMNS, PRIORITY_PLAN_CSV_ROW, PRIORITY_PLAN_MARKDOWN_TABLE, PRIORITY_PLAN_MARKDOWN_TEMPLATE, PRIORITY_PLAN_TEMPLATE_URL } from "./PriorityPlanTemplate";
 
 describe("priority plan template", () => {
   it("uses the deployed webdev asset URL for the editable workbook", () => {
@@ -32,5 +32,13 @@ describe("priority plan template", () => {
     expect(csv).toContain(`"${PRIORITY_PLAN_CSV_COLUMNS[0]}"`);
     expect(csv).toContain(`"${PRIORITY_PLAN_CSV_ROW[0]}"`);
     expect(buildPriorityPlanCsv([["Needs, review", "Say \"hello\""]])).toBe('"Needs, review","Say ""hello"""');
+  });
+
+  it("creates a print-friendly CSV option with a header and blank entry rows", () => {
+    const csv = buildPriorityPlanCsvWithBlankRows(6);
+    expect(csv.split("\r\n")).toHaveLength(7);
+    expect(csv.split("\r\n")[0]).toContain('"Priority / next move"');
+    expect(csv.split("\r\n")[1]).toBe('"","","","","","","",""');
+    expect(buildPriorityPlanCsvWithBlankRows(0).split("\r\n")).toHaveLength(2);
   });
 });

@@ -48,6 +48,12 @@ export function buildPriorityPlanCsv(rows: readonly (readonly string[])[] = [PRI
   return rows.map((row) => row.map(escape).join(",")).join("\r\n");
 }
 
+export function buildPriorityPlanCsvWithBlankRows(blankRowCount = 6) {
+  const blankRow = PRIORITY_PLAN_CSV_COLUMNS.map(() => "");
+  const blankRows = Array.from({ length: Math.max(1, Math.floor(blankRowCount)) }, () => blankRow);
+  return buildPriorityPlanCsv([PRIORITY_PLAN_CSV_COLUMNS, ...blankRows]);
+}
+
 const styles = `
   .priority-plan-template { margin:30px 0; padding:21px 0; border-top:1px solid var(--ink); border-bottom:1px solid var(--rule); }
   .priority-plan-template-head { display:flex; align-items:flex-start; justify-content:space-between; gap:20px; }
@@ -91,6 +97,10 @@ export default function PriorityPlanTemplate() {
     startLocalDownload("research-to-priority-plan-template.csv", `\uFEFF${buildPriorityPlanCsv()}`, "text/csv;charset=utf-8");
     showFeedback("CSV priority table download started");
   }, [showFeedback]);
+  const downloadBlankCsvTemplate = useCallback(() => {
+    startLocalDownload("research-to-priority-plan-blank-rows.csv", `\uFEFF${buildPriorityPlanCsvWithBlankRows()}`, "text/csv;charset=utf-8");
+    showFeedback("CSV with six blank priority rows download started");
+  }, [showFeedback]);
   const copyMarkdownTemplate = useCallback(async () => {
     const copied = await copyTextToClipboard(PRIORITY_PLAN_MARKDOWN_TEMPLATE);
     showFeedback(copied ? "Markdown template copied to clipboard" : "Could not copy automatically — select the template text instead");
@@ -99,5 +109,5 @@ export default function PriorityPlanTemplate() {
     const copied = await copyTextToClipboard(PRIORITY_PLAN_MARKDOWN_TABLE);
     showFeedback(copied ? "Priority table copied to clipboard" : "Could not copy automatically — select the table text instead");
   }, [showFeedback]);
-  return <section className="priority-plan-template" id="priority-plan-template" aria-labelledby="priority-plan-template-title"><style>{styles}</style><div className="priority-plan-template-head"><div><span className="priority-plan-template-kicker"><FileSpreadsheet size={13} aria-hidden="true" /> Practical asset</span><h2 id="priority-plan-template-title">Download the research-to-priority plan template.</h2><p>Choose an editable Excel workbook, CSV priority table, or plain Markdown record. All formats keep source-aware evidence separate from the decision, one modest priority, dependencies, review condition, and human check. Downloads stay in your browser and do not require an account.</p><span className="priority-plan-template-note">Excel includes: Start here, Priority plan, and Evidence notes worksheets. CSV is a simple priority-table import.</span></div><div className="priority-plan-template-actions"><a className="priority-plan-template-button" href={PRIORITY_PLAN_TEMPLATE_URL} download="research-to-priority-plan-template.xlsx" onClick={() => showFeedback("Excel template download started")}><Download size={15} aria-hidden="true" /> Download .xlsx</a><button type="button" className="priority-plan-template-button is-secondary" onClick={downloadCsvTemplate}><Download size={15} aria-hidden="true" /> Download .csv</button><button type="button" className="priority-plan-template-button is-secondary" onClick={downloadMarkdownTemplate}><FileText size={15} aria-hidden="true" /> Download .md</button><button type="button" className="priority-plan-template-button is-secondary" onClick={copyMarkdownTemplate}><Copy size={15} aria-hidden="true" /> Copy Markdown</button><button type="button" className="priority-plan-template-button is-secondary" onClick={copyPriorityTable}><Copy size={15} aria-hidden="true" /> Copy priority table</button></div></div>{feedback && <div className="priority-plan-template-toast" role="status" aria-live="polite"><Check size={16} aria-hidden="true" /> {feedback}</div>}</section>;
+  return <section className="priority-plan-template" id="priority-plan-template" aria-labelledby="priority-plan-template-title"><style>{styles}</style><div className="priority-plan-template-head"><div><span className="priority-plan-template-kicker"><FileSpreadsheet size={13} aria-hidden="true" /> Practical asset</span><h2 id="priority-plan-template-title">Download the research-to-priority plan template.</h2><p>Choose an editable Excel workbook, CSV priority table, or plain Markdown record. All formats keep source-aware evidence separate from the decision, one modest priority, dependencies, review condition, and human check. Downloads stay in your browser and do not require an account.</p><span className="priority-plan-template-note">Excel includes: Start here, Priority plan, and Evidence notes worksheets. CSV is a simple priority-table import; the blank-row CSV is ready for manual entry or print.</span></div><div className="priority-plan-template-actions"><a className="priority-plan-template-button" href={PRIORITY_PLAN_TEMPLATE_URL} download="research-to-priority-plan-template.xlsx" onClick={() => showFeedback("Excel template download started")}><Download size={15} aria-hidden="true" /> Download .xlsx</a><button type="button" className="priority-plan-template-button is-secondary" onClick={downloadCsvTemplate}><Download size={15} aria-hidden="true" /> Download .csv</button><button type="button" className="priority-plan-template-button is-secondary" onClick={downloadBlankCsvTemplate}><Download size={15} aria-hidden="true" /> CSV · 6 blank rows</button><button type="button" className="priority-plan-template-button is-secondary" onClick={downloadMarkdownTemplate}><FileText size={15} aria-hidden="true" /> Download .md</button><button type="button" className="priority-plan-template-button is-secondary" onClick={copyMarkdownTemplate}><Copy size={15} aria-hidden="true" /> Copy Markdown</button><button type="button" className="priority-plan-template-button is-secondary" onClick={copyPriorityTable}><Copy size={15} aria-hidden="true" /> Copy priority table</button></div></div>{feedback && <div className="priority-plan-template-toast" role="status" aria-live="polite"><Check size={16} aria-hidden="true" /> {feedback}</div>}</section>;
 }
