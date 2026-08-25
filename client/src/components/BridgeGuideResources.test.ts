@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { BRIDGE_GUIDE_EMPTY_STATE_RESOURCES, BRIDGE_GUIDE_RESOURCES, BRIDGE_RESOURCE_FILTERS, filterBridgeGuideResources, isResourceSearchShortcut, searchBridgeGuideResources, splitResourceHighlight } from "./BridgeGuideResources";
+import { BRIDGE_GUIDE_EMPTY_STATE_RESOURCES, BRIDGE_GUIDE_RESOURCES, BRIDGE_RESOURCE_FILTERS, buildResourceMatchSummary, filterBridgeGuideResources, isResourceSearchShortcut, searchBridgeGuideResources, splitResourceHighlight } from "./BridgeGuideResources";
 
 describe("bridge guide resources", () => {
   it("keeps the resource block grounded in two local tools and two connected guides", () => {
@@ -53,5 +53,11 @@ describe("bridge guide resources", () => {
     ]);
     expect(splitResourceHighlight("Markdown Preview", "")).toEqual([{ text: "Markdown Preview", isMatch: false }]);
     expect(BRIDGE_GUIDE_EMPTY_STATE_RESOURCES.map((item) => item.slug)).toEqual(["markdown-preview", "evidence-matrix-from-source-notes"]);
+  });
+
+  it("writes a clear match count for empty, singular, plural and query-specific states", () => {
+    expect(buildResourceMatchSummary(4, "")).toBe("4 related resources available");
+    expect(buildResourceMatchSummary(1, "markdown")).toBe("1 related resource match “markdown”");
+    expect(buildResourceMatchSummary(0, "missing")).toBe("0 related resources match “missing”");
   });
 });
