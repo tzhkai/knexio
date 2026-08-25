@@ -844,3 +844,11 @@
 - [x] 更新 sitemap 生成源中 Prompt Counter 与 Meeting Agenda 的 lastmod，并验证生成的 XML
 - [x] 为新增示例、进度计算和 sitemap lastmod 增加回归测试
 - [x] 完成生产构建、站点地图、桌面/移动端视觉验证并保存检查点
+
+## Prompt Counter 与 Meetings 集群的可发现性增强
+
+- [x] 审阅 Prompt Counter、Meeting Agenda 和 Meetings 专题的正文差异、上下游链接与站内入口
+- [x] 为核心工具和 Meetings 集群补充低风险、可验证的实用内容与任务型内链
+- [x] 检查补强后页面的规范链接、结构化数据、正文独立性和站点地图入口
+- [x] 完成回归测试、生产构建与关键页面视觉验证
+- [x] 保存检查点并交付后续收录观察建议
