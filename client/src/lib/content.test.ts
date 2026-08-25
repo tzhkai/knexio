@@ -46,6 +46,18 @@ describe("workflow library content", () => {
     expect(researchCluster?.guideSlugs).toContain("evidence-matrix-from-source-notes");
   });
 
+  it("publishes the evidence-to-priority transition guide in both Research and Planning clusters", () => {
+    const guide = getGuide("evidence-to-priority-plan");
+    const researchCluster = topicClusters.find((topic) => topic.slug === "research-and-decisions");
+    const planningCluster = topicClusters.find((topic) => topic.slug === "planning-and-priorities");
+
+    expect(guide?.category).toBe("Planning");
+    expect(guide?.prompt).toContain("Do not invent priority, urgency, owners, dates, capacity, approval, or evidence.");
+    expect(guide?.sections.length).toBeGreaterThanOrEqual(6);
+    expect(researchCluster?.guideSlugs).toContain("evidence-to-priority-plan");
+    expect(planningCluster?.guideSlugs).toContain("evidence-to-priority-plan");
+  });
+
   it("maps each core category to a published guide", () => {
     const guideSlugs = new Set(guides.map((guide) => guide.slug));
 

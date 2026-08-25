@@ -5,7 +5,7 @@ import path from "node:path";
 import { describe, expect, it } from "vitest";
 
 describe("sitemap lastmod generation", () => {
-  it("uses current dates for the updated Prompt Counter and Meeting Agenda routes", () => {
+  it("uses current dates for the updated Prompt Counter, Meeting Agenda, and transition guide routes", () => {
     const projectRoot = process.cwd();
     const output = mkdtempSync(path.join(tmpdir(), "knexio-sitemap-"));
     try {
@@ -14,6 +14,7 @@ describe("sitemap lastmod generation", () => {
       const guides = readFileSync(path.join(output, "sitemap-guides.xml"), "utf8");
       expect(pages).toContain("<loc>https://knexio.xyz/tools/ai-prompt-word-counter/</loc><lastmod>2026-08-25</lastmod>");
       expect(guides).toContain("<loc>https://knexio.xyz/guides/meeting-agenda-from-notes/</loc><lastmod>2026-08-25</lastmod>");
+      expect(guides).toContain("<loc>https://knexio.xyz/guides/evidence-to-priority-plan/</loc><lastmod>2026-08-25</lastmod>");
     } finally {
       rmSync(output, { recursive: true, force: true });
     }
