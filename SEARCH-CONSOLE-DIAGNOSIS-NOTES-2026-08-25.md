@@ -39,6 +39,12 @@ Both URLs were checked through the Search Console URL Inspection UI:
 
 For each, Search Console reported **URL is not on Google** and **Google does not know this URL**. It reported no referring sitemap, no referring page, no crawl date, and no canonical evaluation. No indexing request was sent.
 
+## Follow-up inspection and indexing request attempts
+
+* `https://knexio.xyz/` was checked on 2026-08-25 and is already indexed. No request was sent for the homepage.
+* `https://knexio.xyz/tools/ai-prompt-word-counter/` remained unknown to Google. After the user confirmed a one-time request, the Search Console flow completed its live-test step but returned: “There was a problem submitting your indexing request. Please try again later.” No successful request confirmation was shown.
+* `https://knexio.xyz/guides/meeting-agenda-from-notes/` was reported as **Discovered — currently not indexed**, with `sitemap_index.xml` shown as the discovery source. Its separately confirmed one-time request also returned the same generic Search Console submission error. No retry was made.
+
 ## Publicly verified online state
 
 * `https://knexio.xyz/robots.txt` allows crawling and declares `https://knexio.xyz/sitemap_index.xml`.

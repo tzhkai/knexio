@@ -827,3 +827,12 @@
 - [x] 执行公开抓取与索引诊断备选方案
 - [x] 制定未来 14 天的收录、内容与分发优先行动
 - [x] 交付数据解读与零点击原因判断
+
+## 索引请求、结构化数据与 Prompt Counter 移动端优化
+
+- [x] 核对首页、Prompt Counter 和 Meeting Agenda 的 Google 索引状态，仅保留未收录候选
+- [x] 经确认后仅为仍未收录的 Prompt Counter 和 Meeting Agenda 各尝试一次索引请求；均被 Search Console 通用后台错误阻断
+- [x] 为 Prompt Counter 与 Meeting Agenda 实现适当的 FAQ/工具结构化数据并添加回归测试
+- [x] 优化 Prompt Counter 在 375px 移动端的输入、模型参考、统计与操作区密度和可读性
+- [x] 完成测试、生产构建、移动端视觉验证并保存检查点
+- [ ] 等 Search Console 索引请求错误恢复至少 24 小时后，再决定是否对两个未收录 URL 各重试一次

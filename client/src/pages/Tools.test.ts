@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { addShareUtm, buildPromptCounterReport, buildPromptCounterShareText, buildShareLinks, buildTimestampedPromptCounterReport, clearLocalDraft, copyTextToClipboard, countPromptWords, estimateTokenCount, formatExportTimestamp, getCounterShortcutAction, highlightCode, MARKDOWN_PRESET_TEMPLATE, COUNTER_PRESET_TEMPLATE, parseTemplateExport, readLocalDraft, renderMarkdown, resolvePresetTemplate, serializeTemplateExport, syncScrollPosition, tokenWarningLevel, writeLocalDraft } from "./Tools";
+import { addShareUtm, buildPromptCounterReport, buildPromptCounterShareText, buildShareLinks, buildTimestampedPromptCounterReport, clearLocalDraft, copyTextToClipboard, countPromptWords, estimateTokenCount, formatExportTimestamp, getCounterShortcutAction, highlightCode, MARKDOWN_PRESET_TEMPLATE, COUNTER_PRESET_TEMPLATE, parseTemplateExport, PROMPT_COUNTER_FAQS, promptCounterStructuredData, readLocalDraft, renderMarkdown, resolvePresetTemplate, serializeTemplateExport, syncScrollPosition, tokenWarningLevel, writeLocalDraft } from "./Tools";
 
 describe("Workflow utilities", () => {
   it("copies non-empty results through the available clipboard API", async () => {
@@ -50,6 +50,13 @@ describe("Workflow utilities", () => {
     expect(getCounterShortcutAction({ key: "e", ctrlKey: true, metaKey: false, shiftKey: true, altKey: false })).toBe("export");
     expect(getCounterShortcutAction({ key: "Backspace", ctrlKey: false, metaKey: true, shiftKey: true, altKey: false })).toBe("clear");
     expect(getCounterShortcutAction({ key: "e", ctrlKey: false, metaKey: false, shiftKey: false, altKey: false })).toBeNull();
+  });
+
+  it("publishes matching SoftwareApplication and FAQPage structured data", () => {
+    const schemas = promptCounterStructuredData("https://knexio.xyz", "https://knexio.xyz/tools/ai-prompt-word-counter/");
+    expect(schemas.some(schema => schema["@type"] === "SoftwareApplication")).toBe(true);
+    const faq = schemas.find(schema => schema["@type"] === "FAQPage") as { mainEntity: { name: string }[] };
+    expect(faq.mainEntity.map(item => item.name)).toEqual(PROMPT_COUNTER_FAQS.map(item => item.question));
   });
 
   it("counts prompt words using whitespace boundaries", () => {
