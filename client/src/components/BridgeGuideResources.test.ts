@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { BRIDGE_GUIDE_RESOURCES, BRIDGE_RESOURCE_FILTERS, filterBridgeGuideResources, searchBridgeGuideResources } from "./BridgeGuideResources";
+import { BRIDGE_GUIDE_RESOURCES, BRIDGE_RESOURCE_FILTERS, filterBridgeGuideResources, isResourceSearchShortcut, searchBridgeGuideResources } from "./BridgeGuideResources";
 
 describe("bridge guide resources", () => {
   it("keeps the resource block grounded in two local tools and two connected guides", () => {
@@ -32,5 +32,11 @@ describe("bridge guide resources", () => {
     expect(searchBridgeGuideResources("tool", "markdown").map((item) => item.slug)).toEqual(["markdown-preview"]);
     expect(searchBridgeGuideResources("read", "source").map((item) => item.slug)).toEqual(["evidence-matrix-from-source-notes"]);
     expect(searchBridgeGuideResources("read", "counter")).toEqual([]);
+  });
+
+  it("reserves slash without modifiers as the search-focus shortcut", () => {
+    expect(isResourceSearchShortcut({ key: "/", metaKey: false, ctrlKey: false, altKey: false, shiftKey: false })).toBe(true);
+    expect(isResourceSearchShortcut({ key: "/", metaKey: true, ctrlKey: false, altKey: false, shiftKey: false })).toBe(false);
+    expect(isResourceSearchShortcut({ key: "k", metaKey: false, ctrlKey: false, altKey: false, shiftKey: false })).toBe(false);
   });
 });

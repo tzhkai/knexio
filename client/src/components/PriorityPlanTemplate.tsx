@@ -37,8 +37,16 @@ export const PRIORITY_PLAN_MARKDOWN_TEMPLATE = `# Research → Priority Plan
 export const PRIORITY_PLAN_MARKDOWN_TABLE = `## Priority record
 
 | Priority / next move | Decision it supports | Evidence reference | Gap or limitation | Dependency | Owner | Review condition | Status |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- | --- |
 | [smallest useful move] | [decision] | [source label] | [gap] | [dependency] | [owner or Not stated] | [condition] | [Not started / In review / Needs verification / Ready for decision / Deferred] |`;
+
+export const PRIORITY_PLAN_CSV_COLUMNS = ["Priority / next move", "Decision it supports", "Evidence reference", "Gap or limitation", "Dependency", "Owner", "Review condition", "Status"] as const;
+export const PRIORITY_PLAN_CSV_ROW = ["[smallest useful move]", "[decision]", "[source label]", "[gap]", "[dependency]", "[owner or Not stated]", "[condition]", "[Not started / In review / Needs verification / Ready for decision / Deferred]"] as const;
+
+export function buildPriorityPlanCsv(rows: readonly (readonly string[])[] = [PRIORITY_PLAN_CSV_COLUMNS, PRIORITY_PLAN_CSV_ROW]) {
+  const escape = (value: string) => `"${value.replaceAll('"', '""')}"`;
+  return rows.map((row) => row.map(escape).join(",")).join("\r\n");
+}
 
 const styles = `
   .priority-plan-template { margin:30px 0; padding:21px 0; border-top:1px solid var(--ink); border-bottom:1px solid var(--rule); }
@@ -54,6 +62,18 @@ const styles = `
   @media(prefers-reduced-motion:reduce) { .priority-plan-template-toast { transition:none; } }
 `;
 
+function startLocalDownload(filename: string, content: string, type: string) {
+  const blob = new Blob([content], { type });
+  const url = URL.createObjectURL(blob);
+  const anchor = document.createElement("a");
+  anchor.href = url;
+  anchor.download = filename;
+  document.body.appendChild(anchor);
+  anchor.click();
+  anchor.remove();
+  URL.revokeObjectURL(url);
+}
+
 export default function PriorityPlanTemplate() {
   const [feedback, setFeedback] = useState("");
   const feedbackTimer = useRef<number | null>(null);
@@ -64,16 +84,12 @@ export default function PriorityPlanTemplate() {
   }, []);
   useEffect(() => () => { if (feedbackTimer.current) window.clearTimeout(feedbackTimer.current); }, []);
   const downloadMarkdownTemplate = useCallback(() => {
-    const blob = new Blob([PRIORITY_PLAN_MARKDOWN_TEMPLATE], { type: "text/markdown;charset=utf-8" });
-    const url = URL.createObjectURL(blob);
-    const anchor = document.createElement("a");
-    anchor.href = url;
-    anchor.download = "research-to-priority-plan-template.md";
-    document.body.appendChild(anchor);
-    anchor.click();
-    anchor.remove();
-    URL.revokeObjectURL(url);
+    startLocalDownload("research-to-priority-plan-template.md", PRIORITY_PLAN_MARKDOWN_TEMPLATE, "text/markdown;charset=utf-8");
     showFeedback("Markdown template download started");
+  }, [showFeedback]);
+  const downloadCsvTemplate = useCallback(() => {
+    startLocalDownload("research-to-priority-plan-template.csv", `\uFEFF${buildPriorityPlanCsv()}`, "text/csv;charset=utf-8");
+    showFeedback("CSV priority table download started");
   }, [showFeedback]);
   const copyMarkdownTemplate = useCallback(async () => {
     const copied = await copyTextToClipboard(PRIORITY_PLAN_MARKDOWN_TEMPLATE);
@@ -83,5 +99,5 @@ export default function PriorityPlanTemplate() {
     const copied = await copyTextToClipboard(PRIORITY_PLAN_MARKDOWN_TABLE);
     showFeedback(copied ? "Priority table copied to clipboard" : "Could not copy automatically — select the table text instead");
   }, [showFeedback]);
-  return <section className="priority-plan-template" id="priority-plan-template" aria-labelledby="priority-plan-template-title"><style>{styles}</style><div className="priority-plan-template-head"><div><span className="priority-plan-template-kicker"><FileSpreadsheet size={13} aria-hidden="true" /> Practical asset</span><h2 id="priority-plan-template-title">Download the research-to-priority plan template.</h2><p>Choose an editable Excel workbook or a plain Markdown record. Both formats separate source-aware evidence notes from the decision, one modest priority, dependencies, review condition, and human check. Downloads stay in your browser and do not require an account.</p><span className="priority-plan-template-note">Excel includes: Start here, Priority plan, and Evidence notes worksheets.</span></div><div className="priority-plan-template-actions"><a className="priority-plan-template-button" href={PRIORITY_PLAN_TEMPLATE_URL} download="research-to-priority-plan-template.xlsx" onClick={() => showFeedback("Excel template download started")}><Download size={15} aria-hidden="true" /> Download .xlsx</a><button type="button" className="priority-plan-template-button is-secondary" onClick={downloadMarkdownTemplate}><FileText size={15} aria-hidden="true" /> Download .md</button><button type="button" className="priority-plan-template-button is-secondary" onClick={copyMarkdownTemplate}><Copy size={15} aria-hidden="true" /> Copy Markdown</button><button type="button" className="priority-plan-template-button is-secondary" onClick={copyPriorityTable}><Copy size={15} aria-hidden="true" /> Copy priority table</button></div></div>{feedback && <div className="priority-plan-template-toast" role="status" aria-live="polite"><Check size={16} aria-hidden="true" /> {feedback}</div>}</section>;
+  return <section className="priority-plan-template" id="priority-plan-template" aria-labelledby="priority-plan-template-title"><style>{styles}</style><div className="priority-plan-template-head"><div><span className="priority-plan-template-kicker"><FileSpreadsheet size={13} aria-hidden="true" /> Practical asset</span><h2 id="priority-plan-template-title">Download the research-to-priority plan template.</h2><p>Choose an editable Excel workbook, CSV priority table, or plain Markdown record. All formats keep source-aware evidence separate from the decision, one modest priority, dependencies, review condition, and human check. Downloads stay in your browser and do not require an account.</p><span className="priority-plan-template-note">Excel includes: Start here, Priority plan, and Evidence notes worksheets. CSV is a simple priority-table import.</span></div><div className="priority-plan-template-actions"><a className="priority-plan-template-button" href={PRIORITY_PLAN_TEMPLATE_URL} download="research-to-priority-plan-template.xlsx" onClick={() => showFeedback("Excel template download started")}><Download size={15} aria-hidden="true" /> Download .xlsx</a><button type="button" className="priority-plan-template-button is-secondary" onClick={downloadCsvTemplate}><Download size={15} aria-hidden="true" /> Download .csv</button><button type="button" className="priority-plan-template-button is-secondary" onClick={downloadMarkdownTemplate}><FileText size={15} aria-hidden="true" /> Download .md</button><button type="button" className="priority-plan-template-button is-secondary" onClick={copyMarkdownTemplate}><Copy size={15} aria-hidden="true" /> Copy Markdown</button><button type="button" className="priority-plan-template-button is-secondary" onClick={copyPriorityTable}><Copy size={15} aria-hidden="true" /> Copy priority table</button></div></div>{feedback && <div className="priority-plan-template-toast" role="status" aria-live="polite"><Check size={16} aria-hidden="true" /> {feedback}</div>}</section>;
 }
