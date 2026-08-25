@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { buildPriorityPlanCsv, buildPriorityPlanCsvWithBlankRows, normalizeBlankRowCount, PRIORITY_PLAN_CSV_COLUMNS, PRIORITY_PLAN_CSV_ROW, PRIORITY_PLAN_MARKDOWN_TABLE, PRIORITY_PLAN_MARKDOWN_TEMPLATE, PRIORITY_PLAN_TEMPLATE_URL } from "./PriorityPlanTemplate";
+import { buildPriorityPlanCsv, buildPriorityPlanCsvWithBlankRows, normalizeBlankRowCount, PRIORITY_PLAN_BLANK_ROW_STORAGE_KEY, PRIORITY_PLAN_CSV_COLUMNS, PRIORITY_PLAN_CSV_ROW, PRIORITY_PLAN_MARKDOWN_TABLE, PRIORITY_PLAN_MARKDOWN_TEMPLATE, PRIORITY_PLAN_TEMPLATE_URL, readBlankRowPreference, writeBlankRowPreference } from "./PriorityPlanTemplate";
 
 describe("priority plan template", () => {
   it("uses the deployed webdev asset URL for the editable workbook", () => {
@@ -48,5 +48,16 @@ describe("priority plan template", () => {
     expect(normalizeBlankRowCount(28.9)).toBe(25);
     expect(normalizeBlankRowCount(Number.NaN)).toBe(6);
     expect(buildPriorityPlanCsvWithBlankRows(10).split("\r\n")).toHaveLength(11);
+  });
+
+  it("reads and writes the local blank-row preference without depending on storage availability", () => {
+    const values = new Map<string, string>();
+    const storage = { getItem: (key: string) => values.get(key) ?? null, setItem: (key: string, value: string) => values.set(key, value) };
+    expect(readBlankRowPreference(storage)).toBeNull();
+    expect(writeBlankRowPreference(storage, 28)).toBe(true);
+    expect(values.get(PRIORITY_PLAN_BLANK_ROW_STORAGE_KEY)).toBe("25");
+    expect(readBlankRowPreference(storage)).toBe(25);
+    expect(readBlankRowPreference({ getItem: () => { throw new Error("blocked"); } })).toBeNull();
+    expect(writeBlankRowPreference({ setItem: () => { throw new Error("blocked"); } }, 6)).toBe(false);
   });
 });

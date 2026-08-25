@@ -34,6 +34,12 @@ describe("bridge guide resources", () => {
     expect(searchBridgeGuideResources("read", "counter")).toEqual([]);
   });
 
+  it("can narrow a query to titles only without changing the selected category", () => {
+    expect(searchBridgeGuideResources("all", "markdown", true).map((item) => item.slug)).toEqual(["markdown-preview"]);
+    expect(searchBridgeGuideResources("tool", "lists", true)).toEqual([]);
+    expect(searchBridgeGuideResources("tool", "lists").map((item) => item.slug)).toEqual(["markdown-preview"]);
+  });
+
   it("reserves slash without modifiers as the search-focus shortcut", () => {
     expect(isResourceSearchShortcut({ key: "/", metaKey: false, ctrlKey: false, altKey: false, shiftKey: false })).toBe(true);
     expect(isResourceSearchShortcut({ key: "/", metaKey: true, ctrlKey: false, altKey: false, shiftKey: false })).toBe(false);
@@ -59,5 +65,6 @@ describe("bridge guide resources", () => {
     expect(buildResourceMatchSummary(4, "")).toBe("4 related resources available");
     expect(buildResourceMatchSummary(1, "markdown")).toBe("1 related resource match “markdown”");
     expect(buildResourceMatchSummary(0, "missing")).toBe("0 related resources match “missing”");
+    expect(buildResourceMatchSummary(1, "markdown", true)).toBe("1 related resource match “markdown” in titles only");
   });
 });
