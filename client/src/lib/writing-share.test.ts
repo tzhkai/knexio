@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { buildWritingShareUrl, clampShareDimension, WRITING_SHARE_URL } from "./writing-share";
+import { buildTopicPathShareUrl, buildWritingShareUrl, clampShareDimension, TOPIC_PATH_SHARE_URLS, WRITING_SHARE_URL } from "./writing-share";
 
 describe("writing share helpers", () => {
   it("keeps the canonical URL when UTM tracking is disabled", () => {
@@ -8,6 +8,11 @@ describe("writing share helpers", () => {
 
   it("adds trimmed UTM parameters when tracking is enabled", () => {
     expect(buildWritingShareUrl({ enabled: true, source: " instagram ", medium: " social ", campaign: " writing-path " })).toBe(`${WRITING_SHARE_URL}?utm_source=instagram&utm_medium=social&utm_campaign=writing-path`);
+  });
+
+  it("keeps each non-writing topic on its own canonical path while allowing optional UTM parameters", () => {
+    expect(buildTopicPathShareUrl("meetings-and-follow-up", { enabled: false, source: "x", medium: "social", campaign: "meeting-path" })).toBe(TOPIC_PATH_SHARE_URLS["meetings-and-follow-up"]);
+    expect(buildTopicPathShareUrl("research-and-decisions", { enabled: true, source: " linkedin ", medium: " social ", campaign: " research-path " })).toBe(`${TOPIC_PATH_SHARE_URLS["research-and-decisions"]}?utm_source=linkedin&utm_medium=social&utm_campaign=research-path`);
   });
 
   it("clamps custom image dimensions to safe bounds", () => {
