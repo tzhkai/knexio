@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { addShareUtm, buildPromptCounterReport, buildPromptCounterShareText, buildShareLinks, buildTimestampedPromptCounterReport, clearLocalDraft, contextUsagePercentage, copyTextToClipboard, countPromptWords, estimateTokenCount, formatExportTimestamp, getCounterShortcutAction, highlightCode, MARKDOWN_PRESET_TEMPLATE, COUNTER_PRESET_TEMPLATE, parseTemplateExport, PROMPT_COUNTER_FAQS, promptCounterStructuredData, readLocalDraft, renderMarkdown, resolvePresetTemplate, serializeTemplateExport, syncScrollPosition, tokenWarningLevel, writeLocalDraft } from "./Tools";
+import { addShareUtm, buildPromptCounterReport, buildPromptCounterExportLines, buildPromptCounterExportTitle, buildPromptCounterPrintHtml, isSupportedPromptExportFile, aiPromptCounterSchema, aiPromptCounterFaqSchema, AI_PROMPT_COUNTER_TITLE, AI_PROMPT_COUNTER_DESCRIPTION, AI_PROMPT_COUNTER_FAQ, buildPromptCounterShareText, buildPromptCounterStatsReport, buildShareLinks, clearLocalDraft, clearPromptHistory, deletePromptHistoryEntry, filterPromptHistory, copyTextToClipboard, mergePromptHistory, countPromptWords, estimateTokenCount, estimateReadingMinutes, estimateSpeakingMinutes, formatMinutes, buildPromptCounterQuickStats, readPromptModelPreference, estimatePromptApiCost, formatEstimatedCost, isSupportedPromptFile, highlightCode, MARKDOWN_PRESET_TEMPLATE, COUNTER_PRESET_TEMPLATE, parseTemplateExport, readLocalDraft, readPromptHistory, readPromptHistoryImportMode, renderMarkdown, resolvePresetTemplate, savePromptHistory, serializePromptHistory, parsePromptHistoryExport, serializeTemplateExport, syncScrollPosition, tokenWarningLevel, writeLocalDraft } from "./Tools";
 
 describe("Workflow utilities", () => {
   it("copies non-empty results through the available clipboard API", async () => {
@@ -27,36 +27,88 @@ describe("Workflow utilities", () => {
     expect(shareText).toContain("https://knexio.xyz/tools/ai-prompt-word-counter/");
   });
 
+  it("builds a shareable long-report data set with prompt and token statistics", () => { const stats = { words: 12, characters: 86, lines: 4, model: "GPT-4", tokens: 22, readingMinutes: 1, speakingMinutes: 1, estimatedCost: "$0.0007" }; const lines = buildPromptCounterExportLines("Task: summarize notes", stats); expect(buildPromptCounterExportTitle(stats)).toContain("GPT-4"); expect(lines).toContain("Estimated tokens: 22"); expect(lines).toContain("Task: summarize notes"); });
+
+  it("creates printable PDF-preview HTML with escaped prompt content", () => { const html = buildPromptCounterPrintHtml("<script>alert(1)</script>", { words: 1, characters: 28, lines: 1, model: "GPT-4", tokens: 7 }); expect(html).toContain("Save as PDF"); expect(html).toContain("&lt;script&gt;"); expect(html).not.toContain("<script>alert(1)"); });
+
+  it("accepts only TXT and Markdown files for prompt import/export flows", () => { expect(isSupportedPromptExportFile({ name: "notes.txt" })).toBe(true); expect(isSupportedPromptExportFile({ name: "brief.MD" })).toBe(true); expect(isSupportedPromptExportFile({ name: "report.pdf" })).toBe(false); });
+
+  it("keeps a stats-only TXT report free of the prompt body", () => {
+    const report = buildPromptCounterStatsReport({ words: 4, characters: 28, lines: 1, model: "GPT-4", tokens: 7 });
+    expect(report).toContain("Words: 4");
+    expect(report).not.toContain("Prompt:");
+  });
+
   it("builds a TXT report with the current prompt and statistics", () => {
     const report = buildPromptCounterReport("Task: summarize these notes", { words: 4, characters: 28, lines: 1, model: "GPT-4", tokens: 7 });
     expect(report).toContain("Estimated tokens (GPT-4): 7");
     expect(report).toContain("Prompt:\nTask: summarize these notes");
   });
 
-  it("builds a statistics-only TXT report without the original prompt", () => {
-    const report = buildPromptCounterReport("Confidential prompt", { words: 2, characters: 19, lines: 1, model: "GPT-4", tokens: 5 }, false);
-    expect(report).toContain("Words: 2");
-    expect(report).not.toContain("Confidential prompt");
-    expect(report).not.toContain("Prompt:");
+  it("keeps prompt history local, deduplicated, and capped at five entries", () => {
+    const key = "test:prompt-history";
+    const storage = new Map<string, string>();
+    vi.stubGlobal("window", { localStorage: { getItem: (name: string) => storage.get(name) ?? null, setItem: (name: string, value: string) => storage.set(name, value), removeItem: (name: string) => storage.delete(name) } });
+    for (let index = 0; index < 6; index += 1) savePromptHistory(key, { text: `Prompt ${index}`, words: 2, characters: 9, lines: 1, model: "gpt-4", tokens: 3, savedAt: index });
+    const history = readPromptHistory(key);
+    expect(history).toHaveLength(5);
+    expect(history[0].text).toBe("Prompt 5");
+    savePromptHistory(key, { text: "Prompt 3", words: 2, characters: 9, lines: 1, model: "gpt-4", tokens: 3, savedAt: 10 });
+    expect(readPromptHistory(key)[0].text).toBe("Prompt 3");
   });
 
-  it("adds a stable local timestamp to the TXT filename and report header", () => {
-    const date = new Date(2026, 7, 25, 9, 4, 7);
-    expect(formatExportTimestamp(date)).toBe("2026-08-25_09-04-07");
-    expect(buildTimestampedPromptCounterReport("Prompt", { words: 1, characters: 6, lines: 1, model: "GPT-4", tokens: 2 }, false, date)).toContain(`Exported: ${date.toLocaleString()}`);
+  it("exposes truthful AI Prompt Word Counter JSON-LD fields", () => {
+    const schema = aiPromptCounterSchema({ origin: "https://knexio.xyz", pageUrl: "https://knexio.xyz/tools/ai-prompt-word-counter/" });
+    expect(schema["@type"]).toBe("WebApplication");
+    expect(schema["@id"]).toBe("https://knexio.xyz/tools/ai-prompt-word-counter/#application");
+    expect(schema.isAccessibleForFree).toBe(true);
+    expect(schema.featureList).toContain("Local browser processing");
+    expect(schema.creator).toMatchObject({ "@type": "Organization", name: "Knexio" });
+    expect(schema.potentialAction).toMatchObject({ "@type": "UseAction" });
   });
 
-  it("recognizes only modified keyboard shortcuts for export and clear", () => {
-    expect(getCounterShortcutAction({ key: "e", ctrlKey: true, metaKey: false, shiftKey: true, altKey: false })).toBe("export");
-    expect(getCounterShortcutAction({ key: "Backspace", ctrlKey: false, metaKey: true, shiftKey: true, altKey: false })).toBe("clear");
-    expect(getCounterShortcutAction({ key: "e", ctrlKey: false, metaKey: false, shiftKey: false, altKey: false })).toBeNull();
+  it("keeps FAQ schema and visible FAQ copy aligned with metadata", () => {
+    const faq = aiPromptCounterFaqSchema("https://knexio.xyz/tools/ai-prompt-word-counter/");
+    expect(faq["@type"]).toBe("FAQPage");
+    expect(faq.mainEntity).toHaveLength(AI_PROMPT_COUNTER_FAQ.length);
+    expect(faq.mainEntity[0].name).toBe(AI_PROMPT_COUNTER_FAQ[0].question);
+    expect(faq.mainEntity[0].acceptedAnswer.text).toBe(AI_PROMPT_COUNTER_FAQ[0].answer);
+    expect(AI_PROMPT_COUNTER_TITLE).toContain("AI Prompt Word Counter");
+    expect(AI_PROMPT_COUNTER_DESCRIPTION).toContain("words");
+    expect(AI_PROMPT_COUNTER_DESCRIPTION).toContain("characters");
   });
 
-  it("publishes matching SoftwareApplication and FAQPage structured data", () => {
-    const schemas = promptCounterStructuredData("https://knexio.xyz", "https://knexio.xyz/tools/ai-prompt-word-counter/");
-    expect(schemas.some(schema => schema["@type"] === "SoftwareApplication")).toBe(true);
-    const faq = schemas.find(schema => schema["@type"] === "FAQPage") as { mainEntity: { name: string }[] };
-    expect(faq.mainEntity.map(item => item.name)).toEqual(PROMPT_COUNTER_FAQS.map(item => item.question));
+  it("restores a valid import preference and falls back to merge", () => {
+    const storage = new Map<string, string>([["mode", "replace"]]);
+    vi.stubGlobal("window", { localStorage: { getItem: (name: string) => storage.get(name) ?? null, setItem: (name: string, value: string) => storage.set(name, value), removeItem: (name: string) => storage.delete(name) } });
+    expect(readPromptHistoryImportMode("mode")).toBe("replace");
+    storage.set("mode", "invalid");
+    expect(readPromptHistoryImportMode("mode")).toBe("merge");
+    expect(readPromptHistoryImportMode("missing")).toBe("merge");
+  });
+
+  it("merges prompt history by text, keeps the latest entry, and caps at five", () => {
+    const existing = [{ text: "Keep", words: 1, characters: 4, lines: 1, model: "gpt-4", tokens: 1, savedAt: 2 }, { text: "Old", words: 1, characters: 3, lines: 1, model: "gpt-4", tokens: 1, savedAt: 1 }];
+    const incoming = Array.from({ length: 6 }, (_, index) => ({ text: index === 0 ? "Keep" : `New ${index}`, words: 1, characters: 4, lines: 1, model: "gpt-4", tokens: 1, savedAt: index === 0 ? 9 : index + 3 }));
+    const merged = mergePromptHistory(existing, incoming);
+    expect(merged).toHaveLength(5);
+    expect(merged[0].text).toBe("Keep");
+    expect(merged[0].savedAt).toBe(9);
+    expect(merged.some(entry => entry.text === "Old")).toBe(false);
+  });
+
+  it("round-trips prompt history JSON and rejects invalid versions", () => {
+    const entries = [{ text: "Task: review notes", words: 3, characters: 18, lines: 1, model: "gpt-4", tokens: 5, savedAt: 10 }];
+    const imported = parsePromptHistoryExport(serializePromptHistory(entries));
+    expect(imported).toEqual(entries);
+    expect(() => parsePromptHistoryExport(JSON.stringify({ version: 2, entries }))).toThrow();
+  });
+
+  it("clears prompt history through the storage helper", () => {
+    const storage = new Map<string, string>([["history", "[]"]]);
+    vi.stubGlobal("window", { localStorage: { getItem: (name: string) => storage.get(name) ?? null, setItem: (name: string, value: string) => storage.set(name, value), removeItem: (name: string) => storage.delete(name) } });
+    expect(clearPromptHistory("history")).toEqual([]);
+    expect(storage.has("history")).toBe(false);
   });
 
   it("counts prompt words using whitespace boundaries", () => {
@@ -65,6 +117,24 @@ describe("Workflow utilities", () => {
   });
 
   it("estimates tokens transparently without claiming exact model tokenization", () => { expect(estimateTokenCount("abcd", "gpt-4")).toBe(1); expect(estimateTokenCount("abcdefgh", "claude-3-5")).toBe(3); expect(estimateTokenCount("", "gemini-1-5")).toBe(0); });
+
+  it("calculates transparent planning cost and formats tiny values", () => { expect(estimatePromptApiCost(1_000_000, "gpt-4")).toBe(30); expect(estimatePromptApiCost(1_000_000, "claude-3-5")).toBe(3); expect(formatEstimatedCost(0)).toBe("$0.0000"); });
+
+  it("accepts only TXT and Markdown prompt files", () => { expect(isSupportedPromptFile({ name: "notes.txt", type: "text/plain" })).toBe(true); expect(isSupportedPromptFile({ name: "brief.MD", type: "" })).toBe(true); expect(isSupportedPromptFile({ name: "image.png", type: "image/png" })).toBe(false); });
+
+  it("restores a valid model preference and safely falls back for invalid values", () => { const storage = new Map<string, string>([["model", "claude-3-5"]]); vi.stubGlobal("window", { localStorage: { getItem: (name: string) => storage.get(name) ?? null, setItem: (name: string, value: string) => storage.set(name, value), removeItem: (name: string) => storage.delete(name) } }); expect(readPromptModelPreference("model")).toBe("claude-3-5"); storage.set("model", "invalid-model"); expect(readPromptModelPreference("model")).toBe("gpt-4"); });
+
+  it("calculates practical reading and speaking time estimates", () => { expect(estimateReadingMinutes(0)).toBe(0); expect(estimateReadingMinutes(201)).toBe(2); expect(estimateSpeakingMinutes(130)).toBe(1); expect(formatMinutes(3)).toBe("3 min"); });
+
+  it("copies all current statistics including reading, speaking time, and cost", () => { const summary = buildPromptCounterQuickStats({ words: 401, characters: 2200, lines: 12, model: "GPT-4", tokens: 550, readingMinutes: 3, speakingMinutes: 4, estimatedCost: "$0.01" }); expect(summary).toContain("Words: 401"); expect(summary).toContain("Estimated tokens (GPT-4): 550"); expect(summary).toContain("Estimated API cost: $0.01"); expect(summary).toContain("Reading time: 3 min"); expect(summary).toContain("Speaking time: 4 min"); });
+
+  it("deletes only the matching local history entry", () => { const entries = [{ text: "Keep", words: 1, characters: 4, lines: 1, model: "gpt-4", tokens: 2, savedAt: 1 }, { text: "Remove", words: 1, characters: 6, lines: 1, model: "claude-3-5", tokens: 3, savedAt: 2 }]; expect(deletePromptHistoryEntry(entries, entries[1])).toEqual([entries[0]]); });
+
+  it("keeps model values available for history filtering", () => { const entries = [{ text: "GPT prompt", words: 2, characters: 10, lines: 1, model: "gpt-4", tokens: 3, savedAt: 1 }, { text: "Gemini prompt", words: 2, characters: 13, lines: 1, model: "gemini-1-5", tokens: 4, savedAt: 2 }]; expect(entries.filter(entry => entry.model === "gemini-1-5").map(entry => entry.text)).toEqual(["Gemini prompt"]); });
+
+  it("filters saved prompts by case-insensitive keyword and model", () => { const entries = [{ text: "Prepare a research brief", words: 4, characters: 25, lines: 1, model: "gpt-4", tokens: 6, savedAt: 1 }, { text: "Draft meeting notes", words: 3, characters: 19, lines: 1, model: "gemini-1-5", tokens: 5, savedAt: 2 }]; expect(filterPromptHistory(entries, "RESEARCH")).toHaveLength(1); expect(filterPromptHistory(entries, "notes", "gemini-1-5")[0].text).toBe("Draft meeting notes"); expect(filterPromptHistory(entries, "missing")).toEqual([]); });
+
+  it("keeps FAQ data available for the accessible accordion and schema", () => { expect(AI_PROMPT_COUNTER_FAQ.length).toBeGreaterThanOrEqual(4); expect(AI_PROMPT_COUNTER_FAQ.every(item => item.question && item.answer)).toBe(true); });
 
   it("keeps practical copyable presets for both tools", () => {
     expect(COUNTER_PRESET_TEMPLATE).toContain("Audience:");
@@ -86,13 +156,6 @@ describe("Workflow utilities", () => {
   });
 
   it("flags prompts near or above the selected context planning limit", () => { expect(tokenWarningLevel(6554, "gpt-4")).toBe("near"); expect(tokenWarningLevel(8192, "gpt-4")).toBe("over"); expect(tokenWarningLevel(160000, "claude-3-5")).toBe("near"); });
-
-  it("calculates a bounded context usage percentage for the visual progress bar", () => {
-    expect(contextUsagePercentage(4096, "gpt-4")).toBe(50);
-    expect(contextUsagePercentage(1000000, "gemini-1-5")).toBe(100);
-    expect(contextUsagePercentage(2000000, "gemini-1-5")).toBe(100);
-    expect(contextUsagePercentage(0, "claude-3-5")).toBe(0);
-  });
 
   it("highlights supported code keywords while escaping markup", () => { const html = highlightCode("const value = \"<safe>\";", "js"); expect(html).toContain("code-keyword"); expect(html).toContain("code-string"); expect(html).toContain("&lt;safe&gt;"); });
 
