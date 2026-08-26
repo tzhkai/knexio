@@ -1,0 +1,3 @@
+# Retired legacy Games section. Keep the current Workflow Library routes untouched.
+/games / 301
+/games/* / 301
