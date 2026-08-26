@@ -581,14 +581,27 @@ export const learningPath = {
   ]
 } as const;
 
+export type GuideRecommendation = { guide: Guide; reason: string };
+
 /** Rank only existing library guides by task proximity; no popularity or behavioral data is invented. */
-export const getRecommendedGuides = (current: Guide, limit = 3) => {
+export const getRecommendedGuideRecords = (current: Guide, limit = 3): GuideRecommendation[] => {
   const clusters = topicClusters as ReadonlyArray<{ slug: string; guideSlugs: readonly string[] }>;
   const sharedClusters = clusters.filter(cluster => cluster.guideSlugs.includes(current.slug)).map(cluster => cluster.slug);
   return guides.filter(candidate => candidate.slug !== current.slug).map(candidate => {
     const candidateClusters = clusters.filter(cluster => cluster.guideSlugs.includes(candidate.slug)).map(cluster => cluster.slug);
-    const sharedTopicCount = candidate.topics.filter(topic => current.topics.includes(topic)).length;
+    const sharedTopics = candidate.topics.filter(topic => current.topics.includes(topic));
+    const sharesCluster = candidateClusters.some(cluster => sharedClusters.includes(cluster));
+    const sharedTopicCount = sharedTopics.length;
     const score = (candidate.category === current.category ? 7 : 0) + (candidate.level === current.level ? 1 : 0) + (candidateClusters.some(cluster => sharedClusters.includes(cluster)) ? 5 : 0) + sharedTopicCount * 3;
-    return { candidate, score };
-  }).sort((a, b) => b.score - a.score || a.candidate.title.localeCompare(b.candidate.title)).slice(0, limit).map(({ candidate }) => candidate);
+    const reason = sharedTopics[0]
+      ? `Shared focus: ${sharedTopics[0]}`
+      : sharesCluster
+        ? "Part of the same reading path"
+        : candidate.category === current.category
+          ? `More ${current.category.toLowerCase()} practice`
+          : "A connected next move";
+    return { candidate, score, reason };
+  }).sort((a, b) => b.score - a.score || a.candidate.title.localeCompare(b.candidate.title)).slice(0, limit).map(({ candidate, reason }) => ({ guide: candidate, reason }));
 };
+
+export const getRecommendedGuides = (current: Guide, limit = 3) => getRecommendedGuideRecords(current, limit).map(record => record.guide);
