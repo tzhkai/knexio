@@ -18,6 +18,7 @@ import MeetingGuideFaq, { meetingGuideFaqSchema } from "@/components/MeetingGuid
 import ArticleReadingProgress from "@/components/ArticleReadingProgress";
 import PriorityPlanTemplate from "@/components/PriorityPlanTemplate";
 import BridgeGuideResources from "@/components/BridgeGuideResources";
+import GuideReviewTrail from "@/components/GuideReviewTrail";
 import { shouldShowArticleReadingProgress } from "@/lib/article-reading-progress-guides";
 
 const authorRecordStyles = `
@@ -112,7 +113,7 @@ export default function GuideDetail() {
         <section className="prompt-block" id="starting-prompt" aria-label="Copyable AI prompt"><div className="prompt-heading"><div><span className="eyebrow">A starting prompt</span><h2>Give the task a useful brief.</h2></div><CopyPrompt prompt={guide.prompt} /></div><pre>{guide.prompt}</pre><p className="prompt-disclaimer"><AlertCircle size={15} /> Replace every bracketed field with your real context. Read the output before reuse.</p></section>
         <section className="article-section steps-section" id="work-the-system"><div className="section-number">{hasMethodRecord ? "04" : "03"}</div><div><span className="eyebrow">Work the system</span><h2>Four steps that keep the result usable.</h2><ol className="workflow-steps">{guide.steps.map((step, index) => <li key={step}><span>{index + 1}</span><p>{step}</p></li>)}</ol></div></section>
         {guide.sections.map((section, index) => <section className="article-text-section" id={`guide-section-${index + sectionStart}`} key={section.title}><span className="article-text-index">{String(index + sectionStart).padStart(2, "0")}</span><div><h2>{section.title}</h2><p>{section.body}</p></div></section>)}
-        <section className="review-section" id="human-check"><div className="review-title"><CheckCircle2 size={23} /><div><span className="eyebrow">Before you use the output</span><h2>Run a human check.</h2></div></div><ul>{guide.checks.map(check => <li key={check}><CheckCircle2 size={16} /> {check}</li>)}</ul></section>
+        <section className="review-section" id="human-check"><div className="review-title"><CheckCircle2 size={23} /><div><span className="eyebrow">Before you use the output</span><h2>Run a human check.</h2></div></div><ul>{guide.checks.map(check => <li key={check}><CheckCircle2 size={16} /> {check}</li>)}</ul><GuideReviewTrail slug={guide.slug} title={guide.title} checks={guide.checks} /></section>
         {guide.slug === "meeting-notes-to-decision-brief" && <><MeetingNotesTemplate /><MeetingGuideFaq /></>}{hasMeetingAgendaFaq && <MeetingAgendaFaq />}{isPriorityBridgeGuide && <PriorityPlanTemplate />}
         <ContextualGuideLinks slug={guide.slug} />{isPriorityBridgeGuide && <BridgeGuideResources />}
         <section className="field-note-wide"><Sparkles size={20} /><div><span>Field note</span><p>AI is strongest here when it makes missing information, structure, and options easier to see. The moment an output becomes a claim, commitment, or decision, bring a person back into the loop.</p></div></section>
