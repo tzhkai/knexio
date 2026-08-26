@@ -11,6 +11,9 @@ export const READING_PROGRESS_GUIDE_SLUGS = [
   "meeting-notes-to-decision-brief",
 ] as const;
 
-export function shouldShowArticleReadingProgress(guideSlug: string) {
-  return (READING_PROGRESS_GUIDE_SLUGS as readonly string[]).includes(guideSlug);
+/** A guide with this many authored body sections has a meaningful reading surface even if it was not in the initial editorial allowlist. */
+export const AUTO_READING_PROGRESS_MIN_SECTIONS = 5;
+
+export function shouldShowArticleReadingProgress(guideSlug: string, sectionCount = 0) {
+  return (READING_PROGRESS_GUIDE_SLUGS as readonly string[]).includes(guideSlug) || sectionCount >= AUTO_READING_PROGRESS_MIN_SECTIONS;
 }
