@@ -17,6 +17,15 @@ export type Guide = {
   steps: string[];
   sections: { title: string; body: string }[];
   checks: string[];
+  method?: {
+    purpose: string;
+    inputs: { label: string; detail: string }[];
+    steps: { label: string; detail: string }[];
+    reviewBoundary: string;
+    sources: { publisher: string; title: string; href: string; role: string }[];
+    caseStudy: { label: "Public-source walkthrough" | "Illustrative composite — not a client case"; title: string; description: string; record: { label: string; detail: string }[]; boundary: string };
+    artifact: { title: string; description: string; copyText: string };
+  };
 };
 
 export const heroImage = "/images/workflow-library-hero.webp";
@@ -31,20 +40,57 @@ export const guides: Guide[] = [
   {
     slug: "research-brief-from-scattered-sources",
     title: "Turn scattered sources into a one-page research brief",
-    dek: "Use AI to create a starting structure without losing the sources and questions that make research trustworthy.",
-    category: "Research", readingTime: "9 min read", level: "Everyday", updated: "19 Aug 2026", publishedAt: "2026-08-14T09:00:00+08:00", updatedAt: "2026-08-19T09:00:00+08:00", topics: ["research brief", "AI research workflow", "source checking", "research prompt"],
+    dek: "Create a decision-facing brief with a source register, claim boundaries, and a visible review trail—before anyone treats a summary as a recommendation.",
+    category: "Research", readingTime: "14 min read", level: "Deep dive", updated: "26 Aug 2026", publishedAt: "2026-08-14T09:00:00+08:00", updatedAt: "2026-08-26T09:00:00+08:00", topics: ["research brief", "AI research workflow", "source checking", "research prompt", "evidence register"],
     image: "/images/research-brief-workflow.webp", imageAlt: "Research materials arranged around a concise paper outline on a warm desk",
-    takeaway: "Ask for a traceable brief, not a confident-sounding summary.",
-    prompt: `You are helping me prepare a one-page research brief.\n\nGoal: [state the decision or question]\nAudience: [who will read it]\nSource notes: [paste labeled notes and links]\n\nFirst, group the notes by claim. Preserve the source label beside each claim. Then produce: (1) the question, (2) three evidence-backed findings, (3) open questions, and (4) a short recommendation only if the notes support one. Flag claims that lack a source, are dated, or need verification. Do not invent facts or citations.`,
-    steps: ["Name the decision before collecting anything.", "Label each pasted note with its source and date.", "Ask AI to organize claims and expose gaps.", "Open original sources for decision-critical claims."],
+    takeaway: "Ask for a traceable decision record, not a confident-sounding summary.",
+    prompt: `Prepare a one-page research brief from the source register and notes below.\n\nDecision question: [one choice, not a broad topic]\nAudience and decision owner: [who will review and decide]\nSource register: [source label | publisher | link or file | publication/access date | scope or limitation]\nNotes by source: [paste only labeled excerpts or observations]\n\nReturn these blocks in order: (1) decision question and scope, (2) findings with source labels, (3) conflicting or limited evidence, (4) open questions and next verification step, and (5) a recommendation only if the supplied record supports it. For each material statement, keep the source label. Mark unsupported claims “Not supported in supplied record” and dated material “Needs freshness check.” Do not invent facts, citations, users, results, or certainty.`,
+    steps: ["Write one decision question that can be answered, deferred, or narrowed.", "Build a source register before drafting prose; include the link, date, and a scope note for every decision-relevant source.", "Keep observations, interpretations, and recommendations in separate lines so AI cannot silently promote one into another.", "Ask for contradictions and freshness risks before asking for a conclusion.", "Open the original source for every claim that could change the decision."],
     sections: [
-      { title: "Why a brief beats a summary", body: "A summary compresses material. A useful brief helps someone make a next decision. It needs a concrete question, the evidence that matters, what is still unknown, and the confidence behind any recommendation." },
-      { title: "Give the model source labels it can preserve", body: "Instead of pasting a wall of text, add short labels such as [Interview A, 12 Aug]. The output can keep claims tied to the source that supports them, making a later human check much faster." },
-      { title: "Use the output as a review surface", body: "The useful moment is not when the first draft appears. It is when the draft lets you notice what is missing: an old number, a weak comparison, or a conclusion that reaches farther than the evidence." },
-      { title: "A worked example: sizing a service decision", body: "Suppose the question is whether a support team should move to a new ticketing tool. Labels such as [Vendor demo, 09 Aug], [IT security review, 11 Aug], and [Support lead interview, 12 Aug] keep every claim traceable. The draft brief can then group cost, migration, and security claims separately, so the person deciding sees which parts rest on a live demo and which rest on a price sheet from May." },
-      { title: "What to do when the brief looks confident", body: "Confidence in a brief is not the same as certainty in the sources. If the draft states a number without a label, ask for the label before treating it as fact. If two notes conflict, keep both visible instead of letting the model pick one. A brief that still has visible open questions is working correctly; a brief that reads smoothly may have hidden the seams." }
+      { title: "Start with a decision, not a topic", body: "“Research our support problem” produces an endless collection exercise. “Should we investigate one support category before changing the help flow?” gives the brief a stopping rule. The decision question should identify the choice, the person or group who owns it, and the consequence of being wrong. If none is known, the brief can still map the evidence, but it should say that it is exploratory rather than decision-ready." },
+      { title: "Build a source register before writing prose", body: "A source label alone is not enough when a reader needs to reopen the record. Record the publisher or author, a stable link or file location, the publication or access date, the part you used, and one limitation. That small ledger exposes mismatched time periods, vendor claims presented as neutral evidence, and notes that cannot be found again. It also gives an AI draft something concrete to preserve instead of encouraging it to smooth the sources into anonymous statements." },
+      { title: "Keep observations, interpretations, and recommendations apart", body: "An observation reports what a source says. An interpretation explains what that might mean for the question. A recommendation asks someone to choose or act. These are different kinds of sentences, and they deserve different labels. When they share a paragraph, an AI system can make the transition between them look natural even when the source never supported it. A useful brief leaves the hand-off visible." },
+      { title: "Public-source walkthrough: read the dataset notes before counting", body: "New York City’s public 311 dataset is a useful example of why metadata belongs in the brief. Its documentation says the data covers requests that can be directed to specific agencies, is updated daily, and contains fields such as problem type, responding agency, and location. A careful brief can record those facts, the access date, and a narrow question such as whether a category deserves further review. It cannot claim that a category is rising, that a service is failing, or why residents are reporting it unless a reproducible analysis and appropriate interpretation support those claims." },
+      { title: "Use AI to expose conflicts before it drafts a conclusion", body: "Give the model a constrained task: list claims that disagree, facts that are too old for the decision window, and source labels missing from material statements. This is more valuable than asking it to resolve the contradiction. A conflict may reflect different definitions, different periods, or a genuine uncertainty that the decision owner needs to accept. Preserve both sides and name the exact next check rather than letting fluent prose select a winner." },
+      { title: "Make the one-page shape do real work", body: "A compact brief can use five fixed blocks: decision question; supported findings; limitations or counterevidence; open verification work; and a proposed next move. The constraint is intentional. It forces the writer to choose what changes the decision and stops background context from disguising an unsupported recommendation. A source register can sit below the page or be linked as the working record, but decision-critical claims should still retain their short labels in the body." },
+      { title: "Know when the brief is not ready to recommend", body: "Do not add a recommendation merely because the document has a recommendation heading. Stop at “not ready to decide” when the source is missing, the data period is mismatched, a key term is undefined, or the owner has not stated the trade-off they are willing to make. That is a useful result: it converts vague uncertainty into a small verification task with a person responsible for reviewing it." }
     ],
-    checks: ["Can each factual claim be traced to a note or source link?", "Does the brief separate observations from a recommendation?", "Are dates and limitations visible where they matter?", "Would a reader know what to verify next?"]
+    checks: ["Can each material statement be traced to a source label and an openable record?", "Does the source register show date, scope, and limitation rather than just a title?", "Does the brief separate observations, interpretations, and a recommendation?", "Are contradictions and freshness risks shown instead of silently resolved?", "Would a decision owner know the smallest next verification step and who must review it?"],
+    method: {
+      purpose: "Create a brief that a decision owner can audit without rereading every source first.",
+      inputs: [
+        { label: "Decision boundary", detail: "One choice, its owner, and the consequence of being wrong or delaying." },
+        { label: "Source register", detail: "A label, publisher, stable location, date, scope, and limitation for each material source." },
+        { label: "Labeled notes", detail: "Short observations or quotations kept beside their source labels—not a merged narrative." }
+      ],
+      steps: [
+        { label: "Map", detail: "Group notes by claim without deciding whether the claim is true." },
+        { label: "Challenge", detail: "Surface source conflicts, stale evidence, undefined terms, and missing source labels." },
+        { label: "Brief", detail: "Write only the decision-relevant findings, limits, and next verification work." },
+        { label: "Verify", detail: "Reopen original records for decision-critical claims before sharing the brief." }
+      ],
+      reviewBoundary: "This workflow structures supplied material. It does not validate data, establish causation, replace domain review, or authorize a decision.",
+      sources: [
+        { publisher: "NYC Open Data", title: "311 Service Requests from 2020 to Present", href: "https://data.cityofnewyork.us/Social-Services/311-Service-Requests-from-2020-to-Present/erm2-nwe9", role: "Public-source walkthrough: dataset scope, fields, and update caveat." }
+      ],
+      caseStudy: {
+        label: "Public-source walkthrough",
+        title: "A dataset note is evidence about scope—not proof of a trend",
+        description: "This walkthrough uses the published dataset documentation to model an evidence register. It does not reproduce a city analysis or report a result.",
+        record: [
+          { label: "Question", detail: "Does one public service-request category warrant a separately scoped review?" },
+          { label: "Recordable source facts", detail: "Agency-directed request scope; daily updates; fields include problem type, agency, and location." },
+          { label: "Not established", detail: "Volume, trend, cause, service quality, or a recommended intervention." },
+          { label: "Human next step", detail: "Define a date range and method, reproduce the query, and review the interpretation with the accountable owner." }
+        ],
+        boundary: "The example shows provenance discipline only. It is not a client case, an NYC performance finding, or a claimed analysis result."
+      },
+      artifact: {
+        title: "Research brief evidence ledger",
+        description: "Copy this original working record before drafting; it keeps the source trail and decision boundary visible.",
+        copyText: `# Research brief evidence ledger\n\n## Decision boundary\n- Decision question:\n- Decision owner / reviewer:\n- What changes if we are wrong:\n\n## Source register\n| Label | Publisher / author | Link or file | Published / accessed | Scope used | Limitation / freshness risk |\n| --- | --- | --- | --- | --- | --- |\n| [S1] |  |  |  |  |  |\n| [S2] |  |  |  |  |  |\n\n## Claim record\n| Claim or observation | Source label | Interpretation (separate from source) | Counterevidence / gap | Next verification |\n| --- | --- | --- | --- | --- |\n|  |  |  |  |  |\n\n## One-page brief\n1. Supported findings:\n2. Limitations or conflicts:\n3. Open question and next verification:\n4. Recommendation only if the record supports it:`
+      }
+    }
   },
   {
     slug: "clear-project-update-prompt",
@@ -320,80 +366,192 @@ Produce four sections: completed, carryover, blockers, and next priority. For ea
   {
     slug: "meeting-notes-to-decision-brief",
     title: "Turn meeting notes into a decision brief without inventing agreement",
-    dek: "Separate confirmed decisions, open questions, evidence, and requests so a meeting record can support the next decision without creating commitments.",
-    category: "Meetings", readingTime: "9 min read", level: "Deep dive", updated: "19 Aug 2026", publishedAt: "2026-08-17T14:00:00+08:00", updatedAt: "2026-08-19T09:00:00+08:00", topics: ["AI meeting notes", "meeting decision brief", "meeting summary template", "decision tracking"],
-    takeaway: "A decision brief is trustworthy when readers can see what the group confirmed, what remains open, and who must decide next.",
-    prompt: `Turn the meeting record below into a decision brief.
+    dek: "Build a decision-facing record that preserves the exact status of a choice, its rationale, unresolved objections, and the confirmation still required.",
+    category: "Meetings", readingTime: "14 min read", level: "Deep dive", updated: "26 Aug 2026", publishedAt: "2026-08-17T14:00:00+08:00", updatedAt: "2026-08-26T09:00:00+08:00", topics: ["AI meeting notes", "meeting decision brief", "meeting summary template", "decision tracking", "decision record"],
+    takeaway: "A decision brief is trustworthy when readers can distinguish the status of a choice from the energy of the discussion around it.",
+    prompt: `Create a decision brief from this meeting record. Treat every line as unconfirmed unless the supplied record gives a clear basis for its status.
 
-Meeting purpose: [why the meeting took place]
-Participants and roles: [only what is known]
-Confirmed decisions: [paste decisions with source labels]
-Open questions and disagreements: [paste unresolved items]
-Actions, owners, and dates: [only if explicitly stated]
-Relevant evidence or links: [paste labeled sources]
+Decision question: [the choice the meeting addressed]
+Meeting source: [link, document title, or dated note]
+Participants and decision role: [only what the record states]
+Decision statements with source labels or timestamps: [paste]
+Rationale or evidence with source labels: [paste]
+Objections, alternatives, and unresolved questions: [paste]
+Actions, owners, and dates: [only explicitly stated commitments]
 
-Return: (1) decision question, (2) confirmed decisions, (3) evidence and source labels, (4) unresolved questions or disagreements, (5) stated actions with owners and dates, (6) requests for a decision owner, and (7) a short follow-up message. Keep agreement separate from discussion. If an owner, date, approval, or decision is not explicitly stated, mark it “Not confirmed.” Do not invent commitments, consensus, citations, or next steps.`,
-    steps: ["Start from the meeting record and preserve source labels rather than summarizing from memory.", "Separate confirmed decisions from suggestions, questions, and disagreements.", "Keep only explicitly stated owners and dates in the action section.", "Ask the decision owner to verify the brief before it becomes the project record."],
+Return: (1) decision question, (2) decision status using only Confirmed / Proposed / Deferred / Not confirmed, (3) confirmed rationale and source labels, (4) alternatives or objections, (5) actions with explicit owner/date status, (6) the exact confirmation request and accountable decision role, and (7) a concise follow-up message. Keep minutes, discussion, and the decision brief distinct. Do not infer consensus from silence, a strong recommendation, attendance, an action item, or a summary sentence. Do not invent commitments, citations, owners, dates, or next steps.`,
+    steps: ["Keep the original record open and label the exact line, timestamp, or document that supports each material item.", "Classify every decision-related statement by status before writing prose: Confirmed, Proposed, Deferred, or Not confirmed.", "Write the rationale separately from the decision so a reader can see which evidence was considered without treating it as unanimous agreement.", "Preserve objections, alternatives, and missing authority as first-class parts of the brief.", "Send the brief as a confirmation request to the person or group that actually holds the decision, then record the reply."],
     sections: [
-      { title: "A brief should expose the decision boundary", body: "Meeting conversations mix context, proposals, concerns, and conclusions. A useful decision brief makes the boundary visible: what the group actually confirmed, what it discussed without deciding, and what question still needs an accountable person." },
-      { title: "Do not confuse a strong suggestion with agreement", body: "A participant may recommend an option without the group accepting it. Preserve the difference between a proposal, an objection, a question, and a confirmed decision so the follow-up does not create consensus that was never recorded." },
-      { title: "Keep actions tied to stated ownership", body: "A clean action list is not permission to assign work. Include an owner or date only when the meeting record states it. Otherwise, make the missing confirmation visible in the brief and follow-up message." },
-      { title: "Use the brief as a review surface", body: "The first draft should help the meeting owner check the record, not replace that check. Invite corrections to decisions, sources, disagreements, and next requests before the brief is shared as an official account." },
-      { title: "A worked example: a roadmap decision", body: "A roadmap meeting produced a strong suggestion — “move the migration to Q1” — but no confirmed vote. The brief lists that as an open question with the supporting comment labeled by speaker, and keeps the confirmed items separate. The follow-up then asks the decision owner to confirm or defer the migration, instead of treating a suggestion as agreement." },
-      { title: "Link the brief to the record", body: "A decision brief is a view over the meeting record, not a replacement for it. Keep the source note or timestamp beside contested claims so the meeting owner can verify wording quickly. When the brief points back to the record, corrections are easier to make and the brief stays trustworthy." }
+      { title: "A decision brief is not meeting minutes with fewer words", body: "Minutes aim to preserve a meeting record. An action list captures stated commitments. A decision brief answers a narrower need: what choice is at stake, what status does it have, what rationale is on record, what could still change it, and who must confirm it. A one-page brief may point to the minutes, but it should never replace the source record when wording, authority, or objections matter." },
+      { title: "Make decision status a required field", body: "Use a small closed vocabulary: Confirmed, Proposed, Deferred, or Not confirmed. “Confirmed” needs an explicit basis in the supplied record, such as a stated resolution or a recorded decision owner’s approval. “Proposed” marks an option someone put forward. “Deferred” marks an intentional delay. “Not confirmed” is the default for a claim that sounds decisive but lacks a verifiable basis. This prevents a polished summary from manufacturing agreement." },
+      { title: "Separate rationale from agreement", body: "A team can decide something while disagreeing about why; it can also hear strong reasons without deciding. Put the decision statement, rationale, objections, and source references in different rows. This makes it possible to correct one element without rewriting the entire brief. It also helps a future reader see whether an action was tied to a settled choice or merely prepared for a possible one." },
+      { title: "Public-source walkthrough: a formal record still needs a clear rationale", body: "The W3C Process Document says groups should retain meeting minutes and must record official group decisions made during discussions. It also says discussion detail is not required when the rationale for the decision is clear. That distinction is a useful public example: a decision brief does not need a transcript, but it needs an accountable decision status, a clear rationale, and a path back to the underlying record when the wording is contested." },
+      { title: "Do not use action items as evidence of a decision", body: "“I can investigate option B” is an action; it does not prove that option B was selected. “Please draft an estimate” may be preparation for a decision rather than authorization to spend. Keep these statements in an action section with their stated owner and date, then keep the decision status separate. If ownership or timing is absent, write “Not confirmed” rather than assigning it to the most active participant." },
+      { title: "A compact illustrative composite: a migration discussion", body: "Imagine a fictional internal record containing three lines: a participant proposes moving a migration into the next quarter; another participant names a release risk; and the meeting chair asks for an estimate before deciding. The decision brief should classify the option as Proposed, record the risk as an objection or constraint, and classify the choice as Deferred. The next confirmation request goes to the documented decision role. This is an illustrative composite, not a client meeting or an account of a real project." },
+      { title: "Close the record with a precise confirmation request", body: "The best follow-up does not ask “Does this look right?” It asks a narrow question: “Can the decision owner confirm whether the migration is approved, deferred, or still proposed, and correct the stated rationale by [date if one was explicitly agreed]?” This turns review into a small, answerable task. Store the confirmation with the brief so the document’s status changes because of a record, not because time passed." }
     ],
-    checks: ["Can a reader distinguish confirmed decisions from proposals and unresolved questions?", "Does every material claim retain a source label or a visible missing-evidence marker?", "Are owners and dates included only when explicitly stated?", "Does the follow-up ask for a specific confirmation instead of implying consensus?", "Has the meeting owner reviewed the brief before it becomes the project record?"]
+    checks: ["Can a reader see Confirmed, Proposed, Deferred, and Not confirmed without interpreting tone?", "Does each material decision or rationale point to a record location or visible missing-evidence marker?", "Are actions, decision status, and rationale in separate fields?", "Are owners and dates included only when explicitly stated?", "Does the confirmation request name the exact decision and accountable role?", "Has the documented decision owner or authorized group reviewed the brief before it becomes the project record?"],
+    method: {
+      purpose: "Create a reviewable decision record from a meeting without converting discussion into authority.",
+      inputs: [
+        { label: "Primary meeting record", detail: "Minutes, notes, transcript, or recording reference with enough location detail to reopen it." },
+        { label: "Decision question", detail: "The choice being made—not merely the topic discussed." },
+        { label: "Decision authority", detail: "The role or group that may confirm, defer, or reject the choice, only if the record states it." }
+      ],
+      steps: [
+        { label: "Extract", detail: "Pull decision statements, rationale, objections, and actions into separate rows." },
+        { label: "Classify", detail: "Assign a status based on the record, not speaker confidence or attendance." },
+        { label: "Trace", detail: "Keep a timestamp, source link, or note reference for every material row." },
+        { label: "Confirm", detail: "Ask the authority to confirm the decision status and material wording." }
+      ],
+      reviewBoundary: "This workflow prepares a confirmation surface. It does not determine governance authority, resolve disagreements, or create commitments.",
+      sources: [
+        { publisher: "World Wide Web Consortium (W3C)", title: "W3C Process Document — Meeting Minutes", href: "https://www.w3.org/policies/process/", role: "Public-source walkthrough: record retention, official decisions, and clear rationale." }
+      ],
+      caseStudy: {
+        label: "Public-source walkthrough",
+        title: "From meeting record to decision status, without replaying every discussion detail",
+        description: "The W3C process is used only as a public illustration of the distinction between minutes, official decisions, and rationale.",
+        record: [
+          { label: "Source principle", detail: "Minutes are retained; official decisions are recorded; rationale remains clear even when full discussion detail is not reproduced." },
+          { label: "Brief implication", detail: "Record decision status and rationale separately, then link back to the full meeting record." },
+          { label: "Not implied", detail: "That every discussion has consensus, that silence equals approval, or that a working group’s procedure governs your organization." },
+          { label: "Human next step", detail: "Confirm the organization’s actual decision authority and request correction from that authority." }
+        ],
+        boundary: "This is a public-method walkthrough, not a claim about a W3C meeting outcome or a client case."
+      },
+      artifact: {
+        title: "Decision-status confirmation card",
+        description: "Copy this original record beside meeting notes before an AI summary is shared.",
+        copyText: `# Decision-status confirmation card\n\n## Source record\n- Meeting / document link:\n- Date and record location:\n- Decision question:\n- Decision authority stated in record:\n\n## Decision record\n| Item | Status: Confirmed / Proposed / Deferred / Not confirmed | Source location | Rationale on record | Objection or alternative |\n| --- | --- | --- | --- | --- |\n|  |  |  |  |  |\n\n## Actions (not evidence of a decision)\n| Action | Explicit owner | Explicit date | Source location | Missing confirmation |\n| --- | --- | --- | --- | --- |\n|  |  |  |  |  |\n\n## Confirmation request\n- Please confirm or correct the decision status:\n- Please confirm or correct the rationale / objections:\n- Reviewer and response record:`
+      }
+    }
   },
   {
     slug: "evidence-to-priority-plan",
     title: "Turn a research brief into a priority plan without hiding uncertainty",
-    dek: "Use a decision-ready research record to choose one modest priority, name dependencies, and preserve the gaps that can still change the plan.",
-    category: "Planning", readingTime: "9 min read", level: "Deep dive", updated: "25 Aug 2026", publishedAt: "2026-08-25T09:00:00+08:00", updatedAt: "2026-08-25T09:00:00+08:00", topics: ["research to planning", "evidence-based priorities", "decision-ready plan", "AI planning workflow"],
-    takeaway: "A plan becomes credible when it carries forward the evidence, limits, and decision owner instead of converting uncertainty into urgency.",
-    prompt: `Turn this research brief into a modest priority plan without adding certainty that the record does not support.
+    dek: "Turn a reviewed evidence record into one reversible next move, while preserving the dependency, disconfirming condition, and decision owner that can still change the plan.",
+    category: "Planning", readingTime: "15 min read", level: "Deep dive", updated: "26 Aug 2026", publishedAt: "2026-08-25T09:00:00+08:00", updatedAt: "2026-08-26T09:00:00+08:00", topics: ["research to planning", "evidence-based priorities", "decision-ready plan", "AI planning workflow", "reversible planning"],
+    takeaway: "A credible priority is a bounded next move with a named review condition—not a task list made to look certain.",
+    prompt: `Turn the reviewed evidence record below into a priority plan. Preserve uncertainty and do not treat a proposed plan as an approved commitment.
 
-Decision question: [state the decision]
-Confirmed evidence: [paste claims with source labels and dates]
-Open questions or limitations: [paste]
-Options considered: [paste]
-Constraints and dependencies: [time, people, approvals, or external conditions]
-Decision owner: [role or name, if known]
+Decision to support: [one decision]
+Decision owner and approval status: [known / unknown]
+Evidence that is sufficient for a next check: [claim | source label | date | limitation]
+Evidence gaps that could change the choice: [paste]
+Options considered and trade-offs: [paste]
+Constraints and dependencies: [capacity, approvals, access, timing]
 
-Return: (1) the decision this plan supports, (2) facts that are sufficiently supported to act on, (3) assumptions or gaps that could change the plan, (4) one modest priority and the reason it comes first, (5) dependencies and a named checkpoint, (6) work that should not start yet, and (7) questions the decision owner must resolve. Keep source labels beside decision-critical claims. Do not invent priority, urgency, owners, dates, capacity, approval, or evidence.`,
-    steps: ["Start with the decision question, not a list of tasks.", "Carry source labels and limitations from the research brief into the planning record.", "Choose the smallest priority that is supported by the evidence and current constraints.", "Name the dependency, checkpoint, and decision owner before treating the plan as committed."],
+Return: (1) decision and current approval status, (2) one smallest reversible priority, (3) evidence supporting that next move with labels, (4) disconfirming condition or evidence gap, (5) dependency and explicit owner status, (6) review checkpoint and what it decides, (7) work to defer, and (8) a confirmation question for the decision owner. Do not invent priority, urgency, capacity, owners, dates, approval, evidence, or results.`,
+    steps: ["Start with the decision and current approval status, not a backlog.", "Carry forward the evidence labels, source dates, and limitations that make the next move defensible.", "Choose a first move that can be reviewed, paused, or reversed before wider work starts.", "Name the disconfirming condition: the observation or missing evidence that would change the priority.", "Record the dependency, checkpoint, and decision owner as fields—not optimistic assumptions."],
     sections: [
-      { title: "A brief is not yet a plan", body: "A research brief helps a reader see what is known, unknown, and worth deciding. A plan adds a different question: given that record, what is the smallest useful move now? Skipping that distinction is how a tidy recommendation becomes an overloaded task list. Keep the decision question at the top of the planning record so each proposed activity can be tested against it." },
-      { title: "Move evidence forward without turning it into a promise", body: "When a claim supports a priority, preserve its source label, date, and limitation. A line such as ‘two customer interviews reported export delays’ can justify checking a workflow, but it does not prove the size of a broader market problem. Planning language should say what the evidence supports and reserve the rest for a check, a dependency, or an open question." },
-      { title: "Choose one modest priority before naming many tasks", body: "A credible priority has a decision it can inform, a constraint it respects, and a checkpoint that could change the next step. Ask whether the first move reduces the most important uncertainty, protects a known dependency, or makes a reversible test possible. If it does none of those, it may be activity rather than a priority." },
-      { title: "Use AI to separate plan ingredients, not to assign certainty", body: "AI can organize evidence, options, constraints, and actions into a readable draft. It should not decide which trade-off a team accepts, infer that capacity exists, or turn a tentative timeline into a due date. Ask it to flag missing owners, unsupported urgency, and work that depends on a decision that has not yet been made." },
-      { title: "A worked example: choosing a support improvement", body: "A research brief shows that several labeled customer interviews mention slow exports, while product logs have not yet been reviewed. The priority plan can state: first, verify the export path with one engineer and recent log sample; dependency, access to the logs; checkpoint, decide whether the issue justifies a scoped fix after the review. It should not jump to ‘ship export performance work this week’ because the evidence still lacks the technical cause and capacity decision." },
-      { title: "Hand the plan to the person who can change it", body: "A planning draft is useful when a decision owner can confirm, defer, or revise it. Include the source path, the condition that would invalidate the priority, and the next review point. This makes the plan a living record rather than a promise that survives after the evidence changes." }
+      { title: "A research brief is an input, not a commitment", body: "A brief explains what is known, limited, and worth deciding. A priority plan adds a different contract: what is the smallest move justified now, what would change that choice, and who may approve broader work? If the plan begins with tasks, it can hide the fact that the decision has not been made. Keep the decision and approval status at the top of the record so a reader can see whether the plan is exploratory, proposed, or authorized." },
+      { title: "Carry evidence forward as a planning constraint", body: "Evidence does not become stronger because it appears in a plan. Preserve the source label, date, and limitation beside each claim that supports the next move. A reported issue can justify a scoped verification; it does not establish its cause, prevalence, or priority over every other problem. If the limitation could alter the move, it belongs in the plan’s disconfirming-condition field, not in a footnote." },
+      { title: "Choose a reversible move instead of an impressive roadmap", body: "A reversible move has a defined scope, a low-cost stopping point, and a result that informs the decision. Examples include reproducing an issue with a defined sample, checking an access dependency, or validating a required approval. It is not automatically a pilot, an experiment, or a release. The useful test is whether a reviewer can name what will be learned, what will not be decided yet, and how the work can stop if the premise fails." },
+      { title: "Name the condition that would change the priority", body: "Every credible plan should include a disconfirming condition. It might be “access to the required record is not granted,” “the reported issue cannot be reproduced using the agreed method,” or “the decision owner does not accept the trade-off.” The condition is not pessimism. It protects the team from continuing because a draft made a path feel inevitable. If no condition could change the plan, the task may be too vague or may already be a commitment that needs explicit approval." },
+      { title: "Public-source walkthrough: plan, build evidence, use it, then learn", body: "The U.S. Government Accountability Office’s public guide groups 13 evidence and performance-management practices across planning for results, assessing and building evidence, using evidence, and fostering continuous learning. That is a useful method boundary for a small planning record: write the intended result, state what evidence exists, use only enough evidence for the next bounded move, and include a review point. The guide is not an endorsement of any private-team priority or a prediction that a proposed action will succeed." },
+      { title: "Illustrative composite: verify before promising a fix", body: "Consider a fictional record in which two labeled support notes mention slow exports, but no engineer has reviewed the relevant path and capacity has not been approved. A plan can propose one bounded check: reproduce the issue against a defined sample with an engineer who is explicitly available. The plan carries the two notes as limited evidence, names access to the record as a dependency, and sets a checkpoint to decide whether a scoped fix is warranted. It must not say “ship export performance work this week.” This is an illustrative composite, not a customer case or a reported test result." },
+      { title: "Use AI to test the plan’s missing fields", body: "Ask an AI system to identify missing owner status, unsupported urgency, tasks that imply approval, and sentences that lack a disconfirming condition. Do not ask it to choose which trade-off the organization should accept. The model can make plan ingredients inspectable; a person with authority must decide the trade-off, capacity, and scope." },
+      { title: "End at a review gate, not an unearned due date", body: "A checkpoint is not a vague “follow up later.” It names the evidence to review, the decision it will inform, the role that will review it, and the condition under which the work pauses. If a date was not agreed, do not manufacture one. The plan is useful precisely because it gives a decision owner enough structure to confirm, defer, or revise the next move without confusing a planning draft with a promise." }
     ],
-    checks: ["Does the priority answer a stated decision question rather than merely list activity?", "Can a reader trace decision-critical claims back to the research record?", "Are assumptions, evidence gaps, and dependencies kept visible?", "Is the first move small enough to review or reverse?", "Has the accountable person confirmed the trade-off before the plan becomes a commitment?"]
+    checks: ["Does the plan state the decision and approval status rather than merely list activity?", "Can a reader trace each decision-critical planning claim back to a labeled evidence record?", "Is the first move small enough to pause or reverse before wider work starts?", "Is a disconfirming condition named and genuinely capable of changing the priority?", "Are dependencies, owner status, and review gate visible rather than assumed?", "Has the accountable person confirmed the trade-off before the plan becomes a commitment?"],
+    method: {
+      purpose: "Translate a reviewed evidence record into a smallest credible move while making the conditions that could change it visible.",
+      inputs: [
+        { label: "Reviewed evidence record", detail: "A brief or matrix with source labels, dates, and limitations—not an untraceable summary." },
+        { label: "Decision and authority", detail: "The choice supported and the role that may approve, defer, or redirect it." },
+        { label: "Operational constraints", detail: "Known capacity, dependencies, access, approvals, and boundaries for a reversible first move." }
+      ],
+      steps: [
+        { label: "Bound", detail: "State the decision and distinguish proposed work from approved work." },
+        { label: "Select", detail: "Choose one move that reduces a decision-critical uncertainty or verifies a dependency." },
+        { label: "Challenge", detail: "Record the evidence gap or observation that would change the priority." },
+        { label: "Gate", detail: "Define who reviews which evidence at the checkpoint and what decision follows." }
+      ],
+      reviewBoundary: "This workflow organizes a planning proposal. It does not approve spend, estimate capacity, validate evidence, or promise a business outcome.",
+      sources: [
+        { publisher: "U.S. Government Accountability Office (GAO)", title: "Evidence-Based Policymaking: Practices to Help Manage and Assess the Results of Federal Efforts", href: "https://www.gao.gov/products/gao-23-105460", role: "Public-source walkthrough: planning, evidence-building, evidence use, and continuous learning." }
+      ],
+      caseStudy: {
+        label: "Illustrative composite — not a client case",
+        title: "A verification step can be a priority without pretending to be a product commitment",
+        description: "This fictional record models a reversible first move and deliberately contains no user metrics, product result, or claimed outcome.",
+        record: [
+          { label: "Limited evidence", detail: "Two labeled support notes report the same friction; technical cause and frequency are unknown." },
+          { label: "Smallest move", detail: "Reproduce the issue against an agreed sample with explicitly available technical review." },
+          { label: "Disconfirming condition", detail: "The issue cannot be reproduced using the agreed method, or required access is not available." },
+          { label: "Review gate", detail: "The decision owner reviews the reproduction record before approving, deferring, or redefining broader work." }
+        ],
+        boundary: "This is a fictional composite for method illustration. It is not a customer report, a test result, or a promised delivery plan."
+      },
+      artifact: {
+        title: "Reversible-priority card",
+        description: "Copy this original decision record alongside the downloadable priority-plan workbook; it makes the review gate explicit before work expands.",
+        copyText: `# Reversible-priority card\n\n## Decision and status\n- Decision this supports:\n- Decision owner:\n- Approval status: proposed / approved / unknown\n\n## Evidence carried forward\n| Claim | Source label and date | Limitation | Why it supports only this next move |\n| --- | --- | --- | --- |\n|  |  |  |  |\n\n## One bounded priority\n- Smallest next move:\n- Scope boundary:\n- Dependency and owner status:\n- Disconfirming condition:\n- Work to defer:\n\n## Review gate\n- Evidence to review:\n- Who reviews it:\n- Decision after review: continue / pause / redefine\n- Date only if explicitly agreed:`
+      }
+    }
   },
   {
     slug: "evidence-matrix-from-source-notes",
     title: "Build an evidence matrix from source notes before making a decision",
-    dek: "Turn scattered claims into a reviewable matrix that shows support, gaps, confidence, and the next verification step.",
-    category: "Research", readingTime: "10 min read", level: "Deep dive", updated: "19 Aug 2026", publishedAt: "2026-08-16T11:00:00+08:00", updatedAt: "2026-08-19T09:00:00+08:00", topics: ["evidence matrix", "evidence review", "AI research workflow", "decision support template"],
-    takeaway: "An evidence matrix is useful when it makes weak support and missing checks visible before a recommendation is written.",
-    prompt: `Build an evidence matrix from the labeled notes below.
+    dek: "Construct a claim-by-claim inspection table that keeps source type, direct support, limitations, and verification work separate before a brief or recommendation is written.",
+    category: "Research", readingTime: "15 min read", level: "Deep dive", updated: "26 Aug 2026", publishedAt: "2026-08-16T11:00:00+08:00", updatedAt: "2026-08-26T09:00:00+08:00", topics: ["evidence matrix", "evidence review", "AI research workflow", "decision support template", "claim verification"],
+    takeaway: "An evidence matrix earns its space when a reader can challenge one claim at a time without mistaking a tidy table for a verdict.",
+    prompt: `Build an evidence matrix from the labeled record below. Preserve the distinction between what a source says, how directly it supports a claim, and what still must be checked.
 
-Decision question: [what must be decided]
-Audience: [who will review it]
-Source notes: [paste each note with source label and date]
+Decision question: [specific choice]
+Decision owner / reviewer: [if known]
+Source register: [label | publisher / author | link or file | date | source type | scope]
+Claim notes: [paste each observation with its source label]
 
-Create a table with these columns: claim, supporting source, source date, evidence type, strength of support, counter-evidence or limitation, confidence, and next verification step. Keep claims separate instead of merging similar statements. If a claim is not supported by the supplied notes, mark it “Not supported in supplied notes.” Do not invent facts, citations, dates, owners, or confidence. After the table, list the three claims most likely to change the decision and explain what would verify them.`,
-    steps: ["State the decision question before collecting claims.", "Label every note with its source and date.", "Ask AI to keep claims, support, and limitations in separate columns.", "Review the highest-impact gaps against the original sources before recommending an option."],
+Create one row per claim using these columns: claim; exact source label; source type; direct support in supplied record; limitation or counterevidence; freshness / scope risk; impact if wrong; verification step; reviewer status. Use only “Direct”, “Partial”, “Context only”, or “Not supported in supplied record” for the support field. Do not create numeric confidence, citations, owners, dates, evidence, or conclusions. After the table, name the three rows most likely to change the decision and say what exact record would change them.`,
+    steps: ["State the decision question and what a wrong answer would affect before creating rows.", "Create a source register with publisher, date, type, scope, and location before you rate any claim.", "Use one atomic claim per row; split a sentence when it combines a fact, an inference, and a recommendation.", "Classify directness of support without turning it into a made-up confidence score.", "Prioritize verification by decision impact, then reopen the original material for the highest-impact rows."],
     sections: [
-      { title: "Use a matrix when a summary would hide the gaps", body: "A summary is designed to read smoothly. An evidence matrix is designed to be challenged. It keeps a claim beside the source that supports it, the limit that weakens it, and the check that could change your view. That makes it useful before a decision memo or recommendation." },
-      { title: "Separate evidence type from evidence strength", body: "A direct measurement, a participant observation, a reported opinion, and an assumption are not interchangeable. Ask the model to name the evidence type first, then describe how strongly the supplied record supports the claim. This avoids turning a neat label into false precision." },
-      { title: "Prioritize gaps by decision impact", body: "Not every missing detail deserves the same research effort. Mark the claims that could reverse the preferred option, change a constraint, or alter the responsible owner. Verify those first; leave low-impact uncertainty visible rather than spending time making the whole table look complete." },
-      { title: "Keep the original record close", body: "The matrix is a navigation layer, not a replacement for the source. Preserve short source labels and dates, open the original record for important claims, and let the decision owner correct the matrix before it becomes part of a formal recommendation." },
-      { title: "A worked example: claims about a competitor feature", body: "Notes claim a competitor “ships export in Q3”. The matrix rows might be: claim, source (“Product blog, 05 Aug”), evidence type (reported announcement), strength (medium — no confirmed release date), and counter-evidence (a customer Q&A saying the timeline is not firm). The decision owner can then see that the claim changes a scope decision only if confirmed, and the next verification step is named." },
-      { title: "Know when the matrix is overkill", body: "If the decision is small and the sources are few, a matrix adds ceremony rather than clarity. Use it when a summary would hide the gaps — several claims, mixed evidence, or a choice that depends on which source to trust. When the record is thin, the matrix should say so in the confidence column instead of looking complete." }
+      { title: "A matrix has a different job from a research brief", body: "A research brief compresses the decision-relevant record for a reader. A matrix slows the work down before that compression. It gives each claim a row, preserves its source type and limitation, and names the verification work. Use it when multiple sources conflict, when a claim could reverse a choice, or when a summary would hide where the conclusion began. Do not use it merely to make a thin record look rigorous." },
+      { title: "Write atomic claims before you score support", body: "“The policy applies to our use and blocks launch this quarter” contains at least three claims: what the policy says, whether it applies, and whether it affects timing. Put those in separate rows. An atomic claim lets a reviewer challenge the correct thing instead of accepting a broad sentence because one part is true. It also stops an AI system from using evidence for one proposition as though it proved the next." },
+      { title: "Classify source type before evaluating directness", body: "A primary standard, a publisher’s implementation guide, an internal observation, and an unverified assertion do different jobs. First record what kind of source you have and its scope. Then state whether the supplied record directly supports the claim, partially supports it, provides context only, or does not support it. This is deliberately plainer than a numeric confidence score: a number can look objective while concealing why the row is weak." },
+      { title: "Public-source walkthrough: voluntary guidance is not a compliance finding", body: "NIST describes its AI Risk Management Framework Playbook as voluntary guidance with suggested actions and related references across Govern, Map, Measure, and Manage. A matrix can record that primary public source, then separately record an implementation guide or an internal policy claim. The rows make visible that the NIST material describes a voluntary framework; it does not by itself prove legal compliance, a product’s safety, or what a specific organization must do." },
+      { title: "Use support labels that explain their limit", body: "“Direct” means the source speaks to the exact claim within its stated scope. “Partial” means the source supports a related part but leaves a material leap. “Context only” means it informs background but does not establish the claim. “Not supported in supplied record” is a valid result. Attach the next verification step to the gap: open a primary document, check the applicable date, reproduce a calculation, or ask a named reviewer to define the term. Do not let “medium confidence” substitute for this explanation." },
+      { title: "Prioritize rows by the cost of being wrong", body: "A missing comma in background context may not change a choice; a wrong assumption about scope, authority, cost, or timing can. Mark the rows whose reversal would alter the decision, a dependency, or the responsible owner. Verify those first, even if they are inconvenient. The matrix should help allocate attention, not encourage the team to fill every cell before anyone is allowed to think." },
+      { title: "Illustrative composite: three sources, three different roles", body: "Consider a fictional AI-use review with a primary public framework, a vendor implementation article, and an unlabeled internal note. The framework row can be Direct for the statement that the framework is voluntary guidance; the vendor article may be Context only for a claim about the framework’s intent; the unlabeled note may be Not supported in supplied record until its author and date are known. This is an illustrative composite, not a compliance assessment or a claim about any organization’s controls." },
+      { title: "Stop the matrix where judgment begins", body: "A matrix can make the record reviewable, but it cannot decide the acceptable trade-off or remove the need for qualified review. Move to a research brief when the highest-impact rows are understood. Move to a decision record when someone with authority has selected an option. If the matrix still contains a decision-critical “Not supported” row, its correct output may be a verification request rather than a recommendation." }
     ],
-    checks: ["Does every material claim have a source label or a visible unsupported status?", "Are evidence type, strength, confidence, and limitation kept distinct?", "Which three gaps could change the decision, and is each verification step specific?", "Has a human reviewed the original sources before the matrix supports a recommendation?", "Did the draft avoid inventing citations, dates, owners, or certainty?"]
+    checks: ["Does every material claim have an exact source label or a visible “Not supported in supplied record” status?", "Is each claim atomic rather than a fact, inference, and recommendation fused together?", "Are source type, directness of support, scope/freshness risk, and limitation kept distinct?", "Which three rows could change the decision, and does each have a specific verification step?", "Has a human reopened the original source for decision-critical rows before the matrix supports a recommendation?", "Did the draft avoid inventing citations, dates, owners, numeric confidence, or certainty?"],
+    method: {
+      purpose: "Create a claim-level inspection surface before a reader compresses evidence into a brief or recommendation.",
+      inputs: [
+        { label: "Specific decision", detail: "A choice that makes it possible to judge which claims are decision-critical." },
+        { label: "Source register", detail: "Source label, publisher or author, date, location, type, scope, and access context." },
+        { label: "Atomic claim notes", detail: "One proposition per row, kept separate from inferred meaning and recommended action." }
+      ],
+      steps: [
+        { label: "Split", detail: "Turn compound statements into atomic claims." },
+        { label: "Classify", detail: "Record source type and directness of support without false numeric precision." },
+        { label: "Challenge", detail: "Add limitation, counterevidence, scope risk, and freshness risk to every material row." },
+        { label: "Verify", detail: "Investigate the rows whose reversal could change the decision before drafting a brief." }
+      ],
+      reviewBoundary: "This workflow organizes supplied evidence. It is not legal, technical, scientific, or compliance validation and does not determine an acceptable risk level.",
+      sources: [
+        { publisher: "National Institute of Standards and Technology (NIST)", title: "NIST AI RMF Playbook", href: "https://www.nist.gov/itl/ai-risk-management-framework/nist-ai-rmf-playbook", role: "Public-source walkthrough: voluntary guidance, suggested actions, and source-type classification." }
+      ],
+      caseStudy: {
+        label: "Public-source walkthrough",
+        title: "One public framework can support a narrow claim while leaving other claims open",
+        description: "The record uses NIST’s published description only to demonstrate claim boundaries and source classification.",
+        record: [
+          { label: "Direct support", detail: "NIST describes the Playbook as voluntary guidance with suggested actions and references for four AI RMF functions." },
+          { label: "Context only", detail: "A secondary implementation guide can explain how one organization interprets the framework, but does not replace the primary source." },
+          { label: "Not established", detail: "Legal compliance, a product’s safety, or an organization’s adoption status." },
+          { label: "Human next step", detail: "Check the applicable rule or internal control directly with the appropriate qualified reviewer." }
+        ],
+        boundary: "This is a public-source walkthrough, not legal advice, compliance validation, or a finding about any system."
+      },
+      artifact: {
+        title: "Claim-level evidence matrix",
+        description: "Copy this original matrix before drafting a brief; it is intentionally structured to show why a row is weak rather than assign a decorative score.",
+        copyText: `# Claim-level evidence matrix\n\n## Decision boundary\n- Decision question:\n- Decision owner / reviewer:\n- Consequence if this decision is wrong:\n\n## Source register\n| Label | Publisher / author | Link or file | Date | Source type | Scope / limitation |\n| --- | --- | --- | --- | --- | --- |\n| [S1] |  |  |  |  |  |\n\n## Claim rows\n| Atomic claim | Exact source label | Direct support: Direct / Partial / Context only / Not supported | Limitation or counterevidence | Freshness / scope risk | Impact if wrong | Next verification | Reviewer status |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n|  |  |  |  |  |  |  |  |\n\n## Decision-critical rows\n1. Row and exact record needed to change it:\n2. Row and exact record needed to change it:\n3. Row and exact record needed to change it:`
+      }
+    }
   }
 ];
 export const categories = ["All", "Research", "Writing", "Planning", "Meetings"] as const;

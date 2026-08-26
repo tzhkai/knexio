@@ -976,3 +976,14 @@
 - [x] 核对拒绝原因与线上内容、信任页面、广告/CMP 和技术 SEO 证据
 - [x] 形成按风险排序的修复建议，且不自行重新提交审核
 - [x] 保存诊断记录并向用户汇报真实后台状态
+
+## 旗舰内容、相似文章差异化与 Google CMP
+
+- [x] 审阅四篇旗舰指南、相似模板集群与现有 Privacy & messaging 状态
+- [x] 研究并记录可公开核验的案例、来源与方法材料
+- [x] 深度重写 Research Brief、Evidence Matrix、Evidence to Priority Plan 与 Meeting Notes to Decision Brief
+- [x] 形成相似指南的合并或差异化方案，并接入相关内链与编辑记录
+- [x] 核对 Google CMP 配置、历史官方预览证据、公开脚本边界和 Policy Center；当前无 No CMP/低覆盖率提示
+- [x] 补充内容与 SEO 回归测试，完成生产构建和桌面/移动端验证
+- [x] 保存检查点并交付结果
+- [ ] 在可验证的真实 EEA/UK/Swiss 出口重新执行 Google CMP 首屏、拒绝、Manage options 与撤回四步；当前环境只能保留官方预览与非地区化观察证据

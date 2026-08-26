@@ -11,8 +11,8 @@ describe("workflow library content", () => {
     expect(guide).toBeDefined();
     expect(guide?.category).toBe("Research");
     expect(guide?.topics).toContain("evidence matrix");
-    expect(guide?.prompt).toContain("supporting source");
-    expect(guide?.prompt).toContain("Not supported in supplied notes");
+    expect(guide?.prompt).toContain("direct support in supplied record");
+    expect(guide?.prompt).toContain("Not supported in supplied record");
     expect(guide?.checks.length).toBeGreaterThanOrEqual(4);
   });
 
@@ -52,10 +52,53 @@ describe("workflow library content", () => {
     const planningCluster = topicClusters.find((topic) => topic.slug === "planning-and-priorities");
 
     expect(guide?.category).toBe("Planning");
-    expect(guide?.prompt).toContain("Do not invent priority, urgency, owners, dates, capacity, approval, or evidence.");
+    expect(guide?.prompt).toContain("Do not invent priority, urgency, capacity, owners, dates, approval, evidence, or results.");
     expect(guide?.sections.length).toBeGreaterThanOrEqual(6);
     expect(researchCluster?.guideSlugs).toContain("evidence-to-priority-plan");
     expect(planningCluster?.guideSlugs).toContain("evidence-to-priority-plan");
+  });
+
+  it("gives every flagship guide a visible, reviewable source-and-method record", () => {
+    const flagshipSlugs = [
+      "research-brief-from-scattered-sources",
+      "evidence-matrix-from-source-notes",
+      "evidence-to-priority-plan",
+      "meeting-notes-to-decision-brief",
+    ];
+
+    for (const slug of flagshipSlugs) {
+      const guide = getGuide(slug);
+      expect(guide, `${slug} should be published`).toBeDefined();
+      expect(guide?.updatedAt, `${slug} should record the substantive rewrite`).toBe("2026-08-26T09:00:00+08:00");
+      expect(guide?.sections.length, `${slug} needs substantive depth`).toBeGreaterThanOrEqual(7);
+      expect(guide?.steps.length, `${slug} needs a distinct method sequence`).toBeGreaterThanOrEqual(5);
+      expect(guide?.method?.inputs.length, `${slug} needs scoped inputs`).toBeGreaterThanOrEqual(3);
+      expect(guide?.method?.steps.length, `${slug} needs a reviewable method`).toBeGreaterThanOrEqual(4);
+      expect(guide?.method?.sources.length, `${slug} needs a public source`).toBeGreaterThanOrEqual(1);
+      expect(guide?.method?.sources.every(source => source.href.startsWith("https://"))).toBe(true);
+      expect(guide?.method?.caseStudy.boundary).toMatch(/not|Not|does not|This is/);
+      expect(guide?.method?.artifact.copyText.length, `${slug} needs a reusable original working artifact`).toBeGreaterThan(250);
+      expect(guide?.method?.reviewBoundary.length).toBeGreaterThan(90);
+    }
+  });
+
+  it("keeps flagship workflow jobs distinct instead of publishing four interchangeable summaries", () => {
+    const slugs = [
+      "research-brief-from-scattered-sources",
+      "evidence-matrix-from-source-notes",
+      "evidence-to-priority-plan",
+      "meeting-notes-to-decision-brief",
+    ];
+    const targets = slugs.map(slug => getGuide(slug)).filter((guide): guide is NonNullable<typeof guide> => Boolean(guide));
+
+    expect(new Set(targets.map(guide => guide.category)).size).toBe(3);
+    expect(new Set(targets.map(guide => guide.method?.purpose)).size).toBe(4);
+    expect(new Set(targets.map(guide => guide.method?.artifact.title)).size).toBe(4);
+    expect(new Set(targets.map(guide => guide.method?.sources[0]?.publisher)).size).toBe(4);
+    expect(targets.find(guide => guide.slug === "research-brief-from-scattered-sources")?.method?.artifact.copyText).toContain("Source register");
+    expect(targets.find(guide => guide.slug === "evidence-matrix-from-source-notes")?.method?.artifact.copyText).toContain("Atomic claim");
+    expect(targets.find(guide => guide.slug === "evidence-to-priority-plan")?.method?.artifact.copyText).toContain("Disconfirming condition");
+    expect(targets.find(guide => guide.slug === "meeting-notes-to-decision-brief")?.method?.artifact.copyText).toContain("Confirmed / Proposed / Deferred / Not confirmed");
   });
 
   it("maps each core category to a published guide", () => {
