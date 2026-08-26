@@ -1009,3 +1009,46 @@
 - [x] 完成测试、类型检查、静态构建以及桌面和移动端交互验证
 - [x] 复核公开生产站点与 GitHub 审阅分支的 SEO 现状，形成可执行的剩余优化清单
 - [x] 保存交互增强与 SEO 复核记录；不改动 main、Cloudflare 生产或 AdSense 审核状态
+
+## 已确认的 GitHub Pull Request
+
+- [x] 创建从 review/flagship-seo-20260826 指向 main 的 Pull Request，明确不自行合并
+- [x] 核对 Pull Request 的提交范围、文件差异、CI 状态与 main 未改动边界；PR #1 当前为 MERGEABLE/CLEAN，GitHub 未报告配置的 CI 状态检查，main 未改动
+- [x] 保存 Pull Request 审阅记录并交付链接；不提交 AdSense 审核或索引请求
+
+## 已确认的 Pull Request 冲突处理
+
+- [x] 在 review/flagship-seo-20260826 上处理与 main 的冲突，不改动 main 或生产部署
+- [x] 对冲突解决后的审阅分支运行测试、类型检查和静态构建，并更新 PR #1
+- [x] 核对 PR #1 可合并状态、main 未改动边界与生产部署未触发状态
+- [x] 保存冲突处理记录并交付审阅结果；不自行合并 PR
+
+## 已确认的 PR 合并与生产核验
+
+- [x] 合并 GitHub PR #1 至 main，并确认合并提交与 Cloudflare 自动部署触发
+- [x] 等待并核验生产版四篇旗舰 URL、canonical、Article/Breadcrumb JSON-LD 与 Sources & method 可见输出
+- [x] 核验生产 sitemap、robots 与更新后的旗舰 lastmod；不发起新的索引请求或 AdSense 审核
+- [x] 保存上线核验记录并交付结果
+- [x] 在单独审阅路径中将四篇旗舰指南的源数据更新时间与生产 sitemap lastmod 对齐；公开 lastmod 已反映 2026-08-26 的重大内容更新
+
+## 旗舰 sitemap 日期对齐修复
+
+- [x] 核对四篇旗舰的真实修订记录、定位静态 sitemap 日期映射缺口并增加回归测试
+- [x] 更新旗舰 sitemap 源映射，完成 77 项测试、类型检查、sitemap 生成与 34 路由静态构建
+- [x] 创建仅含 sitemap 日期对齐修复的 GitHub 审阅分支与 Pull Request，不改动 main 或生产；PR #2 为 OPEN / MERGEABLE / CLEAN
+- [x] PR #2 已于 2026-08-26 合并至 main（3559ec3）；生产 sitemap 已核验四篇旗舰为 2026-08-26；未发起新的 Search Console 索引请求或 AdSense 审核
+
+## 目录、推荐阅读、SEO 与长文选题升级
+
+- [x] 审阅生产版与本地现有 TOC、相关阅读、阅读进度和文章内部链接，确定不重复的交互升级范围
+- [x] 实现可访问的文章内 TOC 与相关阅读增强，并添加回归测试
+- [x] 运行测试、类型检查、静态构建与桌面/移动端验证，确保 SEO 输出不回退
+- [x] 复核公开站点与 Search Console 的整体 SEO，形成技术、内容和内链的具体优化清单
+- [x] 策划 8 月 31 日前适合新增的高价值长文选题，明确搜索意图、独特工件、证据边界与内部链接位置
+- [x] 保存交互、SEO 与选题路线记录；不提前重提 AdSense 审核或重复发起索引请求
+
+## 目录与相关阅读升级审阅发布
+
+- [ ] 创建仅包含目录进度、透明推荐理由、回归测试和相关审计记录的 GitHub 审阅分支，不改动 main 或生产
+- [ ] 创建并核对审阅分支指向 main 的 Pull Request，确认文件范围、测试结果和未合并边界
+- [ ] 保存审阅发布记录并请求用户确认是否合并；不自行合并或触发生产部署

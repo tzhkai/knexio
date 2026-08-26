@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { getGuide, guides, topicClusters } from "./content";
+import { getGuide, getRecommendedGuideRecords, getRecommendedGuides, guides, topicClusters } from "./content";
 import { coreByCategory } from "@/components/CoreWorkflowLinks";
 import { MEETING_NOTES_TEMPLATE } from "@/components/MeetingNotesTemplate";
 import { meetingGuideFaqs, meetingGuideFaqSchema } from "@/components/MeetingGuideFaq";
@@ -144,6 +144,17 @@ describe("workflow library content", () => {
         expect(guideSlugs.has(slug), `${topic.slug} references missing guide ${slug}`).toBe(true);
       }
     }
+  });
+
+  it("keeps recommended reading deterministic, task-related, and transparent about the reason", () => {
+    const current = getGuide("research-brief-from-scattered-sources");
+    expect(current).toBeDefined();
+
+    const records = getRecommendedGuideRecords(current!);
+    expect(records).toHaveLength(3);
+    expect(records.every(record => record.guide.slug !== current?.slug)).toBe(true);
+    expect(records.every(record => record.reason.length > 12)).toBe(true);
+    expect(getRecommendedGuides(current!).map(guide => guide.slug)).toEqual(records.map(record => record.guide.slug));
   });
 
   it("keeps every published guide practically complete", () => {
