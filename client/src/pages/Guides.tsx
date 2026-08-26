@@ -6,11 +6,12 @@ import GuideCard from "@/components/GuideCard";
 import { SeoMeta } from "@/components/SeoMeta";
 import SiteBreadcrumb, { breadcrumbListSchema } from "@/components/SiteBreadcrumb";
 import { categories, guides, topicClusters } from "@/lib/content";
+import { guideSearchQuery, searchGuides } from "@/lib/guide-discovery";
 import { Link } from "wouter";
 
 export default function Guides() {
-  const [category, setCategory] = useState<(typeof categories)[number]>("All"); const [query, setQuery] = useState("");
-  const results = useMemo(() => guides.filter(g => (category === "All" || g.category === category) && (!query.trim() || `${g.title} ${g.dek} ${g.category} ${g.topics.join(" ")}`.toLowerCase().includes(query.trim().toLowerCase()))), [category, query]);
+  const [category, setCategory] = useState<(typeof categories)[number]>("All"); const [query, setQuery] = useState(() => typeof window === "undefined" ? "" : guideSearchQuery(window.location.search));
+  const results = useMemo(() => searchGuides(guides.filter(guide => category === "All" || guide.category === category), query), [category, query]);
   const showShelves = category === "All" && !query.trim();
   return <Layout><SeoMeta title="AI workflow library for research, writing, meetings, and planning" description="Browse practical AI workflows for research briefs, project updates, meeting action lists, content planning, and focused first drafts." schema={({ origin, pageUrl }) => ([{ "@type": "CollectionPage", name: "Workflow Library", url: pageUrl, mainEntity: { "@type": "ItemList", numberOfItems: guides.length, itemListElement: guides.map((guide, index) => ({ "@type": "ListItem", position: index + 1, name: guide.title, url: `${origin}/guides/${guide.slug}` })) } }, breadcrumbListSchema(origin, pageUrl, [{ label: "Home", href: "/" }, { label: "Library" }])])} /><SiteBreadcrumb items={[{ label: "Home", href: "/" }, { label: "Library" }]} />
     <section className="library-hero"><div><span className="eyebrow">The library</span><h1>Useful systems for<br /><em>everyday</em> work.</h1></div><p>Browse a small, focused collection of AI workflows. Each one is built around a task, a bounded prompt, and the checks that keep the result grounded.</p></section>
