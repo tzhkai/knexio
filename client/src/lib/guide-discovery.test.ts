@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { guides } from "./content";
-import { guideSearchQuery, latestGuides, searchGuides } from "./guide-discovery";
+import { brokenLinkReportHref, guideSearchQuery, guideTitleSuggestions, latestGuides, searchGuides, splitSearchHighlight } from "./guide-discovery";
 
 describe("guide discovery helpers", () => {
   it("matches current guides by task text without inventing a popularity signal", () => {
@@ -20,5 +20,21 @@ describe("guide discovery helpers", () => {
   it("reads a bounded guide query from the current URL", () => {
     expect(guideSearchQuery("?q=meeting%20notes")).toBe("meeting notes");
     expect(guideSearchQuery("")).toBe("");
+  });
+
+  it("offers title-only suggestions and safely segments matching text for display", () => {
+    expect(guideTitleSuggestions(guides, "meeting follow-up")).toEqual(["Write a meeting follow-up email without inventing commitments"]);
+    expect(guideTitleSuggestions(guides, "unlikely phrase")).toEqual([]);
+    expect(splitSearchHighlight("Meeting follow-up", "follow-up")).toEqual([
+      { value: "Meeting ", matches: false },
+      { value: "follow-up", matches: true },
+    ]);
+  });
+
+  it("creates a report link that only includes the current path and no tracking parameters", () => {
+    const href = brokenLinkReportHref("/games/mini-crossword/");
+    expect(href).toContain("mailto:tzhkai6@gmail.com");
+    expect(decodeURIComponent(href)).toContain("https://knexio.xyz/games/mini-crossword/");
+    expect(href).not.toContain("utm_");
   });
 });
