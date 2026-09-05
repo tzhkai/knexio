@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { getGuide, getRecommendedGuideRecords, getRecommendedGuides, guides, topicClusters } from "./content";
+import { getGuide, getRecommendedGuideRecords, getRecommendedGuides, guidePracticeNotes, guides, topicClusters } from "./content";
 import { coreByCategory } from "@/components/CoreWorkflowLinks";
 import { MEETING_NOTES_TEMPLATE } from "@/components/MeetingNotesTemplate";
 import { meetingGuideFaqs, meetingGuideFaqSchema } from "@/components/MeetingGuideFaq";
@@ -101,6 +101,35 @@ describe("workflow library content", () => {
     expect(targets.find(guide => guide.slug === "meeting-notes-to-decision-brief")?.method?.artifact.copyText).toContain("Confirmed / Proposed / Deferred / Not confirmed");
   });
 
+  it("keeps the second content reinforcement batch page-specific and bounded", () => {
+    const targetSlugs = [
+      "project-notes-to-decision-memo",
+      "turn-rough-notes-into-decision-email",
+      "clear-project-update-prompt",
+      "brief-first-prompt-pattern",
+      "one-week-content-plan-from-questions",
+      "thirty-minute-project-starting-plan",
+      "weekly-priorities-from-project-list",
+      "weekly-review-from-completed-and-blocked-work",
+      "decision-log-from-project-notes",
+      "meeting-follow-up-email",
+      "meeting-agenda-from-notes",
+      "customer-feedback-theme-map",
+      "project-handoff-brief",
+    ];
+
+    expect(Object.keys(guidePracticeNotes)).toEqual(expect.arrayContaining(targetSlugs));
+    expect(new Set(targetSlugs.map(slug => guidePracticeNotes[slug].title)).size).toBe(targetSlugs.length);
+    for (const slug of targetSlugs) {
+      const note = guidePracticeNotes[slug];
+      expect(note.body.length, `${slug} needs page-specific context`).toBeGreaterThan(80);
+      expect(note.startWith.length, `${slug} needs a concrete input boundary`).toBeGreaterThan(60);
+      expect(note.output.length, `${slug} needs a distinct output`).toBeGreaterThan(60);
+      expect(note.avoid.length, `${slug} needs an explicit non-inference boundary`).toBeGreaterThan(60);
+      expect(note.verify.length, `${slug} needs a human verification step`).toBeGreaterThan(60);
+    }
+  });
+
   it("maps each core category to a published guide", () => {
     const guideSlugs = new Set(guides.map((guide) => guide.slug));
 
@@ -123,7 +152,7 @@ describe("workflow library content", () => {
       expect(guide, `${slug} should be published`).toBeDefined();
       expect(guide?.sections.length, `${slug} should include expanded context`).toBeGreaterThanOrEqual(7);
       expect(guide?.checks.length, `${slug} should include human review checks`).toBeGreaterThanOrEqual(5);
-      expect(guide?.updatedAt, `${slug} should record the substantive update`).toBe("2026-08-21T09:00:00+08:00");
+      expect(guide?.updatedAt, `${slug} should record the substantive update`).toBe("2026-09-04T09:00:00+08:00");
     }
   });
 
