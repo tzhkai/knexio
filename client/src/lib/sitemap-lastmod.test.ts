@@ -13,11 +13,28 @@ describe("sitemap lastmod generation", () => {
       const pages = readFileSync(path.join(output, "sitemap-pages.xml"), "utf8");
       const guides = readFileSync(path.join(output, "sitemap-guides.xml"), "utf8");
       expect(pages).toContain("<loc>https://knexio.xyz/tools/ai-prompt-word-counter/</loc><lastmod>2026-08-25</lastmod>");
-      expect(guides).toContain("<loc>https://knexio.xyz/guides/meeting-agenda-from-notes/</loc><lastmod>2026-08-25</lastmod>");
+      expect(guides).toContain("<loc>https://knexio.xyz/guides/meeting-agenda-from-notes/</loc><lastmod>2026-09-04</lastmod>");
       expect(guides).toContain("<loc>https://knexio.xyz/guides/research-brief-from-scattered-sources/</loc><lastmod>2026-08-26</lastmod>");
       expect(guides).toContain("<loc>https://knexio.xyz/guides/evidence-matrix-from-source-notes/</loc><lastmod>2026-08-26</lastmod>");
       expect(guides).toContain("<loc>https://knexio.xyz/guides/evidence-to-priority-plan/</loc><lastmod>2026-08-26</lastmod>");
       expect(guides).toContain("<loc>https://knexio.xyz/guides/meeting-notes-to-decision-brief/</loc><lastmod>2026-08-26</lastmod>");
+      for (const slug of [
+        "clear-project-update-prompt",
+        "one-week-content-plan-from-questions",
+        "brief-first-prompt-pattern",
+        "thirty-minute-project-starting-plan",
+        "meeting-follow-up-email",
+        "decision-log-from-project-notes",
+        "weekly-priorities-from-project-list",
+        "meeting-agenda-from-notes",
+        "customer-feedback-theme-map",
+        "project-handoff-brief",
+        "project-notes-to-decision-memo",
+        "turn-rough-notes-into-decision-email",
+        "weekly-review-from-completed-and-blocked-work",
+      ]) {
+        expect(guides).toContain(`<loc>https://knexio.xyz/guides/${slug}/</loc><lastmod>2026-09-04</lastmod>`);
+      }
     } finally {
       rmSync(output, { recursive: true, force: true });
     }
