@@ -27,8 +27,8 @@ const brand = "Workflow Library";
 const defaultImageAlt = "Workflow Library field guide for practical AI workflows";
 
 export const staticRoutes: RouteMeta[] = [
-  { path: "/", title: "Practical AI workflows, prompts, and review checks", description: "Practical AI workflows for research, writing, meeting notes, and project planning. Each guide includes a scoped prompt, clear limits, and human review checks.", image: heroImage, imageAlt: "A calm desk arranged with research notes, paper, and an understated laptop" },
-  { path: "/guides", title: "AI workflows for research, writing, meetings, and planning", description: "Browse practical AI workflows for research briefs, project updates, meeting action lists, content planning, and focused first drafts." },
+  { path: "/", title: "AI prompts for work", description: "Practical AI prompts and workflows for research, writing, meeting notes, and project planning. Each guide includes a scoped prompt, clear limits, and human review checks.", image: heroImage, imageAlt: "A calm desk arranged with research notes, paper, and an understated laptop" },
+  { path: "/guides", title: "AI prompts for research, writing, meetings, and planning", description: "Browse practical AI prompts for research briefs, project updates, meeting action lists, content planning, and focused first drafts." },
   { path: "/series", title: "AI workflow guides: read in order", description: "Follow a four-stage AI workflow reading path: frame the work, make decisions visible, run the conversation, and carry the record forward." },
   { path: "/about", title: "About the editorial project", description: "Workflow Library is an independent editorial project publishing practical, human-reviewed AI workflows for everyday knowledge work." },
   { path: "/editorial-policy", title: "Editorial standards and method", description: "How Workflow Library approaches authorship, AI assistance, sources, corrections, and practical content quality." },
@@ -36,7 +36,7 @@ export const staticRoutes: RouteMeta[] = [
   { path: "/terms", title: "Terms of use", description: "Workflow Library terms covering educational use, permitted conduct, AI limitations, intellectual property, third-party links, and policy updates." },
   { path: "/contact", title: "Contact the editorial desk", description: "Contact Workflow Library about editorial corrections, privacy requests, accessibility feedback, and commercial disclosures." },
   { path: "/404", title: "Page not found", description: "This page is not in the Workflow Library index.", noIndex: true },
-  { path: "/workflows/meetings/meeting-minutes-vs-decision-brief/", title: "Meeting Minutes vs Decision Brief: What to Keep and What to Change", description: "Learn the practical difference between meeting minutes and a decision brief, when to use each, and how to transform notes without inventing agreement.", type: "article", section: "Meetings", tags: ["meeting minutes vs decision brief", "decision brief", "meeting notes", "AI meeting workflow"] },
+  { path: "/workflows/meetings/meeting-minutes-vs-decision-brief/", title: "Meeting minutes vs decision brief: what to keep and what to change", description: "Learn the practical difference between meeting minutes and a decision brief, when to use each, and how to transform notes without inventing agreement.", type: "article", section: "Meetings", tags: ["meeting minutes vs decision brief", "decision brief", "meeting notes", "AI meeting workflow"] },
   ...toolRoutes.map((tool) => ({ path: tool.path, title: tool.title, description: tool.description })),
 ];
 
