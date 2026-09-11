@@ -1,6 +1,12 @@
 export const DEFAULT_SITEMAP_LASTMOD = "2026-08-17";
 
 export const SITEMAP_LASTMOD_BY_ROUTE: Record<string, string> = {
+  "/": "2026-09-11",
+  "/guides/": "2026-09-11",
+  "/workflows/research-and-decisions/": "2026-09-11",
+  "/workflows/writing-and-updates/": "2026-09-11",
+  "/workflows/meetings-and-follow-up/": "2026-09-11",
+  "/workflows/planning-and-priorities/": "2026-09-11",
   "/tools/ai-prompt-word-counter/": "2026-08-25",
   "/guides/research-brief-from-scattered-sources/": "2026-08-26",
   "/guides/evidence-matrix-from-source-notes/": "2026-08-26",
