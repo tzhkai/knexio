@@ -110,7 +110,161 @@ function ShareTools({ title }: { title: string }) { const [status, setStatus] = 
 
 function ToolGuide({ current }: { current: "counter" | "markdown" }) {
   const counter = current === "counter";
-  return <section className="tool-guide" aria-labelledby="tool-guide-heading"><div><h2 id="tool-guide-heading">{counter ? "How to use the AI prompt counter." : "How to use the Markdown preview."}</h2>{counter ? <ol><li>Paste a draft prompt into the scratchpad.</li><li>Compare words, characters, and the approximate token count.</li><li>Use the result as a planning signal, then check the final prompt in the model you actually use.</li></ol> : <ol><li>Paste Markdown into the input panel.</li><li>Review headings, lists, quotes, inline code, and fenced code blocks.</li><li>Copy the source or download the rendered HTML when the structure is ready.</li></ol>}<div className="tool-example"><h3>{counter ? "Example: prepare a support triage prompt" : "Example: review a handoff note"}</h3>{counter ? <><p><strong>Input:</strong> a task, audience, constraints, and output shape before sending a long prompt.</p><code>{"Task: turn these support notes into a triage table\nAudience: the on-call engineer\nConstraint: mark unknowns instead of guessing\nOutput: issue, evidence, next check"}</code><p><strong>Verify:</strong> the count helps compare versions, but the person sending the prompt still checks whether the source notes are complete.</p></> : <><p><strong>Input:</strong> a Markdown handoff with headings, action items, a quote, and one code block.</p><code>{"# Handoff\n\n## Confirmed\n- Owner: Sam\n- Due: Friday\n\n> Verify the date before sending."}</code><p><strong>Verify:</strong> compare the preview with the source Markdown and download the HTML only after the structure and links are checked.</p></>}</div><div className="tool-limits"><h3>What this tool does not promise</h3><p>{counter ? "It does not produce official token counts, guarantee a prompt will fit a model, or judge whether the prompt is factually correct. Tokenization and context limits vary by model and may change." : "It does not support every Markdown extension, execute code, fetch remote content, or safely interpret raw HTML. It is a local structural preview, not a publishing or security validator."}</p></div><p className="tool-note"><strong>Important:</strong> All processing happens locally in this browser. Token counts are estimates, not official model billing measurements.</p>{counter ? <div className="tool-example"><h3>Continue the workflow</h3><p><Link className="tool-share-link" href="/guides/brief-first-prompt-pattern/">Start with the brief-first prompt pattern <ArrowUpRight size={13} /></Link> when the prompt still lacks a clear task, audience, constraint, or output shape.</p><p><Link className="tool-share-link" href="/guides/clear-project-update-prompt/">Draft a clearer project update <ArrowUpRight size={13} /></Link> when the counted prompt is preparing progress notes for another reader.</p><p><Link className="tool-share-link" href="/tools/markdown-preview/">Preview the resulting Markdown locally <ArrowUpRight size={13} /></Link> when you need to inspect headings, lists, or a handoff structure before sharing.</p></div> : <div className="tool-example"><h3>Continue the workflow</h3><p><Link className="tool-share-link" href="/guides/research-brief-from-scattered-sources/">Prepare a traceable research brief <ArrowUpRight size={13} /></Link> before turning notes into a polished document.</p><p><Link className="tool-share-link" href="/guides/meeting-notes-to-action-list/">Turn meeting notes into action items <ArrowUpRight size={13} /></Link> when the Markdown draft is a working record rather than a final page.</p></div>}</div><div className="tool-faq"><h3>Frequently asked questions</h3><Accordion type="single" collapsible className="tool-faq-accordion">{counter ? AI_PROMPT_COUNTER_FAQ.map((item, index) => <AccordionItem key={item.question} value={`faq-${index}`}><AccordionTrigger>{item.question}</AccordionTrigger><AccordionContent>{item.answer}</AccordionContent></AccordionItem>) : <><AccordionItem value="markdown-upload"><AccordionTrigger>Does the preview upload my Markdown?</AccordionTrigger><AccordionContent>No. The current preview runs locally and does not send the Markdown to a server.</AccordionContent></AccordionItem><AccordionItem value="markdown-features"><AccordionTrigger>Which Markdown features are supported?</AccordionTrigger><AccordionContent>The safe subset supports headings, emphasis, lists, blockquotes, inline code, and fenced code blocks with lightweight language highlighting.</AccordionContent></AccordionItem></>}</Accordion></div></section>;
+  return <section className="tool-guide" aria-labelledby="tool-guide-heading">
+    <div>
+      <h2 id="tool-guide-heading">{counter ? "How to use the AI prompt counter." : "How to use the Markdown preview."}</h2>
+      {counter ? (
+        <ol>
+          <li>Paste a draft prompt into the scratchpad.</li>
+          <li>Compare words, characters, and the approximate token count.</li>
+          <li>Use the result as a planning signal, then check the final prompt in the model you actually use.</li>
+        </ol>
+      ) : (
+        <ol>
+          <li>Paste Markdown into the input panel.</li>
+          <li>Review headings, lists, quotes, inline code, and fenced code blocks.</li>
+          <li>Copy the source or download the rendered HTML when the structure is ready.</li>
+        </ol>
+      )}
+    </div>
+
+    <div className="tool-example">
+      <h3>{counter ? "Worked example: size a prompt before a code-review task" : "Worked example: review a Markdown handoff before sharing"}</h3>
+      {counter ? (
+        <>
+          <p><strong>Scenario:</strong> You need to ask an AI to triage a batch of GitHub issues into a prioritized table for the on-call engineer. The raw notes are scattered across Slack threads, a Notion page, and a few issue comments.</p>
+          <p><strong>Input:</strong></p>
+          <code>{`Task: turn these support notes into a triage table
+Audience: the on-call engineer
+Constraint: mark unknowns instead of guessing
+Output: issue, evidence, next check
+Raw notes: [paste 800 words of messy notes here]`}</code>
+          <p><strong>Counter result:</strong> ~950 words, ~2,400 chars, ~600 estimated tokens (GPT-4). The token estimate tells you the prompt fits comfortably in GPT-4's 8k context with room for the model's response.</p>
+          <p><strong>Verify:</strong> the count helps compare versions, but the person sending the prompt still checks whether the source notes are complete, whether any confidential data slipped in, and whether the output shape matches what the engineer needs.</p>
+          <p><strong>When to use this pattern:</strong> before any prompt that exceeds ~1,000 words, when you need to estimate API cost, or when you're comparing two prompt variants to see which is leaner.</p>
+          <p><strong>When not to use it:</strong> for very short prompts under 200 words where the overhead isn't justified, or when the prompt contains no variable content (e.g., a fixed template you've already validated).</p>
+        </>
+      ) : (
+        <>
+          <p><strong>Scenario:</strong> You're handing off a feature branch to a reviewer. The handoff is written in Markdown with headings, action items, a blockquote for context, and a fenced code block showing the key diff.</p>
+          <p><strong>Input:</strong></p>
+          <code>{`# Handoff — PR #342
+
+## Confirmed
+- Owner: Sam
+- Due: Friday
+
+## Context
+> The rate-limiter refactor touches the auth middleware. Review the token-refresh logic carefully.
+
+## Changes
+\`\`\`diff
+- const token = getToken();
++ const token = await refreshIfNeeded(getToken());
+\`\`\`
+
+## Open questions
+- [ ] Does the new refresh path handle clock skew?
+- [ ] Should we add a metric for refresh latency?`}</code>
+          <p><strong>Preview check:</strong> the rendered preview lets you verify heading hierarchy, list rendering, blockquote styling, and code block language tags before you send the Markdown to GitHub, Notion, or Slack.</p>
+          <p><strong>When to use this pattern:</strong> before sharing any Markdown that will be rendered by another platform, when you need to download clean HTML for a static page, or when you want a distraction-free writing surface that shows structure instantly.</p>
+          <p><strong>When not to use it:</strong> for complex Markdown with tables, footnotes, math, or custom extensions — those require a full parser like remark/rehype or a platform-specific preview.</p>
+        </>
+      )}
+    </div>
+
+    <div className="tool-limits">
+      <h3>What this tool does not promise</h3>
+      <p>{counter
+        ? "It does not produce official token counts, guarantee a prompt will fit a model, or judge whether the prompt is factually correct. Tokenization and context limits vary by model and may change. The estimate uses a character-per-token heuristic (4 chars/token for GPT-4, 3.7 for Claude 3.5, 4.1 for Gemini 1.5) which is accurate to within ~15% for typical English prose but can drift for code-heavy or non-Latin text."
+        : "It does not support every Markdown extension, execute code, fetch remote content, or safely interpret raw HTML. It is a local structural preview, not a publishing or security validator. Unsupported features include: tables, footnotes, definition lists, math (LaTeX), task lists, autolinks, strikethrough, and custom container directives. Links and raw HTML in the source are intentionally not interpreted — this is a design choice to keep the preview predictable and safe."
+      }</p>
+    </div>
+
+    <p className="tool-note"><strong>Important:</strong> All processing happens locally in this browser. Token counts are estimates, not official model billing measurements.</p>
+
+    {counter ? (
+      <div className="tool-example">
+        <h3>When to reach for this tool</h3>
+        <ul>
+          <li><strong>Planning a long prompt:</strong> you have a multi-part task (context + constraints + output shape) and want to know the rough token budget before sending.</li>
+          <li><strong>Comparing prompt variants:</strong> you're iterating on a prompt and need to see whether a rewrite actually reduced length.</li>
+          <li><strong>Estimating API cost:</strong> the planning-rate cost estimate gives a ballpark for input tokens; multiply by your expected volume for a rough budget.</li>
+          <li><strong>Checking context safety:</strong> the model-length progress bar warns when you're near or over a model's context limit.</li>
+        </ul>
+        <h3>When this tool is the wrong choice</h3>
+        <ul>
+          <li>You need exact token counts — use the provider's tokenizer (e.g., <code>tiktoken</code> for OpenAI models).</li>
+          <li>The prompt contains sensitive data — even local browser tools can be inspected by browser extensions or device management software.</li>
+          <li>You're prompting a model with a very different tokenizer (e.g., multilingual models with non-Latin scripts) where the 4-char heuristic is unreliable.</li>
+        </ul>
+      </div>
+    ) : (
+      <div className="tool-example">
+        <h3>When to reach for this tool</h3>
+        <ul>
+          <li><strong>Writing a handoff or status note:</strong> you need to verify that headings, lists, and code blocks render as intended before committing to a platform.</li>
+          <li><strong>Preparing a static HTML snippet:</strong> download the rendered HTML and paste it into a static site, email template, or documentation page.</li>
+          <li><strong>Distraction-free drafting:</strong> the full-screen mode hides UI chrome so you can focus on structure.</li>
+          <li><strong>Checking link integrity:</strong> the preview renders links so you can visually confirm destinations before sharing.</li>
+        </ul>
+        <h3>When this tool is the wrong choice</h3>
+        <ul>
+          <li>You need tables, math, footnotes, or GitHub-flavored extensions — use a full Markdown editor or the target platform's own preview.</li>
+          <li>You're processing untrusted Markdown from an external source — this tool does not sanitize HTML; it deliberately passes through a safe subset only.</li>
+          <li>You need real-time collaboration or version history — this is a single-browser, local-storage tool.</li>
+        </ul>
+      </div>
+    )}
+
+    <div className="tool-example">
+      <h3>Continue the workflow</h3>
+      {counter ? (
+        <>
+          <p><Link className="tool-share-link" href="/guides/brief-first-prompt-pattern/">Start with the brief-first prompt pattern <ArrowUpRight size={13} /></Link> when the prompt still lacks a clear task, audience, constraint, or output shape.</p>
+          <p><Link className="tool-share-link" href="/guides/clear-project-update-prompt/">Draft a clearer project update <ArrowUpRight size={13} /></Link> when the counted prompt is preparing progress notes for another reader.</p>
+          <p><Link className="tool-share-link" href="/tools/markdown-preview/">Preview the resulting Markdown locally <ArrowUpRight size={13} /></Link> when you need to inspect headings, lists, or a handoff structure before sharing.</p>
+        </>
+      ) : (
+        <>
+          <p><Link className="tool-share-link" href="/guides/research-brief-from-scattered-sources/">Prepare a traceable research brief <ArrowUpRight size={13} /></Link> before turning notes into a polished document.</p>
+          <p><Link className="tool-share-link" href="/guides/meeting-notes-to-action-list/">Turn meeting notes into action items <ArrowUpRight size={13} /></Link> when the Markdown draft is a working record rather than a final page.</p>
+          <p><Link className="tool-share-link" href="/tools/ai-prompt-word-counter/">Count the prompt words first <ArrowUpRight size={13} /></Link> when you'll feed the Markdown output into an AI prompt.</p>
+        </>
+      )}
+    </div>
+
+    <div className="tool-faq">
+      <h3>Frequently asked questions</h3>
+      <Accordion type="single" collapsible className="tool-faq-accordion">
+        {counter ? AI_PROMPT_COUNTER_FAQ.map((item, index) => (
+          <AccordionItem key={item.question} value={`faq-${index}`}>
+            <AccordionTrigger>{item.question}</AccordionTrigger>
+            <AccordionContent>{item.answer}</AccordionContent>
+          </AccordionItem>
+        )) : (
+          <>
+            <AccordionItem value="markdown-upload">
+              <AccordionTrigger>Does the preview upload my Markdown?</AccordionTrigger>
+              <AccordionContent>No. The current preview runs locally and does not send the Markdown to a server.</AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="markdown-features">
+              <AccordionTrigger>Which Markdown features are supported?</AccordionTrigger>
+              <AccordionContent>The safe subset supports headings, emphasis, lists, blockquotes, inline code, and fenced code blocks with lightweight language highlighting.</AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="markdown-tables">
+              <AccordionTrigger>Are tables supported?</AccordionTrigger>
+              <AccordionContent>No. Tables are not part of the safe subset. For tables, use a full Markdown processor or the target platform's native editor.</AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="markdown-security">
+              <AccordionTrigger>Is it safe to paste untrusted Markdown here?</AccordionTrigger>
+              <AccordionContent>This tool does not sanitize HTML and does not execute scripts. However, it renders a safe subset only. Pasting untrusted content with raw HTML or script tags will not execute them here, but downstream platforms may behave differently. Always review rendered output before publishing.</AccordionContent>
+            </AccordionItem>
+          </>
+        )}
+      </Accordion>
+    </div>
+  </section>;
 }
 function ToolRecommendations({ current }: { current: "counter" | "markdown" }) { const items = current === "counter" ? [{ href: "/guides/meeting-agenda-from-notes", type: "Guide", label: "Create a meeting agenda from notes", summary: "Turn confirmed decisions and open questions into a focused next-meeting plan." }, { href: "/guides/meeting-follow-up-email", type: "Guide", label: "Write a meeting follow-up email", summary: "Confirm owners and dates without turning an ambiguous remark into a commitment." }, { href: "/guides/weekly-priorities-from-project-list", type: "Guide", label: "Plan weekly priorities", summary: "Sort a crowded project list while keeping dependencies and trade-offs visible." }, { href: "/guides/decision-log-from-project-notes", type: "Guide", label: "Create a decision log", summary: "Preserve options, evidence, owners, and unresolved questions for future readers." }] : [{ href: "/tools/ai-prompt-word-counter/", type: "Tool", label: "AI Prompt Word Counter", summary: "Check prompt length and rough token planning locally." }, { href: "/guides/research-brief-from-scattered-sources", type: "Guide", label: "Turn scattered sources into a research brief", summary: "Keep source labels, gaps, and next checks visible." }, { href: "/guides/brief-first-prompt-pattern", type: "Guide", label: "Use the brief-first prompt pattern", summary: "Name the task, audience, constraints, and output before drafting." }]; return <section className="tool-recommendations" aria-labelledby="related-tools-heading"><h2 id="related-tools-heading">Related tools and guides.</h2><p className="tool-recommendations-intro">Continue with a small utility or a practical guide that supports the same step in your workflow.</p><div className="tool-recommendation-grid">{items.map(item => <Link key={item.href} className="tool-recommendation-card" href={item.href}><span className="tool-recommendation-type">{item.type}</span><strong>{item.label}</strong><p>{item.summary}</p><ArrowUpRight size={15} /></Link>)}</div></section>; }
 
