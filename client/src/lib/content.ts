@@ -13,6 +13,14 @@ export type Guide = {
   image?: string;
   imageAlt?: string;
   takeaway: string;
+  flagshipBrief?: {
+    title: string;
+    body: string;
+    useWhen: string;
+    input: string;
+    output: string;
+    example: string;
+  };
   prompt: string;
   steps: string[];
   sections: { title: string; body: string }[];
@@ -41,9 +49,10 @@ export const guides: Guide[] = [
     slug: "research-brief-from-scattered-sources",
     title: "Turn scattered sources into a one-page research brief",
     dek: "Create a decision-facing brief with a source register, claim boundaries, and a visible review trail—before anyone treats a summary as a recommendation.",
-    category: "Research", readingTime: "14 min read", level: "Deep dive", updated: "26 Aug 2026", publishedAt: "2026-08-14T09:00:00+08:00", updatedAt: "2026-08-26T09:00:00+08:00", topics: ["research brief", "AI research workflow", "source checking", "research prompt", "evidence register"],
+    category: "Research", readingTime: "14 min read", level: "Deep dive", updated: "2 Oct 2026", publishedAt: "2026-08-14T09:00:00+08:00", updatedAt: "2026-10-02T09:00:00+08:00", topics: ["research brief", "AI research workflow", "source checking", "research prompt", "evidence register"],
     image: "/images/research-brief-workflow.webp", imageAlt: "Research materials arranged around a concise paper outline on a warm desk",
     takeaway: "Ask for a traceable decision record, not a confident-sounding summary.",
+    flagshipBrief: { title: "Start here: this page makes a source trail decision-ready", body: "Use this guide when several labeled sources need to become a short brief for a decision owner. It deliberately stops before it claims a trend, cause, or recommendation that the supplied record cannot establish.", useWhen: "You have a specific decision question, a source register, and notes that still need scope, conflict, or freshness checks.", input: "A decision question plus labeled notes, stable source locations, dates, scope, and limitations.", output: "A one-page brief with supported findings, conflicts, open verification work, and a recommendation only when the record supports one.", example: "Illustrative transformation: [S1] reports a category definition and [S2] reports a different period. The brief keeps both labels, marks the period mismatch, and asks for a comparable date range instead of calling the difference a trend." },
     prompt: `Prepare a one-page research brief from the source register and notes below.\n\nDecision question: [one choice, not a broad topic]\nAudience and decision owner: [who will review and decide]\nSource register: [source label | publisher | link or file | publication/access date | scope or limitation]\nNotes by source: [paste only labeled excerpts or observations]\n\nReturn these blocks in order: (1) decision question and scope, (2) findings with source labels, (3) conflicting or limited evidence, (4) open questions and next verification step, and (5) a recommendation only if the supplied record supports it. For each material statement, keep the source label. Mark unsupported claims “Not supported in supplied record” and dated material “Needs freshness check.” Do not invent facts, citations, users, results, or certainty.`,
     steps: ["Write one decision question that can be answered, deferred, or narrowed.", "Build a source register before drafting prose; include the link, date, and a scope note for every decision-relevant source.", "Keep observations, interpretations, and recommendations in separate lines so AI cannot silently promote one into another.", "Ask for contradictions and freshness risks before asking for a conclusion.", "Open the original source for every claim that could change the decision."],
     sections: [
@@ -367,8 +376,9 @@ Produce four sections: completed, carryover, blockers, and next priority. For ea
     slug: "meeting-notes-to-decision-brief",
     title: "Turn meeting notes into a decision brief without inventing agreement",
     dek: "Build a decision-facing record that preserves the exact status of a choice, its rationale, unresolved objections, and the confirmation still required.",
-    category: "Meetings", readingTime: "14 min read", level: "Deep dive", updated: "26 Aug 2026", publishedAt: "2026-08-17T14:00:00+08:00", updatedAt: "2026-08-26T09:00:00+08:00", topics: ["AI meeting notes", "meeting decision brief", "meeting summary template", "decision tracking", "decision record"],
+    category: "Meetings", readingTime: "14 min read", level: "Deep dive", updated: "2 Oct 2026", publishedAt: "2026-08-17T14:00:00+08:00", updatedAt: "2026-10-02T09:00:00+08:00", topics: ["AI meeting notes", "meeting decision brief", "meeting summary template", "decision tracking", "decision record"],
     takeaway: "A decision brief is trustworthy when readers can distinguish the status of a choice from the energy of the discussion around it.",
+    flagshipBrief: { title: "Start here: this page classifies agreement before it summarizes", body: "Use this guide when a meeting record contains proposals, objections, actions, and possible decisions that must not be blended together. It prepares a confirmation surface; it does not decide whether the organization has authority to approve the choice.", useWhen: "You have the original meeting record, a defined decision question, and a role or group that can confirm the status when the record identifies one.", input: "Minutes, notes, transcript, or recording references with source locations, decision statements, rationale, objections, and explicitly stated actions.", output: "A decision brief using only Confirmed, Proposed, Deferred, or Not confirmed, with a precise confirmation request.", example: "Illustrative transformation: “I can investigate option B” becomes an action, not evidence that option B was selected. The brief keeps the action separate and leaves the decision status Not confirmed until the accountable role responds." },
     prompt: `Create a decision brief from this meeting record. Treat every line as unconfirmed unless the supplied record gives a clear basis for its status.
 
 Decision question: [the choice the meeting addressed]
@@ -431,8 +441,9 @@ Return: (1) decision question, (2) decision status using only Confirmed / Propos
     slug: "evidence-to-priority-plan",
     title: "Turn a research brief into a priority plan without hiding uncertainty",
     dek: "Turn a reviewed evidence record into one reversible next move, while preserving the dependency, disconfirming condition, and decision owner that can still change the plan.",
-    category: "Planning", readingTime: "15 min read", level: "Deep dive", updated: "26 Aug 2026", publishedAt: "2026-08-25T09:00:00+08:00", updatedAt: "2026-08-26T09:00:00+08:00", topics: ["research to planning", "evidence-based priorities", "decision-ready plan", "AI planning workflow", "reversible planning"],
+    category: "Planning", readingTime: "15 min read", level: "Deep dive", updated: "2 Oct 2026", publishedAt: "2026-08-25T09:00:00+08:00", updatedAt: "2026-10-02T09:00:00+08:00", topics: ["research to planning", "evidence-based priorities", "decision-ready plan", "AI planning workflow", "reversible planning"],
     takeaway: "A credible priority is a bounded next move with a named review condition—not a task list made to look certain.",
+    flagshipBrief: { title: "Start here: this page turns evidence into a reversible next move", body: "Use this guide after a brief or matrix has made the important evidence and gaps visible. The output is a planning proposal with a review gate, not an approval, capacity promise, delivery date, or business-outcome forecast.", useWhen: "You have reviewed evidence, a decision owner or approval status, and enough operational context to define a small move that can pause or change.", input: "A labeled evidence record, known dependencies and constraints, the decision to support, and the condition that could disconfirm the priority.", output: "One bounded priority, its evidence, dependency and owner status, disconfirming condition, deferred work, and review gate.", example: "Illustrative transformation: two labeled support notes justify reproducing a reported export issue against a defined sample. They do not justify promising a fix or assigning a delivery date before access and capacity are confirmed." },
     prompt: `Turn the reviewed evidence record below into a priority plan. Preserve uncertainty and do not treat a proposed plan as an approved commitment.
 
 Decision to support: [one decision]
@@ -495,8 +506,9 @@ Return: (1) decision and current approval status, (2) one smallest reversible pr
     slug: "evidence-matrix-from-source-notes",
     title: "Build an evidence matrix from source notes before making a decision",
     dek: "Construct a claim-by-claim inspection table that keeps source type, direct support, limitations, and verification work separate before a brief or recommendation is written.",
-    category: "Research", readingTime: "15 min read", level: "Deep dive", updated: "26 Aug 2026", publishedAt: "2026-08-16T11:00:00+08:00", updatedAt: "2026-08-26T09:00:00+08:00", topics: ["evidence matrix", "evidence review", "AI research workflow", "decision support template", "claim verification"],
+    category: "Research", readingTime: "15 min read", level: "Deep dive", updated: "2 Oct 2026", publishedAt: "2026-08-16T11:00:00+08:00", updatedAt: "2026-10-02T09:00:00+08:00", topics: ["evidence matrix", "evidence review", "AI research workflow", "decision support template", "claim verification"],
     takeaway: "An evidence matrix earns its space when a reader can challenge one claim at a time without mistaking a tidy table for a verdict.",
+    flagshipBrief: { title: "Start here: this page tests claims before they enter a brief", body: "Use this guide when a sentence contains several propositions, sources disagree, or a summary could hide where an inference began. The matrix allocates verification attention; it does not assign a numeric confidence score or determine an acceptable risk level.", useWhen: "You have a specific decision, a source register, and claim notes that can be split into atomic propositions.", input: "One claim per row, exact source labels, source type and scope, limitations, freshness risk, and the consequence if the claim is wrong.", output: "A claim-level matrix using Direct, Partial, Context only, or Not supported in supplied record, plus a specific verification step for decision-critical rows.", example: "Illustrative transformation: “The policy applies to our use and blocks launch this quarter” becomes separate rows for policy scope, applicability, and timing. A source may support one row while leaving the other two open." },
     prompt: `Build an evidence matrix from the labeled record below. Preserve the distinction between what a source says, how directly it supports a claim, and what still must be checked.
 
 Decision question: [specific choice]

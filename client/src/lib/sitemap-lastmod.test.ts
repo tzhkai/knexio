@@ -14,10 +14,10 @@ describe("sitemap lastmod generation", () => {
       const guides = readFileSync(path.join(output, "sitemap-guides.xml"), "utf8");
       expect(pages).toContain("<loc>https://knexio.xyz/tools/ai-prompt-word-counter/</loc><lastmod>2026-08-25</lastmod>");
       expect(guides).toContain("<loc>https://knexio.xyz/guides/meeting-agenda-from-notes/</loc><lastmod>2026-09-04</lastmod>");
-      expect(guides).toContain("<loc>https://knexio.xyz/guides/research-brief-from-scattered-sources/</loc><lastmod>2026-08-26</lastmod>");
-      expect(guides).toContain("<loc>https://knexio.xyz/guides/evidence-matrix-from-source-notes/</loc><lastmod>2026-08-26</lastmod>");
-      expect(guides).toContain("<loc>https://knexio.xyz/guides/evidence-to-priority-plan/</loc><lastmod>2026-08-26</lastmod>");
-      expect(guides).toContain("<loc>https://knexio.xyz/guides/meeting-notes-to-decision-brief/</loc><lastmod>2026-08-26</lastmod>");
+      expect(guides).toContain("<loc>https://knexio.xyz/guides/research-brief-from-scattered-sources/</loc><lastmod>2026-10-02</lastmod>");
+      expect(guides).toContain("<loc>https://knexio.xyz/guides/evidence-matrix-from-source-notes/</loc><lastmod>2026-10-02</lastmod>");
+      expect(guides).toContain("<loc>https://knexio.xyz/guides/evidence-to-priority-plan/</loc><lastmod>2026-10-02</lastmod>");
+      expect(guides).toContain("<loc>https://knexio.xyz/guides/meeting-notes-to-decision-brief/</loc><lastmod>2026-10-02</lastmod>");
       for (const slug of [
         "clear-project-update-prompt",
         "one-week-content-plan-from-questions",

@@ -69,8 +69,10 @@ describe("workflow library content", () => {
     for (const slug of flagshipSlugs) {
       const guide = getGuide(slug);
       expect(guide, `${slug} should be published`).toBeDefined();
-      expect(guide?.updatedAt, `${slug} should record the substantive rewrite`).toBe("2026-08-26T09:00:00+08:00");
+      expect(guide?.updatedAt, `${slug} should record the substantive rewrite`).toBe("2026-10-02T09:00:00+08:00");
       expect(guide?.sections.length, `${slug} needs substantive depth`).toBeGreaterThanOrEqual(7);
+      expect(guide?.flagshipBrief?.useWhen, `${slug} needs a page-specific starting boundary`).toBeTruthy();
+      expect(guide?.flagshipBrief?.example, `${slug} needs a bounded micro-example`).toMatch(/Illustrative transformation/);
       expect(guide?.steps.length, `${slug} needs a distinct method sequence`).toBeGreaterThanOrEqual(5);
       expect(guide?.method?.inputs.length, `${slug} needs scoped inputs`).toBeGreaterThanOrEqual(3);
       expect(guide?.method?.steps.length, `${slug} needs a reviewable method`).toBeGreaterThanOrEqual(4);
