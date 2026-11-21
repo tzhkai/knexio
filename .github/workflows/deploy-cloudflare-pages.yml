@@ -39,7 +39,7 @@ jobs:
 
       - name: Build canonical production site
         env:
-          SITE_URL: https://knexio.xyz
+          SITE_URL: https://knexio.cc.cd
         run: pnpm build:cloudflare
 
       - name: Deploy static site to Cloudflare Pages

@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /404
 
-Sitemap: https://knexio.xyz/sitemap_index.xml
+Sitemap: https://knexio.cc.cd/sitemap_index.xml

@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 import { allSitemapRoutes, canonicalRouteUrl, guideSitemapRoutes, staticSitemapRoutes, workflowSitemapRoutes } from "./site-routes";
 import { DEFAULT_SITEMAP_LASTMOD, sitemapLastmodForRoute } from "./sitemap-metadata";
 
-const configuredUrl = process.env.SITE_URL || "https://knexio.xyz";
+const configuredUrl = process.env.SITE_URL || "https://knexio.cc.cd";
 
 let origin: string;
 try {

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 type ShareArticleProps = { title: string; description: string; path: string };
 type CopiedKind = "link" | "note" | null;
-const CANONICAL_ORIGIN = "https://knexio.xyz";
+const CANONICAL_ORIGIN = "https://knexio.cc.cd";
 
 export function buildArticleShareNote(title: string, description: string, url: string) {
   return `${title}\n\n${description}\n\n${url}`;

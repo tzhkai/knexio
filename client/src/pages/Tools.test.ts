@@ -14,17 +14,17 @@ describe("Workflow utilities", () => {
   });
 
   it("adds source, medium, and campaign UTM parameters to a share URL", () => {
-    const tracked = new URL(addShareUtm("https://knexio.xyz/tools/ai-prompt-word-counter/", "linkedin"));
+    const tracked = new URL(addShareUtm("https://knexio.cc.cd/tools/ai-prompt-word-counter/", "linkedin"));
     expect(tracked.searchParams.get("utm_source")).toBe("linkedin");
     expect(tracked.searchParams.get("utm_medium")).toBe("social");
     expect(tracked.searchParams.get("utm_campaign")).toBe("prompt-counter-share");
   });
 
   it("builds a share text with the canonical tool URL and current statistics", () => {
-    const shareText = buildPromptCounterShareText("https://knexio.xyz/tools/ai-prompt-word-counter/", { words: 12, characters: 86, lines: 4, model: "GPT-4", tokens: 22 });
+    const shareText = buildPromptCounterShareText("https://knexio.cc.cd/tools/ai-prompt-word-counter/", { words: 12, characters: 86, lines: 4, model: "GPT-4", tokens: 22 });
     expect(shareText).toContain("Words: 12");
     expect(shareText).toContain("Estimated tokens (GPT-4): 22");
-    expect(shareText).toContain("https://knexio.xyz/tools/ai-prompt-word-counter/");
+    expect(shareText).toContain("https://knexio.cc.cd/tools/ai-prompt-word-counter/");
   });
 
   it("builds a shareable long-report data set with prompt and token statistics", () => { const stats = { words: 12, characters: 86, lines: 4, model: "GPT-4", tokens: 22, readingMinutes: 1, speakingMinutes: 1, estimatedCost: "$0.0007" }; const lines = buildPromptCounterExportLines("Task: summarize notes", stats); expect(buildPromptCounterExportTitle(stats)).toContain("GPT-4"); expect(lines).toContain("Estimated tokens: 22"); expect(lines).toContain("Task: summarize notes"); });
@@ -58,9 +58,9 @@ describe("Workflow utilities", () => {
   });
 
   it("exposes truthful AI Prompt Word Counter JSON-LD fields", () => {
-    const schema = aiPromptCounterSchema({ origin: "https://knexio.xyz", pageUrl: "https://knexio.xyz/tools/ai-prompt-word-counter/" });
+    const schema = aiPromptCounterSchema({ origin: "https://knexio.cc.cd", pageUrl: "https://knexio.cc.cd/tools/ai-prompt-word-counter/" });
     expect(schema["@type"]).toBe("WebApplication");
-    expect(schema["@id"]).toBe("https://knexio.xyz/tools/ai-prompt-word-counter/#application");
+    expect(schema["@id"]).toBe("https://knexio.cc.cd/tools/ai-prompt-word-counter/#application");
     expect(schema.isAccessibleForFree).toBe(true);
     expect(schema.featureList).toContain("Local browser processing");
     expect(schema.creator).toMatchObject({ "@type": "Organization", name: "Knexio" });
@@ -68,7 +68,7 @@ describe("Workflow utilities", () => {
   });
 
   it("keeps FAQ schema and visible FAQ copy aligned with metadata", () => {
-    const faq = aiPromptCounterFaqSchema("https://knexio.xyz/tools/ai-prompt-word-counter/");
+    const faq = aiPromptCounterFaqSchema("https://knexio.cc.cd/tools/ai-prompt-word-counter/");
     expect(faq["@type"]).toBe("FAQPage");
     expect(faq.mainEntity).toHaveLength(AI_PROMPT_COUNTER_FAQ.length);
     expect(faq.mainEntity[0].name).toBe(AI_PROMPT_COUNTER_FAQ[0].question);
@@ -169,7 +169,7 @@ describe("Workflow utilities", () => {
 
   it("maps scroll positions proportionally between long panels", () => { const source = { scrollHeight: 1000, clientHeight: 100, scrollTop: 450 } as HTMLElement; const target = { scrollHeight: 600, clientHeight: 200, scrollTop: 0 } as HTMLElement; syncScrollPosition(source, target); expect(target.scrollTop).toBe(200); });
 
-  it("builds encoded social sharing links", () => { const links = buildShareLinks("https://knexio.xyz/tools/markdown-preview/?a=1&b=2", "Markdown Preview & Notes"); expect(links.linkedIn).toContain("%26"); expect(links.x).toContain("Markdown%20Preview%20%26%20Notes"); expect(links.facebook).toContain("markdown-preview"); });
+  it("builds encoded social sharing links", () => { const links = buildShareLinks("https://knexio.cc.cd/tools/markdown-preview/?a=1&b=2", "Markdown Preview & Notes"); expect(links.linkedIn).toContain("%26"); expect(links.x).toContain("Markdown%20Preview%20%26%20Notes"); expect(links.facebook).toContain("markdown-preview"); });
 
   it("falls back safely when local storage is unavailable", () => { expect(readLocalDraft("missing-key", "fallback")).toBe("fallback"); expect(() => writeLocalDraft("key", "value")).not.toThrow(); expect(() => clearLocalDraft("key")).not.toThrow(); });
 

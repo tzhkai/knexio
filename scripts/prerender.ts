@@ -18,7 +18,7 @@ const PORT = Number(process.env.PRERENDER_PORT || 3100);
 const BASE = `http://127.0.0.1:${PORT}`;
 const SETTLE_MS = Number(process.env.PRERENDER_SETTLE_MS || 1000);
 const CONCURRENCY = Number(process.env.PRERENDER_CONCURRENCY || 3);
-const productionOrigin = new URL(process.env.SITE_URL || "https://knexio.xyz").origin;
+const productionOrigin = new URL(process.env.SITE_URL || "https://knexio.cc.cd").origin;
 
 function pageUrl(routePath: string) {
   return routePath === "/" ? `${BASE}/` : `${BASE}${routePath.replace(/\/$/, "")}/`;
