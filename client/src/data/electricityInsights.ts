@@ -107,7 +107,7 @@ export function signedPct(value: number | null): string {
 }
 
 export function sentenceCase(label: string): string {
-  return label.charAt(0).toUpperCase() + label.slice(1);
+  return label.replace(/(^|[\s-])([a-z])/g, (_match, separator: string, letter: string) => `${separator}${letter.toUpperCase()}`);
 }
 
 export type Metric = "bill" | "price" | "kwh" | "change";
