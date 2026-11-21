@@ -5,7 +5,7 @@ import { ArrowUpRight, Menu, ShieldCheck, X } from "lucide-react";
 import { useCookieConsent } from "@/components/CookieConsent";
 import SiteBreadcrumb from "@/components/SiteBreadcrumb";
 
-const navItems = [{ href: "/guides/", label: "Library" }, { href: "/series", label: "Read in order" }, { href: "/guides/brief-first-prompt-pattern", label: "Start here" }, { href: "/editorial-policy", label: "Method" }, { href: "/about", label: "About" }];
+const navItems = [{ href: "/average-electric-bill/", label: "Average bill" }, { href: "/electricity-cost-calculator/", label: "Calculator" }, { href: "/methodology/", label: "Method" }, { href: "/about", label: "About" }];
 const normalizePath = (value: string) => value.replace(/\/+$/, "") || "/";
 const active = (path: string, href: string) => normalizePath(path) === normalizePath(href);
 const staticPageLabels: Record<string, string> = { "/about": "About", "/editorial-policy": "Editorial method", "/contact": "Contact", "/privacy": "Privacy policy", "/terms": "Terms of use" };
@@ -21,17 +21,17 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   const { openSettings } = useCookieConsent(); const staticPageLabel = staticPageLabels[location];
   return <div className="site-shell">
     <header className="site-header"><div className="header-inner">
-      <Link href="/" className="brand-lockup" aria-label="Workflow Library home"><img className="brand-mark" src="/images/workflow-library-mark.webp" alt="" /><span className="brand-name">Workflow<br />Library</span></Link>
+      <Link href="/" className="brand-lockup" aria-label="Knexio electricity reference home"><img className="brand-mark" src="/images/workflow-library-mark.webp" alt="" /><span className="brand-name">Knexio<br />Electricity</span></Link>
       <nav className="desktop-nav" aria-label="Primary navigation">{navItems.map(item => <Link key={item.href} href={item.href} className={active(location, item.href) ? "nav-link active" : "nav-link"}>{item.label}</Link>)}</nav>
-      <Link href="/guides/" className="header-cta">Browse guides <ArrowUpRight size={14} /></Link>
+      <Link href="/average-electric-bill/" className="header-cta">Compare states <ArrowUpRight size={14} /></Link>
       <button className="mobile-menu-toggle" type="button" aria-label={open ? "Close navigation" : "Open navigation"} onClick={() => setOpen(!open)}>{open ? <X size={22} /> : <Menu size={22} />}</button>
-    </div>{open && <nav className="mobile-nav" aria-label="Mobile navigation">{navItems.map(item => <Link key={item.href} href={item.href} className="mobile-nav-link" onClick={() => setOpen(false)}>{item.label}</Link>)}<Link href="/guides/" className="mobile-nav-link mobile-nav-cta" onClick={() => setOpen(false)}>Browse all guides <ArrowUpRight size={15} /></Link></nav>}</header>
-    <style>{layoutRefinements}</style><a className="skip-link" href="#main-content">Skip to main content</a><main id="main-content" tabIndex={-1}><div className="publication-imprint" aria-hidden="true"><img src="/images/workflow-library-mark.webp" alt="" /><span>W—L / Field record</span></div>{staticPageLabel && <SiteBreadcrumb items={[{ label: "Home", href: "/" }, { label: staticPageLabel }]} />}{children}</main>
+    </div>{open && <nav className="mobile-nav" aria-label="Mobile navigation">{navItems.map(item => <Link key={item.href} href={item.href} className="mobile-nav-link" onClick={() => setOpen(false)}>{item.label}</Link>)}<Link href="/electricity-cost-calculator/" className="mobile-nav-link mobile-nav-cta" onClick={() => setOpen(false)}>Open the calculator <ArrowUpRight size={15} /></Link></nav>}</header>
+    <style>{layoutRefinements}</style><a className="skip-link" href="#main-content">Skip to main content</a><main id="main-content" tabIndex={-1}><div className="publication-imprint" aria-hidden="true"><img src="/images/workflow-library-mark.webp" alt="" /><span>Knexio / EIA data</span></div>{staticPageLabel && <SiteBreadcrumb items={[{ label: "Home", href: "/" }, { label: staticPageLabel }]} />}{children}</main>
     <button className="privacy-floating-control" type="button" onClick={openSettings} aria-label="Open privacy settings"><ShieldCheck size={15} /><span>Privacy settings</span></button><footer className="site-footer"><div className="footer-top">
-      <div className="footer-brand"><img className="footer-mark" src="/images/workflow-library-mark.webp" alt="" /><p>Clearer work, one useful system at a time.</p></div>
-      <div className="footer-column"><span className="footer-label">Explore</span><Link href="/guides">All guides</Link><Link href="/series">Read in order</Link><Link href="/guides/brief-first-prompt-pattern">Start with prompts</Link><Link href="/tools/ai-prompt-word-counter/">Prompt word counter</Link><Link href="/tools/markdown-preview/">Markdown preview</Link><Link href="/editorial-policy">Editorial method</Link></div>
-      <div className="footer-column"><span className="footer-label">Site information</span><Link href="/about">About the library</Link><Link href="/privacy">Privacy policy</Link><Link href="/terms">Terms of use</Link><button className="footer-settings" type="button" onClick={openSettings}>Cookie settings</button><Link href="/contact">Contact</Link></div>
-      <div className="footer-note"><span className="footer-label">A practical note</span><p>AI can help structure work. It cannot take responsibility for facts, decisions, or relationships.</p></div>
-    </div><div className="footer-bottom"><span>© 2026 Workflow Library</span><span>Independent educational publishing project</span></div></footer>
+      <div className="footer-brand"><img className="footer-mark" src="/images/workflow-library-mark.webp" alt="" /><p>U.S. residential electricity bills, built on EIA Electric Power Monthly and RECS 2020.</p></div>
+      <div className="footer-column"><span className="footer-label">Electricity data</span><Link href="/average-electric-bill/">Average bill by state</Link><Link href="/electricity-cost-calculator/">Cost calculator</Link><Link href="/methodology/">Data and method</Link><Link href="/average-electric-bill/single-family-house">Single-family houses</Link><Link href="/average-electric-bill/2-bedroom-apartment">Two-bedroom apartments</Link><Link href="/average-electric-bill/mobile-home">Mobile homes</Link></div>
+      <div className="footer-column"><span className="footer-label">Site information</span><Link href="/about">About this reference</Link><Link href="/privacy">Privacy policy</Link><Link href="/terms">Terms of use</Link><button className="footer-settings" type="button" onClick={openSettings}>Cookie settings</button><Link href="/contact">Contact</Link></div>
+      <div className="footer-note"><span className="footer-label">A practical note</span><p>State averages describe a population, not your meter. Tiered rates, heating fuel and solar all move a real bill away from the average.</p></div>
+    </div><div className="footer-bottom"><span>© 2026 Knexio</span><span>Independent reference · data from the U.S. Energy Information Administration</span></div></footer>
   </div>;
 }

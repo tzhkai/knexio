@@ -1,35 +1,17 @@
-export const DEFAULT_SITEMAP_LASTMOD = "2026-08-17";
+/** Last-modified dates: the whole electricity dataset shares one EIA vintage. */
+import { STATES_UPDATED } from "../client/src/data/electricity";
+import { electricityRoutePaths } from "../client/src/data/electricityRoutes";
 
-export const SITEMAP_LASTMOD_BY_ROUTE: Record<string, string> = {
-  "/": "2026-09-11",
-  "/guides/": "2026-09-11",
-  "/workflows/research-and-decisions/": "2026-09-11",
-  "/workflows/writing-and-updates/": "2026-09-11",
-  "/workflows/meetings-and-follow-up/": "2026-09-11",
-  "/workflows/planning-and-priorities/": "2026-09-11",
-  "/tools/ai-prompt-word-counter/": "2026-08-25",
-  "/guides/research-brief-from-scattered-sources/": "2026-10-02",
-  "/guides/evidence-matrix-from-source-notes/": "2026-10-02",
-  "/guides/evidence-to-priority-plan/": "2026-10-02",
-  "/guides/meeting-notes-to-decision-brief/": "2026-10-02",
-  "/guides/clear-project-update-prompt/": "2026-09-04",
-  "/guides/one-week-content-plan-from-questions/": "2026-09-04",
-  "/guides/brief-first-prompt-pattern/": "2026-09-04",
-  "/guides/thirty-minute-project-starting-plan/": "2026-09-04",
-  "/guides/meeting-follow-up-email/": "2026-09-04",
-  "/guides/decision-log-from-project-notes/": "2026-09-04",
-  "/guides/weekly-priorities-from-project-list/": "2026-09-04",
-  "/guides/meeting-agenda-from-notes/": "2026-09-04",
-  "/guides/customer-feedback-theme-map/": "2026-09-04",
-  "/guides/project-handoff-brief/": "2026-09-04",
-  "/guides/project-notes-to-decision-memo/": "2026-09-04",
-  "/guides/turn-rough-notes-into-decision-email/": "2026-09-04",
-  "/guides/weekly-review-from-completed-and-blocked-work/": "2026-09-04",
-};
+export const DEFAULT_SITEMAP_LASTMOD = STATES_UPDATED;
 
 export function normalizeSitemapRoute(route: string) {
   return route === "/" ? "/" : `/${route.replace(/^\/+|\/+$/g, "")}/`;
 }
+
+/** Every electricity URL is regenerated from the same data release, so they share one date. */
+export const SITEMAP_LASTMOD_BY_ROUTE: Record<string, string> = Object.fromEntries(
+  electricityRoutePaths.map((route) => [normalizeSitemapRoute(route), STATES_UPDATED]),
+);
 
 export function sitemapLastmodForRoute(route: string) {
   return SITEMAP_LASTMOD_BY_ROUTE[normalizeSitemapRoute(route)] ?? DEFAULT_SITEMAP_LASTMOD;

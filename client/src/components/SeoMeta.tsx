@@ -53,9 +53,9 @@ function syncMeta(attribute: "name" | "property", key: string, value?: string) {
   else removeMeta(attribute, key);
 }
 
-export function SeoMeta({ title, description, type = "website", image = heroImage, imageAlt = "Workflow Library field guide for practical AI workflows", noIndex = false, publishedTime, modifiedTime, section, tags = [], schema }: SeoMetaProps) {
+export function SeoMeta({ title, description, type = "website", image = heroImage, imageAlt = "Knexio electricity bill reference", noIndex = false, publishedTime, modifiedTime, section, tags = [], schema }: SeoMetaProps) {
   useEffect(() => {
-    document.title = title.endsWith("| Workflow Library") ? title : `${title} | Workflow Library`;
+    document.title = title.endsWith("| Knexio") ? title : `${title} | Knexio`;
     const origin = window.location.origin;
     const pathname = window.location.pathname === "/" ? "/" : `${window.location.pathname.replace(/\/$/, "")}/`;
     const pageUrl = `${origin}${pathname}`;
@@ -69,7 +69,7 @@ export function SeoMeta({ title, description, type = "website", image = heroImag
     upsertMeta("property", "og:description", description);
     upsertMeta("property", "og:type", type);
     upsertMeta("property", "og:url", pageUrl);
-    upsertMeta("property", "og:site_name", "Workflow Library");
+    upsertMeta("property", "og:site_name", "Knexio");
     upsertMeta("property", "og:locale", "en_US");
     upsertMeta("property", "og:image", imageUrl);
     upsertMeta("property", "og:image:secure_url", imageUrl);
@@ -103,7 +103,7 @@ export function SeoMeta({ title, description, type = "website", image = heroImag
       schemaScript.type = "application/ld+json";
       document.head.appendChild(schemaScript);
     }
-    const webPage: Record<string, unknown> = { "@type": "WebPage", "@id": `${pageUrl}#webpage`, name: title, description, url: pageUrl, isPartOf: { "@type": "WebSite", name: "Workflow Library", url: origin } };
+    const webPage: Record<string, unknown> = { "@type": "WebPage", "@id": `${pageUrl}#webpage`, name: title, description, url: pageUrl, isPartOf: { "@type": "WebSite", name: "Knexio", url: origin } };
     const additions = schema?.({ origin, pageUrl });
     schemaScript.text = JSON.stringify({ "@context": "https://schema.org", "@graph": [webPage, ...(additions ? (Array.isArray(additions) ? additions : [additions]) : [])] });
   }, [title, description, type, image, imageAlt, noIndex, publishedTime, modifiedTime, section, tags, schema]);

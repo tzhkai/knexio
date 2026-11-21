@@ -1,3 +1,5 @@
-# Retired legacy Games section. Keep the current Workflow Library routes untouched.
-/games / 301
-/games/* / 301
+# Apex canonical host. www is redirected; nothing else on this site is redirected.
+https://www.knexio.cc.cd/* https://knexio.cc.cd/:splat 301
+# Retired sections (old AI-prompt library) must answer 410 Gone, not 301.
+# Cloudflare Pages only accepts 200/301/302/303/307/308 in this file, so the
+# 410 rules live in _worker.js: /guides*, /series*, /workflows*, /tools*, /games*.

@@ -1,41 +1,238 @@
-/** Style note: Field Notes for Better Work — trust pages read like candid publication records, never like invented company profiles. */
-import { CheckCircle2, CircleAlert, Clock3, Eye, FileCheck2, Mail, MessageSquareText, PencilLine, ShieldAlert, ShieldCheck } from "lucide-react";
+/** Trust pages: what this reference is, how it is edited, and how corrections reach us. */
 import { Link } from "wouter";
+import { CircleAlert, Database, FileCheck2, Gauge, Mail, PencilLine, ShieldCheck } from "lucide-react";
 import Layout from "@/components/Layout";
 import { SeoMeta } from "@/components/SeoMeta";
-import { breadcrumbListSchema } from "@/components/SiteBreadcrumb";
+import { METHODOLOGY_PATH, CALCULATOR_PATH, HUB_PATH } from "@/data/electricityRoutes";
+import { cents, dataPeriod, dataUpdated, dataYtdPeriod, national, usd } from "@/data/electricityInsights";
 
-const trustStyles = `
-  .info-toc { display:flex; align-items:center; justify-content:space-between; gap:24px; width:min(1170px,calc(100% - 48px)); margin:0 auto; padding:14px 0; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); background:rgba(250,248,242,.96); } .info-toc>span { color:var(--green); font-size:9px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; white-space:nowrap; } .info-toc>div { display:flex; flex-wrap:wrap; justify-content:flex-end; gap:8px 18px; } .info-toc a { color:#4e514a; font-size:11px; font-weight:700; text-decoration:underline; text-decoration-color:var(--rule); text-underline-offset:4px; transition:color 160ms var(--ease-out),text-decoration-color 160ms var(--ease-out); } .info-toc a:hover { color:var(--green); text-decoration-color:var(--green); } .about-manifesto,.about-scope,.trust-record,.transparency-note { scroll-margin-top:112px; } .trust-record { display:grid; grid-template-columns:.78fr 1.22fr; gap:8vw; width:min(1070px,calc(100% - 48px)); margin:0 auto; padding:104px 0 72px; border-bottom:1px solid var(--rule); } .trust-record h2 { margin:10px 0 0; font-family:"DM Serif Display",Georgia,serif; font-size:42px; font-weight:400; letter-spacing:-.045em; line-height:1.05; } .trust-record-list { margin:0; border-top:1px solid var(--ink); } .trust-record-list>div { display:grid; grid-template-columns:128px minmax(0,1fr); gap:20px; padding:18px 0; border-bottom:1px solid var(--rule); } .trust-record-list dt { color:var(--green); font-size:10px; font-weight:800; letter-spacing:.09em; text-transform:uppercase; } .trust-record-list dd { margin:0; color:#55574f; font-size:13px; line-height:1.66; } .launch-field { display:inline-block; padding:4px 7px; background:var(--green-pale); color:var(--green-deep); font-family:"Manrope",Arial,sans-serif; font-size:11px; font-weight:800; line-height:1.4; } .about-scope { display:grid; grid-template-columns:repeat(3,1fr); width:min(1170px,calc(100% - 48px)); margin:0 auto; border-top:1px solid var(--rule); border-left:1px solid var(--rule); } .about-scope article { min-height:265px; padding:33px 31px; border-right:1px solid var(--rule); border-bottom:1px solid var(--rule); background:rgba(255,253,248,.45); } .about-scope svg { color:var(--green); } .about-scope h3 { margin:39px 0 9px; font-family:"DM Serif Display",Georgia,serif; font-size:26px; font-weight:400; letter-spacing:-.035em; line-height:1.04; } .about-scope p { margin:0; color:#5d5f57; font-size:13px; line-height:1.68; } .transparency-note { display:grid; grid-template-columns:100px minmax(0,1fr); gap:34px; width:min(930px,calc(100% - 48px)); margin:0 auto; padding:93px 0 116px; } .transparency-note>span { color:var(--rust); font-family:"DM Serif Display",Georgia,serif; font-size:43px; letter-spacing:-.06em; } .transparency-note h2 { margin:0 0 13px; font-family:"DM Serif Display",Georgia,serif; font-size:36px; font-weight:400; letter-spacing:-.045em; line-height:1.06; } .transparency-note p { margin:0 0 13px; color:#575951; font-size:14px; line-height:1.8; } .contact-hero { position:relative; } .contact-hero::after { content:"CONTACT RECORD / STATUS: PUBLICATION REVIEW / FIELD NOTE: CORRECTIONS WELCOME"; position:absolute; top:39px; right:0; color:var(--green); border-left:1px solid var(--green); font-size:8px; font-weight:800; letter-spacing:.11em; line-height:1.6; text-transform:uppercase; writing-mode:vertical-rl; } .contact-record { display:grid; grid-template-columns:minmax(0,1.05fr) minmax(290px,.75fr); gap:0; width:min(1070px,calc(100% - 48px)); margin:76px auto 0; border-top:1px solid var(--ink); } .contact-record-main { padding:40px 58px 45px 0; } .contact-record-main>svg { color:var(--green); } .contact-record-main h2 { max-width:560px; margin:19px 0 13px; font-family:"DM Serif Display",Georgia,serif; font-size:40px; font-weight:400; letter-spacing:-.045em; line-height:1.06; } .contact-record-main p { max-width:570px; margin:0 0 13px; color:#565850; font-size:14px; line-height:1.78; } .contact-launch-card { padding:39px 0 39px 43px; border-left:1px solid var(--rule); } .contact-launch-card h3 { margin:12px 0 12px; font-family:"DM Serif Display",Georgia,serif; font-size:27px; font-weight:400; letter-spacing:-.035em; line-height:1.06; } .contact-launch-card p { margin:0; color:#5c5e56; font-size:12px; line-height:1.7; } .contact-launch-card code { display:block; margin:15px 0; padding:11px; border-left:2px solid var(--green); background:var(--green-pale); color:var(--green-deep); font-family:"Manrope",Arial,sans-serif; font-size:10px; font-weight:800; line-height:1.45; } .contact-request-grid { display:grid; grid-template-columns:repeat(3,1fr); width:min(1070px,calc(100% - 48px)); margin:60px auto 120px; border-top:1px solid var(--rule); border-left:1px solid var(--rule); } .contact-request-grid article { min-height:250px; padding:30px 28px; border-right:1px solid var(--rule); border-bottom:1px solid var(--rule); } .contact-request-grid svg { color:var(--green); } .contact-request-grid h3 { margin:32px 0 9px; font-family:"DM Serif Display",Georgia,serif; font-size:25px; font-weight:400; letter-spacing:-.035em; line-height:1.03; } .contact-request-grid p { margin:0; color:#5c5e56; font-size:12px; line-height:1.7; } @media (max-width:760px) { .trust-record,.about-scope,.contact-record,.contact-request-grid { width:min(100% - 28px,760px); } .trust-record,.contact-record { grid-template-columns:1fr; gap:30px; padding:72px 0 55px; } .trust-record h2,.contact-record-main h2 { font-size:35px; } .trust-record-list>div { grid-template-columns:1fr; gap:6px; padding:15px 0; } .about-scope,.contact-request-grid { grid-template-columns:1fr; } .about-scope article,.contact-request-grid article { min-height:0; padding:29px 24px; } .about-scope h3,.contact-request-grid h3 { margin-top:26px; } .transparency-note { grid-template-columns:1fr; gap:10px; width:min(100% - 28px,760px); padding:72px 0 88px; } .contact-hero::after { display:none; } .contact-record-main { padding:34px 0 31px; } .contact-launch-card { padding:30px 0 0; border-top:1px solid var(--rule); border-left:0; } .contact-request-grid { margin-top:45px; margin-bottom:86px; } .info-toc { width:min(100% - 28px,760px); align-items:flex-start; flex-direction:column; gap:9px; } .info-toc>div { justify-content:flex-start; gap:9px 15px; } }
-  `;
-
-const aboutLinks = [
-  { href: "#purpose", label: "Purpose" },
-  { href: "#scope", label: "What we publish" },
-  { href: "#record", label: "Publication record" },
-  { href: "#making", label: "How pages are made" },
-];
+const dataSummary = `In ${dataPeriod}, U.S. residential customers paid an average of ${cents(national.priceCents)} per kWh for ${national.kwhMonth.toLocaleString("en-US")} kWh, or ${usd(national.billAug)} for the month.`;
 
 export function About() {
-  return <Layout><SeoMeta title="About the editorial project" description="Workflow Library is an independent editorial project publishing practical, human-reviewed AI workflows for everyday knowledge work." schema={({ origin, pageUrl }) => ([{ "@type": "AboutPage", name: "About Workflow Library", url: pageUrl, mainEntity: { "@type": "Organization", "@id": `${origin}/#organization`, name: "Knexio", url: origin, email: "tzhkai6@gmail.com" } }, breadcrumbListSchema(origin, pageUrl, [{ label: "Home", href: "/" }, { label: "About" }])])} /><style>{trustStyles}</style>
-    <section className="info-hero"><span className="eyebrow">About Workflow Library</span><h1>Less “AI can do anything.”<br /><em>More</em> “here is a useful way to begin.”</h1><p>Workflow Library is an independent editorial project about practical ways to use AI in everyday knowledge work. It is designed for people who need a clearer first draft, not a substitute for source checking, decision-making, or professional judgment.</p></section>
-    <nav className="info-toc" aria-label="About page sections"><span>On this page</span><div>{aboutLinks.map((item) => <a key={item.href} href={item.href}>{item.label}</a>)}</div></nav>
-    <section id="purpose" className="about-manifesto"><div className="manifesto-number">01</div><div><span className="eyebrow">The purpose</span><h2>Useful systems should be small enough to use and honest enough to trust.</h2></div><p>Many AI resources stop at a tool list or a clever prompt. This library goes one step further: it shows what to prepare, what to ask for, what to inspect, and where a person must take responsibility for the result.</p></section>
-    <section id="scope" className="about-scope" aria-label="What Workflow Library publishes"><article><PencilLine size={23} /><h3>Practical task guides</h3><p>We publish scoped workflows for research, writing, planning, and meeting follow-up. A guide should help a reader make progress on one concrete task.</p></article><article><Eye size={23} /><h3>Visible limits</h3><p>We name missing context, unverified facts, risky decisions, and places where an AI output should not be treated as a final answer.</p></article><article><ShieldCheck size={23} /><h3>Editorial records</h3><p>Guides carry review signals, updates, source expectations, and a path to corrections. We do not publish fabricated authors, reviews, outcomes, or credentials.</p></article></section>
-    <section id="record" className="trust-record"><div><span className="eyebrow">Publication record</span><h2>What readers can expect from this project.</h2></div><dl className="trust-record-list"><div><dt>Edition status</dt><dd>Public independent publication under the Knexio site brand. Guides are reviewed for scope, clarity, source relevance, limitations, and reader usefulness before substantive updates are released.</dd></div><div><dt>Publisher identity</dt><dd><span className="launch-field">Workflow Library is published under the Knexio site brand. The publisher can be contacted at <a href="mailto:tzhkai6@gmail.com">tzhkai6@gmail.com</a>.</span></dd></div><div><dt>Editorial method</dt><dd>AI may assist with structure and first drafts. Final pages should be reviewed for useful scope, factual accuracy, source relevance, limitations, and reader clarity.</dd></div><div><dt>Commercial approach</dt><dd>If advertising, sponsorships, affiliate links, or vendor access are added, they must be disclosed, clearly separated from editorial material, and never determine a recommendation.</dd></div><div><dt>Corrections</dt><dd>Readers can email <a href="mailto:tzhkai6@gmail.com">tzhkai6@gmail.com</a> to report a factual issue, accessibility barrier, or broken link. Messages should not include passwords, payment details, or other sensitive information.</dd></div></dl></section>
-    <section id="making" className="transparency-note"><span>02</span><div><span className="eyebrow">How pages are made</span><h2>AI assistance should be explained, not disguised.</h2><p>Workflow Library uses AI tools to explore structure, turn a clear brief into a first draft, and identify questions that deserve review. AI output is not treated as a source, a substitute for lived experience, or a reason to publish material without checking it.</p><p>The site identifies its public brand as Knexio and provides a monitored editorial contact at tzhkai6@gmail.com. Relevant author or reviewer information should be added to guides when a page needs subject-matter context; no identity, credential, review, outcome, or endorsement should be invented.</p><Link href="/editorial-policy" className="text-link large-link">Read the editorial method</Link></div></section>
-  </Layout>;
+  return (
+    <Layout>
+      <SeoMeta
+        title="About this electricity reference"
+        description="Knexio publishes an independent U.S. residential electricity bill reference built on EIA Electric Power Monthly releases and RECS 2020 housing ratios."
+        schema={({ origin, pageUrl }) => [
+          { "@type": "AboutPage", "@id": `${pageUrl}#about`, name: "About this electricity reference", url: pageUrl, isPartOf: { "@type": "WebSite", name: "Knexio", url: origin } },
+        ]}
+      />
+      <section className="info-hero">
+        <span className="eyebrow">About Knexio</span>
+        <h1>Every number here<br /><em>has a table</em> behind it.</h1>
+        <p>{dataSummary} This site exists so that sentence can be checked, area by area, instead of taken on faith.</p>
+      </section>
+
+      <nav className="info-toc" aria-label="On this page">
+        <a href="#what">What this site publishes</a>
+        <a href="#scope">What is measured, what is modeled</a>
+        <a href="#record">Data record</a>
+        <a href="#making">How pages are built</a>
+      </nav>
+
+      <section className="about-manifesto" aria-label="Editorial stance">
+        <article>
+          <span className="manifesto-number">01</span>
+          <h2>One publisher, one vintage</h2>
+          <p>Price, sales and customer counts all come from the same monthly EIA release. Mixing vintages is how "average bill" pages end up disagreeing with each other; we do not mix them.</p>
+        </article>
+        <article>
+          <span className="manifesto-number">02</span>
+          <h2>Modeled figures say so</h2>
+          <p>Housing-type bills are arithmetic on top of a RECS 2020 ratio, not a survey of identical homes. Every page that shows one also names the ratio it used.</p>
+        </article>
+        <article>
+          <span className="manifesto-number">03</span>
+          <h2>Averages are not quotes</h2>
+          <p>A state average is what the population paid, not what your meter will do. Tiered rates, heating fuel, rooftop solar and apartment master-metering all pull a real bill away from it.</p>
+        </article>
+      </section>
+
+      <section id="what" className="about-scope" aria-label="What Knexio publishes">
+        <article>
+          <Gauge size={23} />
+          <h3>Area bills, monthly</h3>
+          <p>All 53 reporting areas — 50 states, the District of Columbia and the two Pacific census divisions — with average bill, average price and average use for {dataPeriod}, plus the year-over-year move and the {dataYtdPeriod} average.</p>
+        </article>
+        <article>
+          <Database size={23} />
+          <h3>Housing-type estimates</h3>
+          <p>Six housing types, from studio apartments to mobile homes, each carrying a single RECS 2020 ratio applied to the area bill. Every combination of housing type and area is published, including the ones where the estimate is least reliable.</p>
+        </article>
+        <article>
+          <PencilLine size={23} />
+          <h3>A calculator you can audit</h3>
+          <p>The calculator uses one formula and shows it while you type: watts × hours × days ÷ 1,000 × rate. State rates are preloaded from the same dataset as the tables, and you can overwrite any field.</p>
+        </article>
+      </section>
+
+      <section id="scope" className="trust-record" aria-label="Measured and modeled figures">
+        <div>
+          <span className="eyebrow">Reading the numbers</span>
+          <h2>Two kinds of figure, kept apart.</h2>
+        </div>
+        <dl className="trust-record-list">
+          <div><dt>Measured</dt><dd>Area bill, price per kWh, monthly use, customer count and sales. These are EIA survey results, reproduced without adjustment.</dd></div>
+          <div><dt>Modeled</dt><dd>Every housing-type bill and every housing-type-by-area bill. The formula is area bill × RECS ratio, and the ratio is printed next to the figure.</dd></div>
+          <div><dt>Derived</dt><dd>Percent changes, rankings, differences from the U.S. average, and the customer-weighted prior-year national bill. All are arithmetic on the two sets above.</dd></div>
+          <div><dt>Never</dt><dd>No forecasts, no "typical household" composites, no invented utility names, no numbers rounded to look cleaner than the source.</dd></div>
+        </dl>
+      </section>
+
+      <section id="record" className="trust-record" aria-label="Data record">
+        <div>
+          <span className="eyebrow">Data record</span>
+          <h2>What is current, and when it changes.</h2>
+        </div>
+        <dl className="trust-record-list">
+          <div><dt>Latest month</dt><dd>{dataPeriod}</dd></div>
+          <div><dt>Year to date</dt><dd>{dataYtdPeriod} monthly average</dd></div>
+          <div><dt>Dataset updated</dt><dd>{dataUpdated}</dd></div>
+          <div><dt>Housing ratios</dt><dd>RECS 2020, revised only when EIA publishes a new survey</dd></div>
+          <div><dt>Full derivation</dt><dd><Link className="text-link" href={METHODOLOGY_PATH}>Methodology: sources, formulas and limits</Link></dd></div>
+        </dl>
+      </section>
+
+      <section id="making" className="transparency-note">
+        <span>01</span>
+        <div>
+          <span className="eyebrow">How pages are built</span>
+          <h2>Generated from the dataset, not typed by hand.</h2>
+          <p>The ~380 pages in this section are rendered from a single data file that is populated from EIA tables. That is why a state page can never quietly disagree with the national table: there is only one place a bill figure exists. Editorial work goes into the wording, the comparisons chosen, and the limits stated — not into retyping numbers.</p>
+          <p>Language models assist with drafting explanatory copy. They are not allowed to produce, adjust or interpolate a figure; any page where a number changed without a matching source row is treated as a bug.</p>
+          <a className="text-link large-link" href={HUB_PATH}>Start with the national table</a>
+        </div>
+      </section>
+    </Layout>
+  );
 }
 
-const standards = [{ icon: FileCheck2, title: "A clear task", text: "Every guide should help a defined reader make progress on a specific task. We avoid pages created only to catch a phrase or duplicate a generic answer." }, { icon: CheckCircle2, title: "Useful original work", text: "Published material should add practical framing, examples, sources, editorial analysis, or demonstrated experience. It should not merely rewrite what is already available elsewhere." }, { icon: CircleAlert, title: "Limits in view", text: "We state where a workflow needs verification, where facts may change, and where an AI output is not an appropriate basis for a decision." }, { icon: Clock3, title: "Meaningful updates", text: "A date changes only when a guide has received substantive review. Time-sensitive claims, product behavior, and links should be checked before a material refresh." }];
+const standards = [
+  { title: "Source before sentence", body: "A page may only state a figure that exists in an EIA table or is arithmetic on one. If a claim cannot be traced to a table row, it is removed rather than softened." },
+  { title: "Name the period", body: "Every table and figure states its month or year-to-date window. No undated averages, no \"recently\" or \"currently\" standing in for a date." },
+  { title: "Label the model", body: "Housing-type bills carry the word modeled, the RECS cell they use, and the multiplier. Readers should be able to reproduce the number with a calculator." },
+  { title: "Show the weak cases", body: "Where a housing type is rare in an area, or a division overlaps states, the page says so instead of hiding the caveat in a footnote." },
+  { title: "Corrections are public", body: "Confirmed data errors are fixed in the dataset, which updates every dependent page at once. The update date on the methodology page changes with the fix." },
+  { title: "No commercial steering", body: "Rankings are ordered by the published figure only. No utility, retailer or installer can pay for placement, and no link in a data table is paid." },
+  { title: "Advertisers do not see drafts", body: "Advertising is served by Google on published pages. Ad placement never determines which areas, housing types or comparisons are published." },
+  { title: "Independent of utilities", body: "This site is not affiliated with EIA, any utility, or any energy retailer. EIA data is public domain; the presentation and derived figures are ours." },
+];
 
-export function EditorialPolicy() { return <Layout><SeoMeta title="Editorial standards and method" description="How Workflow Library approaches authorship, AI assistance, sources, corrections, and practical content quality." schema={({ origin, pageUrl }) => breadcrumbListSchema(origin, pageUrl, [{ label: "Home", href: "/" }, { label: "Editorial method" }])} /><section className="policy-hero"><span className="eyebrow">Editorial method</span><h1>Useful enough to keep.<br />Careful enough to trust.</h1><p>This is the standard we use to decide whether a guide belongs in Workflow Library. It is designed for readers first and makes clear where a workflow ends and human judgment begins.</p></section><section className="policy-intro"><span className="policy-index">01 / OUR PURPOSE</span><p>Workflow Library publishes practical educational guides for using AI in research, writing, planning, and routine coordination. It does not provide legal, medical, financial, tax, security, or other professional advice. We do not promise a specific productivity result, income outcome, or search ranking from any workflow.</p></section><section className="standards-list">{standards.map(({ icon: Icon, title, text }, index) => <article className="standard-row" key={title}><span className="standard-number">0{index + 2}</span><Icon size={23} strokeWidth={1.5} /><div><h2>{title}</h2><p>{text}</p></div></article>)}</section><section className="policy-grid"><div><span className="eyebrow">AI assistance</span><h2>AI helps with structure, not with pretending.</h2><p>When AI materially helps organize a guide, the publisher should ensure the final page remains accurate, relevant, and useful. AI-generated names, quotations, sources, tests, outcomes, credentials, reviews, or endorsements must never be presented as real without verification.</p></div><div><span className="eyebrow">Authorship</span><h2>Readers should know who stands behind a page.</h2><p>Published guides should include clear byline or editorial attribution where readers expect one. Linked publisher information should accurately explain relevant experience, review responsibility, and contact route.</p></div><div><span className="eyebrow">Sources and links</span><h2>Claims should have a path back to evidence.</h2><p>For factual, time-sensitive, or product-specific information, the publisher should prefer primary sources and make relevant links available. A source must not be cited for a claim it does not make.</p></div><div><span className="eyebrow">Commercial independence</span><h2>Editorial purpose comes before monetization.</h2><p>Advertising, affiliate relationships, sponsorships, or vendor access should be disclosed where they exist. They must not decide a recommendation, be confused with navigation, or block main content.</p></div></section></Layout>; }
+export function EditorialPolicy() {
+  return (
+    <Layout>
+      <SeoMeta
+        title="Editorial standards and data method"
+        description="How Knexio selects sources, computes averages, labels modeled figures, dates every dataset, and handles corrections."
+        schema={({ origin, pageUrl }) => [
+          { "@type": "WebPage", "@id": `${pageUrl}#standards`, name: "Editorial standards and data method", url: pageUrl, isPartOf: { "@type": "WebSite", name: "Knexio", url: origin } },
+        ]}
+      />
+      <section className="policy-hero">
+        <span className="eyebrow">Editorial standards</span>
+        <h1>Publish less,<br /><em>prove</em> more.</h1>
+        <p className="policy-intro">A bill reference is only useful if a reader can retrace it. These are the rules the pages are held to, and the ones a correction request can be argued against.</p>
+      </section>
+
+      <nav className="policy-index" aria-label="Standards index">
+        <a href={METHODOLOGY_PATH}>Methodology and sources</a>
+        <a href="#standards">The eight standards</a>
+        <a href="/contact">Report an error</a>
+      </nav>
+
+      <section id="standards" className="standards-list" aria-label="The eight standards">
+        {standards.map((standard, index) => (
+          <article key={standard.title} className="standard-row">
+            <span className="standard-number">{String(index + 1).padStart(2, "0")}</span>
+            <div>
+              <h2>{standard.title}</h2>
+              <p>{standard.body}</p>
+            </div>
+          </article>
+        ))}
+      </section>
+
+      <section className="policy-grid" aria-label="Practical consequences">
+        <article>
+          <FileCheck2 size={22} />
+          <h3>What gets published</h3>
+          <p>Pages that carry at least one figure a reader cannot get from a generic article: a state's own bill, its housing-type matrix, or its position against the other 52 areas.</p>
+        </article>
+        <article>
+          <ShieldCheck size={22} />
+          <h3>What does not</h3>
+          <p>No "energy saving tips" filler, no invented case studies, no household profiles. If a page would only restate the national average, it is not written.</p>
+        </article>
+        <article>
+          <CircleAlert size={22} />
+          <h3>When we are wrong</h3>
+          <p>Send the area, the figure and the EIA table you are comparing against. A confirmed error is corrected in the dataset and dated; a disagreement about interpretation is answered, not silently edited.</p>
+        </article>
+      </section>
+    </Layout>
+  );
+}
 
 export function Contact() {
-  return <Layout><SeoMeta title="Contact the editorial desk" description="Contact Workflow Library about editorial corrections, privacy requests, accessibility feedback, and commercial disclosures." schema={({ origin, pageUrl }) => ([{ "@type": "ContactPage", name: "Contact the Workflow Library editorial desk", url: pageUrl, mainEntity: { "@type": "Organization", "@id": `${origin}/#organization`, name: "Knexio", url: origin, email: "tzhkai6@gmail.com", contactPoint: { "@type": "ContactPoint", contactType: "customer support", email: "tzhkai6@gmail.com", availableLanguage: ["en", "zh-CN"] } } }, breadcrumbListSchema(origin, pageUrl, [{ label: "Home", href: "/" }, { label: "Contact" }])])} /><style>{trustStyles}</style>
-    <section className="contact-hero"><span className="eyebrow">Contact the editorial desk</span><h1>Good corrections make<br />a library better.</h1><p>A public contact page should make it clear what readers can report, who is responsible for reading it, and how the route works. Workflow Library is published under the Knexio site brand.</p></section>
-    <section className="contact-record"><div className="contact-record-main"><Mail size={26} /><h2>A real reply path belongs in every public library.</h2><p>This publication record provides a monitored editorial contact route rather than a form that silently goes nowhere. Readers can write to <a href="mailto:tzhkai6@gmail.com">tzhkai6@gmail.com</a> about corrections, privacy requests, and accessibility feedback.</p><p>A contact route should not invite visitors to share passwords, payment details, health information, identity documents, or other sensitive material.</p></div><aside className="contact-launch-card"><span className="eyebrow">Publication status</span><h3>The editorial desk is open for reader feedback.</h3><code>tzhkai6@gmail.com</code><p>This mailbox is the public route for corrections, privacy questions, accessibility feedback, and unclear commercial disclosures. Do not send passwords, payment details, or sensitive personal documents.</p></aside></section>
-    <section className="contact-request-grid" aria-label="What readers can contact the publisher about"><article><MessageSquareText size={21} /><h3>Corrections & sources</h3><p>Use the public route for factual corrections, source concerns, broken links, and clear suggestions that improve an existing guide.</p></article><article><ShieldAlert size={21} /><h3>Privacy & accessibility</h3><p>Use the public route for Cookie questions, privacy requests, accessibility barriers, or reports that a site feature is difficult to use.</p></article><article><CheckCircle2 size={21} /><h3>Commercial disclosures</h3><p>Use the public route to flag unclear advertising, sponsorship, affiliate, or vendor relationships if they are ever added to the site.</p></article></section>
-    <section className="transparency-note"><span>03</span><div><span className="eyebrow">Response record</span><h2>Set an expectation you can actually meet.</h2><p>Before launch, the publisher should define a realistic response target, keep an internal record of material corrections, and update a guide only when its content has changed substantively. Do not promise a response time that the publisher cannot maintain.</p><p>If a contact form is introduced later, its purpose, data handling, spam protection, and alternate contact route must be reflected in the Privacy page before it is activated.</p><Link href="/privacy" className="text-link large-link">Read the privacy & Cookie notice</Link></div></section>
-  </Layout>;
+  return (
+    <Layout>
+      <SeoMeta
+        title="Contact and corrections"
+        description="Report a data error, request a correction, or ask about the method behind any figure published here."
+        schema={({ origin, pageUrl }) => [
+          { "@type": "ContactPage", "@id": `${pageUrl}#contact`, name: "Contact and corrections", url: pageUrl, isPartOf: { "@type": "WebSite", name: "Knexio", url: origin } },
+        ]}
+      />
+      <section className="contact-hero">
+        <span className="eyebrow">Contact</span>
+        <h1>A wrong number is<br />worth an email.</h1>
+        <p>This is a small, single-editor reference. Corrections from readers who are looking at the same EIA table are the fastest way it stays accurate.</p>
+      </section>
+
+      <section className="contact-request-grid" aria-label="What to send">
+        <article>
+          <Database size={22} />
+          <h3>Data corrections</h3>
+          <p>Name the area or housing type, the figure you see, the figure you expected, and the EIA table or release you are comparing against. Corrections are applied to the dataset, so every dependent page updates at once.</p>
+        </article>
+        <article>
+          <PencilLine size={22} />
+          <h3>Method questions</h3>
+          <p>If a derived figure is unclear — a customer-weighted national prior year, a RECS ratio, a division flagged inside a state table — ask and the explanation is added to the methodology page rather than buried in a reply.</p>
+        </article>
+        <article>
+          <Gauge size={22} />
+          <h3>Calculator problems</h3>
+          <p>Report the inputs you used, the number the calculator produced, and what you expected. The formula is fixed and published, so a mismatch is either a display bug or an input parsing bug, and both are fixable.</p>
+        </article>
+      </section>
+
+      <section className="contact-record" aria-label="Contact details">
+        <div className="contact-record-main">
+          <h2>Where to write</h2>
+          <p>Email reaches the editor directly. There is no ticket queue and no support team, so replies are short but they are from the person who publishes the page.</p>
+          <p><Mail size={16} aria-hidden="true" /> <a className="text-link" href="mailto:tzhkai6@gmail.com">tzhkai6@gmail.com</a></p>
+        </div>
+        <dl>
+          <div><dt>Typical reply</dt><dd>Within five working days</dd></div>
+          <div><dt>Data questions</dt><dd>Include the EIA table number when you have it</dd></div>
+          <div><dt>Privacy requests</dt><dd>See the <Link className="text-link" href="/privacy">privacy notice</Link></dd></div>
+        </dl>
+      </section>
+
+      <section className="contact-launch-card">
+        <div className="launch-field">
+          <h2>Before you write</h2>
+          <p>Most questions about where a number came from are already answered on the methodology page: sources, the RECS ratios, the division handling, and what the figures cannot tell you.</p>
+          <Link className="text-link large-link" href={METHODOLOGY_PATH}>Read the methodology</Link>
+        </div>
+        <div className="launch-field">
+          <h2>Check the calculator first</h2>
+          <p>If your question is "why is my bill different", the calculator is the faster answer: enter your own rate and usage, and compare that with the published average for your area.</p>
+          <Link className="text-link large-link" href={CALCULATOR_PATH}>Open the calculator</Link>
+        </div>
+      </section>
+    </Layout>
+  );
 }

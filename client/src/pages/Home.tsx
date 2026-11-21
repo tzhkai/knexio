@@ -1,31 +1,260 @@
-/** Style note: Field Notes for Better Work — asymmetric editorial home page with warm paper, Verdigris Ink, and evidence-first reading. */
-import { ArrowDown, ArrowUpRight, BookOpenCheck, Braces, CheckCircle2, Compass, FileText, SearchCheck } from "lucide-react";
+/** Home: the entry point for the electricity reference — baseline figures, rankings, housing types, and the calculator. */
+import { ArrowUpRight } from "lucide-react";
 import { Link } from "wouter";
 import Layout from "@/components/Layout";
-import GuideCard from "@/components/GuideCard";
 import { SeoMeta } from "@/components/SeoMeta";
-import { guides, heroImage } from "@/lib/content";
+import { BillPage, FigureGrid, LinkChips, NoteBox, RankTable, SectionHeading, type RankRow } from "@/components/electricity/bill-ui";
+import { CALCULATOR_PATH, HUB_PATH, METHODOLOGY_PATH, homeMeta, segmentPath, statePath } from "@/data/electricityRoutes";
+import {
+  allSegments,
+  allStates,
+  cents,
+  count,
+  dataPeriod,
+  dataUpdated,
+  dataYtdPeriod,
+  isCensusDivision,
+  kwh,
+  national,
+  nationalSegmentBill,
+  pctChange,
+  rankedStates,
+  segmentRatioNote,
+  sentenceCase,
+  signedPct,
+  signedUsd,
+  usd,
+} from "@/data/electricityInsights";
 
-const focus = [
-  { icon: SearchCheck, label: "Research", text: "Keep sources visible while turning notes into a brief." },
-  { icon: FileText, label: "Writing", text: "Create clearer drafts with context and constraints." },
-  { icon: BookOpenCheck, label: "Meetings", text: "Separate actions, decisions, and questions before they drift." },
-  { icon: Compass, label: "Planning", text: "Find the next useful move without building an imaginary backlog." }
+const startStates = [
+  "california",
+  "texas",
+  "florida",
+  "new-york",
+  "pennsylvania",
+  "illinois",
+  "ohio",
+  "georgia",
+  "arizona",
+  "washington",
+  "michigan",
+  "massachusetts",
 ];
 
 export default function Home() {
-  const [research, update, meeting, contentPlan, promptPattern, startPlan] = guides;
-  return <Layout>
-    <SeoMeta title="AI prompts for work" description="Practical AI prompts and workflows for research, writing, meetings, and planning. Each guide includes a scoped prompt, clear limits, and human review checks." image={heroImage} schema={({ origin }) => [{ "@type": "WebSite", "@id": `${origin}/#website`, name: "Workflow Library", url: origin, description: "Practical AI prompts and workflows for research, writing, meetings, and planning." }, { "@type": "Organization", "@id": `${origin}/#organization`, name: "Knexio", url: origin, email: "tzhkai6@gmail.com", description: "Publisher of Workflow Library, an independent educational project for practical AI workflows." }]} />
-    <section className="hero-section">
-      <div className="hero-copy"><span className="eyebrow">Practical AI, explained like a field guide</span><h1>Make the work<br /><em>clearer</em> before you<br />make it faster.</h1><p className="hero-dek">Workflow Library is a calm, practical reference for using AI in work that needs context, judgment, and a human final check.</p><div className="hero-actions"><Link href="/guides" className="primary-button">Find a workflow <ArrowUpRight size={17} /></Link><a href="#featured" className="secondary-button">See what is inside <ArrowDown size={16} /></a></div><div className="hero-note"><span className="stamp">Field note</span> No productivity promises. Just usable steps, clear limits, and a place to start.</div></div>
-      <div className="hero-visual"><div className="hero-image-frame"><img src={heroImage} alt="A calm desk arranged with research notes, paper, and an understated laptop" fetchPriority="high" decoding="async" /></div><div className="hero-index-card"><span>START HERE</span><strong>Give the task a brief.</strong><p>Context, constraints, output.</p></div><div className="hero-number">01</div></div>
-    </section>
-    <section className="credibility-strip" aria-label="What each guide contains"><div><span>01</span><p>One real task, not a tool list</p></div><div><span>02</span><p>Copyable starting prompt</p></div><div><span>03</span><p>Human review checks</p></div><div><span>04</span><p>Known limits, plainly stated</p></div></section>
-    <section id="featured" className="feature-section"><div className="section-heading split-heading"><div><span className="eyebrow">The reading room</span><h2>Start with the work<br />already on your desk.</h2></div><p>Each guide begins with a task that tends to become vague, repetitive, or slow. The goal is not to let AI do everything. It is to give your attention a better place to land.</p></div><div className="feature-layout"><GuideCard guide={research} featured /><div className="feature-rail"><div className="rail-label">Also useful this week</div><GuideCard guide={update} /><GuideCard guide={meeting} /><Link href="/guides" className="rail-all-link">Open the full library <ArrowUpRight size={17} /></Link></div></div></section>
-    <section className="focus-section"><div className="focus-side"><span className="eyebrow">Choose your entry point</span><h2>Four kinds of work.<br />One useful habit.</h2><p>Brief the task before you prompt it. Name what you know, what must be true, and what needs a person to decide.</p><Link href={`/guides/${promptPattern.slug}`} className="text-link large-link">Learn the brief-first pattern <ArrowUpRight size={17} /></Link></div><div className="focus-grid">{focus.map(({ icon: Icon, label, text }, index) => <div className="focus-card" key={label}><span className="focus-number">0{index + 1}</span><Icon size={22} strokeWidth={1.6} /><h3>{label}</h3><p>{text}</p></div>)}</div></section>
-    <section className="method-section"><div className="method-mark"><Braces size={42} strokeWidth={1.25} /></div><div><span className="eyebrow">The editorial rule</span><h2>A good AI workflow leaves you with <em>more</em> clarity, not more to verify.</h2></div><div className="method-checks"><p><CheckCircle2 size={17} /> Keep sources and uncertainty visible.</p><p><CheckCircle2 size={17} /> Review commitments, names, numbers, and advice.</p><p><CheckCircle2 size={17} /> Use an output only when you understand it.</p></div></section>
-    <section className="latest-section"><div className="section-heading compact-heading"><div><span className="eyebrow">From the library</span><h2>Small systems worth keeping.</h2></div><Link href="/guides" className="text-link">See all guides <ArrowUpRight size={16} /></Link></div><div className="latest-grid"><GuideCard guide={contentPlan} /><GuideCard guide={promptPattern} /><GuideCard guide={startPlan} /></div></section>
-    <section className="closing-section"><div className="closing-copy"><span className="eyebrow">A better starting point</span><h2>Copy the workflow,<br />then make it yours.</h2><p>Begin with one task you already need to finish this week. The library will meet you there.</p><Link href="/guides" className="primary-button">Browse the library <ArrowUpRight size={17} /></Link></div><div className="closing-annotation" aria-hidden="true"><span>KEEP</span><span>THE</span><span>HUMAN</span><span>IN THE LOOP</span></div></section>
-  </Layout>;
+  const top = rankedStates("bill").slice(0, 10);
+
+  const topRows: RankRow[] = top.map((state) => ({
+    key: state.slug,
+    href: statePath(state.slug),
+    label: state.name,
+    tag: isCensusDivision(state.slug) ? "Division" : undefined,
+    cells: [
+      usd(state.billAug),
+      cents(state.priceCents),
+      kwh(state.kwhMonth),
+      signedPct(pctChange(state.billAug, state.billAugPrev)),
+    ],
+    sort: [state.billAug, state.priceCents, state.kwhMonth, pctChange(state.billAug, state.billAugPrev)],
+  }));
+
+  const startLinks = startStates
+    .map((slug) => allStates.find((state) => state.slug === slug))
+    .filter((state): state is (typeof allStates)[number] => Boolean(state))
+    .map((state) => ({ href: statePath(state.slug), label: state.name }));
+
+  const cheapest = rankedStates("bill")[rankedStates("bill").length - 1];
+
+  return (
+    <Layout>
+      <SeoMeta
+        title={homeMeta.title}
+        description={homeMeta.description}
+        schema={({ origin }) => [
+          {
+            "@type": "WebSite",
+            "@id": `${origin}/#website`,
+            name: "Knexio Electricity Reference",
+            url: origin,
+            description: homeMeta.description,
+          },
+          {
+            "@type": "Organization",
+            "@id": `${origin}/#organization`,
+            name: "Knexio",
+            url: origin,
+            email: "tzhkai6@gmail.com",
+            description:
+              "Publisher of an independent U.S. electricity bill reference built on EIA Electric Power Monthly data.",
+          },
+          {
+            "@type": "Dataset",
+            "@id": `${origin}${HUB_PATH}#dataset`,
+            name: `U.S. residential electricity bills by state, ${dataPeriod}`,
+            description: `Residential price, sales, customer counts and derived average bills for 53 reporting areas, from EIA Electric Power Monthly and RECS 2020.`,
+            url: `${origin}${HUB_PATH}/`,
+            creator: { "@type": "Organization", name: "U.S. Energy Information Administration" },
+            isAccessibleForFree: true,
+            dateModified: dataUpdated,
+            temporalCoverage: "2026-01/2026-08",
+          },
+        ]}
+      />
+      <BillPage>
+        <header className="eb-hero">
+          <span className="eyebrow">EIA Electric Power Monthly · {dataPeriod}</span>
+          <h1>
+            What a U.S. household <em>actually pays</em> for electricity
+          </h1>
+          <p className="eb-lede">
+            The average American household paid {usd(national.billAug)} for {kwh(national.kwhMonth)} of electricity in{" "}
+            {dataPeriod}, at {cents(national.priceCents)} per kWh. Those three numbers move independently — price,
+            usage, and the bill they produce — and the gap between states is almost never explained by price alone. This
+            site tracks all three for every reporting area, then lets you price your own usage.
+          </p>
+          <div className="eb-meta">
+            <span>{allStates.length} reporting areas</span>
+            <span>{allSegments.length} housing types</span>
+            <span>Source: EIA, RECS 2020</span>
+            <span>Updated {dataUpdated}</span>
+          </div>
+          <div className="mt-7 flex flex-wrap items-center gap-4">
+            <Link href={HUB_PATH} className="primary-button">
+              Open the state rankings <ArrowUpRight size={16} />
+            </Link>
+            <Link href={CALCULATOR_PATH} className="secondary-button">
+              Estimate my bill
+            </Link>
+          </div>
+        </header>
+
+        <FigureGrid
+          figures={[
+            { label: "Average bill", value: usd(national.billAug), note: `${dataPeriod}, residential` },
+            { label: "Average price", value: cents(national.priceCents), note: "per kWh, all sectors excluded" },
+            { label: "Average usage", value: kwh(national.kwhMonth), note: "per household, per month" },
+            { label: "Year to date", value: usd(national.billYtd), note: `${dataYtdPeriod} monthly average` },
+          ]}
+        />
+
+        <section className="eb-section">
+          <SectionHeading
+            eyebrow="Highest bills"
+            title="Where the ten largest bills land"
+            description="A bill is price multiplied by usage, so this table is not a ranking of expensive electricity — it is a ranking of expensive months. Sort by price or usage to see which half is doing the work."
+            aside={
+              <Link href={HUB_PATH} className="text-link">
+                All {allStates.length} areas <ArrowUpRight size={15} />
+              </Link>
+            }
+          />
+          <RankTable
+            ariaLabel={`The ten highest average residential electric bills in ${dataPeriod}`}
+            columns={[{ label: "Bill" }, { label: "Price" }, { label: "Usage" }, { label: "YoY" }]}
+            rows={topRows}
+            initialSort={0}
+          />
+          <NoteBox>
+            The spread is large: the highest bill in {dataPeriod} is {usd(top[0]?.billAug ?? null)} and the lowest is{" "}
+            {usd(cheapest?.billAug ?? null)}, a difference of{" "}
+            {usd((top[0]?.billAug ?? 0) - (cheapest?.billAug ?? 0))} a month. Compare that with the price column, which
+            ranges from {cents(rankedStates("price")[rankedStates("price").length - 1]?.priceCents ?? null)} to{" "}
+            {cents(rankedStates("price")[0]?.priceCents ?? null)} — the rest of the gap is how much electricity the
+            households actually use.
+          </NoteBox>
+        </section>
+
+        <section className="eb-section">
+          <SectionHeading
+            eyebrow="Housing types"
+            title="A studio and a house are not the same bill"
+            description="The published average covers every dwelling. These six views apply a RECS 2020 ratio to that average, so an apartment can be compared with a house on the same state data rather than on a separate survey."
+          />
+          <div className="eb-cards">
+            {allSegments.map((segment) => (
+              <Link key={segment.slug} href={segmentPath(segment.slug)} className="eb-card">
+                <span className="eb-card-label">{sentenceCase(segment.label)}</span>
+                <span className="eb-card-value">{usd(nationalSegmentBill(segment))}</span>
+                <span className="eb-card-note">
+                  National average, {segmentRatioNote(segment)}. Ratio {segment.factor.toFixed(3)} from RECS 2020.
+                </span>
+              </Link>
+            ))}
+          </div>
+          <NoteBox>
+            Housing-type figures are <strong>modeled</strong>, not published: the EIA does not report a monthly bill per
+            housing type for each state. The all-household figure above is the official EIA number.{" "}
+            <Link href={METHODOLOGY_PATH} className="underline">
+              Read the derivation
+            </Link>
+            .
+          </NoteBox>
+        </section>
+
+        <section className="eb-section">
+          <SectionHeading
+            eyebrow="State detail"
+            title="Start with the state you pay in"
+            description="Each state page carries the price, usage and bill for two years, a housing-type matrix for that state, and the neighbouring states worth comparing against."
+          />
+          <LinkChips links={[...startLinks, { href: HUB_PATH, label: `All ${allStates.length} areas` }]} />
+        </section>
+
+        <section className="eb-section">
+          <SectionHeading
+            eyebrow="Your own numbers"
+            title="Average is a starting point, not an answer"
+            description="A wattage-and-hours estimate or a straight kWh price is a better forecast of next month than any state average — and both run at the same published rate."
+          />
+          <div className="eb-duo">
+            <div className="eb-callout">
+              <h3>Watts and hours</h3>
+              <p>
+                Enter an appliance&rsquo;s wattage and daily runtime to get monthly kWh and dollars, priced at the
+                residential rate for any of the {allStates.length} areas.
+              </p>
+              <Link href={CALCULATOR_PATH} className="text-link mt-3 inline-flex">
+                Open the calculator <ArrowUpRight size={15} />
+              </Link>
+            </div>
+            <div className="eb-callout">
+              <h3>kWh on a statement</h3>
+              <p>
+                If your bill reports usage, price that figure directly. Same rate table, same arithmetic, no
+                assumptions about how many days the month had.
+              </p>
+              <Link href={CALCULATOR_PATH} className="text-link mt-3 inline-flex">
+                Price a kWh figure <ArrowUpRight size={15} />
+              </Link>
+            </div>
+            <div className="eb-callout">
+              <h3>Where the data ends</h3>
+              <p>
+                {count(national.customers)} households are averaged here. Your meter is one of them, and tiered rates,
+                heat pumps and rooftop solar all break the average in useful ways.
+              </p>
+              <Link href={METHODOLOGY_PATH} className="text-link mt-3 inline-flex">
+                Limits and sources <ArrowUpRight size={15} />
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        <div className="eb-cta">
+          <div className="eb-cta-copy">
+            <h2>
+              {allStates.length} areas, one table, sortable four ways
+            </h2>
+            <p>
+              Bill, price, usage and year-over-year change for {dataPeriod} and {dataYtdPeriod} — with every figure
+              traceable to an EIA table.
+            </p>
+          </div>
+          <Link href={HUB_PATH} className="primary-button">
+            Compare the states <ArrowUpRight size={16} />
+          </Link>
+        </div>
+      </BillPage>
+    </Layout>
+  );
 }
